@@ -1,0 +1,87 @@
+"use client";
+
+import React, { useState } from 'react'; // Import useState
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { motion } from "motion/react";
+import { EffectFade, Autoplay } from 'swiper/modules';
+
+// Image Assets
+import SMH from "@/assets/media/หาดสมิหลา.jpg"
+import KRY from "@/assets/media/วัดเข้ารูปช้าง.jpg"
+import OTR from "@/assets/media/เมืองเก่า.jpg"
+import KYY from "@/assets/media/เกาะยอ.jpg"
+import KIY from "@/assets/media/กิมหยง.jpg"
+
+const BannerItems = [
+    {
+        title: "Samila Beach",
+        decs: "Samila Beach, Ratchadamnoen Nok Road, Bo Yang Subdistrict, Mueang Songkhla District, Songkhla Province",
+        image: SMH
+    },
+    {
+        title: "Khao Rup Chang Temple",
+        decs: "Moo 6, Padang Besar Subdistrict, Sadao District, Songkhla Province",
+        image: KRY
+    },
+    {
+        title: "Old Town Songkhla",
+        decs: "Bo Yang Subdistrict, Mueang Songkhla District, Songkhla Province",
+        image: OTR
+    },
+    {
+        title: "Ko Yo Island",
+        decs: "Ko Yo Subdistrict, Mueang Songkhla District, Songkhla Province",
+        image: KYY
+    },
+    {
+        title: "Kim Yong Market",
+        decs: "Supasarnrangsan Road, Hat Yai District, Songkhla Province",
+        image: KIY
+    }
+]
+
+function Banner() {
+    const [hoveredSlideKey, setHoveredSlideKey] = useState<string | number | null>(null);
+
+    return (
+        <>
+            <Swiper
+                spaceBetween={0}
+                slidesPerView={1}
+                loop={true}
+                modules={[EffectFade, Autoplay]}
+                autoplay={{
+                    delay: 5000,
+                    disableOnInteraction: false,
+                }}
+                effect={'fade'}
+            >
+                {
+                    BannerItems.map((item, index) => (
+                        <SwiperSlide key={index}>
+                            <div
+                                className='relative overflow-hidden rounded-b-4xl'
+                                onMouseEnter={() => setHoveredSlideKey(index)}
+                                onMouseLeave={() => setHoveredSlideKey(null)}
+                            >
+                                <img src={item.image.src} className='w-full h-[550px] md:h-[800px] object-cover' alt={item.title} />
+                                <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-[#f7740a]/70 to-transparent text-white rounded-b-4xl text-center'>
+                                    <motion.div
+                                        animate={{ translateY: hoveredSlideKey === index ? -10 : 0 }}
+                                        transition={{ duration: 0.2 }}
+                                        whileTap={{ scale: 0.8 }}
+                                    >
+                                        <h1 className='text-3xl md:text-4xl font-bold mb-2'>{item.title}</h1>
+                                        <p className='text-sm md:text-base'>{item.decs}</p>
+                                    </motion.div>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                    ))
+                }
+            </Swiper>
+        </>
+    )
+}
+
+export default Banner

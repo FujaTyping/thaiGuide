@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import Logo from "@/assets/icon.png";
 import Image from 'next/image';
@@ -9,6 +11,7 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet";
+import { motion } from "motion/react";
 
 const NavItems = [
     {
@@ -42,12 +45,18 @@ function Navbar() {
                         <Image src={Logo.src} width={58} height={58} alt='Logo' />
                         <h1 className='font-bold text-2xl text-[#f7740a]'>ThaiGuide</h1>
                     </div>
-                    <div className='hidden md:flex items-center gap-6 border-1 border-[#f7740a] p-2 px-6 rounded-full text-[#f7740a] font-bold'>
+                    <div className='hidden md:flex items-center gap-6 border-1 border-[#f7740a] p-2 px-6 rounded-full text-[#f7740a] font-bold hover:bg-[#f7740a] transition-all duration-300 group'>
                         {NavItems.map((item, index) => (
-                            <a key={index} href={item.link}>{item.name}</a>
+                            <motion.div
+                                whileHover={{ scale: 1.1, rotate: -5 }}
+                                whileTap={{ scale: 0.8 }}
+                                key={index}
+                            >
+                                <a href={item.link} className='group-hover:text-white'>{item.name}</a>
+                            </motion.div>
                         ))}
                     </div>
-                    <div className='flex md:hidden items-center gap-6 border-1 border-[#f7740a] p-2 px-6 rounded-full text-[#f7740a] font-bold'>
+                    <div className='flex md:hidden items-center gap-6 border-1 border-[#f7740a] p-2 px-6 rounded-full text-[#f7740a] font-bold hover:bg-[#f7740a] transition-all duration-300 hover:text-white'>
                         <Sheet>
                             <SheetTrigger><p className='flex items-center gap-2'><Menu /> Menu</p></SheetTrigger>
                             <SheetContent>
