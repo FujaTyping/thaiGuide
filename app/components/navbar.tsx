@@ -12,6 +12,7 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet";
 import { motion } from "motion/react";
+import Link from 'next/link';
 
 const NavItems = [
     {
@@ -41,10 +42,12 @@ function Navbar() {
         <>
             <main className='border-b-1'>
                 <nav className='max-w-7xl flex items-center mx-auto p-3 w-full place-content-between'>
-                    <div className='flex items-center gap-1'>
-                        <Image src={Logo.src} width={58} height={58} alt='Logo' />
-                        <h1 className='font-bold text-2xl text-[#f7740a]'>ThaiGuide</h1>
-                    </div>
+                    <Link href={"/"}>
+                        <div className='flex items-center gap-1'>
+                            <Image src={Logo.src} width={58} height={58} alt='Logo' />
+                            <h1 className='font-bold text-2xl text-[#f7740a]'>ThaiGuide</h1>
+                        </div>
+                    </Link>
                     <div className='hidden md:flex items-center gap-6 border-1 border-[#f7740a] p-2 px-6 rounded-full text-[#f7740a] font-bold hover:bg-[#f7740a] transition-all duration-300 group'>
                         {NavItems.map((item, index) => (
                             <motion.div
@@ -52,7 +55,9 @@ function Navbar() {
                                 whileTap={{ scale: 0.8 }}
                                 key={index}
                             >
-                                <a href={item.link} className='group-hover:text-white'>{item.name}</a>
+                                <Link href={item.link} className='group-hover:text-white'>
+                                    {item.name}
+                                </Link>
                             </motion.div>
                         ))}
                     </div>

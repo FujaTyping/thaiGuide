@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import type { Viewport } from 'next'
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
+import Ealert from "./components/ealert";
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/grid';
@@ -21,6 +23,10 @@ export const metadata: Metadata = {
   description: "Experience Thailand like never before through fun travel quests, point systems, and rewards. Powered by AI and emotional design, our platform turns every trip into an adventure full of memories.",
 };
 
+export const viewport: Viewport = {
+  themeColor: '#f7740a',
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -32,6 +38,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar />
+        <Ealert />
         {children}
       </body>
     </html>

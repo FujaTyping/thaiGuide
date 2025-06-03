@@ -17,19 +17,19 @@ const ToolsItems = [
         link: "#"
     },
     {
+        title: "SOS",
+        icon: Siren,
+        link: "#"
+    },
+    {
         title: "Weather",
         icon: CloudSun,
-        link: "#"
+        link: "/weather"
     },
     {
         title: "Vat Refund",
         icon: HandCoins,
         link: "https://play.google.com/store/apps/details?id=th.co.ktb.vrt&pcampaignid=web_share"
-    },
-    {
-        title: "SOS",
-        icon: Siren,
-        link: "#"
     }
 ]
 
