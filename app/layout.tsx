@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/navbar";
 import 'swiper/css';
 import 'swiper/css/effect-fade';
+import 'swiper/css/grid';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
