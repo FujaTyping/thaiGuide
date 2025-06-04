@@ -3,7 +3,7 @@
 import React from 'react';
 import Logo from "@/assets/icon.png";
 import Image from 'next/image';
-import { Menu } from 'lucide-react';
+import { KeyRound, Menu } from 'lucide-react';
 import {
     Sheet,
     SheetContent,
@@ -48,33 +48,38 @@ function Navbar() {
                             <h1 className='font-bold text-2xl text-[#f7740a]'>ThaiGuide</h1>
                         </div>
                     </Link>
-                    <div className='hidden md:flex items-center gap-6 border-1 border-[#f7740a] p-2 px-6 rounded-full text-[#f7740a] font-bold hover:bg-[#f7740a] transition-all duration-300 group'>
-                        {NavItems.map((item, index) => (
-                            <motion.div
-                                whileHover={{ scale: 1.1, rotate: -5 }}
-                                whileTap={{ scale: 0.8 }}
-                                key={index}
-                            >
-                                <Link href={item.link} className='group-hover:text-white'>
-                                    {item.name}
-                                </Link>
-                            </motion.div>
-                        ))}
-                    </div>
-                    <div className='flex md:hidden items-center gap-6 border-1 border-[#f7740a] p-2 px-6 rounded-full text-[#f7740a] font-bold hover:bg-[#f7740a] transition-all duration-300 hover:text-white'>
-                        <Sheet>
-                            <SheetTrigger><p className='flex items-center gap-2'><Menu /> Menu</p></SheetTrigger>
-                            <SheetContent>
-                                <SheetHeader>
-                                    <SheetTitle className='text-2xl font-bold text-[#f7740a]'>Menu</SheetTitle>
-                                    <div className='flex flex-col gap-2 mt-3 text-lg text-[#f7740a] font-semibold'>
-                                        {NavItems.map((item, index) => (
-                                            <a key={index} href={item.link}>{item.name}</a>
-                                        ))}
-                                    </div>
-                                </SheetHeader>
-                            </SheetContent>
-                        </Sheet>
+                    <div className='flex items-center gap-2'>
+                        <div className='hidden md:flex items-center gap-6 border-1 border-[#f7740a] p-2 px-6 rounded-full text-[#f7740a] font-bold hover:bg-[#f7740a] transition-all duration-300 group'>
+                            {NavItems.map((item, index) => (
+                                <motion.div
+                                    whileHover={{ scale: 1.1, rotate: -5 }}
+                                    whileTap={{ scale: 0.8 }}
+                                    key={index}
+                                >
+                                    <Link href={item.link} className='group-hover:text-white'>
+                                        {item.name}
+                                    </Link>
+                                </motion.div>
+                            ))}
+                        </div>
+                        <div className='flex md:hidden items-center gap-6 border-1 border-[#f7740a] p-2 px-6 rounded-full text-[#f7740a] font-bold hover:bg-[#f7740a] transition-all duration-300 hover:text-white'>
+                            <Sheet>
+                                <SheetTrigger><p className='flex items-center gap-2'><Menu /> Menu</p></SheetTrigger>
+                                <SheetContent>
+                                    <SheetHeader>
+                                        <SheetTitle className='text-2xl font-bold text-[#f7740a]'>Menu</SheetTitle>
+                                        <div className='flex flex-col gap-2 mt-3 text-lg text-[#f7740a] font-semibold'>
+                                            {NavItems.map((item, index) => (
+                                                <a key={index} href={item.link}>{item.name}</a>
+                                            ))}
+                                        </div>
+                                    </SheetHeader>
+                                </SheetContent>
+                            </Sheet>
+                        </div>
+                        <div className='flex items-center gap-6 border-1 border-[#f7740a] p-2 px-2 rounded-full text-[#f7740a] font-bold hover:bg-[#f7740a] transition-all duration-300 hover:text-white'>
+                            <KeyRound />
+                        </div>
                     </div>
                 </nav>
             </main>
