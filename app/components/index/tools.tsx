@@ -19,7 +19,7 @@ const ToolsItems = [
     {
         title: "SOS",
         icon: Siren,
-        link: "#"
+        link: "/sos"
     },
     {
         title: "Weather",
