@@ -26,7 +26,6 @@ const getInfoHandler = async ({ body, set }: { body: GetByIdBody, set: { status:
             return { message: "No code found" };
         }
     } catch (error) {
-        console.error("Error fetching document:", error);
         set.status = 500;
         return { error: "An error occurred while fetching the document." };
     }
