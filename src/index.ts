@@ -1,8 +1,10 @@
 import { Elysia } from "elysia";
 import { autoload } from "elysia-autoload";
-import { swagger } from '@elysiajs/swagger'
+import { swagger } from '@elysiajs/swagger';
+import { cors } from '@elysiajs/cors';
 
 const app = new Elysia()
+  .use(cors())
   .use(swagger({
     path: "/document"
   }))

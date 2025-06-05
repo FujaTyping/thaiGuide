@@ -4,6 +4,7 @@
     "": {
       "name": "app",
       "dependencies": {
+        "@elysiajs/cors": "^1.3.3",
         "@elysiajs/swagger": "^1.3.0",
         "dotenv": "^16.5.0",
         "elysia": "latest",
@@ -16,6 +17,8 @@
     },
   },
   "packages": {
+    "@elysiajs/cors": ["@elysiajs/cors@1.3.3", "", { "peerDependencies": { "elysia": ">= 1.3.0" } }, "sha512-mYIU6PyMM6xIJuj7d27Vt0/wuzVKIEnFPjcvlkyd7t/m9xspAG37cwNjFxVOnyvY43oOd2I/oW2DB85utXpA2Q=="],
+
     "@elysiajs/swagger": ["@elysiajs/swagger@1.3.0", "", { "dependencies": { "@scalar/themes": "^0.9.52", "@scalar/types": "^0.0.12", "openapi-types": "^12.1.3", "pathe": "^1.1.2" }, "peerDependencies": { "elysia": ">= 1.3.0" } }, "sha512-0fo3FWkDRPNYpowJvLz3jBHe9bFe6gruZUyf+feKvUEEMG9ZHptO1jolSoPE0ffFw1BgN1/wMsP19p4GRXKdfg=="],
 
     "@firebase/ai": ["@firebase/ai@1.3.0", "", { "dependencies": { "@firebase/app-check-interop-types": "0.3.3", "@firebase/component": "0.6.17", "@firebase/logger": "0.4.4", "@firebase/util": "1.12.0", "tslib": "^2.1.0" }, "peerDependencies": { "@firebase/app": "0.x", "@firebase/app-types": "0.x" } }, "sha512-qBxJTtl9hpgZr050kVFTRADX6I0Ss6mEQyp/JEkBgKwwxixKnaRNqEDGFba4OKNL7K8E4Y7LlA/ZW6L8aCKH4A=="],
