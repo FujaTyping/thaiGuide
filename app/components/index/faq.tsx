@@ -38,8 +38,8 @@ function Faq() {
                     {
                         FAQ.map((item, index) => (
                             <AccordionItem value={`item-${index}`} key={index}>
-                                <AccordionTrigger className='text-xl md:text-2xl'>{item.question}</AccordionTrigger>
-                                <AccordionContent className="text-base md:text-xl">
+                                <AccordionTrigger className='text-lg md:text-xl'>{item.question}</AccordionTrigger>
+                                <AccordionContent className='text-[1rem] md:text-[1.1rem]'>
                                     {item.answer}
                                 </AccordionContent>
                             </AccordionItem>
