@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './card';
 import Details from './details';
+import Qr from './qr';
 
 function page() {
     return (
@@ -17,6 +18,7 @@ function page() {
                 </div>
                 <Details />
             </main>
+            <Qr />
         </>
     )
 }

@@ -62,7 +62,7 @@ function Details() {
     return (
         <>
             <Table className='my-4'>
-                <TableCaption>A list of your recent invoices.</TableCaption>
+                <TableCaption>A list of your recent transactions.</TableCaption>
                 <TableHeader>
                     <TableRow>
                         <TableHead className="w-[100px]">ID</TableHead>
