@@ -26,12 +26,14 @@ const createUser = async ({ body }: { body: typeof userSchema.static }) => {
             return userData;
         }
 
-        await setDoc(userDoc, {
+        const userCreateData = {
             name,
             point: 0,
-        });
+        }
 
-        return { message: "User created successfully" };
+        await setDoc(userDoc, userCreateData);
+
+        return userCreateData;
     } catch (error) {
         throw error
     }
