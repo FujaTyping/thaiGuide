@@ -8,7 +8,6 @@ const getInfoHandler = async () => {
 
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-        console.log(querySnapshot)
         let qd = doc.data();
         qd.id = doc.id;
         Data.push(qd);
