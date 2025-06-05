@@ -18,6 +18,6 @@
   },
   "module": "src/index.js",
   "engines": {
-    "bun": "^1.1.0"
+    "bun": "1.2.12"
   }
 }
