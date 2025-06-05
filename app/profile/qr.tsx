@@ -31,7 +31,7 @@ function Qr() {
                                     <div className='rounded-2xl'>
                                         <BarcodeScanner
                                             width={500}
-                                            height={500}
+                                            height={400}
                                             onUpdate={(err, result: any) => {
                                                 if (result) setData(result.text);
                                                 else setData("");
