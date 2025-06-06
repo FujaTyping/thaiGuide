@@ -7,6 +7,7 @@ import Ealert from "./components/ealert";
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/grid';
+import 'atropos/css';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

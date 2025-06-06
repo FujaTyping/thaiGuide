@@ -1,9 +1,9 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Logo from "@/assets/icon.png";
 import Image from 'next/image';
-import { KeyRound, Menu } from 'lucide-react';
+import { KeyRound, LogOut, Menu, Smile, UserRound } from 'lucide-react';
 import {
     Sheet,
     SheetContent,
@@ -13,6 +13,17 @@ import {
 } from "@/components/ui/sheet";
 import { motion } from "motion/react";
 import Link from 'next/link';
+import { FirebaseError } from 'firebase/app';
+import { signInWithPopup, GoogleAuthProvider, User, onAuthStateChanged, signOut } from "firebase/auth";
+import auth from "@/lib/firebaseAuth";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const NavItems = [
     {
@@ -38,6 +49,40 @@ const NavItems = [
 ]
 
 function Navbar() {
+    const [user, setUser] = useState<User | null>(null);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUser(user);
+            } else {
+                setUser(null);
+            }
+        });
+
+        return () => unsubscribe();
+    }, []);
+
+    const handleGoogleSignIn = async () => {
+        const provider = new GoogleAuthProvider();
+        try {
+            const result = await signInWithPopup(auth, provider);
+            setUser(result.user);
+        } catch (error) {
+            if (error instanceof FirebaseError) {
+                console.error("Error signing in:", error);
+            }
+        }
+    };
+
+    const handleLogout = async () => {
+        try {
+            await signOut(auth);
+            setUser(null);
+        } catch (error) {
+            console.error("Error signing out:", error);
+        }
+    };
     return (
         <>
             <main className='border-b-1'>
@@ -77,8 +122,16 @@ function Navbar() {
                                 </SheetContent>
                             </Sheet>
                         </div>
-                        <div className='flex items-center gap-6 border-1 border-[#f7740a] p-2 px-2 rounded-full text-[#f7740a] font-bold hover:bg-[#f7740a] transition-all duration-300 hover:text-white'>
-                            <KeyRound />
+                        <div className='flex items-center gap-6 border-1 border-[#f7740a] p-2 px-2 rounded-full text-[#f7740a] font-bold hover:bg-[#f7740a] transition-all duration-300 hover:text-white cursor-pointer'>
+                            {user ? <DropdownMenu>
+                                <DropdownMenuTrigger><UserRound className='cursor-pointer' /></DropdownMenuTrigger>
+                                <DropdownMenuContent>
+                                    <DropdownMenuLabel>{user.email}</DropdownMenuLabel>
+                                    <DropdownMenuSeparator />
+                                    <DropdownMenuItem><Link href={"/profile"} className='flex items-center gap-2'><Smile className='text-[#f7740a]' /> Profile</Link></DropdownMenuItem>
+                                    <DropdownMenuItem className='flex items-center gap-2' onClick={handleLogout}><LogOut className='text-[#f7740a]' /> Logout</DropdownMenuItem>
+                                </DropdownMenuContent>
+                            </DropdownMenu> : <KeyRound onClick={handleGoogleSignIn} />}
                         </div>
                     </div>
                 </nav>
