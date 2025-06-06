@@ -2,6 +2,11 @@ import React from 'react';
 import Card from './card';
 import Details from './details';
 import Qr from './qr';
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "ThaiGuide – My Profile"
+};
 
 function page() {
     return (

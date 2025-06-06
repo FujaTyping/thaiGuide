@@ -6,8 +6,10 @@ import { ChevronLeft, ChevronRight, Star, Wallet } from 'lucide-react';
 import Link from 'next/link';
 import axios from 'axios';
 import Loader from '@/app/components/loader';
+import { server } from "@/app/config.json";
 
 interface Activity {
+    id: string;
     title: string;
     ndtitle: string;
     location: string;
@@ -26,7 +28,7 @@ function Activities() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("https://backend.thaiguide.siraphop.me/activities");
+                const response = await axios.get(`https://${server}/activities`);
                 setData(response.data);
                 setLoading(false);
             } catch (err) {
@@ -87,7 +89,7 @@ function Activities() {
                                     whileTap={{ scale: 0.95 }}
                                     className='relative md:col-span-2'
                                 >
-                                    <Link href={`${currentActivity.link}`}>
+                                    <Link href={`/activity/${currentActivity.id}`}>
                                         <div>
                                             <img
                                                 src={currentActivity.thumnails}
