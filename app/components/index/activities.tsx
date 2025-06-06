@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight, Star, Wallet } from 'lucide-react';
 import Link from 'next/link';
 import axios from 'axios';
 import Loader from '@/app/components/loader';
+import { server } from "@/app/config.json";
 
 interface Activity {
     title: string;
@@ -26,7 +27,7 @@ function Activities() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("https://backend.thaiguide.siraphop.me/activities");
+                const response = await axios.get(`https://${server}/activities`);
                 setData(response.data);
                 setLoading(false);
             } catch (err) {

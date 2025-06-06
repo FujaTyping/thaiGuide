@@ -20,6 +20,7 @@ import { User, onAuthStateChanged } from "firebase/auth";
 import AH from "@/assets/media/card/icon/login.png";
 import auth from "@/lib/firebaseAuth";
 import { getDistance } from 'geolib';
+import { server } from "@/app/config.json";
 interface ApiCodeData {
     name: string;
     points: number;
@@ -75,7 +76,7 @@ function Qr() {
 
     async function checkCode(code: string) {
         try {
-            const response = await axios.put<ApiCodeData>("https://backend.thaiguide.siraphop.me/code/getbyid", {
+            const response = await axios.put<ApiCodeData>(`https://${server}/code/getbyid`, {
                 id: code
             });
 
