@@ -9,6 +9,7 @@ import Loader from '@/app/components/loader';
 import { server } from "@/app/config.json";
 
 interface Activity {
+    id: string;
     title: string;
     ndtitle: string;
     location: string;
@@ -88,7 +89,7 @@ function Activities() {
                                     whileTap={{ scale: 0.95 }}
                                     className='relative md:col-span-2'
                                 >
-                                    <Link href={`${currentActivity.link}`}>
+                                    <Link href={`/activity/${currentActivity.id}`}>
                                         <div>
                                             <img
                                                 src={currentActivity.thumnails}
