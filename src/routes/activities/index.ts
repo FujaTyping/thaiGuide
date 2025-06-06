@@ -29,8 +29,26 @@ const getIdInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
+            const userData = docSnap.data();
+
+            const dRef = collection(db, "activities", docId, "details")
+            const dSnapshot = await getDocs(dRef)
+
+            if (!dSnapshot.empty) {
+                const details = dSnapshot.docs.reduce((acc: any, doc) => {
+                    acc[doc.id] = doc.data().value;
+                    return acc;
+                }, {});
+
+                set.status = 200;
+                return {
+                    ...userData,
+                    details
+                };
+            }
+
             set.status = 200;
-            return docSnap.data();
+            return userData;
         } else {
             set.status = 404;
             return { message: "No data found" };
