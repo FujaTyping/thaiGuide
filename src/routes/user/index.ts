@@ -1,6 +1,6 @@
 import type { ElysiaApp } from "../../index";
 import db from "../../lib/firebase";
-import { collection, doc, getDoc, setDoc } from "firebase/firestore";
+import { collection, doc, getDoc, setDoc, getDocs } from "firebase/firestore";
 import { t } from "elysia";
 
 const userSchema = t.Object({
@@ -8,12 +8,13 @@ const userSchema = t.Object({
     name: t.String(),
 });
 
-const createUser = async ({ body }: { body: typeof userSchema.static }) => {
+const createUser = async ({ body, set }: { body: typeof userSchema.static, set: { status: number | string} }) => {
     try {
         const { userid, name } = body;
 
         if (!userid || !name) {
-            throw new Error("All fields (userid, name) are required.");
+            set.status = 400
+            return { error: "All fields (userid, name) are required." }
         }
 
         const usersRef = collection(db, "Users");
@@ -23,6 +24,22 @@ const createUser = async ({ body }: { body: typeof userSchema.static }) => {
 
         if (userSnapshot.exists()) {
             const userData = userSnapshot.data();
+
+            const transactionRef = collection(db, "Users", userid, "transactions")
+            const transactionsSnapshot = await getDocs(transactionRef)
+
+            if (!transactionsSnapshot.empty) {
+                const transactions = transactionsSnapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+
+                return {
+                    ...userData,
+                    transactions
+                };
+
+            }
             return userData;
         }
 
@@ -36,17 +53,13 @@ const createUser = async ({ body }: { body: typeof userSchema.static }) => {
 
         return userCreateData;
     } catch (error) {
-        throw error
+        set.status = 500
+        return { error: "Failed to process user request" }
     }
 };
 
 export default (app: ElysiaApp) => app.post("/", createUser,
     {
         body: userSchema,
-        error({ error, set }) {
-            const errorMessage = (error as any).message;
-            set.status = 400;
-            return { error: errorMessage };
-        }
     }
 );
