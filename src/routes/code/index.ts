@@ -1,17 +1,13 @@
 import type { ElysiaApp } from "../../index";
 import db from "../../lib/firebase";
 import { doc, getDoc } from "firebase/firestore";
+import { t } from "elysia";
 
-interface GetByIdBody {
-    id: string;
-}
+const GetByIdBodySchema = t.Object({
+    id: t.String()
+});
 
-const getInfoHandler = async ({ body, set }: { body: GetByIdBody, set: { status: number | string } }) => {
-    if (!body || typeof body.id !== 'string' || body.id.trim() === "") {
-        set.status = 400;
-        return { error: "Property 'id' is missing or invalid in the request body." };
-    }
-
+const getInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.static, set: { status: number | string } }) => {
     const docId = body.id;
     const docRef = doc(db, "codes", docId);
 
@@ -31,4 +27,6 @@ const getInfoHandler = async ({ body, set }: { body: GetByIdBody, set: { status:
     }
 };
 
-export default (app: ElysiaApp) => app.put("/getbyid", getInfoHandler);
+export default (app: ElysiaApp) => app.put("/getbyid", getInfoHandler, {
+    body: GetByIdBodySchema
+});
