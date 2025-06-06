@@ -5,6 +5,7 @@
             "main": true,
             "dev": false,
             "api": false,
+            "api-cf": false,
             "og": false
         }
     }
