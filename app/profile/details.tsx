@@ -1,19 +1,12 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import {
-    Table,
-    TableBody,
-    TableCaption,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/components/ui/table";
-import { Coins } from 'lucide-react';
 import { User, onAuthStateChanged } from "firebase/auth";
 import auth from "@/lib/firebaseAuth";
 import Loader from '../components/loader';
+
+import PA from "@/assets/media/icon/PA.png";
+import PR from "@/assets/media/icon/PR.png";
 
 const HistoryINV = [
     {
@@ -33,6 +26,12 @@ const HistoryINV = [
         type: "Daily Check-In",
         place: "-",
         point: "+5"
+    },
+    {
+        id: "ID004",
+        type: "Redeem",
+        place: "A Cap",
+        point: "-8"
     }
 ]
 
@@ -61,29 +60,28 @@ function Details() {
 
     return (
         <>
-            <Table className='my-4'>
-                <TableCaption>A list of your recent transactions.</TableCaption>
-                <TableHeader>
-                    <TableRow>
-                        <TableHead className="w-[100px]">ID</TableHead>
-                        <TableHead>Type</TableHead>
-                        <TableHead>Place</TableHead>
-                        <TableHead className="text-right">Point Recieved</TableHead>
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                    {
-                        HistoryINV.map((item, index) => (
-                            <TableRow key={index}>
-                                <TableCell className="font-medium">{item.id}</TableCell>
-                                <TableCell>{item.type}</TableCell>
-                                <TableCell>{item.place}</TableCell>
-                                <TableCell className="font-semibold text-[#f7740a] flex justify-end items-center gap-2"><Coins /> {item.point}</TableCell>
-                            </TableRow>
-                        ))
-                    }
-                </TableBody>
-            </Table>
+            <div className='grid grid-cols-1 gap-4 mt-4'>
+                {
+                    HistoryINV.map((item, index) => (
+                        <div key={index} className='flex items-center place-content-between'>
+                            <div className='flex items-center gap-3'>
+                                {
+                                    item.point.includes("-") ? <>
+                                        <img className='w-18' src={PR.src} alt="Icon" />
+                                    </> : <>
+                                        <img className='w-18' src={PA.src} alt="Icon" />
+                                    </>
+                                }
+                                <div>
+                                    <p className='font-semibold text-lg'>{item.type}</p>
+                                    <p>{item.place}</p>
+                                </div>
+                            </div>
+                            <p className='font-semibold text-lg'>{item.point}</p>
+                        </div>
+                    ))
+                }
+            </div>
         </>
     )
 }

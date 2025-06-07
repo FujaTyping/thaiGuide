@@ -19,7 +19,7 @@ function page() {
                 <p className='mt-4'>This is your personalized profile card. It displays your information, progress, and achievements within ThaiGuide.</p>
                 <Card />
                 <div>
-                    <h1 className='font-bold text-2xl'>Details</h1>
+                    <h1 className='font-bold text-2xl'>Transaction</h1>
                 </div>
                 <Details />
             </main>
