@@ -24,6 +24,8 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { analyticsPromise } from "@/lib/firebaseAnalytics";
+import { logEvent } from "firebase/analytics";
 
 const NavItems = [
     {
@@ -62,6 +64,15 @@ function Navbar() {
 
         return () => unsubscribe();
     }, []);
+
+    useEffect(() => {
+        analyticsPromise.then((analytics) => {
+            if (analytics) {
+                logEvent(analytics, "page_view");
+            }
+        });
+    }, []);
+
 
     const handleGoogleSignIn = async () => {
         const provider = new GoogleAuthProvider();
