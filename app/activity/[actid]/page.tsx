@@ -2,9 +2,14 @@ import React from 'react';
 import fetchData from './fetch';
 import NF from "@/assets/media/card/icon/notfound.png";
 import Loader from '@/app/components/loader';
-import { Banknote, Coins, MapPinned, Phone, Star, Map } from 'lucide-react';
+import { Banknote, Coins, MapPinned, Phone, Star, Map, CircleHelp } from 'lucide-react';
 import Link from 'next/link';
 import type { Metadata } from "next";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 type Props = {
     params: Promise<{ actid: string }>
@@ -88,7 +93,15 @@ async function page({ params }: Props) {
                             <div className='flex flex-col gap-1 items-center justify-center'>
                                 <Coins className='text-[#f7740a] size-12' />
                                 <p className='font-semibold text-xl'>{data.details.points}</p>
-                                <p>Point to recive</p>
+                                <p className='flex items-center gap-2'>Point to recive
+                                    <Tooltip>
+                                        <TooltipTrigger><CircleHelp className='size-5 cursor-help' /></TooltipTrigger>
+                                        <TooltipContent>
+                                            <p>Scan a QR code at each tourist location to earn points.</p>
+                                            <p>Collect points and redeem them for rewards.</p>
+                                        </TooltipContent>
+                                    </Tooltip>
+                                </p>
                             </div>
                             {
                                 data.details.website != "-" && <>
@@ -102,6 +115,13 @@ async function page({ params }: Props) {
                         </>)
                     }
                 </div>
+            </main>
+            <main className='max-w-7xl mx-auto px-4 pb-6'>
+                <div className='mb-5'>
+                    <h1 className='font-bold text-4xl'>Local Weather Forecast</h1>
+                    <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
+                </div>
+                <iframe src={`https://www.tmd.go.th/en/weatherForecast7DaysWidget?province=${data.province}`} height="400" className='w-full border-0' scrolling="no" title={`Weather forecast`}></iframe>
             </main>
             <main className='max-w-7xl mx-auto px-4 pb-6'>
                 <div className='mb-5'>

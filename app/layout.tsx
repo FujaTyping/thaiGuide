@@ -8,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/grid';
 import 'atropos/css';
+import Didyouknow from "./components/didyouknow";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,6 +42,7 @@ export default function RootLayout({
         <Navbar />
         <Ealert />
         {children}
+        <Didyouknow />
       </body>
     </html>
   );
