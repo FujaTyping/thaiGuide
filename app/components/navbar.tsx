@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Logo from "@/assets/icon.png";
 import Image from 'next/image';
-import { KeyRound, LogOut, Menu, Smile, UserRound } from 'lucide-react';
+import { KeyRound, LoaderCircle, LogOut, Menu, Smile, UserRound } from 'lucide-react';
 import {
     Sheet,
     SheetContent,
@@ -24,6 +24,8 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { analyticsPromise } from "@/lib/firebaseAnalytics";
+import { logEvent } from "firebase/analytics";
 
 const NavItems = [
     {
@@ -50,18 +52,30 @@ const NavItems = [
 
 function Navbar() {
     const [user, setUser] = useState<User | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
+                setLoading(false);
             } else {
                 setUser(null);
+                setLoading(false);
             }
         });
 
         return () => unsubscribe();
     }, []);
+
+    useEffect(() => {
+        analyticsPromise.then((analytics) => {
+            if (analytics) {
+                logEvent(analytics, "page_view");
+            }
+        });
+    }, []);
+
 
     const handleGoogleSignIn = async () => {
         const provider = new GoogleAuthProvider();
@@ -123,15 +137,19 @@ function Navbar() {
                             </Sheet>
                         </div>
                         <div className='flex items-center gap-6 border-1 border-[#f7740a] p-2 px-2 rounded-full text-[#f7740a] font-bold hover:bg-[#f7740a] transition-all duration-300 hover:text-white cursor-pointer'>
-                            {user ? <DropdownMenu>
-                                <DropdownMenuTrigger><UserRound className='cursor-pointer' /></DropdownMenuTrigger>
-                                <DropdownMenuContent>
-                                    <DropdownMenuLabel>{user.email}</DropdownMenuLabel>
-                                    <DropdownMenuSeparator />
-                                    <DropdownMenuItem><Link href={"/profile"} className='flex items-center gap-2'><Smile className='text-[#f7740a]' /> Profile</Link></DropdownMenuItem>
-                                    <DropdownMenuItem className='flex items-center gap-2' onClick={handleLogout}><LogOut className='text-[#f7740a]' /> Logout</DropdownMenuItem>
-                                </DropdownMenuContent>
-                            </DropdownMenu> : <KeyRound onClick={handleGoogleSignIn} />}
+                            {loading ? <>
+                                <LoaderCircle className='animate-spin' />
+                            </> : <>
+                                {user ? <DropdownMenu>
+                                    <DropdownMenuTrigger><UserRound className='cursor-pointer' /></DropdownMenuTrigger>
+                                    <DropdownMenuContent>
+                                        <DropdownMenuLabel>{user.email}</DropdownMenuLabel>
+                                        <DropdownMenuSeparator />
+                                        <DropdownMenuItem><Link href={"/profile"} className='flex items-center gap-2'><Smile className='text-[#f7740a]' /> Profile</Link></DropdownMenuItem>
+                                        <DropdownMenuItem className='flex items-center gap-2' onClick={handleLogout}><LogOut className='text-[#f7740a]' /> Logout</DropdownMenuItem>
+                                    </DropdownMenuContent>
+                                </DropdownMenu> : <KeyRound onClick={handleGoogleSignIn} />}
+                            </>}
                         </div>
                     </div>
                 </nav>
