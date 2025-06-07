@@ -8,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/grid';
 import 'atropos/css';
+import 'swiper/css/navigation';
 import Didyouknow from "./components/didyouknow";
 
 const geistSans = Geist({
