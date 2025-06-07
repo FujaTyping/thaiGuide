@@ -21,6 +21,7 @@ import AH from "@/assets/media/card/icon/login.png";
 import auth from "@/lib/firebaseAuth";
 import { getDistance } from 'geolib';
 import { server } from "@/app/config.json";
+import { motion } from "motion/react";
 interface ApiCodeData {
     name: string;
     points: number;
@@ -135,14 +136,34 @@ function Qr() {
                                                     <p className='flex items-center justify-center mt-2 text-[#f7740a] font-semibold'>{data == "" ? <span className='flex items-center gap-2'><LoaderCircle className='animate-spin' />  Waiting for code</span> : <span className='text-center'>{data}</span>}</p>
                                                 </> : <>
                                                     <div className='flex items-center flex-col justify-center gap-4'>
-                                                        <img src={AH.src} alt="Icon" className='w-32 translate-x-3' />
+                                                        <motion.div
+                                                            animate={{
+                                                                x: [0, -10, 10, -10, 10, -5, 5, 0],
+                                                            }}
+                                                            transition={{
+                                                                duration: 0.5,
+                                                                ease: "easeInOut"
+                                                            }}
+                                                        >
+                                                            <img src={AH.src} alt="Icon" className='w-32 translate-x-3' />
+                                                        </motion.div>
                                                         <p className='font-semibold'>Please login before recive points</p>
                                                     </div>
                                                 </>
                                             }
                                         </> : <>
                                             <div className='flex items-center flex-col justify-center gap-4'>
-                                                <img src={NL.src} alt="Icon" className='w-32' />
+                                                <motion.div
+                                                    animate={{
+                                                        x: [0, -10, 10, -10, 10, -5, 5, 0],
+                                                    }}
+                                                    transition={{
+                                                        duration: 0.5,
+                                                        ease: "easeInOut"
+                                                    }}
+                                                >
+                                                    <img src={NL.src} alt="Icon" className='w-32' />
+                                                </motion.div>
                                                 <p className='font-semibold'>Please grant the location access {`(${error})`}</p>
                                             </div>
                                         </>
@@ -160,7 +181,17 @@ function Qr() {
                                                     {
                                                         codeData === "error" ? <>
                                                             <div className='flex items-center flex-col justify-center gap-4'>
-                                                                <img src={NF.src} alt="Icon" className='w-32 translate-x-3' />
+                                                                <motion.div
+                                                                    animate={{
+                                                                        x: [0, -10, 10, -10, 10, -5, 5, 0],
+                                                                    }}
+                                                                    transition={{
+                                                                        duration: 0.5,
+                                                                        ease: "easeInOut"
+                                                                    }}
+                                                                >
+                                                                    <img src={NF.src} alt="Icon" className='w-32 translate-x-3' />
+                                                                </motion.div>
                                                                 <p className='font-semibold'>Look like it not a valid QR-Code</p>
                                                             </div>
                                                         </> : <>
@@ -174,7 +205,17 @@ function Qr() {
                                                                 </div> :
                                                                     <>
                                                                         <div className='flex items-center flex-col justify-center gap-4'>
-                                                                            <img src={NL.src} alt="Icon" className='w-32' />
+                                                                            <motion.div
+                                                                                animate={{
+                                                                                    x: [0, -10, 10, -10, 10, -5, 5, 0],
+                                                                                }}
+                                                                                transition={{
+                                                                                    duration: 0.5,
+                                                                                    ease: "easeInOut"
+                                                                                }}
+                                                                            >
+                                                                                <img src={NL.src} alt="Icon" className='w-32' />
+                                                                            </motion.div>
                                                                             <p className='font-semibold'>Please get closer to the QR-Code location</p>
                                                                         </div>
                                                                     </>
