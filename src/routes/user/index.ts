@@ -8,7 +8,7 @@ const userSchema = t.Object({
     name: t.String(),
 });
 
-const createUser = async ({ body, set }: { body: typeof userSchema.static, set: { status: number | string} }) => {
+const createUser = async ({ body, set }: { body: typeof userSchema.static, set: { status: number | string } }) => {
     try {
         const { userid, name } = body;
 
@@ -24,22 +24,6 @@ const createUser = async ({ body, set }: { body: typeof userSchema.static, set: 
 
         if (userSnapshot.exists()) {
             const userData = userSnapshot.data();
-
-            const transactionRef = collection(db, "Users", userid, "transactions")
-            const transactionsSnapshot = await getDocs(transactionRef)
-
-            if (!transactionsSnapshot.empty) {
-                const transactions = transactionsSnapshot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data()
-                }));
-
-                return {
-                    ...userData,
-                    transactions
-                };
-
-            }
             return userData;
         }
 
