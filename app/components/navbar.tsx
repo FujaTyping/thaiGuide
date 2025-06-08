@@ -38,7 +38,7 @@ const NavItems = [
     },
     {
         "name": "Road Trips",
-        "link": "#"
+        "link": "/roadtrip"
     },
     {
         "name": "Reward",
