@@ -5,6 +5,7 @@ import Loader from '@/app/components/loader';
 import { MapPin, Clock } from 'lucide-react';
 import type { Metadata } from "next";
 import TripStopsSwiper from './swipez';
+import { Badge } from "@/components/ui/badge";
 
 type Props = {
     params: Promise<{ tripid: string }>
@@ -41,7 +42,7 @@ async function page({ params }: Props) {
         return (<>
             <div className='flex items-center flex-col justify-center gap-4 py-8'>
                 <img src={NF.src} alt="Icon" className='w-32 translate-x-3' />
-                <p className='font-semibold text-2xl'>No activity data</p>
+                <p className='font-semibold text-2xl'>No roadtrip data</p>
             </div>
         </>)
     }
@@ -75,7 +76,14 @@ async function page({ params }: Props) {
                         <p>{data.long}</p>
                     </div>
                 </div>
-                <p className='mt-2 mb-10'>{data.decs}</p>
+                <p className='mt-2'>{data.decs}</p>
+                <div className='flex items-center gap-2 mt-2 mb-10'>
+                    {
+                        data.tags.map((tag: string, index: number) => (
+                            <Badge key={index} className='bg-[#f7740a] text-white'>{tag}</Badge>
+                        ))
+                    }
+                </div>
                 <TripStopsSwiper stops={data.stops} />
             </main>
             <main className='max-w-7xl mx-auto px-4 pb-6'>

@@ -1,0 +1,73 @@
+"use client"
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { server } from "@/app/config.json";
+import Loader from '../components/loader';
+import Link from 'next/link';
+import { motion } from "motion/react"
+
+interface RoadtripItem {
+    id: string;
+    title: string;
+    thumnails: string;
+    location: string;
+}
+
+function Grid() {
+    const [data, setData] = useState<RoadtripItem[]>([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`https://${server}/roadtrip`);
+                setData(response.data);
+            } catch (err) {
+                console.error("Error fetching roadtrip:", err);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+
+    if (data.length == 0) {
+        return (
+            <div className='w-full flex items-center justify-center my-12'>
+                <Loader />
+            </div>
+        )
+    }
+
+    return (
+        <>
+            <div className='grid grid-cols-4 gap-4 mt-6'>
+                {
+                    data.map((item, index) => (
+                        <motion.div
+                            whileHover={{ scale: 1.03, rotate: -1 }}
+                            whileTap={{ scale: 0.9 }}
+                            className='relative'
+                            key={index}
+                        >
+                            <Link href={`roadtrip/${item.id}`}>
+                                <div
+                                    className="w-full h-[350px] md:h-[500px] rounded-4xl overflow-hidden relative"
+                                >
+                                    <img className='w-full h-full object-cover' src={item.thumnails} alt={item.title} />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#f7740a]/70 via-transparent to-transparent"></div>
+                                </div>
+                                <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 text-white rounded-b-4xl flex flex-col gap-2'>
+                                    <h1 className='text-2xl md:text-3xl font-bold pb-3 md:pb-0'>{item.title}</h1>
+                                    <p>{item.location}</p>
+                                </div>
+                            </Link>
+                        </motion.div>
+                    ))
+                }
+            </div>
+        </>
+    )
+}
+
+export default Grid

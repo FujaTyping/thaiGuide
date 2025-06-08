@@ -8,12 +8,14 @@ import Loader from '@/app/components/loader';
 import { server } from "@/app/config.json";
 import Link from 'next/link';
 import { motion } from "motion/react";
+import { Badge } from "@/components/ui/badge";
 
 interface RoadtripItem {
     id: string;
     title: string;
     thumnails: string;
     location: string;
+    tags: string[];
 }
 
 function Roadtrip() {
@@ -64,6 +66,13 @@ function Roadtrip() {
                                                 <div className='absolute left-0 right-0 top-1/2 -translate-y-1/2 p-4 md:p-8 text-white rounded-4xl text-center'>
                                                     <h1 className='text-2xl md:text-3xl font-bold pb-0 md:pb-1'>{item.title}</h1>
                                                     <p className='mt-1 hidden md:flex gap-2 items-center justify-center'><MapPin /> {item.location}</p>
+                                                    <div className='flex items-center justify-center gap-2 mt-2'>
+                                                        {
+                                                            item.tags.map((tag, index) => (
+                                                                <Badge key={index} className='bg-white text-black'>{tag}</Badge>
+                                                            ))
+                                                        }
+                                                    </div>
                                                 </div>
                                             </div>
                                         </motion.div>

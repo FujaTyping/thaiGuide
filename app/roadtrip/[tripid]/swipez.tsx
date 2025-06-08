@@ -5,7 +5,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import type SwiperCore from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { ChevronLeft, ChevronRight, Coins, MapPin } from 'lucide-react';
+import { ChevronLeft, ChevronRight, CircleHelp, Coins, MapPin } from 'lucide-react';
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface Stop {
     name: string;
@@ -21,6 +26,7 @@ interface TripStopsSwiperProps {
 
 const TripStopsSwiper: React.FC<TripStopsSwiperProps> = ({ stops }) => {
     const [swiperInstance, setSwiperInstance] = useState<SwiperCore | null>(null);
+    const [activeIndex, setActiveIndex] = useState(0);
     const stopEntries = Object.entries(stops);
 
     if (!stopEntries || stopEntries.length === 0) {
@@ -29,18 +35,32 @@ const TripStopsSwiper: React.FC<TripStopsSwiperProps> = ({ stops }) => {
 
     return (
         <div>
-            <div className='flex w-full place-content-between gap-6'>
-                <div className='md:flex items-center justify-center hidden'>
-                    <div
-                        className='border-2 border-[#f7740a] rounded-full p-2 hover:bg-[#f7740a] flex items-center justify-center group transition-all duration-200 cursor-pointer'
-                        onClick={() => swiperInstance?.slidePrev()}
-                    >
-                        <ChevronLeft className='text-[#f7740a] group-hover:text-white' />
+            <div className='mb-4 hidden md:flex items-center place-content-between'>
+                <p className='font-bold text-2xl md:text-3xl'>Stops Spot {`(${activeIndex + 1}/${stopEntries.length})`}</p>
+                <div className='flex items-center gap-2'>
+                    <div className='md:flex items-center justify-center hidden'>
+                        <div
+                            className='border-2 border-[#f7740a] rounded-full p-2 hover:bg-[#f7740a] flex items-center justify-center group transition-all duration-200 cursor-pointer'
+                            onClick={() => swiperInstance?.slidePrev()}
+                        >
+                            <ChevronLeft className='text-[#f7740a] group-hover:text-white' />
+                        </div>
+                    </div>
+                    <div className='hidden md:flex items-center justify-center'>
+                        <div
+                            className='border-2 border-[#f7740a] rounded-full p-2 hover:bg-[#f7740a] flex items-center justify-center group transition-all duration-200 cursor-pointer'
+                            onClick={() => swiperInstance?.slideNext()}
+                        >
+                            <ChevronRight className='text-[#f7740a] group-hover:text-white' />
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div className='flex w-full place-content-between gap-6'>
                 <Swiper
                     spaceBetween={20}
                     onSwiper={setSwiperInstance}
+                    onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
                     slidesPerView={1}
                     className='col-span-6'
                 >
@@ -61,6 +81,13 @@ const TripStopsSwiper: React.FC<TripStopsSwiperProps> = ({ stops }) => {
                                             <Coins className='text-[#f7740a]' /> <b>Points to recived:</b>
                                         </div>
                                         <p>{stopData.point}</p>
+                                        <Tooltip>
+                                            <TooltipTrigger><CircleHelp className='size-5 cursor-help' /></TooltipTrigger>
+                                            <TooltipContent>
+                                                <p>Scan a QR code at each tourist location to earn points.</p>
+                                                <p>Collect points and redeem them for rewards.</p>
+                                            </TooltipContent>
+                                        </Tooltip>
                                     </div>
                                     <p>{stopData.decs}</p>
                                 </div>
@@ -68,14 +95,6 @@ const TripStopsSwiper: React.FC<TripStopsSwiperProps> = ({ stops }) => {
                         </SwiperSlide>
                     ))}
                 </Swiper>
-                <div className='hidden md:flex items-center justify-center'>
-                    <div
-                        className='border-2 border-[#f7740a] rounded-full p-2 hover:bg-[#f7740a] flex items-center justify-center group transition-all duration-200 cursor-pointer'
-                        onClick={() => swiperInstance?.slideNext()}
-                    >
-                        <ChevronRight className='text-[#f7740a] group-hover:text-white' />
-                    </div>
-                </div>
             </div>
             <div className='grid md:hidden grid-cols-2 gap-3 mt-5'>
                 <div
