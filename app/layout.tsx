@@ -24,6 +24,12 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "ThaiGuide – Explore, Earn, and Enjoy",
   description: "Experience Thailand like never before through fun travel quests, point systems, and rewards. Powered by AI and emotional design, our platform turns every trip into an adventure full of memories.",
+  openGraph: {
+    url: 'https://thaiguide.siraphop.me/',
+    description: `Experience Thailand like never before through fun travel quests, point systems, and rewards. Powered by AI and emotional design, our platform turns every trip into an adventure full of memories.`,
+    type: 'website',
+    images: 'https://thaiguide.siraphop.me/oImage.png',
+  },
 };
 
 export const viewport: Viewport = {

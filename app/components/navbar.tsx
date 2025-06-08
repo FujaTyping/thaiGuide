@@ -41,8 +41,8 @@ const NavItems = [
         "link": "/roadtrip"
     },
     {
-        "name": "Reward",
-        "link": "#"
+        "name": "Redeem",
+        "link": "/redeem"
     },
     {
         "name": "Travel Tips",
