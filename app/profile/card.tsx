@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -6,6 +7,8 @@ import { User, onAuthStateChanged } from "firebase/auth";
 import auth from "@/lib/firebaseAuth";
 import { Coins } from 'lucide-react';
 import Loader from '../components/loader';
+import axios from 'axios';
+import { server } from "@/app/config.json";
 
 // Background
 import B1 from "@/assets/media/card/1.jpg";
@@ -19,12 +22,18 @@ const backgrounds = [B1, B2, B3, B4, B5, B6];
 
 function Card() {
     const [user, setUser] = useState<User | null>(null);
+    const [uData, setUData] = useState<any | null>(null);
     const [selectedBackground, setSelectedBackground] = useState(backgrounds[0]);
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
                 setUser(user);
+                const checkUser = await axios.post(`https://${server}/user`, {
+                    userid: user.uid,
+                    name: user.displayName
+                })
+                setUData(checkUser.data);
             } else {
                 setUser(null);
             }
@@ -36,7 +45,7 @@ function Card() {
         return () => unsubscribe();
     }, []);
 
-    if (!user) {
+    if (!user || !uData) {
         return (
             <div className='w-full flex items-center justify-center my-12'>
                 <Loader />
@@ -60,7 +69,7 @@ function Card() {
                 >
                     <img src={selectedBackground.src} className='w-full h-[400px] object-cover' alt="Card Background" />
                     <div className='absolute top-0 right-0 p-4 text-white'>
-                        <p className='text-2xl font-semibold flex items-center gap-2'><Coins /> 20</p>
+                        <p className='text-2xl font-semibold flex items-center gap-2'><Coins /> {uData.point}</p>
                     </div>
                     <div className='absolute h-48 bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-[#f7740a]/70 to-transparent'></div>
                     <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 text-white rounded-4xl'>
@@ -68,7 +77,7 @@ function Card() {
                             <img src={`${user.photoURL}`} alt="Profile" className='w-28 rounded-full' />
                             <div>
                                 <h1 className='text-3xl md:text-4xl font-bold mb-2'>{user.displayName}</h1>
-                                <h2 className='font-semibold'>Check-In point : 0</h2>
+                                <h2 className='font-semibold'>Check-In point : {uData.checkin}</h2>
                             </div>
                         </div>
                         <p className='text-sm'>{displayUid}</p>
