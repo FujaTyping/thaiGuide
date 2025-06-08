@@ -6,11 +6,11 @@ import { motion } from "motion/react";
 import { EffectFade, Autoplay } from 'swiper/modules';
 
 // Image Assets
-import SMH from "@/assets/media/หาดสมิหลา.jpg"
-import KRY from "@/assets/media/วัดเข้ารูปช้าง.jpg"
-import OTR from "@/assets/media/เมืองเก่า.jpg"
-import KYY from "@/assets/media/เกาะยอ.jpg"
-import KIY from "@/assets/media/กิมหยง.jpg"
+import SMH from "@/assets/media/หาดสมิหลา.webp"
+import KRY from "@/assets/media/วัดเข้ารูปช้าง.webp"
+import OTR from "@/assets/media/เมืองเก่า.webp"
+import KYY from "@/assets/media/เกาะยอ.webp"
+import KIY from "@/assets/media/กิมหยง.webp"
 
 const BannerItems = [
     {
