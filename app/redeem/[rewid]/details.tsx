@@ -34,7 +34,7 @@ function Details({ data }: { data: any }) {
         <>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-8 mt-6'>
                 <div className='flex items-center justify-center'>
-                    <img src={data.image} alt="Reward" className='rounded-xl h-[350px] md:h-[450px]' />
+                    <img src={data.image} alt="Reward" className='rounded-xl h-[350px] md:h-[450px] object-cover' />
                 </div>
                 <div>
                     <h1 className='font-bold text-3xl'>{data.name}</h1>
