@@ -43,10 +43,6 @@ const NavItems = [
     {
         "name": "Redeem",
         "link": "/redeem"
-    },
-    {
-        "name": "Travel Tips",
-        "link": "#"
     }
 ]
 

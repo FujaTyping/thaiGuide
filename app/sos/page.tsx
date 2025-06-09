@@ -22,10 +22,7 @@ const EPhoneBook = [
         name: "Tourism Authority of Thailand",
         telephone: "1672",
         image: OSST
-    }
-]
-
-const PhoneBook = [
+    },
     {
         name: "Police Thailand",
         telephone: "191",
@@ -36,6 +33,14 @@ const PhoneBook = [
         telephone: "1669",
         image: OSSN
     },
+    {
+        name: "Transport Safety Center",
+        telephone: "1356",
+        image: OTFS
+    }
+]
+
+const PhoneBook = [
     {
         name: "Fire Department",
         telephone: "199",
@@ -50,16 +55,11 @@ const PhoneBook = [
         name: "Crime Suppression Division",
         telephone: "1195",
         image: OONF
-    },
-    {
-        name: "Transport Safety Center",
-        telephone: "1356",
-        image: OTFS
     }
 ]
 
 export const metadata: Metadata = {
-    title: "ThaiGuide – SOS and Emergency"
+    title: "ThaiGuide – Emergency & Safety"
 };
 
 function page() {
@@ -67,10 +67,10 @@ function page() {
         <>
             <main className='max-w-7xl mx-auto px-4 py-6'>
                 <div>
-                    <h1 className='font-bold text-4xl'>SOS and Emergency</h1>
+                    <h1 className='font-bold text-4xl'>Emergency Contacts & Safety</h1>
                     <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
                 </div>
-                <p className='mt-4'>In case of an emergency, {"it's"} crucial to know who to contact. Here you will find important phone numbers and information to help you stay safe during your time in Thailand.</p>
+                <p className='mt-4'>Your safety in Thailand is important. This page provides a list of crucial emergency phone numbers. Keep these contacts readily available for any urgent situations you might encounter.</p>
                 <div className='my-12 grid grid-cols-1 md:grid-cols-3 gap-12'>
                     {
                         EPhoneBook.map((item, index) => (
