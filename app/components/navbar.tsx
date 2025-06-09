@@ -34,7 +34,7 @@ const NavItems = [
     },
     {
         "name": "Trip Planner",
-        "link": "#"
+        "link": "/planner"
     },
     {
         "name": "Road Trips",

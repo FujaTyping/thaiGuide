@@ -10,6 +10,7 @@ import 'swiper/css/grid';
 import 'atropos/css';
 import 'swiper/css/navigation';
 import Didyouknow from "./components/didyouknow";
+import NextTopLoader from 'nextjs-toploader';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,6 +47,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <NextTopLoader
+          color="#f7740a"
+          height={4}
+          showSpinner={false}
+        />
         <Navbar />
         <Ealert />
         {children}
