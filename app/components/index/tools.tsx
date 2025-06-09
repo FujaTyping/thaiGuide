@@ -9,7 +9,7 @@ const ToolsItems = [
     {
         title: "Restaurant",
         icon: Utensils,
-        link: "#"
+        link: "/restaurant"
     },
     {
         title: "Hotel",
