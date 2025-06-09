@@ -30,30 +30,36 @@ const getIdInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.
 
         if (docSnap.exists()) {
             const userData = docSnap.data();
+            const responseData: DocumentData = { ...userData };
 
-            const dRef = collection(db, "restaurant", docId, "details")
-            const dSnapshot = await getDocs(dRef)
+            const detailsCollectionRef = collection(db, "restaurant", docId, "details");
+            const detailsSnapshot = await getDocs(detailsCollectionRef);
 
-            if (!dSnapshot.empty) {
-                const details = dSnapshot.docs.reduce((acc: any, doc) => {
-                    acc[doc.id] = doc.data().value;
+            if (!detailsSnapshot.empty) {
+                const details = detailsSnapshot.docs.reduce((acc: Record<string, any>, detailDoc) => {
+                    acc[detailDoc.id] = detailDoc.data().value;
                     return acc;
                 }, {});
+                responseData.details = details;
+            }
 
-                set.status = 200;
-                return {
-                    ...userData,
-                    details
-                };
+            const dishCollectionRef = collection(db, "restaurant", docId, "dish");
+            const dishSnapshot = await getDocs(dishCollectionRef);
+
+            if (!dishSnapshot.empty) {
+                const dishIds = dishSnapshot.docs.map(dishDoc => dishDoc.id);
+                responseData.dish = dishIds;
             }
 
             set.status = 200;
-            return userData;
+            return responseData;
+
         } else {
             set.status = 404;
             return { message: "No data found" };
         }
     } catch (error) {
+        console.error("Error fetching document by ID:", error);
         set.status = 500;
         return { error: "An error occurred while fetching the document." };
     }
