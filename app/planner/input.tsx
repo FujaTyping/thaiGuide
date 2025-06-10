@@ -11,7 +11,7 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Brush, Info, MapPin } from 'lucide-react';
+import { Brush, Info, MapPin, RefreshCcw, TriangleAlert } from 'lucide-react';
 import axios from 'axios';
 import Triploader from './triploader';
 import TextTransition, { presets } from 'react-text-transition';
@@ -81,6 +81,7 @@ function TInput() {
     const [duration, setDuration] = useState("");
     const [groupType, setGroupType] = useState("");
     const [Tindex, setIndex] = React.useState(0);
+    const [showAlert, setShowAlert] = useState(false);
 
     useEffect(() => {
         const intervalId = setInterval(
@@ -102,7 +103,7 @@ function TInput() {
 
     async function GenAI() {
         if (!message || !duration || !groupType) {
-            alert("Please fill in the trip description, duration, and group type.");
+            setShowAlert(true);
             return;
         }
         try {
@@ -199,13 +200,33 @@ function TInput() {
                                         </button>
                                     )}
                                 </div>
-                                <button
-                                    onClick={GenAI}
-                                    className='bg-[#f7740a] w-full py-2 text-white rounded-xl mt-6 flex items-center justify-center gap-2 cursor-pointer hover:bg-[#e06809] transition-colors'
-                                >
-                                    <p className='font-semibold'>Get Recommendations</p>
-                                    <Brush />
-                                </button>
+                                {
+                                    showAlert && <>
+                                        <motion.div
+                                            animate={{
+                                                x: [0, -10, 10, -10, 10, -5, 5, 0],
+                                            }}
+                                            transition={{
+                                                duration: 0.5,
+                                                ease: "easeInOut"
+                                            }}
+                                        >
+                                            <p className='mt-3 flex items-center gap-2 font-semibold text-[#f7740a]'>
+                                                <TriangleAlert />
+                                                Please fill in the trip description, duration, and group type.
+                                            </p>
+                                        </motion.div>
+                                    </>
+                                }
+                                <div className='flex items-center justify-center'>
+                                    <button
+                                        onClick={GenAI}
+                                        className='bg-[#f7740a] w-full md:w-fit py-2 px-6 text-white rounded-xl mt-6 flex items-center justify-center gap-2 cursor-pointer hover:bg-[#e06809] transition-colors'
+                                    >
+                                        <p className='font-semibold'>Get Recommendations</p>
+                                        <Brush />
+                                    </button>
+                                </div>
                             </div>
                         </> : <>
                             {
@@ -241,7 +262,7 @@ function TInput() {
                                                                             ))
                                                                         }
                                                                     </div>
-                                                                    <p className='flex items-center gap-2 mt-2'><Info className='text-[#f7740a]' /> Tips : {day.tips}</p>
+                                                                    <p className='flex flex-col md:flex-row md:items-center gap-2 mt-2'><b className='flex items-center gap-2'><Info className='text-[#f7740a]' /> Tips :</b> {day.tips}</p>
                                                                 </div>
                                                             ))
                                                         }
@@ -267,6 +288,15 @@ function TInput() {
                                                     </div>
                                                 </TabsContent>
                                             </Tabs>
+                                            <div className='flex items-center justify-center'>
+                                                <button
+                                                    onClick={GenAI}
+                                                    className='bg-[#f7740a] w-full md:w-fit py-2 px-6 text-white rounded-xl mt-6 flex items-center justify-center gap-2 cursor-pointer hover:bg-[#e06809] transition-colors'
+                                                >
+                                                    <p className='font-semibold'>Re-Generate</p>
+                                                    <RefreshCcw />
+                                                </button>
+                                            </div>
                                         </div>
                                     )}
                                 </>
