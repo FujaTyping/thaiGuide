@@ -46,7 +46,7 @@ function Roadtrip() {
                     loading ? <>
                         <div className='w-full flex items-center justify-center my-12'>
                             <Loader />
-                        </div>;
+                        </div>
                     </> : <>
                         <div className='grid grid-cols-1 gap-6'>
                             {

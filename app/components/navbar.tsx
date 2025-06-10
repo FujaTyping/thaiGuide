@@ -29,8 +29,12 @@ import { logEvent } from "firebase/analytics";
 
 const NavItems = [
     {
-        "name": "Search",
-        "link": "#"
+        "name": "Weather",
+        "link": "/weather"
+    },
+    {
+        "name": "Activity",
+        "link": "/activity"
     },
     {
         "name": "Trip Planner",
