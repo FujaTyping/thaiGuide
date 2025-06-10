@@ -22,6 +22,7 @@ import auth from "@/lib/firebaseAuth";
 import { getDistance } from 'geolib';
 import { server } from "@/app/config.json";
 import { motion } from "motion/react";
+import ConfettiExplosion from 'react-confetti-explosion';
 interface ApiCodeData {
     name: string;
     points: number;
@@ -89,6 +90,7 @@ function Qr() {
                     { latitude: resD.location.latitude, longitude: resD.location.longitude }
                 );
                 const distanceInKm = distanceInMeters / 1000;
+                console.log(distanceInKm);
                 setIsWithinRadius(distanceInKm <= 2);
             }
 
@@ -197,6 +199,7 @@ function Qr() {
                                                         </> : <>
                                                             {
                                                                 isWithinRadius ? <div className='flex items-center flex-col justify-center gap-4'>
+                                                                    <ConfettiExplosion zIndex={99} />
                                                                     <img src={LC.src} alt="Location Correct Icon" className='w-32 translate-x-3' />
                                                                     <div className='font-semibold'>
                                                                         <p className='flex items-center gap-2'><MapPin /> {codeData.name}</p>
