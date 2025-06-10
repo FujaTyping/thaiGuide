@@ -78,7 +78,7 @@ function Qr() {
 
     async function checkCode(code: string) {
         try {
-            const response = await axios.put<ApiCodeData>(`https://${server}/code/getbyid`, {
+            const response = await axios.put(`https://${server}/code/getbyid`, {
                 id: code
             });
 
@@ -92,6 +92,14 @@ function Qr() {
                 const distanceInKm = distanceInMeters / 1000;
                 console.log(distanceInKm);
                 setIsWithinRadius(distanceInKm <= 2);
+                if (distanceInKm <= 2) {
+                    await axios.post("https://backend.thaiguide.siraphop.me/transactions/transfer", {
+                        userid: user?.uid,
+                        type: "Scan QR",
+                        place: resD.name,
+                        point: `+${resD.points}`
+                    })
+                }
             }
 
             setCodeData(resD);
