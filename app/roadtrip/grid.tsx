@@ -24,7 +24,10 @@ interface RoadtripItem {
 }
 
 const dTags = [
-    "Adventure", "Cultural", "Nature", "Relax", "Food", "Historical"
+    "Adventure", "Cultural", "Nature", "Relax", "Food", "Historical",
+    "Architecture", "Photography", "Shopping",
+    "LocalExperience", "Beach", "Mountain", "City", "Village", "Island", "Waterfall", "Temple", "Market", "Nightlife", "Festival", "Art", "Music", "Sports", "Wellness", "Family", "Romantic", "Budget", "Luxury", "OffTheBeatenPath", "Popular"
+
 ];
 
 const ALL_TAGS = "All";
