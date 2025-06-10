@@ -27,15 +27,24 @@ function Activities() {
 
     useEffect(() => {
         const fetchData = async () => {
+            setLoading(true);
             try {
                 const response = await axios.get(`https://${server}/activities`);
-                setData(response.data);
-                setLoading(false);
+                const fetchedActivities: Activity[] = response.data || [];
+
+                if (fetchedActivities.length > 5) {
+                    const shuffled = [...fetchedActivities].sort(() => 0.5 - Math.random());
+                    setData(shuffled.slice(0, 5));
+                } else {
+                    setData(fetchedActivities);
+                }
             } catch (err) {
                 console.error("Error fetching activities:", err);
+                setData([]);
+            } finally {
+                setLoading(false);
             }
         };
-
         fetchData();
     }, []);
 
@@ -55,73 +64,83 @@ function Activities() {
                 <div className='flex items-center place-content-between mb-6'>
                     <h1 className='text-2xl md:text-3xl font-bold text-[#f7740a]'>Activity</h1>
                     <div className='flex items-center gap-3'>
-                        <div
-                            className='border-2 border-[#f7740a] rounded-full p-2 hover:bg-[#f7740a] group transition-all duration-200 cursor-pointer'
-                            onClick={handlePrev}
-                        >
-                            <ChevronLeft className='text-[#f7740a] group-hover:text-white' />
-                        </div>
-                        <div
-                            className='border-2 border-[#f7740a] rounded-full p-2 hover:bg-[#f7740a] group transition-all duration-200 cursor-pointer'
-                            onClick={handleNext}
-                        >
-                            <ChevronRight className='text-[#f7740a] group-hover:text-white' />
-                        </div>
+                        {Data.length > 1 && (
+                            <>
+                                <div
+                                    className='border-2 border-[#f7740a] rounded-full p-2 hover:bg-[#f7740a] group transition-all duration-200 cursor-pointer'
+                                    onClick={handlePrev}
+                                >
+                                    <ChevronLeft className='text-[#f7740a] group-hover:text-white' />
+                                </div>
+                                <div
+                                    className='border-2 border-[#f7740a] rounded-full p-2 hover:bg-[#f7740a] group transition-all duration-200 cursor-pointer'
+                                    onClick={handleNext}
+                                >
+                                    <ChevronRight className='text-[#f7740a] group-hover:text-white' />
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
                 {
-                    loading ? <>
+                    loading ? (
                         <div className='w-full flex items-center justify-center my-12'>
                             <Loader />
-                        </div>;
-                    </> : <>
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={currentIndex}
-                                initial={{ opacity: 0, x: 50 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: -50 }}
-                                transition={{ duration: 0.2 }}
-                                className='grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-8'
-                            >
+                        </div>
+                    ) : Data.length > 0 && currentActivity ? (
+                        <>
+                            <AnimatePresence mode="wait">
                                 <motion.div
-                                    whileHover={{ rotateY: -15, rotateX: -5 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className='relative md:col-span-2'
+                                    key={currentIndex}
+                                    initial={{ opacity: 0, x: 50 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -50 }}
+                                    transition={{ duration: 0.2 }}
+                                    className='grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-8'
                                 >
-                                    <Link href={`/activity/${currentActivity.id}`}>
+                                    <motion.div
+                                        whileHover={{ rotateY: -15, rotateX: -5 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className='relative md:col-span-2'
+                                    >
+                                        <Link href={`/activity/${currentActivity.id}`}>
+                                            <div>
+                                                <img
+                                                    src={currentActivity.thumnails}
+                                                    alt={currentActivity.title}
+                                                    className='rounded-4xl h-[300px] md:h-[460px] w-full object-cover'
+                                                />
+                                                <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-[#f7740a]/70 to-transparent text-white rounded-b-4xl'>
+                                                    <h1 className='text-2xl md:text-3xl lg:text-4xl font-bold mb-2'>{currentActivity.title}</h1>
+                                                    <p className='text-xs md:text-sm'>{currentActivity.location}</p>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    </motion.div>
+                                    <div className='flex flex-col place-content-between py-4 md:py-0'>
                                         <div>
-                                            <img
-                                                src={currentActivity.thumnails}
-                                                alt={currentActivity.title}
-                                                className='rounded-4xl h-[300px] md:h-[460px] w-full object-cover'
-                                            />
-                                            <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-[#f7740a]/70 to-transparent text-white rounded-b-4xl'>
-                                                <h1 className='text-2xl md:text-3xl lg:text-4xl font-bold mb-2'>{currentActivity.title}</h1>
-                                                <p className='text-xs md:text-sm'>{currentActivity.location}</p>
+                                            <h2 className='font-semibold text-xl md:text-2xl mb-2'>{currentActivity.ndtitle}</h2>
+                                            <p className='text-sm md:text-base'>{currentActivity.decs}</p>
+                                        </div>
+                                        <div className='grid grid-cols-2 gap-4 mt-4 md:mt-0'>
+                                            <div className='flex items-center gap-2 text-sm md:text-base'>
+                                                <Wallet size={20} />
+                                                {currentActivity.pricing}
+                                            </div>
+                                            <div className='flex items-center gap-2 text-sm md:text-base'>
+                                                <Star size={20} />
+                                                {currentActivity.rating}
                                             </div>
                                         </div>
-                                    </Link>
+                                    </div>
                                 </motion.div>
-                                <div className='flex flex-col place-content-between py-4 md:py-0'>
-                                    <div>
-                                        <h2 className='font-semibold text-xl md:text-2xl mb-2'>{currentActivity.ndtitle}</h2>
-                                        <p className='text-sm md:text-base'>{currentActivity.decs}</p>
-                                    </div>
-                                    <div className='grid grid-cols-2 gap-4 mt-4 md:mt-0'>
-                                        <div className='flex items-center gap-2 text-sm md:text-base'>
-                                            <Wallet size={20} />
-                                            {currentActivity.pricing}
-                                        </div>
-                                        <div className='flex items-center gap-2 text-sm md:text-base'>
-                                            <Star size={20} />
-                                            {currentActivity.rating}
-                                        </div>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        </AnimatePresence>
-                    </>
+                            </AnimatePresence>
+                        </>
+                    ) : (
+                        <div className='w-full flex items-center justify-center my-12'>
+                            <p>No activities available at the moment.</p>
+                        </div>
+                    )
                 }
             </main>
         </>
