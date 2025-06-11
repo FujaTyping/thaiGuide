@@ -1,6 +1,6 @@
 import type { ElysiaApp } from "../../index";
 import db from "../../lib/firebase";
-import { collection, getDocs, doc, setDoc, getDoc } from "firebase/firestore";
+import { collection, getDocs, doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
 import { t } from "elysia";
 import { generateRandomId } from '../../lib/randomid';
 
@@ -73,6 +73,7 @@ const transferUserTransaction = async ({ body, set }: { body: typeof transaction
             type,
             place,
             point,
+            timestamp: serverTimestamp(),
         });
 
         const userData = userSnapshot.data();

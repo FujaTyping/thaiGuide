@@ -62,6 +62,7 @@ const getIdInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.
         };
     } catch (error) {
         set.status = 500;
+        console.error(error);
         return { error: "An error occurred while fetching the document." };
     }
 };
