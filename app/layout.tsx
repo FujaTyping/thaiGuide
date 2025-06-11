@@ -11,6 +11,8 @@ import 'atropos/css';
 import 'swiper/css/navigation';
 import Didyouknow from "./components/didyouknow";
 import NextTopLoader from 'nextjs-toploader';
+import Footer from "./components/footer";
+import Totop from "./components/totop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,6 +27,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "ThaiGuide – Explore, Earn, and Enjoy",
   description: "Experience Thailand like never before through fun travel quests, point systems, and rewards. Powered by AI and emotional design, our platform turns every trip into an adventure full of memories.",
+  keywords: `thaiGuide, ThaiGuide, thaiguide, ไทยไกด์, ไทยไกด, Thailand, Thai, thailand, thai`,
   openGraph: {
     url: 'https://thaiguide.siraphop.me/',
     description: `Experience Thailand like never before through fun travel quests, point systems, and rewards. Powered by AI and emotional design, our platform turns every trip into an adventure full of memories.`,
@@ -56,6 +59,8 @@ export default function RootLayout({
         <Ealert />
         {children}
         <Didyouknow />
+        <Footer />
+        <Totop />
       </body>
     </html>
   );
