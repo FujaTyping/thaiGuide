@@ -1,6 +1,6 @@
 import type { ElysiaApp } from "../../index";
 import db from "../../lib/firebase";
-import { collection, getDocs, doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
+import { collection, getDocs, doc, setDoc, getDoc, serverTimestamp, query, orderBy } from "firebase/firestore";
 import { t } from "elysia";
 import { generateRandomId } from '../../lib/randomid';
 
@@ -24,7 +24,7 @@ const getTransactionsByUserId = async ({ body, set }: { body: typeof userSchema.
             return { error: "User ID is required." };
         }
 
-        const transactionsCollectionRef = collection(db, "Users", userid, "transactions");
+        const transactionsCollectionRef = query(collection(db, "Users", userid, "transactions"), orderBy("timestamp", "desc"))
         const transactionsSnapshot = await getDocs(transactionsCollectionRef);
 
         if (!transactionsSnapshot.empty) {
