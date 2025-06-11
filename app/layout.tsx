@@ -12,7 +12,7 @@ import 'swiper/css/navigation';
 import Didyouknow from "./components/didyouknow";
 import NextTopLoader from 'nextjs-toploader';
 import Footer from "./components/footer";
-import Totop from "./components/totop";
+//import Totop from "./components/totop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -60,7 +60,7 @@ export default function RootLayout({
         {children}
         <Didyouknow />
         <Footer />
-        <Totop />
+        {/*<Totop />*/}
       </body>
     </html>
   );
