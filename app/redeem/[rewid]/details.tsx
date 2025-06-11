@@ -7,11 +7,25 @@ import axios from 'axios';
 import { User, onAuthStateChanged } from "firebase/auth";
 import auth from "@/lib/firebaseAuth";
 import { server } from "@/app/config.json";
+import {
+    Dialog,
+    DialogClose,
+    DialogContent,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
+import Loader from '@/app/components/loader';
+import { motion } from "motion/react";
+import RD from "@/assets/media/icon/redeem.png";
+import NF from "@/assets/media/card/icon/notfound.png";
 
 function Details({ data }: { data: any }) {
     const [user, setUser] = useState<User | null>(null);
     const [uData, setUData] = useState<any | null>(null);
     const [loading, setLoading] = useState(true);
+    const [transcationState, setTranscationState] = useState("");
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -30,6 +44,31 @@ function Details({ data }: { data: any }) {
 
         return () => unsubscribe();
     }, []);
+
+    async function CRedeem() {
+        setTranscationState("loading");
+        try {
+            const res = await axios.post("https://backend.thaiguide.siraphop.me/transactions/transfer", {
+                userid: user?.uid,
+                type: "Redeem",
+                place: data.name,
+                point: `-${data.require}`
+            });
+            if (res.status === 200 || res.status === 201) {
+                setTranscationState("success");
+                setTimeout(() => {
+                    window.location.reload();
+                }, 5000);
+            } else {
+                setTranscationState("error");
+                console.error("Transaction failed with status:", res.status, res.data);
+            }
+        } catch (error) {
+            console.error("Error during redeem transaction:", error);
+            setTranscationState("error");
+        }
+    }
+
     return (
         <>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-8 mt-6'>
@@ -43,13 +82,69 @@ function Details({ data }: { data: any }) {
                     {uData ? <>
                         <div className='mt-8'>
                             <p><b>Your points :</b> {uData.point}/{data.require}</p>
-                            <button className={`bg-[#f7740a] text-white p-2 rounded-xl px-5 mt-2 w-full md:w-fit ${!(parseInt(uData.point) >= parseInt(data.require)) && "cursor-not-allowed"}`}>
-                                {parseInt(uData.point) >= parseInt(data.require) ? <>
-                                    Redeem now
-                                </> : <>
+                            {parseInt(uData.point) >= parseInt(data.require) ? <>
+                                <Dialog>
+                                    <DialogTrigger onClick={() => setTranscationState("")} className='bg-[#f7740a] text-white p-2 rounded-xl px-5 mt-2 w-full md:w-fit cursor-pointer'>
+                                        Redeem now
+                                    </DialogTrigger>
+                                    <DialogContent>
+                                        <DialogHeader>
+                                            <DialogTitle className='text-2xl'>Are you sure to redeem {data.name} ?</DialogTitle>
+                                        </DialogHeader>
+                                        {
+                                            transcationState == "loading" ? <>
+                                                <div className='w-full flex items-center justify-center my-8'>
+                                                    <Loader />
+                                                </div>
+                                            </> : <>
+                                                {
+                                                    transcationState == "error" ? <>
+                                                        <div className='flex items-center flex-col justify-center gap-4'>
+                                                            <motion.div
+                                                                animate={{
+                                                                    x: [0, -10, 10, -10, 10, -5, 5, 0],
+                                                                }}
+                                                                transition={{
+                                                                    duration: 0.5,
+                                                                    ease: "easeInOut"
+                                                                }}
+                                                            >
+                                                                <img src={NF.src} alt="Not Found" className='w-32 translate-x-3' />
+                                                            </motion.div>
+                                                            <p className='font-semibold'>Error during redeem transaction.</p>
+                                                        </div>
+                                                    </> : <>
+                                                        {
+                                                            transcationState == "success" ? <>
+                                                                <div className='flex items-center flex-col justify-center gap-4'>
+                                                                    <img src={RD.src} alt="Not Found" className='w-32 translate-x-3' />
+                                                                    <p className='font-semibold'>Redeem successfully.</p>
+                                                                </div>
+                                                            </> : <>
+                                                                <p>This action cannot be undone. <b className='text-[#f7740a]'>Confirming will deduct {data.require} points</b> from your account for the reward: {data.name}.</p>
+                                                                <DialogFooter>
+                                                                    <DialogClose asChild>
+                                                                        <button className='p-2 px-5 rounded-xl border-2 cursor-pointer'>
+                                                                            Cancel
+                                                                        </button>
+                                                                    </DialogClose>
+                                                                    <button onClick={CRedeem} className='bg-[#f7740a] text-white p-2 px-5 rounded-xl cursor-pointer'>
+                                                                        Confirm
+                                                                    </button>
+                                                                </DialogFooter>
+                                                            </>
+                                                        }
+                                                    </>
+                                                }
+                                            </>
+                                        }
+                                    </DialogContent>
+                                </Dialog>
+                            </> : <>
+                                <button className={`bg-[#f7740a] text-white p-2 rounded-xl px-5 mt-2 w-full md:w-fit cursor-not-allowed`}>
                                     You need more points
-                                </>}
-                            </button>
+                                </button>
+                            </>}
                         </div>
                     </> : <>
                         {
@@ -67,7 +162,7 @@ function Details({ data }: { data: any }) {
                         }
                     </>}
                 </div>
-            </div>
+            </div >
         </>
     )
 }
