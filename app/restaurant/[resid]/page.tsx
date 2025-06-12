@@ -51,7 +51,7 @@ async function page({ params }: Props) {
             <div
                 className='relative overflow-hidden rounded-b-4xl'
             >
-                <img src={data.image} className='w-full h-[550px] md:h-[800px] object-cover' alt={data.name} />
+                <img src={data.image} className='w-full h-[550px] md:h-[650px] object-cover' alt={data.name} />
                 <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-[#f7740a]/70 to-transparent text-white rounded-b-4xl text-center'>
                     <h1 className='text-3xl md:text-4xl font-bold mb-2'>{data.ndname}</h1>
                 </div>
@@ -112,7 +112,16 @@ async function page({ params }: Props) {
                     <h1 className='font-bold text-4xl'>Street View</h1>
                     <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
                 </div>
-                <iframe src={data.streetview} className='w-full h-[500px] rounded-2xl' loading="lazy"></iframe>
+                {
+                    data.streetview != "" ? <>
+                        <iframe src={data.streetview} className='w-full h-[500px] rounded-2xl' loading="lazy"></iframe>
+                    </> : <>
+                        <div className='flex items-center flex-col justify-center gap-4 py-8'>
+                            <img src={NF.src} alt="Icon" className='w-28 translate-x-3' />
+                            <p className='font-semibold text-2xl'>Street view not avalble for this restaurant</p>
+                        </div>
+                    </>
+                }
             </main>
         </>
     )
