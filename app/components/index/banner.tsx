@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useState } from 'react'; // Import useState
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { motion } from "motion/react";
 import { EffectFade, Autoplay } from 'swiper/modules';
 
 // Image Assets
@@ -41,8 +40,6 @@ const BannerItems = [
 ]
 
 function Banner() {
-    const [hoveredSlideKey, setHoveredSlideKey] = useState<string | number | null>(null);
-
     return (
         <>
             <Swiper
@@ -61,19 +58,11 @@ function Banner() {
                         <SwiperSlide key={index}>
                             <div
                                 className='relative overflow-hidden rounded-b-4xl'
-                                onMouseEnter={() => setHoveredSlideKey(index)}
-                                onMouseLeave={() => setHoveredSlideKey(null)}
                             >
                                 <img src={item.image.src} className='w-full h-[550px] md:h-[700px] object-cover' alt={item.title} />
                                 <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-[#f7740a]/70 to-transparent text-white rounded-b-4xl text-center'>
-                                    <motion.div
-                                        animate={{ translateY: hoveredSlideKey === index ? -10 : 0 }}
-                                        transition={{ duration: 0.2 }}
-                                        whileTap={{ scale: 0.8 }}
-                                    >
-                                        <h1 className='text-3xl md:text-4xl font-bold mb-2'>{item.title}</h1>
-                                        <p className='text-sm md:text-base'>{item.decs}</p>
-                                    </motion.div>
+                                    <h1 className='text-3xl md:text-4xl font-bold mb-2'>{item.title}</h1>
+                                    <p className='text-sm md:text-base'>{item.decs}</p>
                                 </div>
                             </div>
                         </SwiperSlide>
