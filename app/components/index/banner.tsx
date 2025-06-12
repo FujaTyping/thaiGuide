@@ -64,7 +64,7 @@ function Banner() {
                                 onMouseEnter={() => setHoveredSlideKey(index)}
                                 onMouseLeave={() => setHoveredSlideKey(null)}
                             >
-                                <img src={item.image.src} className='w-full h-[550px] md:h-[650px] object-cover' alt={item.title} />
+                                <img src={item.image.src} className='w-full h-[550px] md:h-[700px] object-cover' alt={item.title} />
                                 <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-[#f7740a]/70 to-transparent text-white rounded-b-4xl text-center'>
                                     <motion.div
                                         animate={{ translateY: hoveredSlideKey === index ? -10 : 0 }}

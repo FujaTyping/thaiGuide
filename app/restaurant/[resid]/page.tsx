@@ -51,7 +51,7 @@ async function page({ params }: Props) {
             <div
                 className='relative overflow-hidden rounded-b-4xl'
             >
-                <img src={data.image} className='w-full h-[550px] md:h-[650px] object-cover' alt={data.name} />
+                <img src={data.image} className='w-full h-[550px] md:h-[700px] object-cover' alt={data.name} />
                 <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-[#f7740a]/70 to-transparent text-white rounded-b-4xl text-center'>
                     <h1 className='text-3xl md:text-4xl font-bold mb-2'>{data.ndname}</h1>
                 </div>
