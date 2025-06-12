@@ -81,7 +81,7 @@ const transferUserTransaction = async ({ body, set }: { body: typeof transaction
         const placeVisit = userData.checkin || 0;
         const pointChange = parseInt(point);
         const newPoints = currentPoints + pointChange;
-        const newScan = placeVisit + 1;
+        const newScan = point.includes('-') ? placeVisit : placeVisit + 1;
 
         await setDoc(userRef, {
             ...userData,
