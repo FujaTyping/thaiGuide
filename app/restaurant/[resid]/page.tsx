@@ -112,7 +112,16 @@ async function page({ params }: Props) {
                     <h1 className='font-bold text-4xl'>Street View</h1>
                     <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
                 </div>
-                <iframe src={data.streetview} className='w-full h-[500px] rounded-2xl' loading="lazy"></iframe>
+                {
+                    data.streetview != "" ? <>
+                        <iframe src={data.streetview} className='w-full h-[500px] rounded-2xl' loading="lazy"></iframe>
+                    </> : <>
+                        <div className='flex items-center flex-col justify-center gap-4 py-8'>
+                            <img src={NF.src} alt="Icon" className='w-28 translate-x-3' />
+                            <p className='font-semibold text-2xl'>Street view not avalble for this restaurant</p>
+                        </div>
+                    </>
+                }
             </main>
         </>
     )

@@ -25,11 +25,21 @@ function Roadtrip() {
     useEffect(() => {
         const fetchData = async () => {
             try {
+                setLoading(true);
                 const response = await axios.get(`https://${server}/roadtrip`);
-                setData(response.data);
-                setLoading(false);
+                const fetchedRoadtrips: RoadtripItem[] = response.data || [];
+
+                if (fetchedRoadtrips.length > 3) {
+                    const shuffled = [...fetchedRoadtrips].sort(() => 0.5 - Math.random());
+                    setData(shuffled.slice(0, 3));
+                } else {
+                    setData(fetchedRoadtrips);
+                }
             } catch (err) {
                 console.error("Error fetching roadtrip:", err);
+                setData([]);
+            } finally {
+                setLoading(false);
             }
         };
 
