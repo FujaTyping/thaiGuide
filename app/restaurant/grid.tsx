@@ -14,6 +14,7 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import NF from "@/assets/media/card/icon/notfound.png";
+import { ChevronDown } from 'lucide-react';
 
 const provinceFilterOptions = [
     "Amnat Charoen", "Ang Thong", "Bangkok", "Bueng Kan", "Buri Ram", "Chachoengsao", "Chai Nat", "Chaiyaphum", "Chanthaburi", "Chiang Mai",
@@ -27,6 +28,9 @@ const provinceFilterOptions = [
 ];
 const ALL_PROVINCES_VALUE = "All";
 
+const INITIAL_ITEMS_TO_SHOW = 12;
+const ITEMS_PER_LOAD = 8;
+
 interface RestaurantItem {
     province: string;
     id: string;
@@ -39,6 +43,7 @@ function Grid() {
     const [data, setData] = useState<RestaurantItem[]>([]);
     const [selectedProvince, setSelectedProvince] = useState<string>("Songkhla");
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [numDisplayedItems, setNumDisplayedItems] = useState<number>(INITIAL_ITEMS_TO_SHOW);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -67,12 +72,19 @@ function Grid() {
 
     const handleProvinceChange = (value: string) => {
         setSelectedProvince(value);
+        setNumDisplayedItems(INITIAL_ITEMS_TO_SHOW);
     };
 
     const filteredData = data.filter(item => {
         if (selectedProvince === ALL_PROVINCES_VALUE) return true;
         return item.province.toLowerCase() === selectedProvince.toLowerCase();
     });
+
+    const itemsToDisplay = filteredData.slice(0, numDisplayedItems);
+
+    const handleLoadMore = () => {
+        setNumDisplayedItems(prevCount => Math.min(prevCount + ITEMS_PER_LOAD, filteredData.length));
+    };
 
     return (
         <>
@@ -98,9 +110,9 @@ function Grid() {
                 </div>
             </div>
             {filteredData.length > 0 ? (
-                <div className='grid grid-cols-2 md:grid-cols-4 gap-6 mt-4'>
-                    {
-                        filteredData.map((item) => (
+                <>
+                    <div className='grid grid-cols-2 md:grid-cols-4 gap-6 mt-4'>
+                        {itemsToDisplay.map((item) => (
                             <Link href={`restaurant/${item.id}`} key={item.id}>
                                 <motion.div
                                     whileHover={{ scale: 1.03, rotate: -1 }}
@@ -119,9 +131,20 @@ function Grid() {
                                     </div>
                                 </motion.div>
                             </Link>
-                        ))
-                    }
-                </div>
+                        ))}
+                    </div>
+                    {numDisplayedItems < filteredData.length && (
+                        <div className="mt-8 flex items-center justify-center">
+                            <button
+                                onClick={handleLoadMore}
+                                className="flex items-center gap-3 w-full md:w-fit justify-center bg-[#f7740a] text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-[#f7640a] cursor-pointer"
+                            >
+                                <ChevronDown />
+                                Load More
+                            </button>
+                        </div>
+                    )}
+                </>
             ) : (
                 <div className='flex items-center py-8 flex-col justify-center gap-4'>
                     <motion.div
