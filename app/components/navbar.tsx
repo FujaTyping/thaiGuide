@@ -26,31 +26,33 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { analyticsPromise } from "@/lib/firebaseAnalytics";
 import { logEvent } from "firebase/analytics";
+import { useTranslations } from 'next-intl';
 
 const NavItems = [
     {
-        "name": "Weather",
+        "name": "weather",
         "link": "/weather"
     },
     {
-        "name": "Activity",
+        "name": "activity",
         "link": "/activity"
     },
     {
-        "name": "Trip Planner",
+        "name": "planner",
         "link": "/planner"
     },
     {
-        "name": "Road Trips",
+        "name": "trips",
         "link": "/roadtrip"
     },
     {
-        "name": "Redeem",
+        "name": "redeem",
         "link": "/redeem"
     }
 ]
 
 function Navbar() {
+    const t = useTranslations('NavBar');
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
 
@@ -104,7 +106,7 @@ function Navbar() {
                     <Link href={"/"}>
                         <div className='flex items-center gap-1'>
                             <Image src={Logo.src} width={58} height={58} alt='Logo' />
-                            <h1 className='font-bold text-2xl text-[#f7740a]'>ThaiGuide</h1>
+                            <h1 className='font-bold text-2xl text-[#f7740a]'>{t('title')}</h1>
                         </div>
                     </Link>
                     <div className='flex items-center gap-2'>
@@ -116,20 +118,20 @@ function Navbar() {
                                     key={index}
                                 >
                                     <Link href={item.link} className='group-hover:text-white'>
-                                        {item.name}
+                                        {t(`list.${item.name}`)}
                                     </Link>
                                 </motion.div>
                             ))}
                         </div>
                         <div className='flex md:hidden items-center gap-6 border-1 border-[#f7740a] p-2 px-6 rounded-full text-[#f7740a] font-bold hover:bg-[#f7740a] transition-all duration-300 hover:text-white'>
                             <Sheet>
-                                <SheetTrigger><p className='flex items-center gap-2'><Menu /> Menu</p></SheetTrigger>
+                                <SheetTrigger><p className='flex items-center gap-2'><Menu /> {t('menu')}</p></SheetTrigger>
                                 <SheetContent>
                                     <SheetHeader>
-                                        <SheetTitle className='text-2xl font-bold text-[#f7740a]'>Menu</SheetTitle>
+                                        <SheetTitle className='text-2xl font-bold text-[#f7740a]'>{t('menu')}</SheetTitle>
                                         <div className='flex flex-col gap-2 mt-3 text-lg text-[#f7740a] font-semibold'>
                                             {NavItems.map((item, index) => (
-                                                <a key={index} href={item.link}>{item.name}</a>
+                                                <a key={index} href={item.link}>{t(`list.${item.name}`)}</a>
                                             ))}
                                         </div>
                                     </SheetHeader>
@@ -145,8 +147,8 @@ function Navbar() {
                                     <DropdownMenuContent>
                                         <DropdownMenuLabel>{user.email}</DropdownMenuLabel>
                                         <DropdownMenuSeparator />
-                                        <DropdownMenuItem><Link href={"/profile"} className='flex items-center gap-2'><Smile className='text-[#f7740a]' /> Profile</Link></DropdownMenuItem>
-                                        <DropdownMenuItem className='flex items-center gap-2' onClick={handleLogout}><LogOut className='text-[#f7740a]' /> Logout</DropdownMenuItem>
+                                        <DropdownMenuItem><Link href={"/profile"} className='flex items-center gap-2'><Smile className='text-[#f7740a]' /> {t('profile')}</Link></DropdownMenuItem>
+                                        <DropdownMenuItem className='flex items-center gap-2' onClick={handleLogout}><LogOut className='text-[#f7740a]' /> {t('logout')}</DropdownMenuItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu> : <KeyRound onClick={handleGoogleSignIn} />}
                             </>}

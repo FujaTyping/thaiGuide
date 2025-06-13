@@ -1,0 +1,15 @@
+{
+  "NavBar": {
+    "title": "ThaiGuide",
+    "menu": "Menu",
+    "profile": "Profile",
+    "logout": "Logout",
+    "list": {
+      "weather": "Weather",
+      "activity": "Activity",
+      "planner": "Trip Planner",
+      "trips": "Road Trips",
+      "redeem": "Redeem"
+    }
+  }
+}

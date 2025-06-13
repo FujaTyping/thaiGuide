@@ -33,6 +33,7 @@
     "lucide-react": "^0.511.0",
     "motion": "^12.17.3",
     "next": "15.3.3",
+    "next-intl": "^4.1.0",
     "nextjs-toploader": "^3.8.16",
     "react": "^19.1.0",
     "react-confetti-explosion": "^3.0.3",
