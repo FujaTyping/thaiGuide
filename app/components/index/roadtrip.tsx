@@ -68,7 +68,7 @@ function Roadtrip() {
                                         >
                                             <div className='relative'>
                                                 <div
-                                                    className="w-full h-[100px] md:h-[150px] rounded-2xl overflow-hidden relative"
+                                                    className="w-full h-[120px] md:h-[150px] rounded-2xl overflow-hidden relative"
                                                 >
                                                     <img className='w-full h-full object-cover' src={item.thumnails} alt={item.title} />
                                                     <div className="absolute inset-0 bg-gradient-to-t from-[#f7740a]/70 to-transparent"></div>

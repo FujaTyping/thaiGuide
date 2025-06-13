@@ -118,7 +118,7 @@ async function page({ params }: Props) {
                     </> : <>
                         <div className='flex items-center flex-col justify-center gap-4 py-8'>
                             <img src={NF.src} alt="Icon" className='w-28 translate-x-3' />
-                            <p className='font-semibold text-2xl'>Street view not avalble for this restaurant</p>
+                            <p className='font-semibold text-2xl'>Street view not available for this restaurant</p>
                         </div>
                     </>
                 }
