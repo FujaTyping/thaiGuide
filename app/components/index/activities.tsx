@@ -7,6 +7,7 @@ import Link from 'next/link';
 import axios from 'axios';
 import Loader from '@/app/components/loader';
 import { server } from "@/app/config.json";
+import { useTranslations } from 'next-intl';
 
 interface Activity {
     id: string;
@@ -21,6 +22,7 @@ interface Activity {
 }
 
 function Activities() {
+    const t = useTranslations('IndexAct');
     const [Data, setData] = useState<Activity[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [loading, setLoading] = useState(true);
@@ -62,7 +64,7 @@ function Activities() {
         <>
             <main className='max-w-7xl mx-auto px-3 py-6'>
                 <div className='flex items-center place-content-between mb-6'>
-                    <h1 className='text-2xl md:text-3xl font-bold text-[#f7740a]'>Activity</h1>
+                    <h1 className='text-2xl md:text-3xl font-bold text-[#f7740a]'>{t('headder')}</h1>
                     <div className='flex items-center gap-3'>
                         {Data.length > 1 && (
                             <>

@@ -10,6 +10,7 @@ import { motion } from "motion/react";
 import SwiperCore from 'swiper';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useTranslations } from 'next-intl';
 
 const textVariants = {
   hovered: { y: -15 }
@@ -23,6 +24,7 @@ interface RoadtripItem {
 }
 
 function Resturant() {
+  const t = useTranslations('IndexRus');
   const [Data, setData] = useState<RoadtripItem[]>([]);
   const [loading, setLoading] = useState(true);
   const swiperRef = useRef<SwiperCore | null>(null);
@@ -68,7 +70,7 @@ function Resturant() {
     <>
       <main className='max-w-7xl mx-auto px-3 py-6'>
         <div className='flex items-center place-content-between mb-6'>
-          <h1 className='text-2xl md:text-3xl font-bold text-[#f7740a]'>Resturant</h1>
+          <h1 className='text-2xl md:text-3xl font-bold text-[#f7740a]'>{t('headder')}</h1>
           <div className='flex items-center gap-3'>
             <div className='border-2 border-[#f7740a] rounded-full p-2 hover:bg-[#f7740a] group transition-all duration-200 cursor-pointer' onClick={goPrev}>
               <ChevronLeft className='text-[#f7740a] group-hover:text-white' />

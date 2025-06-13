@@ -9,6 +9,7 @@ import { server } from "@/app/config.json";
 import Link from 'next/link';
 import { motion } from "motion/react";
 import { Badge } from "@/components/ui/badge";
+import { useTranslations } from 'next-intl';
 
 interface RoadtripItem {
     id: string;
@@ -19,6 +20,7 @@ interface RoadtripItem {
 }
 
 function Roadtrip() {
+    const t = useTranslations('IndexTrip');
     const [Data, setData] = useState<RoadtripItem[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -50,7 +52,7 @@ function Roadtrip() {
         <>
             <main className='max-w-7xl mx-auto px-3 py-6'>
                 <div className='flex items-center place-content-between mb-6'>
-                    <h1 className='text-2xl md:text-3xl font-bold text-[#f7740a]'>Road Trip Itineraries</h1>
+                    <h1 className='text-2xl md:text-3xl font-bold text-[#f7740a]'>{t('headder')}</h1>
                 </div>
                 {
                     loading ? <>

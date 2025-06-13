@@ -27,15 +27,14 @@ import {
 import { analyticsPromise } from "@/lib/firebaseAnalytics";
 import { logEvent } from "firebase/analytics";
 import { useTranslations } from 'next-intl';
+import {
+    setCookie,
+} from 'cookies-next/client';
 
 const NavItems = [
     {
         "name": "weather",
         "link": "/weather"
-    },
-    {
-        "name": "activity",
-        "link": "/activity"
     },
     {
         "name": "planner",
@@ -122,6 +121,24 @@ function Navbar() {
                                     </Link>
                                 </motion.div>
                             ))}
+                            <motion.div
+                                whileHover={{ scale: 1.1, rotate: -5 }}
+                                whileTap={{ scale: 0.8 }}
+                            >
+                                <DropdownMenu>
+                                    <DropdownMenuTrigger>
+                                        <div className='group-hover:text-white cursor-pointer'>
+                                            {t(`list.switcher`)}
+                                        </div>
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent>
+                                        <DropdownMenuLabel>{t(`list.switcherlang`)}</DropdownMenuLabel>
+                                        <DropdownMenuSeparator />
+                                        <DropdownMenuItem onClick={() => { setCookie('NEXT_LOCALE', 'en', {}); window.location.reload(); }}>English</DropdownMenuItem>
+                                        <DropdownMenuItem onClick={() => { setCookie('NEXT_LOCALE', 'th', {}); window.location.reload(); }}>ภาษาไทย</DropdownMenuItem>
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
+                            </motion.div>
                         </div>
                         <div className='flex md:hidden items-center gap-6 border-1 border-[#f7740a] p-2 px-6 rounded-full text-[#f7740a] font-bold hover:bg-[#f7740a] transition-all duration-300 hover:text-white'>
                             <Sheet>
@@ -133,6 +150,19 @@ function Navbar() {
                                             {NavItems.map((item, index) => (
                                                 <a key={index} href={item.link}>{t(`list.${item.name}`)}</a>
                                             ))}
+                                            <DropdownMenu>
+                                                <DropdownMenuTrigger>
+                                                    <div className='group-hover:text-white cursor-pointer text-left mt-8'>
+                                                        {t(`list.switcher`)}
+                                                    </div>
+                                                </DropdownMenuTrigger>
+                                                <DropdownMenuContent>
+                                                    <DropdownMenuLabel>{t(`list.switcherlang`)}</DropdownMenuLabel>
+                                                    <DropdownMenuSeparator />
+                                                    <DropdownMenuItem onClick={() => { setCookie('NEXT_LOCALE', 'en', {}); window.location.reload(); }}>English</DropdownMenuItem>
+                                                    <DropdownMenuItem onClick={() => { setCookie('NEXT_LOCALE', 'th', {}); window.location.reload(); }}>ภาษาไทย</DropdownMenuItem>
+                                                </DropdownMenuContent>
+                                            </DropdownMenu>
                                         </div>
                                     </SheetHeader>
                                 </SheetContent>

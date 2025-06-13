@@ -6,10 +6,63 @@
     "logout": "Logout",
     "list": {
       "weather": "Weather",
-      "activity": "Activity",
       "planner": "Trip Planner",
       "trips": "Road Trips",
-      "redeem": "Redeem"
+      "redeem": "Redeem",
+      "switcher": "Language",
+      "switcherlang": "Choose Language"
     }
+  },
+  "Crisis": {
+    "alert": "Crisis Alert"
+  },
+  "ToolBar": {
+    "title": "Travel Tools",
+    "item": {
+      "restaurant": "Restaurant",
+      "activity": "Activity",
+      "sos": "SOS",
+      "weather": "Weather",
+      "vat": "Vat Refund"
+    }
+  },
+  "IndexRus": {
+    "headder": "Resturant"
+  },
+  "IndexAct": {
+    "headder": "Activity"
+  },
+  "IndexTrip": {
+    "headder": "Road Trip Itineraries"
+  },
+  "IndexFAQ": {
+    "headder": "Frequently Asked Question",
+    "q": {
+      "0": "When is the best time to travel to Thailand?",
+      "1": "What is the climate of Thailand like?",
+      "2": "Do I need a visa to visit Thailand?",
+      "3": "What currency is used in Thailand?",
+      "4": "What language is spoken in Thailand? Will I be able to communicate in English?"
+    },
+    "a": {
+      "0": "The best seasons for traveling in Thailand are the cool season and the hot season. The most popular travel period is from November to April. However, Thailand is a country with interesting activities, festivals, or traditions throughout the year across the country, and various natural attractions can be visited year-round. Therefore, tourists can choose to travel at any time of the year, depending on their convenience.",
+      "1": "Thailand has a tropical climate. The area is influenced by the southwest monsoon blowing from the Indian Ocean, causing the rainy season, and the northeast monsoon blowing from the South China Sea, causing the cool season. The average temperature throughout the year is about 18-34 degrees Celsius.",
+      "2": "Visa requirements for Thailand depend on your nationality and the length of your stay. Many nationalities are eligible for a visa exemption or visa on arrival for tourist purposes for a certain period. It's best to check the latest requirements with the Royal Thai Embassy or Consulate in your country before your trip.",
+      "3": "The official currency of Thailand is the Thai Baht (THB). You can exchange your currency for Thai Baht at airports, banks, and authorized money changers throughout the country. Credit cards are widely accepted in hotels, larger restaurants, and shopping malls, but it's advisable to carry some cash for smaller vendors and local markets.",
+      "4": "The official language of Thailand is Thai. However, in major tourist areas, hotels, and popular attractions, English is commonly spoken and understood, especially by those working in the tourism industry. Learning a few basic Thai phrases like 'Sawasdee' (Hello/Goodbye) and 'Khop Khun' (Thank you) can be appreciated by locals."
+    }
+  },
+  "GBdyk": {
+    "title": "Did You Know?",
+    "text": {
+      "0": "Thailand is home to over 1,400 islands, each with its own charm—from party paradise Koh Phangan to tranquil Koh Lipe near Satun, close to Songkhla.",
+      "1": "Songkhla is famous for its iconic Golden Mermaid Statue at Samila Beach, inspired by a local folktale and a popular selfie spot for tourists.",
+      "2": "Thailand has one of the world’s oldest and largest open-air markets—the Chatuchak Market in Bangkok, with over 15,000 stalls!",
+      "3": "Songkhla Old Town blends Chinese, Thai, and Portuguese architecture, offering vibrant street art, cozy cafes, and rich cultural history.",
+      "4": "The Great Serpent Nag (Nāga) sculpture in Songkhla is believed to bless visitors with good fortune and prosperity—locals often bring offerings to show respect."
+    }
+  },
+  "FooterBar": {
+    "title": "Copyright © 2025 ThaiGuide all rights reserved"
   }
 }

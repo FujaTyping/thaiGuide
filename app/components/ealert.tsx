@@ -2,6 +2,7 @@ import { TriangleAlert } from 'lucide-react'
 import React from 'react'
 import Marquee from "react-fast-marquee";
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 const Data = {
     type: "Earthquake",
@@ -10,6 +11,8 @@ const Data = {
 }
 
 function Ealert() {
+    const t = useTranslations('Crisis');
+
     return (
         <>
             {Data.type &&
@@ -19,7 +22,7 @@ function Ealert() {
                             <section className='max-w-7xl mx-auto py-1.5 px-4 items-center gap-8 relative'>
                                 <div className='flex items-center gap-2 col-span-2 bg-[#f7740a] w-fit absolute z-2 pr-4'>
                                     <TriangleAlert />
-                                    <h1 className='font-bold'>{Data.type} Alert</h1>
+                                    <h1 className='font-bold'>{t('alert')}</h1>
                                 </div>
                                 <Marquee className='z-0'>
                                     <p className='mr-40'>{Data.message}</p>
