@@ -114,5 +114,38 @@
       "pe": "Points earn",
       "pgctqrl": "Please get closer to the QR-Code location"
     }
+  },
+  "Redeem": {
+    "title": "Redeem Reward",
+    "decs": "Redeem your travel points for exclusive rewards, local products, discounts, and more. Scan, explore, and claim amazing experiences with ThaiGuide!",
+    "ptitle": "How to get a point",
+    "pdecs": "Scan a QR code at each tourist location to earn points. Collect points and redeem them for rewards.",
+    "tips": {
+      "0": "Embark on an adventure to one of our partnered tourist destinations. Each location offers unique experiences and opportunities to earn.",
+      "1": "Once you arrive, keep an eye out! The special ThaiGuide QR code will be placed in a somewhat random spot within the location. Happy hunting!",
+      "2": "Use the ThaiGuide app to scan the QR code you've discovered. Successful scans will instantly add points to your account, bringing you closer to exciting rewards."
+    },
+    "items": {
+      "notfound": "No reward data",
+      "title": "Redeem Reward",
+      "decs": "Redeem your travel points for exclusive rewards, local products, discounts, and more. Scan, explore, and claim amazing experiences with ThaiGuide!",
+      "require": "Require point",
+      "now": "Redeem now",
+      "sure": "Are you sure to redeem",
+      "error": "Error during redeem transaction.",
+      "success": "Redeem successfully.",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "needed": "You need more points",
+      "loading": "Loading user data",
+      "login": "Please login to redeem reward",
+      "your": "Your points",
+      "modal": {
+        "0": "This action cannot be undone.",
+        "1": "Confirming will deduct",
+        "2": "points",
+        "3": "from your account for the reward:"
+      }
+    }
   }
 }
