@@ -147,5 +147,72 @@
         "3": "from your account for the reward:"
       }
     }
+  },
+  "Planner": {
+    "title": "Trip Planner",
+    "beta": "Beta",
+    "decs": "Plan your perfect trip to Thailand with our intelligent AI Trip Planner. Get personalized itineraries, recommendations, and tips to make your journey unforgettable. Let our AI assist you in discovering the best of Thailand, tailored to your preferences and interests.",
+    "ai": {
+      "title": "Tell us about your trip",
+      "decs": "Help us recommend the best activities for you",
+      "input": {
+        "placeholder": "e.g., I'm looking for a mix of cultural experiences and relaxing beaches. I'm interested in temples, local markets, and snorkeling.",
+        "duration": "Duration",
+        "durationplace": "eg. 2 Days, 1 Week",
+        "type": "Group Type",
+        "typeholder": "Select group type",
+        "tag": "Tags",
+        "select": {
+          "0": "Select group type",
+          "1": "Solo",
+          "2": "Couple",
+          "3": "Family",
+          "4": "Friends"
+        },
+        "tagtoggle": "Show Tags More",
+        "tagmore": "more",
+        "tagless": "Show Less",
+        "tags": {
+          "Adventure": "Adventure",
+          "Relaxation": "Relaxation",
+          "Culture": "Culture",
+          "Foodie": "Foodie",
+          "Beaches": "Beaches",
+          "Mountains": "Mountains",
+          "City Exploration": "City Exploration",
+          "Historical Sites": "Historical Sites",
+          "Nature & Wildlife": "Nature & Wildlife",
+          "Shopping": "Shopping",
+          "Nightlife": "Nightlife",
+          "Luxury": "Luxury",
+          "Budget-friendly": "Budget-friendly",
+          "Road Trip": "Road Trip",
+          "Wellness & Spa": "Wellness & Spa"
+        },
+        "require": "Please fill in the trip description, duration, and group type.",
+        "submit": "Get Recommendations",
+        "eloading": {
+          "0": "Finding hidden gems...",
+          "1": "Crafting your itinerary...",
+          "2": "Consulting local guides...",
+          "3": "Packing virtual bags...",
+          "4": "Mapping your adventure...",
+          "5": "Checking the weather...",
+          "6": "Discovering local cuisines...",
+          "7": "Booking your dream spots...",
+          "8": "Translating local phrases...",
+          "9": "Almost there...",
+          "10": "Unveiling recommendations...",
+          "11": "Polishing your plan..."
+        }
+      },
+      "tabs": {
+        "act": "Activities",
+        "food": "Food",
+        "day": "Day",
+        "tips": "Tips"
+      },
+      "re": "Re-Generate"
+    }
   }
 }

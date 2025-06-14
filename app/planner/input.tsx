@@ -17,20 +17,21 @@ import Triploader from './triploader';
 import TextTransition, { presets } from 'react-text-transition';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "motion/react";
+import { useTranslations } from 'next-intl';
 
 const TEXTS = [
-    'Finding hidden gems...',
-    'Crafting your itinerary...',
-    'Consulting local guides...',
-    'Packing virtual bags...',
-    'Mapping your adventure...',
-    'Checking the weather...',
-    'Discovering local cuisines...',
-    'Booking your dream spots...',
-    'Translating local phrases...',
-    'Almost there...',
-    'Unveiling recommendations...',
-    'Polishing your plan...'
+    '0',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11'
 ];
 
 const Tags = [
@@ -74,6 +75,7 @@ interface TripData {
 type DataStateType = "" | "loading" | TripData;
 
 function TInput() {
+    const t = useTranslations('Planner');
     const [showAllTags, setShowAllTags] = useState(false);
     const [Data, setData] = useState<DataStateType>("");
     const [message, setMessage] = useState("");
@@ -141,42 +143,42 @@ function TInput() {
                         Data == "" ? <>
                             <div className='mt-6'>
                                 <div>
-                                    <h1 className='font-semibold text-xl'>Tell us about your trip</h1>
-                                    <p className='mt-1'>Help us recommend the best activities for you</p>
+                                    <h1 className='font-semibold text-xl'>{t('ai.title')}</h1>
+                                    <p className='mt-1'>{t('ai.decs')}</p>
                                 </div>
                                 <Textarea
-                                    placeholder="e.g., I'm looking for a mix of cultural experiences and relaxing beaches. I'm interested in temples, local markets, and snorkeling."
+                                    placeholder={`${t('ai.input.placeholder')}`}
                                     className='mt-2'
                                     value={message}
                                     onChange={(e) => setMessage(e.target.value)}
                                 />
                                 <div className='grid grid-cols-2 gap-4 mt-3'>
                                     <div>
-                                        <p className='mb-2'>Duration</p>
+                                        <p className='mb-2'>{t('ai.input.duration')}</p>
                                         <Input
-                                            placeholder='eg. 2 Days, 1 Week'
+                                            placeholder={`${t('ai.input.durationplace')}`}
                                             value={duration}
                                             onChange={(e) => setDuration(e.target.value)}
                                         />
                                     </div>
                                     <div>
-                                        <p className='mb-2'>Group Type</p>
+                                        <p className='mb-2'>{t('ai.input.type')}</p>
                                         <Select value={groupType} onValueChange={setGroupType}>
                                             <SelectTrigger className='w-full'>
-                                                <SelectValue placeholder="Select group type" />
+                                                <SelectValue placeholder={`${t('ai.input.typeholder')}`} />
                                             </SelectTrigger>
                                             <SelectContent>
-                                                <SelectItem value="Default">Select group type</SelectItem>
-                                                <SelectItem value="solo">Solo</SelectItem>
-                                                <SelectItem value="couple">Couple</SelectItem>
-                                                <SelectItem value="family">Family</SelectItem>
-                                                <SelectItem value="friends">Friends</SelectItem>
+                                                <SelectItem value="Default">{t('ai.input.select.0')}</SelectItem>
+                                                <SelectItem value="solo">{t('ai.input.select.1')}</SelectItem>
+                                                <SelectItem value="couple">{t('ai.input.select.2')}</SelectItem>
+                                                <SelectItem value="family">{t('ai.input.select.3')}</SelectItem>
+                                                <SelectItem value="friends">{t('ai.input.select.4')}</SelectItem>
                                             </SelectContent>
                                         </Select>
                                     </div>
                                 </div>
                                 <div className='mt-3'>
-                                    <p>Tags</p>
+                                    <p>{t('ai.input.tag')}</p>
                                     <div className='grid grid-cols-3 md:grid-cols-6 gap-6 mt-3'>
                                         {
                                             displayedTags.map((tag, index) => (
@@ -186,7 +188,7 @@ function TInput() {
                                                         checked={selectedTags.includes(tag)}
                                                         onCheckedChange={(checked) => handleTagChange(tag, checked)}
                                                     />
-                                                    <label htmlFor={tag} className='text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'>{tag}</label>
+                                                    <label htmlFor={tag} className='text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'>{t(`ai.input.tags.${tag}`)}</label>
                                                 </div>
                                             ))
                                         }
@@ -196,7 +198,7 @@ function TInput() {
                                             onClick={() => setShowAllTags(!showAllTags)}
                                             className="mt-4 text-[#f7740a] cursor-pointer"
                                         >
-                                            {showAllTags ? "Show Less" : `Show Tags More (${Tags.length - 8} more)`}
+                                            {showAllTags ? `${t('ai.input.tagless')}` : `${t('ai.input.tagtoggle')} (${Tags.length - 8} ${t('ai.input.tagmore')})`}
                                         </button>
                                     )}
                                 </div>
@@ -213,7 +215,7 @@ function TInput() {
                                         >
                                             <p className='mt-3 flex items-center gap-2 font-semibold text-[#f7740a]'>
                                                 <TriangleAlert />
-                                                Please fill in the trip description, duration, and group type.
+                                                {t('ai.input.require')}
                                             </p>
                                         </motion.div>
                                     </>
@@ -223,7 +225,7 @@ function TInput() {
                                         onClick={GenAI}
                                         className='bg-[#f7740a] w-full md:w-fit py-2 px-6 text-white rounded-xl mt-6 flex items-center justify-center gap-2 cursor-pointer hover:bg-[#e06809] transition-colors'
                                     >
-                                        <p className='font-semibold'>Get Recommendations</p>
+                                        <p className='font-semibold'>{t('ai.input.submit')}</p>
                                         <Brush />
                                     </button>
                                 </div>
@@ -233,7 +235,7 @@ function TInput() {
                                 Data == "loading" ? <>
                                     <div className='flex items-center justify-center py-12 flex-col gap-4'>
                                         <Triploader />
-                                        <TextTransition springConfig={presets.wobbly}><p className='font-semibold text-xl'>{TEXTS[Tindex % TEXTS.length]}</p></TextTransition>
+                                        <TextTransition springConfig={presets.wobbly}><p className='font-semibold text-xl'>{t(`ai.input.eloading.${TEXTS[Tindex % TEXTS.length]}`)}</p></TextTransition>
                                     </div>
                                 </> : <>
                                     {typeof Data === 'object' && Data !== null && (
@@ -242,15 +244,15 @@ function TInput() {
                                             <p>{Data.description}</p>
                                             <Tabs defaultValue="activities" className='mt-2'>
                                                 <TabsList className='w-full'>
-                                                    <TabsTrigger value="activities" className='cursor-pointer'>Activities</TabsTrigger>
-                                                    <TabsTrigger value="foods" className='cursor-pointer'>Food</TabsTrigger>
+                                                    <TabsTrigger value="activities" className='cursor-pointer'>{t('ai.tabs.act')}</TabsTrigger>
+                                                    <TabsTrigger value="foods" className='cursor-pointer'>{t('ai.tabs.food')}</TabsTrigger>
                                                 </TabsList>
                                                 <TabsContent value="activities" className='-mt-2'>
                                                     <div className='flex flex-col gap-8 mt-4'>
                                                         {
                                                             Data.days.map((day, index) => (
                                                                 <div key={index} className='border-l-2 border-[#f7740a] rounded-l-xl pl-4 p-2'>
-                                                                    <h1 className='font-semibold flex items-center gap-2'><MapPin className='text-[#f7740a]' /> Day {day.day}: {day.location}</h1>
+                                                                    <h1 className='font-semibold flex items-center gap-2'><MapPin className='text-[#f7740a]' /> {t('ai.tabs.day')} {day.day}: {day.location}</h1>
                                                                     <p className='mt-1'>{day.travelNotes}</p>
                                                                     <div className='flex flex-col gap-3 mt-2'>
                                                                         {
@@ -262,7 +264,7 @@ function TInput() {
                                                                             ))
                                                                         }
                                                                     </div>
-                                                                    <p className='flex flex-col md:flex-row md:items-center gap-2 mt-2'><b className='flex items-center gap-2'><Info className='text-[#f7740a]' /> Tips :</b> {day.tips}</p>
+                                                                    <p className='flex flex-col md:flex-row md:items-center gap-2 mt-2'><b className='flex items-center gap-2'><Info className='text-[#f7740a]' /> {t('ai.tabs.tips')} :</b> {day.tips}</p>
                                                                 </div>
                                                             ))
                                                         }
@@ -273,7 +275,7 @@ function TInput() {
                                                         {
                                                             Data.days.map((day, index) => (
                                                                 <div key={index} className='border-l-2 border-[#f7740a] rounded-l-xl pl-4 p-2'>
-                                                                    <h1 className='font-semibold flex items-center gap-2'><MapPin className='text-[#f7740a]' /> Day {day.day}: {day.location}</h1>
+                                                                    <h1 className='font-semibold flex items-center gap-2'><MapPin className='text-[#f7740a]' /> {t('ai.tabs.day')} {day.day}: {day.location}</h1>
                                                                     <p className='mt-1'>{day.travelNotes}</p>
                                                                     <div className='flex flex-col gap-3 mt-2'>
                                                                         {
@@ -293,7 +295,7 @@ function TInput() {
                                                     onClick={GenAI}
                                                     className='bg-[#f7740a] w-full md:w-fit py-2 px-6 text-white rounded-xl mt-6 flex items-center justify-center gap-2 cursor-pointer hover:bg-[#e06809] transition-colors'
                                                 >
-                                                    <p className='font-semibold'>Re-Generate</p>
+                                                    <p className='font-semibold'>{t('ai.re')}</p>
                                                     <RefreshCcw />
                                                 </button>
                                             </div>
