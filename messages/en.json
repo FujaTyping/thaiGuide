@@ -64,5 +64,19 @@
   },
   "FooterBar": {
     "title": "Copyright © 2025 ThaiGuide all rights reserved"
+  },
+  "WeaATem": {
+    "title": "Weather and Temperature",
+    "decs": "Thailand is located in the tropics near the equator, making the country's climate hot and humid. The average temperature throughout the country is between 18 - 38 degrees Celsius. The summer season lasts about 3 months, with the hottest weather in mid-April. After that, under the influence of the monsoon, Thailand enters the rainy season, which lasts for 6 months, and the winter season, which lasts for 3 months, respectively.",
+    "selecttext": "Province",
+    "select": {
+      "start": "Select Province...",
+      "search": "Search Province...",
+      "notfound": "No province found."
+    },
+    "tab": {
+      "thai": "Thai Meteorological Department",
+      "accu": "AccuWeather"
+    }
   }
 }
