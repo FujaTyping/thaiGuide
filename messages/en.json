@@ -78,5 +78,20 @@
       "thai": "Thai Meteorological Department",
       "accu": "AccuWeather"
     }
+  },
+  "SOS": {
+    "title": "Emergency Contacts & Safety",
+    "decs": "Your safety in Thailand is important. This page provides a list of crucial emergency phone numbers. Keep these contacts readily available for any urgent situations you might encounter.",
+    "ndtitle": "Urgent Call",
+    "number": {
+      "tpt": "Tourist Police Thailand",
+      "taot": "Tourism Authority of Thailand",
+      "pt": "Police Thailand",
+      "am": "Ambulance",
+      "tsc": "Transport Safety Center",
+      "fd": "Fire Department",
+      "ddpm": "Department of Disaster Prevention and Mitigation",
+      "csd": "Crime Suppression Division"
+    }
   }
 }
