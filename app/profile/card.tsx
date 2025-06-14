@@ -9,6 +9,7 @@ import { Coins } from 'lucide-react';
 import Loader from '../components/loader';
 import axios from 'axios';
 import { server } from "@/app/config.json";
+import { useTranslations } from 'next-intl';
 
 // Background
 import B1 from "@/assets/media/card/1.jpg";
@@ -21,6 +22,7 @@ import B6 from "@/assets/media/card/6.jpg";
 const backgrounds = [B1, B2, B3, B4, B5, B6];
 
 function Card() {
+    const t = useTranslations('Profile');
     const [user, setUser] = useState<User | null>(null);
     const [uData, setUData] = useState<any | null>(null);
     const [selectedBackground, setSelectedBackground] = useState(backgrounds[0]);
@@ -77,7 +79,7 @@ function Card() {
                             <img src={`${user.photoURL}`} alt="Profile" className='w-28 rounded-full' />
                             <div>
                                 <h1 className='text-3xl md:text-4xl font-bold mb-2'>{user.displayName}</h1>
-                                <h2 className='font-semibold'>Check-In point : {uData.checkin}</h2>
+                                <h2 className='font-semibold'>{t('cip')} : {uData.checkin}</h2>
                             </div>
                         </div>
                         <p className='text-sm'>{displayUid}</p>

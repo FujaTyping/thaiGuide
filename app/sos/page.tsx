@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     title: "ThaiGuide – Emergency & Safety"
 };
 
-function page() {
+function Page() {
     const t = useTranslations('SOS');
 
     return (
@@ -109,4 +109,4 @@ function page() {
     )
 }
 
-export default page
+export default Page

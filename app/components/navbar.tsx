@@ -27,6 +27,7 @@ import {
 import { analyticsPromise } from "@/lib/firebaseAnalytics";
 import { logEvent } from "firebase/analytics";
 import { useTranslations } from 'next-intl';
+import Flag from 'react-world-flags';
 import {
     setCookie,
 } from 'cookies-next/client';
@@ -134,8 +135,8 @@ function Navbar() {
                                     <DropdownMenuContent>
                                         <DropdownMenuLabel>{t(`list.switcherlang`)}</DropdownMenuLabel>
                                         <DropdownMenuSeparator />
-                                        <DropdownMenuItem onClick={() => { setCookie('NEXT_LOCALE', 'en', {}); window.location.reload(); }}>English</DropdownMenuItem>
-                                        <DropdownMenuItem onClick={() => { setCookie('NEXT_LOCALE', 'th', {}); window.location.reload(); }}>ภาษาไทย</DropdownMenuItem>
+                                        <DropdownMenuItem onClick={() => { setCookie('NEXT_LOCALE', 'en', {}); window.location.reload(); }}><Flag code={'us'} className="w-5 h-5 object-cover rounded-full" /> English</DropdownMenuItem>
+                                        <DropdownMenuItem onClick={() => { setCookie('NEXT_LOCALE', 'th', {}); window.location.reload(); }}><Flag code={'th'} className="w-5 h-5 object-cover rounded-full" /> ภาษาไทย</DropdownMenuItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu>
                             </motion.div>

@@ -43,6 +43,7 @@
     "react-qr-barcode-scanner": "^2.1.6",
     "react-scroll-up": "^1.4.0",
     "react-text-transition": "^3.1.0",
+    "react-world-flags": "^1.6.0",
     "swiper": "^11.2.8",
     "tailwind-merge": "^3.3.1"
   },
@@ -53,6 +54,7 @@
     "@types/node": "^20.19.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
+    "@types/react-world-flags": "^1.6.0",
     "eslint": "^9.28.0",
     "eslint-config-next": "15.3.3",
     "tailwindcss": "^4.1.10",

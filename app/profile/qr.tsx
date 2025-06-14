@@ -12,6 +12,7 @@ import React, { useState, useEffect } from 'react'; import {
 import BarcodeScanner from "react-qr-barcode-scanner";
 import Loader from '../components/loader';
 import axios from "axios";
+import { useTranslations } from 'next-intl';
 
 import NF from "@/assets/media/card/icon/notfound.png";
 import LC from "@/assets/media/card/icon/locationcorrect.png";
@@ -33,6 +34,7 @@ interface ApiCodeData {
 }
 
 function Qr() {
+    const t = useTranslations('Profile');
     const [data, setData] = useState("");
     const [codeData, setCodeData] = useState<ApiCodeData | "error" | "">("");
     const [location, setLocation] = useState<{
@@ -120,8 +122,8 @@ function Qr() {
                     </div></DialogTrigger>
                     <DialogContent>
                         <DialogHeader>
-                            <DialogTitle className='text-2xl'>Scan to recive points</DialogTitle>
-                            <p className='mb-4'>Position the QR code within the frame to scan it and receive your points.</p>
+                            <DialogTitle className='text-2xl'>{t('scan.title')}</DialogTitle>
+                            <p className='mb-4'>{t('scan.decs')}</p>
                             {
                                 data == "" ? <>
                                     {
@@ -143,7 +145,7 @@ function Qr() {
                                                         />
                                                         <p>{data}</p>
                                                     </div>
-                                                    <p className='flex items-center justify-center mt-2 text-[#f7740a] font-semibold'>{data == "" ? <span className='flex items-center gap-2'><LoaderCircle className='animate-spin' />  Waiting for code</span> : <span className='text-center'>{data}</span>}</p>
+                                                    <p className='flex items-center justify-center mt-2 text-[#f7740a] font-semibold'>{data == "" ? <span className='flex items-center gap-2'><LoaderCircle className='animate-spin' />  {t('scan.loading')}</span> : <span className='text-center'>{data}</span>}</p>
                                                 </> : <>
                                                     <div className='flex items-center flex-col justify-center gap-4'>
                                                         <motion.div
@@ -157,7 +159,7 @@ function Qr() {
                                                         >
                                                             <img src={AH.src} alt="Icon" className='w-32 translate-x-3' />
                                                         </motion.div>
-                                                        <p className='font-semibold'>Please login before recive points</p>
+                                                        <p className='font-semibold'>{t('scan.plbrp')}</p>
                                                     </div>
                                                 </>
                                             }
@@ -174,7 +176,7 @@ function Qr() {
                                                 >
                                                     <img src={NL.src} alt="Icon" className='w-32' />
                                                 </motion.div>
-                                                <p className='font-semibold'>Please grant the location access {`(${error})`}</p>
+                                                <p className='font-semibold'>{t('scan.pgls')} {`(${error})`}</p>
                                             </div>
                                         </>
                                     }
@@ -202,7 +204,7 @@ function Qr() {
                                                                 >
                                                                     <img src={NF.src} alt="Icon" className='w-32 translate-x-3' />
                                                                 </motion.div>
-                                                                <p className='font-semibold'>Look like it not a valid QR-Code</p>
+                                                                <p className='font-semibold'>{t('scan.llnavqr')}</p>
                                                             </div>
                                                         </> : <>
                                                             {
@@ -211,7 +213,7 @@ function Qr() {
                                                                     <img src={LC.src} alt="Location Correct Icon" className='w-32 translate-x-3' />
                                                                     <div className='font-semibold'>
                                                                         <p className='flex items-center gap-2'><MapPin /> {codeData.name}</p>
-                                                                        <p className='flex items-center gap-2 text-[#f7740a] mt-1'><Coins /> Points earn : +{codeData.points}</p>
+                                                                        <p className='flex items-center gap-2 text-[#f7740a] mt-1'><Coins /> {t('pe')} : +{codeData.points}</p>
                                                                     </div>
                                                                 </div> :
                                                                     <>
@@ -227,7 +229,7 @@ function Qr() {
                                                                             >
                                                                                 <img src={NL.src} alt="Icon" className='w-32' />
                                                                             </motion.div>
-                                                                            <p className='font-semibold'>Please get closer to the QR-Code location</p>
+                                                                            <p className='font-semibold'>{t('scan.pgctqrl')}</p>
                                                                         </div>
                                                                     </>
                                                             }

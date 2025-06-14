@@ -93,5 +93,26 @@
       "ddpm": "Department of Disaster Prevention and Mitigation",
       "csd": "Crime Suppression Division"
     }
+  },
+  "Profile": {
+    "title": "Profile Card",
+    "decs": "This is your personalized profile card. It displays your information, progress, and achievements within ThaiGuide.",
+    "cip": "Check-In point",
+    "notrans": "There is no transaction",
+    "transaction": {
+      "title": "Transaction",
+      "Redeem": "Redeem",
+      "Scan QR": "Scan QR"
+    },
+    "scan": {
+      "title": "Scan to recive points",
+      "decs": "Position the QR code within the frame to scan it and receive your points.",
+      "pgls": "Please grant the location access",
+      "plbrp": "Please login before recive points",
+      "loading": "Waiting for code",
+      "llnavqr": "Look like it not a valid QR-Code",
+      "pe": "Points earn",
+      "pgctqrl": "Please get closer to the QR-Code location"
+    }
   }
 }
