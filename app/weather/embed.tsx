@@ -19,12 +19,12 @@ import {
     CommandInput,
     CommandItem,
     CommandList,
-} from "@/components/ui/command"
+} from "@/components/ui/command";
 import {
     Popover,
     PopoverContent,
     PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
 import { useTranslations } from 'next-intl';
 
 const Proworks = [
@@ -140,6 +140,7 @@ interface AccuWeatherData {
 
 function Embed() {
     const t = useTranslations('WeaATem');
+    const p = useTranslations('Province');
     const [dAccu, setDAccu] = useState<AccuWeatherData | null>(null);
     const [loadingAccuWeather, setLoadingAccuWeather] = useState<boolean>(true);
     const [errorAccuWeather, setErrorAccuWeather] = useState<string | null>(null);
@@ -215,7 +216,7 @@ function Embed() {
                                                         value === framework.value ? "opacity-100" : "opacity-0"
                                                     )}
                                                 />
-                                                {framework.label}
+                                                {p(`${framework.value}`)}
                                             </CommandItem>
                                         ))}
                                     </CommandGroup>

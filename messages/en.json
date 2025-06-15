@@ -270,5 +270,140 @@
         "1": "Collect points and redeem them for rewards."
       }
     }
+  },
+  "Province": {
+    "amnat charoen": "Amnat Charoen",
+    "ang thong": "Ang Thong",
+    "bangkok": "Bangkok",
+    "bueng kan": "Bueng Kan",
+    "buriram": "Buriram",
+    "chachoengsao": "Chachoengsao",
+    "chai nat": "Chai Nat",
+    "chaiyaphum": "Chaiyaphum",
+    "chanthaburi": "Chanthaburi",
+    "chiang mai": "Chiang Mai",
+    "chiang rai": "Chiang Rai",
+    "chonburi": "Chonburi",
+    "chumphon": "Chumphon",
+    "kalasin": "Kalasin",
+    "kamphaeng phet": "Kamphaeng Phet",
+    "kanchanaburi": "Kanchanaburi",
+    "khon kaen": "Khon Kaen",
+    "krabi": "Krabi",
+    "lampang": "Lampang",
+    "lamphun": "Lamphun",
+    "loei": "Loei",
+    "lopburi": "Lopburi",
+    "mae hong son": "Mae Hong Son",
+    "maha sarakham": "Maha Sarakham",
+    "mukdahan": "Mukdahan",
+    "nakhon nayok": "Nakhon Nayok",
+    "nakhon pathom": "Nakhon Pathom",
+    "nakhon phanom": "Nakhon Phanom",
+    "nakhon ratchasima": "Nakhon Ratchasima",
+    "nakhon sawan": "Nakhon Sawan",
+    "nakhon si thammarat": "Nakhon Si Thammarat",
+    "nan": "Nan",
+    "narathiwat": "Narathiwat",
+    "nong bua lamphu": "Nong Bua Lamphu",
+    "nong khai": "Nong Khai",
+    "nonthaburi": "Nonthaburi",
+    "pathum thani": "Pathum Thani",
+    "pattani": "Pattani",
+    "phang nga": "Phang Nga",
+    "phatthalung": "Phatthalung",
+    "phayao": "Phayao",
+    "phetchabun": "Phetchabun",
+    "phetchaburi": "Phetchaburi",
+    "phichit": "Phichit",
+    "phitsanulok": "Phitsanulok",
+    "phra nakhon si ayutthaya": "Phra Nakhon Si Ayutthaya",
+    "phrae": "Phrae",
+    "phuket": "Phuket",
+    "prachinburi": "Prachinburi",
+    "prachuap khiri khan": "Prachuap Khiri Khan",
+    "ranong": "Ranong",
+    "ratchaburi": "Ratchaburi",
+    "rayong": "Rayong",
+    "roi et": "Roi Et",
+    "sa kaeo": "Sa Kaeo",
+    "sakon nakhon": "Sakon Nakhon",
+    "samut prakan": "Samut Prakan",
+    "samut sakhon": "Samut Sakhon",
+    "samut songkhram": "Samut Songkhram",
+    "saraburi": "Saraburi",
+    "satun": "Satun",
+    "songkhla": "Songkhla",
+    "sing buri": "Sing Buri",
+    "sisaket": "Sisaket",
+    "sukhothai": "Sukhothai",
+    "suphan buri": "Suphan Buri",
+    "surat thani": "Surat Thani",
+    "surin": "Surin",
+    "tak": "Tak",
+    "trang": "Trang",
+    "trat": "Trat",
+    "ubon ratchathani": "Ubon Ratchathani",
+    "udon thani": "Udon Thani",
+    "uthai thani": "Uthai Thani",
+    "uttaradit": "Uttaradit",
+    "yala": "Yala",
+    "yasothon": "Yasothon"
+  },
+  "Restaurant": {
+    "title": "Restaurant and Food",
+    "decs": "Discover the vibrant flavors of Thailand right here. Our restaurant page is your guide to the most authentic and delicious Thai culinary experiences. From street food staples to fine dining, explore a curated list of restaurants, browse menus, and find your next favorite Thai dish. Whether you're a seasoned Thai food lover or new to its delights, let us help you navigate the rich and diverse world of Thai cuisine",
+    "fillter": "Filter by Province",
+    "show": "Show",
+    "items": "items",
+    "grid": {
+      "more": "Load More",
+      "notfound": "No restaurants found for this province"
+    },
+    "select": {
+      "start": "Select Province...",
+      "search": "Search Province...",
+      "notfound": "No province found"
+    },
+    "tips": {
+      "title": "Food Tips",
+      "0": {
+        "title": "Spice Levels",
+        "decs": "Southern Thai food is typically spicier than other regions. Ask for 'mai pet' (not spicy) if needed."
+      },
+      "1": {
+        "title": "Dietary Restrictions",
+        "decs": "Vegetarian options available but may contain fish sauce. Say 'gin jay' for strict vegetarian food."
+      },
+      "2": {
+        "title": "Food Etiquette & Cultural Tips",
+        "0": {
+          "title": "Dining Etiquette",
+          "0": "Use a spoon and fork (spoon in right hand)",
+          "1": "Don't use chopsticks unless eating noodles",
+          "2": "Share dishes when eating in groups",
+          "3": "Don't finish everything on your plate",
+          "4": "Wait for elders to start eating first"
+        },
+        "1": {
+          "title": "Useful Phrases",
+          "0": "'Aroy mak' - Very delicious",
+          "1": "'Mai pet' - Not spicy",
+          "2": "'Gin jay' - Vegetarian food",
+          "3": "'Check bin' - Check please"
+        }
+      }
+    },
+    "item": {
+      "notfound": "No restaurant data",
+      "location": "Location",
+      "cost": "Average cost",
+      "rate": "Rating",
+      "open": "Open",
+      "highlight": "Highlight Dishes",
+      "map": "Get Direction",
+      "view": "Street View",
+      "noview": "Street view not available for this restaurant"
+    }
   }
 }
