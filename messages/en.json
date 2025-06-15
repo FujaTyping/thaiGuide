@@ -214,5 +214,61 @@
       },
       "re": "Re-Generate"
     }
+  },
+  "RoadTrip": {
+    "title": "Road Trip",
+    "decs": "Explore Thailand like never before with our ultimate road trip guide! Discover hidden gems, local food spots, cultural landmarks, and nature adventures—all in one unforgettable journey. Perfect for travelers seeking authentic Thai experiences.",
+    "ttitle": "Fillters by Tags",
+    "show": "Show",
+    "items": "items",
+    "notfound": "No road trips for that tag",
+    "nnotfound": "No roadtrip data",
+    "tags": {
+      "All Tags": "All Tags",
+      "Adventure": "Adventure",
+      "Cultural": "Cultural",
+      "Nature": "Nature",
+      "Relax": "Relax",
+      "Food": "Food",
+      "Historical": "Historical",
+      "Architecture": "Architecture",
+      "Photography": "Photography",
+      "Shopping": "Shopping",
+      "LocalExperience": "LocalExperience",
+      "Beach": "Beach",
+      "Mountain": "Mountain",
+      "City": "City",
+      "Village": "Village",
+      "Island": "Island",
+      "Waterfall": "Waterfall",
+      "Temple": "Temple",
+      "Market": "Market",
+      "Nightlife": "Nightlife",
+      "Festival": "Festival",
+      "Art": "Art",
+      "Music": "Music",
+      "Sports": "Sports",
+      "Wellness": "Wellness",
+      "Family": "Family",
+      "Romantic": "Romantic",
+      "Budget": "Budget",
+      "Luxury": "Luxury",
+      "OffTheBeatenPath": "OffTheBeatenPath",
+      "Popular": "Popular"
+    },
+    "view": {
+      "start": "Start",
+      "end": "End",
+      "overview": "Trip Itinerary Overview",
+      "no": "No stops available for this trip.",
+      "stop": "Stops Spot",
+      "stopt": "Stop",
+      "location": "Location",
+      "recived": "Points to recived",
+      "info": {
+        "0": "Scan a QR code at each tourist location to earn points.",
+        "1": "Collect points and redeem them for rewards."
+      }
+    }
   }
 }

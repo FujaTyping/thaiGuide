@@ -11,6 +11,7 @@ import {
     TooltipContent,
     TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useTranslations } from 'next-intl';
 
 interface Stop {
     name: string;
@@ -28,15 +29,16 @@ const TripStopsSwiper: React.FC<TripStopsSwiperProps> = ({ stops }) => {
     const [swiperInstance, setSwiperInstance] = useState<SwiperCore | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const stopEntries = Object.entries(stops);
+    const t = useTranslations('RoadTrip');
 
     if (!stopEntries || stopEntries.length === 0) {
-        return <p className="text-center py-4 text-gray-600">No stops available for this trip.</p>;
+        return <p className="text-center py-4 text-gray-600">{t('view.no')}</p>;
     }
 
     return (
         <div>
             <div className='mb-4 hidden md:flex items-center place-content-between'>
-                <p className='font-bold text-2xl md:text-3xl'>Stops Spot {`(${activeIndex + 1}/${stopEntries.length})`}</p>
+                <p className='font-bold text-2xl md:text-3xl'>{t('view.stop')} {`(${activeIndex + 1}/${stopEntries.length})`}</p>
                 <div className='flex items-center gap-2'>
                     <div className='md:flex items-center justify-center hidden'>
                         <div
@@ -69,23 +71,23 @@ const TripStopsSwiper: React.FC<TripStopsSwiperProps> = ({ stops }) => {
                             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8">
                                 <iframe src={stopData.map} className='w-full h-[500px] rounded-2xl col-span-2 order-2 md:order-1' loading="lazy"></iframe>
                                 <div className='col-span-2 order-1 md:order-2'>
-                                    <h1 className="text-2xl md:text-3xl font-semibold mb-2">Stop {stopId}: {stopData.name} {stopData.opt ? '(Optional)' : ''}</h1>
+                                    <h1 className="text-2xl md:text-3xl font-semibold mb-2">{t('view.stopt')} {stopId}: {stopData.name} {stopData.opt ? '(Optional)' : ''}</h1>
                                     <div className='flex flex-col md:flex-row md:items-center md:gap-2 py-2'>
                                         <div className='flex items-center gap-2'>
-                                            <MapPin className='text-[#f7740a]' /> <b>Location:</b>
+                                            <MapPin className='text-[#f7740a]' /> <b>{t('view.location')}:</b>
                                         </div>
                                         <p>{stopData.location}</p>
                                     </div>
                                     <div className='flex items-center gap-2 pb-2'>
                                         <div className='flex items-center gap-2'>
-                                            <Coins className='text-[#f7740a]' /> <b>Points to recived:</b>
+                                            <Coins className='text-[#f7740a]' /> <b>{t('view.recived')}:</b>
                                         </div>
                                         <p>{stopData.point}</p>
                                         <Tooltip>
                                             <TooltipTrigger><CircleHelp className='size-5 cursor-help' /></TooltipTrigger>
                                             <TooltipContent>
-                                                <p>Scan a QR code at each tourist location to earn points.</p>
-                                                <p>Collect points and redeem them for rewards.</p>
+                                                <p>{t('view.info.0')}</p>
+                                                <p>{t('view.info.1')}</p>
                                             </TooltipContent>
                                         </Tooltip>
                                     </div>

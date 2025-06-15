@@ -14,6 +14,7 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import NF from "@/assets/media/card/icon/notfound.png";
+import { useTranslations } from 'next-intl';
 
 interface RoadtripItem {
     id: string;
@@ -26,13 +27,16 @@ interface RoadtripItem {
 const dTags = [
     "Adventure", "Cultural", "Nature", "Relax", "Food", "Historical",
     "Architecture", "Photography", "Shopping",
-    "LocalExperience", "Beach", "Mountain", "City", "Village", "Island", "Waterfall", "Temple", "Market", "Nightlife", "Festival", "Art", "Music", "Sports", "Wellness", "Family", "Romantic", "Budget", "Luxury", "OffTheBeatenPath", "Popular"
-
+    "LocalExperience", "Beach", "Mountain", "City",
+    "Village", "Island", "Waterfall", "Temple", "Market", "Nightlife",
+    "Festival", "Art", "Music", "Sports", "Wellness", "Family", "Romantic",
+    "Budget", "Luxury", "OffTheBeatenPath", "Popular"
 ];
 
 const ALL_TAGS = "All";
 
 function Grid() {
+    const t = useTranslations('RoadTrip');
     const [data, setData] = useState<RoadtripItem[]>([]);
     const [selectedTag, setSelectedTag] = useState<string>(ALL_TAGS);
 
@@ -70,23 +74,23 @@ function Grid() {
         <>
             <div className='mt-6 flex flex-col md:flex-row md:items-center place-content-between'>
                 <div className='flex items-center gap-2'>
-                    <p className='font-semibold'>Fillters by Tags : </p>
+                    <p className='font-semibold'>{t('ttitle')} : </p>
                     <Select onValueChange={handleTagChange} defaultValue={ALL_TAGS}>
                         <SelectTrigger className="w-[200px]">
                             <SelectValue placeholder="Select a Tag" />
                         </SelectTrigger>
                         <SelectContent>
-                            <SelectItem value={ALL_TAGS}>All Tags</SelectItem>
+                            <SelectItem value={ALL_TAGS}>{t('tags.All Tags')}</SelectItem>
                             {
                                 dTags.map((tag, index) => (
-                                    <SelectItem key={index} value={tag}>{tag}</SelectItem>
+                                    <SelectItem key={index} value={tag}>{t(`tags.${tag}`)}</SelectItem>
                                 ))
                             }
                         </SelectContent>
                     </Select>
                 </div>
                 <div>
-                    <b>Show {filteredData.length} {filteredData.length === 1 ? "item" : "items"}</b>
+                    <b>{t('show')} {filteredData.length} {t('items')}</b>
                 </div>
             </div>
             {filteredData.length > 0 ? (
@@ -128,7 +132,7 @@ function Grid() {
                     >
                         <img src={NF.src} alt="Icon" className='w-32 translate-x-3' />
                     </motion.div>
-                    <p className='font-semibold'>No road trips for that tag</p>
+                    <p className='font-semibold'>{t('notfound')}</p>
                 </div>
             )}
         </>
