@@ -31,6 +31,15 @@ import Flag from 'react-world-flags';
 import {
     setCookie,
 } from 'cookies-next/client';
+import {
+    Dialog,
+    DialogClose,
+    DialogContent,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+} from "@/components/ui/dialog";
+import { Button } from '@/components/ui/button';
 
 const NavItems = [
     {
@@ -55,6 +64,8 @@ function Navbar() {
     const t = useTranslations('NavBar');
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
+    const [modalO, setModalO] = useState(false);
+    const [wlang, setWlang] = useState('us');
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -136,7 +147,7 @@ function Navbar() {
                                         <DropdownMenuLabel>{t(`list.switcherlang`)}</DropdownMenuLabel>
                                         <DropdownMenuSeparator />
                                         <DropdownMenuItem onClick={() => { setCookie('NEXT_LOCALE', 'en', {}); window.location.reload(); }}><Flag code={'us'} className="w-5 h-5 object-cover rounded-full" /> English</DropdownMenuItem>
-                                        <DropdownMenuItem onClick={() => { setCookie('NEXT_LOCALE', 'th', {}); window.location.reload(); }}><Flag code={'th'} className="w-5 h-5 object-cover rounded-full" /> ภาษาไทย</DropdownMenuItem>
+                                        <DropdownMenuItem onClick={() => { setWlang('th'); setModalO(true); }}><Flag code={'th'} className="w-5 h-5 object-cover rounded-full" /> ภาษาไทย</DropdownMenuItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu>
                             </motion.div>
@@ -187,6 +198,22 @@ function Navbar() {
                     </div>
                 </nav>
             </main>
+            <Dialog open={modalO} onOpenChange={() => setModalO(false)}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle className='text-2xl'>{t('lang.title')}</DialogTitle>
+                        <p>
+                            {t('lang.d0')} <b>{wlang}</b> {t('lang.d1')}
+                        </p>
+                    </DialogHeader>
+                    <DialogFooter>
+                        <DialogClose asChild className='p-2 px-5 rounded-xl border-2 cursor-pointer'>
+                            <Button variant="outline">{t('lang.cancel')}</Button>
+                        </DialogClose>
+                        <Button className='bg-[#f7740a] hover:bg-white hover:text-[#f7740a] hover:border-[#f7740a] border-2 border-white text-white p-2 px-5 rounded-xl cursor-pointer' type="submit" onClick={() => { setCookie('NEXT_LOCALE', wlang, {}); setModalO(false); window.location.reload(); }}>{t('lang.change')}</Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
         </>
     )
 }
