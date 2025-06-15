@@ -405,5 +405,35 @@
       "view": "Street View",
       "noview": "Street view not available for this restaurant"
     }
+  },
+  "Activities": {
+    "title": "Activity and Events",
+    "decs": "Discover a vibrant array of activities and immerse yourself in the exciting events Thailand has to offer. From cultural festivals to adventurous excursions, find your next unforgettable experience here",
+    "select": {
+      "start": "Select Province...",
+      "search": "Search Province...",
+      "notfound": "No province found"
+    },
+    "fillter": "Filter by Province",
+    "show": "Show",
+    "items": "items",
+    "more": "Load More",
+    "notfound": "No activity found for this province",
+    "item": {
+      "notfound": "No activity data",
+      "cost": "Average cost",
+      "rate": "Rating",
+      "visit": "Best to visit",
+      "call": "Call",
+      "point": "Point to recive",
+      "infop": {
+        "0": "Scan a QR code at each tourist location to earn points",
+        "1": "Collect points and redeem them for rewards"
+      },
+      "web": "Website",
+      "click": "Click to open",
+      "forecast": "Local Weather Forecast",
+      "map": "Map Location"
+    }
   }
 }
