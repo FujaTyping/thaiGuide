@@ -1,11 +1,11 @@
 import type { ElysiaApp } from "../../index";
 import { t } from "elysia";
-import { gemini15Flash, googleAI } from '@genkit-ai/googleai';
+import { gemini20Flash, googleAI } from '@genkit-ai/googleai';
 import { genkit } from 'genkit';
 
 const ai = genkit({
     plugins: [googleAI()],
-    model: gemini15Flash,
+    model: gemini20Flash,
 });
 
 const GetByIdBodySchema = t.Object({
