@@ -409,6 +409,7 @@
       "location": "Location",
       "cost": "Average cost",
       "rate": "Rating",
+      "province": "Province",
       "open": "Open",
       "highlight": "Highlight Dishes",
       "map": "Get Direction",
@@ -434,6 +435,7 @@
       "cost": "Average cost",
       "rate": "Rating",
       "visit": "Best to visit",
+      "province": "Province",
       "call": "Call",
       "point": "Point to recive",
       "infop": {
@@ -470,6 +472,14 @@
         "title": "SDG 11: Sustainable Cities and Communities",
         "decs": "The project helps reduce overcrowding in popular destinations by promoting alternative routes and experiences, supporting balanced and sustainable urban and community development."
       }
+    }
+  },
+  "Provincess": {
+    "item": {
+      "notfound": "No data for that province",
+      "slogan": "Slogan",
+      "softhight": "Softpower & Highlight",
+      "location": "Location"
     }
   }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import fetchData from './fetch';
 import NF from "@/assets/media/card/icon/notfound.png";
 import Loader from '@/app/components/loader';
-import { Banknote, Coins, MapPinned, Phone, Star, Map, CircleHelp } from 'lucide-react';
+import { Banknote, Coins, MapPinned, Phone, Star, Map, CircleHelp, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import type { Metadata } from "next";
 import {
@@ -68,7 +68,16 @@ async function page({ params }: Props) {
                     <h1 className='font-bold text-4xl'>{data.title}</h1>
                     <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
                 </div>
-                <p className='mt-4'>{data.decs}</p>
+                <Link href={`/province/${data.province}`} className='mt-3'>
+                    <div className='flex flex-row md:items-center gap-1 md:gap-2 mt-3'>
+                        <div className='flex items-center gap-2'>
+                            <MapPin className='font-semibold text-[#f7740a]' />
+                            <h1 className='font-semibold'>{t('item.province')} : </h1>
+                        </div>
+                        <p>{data.province.charAt(0).toUpperCase() + data.province.slice(1)}</p>
+                    </div>
+                </Link>
+                <p className='mt-2'>{data.decs}</p>
                 <div className='grid grid-cols-2 md:grid-cols-3 py-8 gap-8'>
                     <div className='flex flex-col gap-1 items-center justify-center'>
                         <Banknote className='text-[#f7740a] size-14' />
