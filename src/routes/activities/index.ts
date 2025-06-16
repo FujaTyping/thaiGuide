@@ -1,10 +1,14 @@
 import type { ElysiaApp } from "../../index";
-import { collection, query, getDocs, DocumentData, doc, getDoc } from "firebase/firestore";
+import { collection, query, getDocs, DocumentData, doc, getDoc, where } from "firebase/firestore";
 import db from "../../lib/firebase";
 import { t } from "elysia";
 
 const GetByIdBodySchema = t.Object({
     id: t.String()
+});
+
+const GetByProvinceBodySchema = t.Object({
+    province: t.String()
 });
 
 const getInfoHandler = async () => {
@@ -59,8 +63,58 @@ const getIdInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.
     }
 };
 
+const getProvinceInfoHandler = async ({ body, set }: { body: typeof GetByProvinceBodySchema.static, set: { status: number | string } }) => {
+    const targetProvince = body.province;
+
+    try {
+        const activitiesCollectionRef = collection(db, "activities");
+        const q = query(activitiesCollectionRef, where("province", "==", targetProvince));
+        const querySnapshot = await getDocs(q);
+
+        if (querySnapshot.empty) {
+            set.status = 404;
+            return { message: "No data found for the specified province" };
+        }
+
+        const results: DocumentData[] = [];
+
+        for (const docSnap of querySnapshot.docs) {
+            const activityData = docSnap.data();
+            const activityId = docSnap.id;
+
+            const dRef = collection(db, "activities", activityId, "details");
+            const dSnapshot = await getDocs(dRef);
+            let details = {};
+
+            if (!dSnapshot.empty) {
+                details = dSnapshot.docs.reduce((acc: any, detailDoc) => {
+                    acc[detailDoc.id] = detailDoc.data().value;
+                    return acc;
+                }, {});
+            }
+
+            results.push({
+                id: activityId,
+                ...activityData,
+                details
+            });
+        }
+
+        set.status = 200;
+        return results;
+
+    } catch (error) {
+        console.error("Error fetching activities by province:", error);
+        set.status = 500;
+        return { error: "An error occurred while fetching activities by province." };
+    }
+};
+
 export default (app: ElysiaApp) => app
     .get("/", getInfoHandler)
     .put("/getbyid", getIdInfoHandler, {
         body: GetByIdBodySchema
+    })
+    .put("/getbyprovince", getProvinceInfoHandler, {
+        body: GetByProvinceBodySchema
     });
