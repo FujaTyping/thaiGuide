@@ -30,7 +30,8 @@
       "activity": "Activity",
       "sos": "SOS",
       "weather": "Weather",
-      "vat": "Vat Refund"
+      "vat": "Vat Refund",
+      "SDGs": "SDGs"
     }
   },
   "IndexRus": {
@@ -71,7 +72,8 @@
     }
   },
   "FooterBar": {
-    "title": "Copyright © 2025 ThaiGuide all rights reserved"
+    "title": "Copyright © 2025 ThaiGuide all rights reserved",
+    "sdg": "Our Commitment to Sustainable Development Goals"
   },
   "WeaATem": {
     "title": "Weather and Temperature",
@@ -442,6 +444,32 @@
       "click": "Click to open",
       "forecast": "Local Weather Forecast",
       "map": "Map Location"
+    }
+  },
+  "SDG": {
+    "title": "Sustainable Development Goals (SDGs)",
+    "decs": "ThaiGuide is committed to supporting the United Nations' Sustainable Development Goals (SDGs). Discover how responsible tourism can create a positive impact on communities, the environment, and the economy, and how we contribute to building a better future through our various initiatives",
+    "goal": {
+      "1": {
+        "title": "SDG 1: No Poverty",
+        "decs": "By encouraging travelers to visit lesser-known local attractions, the platform helps generate income for underrepresented communities and supports grassroots economic development."
+      },
+      "8": {
+        "title": "SDG 8: Decent Work and Economic Growth",
+        "decs": "The use of gamification and digital rewards boosts engagement in the tourism sector, fostering youth involvement and empowering local entrepreneurs through increased visibility and opportunity."
+      },
+      "9": {
+        "title": "SDG 9: Industry, Innovation, and Infrastructure",
+        "decs": "The innovation leverages emerging technologies—such as AI and mission-based tourism experiences—to create a smarter, more interactive tourism infrastructure."
+      },
+      "10": {
+        "title": "SDG 10: Reduced Inequalities",
+        "decs": "By promoting destinations beyond mainstream tourist spots, the platform helps bridge the gap between urban and rural economies and increases tourism access for all communities."
+      },
+      "11": {
+        "title": "SDG 11: Sustainable Cities and Communities",
+        "decs": "The project helps reduce overcrowding in popular destinations by promoting alternative routes and experiences, supporting balanced and sustainable urban and community development."
+      }
     }
   }
 }
