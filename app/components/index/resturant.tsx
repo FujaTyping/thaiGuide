@@ -11,6 +11,7 @@ import SwiperCore from 'swiper';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 const textVariants = {
   hovered: { y: -15 }
@@ -117,7 +118,7 @@ function Resturant() {
                           <div
                             className="w-full h-[350px] md:h-[500px] rounded-4xl overflow-hidden relative"
                           >
-                            <img className='w-full h-full object-cover' src={item.thumnails} alt={item.name} />
+                            <Image width={1080} height={1280} className='w-full h-full object-cover' src={item.thumnails} alt={item.name} />
                             <div className="absolute inset-0 bg-gradient-to-t from-[#f7740a]/70 via-transparent to-transparent"></div>
                           </div>
                           <motion.div

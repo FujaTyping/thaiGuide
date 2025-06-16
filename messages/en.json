@@ -37,7 +37,8 @@
     "headder": "Resturant"
   },
   "IndexAct": {
-    "headder": "Activity"
+    "headder": "Activity",
+    "no": "No activities available at the moment"
   },
   "IndexTrip": {
     "headder": "Road Trip Itineraries"
