@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import TripStopsSwiper from './swipez';
 import { Badge } from "@/components/ui/badge";
 import { getTranslations } from 'next-intl/server';
+import Link from 'next/link';
 
 type Props = {
     params: Promise<{ tripid: string }>
@@ -78,6 +79,15 @@ async function page({ params }: Props) {
                         <p>{data.long}</p>
                     </div>
                 </div>
+                <Link href={`/province/${data.province}`}>
+                    <div className='flex flex-row md:items-center gap-1 md:gap-2 mt-3'>
+                        <div className='flex items-center gap-2'>
+                            <MapPin className='font-semibold text-[#f7740a]' />
+                            <h1 className='font-semibold'>{t('province')} : </h1>
+                        </div>
+                        <p>{data.province.charAt(0).toUpperCase() + data.province.slice(1)}</p>
+                    </div>
+                </Link>
                 <p className='mt-2'>{data.decs}</p>
                 <div className='flex items-center gap-2 mt-2 mb-10'>
                     {
