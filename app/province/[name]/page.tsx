@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import { getTranslations } from 'next-intl/server';
 import { MapPin, Quote } from 'lucide-react';
 import Activities from './activities';
+import Quiz from './quiz';
 
 type Props = {
     params: Promise<{ name: string }>
@@ -101,6 +102,7 @@ async function page({ params }: Props) {
                 </div>
             </main>
             <Activities data={data.name.toLowerCase()} />
+            <Quiz data={data.name.toLowerCase()} />
         </>
     )
 }

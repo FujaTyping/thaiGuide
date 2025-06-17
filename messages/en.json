@@ -482,5 +482,18 @@
       "softhight": "Softpower & Highlight",
       "location": "Location"
     }
+  },
+  "EmQuiz": {
+    "title": "Quiz Time!",
+    "decs": "Ready to test your knowledge about",
+    "sbtn": "Start Quiz",
+    "error": "Error Loading Quiz",
+    "errorbtn": "Try Again",
+    "finish": "Quiz Finished!",
+    "score": "Your score",
+    "restartbtn": "Restart Quiz",
+    "q": "Question",
+    "next": "Next Question",
+    "fquiz": "Finish Quiz"
   }
 }
