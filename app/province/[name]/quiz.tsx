@@ -184,7 +184,7 @@ function Quiz({ data: provinceName }: QuizProps) {
                         {t('score')} : {score} / {quizData.questions.length} {`(${((score / quizData.questions.length) * 100).toFixed(0)}%)`}
                     </p>
                     {!user && (
-                        <div className='text-[#f7740a] flex items-center justify-center gap-2 mb-4'>
+                        <div className='text-white flex items-center justify-center gap-2 mb-4'>
                             <TriangleAlert />
                             <p className='font-semibold'>{t('nolog')}</p>
                         </div>
@@ -258,7 +258,7 @@ function Quiz({ data: provinceName }: QuizProps) {
             <motion.div key={key} {...motionAnimProps}>
                 <h1 className="md:text-3xl text-2xl font-bold mb-2">{t('title')}</h1>
                 <p>
-                    {t('decs')} {provinceName}?
+                    {t('decs')} {provinceName.charAt(0).toUpperCase() + provinceName.slice(1)}?
                 </p>
                 <button
                     onClick={handleStartQuiz}
