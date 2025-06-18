@@ -494,6 +494,7 @@
     "restartbtn": "Restart Quiz",
     "q": "Question",
     "next": "Next Question",
-    "fquiz": "Finish Quiz"
+    "fquiz": "Finish Quiz",
+    "nolog": "Not logged in. Points not awarded"
   }
 }

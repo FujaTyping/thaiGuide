@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useState } from 'react';
-import { CheckCircle, LibraryBig, XCircle } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { CheckCircle, LibraryBig, TriangleAlert, XCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import Loader from '@/app/components/loader';
 import NF from "@/assets/media/card/icon/notfound.png";
 import { useTranslations } from 'next-intl';
+import { User, onAuthStateChanged } from "firebase/auth";
+import auth from "@/lib/firebaseAuth";
 
 interface QuizProps {
     data: string;
@@ -36,6 +38,22 @@ function Quiz({ data: provinceName }: QuizProps) {
     const [status, setStatus] = useState<QuizStatus>('idle');
     const [selectedAnswerText, setSelectedAnswerText] = useState<string | null>(null);
     const t = useTranslations('EmQuiz');
+    const [user, setUser] = useState<User | null>(null);
+    const [isAuthLoading, setIsAuthLoading] = useState(true);
+
+    useEffect(() => {
+        setIsAuthLoading(true);
+        const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+            if (currentUser) {
+                setUser(currentUser);
+            } else {
+                setUser(null);
+            }
+            setIsAuthLoading(false);
+        });
+
+        return () => unsubscribe();
+    }, []);
 
     const handleStartQuiz = async () => {
         setStatus('loading');
@@ -162,9 +180,15 @@ function Quiz({ data: provinceName }: QuizProps) {
             return (
                 <motion.div key={key} {...motionAnimProps}>
                     <h2 className="md:text-3xl text-2xl font-bold mb-2">{t('finish')}</h2>
-                    <p className="text-xl mb-4">
+                    <p className="text-xl mb-3">
                         {t('score')} : {score} / {quizData.questions.length} {`(${((score / quizData.questions.length) * 100).toFixed(0)}%)`}
                     </p>
+                    {!user && (
+                        <div className='text-[#f7740a] flex items-center justify-center gap-2 mb-4'>
+                            <TriangleAlert />
+                            <p className='font-semibold'>{t('nolog')}</p>
+                        </div>
+                    )}
                     <button
                         onClick={handleRestartQuiz}
                         className="bg-[#f7740a] text-white px-4 py-2 rounded-lg md:w-fit w-full cursor-pointer"
@@ -245,6 +269,18 @@ function Quiz({ data: provinceName }: QuizProps) {
             </motion.div>
         );
     };
+
+    if (isAuthLoading) {
+        return (
+            <div className='max-w-7xl mx-auto px-4 py-6'>
+                <div className='w-full border-[3px] border-[#f7740a] py-6 px-4 rounded-xl text-center'>
+                    <div className='flex items-center justify-center rounded-xl'>
+                        <Loader />
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className='max-w-7xl mx-auto px-4 py-6'>
