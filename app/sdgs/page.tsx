@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import type { Metadata } from "next";
 import { useTranslations } from 'next-intl';
+import Didyouknow from "@/app/components/didyouknow";
 
 export const metadata: Metadata = {
     title: "ThaiGuide – Sustainable Development Goals"
@@ -60,6 +61,7 @@ function Page() {
                     ))}
                 </div>
             </main>
+            <Didyouknow />
         </>
     )
 }

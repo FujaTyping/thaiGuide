@@ -2,6 +2,7 @@ import React from 'react';
 import type { Metadata } from "next";
 import Grid from './grid';
 import { useTranslations } from 'next-intl';
+import Didyouknow from "@/app/components/didyouknow";
 
 export const metadata: Metadata = {
     title: "ThaiGuide – Activity and Events"
@@ -22,6 +23,7 @@ function Page() {
                 </p>
                 <Grid />
             </main>
+            <Didyouknow />
         </>
     )
 }

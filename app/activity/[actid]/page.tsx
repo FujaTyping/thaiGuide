@@ -11,6 +11,7 @@ import {
     TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { getTranslations } from 'next-intl/server';
+import Didyouknow from "@/app/components/didyouknow";
 
 type Props = {
     params: Promise<{ actid: string }>
@@ -141,6 +142,7 @@ async function page({ params }: Props) {
                 </div>
                 <iframe src={data.mapembed} className='w-full h-[500px] rounded-2xl' loading="lazy"></iframe>
             </main>
+            <Didyouknow />
         </>
     )
 }

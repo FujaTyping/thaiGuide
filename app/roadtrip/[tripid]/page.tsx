@@ -8,6 +8,7 @@ import TripStopsSwiper from './swipez';
 import { Badge } from "@/components/ui/badge";
 import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
+import Didyouknow from "@/app/components/didyouknow";
 
 type Props = {
     params: Promise<{ tripid: string }>
@@ -105,6 +106,7 @@ async function page({ params }: Props) {
                 </div>
                 <iframe src={data.map} className='w-full h-[500px] rounded-2xl' loading="lazy"></iframe>
             </main>
+            <Didyouknow />
         </>
     )
 }

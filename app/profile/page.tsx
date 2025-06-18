@@ -4,6 +4,7 @@ import Details from './details';
 import Qr from './qr';
 import type { Metadata } from "next";
 import { useTranslations } from 'next-intl';
+import Didyouknow from "@/app/components/didyouknow";
 
 export const metadata: Metadata = {
     title: "ThaiGuide – My Profile"
@@ -27,6 +28,7 @@ function Page() {
                 <Details />
             </main>
             <Qr />
+            <Didyouknow />
         </>
     )
 }

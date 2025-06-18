@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import type { Metadata } from "next";
+import Didyouknow from "@/app/components/didyouknow";
 
 import OOFF from "@/assets/media/sos/1151.png";
 import OSST from "@/assets/media/sos/1672.png";
@@ -105,6 +106,7 @@ function Page() {
                     }
                 </div>
             </main>
+            <Didyouknow />
         </>
     )
 }

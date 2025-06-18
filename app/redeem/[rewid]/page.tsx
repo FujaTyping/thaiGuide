@@ -5,6 +5,7 @@ import Loader from '@/app/components/loader';
 import type { Metadata } from "next";
 import Details from './details';
 import { getTranslations } from 'next-intl/server';
+import Didyouknow from "@/app/components/didyouknow";
 
 type Props = {
     params: Promise<{ rewid: string }>
@@ -57,6 +58,7 @@ async function Page({ params }: Props) {
                 <p className='mt-3'>{t('items.decs')}</p>
                 <Details data={data} />
             </main>
+            <Didyouknow />
         </>
     )
 }

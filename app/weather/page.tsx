@@ -2,6 +2,7 @@ import React from 'react';
 import Embed from './embed';
 import type { Metadata } from "next";
 import { useTranslations } from 'next-intl';
+import Didyouknow from "@/app/components/didyouknow";
 
 export const metadata: Metadata = {
     title: "ThaiGuide – Weather and Temperature"
@@ -22,6 +23,7 @@ function Page() {
                     <Embed />
                 </div>
             </main>
+            <Didyouknow />
         </>
     )
 }

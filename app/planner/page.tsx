@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import TInput from './input';
 import { Badge } from "@/components/ui/badge";
 import { useTranslations } from 'next-intl';
+import Didyouknow from "@/app/components/didyouknow";
 
 export const metadata: Metadata = {
     title: "ThaiGuide – Trip Planner"
@@ -21,6 +22,7 @@ function Page() {
                 <p className='mt-4'>{t('decs')}</p>
                 <TInput />
             </main>
+            <Didyouknow />
         </>
     )
 }

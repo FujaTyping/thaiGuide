@@ -6,6 +6,7 @@ import { ArrowRight, Banknote, MapPin, MapPinned, Sparkle, Star } from 'lucide-r
 import type { Metadata } from "next";
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
+import Didyouknow from "@/app/components/didyouknow";
 
 type Props = {
     params: Promise<{ resid: string }>
@@ -134,6 +135,7 @@ async function page({ params }: Props) {
                     </>
                 }
             </main>
+            <Didyouknow />
         </>
     )
 }

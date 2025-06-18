@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Grid from './grid';
 import { Flame, Leaf, UtensilsCrossed } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import Didyouknow from "@/app/components/didyouknow";
 
 export const metadata: Metadata = {
     title: "ThaiGuide – Restaurant and Food"
@@ -61,6 +62,7 @@ function Page() {
                     </div>
                 </div>
             </main>
+            <Didyouknow />
         </>
     )
 }

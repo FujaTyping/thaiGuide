@@ -168,7 +168,7 @@ function Quiz({ data: provinceName }: QuizProps) {
                     <p className='font-semibold text-2xl mb-2'>{t('error')}</p>
                     <button
                         onClick={handleStartQuiz}
-                        className="bg-[#f7740a] text-white px-6 py-2 rounded-lg md:w-fit w-full cursor-pointer"
+                        className="text-black bg-white px-6 py-2 rounded-lg md:w-fit w-full cursor-pointer"
                     >
                         {t('errorbtn')}
                     </button>
@@ -191,7 +191,7 @@ function Quiz({ data: provinceName }: QuizProps) {
                     )}
                     <button
                         onClick={handleRestartQuiz}
-                        className="bg-[#f7740a] text-white px-4 py-2 rounded-lg md:w-fit w-full cursor-pointer"
+                        className="text-black bg-white px-4 py-2 rounded-lg md:w-fit w-full cursor-pointer"
                     >
                         {t('restartbtn')}
                     </button>
@@ -211,7 +211,7 @@ function Quiz({ data: provinceName }: QuizProps) {
                         <p className="text-xl font-semibold mb-4">{currentQuestion.questionText}</p>
                         <div className="space-y-3">
                             {currentQuestion.choices.map((choice, index) => {
-                                let buttonClass = "w-full text-left p-3 rounded-lg border-2 transition-colors duration-150 ease-in-out flex items-center justify-between ";
+                                let buttonClass = "w-full text-left p-3 rounded-lg transition-colors duration-150 ease-in-out flex items-center justify-between ";
                                 let icon = null;
 
                                 if (selectedAnswerText) {
@@ -220,20 +220,20 @@ function Quiz({ data: provinceName }: QuizProps) {
 
                                     if (isThisChoiceSelected) {
                                         if (isThisChoiceCorrect) {
-                                            buttonClass += "bg-[#f7740a] text-white border-[#f7740a]";
-                                            icon = <CheckCircle className="h-5 w-5 text-white" />;
+                                            buttonClass += "bg-white text-black";
+                                            icon = <CheckCircle className="h-5 w-5 text-[#f7740a]" />;
                                         } else {
-                                            buttonClass += "bg-[#f7740a] text-white border-[#f7740a]";
-                                            icon = <XCircle className="h-5 w-5 text-white" />;
+                                            buttonClass += "bg-gray-200 text-black";
+                                            icon = <XCircle className="h-5 w-5 text-[#f7740a]" />;
                                         }
                                     } else if (isThisChoiceCorrect) {
-                                        buttonClass += "bg-gray-100 border-gray-200 text-gray-700 opacity-70 cursor-not-allowed";
-                                        icon = <CheckCircle className="h-5 w-5 text-black" />;
+                                        buttonClass += "text-black bg-white cursor-not-allowed";
+                                        icon = <CheckCircle className="h-5 w-5 text-[#f7740a]" />;
                                     } else {
-                                        buttonClass += "bg-gray-100 border-gray-200 text-gray-700 opacity-70 cursor-not-allowed";
+                                        buttonClass += "bg-gray-200 text-black cursor-not-allowed";
                                     }
                                 } else {
-                                    buttonClass += "bg-white border-gray-200 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#f7740a] focus:border-transparent";
+                                    buttonClass += "bg-white text-black";
                                 }
                                 return (
                                     <button key={index} onClick={() => handleAnswerSelect(choice)} disabled={!!selectedAnswerText} className={`${buttonClass.trim()} cursor-pointer`}>
@@ -246,7 +246,7 @@ function Quiz({ data: provinceName }: QuizProps) {
                     </div>
                     {selectedAnswerText && (
                         <div className="text-center mt-6">
-                            <button onClick={handleNextQuestion} className="bg-[#f7740a] text-white rounded-lg px-4 py-2 md:w-fit w-full">
+                            <button onClick={handleNextQuestion} className="text-black bg-white rounded-lg px-4 py-2 md:w-fit w-full">
                                 {currentQuestionIndex < quizData.questions.length - 1 ? t('next') : t('fquiz')}
                             </button>
                         </div>
@@ -262,7 +262,7 @@ function Quiz({ data: provinceName }: QuizProps) {
                 </p>
                 <button
                     onClick={handleStartQuiz}
-                    className="bg-[#f7740a] text-white px-4 py-2 rounded-lg mt-4 md:w-fit w-full"
+                    className="bg-white text-black px-4 py-2 rounded-lg mt-4 md:w-fit w-full"
                 >
                     {t('sbtn')}
                 </button>
@@ -273,7 +273,7 @@ function Quiz({ data: provinceName }: QuizProps) {
     if (isAuthLoading) {
         return (
             <div className='max-w-7xl mx-auto px-4 py-6'>
-                <div className='w-full border-[3px] border-[#f7740a] py-6 px-4 rounded-xl text-center'>
+                <div className='w-full bg-[#f7740a] py-6 px-4 rounded-xl text-center'>
                     <div className='flex items-center justify-center rounded-xl'>
                         <Loader />
                     </div>
@@ -284,7 +284,7 @@ function Quiz({ data: provinceName }: QuizProps) {
 
     return (
         <div className='max-w-7xl mx-auto px-4 py-6'>
-            <div className='w-full border-[3px] border-[#f7740a] py-6 px-4 rounded-xl text-center'>
+            <div className='w-full bg-[#f7740a] py-6 px-4 rounded-xl text-center text-white'>
                 <AnimatePresence>
                     {(status !== 'loading' && status !== 'error') && (
                         <motion.div

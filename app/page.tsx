@@ -5,6 +5,7 @@ import Activities from "./components/index/activities";
 import Faq from "./components/index/faq";
 import Roadtrip from "./components/index/roadtrip";
 import Resturant from "./components/index/resturant";
+import Didyouknow from "./components/didyouknow";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Roadtrip />
       <Activities />
       <Faq />
+      <Didyouknow />
     </>
   );
 }
