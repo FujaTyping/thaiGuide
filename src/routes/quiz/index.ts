@@ -3,7 +3,7 @@ import { t } from "elysia";
 import { gemini20Flash, googleAI } from '@genkit-ai/googleai';
 import { genkit } from 'genkit';
 import db from "../../lib/firebase";
-import { collection, query, where, getDocs, limit } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, setDoc, serverTimestamp } from "firebase/firestore";
 
 const ai = genkit({
     plugins: [googleAI()],
@@ -14,9 +14,13 @@ const QuizRequestSchema = t.Object({
     province: t.String()
 });
 
-const QuizCompletionCheckSchema = t.Object({
+const QuizCheckSchema = t.Object({
     userId: t.String(),
-    province: t.String()
+    quizName: t.String()
+});
+
+const QuizUserSchema = t.Object({
+    userId: t.String()
 });
 
 const generateQuizHandler = async ({ body, set }: { body: typeof QuizRequestSchema.static, set: { status: number | string } }) => {
@@ -88,44 +92,70 @@ const generateQuizHandler = async ({ body, set }: { body: typeof QuizRequestSche
     }
 };
 
-const checkQuizCompletionHandler = async ({ body, set }: { body: typeof QuizCompletionCheckSchema.static, set: { status: number | string } }) => {
-    const { userId, province } = body;
+const checkQuizCompletionHandler = async ({ body, set }: { body: typeof QuizCheckSchema.static, set: { status: number | string } }) => {
+    const { userId, quizName } = body;
 
-    if (!userId || !province) {
+    if (!userId || !quizName) {
         set.status = 400;
-        return { error: "userId and province are required." };
+        return { error: "userId and quizName are required." };
     }
 
     try {
-        const completionsRef = collection(db, "userQuizCompletions");
-        const q = query(
-            completionsRef,
-            where("userId", "==", userId),
-            where("province", "==", province),
-            limit(1)
-        );
+        const completionDocRef = doc(db, "Users", userId, "quiz", quizName);
+        const docSnap = await getDoc(completionDocRef);
 
-        const querySnapshot = await getDocs(q);
-
-        if (!querySnapshot.empty) {
-            set.status = 200;
-            return {
-                userId,
-                province,
-                hasCompleted: true,
-            };
+        if (docSnap.exists()) {
+            set.status = 409;
+            return { error: `You have already responded to the quiz for ${quizName}.` };
         } else {
-            set.status = 200;
+            await setDoc(completionDocRef, {
+                completedAt: serverTimestamp(),
+            });
+            set.status = 201;
             return {
-                userId,
-                province,
-                hasCompleted: false
+                message: `Quiz participation for ${quizName} recorded successfully.`,
             };
         }
     } catch (error) {
-        console.error("Error checking quiz completion:", error);
+        console.error("Error in quiz completion check/record:", error);
         set.status = 500;
-        return { error: "An error occurred while checking quiz completion." };
+        return { error: "An error occurred while processing quiz completion." };
+    }
+};
+
+const getQuizHandler = async ({ body, set }: { body: typeof QuizUserSchema.static, set: { status: number | string } }) => {
+    const { userId } = body;
+
+    if (!userId) {
+        set.status = 400;
+        return { error: "userId is required." };
+    }
+
+    try {
+        const userQuizzesCollectionRef = collection(db, "Users", userId, "quiz");
+        const querySnapshot = await getDocs(userQuizzesCollectionRef);
+
+        if (querySnapshot.empty) {
+            set.status = 404;
+            return {
+                message: "No quizzes found for this user.",
+                completedQuizzes: []
+            };
+        }
+
+        const completedQuizzes = querySnapshot.docs.map(doc => {
+            return {
+                quizName: doc.id,
+                ...doc.data()
+            };
+        });
+
+        return { completedQuizzes };
+
+    } catch (error) {
+        console.error("Error fetching user quizzes:", error);
+        set.status = 500;
+        return { error: "An error occurred while fetching user quizzes." };
     }
 };
 
@@ -134,5 +164,8 @@ export default (app: ElysiaApp) => app
         body: QuizRequestSchema
     })
     .put("/check", checkQuizCompletionHandler, {
-        body: QuizCompletionCheckSchema
+        body: QuizCheckSchema
+    })
+    .put("/getbyuser", getQuizHandler, {
+        body: QuizUserSchema
     });
