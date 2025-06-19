@@ -14,6 +14,7 @@
     "dotenv": "^16.5.0",
     "elysia": "latest",
     "elysia-autoload": "^1.5.2",
+    "elysia-rate-limit": "^4.4.0",
     "firebase": "11.8.0",
     "genkit": "^1.12.0",
     "openai": "^5.5.1"
