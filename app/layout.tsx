@@ -9,10 +9,12 @@ import 'swiper/css/effect-fade';
 import 'swiper/css/grid';
 import 'atropos/css';
 import 'swiper/css/navigation';
-import Didyouknow from "./components/didyouknow";
+//import Didyouknow from "./components/didyouknow";
 import NextTopLoader from 'nextjs-toploader';
 import Footer from "./components/footer";
 //import Totop from "./components/totop";
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale } from 'next-intl/server';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,27 +42,31 @@ export const viewport: Viewport = {
   themeColor: '#f7740a',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextTopLoader
-          color="#f7740a"
-          height={4}
-          showSpinner={false}
-        />
-        <Navbar />
-        <Ealert />
-        {children}
-        <Didyouknow />
-        <Footer />
-        {/*<Totop />*/}
+        <NextIntlClientProvider>
+          <NextTopLoader
+            color="#f7740a"
+            height={4}
+            showSpinner={false}
+          />
+          <Navbar />
+          <Ealert />
+          {children}
+          {/*<Didyouknow />*/}
+          <Footer />
+          {/*<Totop />*/}
+        </NextIntlClientProvider>
       </body>
     </html>
   );

@@ -6,6 +6,7 @@ import auth from "@/lib/firebaseAuth";
 import Loader from '../components/loader';
 import axios from 'axios';
 import { server } from "@/app/config.json";
+import { useTranslations } from 'next-intl';
 
 import NF from "@/assets/media/card/icon/notfound.png";
 
@@ -18,6 +19,7 @@ interface Transaction {
 }
 
 function Details() {
+    const t = useTranslations('Profile');
     const [user, setUser] = useState<User | null>(null);
     const [transcaton, setTranscaton] = useState<Transaction[] | null>(null);
 
@@ -52,7 +54,7 @@ function Details() {
                     transcaton.length == 0 ? <>
                         <div className='flex items-center flex-col justify-center py-8 gap-4'>
                             <img src={NF.src} alt="Icon" className='w-28 translate-x-3' />
-                            <p className='font-semibold'>There is no transaction</p>
+                            <p className='font-semibold'>{t('notrans')}</p>
                         </div>
                     </> : <>
                         {
@@ -67,7 +69,7 @@ function Details() {
                                             </>
                                         }
                                         <div>
-                                            <p className='font-semibold text-lg'>{item.type}</p>
+                                            <p className='font-semibold text-lg'>{t(`transaction.${item.type}`)}</p>
                                             <p>{item.place}</p>
                                         </div>
                                     </div>

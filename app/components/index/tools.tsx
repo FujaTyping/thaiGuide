@@ -4,40 +4,49 @@ import { CloudSun, HandCoins, Siren, TentTree, Utensils } from 'lucide-react';
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import SDG from "@/assets/media/sdg/SDGs.svg";
 
 const ToolsItems = [
     {
-        title: "Restaurant",
+        title: "restaurant",
         icon: Utensils,
         link: "/restaurant"
     },
     {
-        title: "Activity",
+        title: "activity",
         icon: TentTree,
         link: "/activity"
     },
     {
-        title: "SOS",
+        title: "sos",
         icon: Siren,
         link: "/sos"
     },
     {
-        title: "Weather",
+        title: "weather",
         icon: CloudSun,
         link: "/weather"
     },
     {
-        title: "Vat Refund",
+        title: "vat",
         icon: HandCoins,
         link: "https://play.google.com/store/apps/details?id=th.co.ktb.vrt&pcampaignid=web_share"
+    },
+    {
+        title: "SDGs",
+        image: SDG,
+        link: "/sdgs"
     }
 ]
 
 function Tools() {
+    const t = useTranslations('ToolBar');
+
     return (
         <>
             <main className='max-w-7xl mx-auto px-3 py-6'>
-                <h1 className='text-2xl md:text-3xl font-bold text-[#f7740a] mb-5'>Travel Tools</h1>
+                <h1 className='text-2xl md:text-3xl font-bold text-[#f7740a] mb-5'>{t('title')}</h1>
                 <Swiper
                     spaceBetween={10}
                     slidesPerView={3}
@@ -62,9 +71,15 @@ function Tools() {
                                 <Link href={item.link}>
                                     <div className='flex flex-col items-center gap-2 group'>
                                         <div className='bg-[#f7740a] w-fit p-4 rounded-full'>
-                                            <item.icon className='text-white group-hover:scale-120 transition-all duration-150' />
+                                            {
+                                                item.image ? (
+                                                    <img className='group-hover:scale-120 transition-all duration-150 w-6.5' src={item.image.src} alt="Icon" />
+                                                ) : item.icon && (
+                                                    <item.icon className='text-white group-hover:scale-120 transition-all duration-150' />
+                                                )
+                                            }
                                         </div>
-                                        <h1 className='text-lg font-semibold group-hover:text-[#f7740a] transition-all duration-150'>{item.title}</h1>
+                                        <h1 className='text-lg font-semibold group-hover:text-[#f7740a] transition-all duration-150'>{t(`item.${item.title}`)}</h1>
                                     </div>
                                 </Link>
                             </SwiperSlide>

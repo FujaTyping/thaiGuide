@@ -7,6 +7,8 @@ import Link from 'next/link';
 import axios from 'axios';
 import Loader from '@/app/components/loader';
 import { server } from "@/app/config.json";
+import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 interface Activity {
     id: string;
@@ -21,6 +23,7 @@ interface Activity {
 }
 
 function Activities() {
+    const t = useTranslations('IndexAct');
     const [Data, setData] = useState<Activity[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [loading, setLoading] = useState(true);
@@ -62,7 +65,7 @@ function Activities() {
         <>
             <main className='max-w-7xl mx-auto px-3 py-6'>
                 <div className='flex items-center place-content-between mb-6'>
-                    <h1 className='text-2xl md:text-3xl font-bold text-[#f7740a]'>Activity</h1>
+                    <h1 className='text-2xl md:text-3xl font-bold text-[#f7740a]'>{t('headder')}</h1>
                     <div className='flex items-center gap-3'>
                         {Data.length > 1 && (
                             <>
@@ -105,10 +108,12 @@ function Activities() {
                                     >
                                         <Link href={`/activity/${currentActivity.id}`}>
                                             <div>
-                                                <img
+                                                <Image
                                                     src={currentActivity.thumnails}
                                                     alt={currentActivity.title}
                                                     className='rounded-4xl h-[300px] md:h-[460px] w-full object-cover'
+                                                    height={1000}
+                                                    width={1280}
                                                 />
                                                 <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-[#f7740a]/70 to-transparent text-white rounded-b-4xl'>
                                                     <h1 className='text-2xl md:text-3xl lg:text-4xl font-bold mb-2'>{currentActivity.title}</h1>
@@ -138,7 +143,7 @@ function Activities() {
                         </>
                     ) : (
                         <div className='w-full flex items-center justify-center my-12'>
-                            <p>No activities available at the moment.</p>
+                            <p>{t('no')}</p>
                         </div>
                     )
                 }

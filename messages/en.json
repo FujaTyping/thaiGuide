@@ -1,0 +1,500 @@
+{
+  "NavBar": {
+    "title": "ThaiGuide",
+    "menu": "Menu",
+    "profile": "Profile",
+    "logout": "Logout",
+    "list": {
+      "weather": "Weather",
+      "planner": "Trip Planner",
+      "trips": "Road Trips",
+      "redeem": "Redeem",
+      "switcher": "Language",
+      "switcherlang": "Choose Language"
+    },
+    "lang": {
+      "title": "Language Switch Information",
+      "d0": "Switching to",
+      "d1": "is in progress. While most of the UI will be in Thai,some content may still appear in English. We are working to fully translate everything soon.",
+      "cancel": "Cancel",
+      "change": "Change language"
+    }
+  },
+  "Crisis": {
+    "alert": "Crisis Alert"
+  },
+  "ToolBar": {
+    "title": "Travel Tools",
+    "item": {
+      "restaurant": "Restaurant",
+      "activity": "Activity",
+      "sos": "SOS",
+      "weather": "Weather",
+      "vat": "Vat Refund",
+      "SDGs": "SDGs"
+    }
+  },
+  "IndexRus": {
+    "headder": "Resturant"
+  },
+  "IndexAct": {
+    "headder": "Activity",
+    "no": "No activities available at the moment"
+  },
+  "IndexTrip": {
+    "headder": "Road Trip Itineraries"
+  },
+  "IndexFAQ": {
+    "headder": "Frequently Asked Question",
+    "q": {
+      "0": "When is the best time to travel to Thailand?",
+      "1": "What is the climate of Thailand like?",
+      "2": "Do I need a visa to visit Thailand?",
+      "3": "What currency is used in Thailand?",
+      "4": "What language is spoken in Thailand? Will I be able to communicate in English?"
+    },
+    "a": {
+      "0": "The best seasons for traveling in Thailand are the cool season and the hot season. The most popular travel period is from November to April. However, Thailand is a country with interesting activities, festivals, or traditions throughout the year across the country, and various natural attractions can be visited year-round. Therefore, tourists can choose to travel at any time of the year, depending on their convenience.",
+      "1": "Thailand has a tropical climate. The area is influenced by the southwest monsoon blowing from the Indian Ocean, causing the rainy season, and the northeast monsoon blowing from the South China Sea, causing the cool season. The average temperature throughout the year is about 18-34 degrees Celsius.",
+      "2": "Visa requirements for Thailand depend on your nationality and the length of your stay. Many nationalities are eligible for a visa exemption or visa on arrival for tourist purposes for a certain period. It's best to check the latest requirements with the Royal Thai Embassy or Consulate in your country before your trip.",
+      "3": "The official currency of Thailand is the Thai Baht (THB). You can exchange your currency for Thai Baht at airports, banks, and authorized money changers throughout the country. Credit cards are widely accepted in hotels, larger restaurants, and shopping malls, but it's advisable to carry some cash for smaller vendors and local markets.",
+      "4": "The official language of Thailand is Thai. However, in major tourist areas, hotels, and popular attractions, English is commonly spoken and understood, especially by those working in the tourism industry. Learning a few basic Thai phrases like 'Sawasdee' (Hello/Goodbye) and 'Khop Khun' (Thank you) can be appreciated by locals."
+    }
+  },
+  "GBdyk": {
+    "title": "Did You Know?",
+    "text": {
+      "0": "Thailand is home to over 1,400 islands, each with its own charm—from party paradise Koh Phangan to tranquil Koh Lipe near Satun, close to Songkhla.",
+      "1": "Songkhla is famous for its iconic Golden Mermaid Statue at Samila Beach, inspired by a local folktale and a popular selfie spot for tourists.",
+      "2": "Thailand has one of the world’s oldest and largest open-air markets—the Chatuchak Market in Bangkok, with over 15,000 stalls!",
+      "3": "Songkhla Old Town blends Chinese, Thai, and Portuguese architecture, offering vibrant street art, cozy cafes, and rich cultural history.",
+      "4": "The Great Serpent Nag (Nāga) sculpture in Songkhla is believed to bless visitors with good fortune and prosperity—locals often bring offerings to show respect."
+    }
+  },
+  "FooterBar": {
+    "title": "Copyright © 2025 ThaiGuide all rights reserved",
+    "sdg": "Our Commitment to Sustainable Development Goals"
+  },
+  "WeaATem": {
+    "title": "Weather and Temperature",
+    "decs": "Thailand is located in the tropics near the equator, making the country's climate hot and humid. The average temperature throughout the country is between 18 - 38 degrees Celsius. The summer season lasts about 3 months, with the hottest weather in mid-April. After that, under the influence of the monsoon, Thailand enters the rainy season, which lasts for 6 months, and the winter season, which lasts for 3 months, respectively.",
+    "selecttext": "Province",
+    "select": {
+      "start": "Select Province...",
+      "search": "Search Province...",
+      "notfound": "No province found."
+    },
+    "tab": {
+      "thai": "Thai Meteorological Department",
+      "accu": "AccuWeather"
+    }
+  },
+  "SOS": {
+    "title": "Emergency Contacts & Safety",
+    "decs": "Your safety in Thailand is important. This page provides a list of crucial emergency phone numbers. Keep these contacts readily available for any urgent situations you might encounter.",
+    "ndtitle": "Urgent Call",
+    "number": {
+      "tpt": "Tourist Police Thailand",
+      "taot": "Tourism Authority of Thailand",
+      "pt": "Police Thailand",
+      "am": "Ambulance",
+      "tsc": "Transport Safety Center",
+      "fd": "Fire Department",
+      "ddpm": "Department of Disaster Prevention and Mitigation",
+      "csd": "Crime Suppression Division"
+    }
+  },
+  "Profile": {
+    "title": "Profile Card",
+    "decs": "This is your personalized profile card. It displays your information, progress, and achievements within ThaiGuide.",
+    "cip": "Check-In point",
+    "notrans": "There is no transaction",
+    "transaction": {
+      "title": "Transaction",
+      "Redeem": "Redeem",
+      "Scan QR": "Scan QR"
+    },
+    "scan": {
+      "title": "Scan to recive points",
+      "decs": "Position the QR code within the frame to scan it and receive your points.",
+      "pgls": "Please grant the location access",
+      "plbrp": "Please login before recive points",
+      "loading": "Waiting for code",
+      "llnavqr": "Look like it not a valid QR-Code",
+      "pe": "Points earn",
+      "pgctqrl": "Please get closer to the QR-Code location"
+    }
+  },
+  "Redeem": {
+    "title": "Redeem Reward",
+    "decs": "Redeem your travel points for exclusive rewards, local products, discounts, and more. Scan, explore, and claim amazing experiences with ThaiGuide!",
+    "ptitle": "How to get a point",
+    "pdecs": "Scan a QR code at each tourist location to earn points. Collect points and redeem them for rewards.",
+    "tips": {
+      "0": "Embark on an adventure to one of our partnered tourist destinations. Each location offers unique experiences and opportunities to earn.",
+      "1": "Once you arrive, keep an eye out! The special ThaiGuide QR code will be placed in a somewhat random spot within the location. Happy hunting!",
+      "2": "Use the ThaiGuide app to scan the QR code you've discovered. Successful scans will instantly add points to your account, bringing you closer to exciting rewards."
+    },
+    "items": {
+      "notfound": "No reward data",
+      "title": "Redeem Reward",
+      "decs": "Redeem your travel points for exclusive rewards, local products, discounts, and more. Scan, explore, and claim amazing experiences with ThaiGuide!",
+      "require": "Require point",
+      "now": "Redeem now",
+      "sure": "Are you sure to redeem",
+      "error": "Error during redeem transaction.",
+      "success": "Redeem successfully.",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "needed": "You need more points",
+      "loading": "Loading user data",
+      "login": "Please login to redeem reward",
+      "your": "Your points",
+      "modal": {
+        "0": "This action cannot be undone.",
+        "1": "Confirming will deduct",
+        "2": "points",
+        "3": "from your account for the reward:"
+      }
+    }
+  },
+  "Planner": {
+    "title": "Trip Planner",
+    "beta": "Beta",
+    "decs": "Plan your perfect trip to Thailand with our intelligent AI Trip Planner. Get personalized itineraries, recommendations, and tips to make your journey unforgettable. Let our AI assist you in discovering the best of Thailand, tailored to your preferences and interests.",
+    "ai": {
+      "title": "Tell us about your trip",
+      "decs": "Help us recommend the best activities for you",
+      "input": {
+        "placeholder": "e.g., I'm looking for a mix of cultural experiences and relaxing beaches. I'm interested in temples, local markets, and snorkeling.",
+        "duration": "Duration",
+        "durationplace": "eg. 2 Days, 1 Week",
+        "type": "Group Type",
+        "typeholder": "Select group type",
+        "tag": "Tags",
+        "select": {
+          "0": "Select group type",
+          "1": "Solo",
+          "2": "Couple",
+          "3": "Family",
+          "4": "Friends"
+        },
+        "tagtoggle": "Show Tags More",
+        "tagmore": "more",
+        "tagless": "Show Less",
+        "tags": {
+          "Adventure": "Adventure",
+          "Relaxation": "Relaxation",
+          "Culture": "Culture",
+          "Foodie": "Foodie",
+          "Beaches": "Beaches",
+          "Mountains": "Mountains",
+          "City Exploration": "City Exploration",
+          "Historical Sites": "Historical Sites",
+          "Nature & Wildlife": "Nature & Wildlife",
+          "Shopping": "Shopping",
+          "Nightlife": "Nightlife",
+          "Luxury": "Luxury",
+          "Budget-friendly": "Budget-friendly",
+          "Road Trip": "Road Trip",
+          "Wellness & Spa": "Wellness & Spa"
+        },
+        "require": "Please fill in the trip description, duration, and group type.",
+        "submit": "Get Recommendations",
+        "eloading": {
+          "0": "Finding hidden gems...",
+          "1": "Crafting your itinerary...",
+          "2": "Consulting local guides...",
+          "3": "Packing virtual bags...",
+          "4": "Mapping your adventure...",
+          "5": "Checking the weather...",
+          "6": "Discovering local cuisines...",
+          "7": "Booking your dream spots...",
+          "8": "Translating local phrases...",
+          "9": "Almost there...",
+          "10": "Unveiling recommendations...",
+          "11": "Polishing your plan..."
+        }
+      },
+      "tabs": {
+        "act": "Activities",
+        "food": "Food",
+        "day": "Day",
+        "tips": "Tips"
+      },
+      "re": "Re-Generate"
+    }
+  },
+  "RoadTrip": {
+    "title": "Road Trip",
+    "decs": "Not sure where to go? Tired of searching for places yourself? Our Road Trip Guide is the answer! We have already mapped out the journey — all you have to do is choose the one that match your style. Let find the trip that fits you and hit the road!",
+    "ttitle": "Fillters by Tags",
+    "show": "Show",
+    "items": "items",
+    "notfound": "No road trips for that tag",
+    "nnotfound": "No roadtrip data",
+    "tags": {
+      "All Tags": "All Tags",
+      "Adventure": "Adventure",
+      "Cultural": "Cultural",
+      "Nature": "Nature",
+      "Relax": "Relax",
+      "Food": "Food",
+      "Historical": "Historical",
+      "Architecture": "Architecture",
+      "Photography": "Photography",
+      "Shopping": "Shopping",
+      "LocalExperience": "LocalExperience",
+      "Beach": "Beach",
+      "Mountain": "Mountain",
+      "City": "City",
+      "Village": "Village",
+      "Island": "Island",
+      "Waterfall": "Waterfall",
+      "Temple": "Temple",
+      "Market": "Market",
+      "Nightlife": "Nightlife",
+      "Festival": "Festival",
+      "Art": "Art",
+      "Music": "Music",
+      "Sports": "Sports",
+      "Wellness": "Wellness",
+      "Family": "Family",
+      "Romantic": "Romantic",
+      "Budget": "Budget",
+      "Luxury": "Luxury",
+      "OffTheBeatenPath": "OffTheBeatenPath",
+      "Popular": "Popular"
+    },
+    "province": "Province",
+    "view": {
+      "start": "Start",
+      "end": "End",
+      "overview": "Trip Itinerary Overview",
+      "no": "No stops available for this trip.",
+      "stop": "Stops Spot",
+      "stopt": "Stop",
+      "location": "Location",
+      "recived": "Points to recived",
+      "info": {
+        "0": "Scan a QR code at each tourist location to earn points.",
+        "1": "Collect points and redeem them for rewards."
+      }
+    }
+  },
+  "Province": {
+    "amnat charoen": "Amnat Charoen",
+    "ang thong": "Ang Thong",
+    "bangkok": "Bangkok",
+    "bueng kan": "Bueng Kan",
+    "buriram": "Buriram",
+    "chachoengsao": "Chachoengsao",
+    "chai nat": "Chai Nat",
+    "chaiyaphum": "Chaiyaphum",
+    "chanthaburi": "Chanthaburi",
+    "chiang mai": "Chiang Mai",
+    "chiang rai": "Chiang Rai",
+    "chonburi": "Chonburi",
+    "chumphon": "Chumphon",
+    "kalasin": "Kalasin",
+    "kamphaeng phet": "Kamphaeng Phet",
+    "kanchanaburi": "Kanchanaburi",
+    "khon kaen": "Khon Kaen",
+    "krabi": "Krabi",
+    "lampang": "Lampang",
+    "lamphun": "Lamphun",
+    "loei": "Loei",
+    "lopburi": "Lopburi",
+    "mae hong son": "Mae Hong Son",
+    "maha sarakham": "Maha Sarakham",
+    "mukdahan": "Mukdahan",
+    "nakhon nayok": "Nakhon Nayok",
+    "nakhon pathom": "Nakhon Pathom",
+    "nakhon phanom": "Nakhon Phanom",
+    "nakhon ratchasima": "Nakhon Ratchasima",
+    "nakhon sawan": "Nakhon Sawan",
+    "nakhon si thammarat": "Nakhon Si Thammarat",
+    "nan": "Nan",
+    "narathiwat": "Narathiwat",
+    "nong bua lamphu": "Nong Bua Lamphu",
+    "nong khai": "Nong Khai",
+    "nonthaburi": "Nonthaburi",
+    "pathum thani": "Pathum Thani",
+    "pattani": "Pattani",
+    "phang nga": "Phang Nga",
+    "phatthalung": "Phatthalung",
+    "phayao": "Phayao",
+    "phetchabun": "Phetchabun",
+    "phetchaburi": "Phetchaburi",
+    "phichit": "Phichit",
+    "phitsanulok": "Phitsanulok",
+    "phra nakhon si ayutthaya": "Phra Nakhon Si Ayutthaya",
+    "phrae": "Phrae",
+    "phuket": "Phuket",
+    "prachinburi": "Prachinburi",
+    "prachuap khiri khan": "Prachuap Khiri Khan",
+    "ranong": "Ranong",
+    "ratchaburi": "Ratchaburi",
+    "rayong": "Rayong",
+    "roi et": "Roi Et",
+    "sa kaeo": "Sa Kaeo",
+    "sakon nakhon": "Sakon Nakhon",
+    "samut prakan": "Samut Prakan",
+    "samut sakhon": "Samut Sakhon",
+    "samut songkhram": "Samut Songkhram",
+    "saraburi": "Saraburi",
+    "satun": "Satun",
+    "songkhla": "Songkhla",
+    "sing buri": "Sing Buri",
+    "sisaket": "Sisaket",
+    "sukhothai": "Sukhothai",
+    "suphan buri": "Suphan Buri",
+    "surat thani": "Surat Thani",
+    "surin": "Surin",
+    "tak": "Tak",
+    "trang": "Trang",
+    "trat": "Trat",
+    "ubon ratchathani": "Ubon Ratchathani",
+    "udon thani": "Udon Thani",
+    "uthai thani": "Uthai Thani",
+    "uttaradit": "Uttaradit",
+    "yala": "Yala",
+    "yasothon": "Yasothon"
+  },
+  "Restaurant": {
+    "title": "Restaurant and Food",
+    "decs": "Discover the vibrant flavors of Thailand right here. Our restaurant page is your guide to the most authentic and delicious Thai culinary experiences. From street food staples to fine dining, explore a curated list of restaurants, browse menus, and find your next favorite Thai dish. Whether you're a seasoned Thai food lover or new to its delights, let us help you navigate the rich and diverse world of Thai cuisine",
+    "fillter": "Filter by Province",
+    "show": "Show",
+    "items": "items",
+    "grid": {
+      "more": "Load More",
+      "notfound": "No restaurants found for this province"
+    },
+    "select": {
+      "start": "Select Province...",
+      "search": "Search Province...",
+      "notfound": "No province found"
+    },
+    "tips": {
+      "title": "Food Tips",
+      "0": {
+        "title": "Spice Levels",
+        "decs": "Southern Thai food is typically spicier than other regions. Ask for 'mai pet' (not spicy) if needed."
+      },
+      "1": {
+        "title": "Dietary Restrictions",
+        "decs": "Vegetarian options available but may contain fish sauce. Say 'gin jay' for strict vegetarian food."
+      },
+      "2": {
+        "title": "Food Etiquette & Cultural Tips",
+        "0": {
+          "title": "Dining Etiquette",
+          "0": "Use a spoon and fork (spoon in right hand)",
+          "1": "Don't use chopsticks unless eating noodles",
+          "2": "Share dishes when eating in groups",
+          "3": "Don't finish everything on your plate",
+          "4": "Wait for elders to start eating first"
+        },
+        "1": {
+          "title": "Useful Phrases",
+          "0": "'Aroy mak' - Very delicious",
+          "1": "'Mai pet' - Not spicy",
+          "2": "'Gin jay' - Vegetarian food",
+          "3": "'Check bin' - Check please"
+        }
+      }
+    },
+    "item": {
+      "notfound": "No restaurant data",
+      "location": "Location",
+      "cost": "Average cost",
+      "rate": "Rating",
+      "province": "Province",
+      "open": "Open",
+      "highlight": "Highlight Dishes",
+      "map": "Get Direction",
+      "view": "Street View",
+      "noview": "Street view not available for this restaurant"
+    }
+  },
+  "Activities": {
+    "title": "Activity and Events",
+    "decs": "Discover a vibrant array of activities and immerse yourself in the exciting events Thailand has to offer. From cultural festivals to adventurous excursions, find your next unforgettable experience here",
+    "select": {
+      "start": "Select Province...",
+      "search": "Search Province...",
+      "notfound": "No province found"
+    },
+    "fillter": "Filter by Province",
+    "show": "Show",
+    "items": "items",
+    "more": "Load More",
+    "notfound": "No activity found for this province",
+    "item": {
+      "notfound": "No activity data",
+      "cost": "Average cost",
+      "rate": "Rating",
+      "visit": "Best to visit",
+      "province": "Province",
+      "call": "Call",
+      "point": "Point to recive",
+      "infop": {
+        "0": "Scan a QR code at each tourist location to earn points",
+        "1": "Collect points and redeem them for rewards"
+      },
+      "web": "Website",
+      "click": "Click to open",
+      "forecast": "Local Weather Forecast",
+      "map": "Map Location"
+    }
+  },
+  "SDG": {
+    "title": "Sustainable Development Goals (SDGs)",
+    "decs": "ThaiGuide is committed to supporting the United Nations' Sustainable Development Goals (SDGs). Discover how responsible tourism can create a positive impact on communities, the environment, and the economy, and how we contribute to building a better future through our various initiatives",
+    "goal": {
+      "1": {
+        "title": "SDG 1: No Poverty",
+        "decs": "By encouraging travelers to visit lesser-known local attractions, the platform helps generate income for underrepresented communities and supports grassroots economic development."
+      },
+      "8": {
+        "title": "SDG 8: Decent Work and Economic Growth",
+        "decs": "The use of gamification and digital rewards boosts engagement in the tourism sector, fostering youth involvement and empowering local entrepreneurs through increased visibility and opportunity."
+      },
+      "9": {
+        "title": "SDG 9: Industry, Innovation, and Infrastructure",
+        "decs": "The innovation leverages emerging technologies—such as AI and mission-based tourism experiences—to create a smarter, more interactive tourism infrastructure."
+      },
+      "10": {
+        "title": "SDG 10: Reduced Inequalities",
+        "decs": "By promoting destinations beyond mainstream tourist spots, the platform helps bridge the gap between urban and rural economies and increases tourism access for all communities."
+      },
+      "11": {
+        "title": "SDG 11: Sustainable Cities and Communities",
+        "decs": "The project helps reduce overcrowding in popular destinations by promoting alternative routes and experiences, supporting balanced and sustainable urban and community development."
+      }
+    }
+  },
+  "Provincess": {
+    "item": {
+      "notfound": "No data for that province",
+      "slogan": "Slogan",
+      "softhight": "Softpower & Highlight",
+      "location": "Location"
+    }
+  },
+  "EmQuiz": {
+    "title": "Quiz Time!",
+    "decs": "Ready to test your knowledge about",
+    "sbtn": "Start Quiz",
+    "error": "Error Loading Quiz",
+    "errorbtn": "Try Again",
+    "finish": "Quiz Finished!",
+    "score": "Your score",
+    "restartbtn": "Restart Quiz",
+    "q": "Question",
+    "next": "Next Question",
+    "fquiz": "Finish Quiz",
+    "nolog": "Not logged in. Points not awarded"
+  }
+}

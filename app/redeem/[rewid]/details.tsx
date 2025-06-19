@@ -20,8 +20,10 @@ import Loader from '@/app/components/loader';
 import { motion } from "motion/react";
 import RD from "@/assets/media/icon/redeem.png";
 import NF from "@/assets/media/card/icon/notfound.png";
+import { useTranslations } from 'next-intl';
 
 function Details({ data }: { data: any }) {
+    const t = useTranslations('Redeem');
     const [user, setUser] = useState<User | null>(null);
     const [uData, setUData] = useState<any | null>(null);
     const [loading, setLoading] = useState(true);
@@ -78,18 +80,18 @@ function Details({ data }: { data: any }) {
                 <div>
                     <h1 className='font-bold text-3xl'>{data.name}</h1>
                     <p className='mt-2'>{data.decs}</p>
-                    <p className='flex items-center gap-3 mt-2 text-[#f7740a]'><Coins /> <b>Require point :</b> {data.require}</p>
+                    <p className='flex items-center gap-3 mt-2 text-[#f7740a]'><Coins /> <b>{t('items.require')} :</b> {data.require}</p>
                     {uData ? <>
                         <div className='mt-8'>
-                            <p><b>Your points :</b> {uData.point}/{data.require}</p>
+                            <p><b>{t('items.your')} :</b> {uData.point}/{data.require}</p>
                             {parseInt(uData.point) >= parseInt(data.require) ? <>
                                 <Dialog>
                                     <DialogTrigger onClick={() => setTranscationState("")} className='bg-[#f7740a] text-white p-2 rounded-xl px-5 mt-2 w-full md:w-fit cursor-pointer'>
-                                        Redeem now
+                                        {t('items.now')}
                                     </DialogTrigger>
                                     <DialogContent>
                                         <DialogHeader>
-                                            <DialogTitle className='text-2xl'>Are you sure to redeem {data.name} ?</DialogTitle>
+                                            <DialogTitle className='text-2xl'>{t('items.sure')} {data.name} ?</DialogTitle>
                                         </DialogHeader>
                                         {
                                             transcationState == "loading" ? <>
@@ -111,25 +113,25 @@ function Details({ data }: { data: any }) {
                                                             >
                                                                 <img src={NF.src} alt="Not Found" className='w-32 translate-x-3' />
                                                             </motion.div>
-                                                            <p className='font-semibold'>Error during redeem transaction.</p>
+                                                            <p className='font-semibold'>{t('items.error')}</p>
                                                         </div>
                                                     </> : <>
                                                         {
                                                             transcationState == "success" ? <>
                                                                 <div className='flex items-center flex-col justify-center gap-4'>
                                                                     <img src={RD.src} alt="Not Found" className='w-32 translate-x-3' />
-                                                                    <p className='font-semibold'>Redeem successfully.</p>
+                                                                    <p className='font-semibold'>{t('items.success')}</p>
                                                                 </div>
                                                             </> : <>
-                                                                <p>This action cannot be undone. <b className='text-[#f7740a]'>Confirming will deduct {data.require} points</b> from your account for the reward: {data.name}.</p>
+                                                                <p>{t('items.modal.0')} <b className='text-[#f7740a]'>{t('items.modal.1')} {data.require} {t('items.modal.2')}</b> {t('items.modal.3')} {data.name}.</p>
                                                                 <DialogFooter>
                                                                     <DialogClose asChild>
                                                                         <button className='p-2 px-5 rounded-xl border-2 cursor-pointer'>
-                                                                            Cancel
+                                                                            {t('items.cancel')}
                                                                         </button>
                                                                     </DialogClose>
                                                                     <button onClick={CRedeem} className='bg-[#f7740a] text-white p-2 px-5 rounded-xl cursor-pointer'>
-                                                                        Confirm
+                                                                        {t('items.confirm')}
                                                                     </button>
                                                                 </DialogFooter>
                                                             </>
@@ -142,7 +144,7 @@ function Details({ data }: { data: any }) {
                                 </Dialog>
                             </> : <>
                                 <button className={`bg-[#f7740a] text-white p-2 rounded-xl px-5 mt-2 w-full md:w-fit cursor-not-allowed`}>
-                                    You need more points
+                                    {t('items.needed')}
                                 </button>
                             </>}
                         </div>
@@ -151,12 +153,12 @@ function Details({ data }: { data: any }) {
                             user || loading ? <>
                                 <div className='mt-8 text-[#f7740a] flex items-center gap-2'>
                                     <LoaderCircle className='animate-spin' />
-                                    <p className='font-semibold'>Loading user data</p>
+                                    <p className='font-semibold'>{t('items.loading')}</p>
                                 </div>
                             </> : <>
                                 <div className='mt-8 text-[#f7740a] flex items-center gap-2'>
                                     <TriangleAlert />
-                                    <p className='font-semibold'>Please login to redeem reward</p>
+                                    <p className='font-semibold'>{t('items.login')}</p>
                                 </div>
                             </>
                         }

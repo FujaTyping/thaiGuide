@@ -26,33 +26,46 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { analyticsPromise } from "@/lib/firebaseAnalytics";
 import { logEvent } from "firebase/analytics";
+import { useTranslations } from 'next-intl';
+import Flag from 'react-world-flags';
+import {
+    setCookie,
+} from 'cookies-next/client';
+import {
+    Dialog,
+    DialogClose,
+    DialogContent,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+} from "@/components/ui/dialog";
+import { Button } from '@/components/ui/button';
 
 const NavItems = [
     {
-        "name": "Weather",
+        "name": "weather",
         "link": "/weather"
     },
     {
-        "name": "Activity",
-        "link": "/activity"
-    },
-    {
-        "name": "Trip Planner",
+        "name": "planner",
         "link": "/planner"
     },
     {
-        "name": "Road Trips",
+        "name": "trips",
         "link": "/roadtrip"
     },
     {
-        "name": "Redeem",
+        "name": "redeem",
         "link": "/redeem"
     }
 ]
 
 function Navbar() {
+    const t = useTranslations('NavBar');
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
+    const [modalO, setModalO] = useState(false);
+    const [wlang, setWlang] = useState('us');
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -104,7 +117,7 @@ function Navbar() {
                     <Link href={"/"}>
                         <div className='flex items-center gap-1'>
                             <Image src={Logo.src} width={58} height={58} alt='Logo' />
-                            <h1 className='font-bold text-2xl text-[#f7740a]'>ThaiGuide</h1>
+                            <h1 className='font-bold text-2xl text-[#f7740a]'>{t('title')}</h1>
                         </div>
                     </Link>
                     <div className='flex items-center gap-2'>
@@ -116,21 +129,52 @@ function Navbar() {
                                     key={index}
                                 >
                                     <Link href={item.link} className='group-hover:text-white'>
-                                        {item.name}
+                                        {t(`list.${item.name}`)}
                                     </Link>
                                 </motion.div>
                             ))}
+                            <motion.div
+                                whileHover={{ scale: 1.1, rotate: -5 }}
+                                whileTap={{ scale: 0.8 }}
+                            >
+                                <DropdownMenu>
+                                    <DropdownMenuTrigger>
+                                        <div className='group-hover:text-white cursor-pointer'>
+                                            {t(`list.switcher`)}
+                                        </div>
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent>
+                                        <DropdownMenuLabel>{t(`list.switcherlang`)}</DropdownMenuLabel>
+                                        <DropdownMenuSeparator />
+                                        <DropdownMenuItem onClick={() => { setCookie('NEXT_LOCALE', 'en', {}); window.location.reload(); }}><Flag code={'us'} className="w-5 h-5 object-cover rounded-full" /> English</DropdownMenuItem>
+                                        <DropdownMenuItem onClick={() => { setWlang('th'); setModalO(true); }}><Flag code={'th'} className="w-5 h-5 object-cover rounded-full" /> ภาษาไทย</DropdownMenuItem>
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
+                            </motion.div>
                         </div>
                         <div className='flex md:hidden items-center gap-6 border-1 border-[#f7740a] p-2 px-6 rounded-full text-[#f7740a] font-bold hover:bg-[#f7740a] transition-all duration-300 hover:text-white'>
                             <Sheet>
-                                <SheetTrigger><p className='flex items-center gap-2'><Menu /> Menu</p></SheetTrigger>
+                                <SheetTrigger><p className='flex items-center gap-2'><Menu /> {t('menu')}</p></SheetTrigger>
                                 <SheetContent>
                                     <SheetHeader>
-                                        <SheetTitle className='text-2xl font-bold text-[#f7740a]'>Menu</SheetTitle>
+                                        <SheetTitle className='text-2xl font-bold text-[#f7740a]'>{t('menu')}</SheetTitle>
                                         <div className='flex flex-col gap-2 mt-3 text-lg text-[#f7740a] font-semibold'>
                                             {NavItems.map((item, index) => (
-                                                <a key={index} href={item.link}>{item.name}</a>
+                                                <a key={index} href={item.link}>{t(`list.${item.name}`)}</a>
                                             ))}
+                                            <DropdownMenu>
+                                                <DropdownMenuTrigger>
+                                                    <div className='group-hover:text-white cursor-pointer text-left mt-8'>
+                                                        {t(`list.switcher`)}
+                                                    </div>
+                                                </DropdownMenuTrigger>
+                                                <DropdownMenuContent>
+                                                    <DropdownMenuLabel>{t(`list.switcherlang`)}</DropdownMenuLabel>
+                                                    <DropdownMenuSeparator />
+                                                    <DropdownMenuItem onClick={() => { setCookie('NEXT_LOCALE', 'en', {}); window.location.reload(); }}>English</DropdownMenuItem>
+                                                    <DropdownMenuItem onClick={() => { setCookie('NEXT_LOCALE', 'th', {}); window.location.reload(); }}>ภาษาไทย</DropdownMenuItem>
+                                                </DropdownMenuContent>
+                                            </DropdownMenu>
                                         </div>
                                     </SheetHeader>
                                 </SheetContent>
@@ -145,8 +189,8 @@ function Navbar() {
                                     <DropdownMenuContent>
                                         <DropdownMenuLabel>{user.email}</DropdownMenuLabel>
                                         <DropdownMenuSeparator />
-                                        <DropdownMenuItem><Link href={"/profile"} className='flex items-center gap-2'><Smile className='text-[#f7740a]' /> Profile</Link></DropdownMenuItem>
-                                        <DropdownMenuItem className='flex items-center gap-2' onClick={handleLogout}><LogOut className='text-[#f7740a]' /> Logout</DropdownMenuItem>
+                                        <DropdownMenuItem><Link href={"/profile"} className='flex items-center gap-2'><Smile className='text-[#f7740a]' /> {t('profile')}</Link></DropdownMenuItem>
+                                        <DropdownMenuItem className='flex items-center gap-2' onClick={handleLogout}><LogOut className='text-[#f7740a]' /> {t('logout')}</DropdownMenuItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu> : <KeyRound onClick={handleGoogleSignIn} />}
                             </>}
@@ -154,6 +198,22 @@ function Navbar() {
                     </div>
                 </nav>
             </main>
+            <Dialog open={modalO} onOpenChange={() => setModalO(false)}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle className='text-2xl'>{t('lang.title')}</DialogTitle>
+                        <p>
+                            {t('lang.d0')} <b>{wlang}</b> {t('lang.d1')}
+                        </p>
+                    </DialogHeader>
+                    <DialogFooter>
+                        <DialogClose asChild className='p-2 px-5 rounded-xl border-2 cursor-pointer'>
+                            <Button variant="outline">{t('lang.cancel')}</Button>
+                        </DialogClose>
+                        <Button className='bg-[#f7740a] hover:bg-white hover:text-[#f7740a] hover:border-[#f7740a] border-2 border-white text-white p-2 px-5 rounded-xl cursor-pointer' type="submit" onClick={() => { setCookie('NEXT_LOCALE', wlang, {}); setModalO(false); window.location.reload(); }}>{t('lang.change')}</Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
         </>
     )
 }

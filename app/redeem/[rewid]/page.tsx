@@ -4,6 +4,8 @@ import NF from "@/assets/media/card/icon/notfound.png";
 import Loader from '@/app/components/loader';
 import type { Metadata } from "next";
 import Details from './details';
+import { getTranslations } from 'next-intl/server';
+import Didyouknow from "@/app/components/didyouknow";
 
 type Props = {
     params: Promise<{ rewid: string }>
@@ -24,9 +26,10 @@ export async function generateMetadata(
     };
 }
 
-async function page({ params }: Props) {
+async function Page({ params }: Props) {
     const { rewid } = await params;
     const data = await fetchData(rewid) || "load";
+    const t = await getTranslations('Redeem');
 
     if (data == "load") {
         return (<>
@@ -40,7 +43,7 @@ async function page({ params }: Props) {
         return (<>
             <div className='flex items-center flex-col justify-center gap-4 py-8'>
                 <img src={NF.src} alt="Icon" className='w-32 translate-x-3' />
-                <p className='font-semibold text-2xl'>No reward data</p>
+                <p className='font-semibold text-2xl'>{t('items.notfound')}</p>
             </div>
         </>)
     }
@@ -49,14 +52,15 @@ async function page({ params }: Props) {
         <>
             <main className='max-w-7xl mx-auto px-4 py-6'>
                 <div>
-                    <h1 className='font-bold text-4xl'>Redeem Reward</h1>
+                    <h1 className='font-bold text-4xl'>{t('items.title')}</h1>
                     <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
                 </div>
-                <p className='mt-3'>Redeem your travel points for exclusive rewards, local products, discounts, and more. Scan, explore, and claim amazing experiences with ThaiGuide!</p>
+                <p className='mt-3'>{t('items.decs')}</p>
                 <Details data={data} />
             </main>
+            <Didyouknow />
         </>
     )
 }
 
-export default page
+export default Page
