@@ -3,7 +3,6 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Autoplay } from 'swiper/modules';
-import Image from 'next/image';
 
 // Image Assets
 import SMH from "@/assets/media/หาดสมิหลา.webp"
@@ -60,7 +59,7 @@ function Banner() {
                             <div
                                 className='relative overflow-hidden rounded-b-4xl'
                             >
-                                <Image fetchPriority='high' src={item.image.src} className='w-full h-[550px] md:h-[700px] object-cover' height={1080} width={1280} alt={item.title} />
+                                <img loading={index === 0 ? 'eager' : 'lazy'} fetchPriority={index === 0 ? 'high' : 'auto'} src={item.image.src} className='w-full h-[550px] md:h-[700px] object-cover' height={1080} width={1280} alt={item.title} />
                                 <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-[#f7740a]/70 to-transparent text-white rounded-b-4xl text-center'>
                                     <h1 className='text-3xl md:text-4xl font-bold mb-2'>{item.title}</h1>
                                     <p className='text-sm md:text-base'>{item.decs}</p>
