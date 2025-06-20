@@ -6,8 +6,8 @@ import { rateLimit } from 'elysia-rate-limit'
 
 const app = new Elysia()
   .use(rateLimit({
-    max: 6,
-    duration: 3000
+    max: 8,
+    duration: 2000
   }))
   .use(cors())
   .use(swagger({
