@@ -26,6 +26,7 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover";
 import { useTranslations } from 'next-intl';
+import { server } from "@/app/config.json"
 
 const Proworks = [
     { value: "amnat charoen", label: "Amnat Charoen" },
@@ -160,7 +161,7 @@ function Embed() {
 
             try {
                 const res = await axios.put<AccuWeatherData>(
-                    "https://backend.thaiguide.siraphop.me/weather/accu",
+                    `https://${server}/weather/accu`,
                     { province: value }
                 );
                 setDAccu(res.data);
@@ -259,7 +260,7 @@ function Embed() {
                     {dAccu && !loadingAccuWeather && !errorAccuWeather && (
                         <div className='mt-1'>
                             <div>
-                                <h1 className='font-semibold text-2xl'>Today, {dAccu.Headline.Text}</h1>
+                                <h1 className='font-semibold text-2xl'>{dAccu.Headline.Text}</h1>
                                 <h3 className="text-lg font-semibold mb-2 flex items-center gap-2 mt-2"><MapPin className='text-[#f7740a]' /> {value}</h3>
                             </div>
                             <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 mt-3'>
@@ -267,9 +268,9 @@ function Embed() {
                                     dAccu.DailyForecasts.map((day, index) => (
                                         <div key={index} className='flex flex-col justify-center items-center gap-1 py-6 px-2 border-[#f7740a] border-3 rounded-xl'>
                                             <h1 className='font-semibold'>{dayjs(day.Date).format("ddd, MMM D")}</h1>
-                                            <img className='size-12 object-cover' src={day.Day.IconUrl} alt="Icon" />
+                                            <img className='size-20 object-cover py-2' src={day.Day.IconUrl} alt="Icon" />
                                             <h1 className='text-lg font-semibold'>{day.Temperature.Minimum.Value}{day.Temperature.Minimum.Unit} - {day.Temperature.Maximum.Value}{day.Temperature.Maximum.Unit}</h1>
-                                            <h1 className='text-lg font-semibold'>{day.Day.IconPhrase}</h1>
+                                            <h1 className='text-lg font-semibold text-center'>{day.Day.IconPhrase}</h1>
                                             <p>Intensity : {day.Day.PrecipitationIntensity}</p>
                                         </div>
                                     ))

@@ -95,7 +95,7 @@ function Qr() {
                 console.log(distanceInKm);
                 setIsWithinRadius(distanceInKm <= 2);
                 if (distanceInKm <= 2) {
-                    await axios.post("https://backend.thaiguide.siraphop.me/transactions/transfer", {
+                    await axios.post(`https://${server}/transactions/transfer`, {
                         userid: user?.uid,
                         type: "Scan QR",
                         place: resD.name,

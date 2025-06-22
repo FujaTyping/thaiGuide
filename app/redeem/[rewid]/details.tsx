@@ -50,7 +50,7 @@ function Details({ data }: { data: any }) {
     async function CRedeem() {
         setTranscationState("loading");
         try {
-            const res = await axios.post("https://backend.thaiguide.siraphop.me/transactions/transfer", {
+            const res = await axios.post(`https://${server}/transactions/transfer`, {
                 userid: user?.uid,
                 type: "Redeem",
                 place: data.name,
