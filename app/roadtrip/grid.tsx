@@ -5,7 +5,7 @@ import axios from 'axios';
 import { server } from "@/app/config.json";
 import Loader from '../components/loader';
 import Link from 'next/link';
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import {
     Select,
     SelectContent,
@@ -15,6 +15,13 @@ import {
 } from "@/components/ui/select";
 import NF from "@/assets/media/card/icon/notfound.png";
 import { useTranslations } from 'next-intl';
+import InfiniteMenu from '@/components/bits/InfiniteMenu/InfiniteMenu';
+import { Orbit } from 'lucide-react';
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 interface RoadtripItem {
     id: string;
@@ -39,6 +46,7 @@ function Grid() {
     const t = useTranslations('RoadTrip');
     const [data, setData] = useState<RoadtripItem[]>([]);
     const [selectedTag, setSelectedTag] = useState<string>(ALL_TAGS);
+    const [showOverview, setShowOverview] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -62,6 +70,13 @@ function Grid() {
         return item.tags && item.tags.includes(selectedTag);
     });
 
+    const menuItems = filteredData.map(item => ({
+        image: item.thumnails,
+        link: `/roadtrip/${item.id}`,
+        title: item.title,
+        description: item.location,
+    }));
+
     if (data.length === 0) {
         return (
             <div className='w-full flex items-center justify-center my-12'>
@@ -72,8 +87,26 @@ function Grid() {
 
     return (
         <>
+            <div className='lg:block hidden'>
+                <AnimatePresence>
+                    {showOverview && (
+                        <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: '600px' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.5, ease: 'easeInOut' }}
+                            style={{ position: 'relative', overflow: 'hidden' }}
+                            className='mt-4 rounded-2xl'
+                        >
+                            <div className='h-[600px]'>
+                                <InfiniteMenu items={menuItems} />
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </div>
             <div className='mt-6 flex flex-col md:flex-row md:items-center place-content-between'>
-                <div className='flex items-center gap-2'>
+                <div className='flex items-center gap-2 mb-4 md:mb-0'>
                     <p className='font-semibold'>{t('ttitle')} : </p>
                     <Select onValueChange={handleTagChange} defaultValue={ALL_TAGS}>
                         <SelectTrigger className="w-[200px]">
@@ -89,8 +122,21 @@ function Grid() {
                         </SelectContent>
                     </Select>
                 </div>
-                <div>
-                    <b>{t('show')} {filteredData.length} {t('items')}</b>
+                <div className='flex items-center gap-4'>
+                    <Tooltip>
+                        <TooltipTrigger
+                            onClick={() => setShowOverview(!showOverview)}
+                            className="text-[#f7740a] lg:block hidden cursor-pointer"
+                        >
+                            <Orbit />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                            <p>{t('orbs')}</p>
+                        </TooltipContent>
+                    </Tooltip>
+                    <div>
+                        <b>{t('show')} {filteredData.length} {t('items')}</b>
+                    </div>
                 </div>
             </div>
             {filteredData.length > 0 ? (
