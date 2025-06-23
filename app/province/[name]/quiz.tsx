@@ -8,6 +8,7 @@ import NF from "@/assets/media/card/icon/notfound.png";
 import { useTranslations } from 'next-intl';
 import { User, onAuthStateChanged } from "firebase/auth";
 import auth from "@/lib/firebaseAuth";
+import { server } from "@/app/config.json"
 
 interface QuizProps {
     data: string;
@@ -63,7 +64,7 @@ function Quiz({ data: provinceName }: QuizProps) {
         setSelectedAnswerText(null);
 
         try {
-            const response = await fetch('https://backend.thaiguide.siraphop.me/quiz/gen', {
+            const response = await fetch(`https://${server}/quiz/gen`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

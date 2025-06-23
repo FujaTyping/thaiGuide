@@ -1,0 +1,34 @@
+/* Note: this CSS is only an example, you can overlay whatever you want using the activeItem logic */
+
+#infinite-grid-menu-canvas {
+  cursor: grab;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  outline: none;
+}
+
+#infinite-grid-menu-canvas:active {
+  cursor: grabbing;
+}
+
+.ftitle.active {
+  opacity: 1;
+  pointer-events: auto;
+  transition: 0.5s ease;
+}
+
+.ftitle.inactive {
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.1s ease;
+}
+
+@media (max-width: 1500px) {
+
+  .face-title,
+  .face-description {
+    display: none;
+  }
+}

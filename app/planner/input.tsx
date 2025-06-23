@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import {
@@ -14,10 +14,11 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Brush, Info, MapPin, RefreshCcw, TriangleAlert } from 'lucide-react';
 import axios from 'axios';
 import Triploader from './triploader';
-import TextTransition, { presets } from 'react-text-transition';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "motion/react";
 import { useTranslations } from 'next-intl';
+import RotatingText from '@/components/bits/RotatingText/RotatingText';
+import { server } from "@/app/config.json"
 
 const TEXTS = [
     '0',
@@ -82,16 +83,7 @@ function TInput() {
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const [duration, setDuration] = useState("");
     const [groupType, setGroupType] = useState("");
-    const [Tindex, setIndex] = React.useState(0);
     const [showAlert, setShowAlert] = useState(false);
-
-    useEffect(() => {
-        const intervalId = setInterval(
-            () => setIndex((index) => index + 1),
-            4000,
-        );
-        return () => clearTimeout(intervalId);
-    }, []);
 
     const displayedTags = showAllTags ? Tags : Tags.slice(0, 8);
 
@@ -110,7 +102,7 @@ function TInput() {
         }
         try {
             setData("loading");
-            const Res = await axios.post("https://backend.thaiguide.siraphop.me/trip/gen", {
+            const Res = await axios.post(`https://${server}/trip/gen`, {
                 message: message,
                 tag: selectedTags.join(','),
                 duration: duration,
@@ -128,6 +120,8 @@ function TInput() {
         if (typeof Data === 'object' && Data !== null) return "results";
         return "empty";
     };
+
+    const loadingTexts = TEXTS.map(num => t(`ai.input.eloading.${num}`));
 
     return (
         <>
@@ -235,7 +229,18 @@ function TInput() {
                                 Data == "loading" ? <>
                                     <div className='flex items-center justify-center py-12 flex-col gap-4'>
                                         <Triploader />
-                                        <TextTransition springConfig={presets.wobbly}><p className='font-semibold text-xl'>{t(`ai.input.eloading.${TEXTS[Tindex % TEXTS.length]}`)}</p></TextTransition>
+                                        <RotatingText
+                                            texts={loadingTexts}
+                                            mainClassName="w-fit font-semibold text-black overflow-hidden justify-center rounded-lg"
+                                            staggerFrom={"first"}
+                                            initial={{ y: "100%" }}
+                                            animate={{ y: 0 }}
+                                            exit={{ y: "-120%" }}
+                                            staggerDuration={0.03}
+                                            splitLevelClassName="overflow-hidden"
+                                            transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                                            rotationInterval={5000}
+                                        />
                                     </div>
                                 </> : <>
                                     {typeof Data === 'object' && Data !== null && (
