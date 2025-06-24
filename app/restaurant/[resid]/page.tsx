@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import Didyouknow from "@/app/components/didyouknow";
+import Thumnails from './thumnails';
 
 type Props = {
     params: Promise<{ resid: string }>
@@ -101,7 +102,7 @@ async function page({ params }: Props) {
                 <h1 className='text-2xl font-bold'>{t('item.highlight')}</h1>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6 mt-4'>
                     <div>
-                        <img src={data.thumnails} alt="Food" className='w-full h-[450px] object-cover rounded-2xl' />
+                        <Thumnails image={data.thumnails} />
                     </div>
                     <div className='flex flex-col gap-1 mt-3'>
                         {

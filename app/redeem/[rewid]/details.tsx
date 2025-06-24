@@ -21,6 +21,7 @@ import { motion } from "motion/react";
 import RD from "@/assets/media/icon/redeem.png";
 import NF from "@/assets/media/card/icon/notfound.png";
 import { useTranslations } from 'next-intl';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 function Details({ data }: { data: any }) {
     const t = useTranslations('Redeem');
@@ -75,7 +76,15 @@ function Details({ data }: { data: any }) {
         <>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-8 mt-6'>
                 <div className='flex items-center justify-center'>
-                    <img src={data.image} alt="Reward" className='rounded-xl h-[350px] md:h-[450px] object-cover' />
+                    <PhotoProvider
+                        speed={() => 800}
+                        easing={(type) => (type === 2 ? 'cubic-bezier(0.36, 0, 0.66, -0.56)' : 'cubic-bezier(0.34, 1.56, 0.64, 1)')}
+                        maskOpacity={0.4}
+                    >
+                        <PhotoView src={data.image}>
+                            <img src={data.image} alt="Reward" className='rounded-xl h-[350px] md:h-[450px] object-cover cursor-pointer' />
+                        </PhotoView>
+                    </PhotoProvider>
                 </div>
                 <div>
                     <h1 className='font-bold text-3xl'>{data.name}</h1>
