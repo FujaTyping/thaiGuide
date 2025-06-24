@@ -73,7 +73,8 @@
   },
   "FooterBar": {
     "title": "Copyright © 2025 ThaiGuide all rights reserved",
-    "sdg": "Our Commitment to Sustainable Development Goals"
+    "sdg": "Our Commitment to Sustainable Development Goals",
+    "feedback": "Help us improve ThaiGuide"
   },
   "WeaATem": {
     "title": "Weather and Temperature",

@@ -42,6 +42,7 @@
     "react-confetti-explosion": "^3.0.3",
     "react-dom": "^19.1.0",
     "react-fast-marquee": "^1.6.5",
+    "react-photo-view": "^1.2.7",
     "react-qr-barcode-scanner": "^2.1.6",
     "react-scroll-up": "^1.4.0",
     "react-world-flags": "^1.6.0",

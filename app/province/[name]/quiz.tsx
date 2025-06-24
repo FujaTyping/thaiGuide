@@ -8,7 +8,8 @@ import NF from "@/assets/media/card/icon/notfound.png";
 import { useTranslations } from 'next-intl';
 import { User, onAuthStateChanged } from "firebase/auth";
 import auth from "@/lib/firebaseAuth";
-import { server } from "@/app/config.json"
+import { server } from "@/app/config.json";
+import ConfettiExplosion from 'react-confetti-explosion';
 
 interface QuizProps {
     data: string;
@@ -179,24 +180,29 @@ function Quiz({ data: provinceName }: QuizProps) {
 
         if (status === 'finished' && quizData) {
             return (
-                <motion.div key={key} {...motionAnimProps}>
-                    <h2 className="md:text-3xl text-2xl font-bold mb-2">{t('finish')}</h2>
-                    <p className="text-xl mb-3">
-                        {t('score')} : {score} / {quizData.questions.length} {`(${((score / quizData.questions.length) * 100).toFixed(0)}%)`}
-                    </p>
-                    {!user && (
-                        <div className='text-white flex items-center justify-center gap-2 mb-4'>
-                            <TriangleAlert />
-                            <p className='font-semibold'>{t('nolog')}</p>
-                        </div>
-                    )}
-                    <button
-                        onClick={handleRestartQuiz}
-                        className="text-black bg-white px-4 py-2 rounded-lg md:w-fit w-full cursor-pointer"
-                    >
-                        {t('restartbtn')}
-                    </button>
-                </motion.div>
+                <>
+                    <div className='flex items-center justify-center flex-col'>
+                        <ConfettiExplosion zIndex={99} />
+                        <motion.div key={key} {...motionAnimProps}>
+                            <h2 className="md:text-3xl text-2xl font-bold mb-2">{t('finish')}</h2>
+                            <p className="text-xl mb-3">
+                                {t('score')} : {score} / {quizData.questions.length} {`(${((score / quizData.questions.length) * 100).toFixed(0)}%)`}
+                            </p>
+                            {!user && (
+                                <div className='text-white flex items-center justify-center gap-2 mb-4'>
+                                    <TriangleAlert />
+                                    <p className='font-semibold'>{t('nolog')}</p>
+                                </div>
+                            )}
+                            <button
+                                onClick={handleRestartQuiz}
+                                className="text-black bg-white px-4 py-2 rounded-lg md:w-fit w-full cursor-pointer"
+                            >
+                                {t('restartbtn')}
+                            </button>
+                        </motion.div>
+                    </div>
+                </>
             );
         }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Mail } from 'lucide-react';
+import { Mail, MessageCircleHeart } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import {
     HoverCard,
@@ -21,7 +21,7 @@ function Footer() {
     return (
         <>
             <main className='bg-[#f7740a] py-3 border-t-2'>
-                <div className="max-w-7xl mx-auto px-3 flex flex-col md:flex-row place-content-between gap-2 md:gap-0 items-start text-white">
+                <div className="max-w-7xl mx-auto px-3 flex flex-col md:flex-row place-content-between gap-6 md:gap-0 items-start text-white">
                     <div className='flex flex-col gap-2'>
                         <div>
                             <HoverCard>
@@ -39,7 +39,10 @@ function Footer() {
                         </div>
                         <p>{t('title')}</p>
                     </div>
-                    <p className='flex items-center gap-2'><Mail /> <Link href={"mailto:contact@siraphop.me"}>contact@siraphop.me</Link></p>
+                    <div className='flex flex-col md:items-end gap-2'>
+                        <p className='flex items-center gap-2'><Mail /> <Link href={"mailto:contact@siraphop.me"}>contact@siraphop.me</Link></p>
+                        <button data-tally-open="n9PZyp" data-tally-emoji-text="🙏🏻" data-tally-emoji-animation="wave" className='cursor-pointer flex items-center gap-2'><MessageCircleHeart /> {t('feedback')}</button>
+                    </div>
                 </div>
             </main>
         </>
