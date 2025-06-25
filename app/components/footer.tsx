@@ -41,7 +41,9 @@ function Footer() {
                     </div>
                     <div className='flex flex-col md:items-end gap-2'>
                         <p className='flex items-center gap-2'><Mail /> <Link href={"mailto:contact@siraphop.me"}>contact@siraphop.me</Link></p>
-                        <button data-tally-open="n9PZyp" data-tally-emoji-text="🙏🏻" data-tally-emoji-animation="wave" className='cursor-pointer flex items-center gap-2'><MessageCircleHeart /> {t('feedback')}</button>
+                        <Link href={"/feedback"} className='flex items-center gap-2'>
+                            <MessageCircleHeart /> {t('feedback')}
+                        </Link>
                     </div>
                 </div>
             </main>
