@@ -498,5 +498,46 @@
     "next": "Next Question",
     "fquiz": "Finish Quiz",
     "nolog": "Not logged in. Points not awarded"
+  },
+  "Feedback": {
+    "title": "Feedback and Issues",
+    "decs": "This page allows users to report problems and share suggestions to help improve ThaiGuide. Your feedback is valuable and will be used to enhance the platform continuously ensuring your travel experience is smooth, enjoyable, and rewarding",
+    "tally": "Click here to take the survey",
+    "form": {
+      "type": {
+        "title": "Choose feedback type",
+        "required_error": "You need to select a feedback type",
+        "c1": "Issues",
+        "c2": "Feedback"
+      },
+      "title": {
+        "title": "Title",
+        "decs": "A Title of your Issues/Feedback",
+        "placeholder": "Your Title",
+        "min_length": "Title must be at least 3 characters"
+      },
+      "message": {
+        "title": "Message",
+        "decs": "Tell us about your Problems/Feedback",
+        "placeholder": "Tell more about your Issues/Feedback",
+        "min_length": "Message must be at least 5 characters",
+        "max_length": "Message must not be longer than 80 characters"
+      },
+      "exp": {
+        "required_error": "You need to select an experience level",
+        "title": "Rate our service",
+        "1": "Dissatisfied",
+        "2": "Slightly Dissatisfied",
+        "3": "Moderately Satisfied",
+        "4": "Very Satisfied",
+        "5": "Extremely Satisfied"
+      },
+      "verify": {
+        "title": "Verification",
+        "required_error": "Please complete the verification.",
+        "min_length": "Please complete the verification.",
+        "decs": "Please verify you are human to help us prevent spam"
+      }
+    }
   }
 }
