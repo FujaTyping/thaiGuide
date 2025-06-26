@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Logo from "@/assets/icon.png";
 import Image from 'next/image';
-import { KeyRound, LoaderCircle, LogOut, Menu, Smile, UserRound } from 'lucide-react';
+import { KeyRound, LoaderCircle, LogOut, Menu, Smile, Trophy, UserRound } from 'lucide-react';
 import {
     Sheet,
     SheetContent,
@@ -189,7 +189,8 @@ function Navbar() {
                                     <DropdownMenuContent>
                                         <DropdownMenuLabel>{user.email}</DropdownMenuLabel>
                                         <DropdownMenuSeparator />
-                                        <DropdownMenuItem><Link href={"/profile"} className='flex items-center gap-2'><Smile className='text-[#f7740a]' /> {t('profile')}</Link></DropdownMenuItem>
+                                        <Link href={"/profile"} className='flex items-center gap-2'><DropdownMenuItem><Smile className='text-[#f7740a]' /> {t('profile')}</DropdownMenuItem></Link>
+                                        <Link href={"#"}><DropdownMenuItem className='flex items-center gap-2'><Trophy className='text-[#f7740a]' /> {t('leaderboard')}</DropdownMenuItem></Link>
                                         <DropdownMenuItem className='flex items-center gap-2' onClick={handleLogout}><LogOut className='text-[#f7740a]' /> {t('logout')}</DropdownMenuItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu> : <KeyRound onClick={handleGoogleSignIn} />}
