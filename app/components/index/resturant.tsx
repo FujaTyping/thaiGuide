@@ -8,7 +8,7 @@ import { server } from "@/app/config.json";
 import Link from 'next/link';
 import { motion } from "motion/react";
 import SwiperCore from 'swiper';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChefHat, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
@@ -135,6 +135,22 @@ function Resturant() {
                   </SwiperSlide>
                 ))
               }
+              <SwiperSlide>
+                <Link href={"/restaurant"}>
+                  <motion.div
+                    whileTap={{ scale: 0.95 }}
+                    className='flex items-center justify-center flex-col h-[350px] gap-4 md:h-[500px] bg-[#f7740a] text-white rounded-4xl'
+                  >
+                    <div className='p-3 border-2 rounded-full'>
+                      <ChefHat className='w-10 h-10' />
+                    </div>
+                    <div className='flex flex-col items-center justify-centerI'>
+                      <h1 className='font-semibold text-xl mb-1'>Hungry for More?</h1>
+                      <p className='max-w-[90%] text-center'>Click to check out the restaurant page</p>
+                    </div>
+                  </motion.div>
+                </Link>
+              </SwiperSlide>
             </Swiper>
           </>
         }
