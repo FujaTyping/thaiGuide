@@ -540,5 +540,25 @@
         "decs": "Please verify you are human to help us prevent spam"
       }
     }
+  },
+  "leaderboard": {
+    "title": "Leaderboard",
+    "decs": "See how you stack up against other explorers! The ThaiGuide Leaderboard ranks users based on points earned from visiting and checking in at various destinations. Climb the ranks, earn bragging rights, and see who is the ultimate ThaiGuide explorer. Keep exploring to reach the top!",
+    "ms": "Most Points",
+    "mcn": "Most Check-In",
+    "board": {
+      "ms": {
+        "header": "Most Points",
+        "other": "Other Ranks",
+        "pts": "Points",
+        "top": "Top"
+      },
+      "mcn": {
+        "header": "Most Check-In",
+        "other": "Other Ranks",
+        "pts": "Times",
+        "top": "Top"
+      }
+    }
   }
 }
