@@ -100,8 +100,8 @@
       "tip": "Tips",
       "hot": {
         "decs": "Hot Season",
-        "range": "March - May",
-        "info": "During Thailand's hot season, from March to May, expect bright, sunny days perfect for beach activities and island hopping. Temperatures can soar, especially in April, making it the ideal time for refreshing drinks and water-based fun. This period also hosts the famous Songkran festival (Thai New Year), where nationwide water fights offer a joyful way to cool down.",
+        "range": "March - June",
+        "info": "During Thailand's hot season, from March to June, expect bright, sunny days perfect for beach activities and island hopping. Temperatures can soar, especially in April, making it the ideal time for refreshing drinks and water-based fun. This period also hosts the famous Songkran festival (Thai New Year), where nationwide water fights offer a joyful way to cool down.",
         "tips": {
           "0": "Stay hydrated by drinking plenty of water throughout the day",
           "1": "Wear lightweight and breathable clothing to stay cool",
@@ -111,8 +111,8 @@
       },
       "rain": {
         "decs": "Rainy Season",
-        "range": "September - October",
-        "info": "The rainy season, from June to October, brings lush green landscapes and fewer crowds. While you can expect afternoon downpours, they are often short-lived, leaving the rest of the day clear. It's a great time to see waterfalls at their most powerful and enjoy the vibrant, refreshed scenery",
+        "range": "July - October",
+        "info": "The rainy season, from July to October, brings lush green landscapes and fewer crowds. While you can expect afternoon downpours, they are often short-lived, leaving the rest of the day clear. It's a great time to see waterfalls at their most powerful and enjoy the vibrant, refreshed scenery",
         "tips": {
           "0": "Pack a waterproof jacket and umbrella.",
           "1": "Wear non-slip shoes as surfaces can be slippery.",
