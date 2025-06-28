@@ -158,6 +158,12 @@
       "Redeem": "Redeem",
       "Scan QR": "Scan QR"
     },
+    "quiz": {
+      "title": "Quiz",
+      "realtitle": "Complete Quiz",
+      "noneed": "There is no completed quiz",
+      "comat": "Complete at"
+    },
     "scan": {
       "title": "Scan to recive points",
       "decs": "Position the QR code within the frame to scan it and receive your points.",

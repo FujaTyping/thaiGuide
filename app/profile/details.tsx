@@ -49,7 +49,7 @@ function Details() {
 
     return (
         <>
-            <div className='grid grid-cols-1 gap-4 mt-4'>
+            <div className='grid grid-cols-1 gap-5 mt-4'>
                 {
                     transcaton.length == 0 ? <>
                         <div className='flex items-center flex-col justify-center py-8 gap-4'>
