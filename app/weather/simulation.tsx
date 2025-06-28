@@ -2,26 +2,12 @@
 
 import React, { useState } from 'react';
 import { Slider } from "@/components/ui/slider";
-import { CalendarClock, CloudRain, Info, Snowflake, Sun } from 'lucide-react';
+import { CalendarClock, CloudRain, Info, Sun, Wind } from 'lucide-react';
 import SN from "@/assets/media/weather/sun.gif";
 import RN from "@/assets/media/weather/rain.gif";
 import SS from "@/assets/media/weather/snow-storm.gif";
 import { AnimatePresence, motion } from "motion/react";
-
-const Month = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-]
+import { useTranslations } from 'next-intl';
 
 const Event = [
     [
@@ -79,14 +65,16 @@ const Event = [
 ]
 
 function Simulation() {
+    const t = useTranslations('WeaATem');
+    const mo = useTranslations('Month');
     const [stateS, setStateS] = useState([0]);
 
     return (
         <>
             <div className='flex items-center place-content-between mb-3'>
-                <p className='flex items-center gap-2'><CloudRain /> January</p>
-                <p className='flex items-center gap-2'><Sun /> June</p>
-                <p className='flex items-center gap-2'><Snowflake /> December</p>
+                <p className='flex items-center gap-2'><CloudRain /> {t('simu.s1')}</p>
+                <p className='flex items-center gap-2'><Sun /> {t('simu.s2')}</p>
+                <p className='flex items-center gap-2'><Wind /> {t('simu.s3')}</p>
             </div>
             <Slider defaultValue={[0]} max={11} step={1} onValueChange={setStateS} />
             <div className='mt-5'>
@@ -104,17 +92,17 @@ function Simulation() {
                                     <div className='flex items-center gap-4'>
                                         <img className='w-32' src={SN.src} alt="Sun" />
                                         <div>
-                                            <h1 className='font-semibold text-3xl'>{Month[stateS[0]]}</h1>
+                                            <h1 className='font-semibold text-3xl'>{mo(`${stateS[0]}`)}</h1>
                                             <div className='mt-1 text-lg'>
-                                                <p className='font-medium'>Hot Season</p>
-                                                <p>March - May</p>
+                                                <p className='font-medium'>{t('simu.hot.decs')}</p>
+                                                <p>{t('simu.hot.range')}</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <p className='mt-2'>During {"Thailand's"} hot season, from March to May, expect bright, sunny days perfect for beach activities and island hopping. Temperatures can soar, especially in April, making it the ideal time for refreshing drinks and water-based fun. This period also hosts the famous Songkran festival {"(Thai New Year)"}, where nationwide water fights offer a joyful way to cool down.</p>
+                                    <p className='mt-2'>{t('simu.hot.info')}</p>
                                 </div>
                                 <div>
-                                    <h1 className='flex items-center gap-2 font-semibold text-lg'><CalendarClock className='text-[#f7740a]' /> Event in this month</h1>
+                                    <h1 className='flex items-center gap-2 font-semibold text-lg'><CalendarClock className='text-[#f7740a]' /> {t('simu.event')}</h1>
                                     <ul className='mt-2 list-disc list-inside'>
                                         {
                                             Event[stateS[0]].map((event, index) => (
@@ -122,12 +110,12 @@ function Simulation() {
                                             ))
                                         }
                                     </ul>
-                                    <h1 className='mt-4 flex items-center gap-2 font-semibold text-lg'><Info className='text-[#f7740a]' /> Tips</h1>
+                                    <h1 className='mt-4 flex items-center gap-2 font-semibold text-lg'><Info className='text-[#f7740a]' /> {t('simu.tip')}</h1>
                                     <ul className='mt-2 list-disc list-inside'>
-                                        <li>Stay hydrated by drinking plenty of water throughout the day</li>
-                                        <li>Wear lightweight and breathable clothing to stay cool</li>
-                                        <li>Apply high-SPF sunscreen regularly, and wear a hat and sunglasses</li>
-                                        <li>Plan outdoor activities for the early morning or late afternoon to avoid peak heat</li>
+                                        <li>{t('simu.hot.tips.0')}</li>
+                                        <li>{t('simu.hot.tips.1')}</li>
+                                        <li>{t('simu.hot.tips.2')}</li>
+                                        <li>{t('simu.hot.tips.3')}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -138,17 +126,17 @@ function Simulation() {
                                     <div className='flex items-center gap-4'>
                                         <img className='w-32' src={RN.src} alt="Rain" />
                                         <div>
-                                            <h1 className='font-semibold text-3xl'>{Month[stateS[0]]}</h1>
+                                            <h1 className='font-semibold text-3xl'>{mo(`${stateS[0]}`)}</h1>
                                             <div className='mt-1 text-lg'>
-                                                <p className='font-medium'>Rainy Season</p>
-                                                <p>June - October</p>
+                                                <p className='font-medium'>{t('simu.rain.decs')}</p>
+                                                <p>{t('simu.rain.range')}</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <p className='mt-2'>The rainy season, from June to October, brings lush green landscapes and fewer crowds. While you can expect afternoon downpours, they are often short-lived, leaving the rest of the day clear. {"It's"} a great time to see waterfalls at their most powerful and enjoy the vibrant, refreshed scenery</p>
+                                    <p className='mt-2'>{t('simu.rain.info')}</p>
                                 </div>
                                 <div>
-                                    <h1 className='flex items-center gap-2 font-semibold text-lg'><CalendarClock className='text-[#f7740a]' /> Event in this month</h1>
+                                    <h1 className='flex items-center gap-2 font-semibold text-lg'><CalendarClock className='text-[#f7740a]' /> {t('simu.event')}</h1>
                                     <ul className='mt-2 list-disc list-inside'>
                                         {
                                             Event[stateS[0]].map((event, index) => (
@@ -156,12 +144,12 @@ function Simulation() {
                                             ))
                                         }
                                     </ul>
-                                    <h1 className='mt-4 flex items-center gap-2 font-semibold text-lg'><Info className='text-[#f7740a]' /> Tips</h1>
+                                    <h1 className='mt-4 flex items-center gap-2 font-semibold text-lg'><Info className='text-[#f7740a]' /> {t('simu.tip')}</h1>
                                     <ul className='mt-2 list-disc list-inside'>
-                                        <li>Pack a waterproof jacket and umbrella.</li>
-                                        <li>Wear non-slip shoes as surfaces can be slippery.</li>
-                                        <li>Be flexible with outdoor plans due to potential rain.</li>
-                                        <li>Enjoy the lush, green scenery and fewer tourists.</li>
+                                        <li>{t('simu.rain.tips.0')}</li>
+                                        <li>{t('simu.rain.tips.1')}</li>
+                                        <li>{t('simu.rain.tips.2')}</li>
+                                        <li>{t('simu.rain.tips.3')}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -172,17 +160,17 @@ function Simulation() {
                                     <div className='flex items-center gap-4'>
                                         <img className='w-32' src={SS.src} alt="Cool" />
                                         <div>
-                                            <h1 className='font-semibold text-3xl'>{Month[stateS[0]]}</h1>
+                                            <h1 className='font-semibold text-3xl'>{mo(`${stateS[0]}`)}</h1>
                                             <div className='mt-1 text-lg'>
-                                                <p className='font-medium'>Cool Season</p>
-                                                <p>November - February</p>
+                                                <p className='font-medium'>{t('simu.cold.decs')}</p>
+                                                <p>{t('simu.cold.range')}</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <p className='mt-2'>From November to February, the cool, dry season offers pleasant temperatures and clear skies, making it the most popular time to visit. {"It's"} perfect for exploring cities, trekking in the northern mountains, and enjoying outdoor festivals without the intense heat</p>
+                                    <p className='mt-2'>{t('simu.cold.info')}</p>
                                 </div>
                                 <div>
-                                    <h1 className='flex items-center gap-2 font-semibold text-lg'><CalendarClock className='text-[#f7740a]' /> Event in this month</h1>
+                                    <h1 className='flex items-center gap-2 font-semibold text-lg'><CalendarClock className='text-[#f7740a]' /> {t('simu.event')}</h1>
                                     <ul className='mt-2 list-disc list-inside'>
                                         {
                                             Event[stateS[0]].map((event, index) => (
@@ -190,12 +178,12 @@ function Simulation() {
                                             ))
                                         }
                                     </ul>
-                                    <h1 className='mt-4 flex items-center gap-2 font-semibold text-lg'><Info className='text-[#f7740a]' /> Tips</h1>
+                                    <h1 className='mt-4 flex items-center gap-2 font-semibold text-lg'><Info className='text-[#f7740a]' /> {t('simu.tip')}</h1>
                                     <ul className='mt-2 list-disc list-inside'>
-                                        <li>Bring a light jacket or sweater for cooler evenings, especially in the north.</li>
-                                        <li>Book accommodation and flights in advance as {"it's"} peak tourist season.</li>
-                                        <li>Enjoy outdoor activities like hiking and visiting national parks.</li>
-                                        <li>Stay hydrated even if {"it's"} not hot.</li>
+                                        <li>{t('simu.cold.tips.0')}</li>
+                                        <li>{t('simu.cold.tips.1')}</li>
+                                        <li>{t('simu.cold.tips.2')}</li>
+                                        <li>{t('simu.cold.tips.3')}</li>
                                     </ul>
                                 </div>
                             </div>

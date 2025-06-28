@@ -24,10 +24,10 @@ function Page() {
                     <Embed />
                 </div>
                 <div>
-                    <h1 className='font-bold text-4xl'>Weather Simulation</h1>
+                    <h1 className='font-bold text-4xl'>{t('stitle')}</h1>
                     <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
                 </div>
-                <p className='mt-4'>Experience a visual representation of {"Thailand's"} weather. This interactive animation provides a simplified and engaging look at the typical weather patterns you might encounter, bringing the forecast to life</p>
+                <p className='mt-4'>{t('sdecs')}</p>
                 <div className='mt-6'>
                     <Simulation />
                 </div>

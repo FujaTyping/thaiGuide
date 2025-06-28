@@ -81,6 +81,8 @@
     "title": "Weather and Temperature",
     "decs": "Thailand is located in the tropics near the equator, making the country's climate hot and humid. The average temperature throughout the country is between 18 - 38 degrees Celsius. The summer season lasts about 3 months, with the hottest weather in mid-April. After that, under the influence of the monsoon, Thailand enters the rainy season, which lasts for 6 months, and the winter season, which lasts for 3 months, respectively.",
     "selecttext": "Province",
+    "stitle": "Weather Simulation",
+    "sdecs": "Experience a visual representation of Thailand's weather. This interactive animation provides a simplified and engaging look at the typical weather patterns you might encounter, bringing the forecast to life",
     "select": {
       "start": "Select Province...",
       "search": "Search Province...",
@@ -89,6 +91,46 @@
     "tab": {
       "thai": "Thai Meteorological Department",
       "accu": "AccuWeather"
+    },
+    "simu": {
+      "s1": "January",
+      "s2": "June",
+      "s3": "December",
+      "event": "Event in this month",
+      "tip": "Tips",
+      "hot": {
+        "decs": "Hot Season",
+        "range": "March - May",
+        "info": "During Thailand's hot season, from March to May, expect bright, sunny days perfect for beach activities and island hopping. Temperatures can soar, especially in April, making it the ideal time for refreshing drinks and water-based fun. This period also hosts the famous Songkran festival (Thai New Year), where nationwide water fights offer a joyful way to cool down.",
+        "tips": {
+          "0": "Stay hydrated by drinking plenty of water throughout the day",
+          "1": "Wear lightweight and breathable clothing to stay cool",
+          "2": "Apply high-SPF sunscreen regularly, and wear a hat and sunglasses",
+          "3": "Plan outdoor activities for the early morning or late afternoon to avoid peak heat"
+        }
+      },
+      "rain": {
+        "decs": "Rainy Season",
+        "range": "September - October",
+        "info": "The rainy season, from June to October, brings lush green landscapes and fewer crowds. While you can expect afternoon downpours, they are often short-lived, leaving the rest of the day clear. It's a great time to see waterfalls at their most powerful and enjoy the vibrant, refreshed scenery",
+        "tips": {
+          "0": "Pack a waterproof jacket and umbrella.",
+          "1": "Wear non-slip shoes as surfaces can be slippery.",
+          "2": "Be flexible with outdoor plans due to potential rain.",
+          "3": "Enjoy the lush, green scenery and fewer tourists."
+        }
+      },
+      "cold": {
+        "decs": "Cool Season",
+        "range": "November - February",
+        "info": "From November to February, the cool, dry season offers pleasant temperatures and clear skies, making it the most popular time to visit. It's perfect for exploring cities, trekking in the northern mountains, and enjoying outdoor festivals without the intense heat",
+        "tips": {
+          "0": "Bring a light jacket or sweater for cooler evenings, especially in the north.",
+          "1": "Book accommodation and flights in advance as it's peak tourist season.",
+          "2": "Enjoy outdoor activities like hiking and visiting national parks.",
+          "3": "Stay hydrated even if it's not hot."
+        }
+      }
     }
   },
   "SOS": {
@@ -560,5 +602,19 @@
         "top": "Top"
       }
     }
+  },
+  "Month": {
+    "0": "January",
+    "1": "February",
+    "2": "March",
+    "3": "April",
+    "4": "May",
+    "5": "June",
+    "6": "July",
+    "7": "August",
+    "8": "September",
+    "9": "October",
+    "10": "November",
+    "11": "December"
   }
 }
