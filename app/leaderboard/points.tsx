@@ -8,6 +8,7 @@ import R1 from "@/assets/media/icon/Rank1.png";
 import R2 from "@/assets/media/icon/Rank2.png";
 import R3 from "@/assets/media/icon/Rank3.png";
 import { Flame } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface dataTypes {
     name: string;
@@ -15,6 +16,7 @@ interface dataTypes {
 }
 
 function Points() {
+    const t = useTranslations('leaderboard');
     const [data, setData] = useState<dataTypes[]>([]);
 
     useEffect(() => {
@@ -38,7 +40,7 @@ function Points() {
 
     return (
         <>
-            <p className='flex items-center gap-2 py-2 text-lg text-[#f7740a] font-semibold'><Flame /> Most Points</p>
+            <p className='flex items-center gap-2 py-2 text-lg text-[#f7740a] font-semibold'><Flame /> {t('board.ms.header')}</p>
             <div className='mt-2 flex flex-col gap-4 md:grid grid-cols-3 md:gap-6'>
                 {
                     data.map((item, index) => (
@@ -51,9 +53,9 @@ function Points() {
                                         {index === 2 && <img src={R3.src} alt="Rank 3" className='w-12' />}
                                         <div className='flex flex-col items-center justify-center'>
                                             <p className='font-semibold text-xl text-center'>{item.name}</p>
-                                            <p>{item.point} Points</p>
+                                            <p>{item.point} {t('board.ms.pts')}</p>
                                         </div>
-                                        <p>Top #{index + 1}</p>
+                                        <p>{t('board.ms.top')} #{index + 1}</p>
                                     </div>
                                 </>
                             }
@@ -61,7 +63,7 @@ function Points() {
                     ))
                 }
             </div>
-            <p className='text-lg'>Other Ranks</p>
+            <p className='text-lg'>{t('board.ms.other')}</p>
             <div className='flex flex-col gap-3 -mt-10'>
                 {
                     data.map((item, index) => (
@@ -73,7 +75,7 @@ function Points() {
                                             <p>#{index + 1}</p>
                                             <p>{item.name}</p>
                                         </div>
-                                        <p>{item.point} Points</p>
+                                        <p>{item.point} {t('board.ms.pts')}</p>
                                     </div>
                                 </>
                             }

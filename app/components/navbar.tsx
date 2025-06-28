@@ -147,6 +147,7 @@ function Navbar() {
                                         <DropdownMenuLabel>{t(`list.switcherlang`)}</DropdownMenuLabel>
                                         <DropdownMenuSeparator />
                                         <DropdownMenuItem onClick={() => { setCookie('NEXT_LOCALE', 'en', {}); window.location.reload(); }}><Flag code={'us'} className="w-5 h-5 object-cover rounded-full" /> English</DropdownMenuItem>
+                                        <DropdownMenuItem onClick={() => { setWlang('cn'); setModalO(true); }}><Flag code={'cn'} className="w-5 h-5 object-cover rounded-full" /> 中文</DropdownMenuItem>
                                         <DropdownMenuItem onClick={() => { setWlang('th'); setModalO(true); }}><Flag code={'th'} className="w-5 h-5 object-cover rounded-full" /> ภาษาไทย</DropdownMenuItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu>
@@ -173,6 +174,7 @@ function Navbar() {
                                                     <DropdownMenuSeparator />
                                                     <DropdownMenuItem onClick={() => { setCookie('NEXT_LOCALE', 'en', {}); window.location.reload(); }}><Flag code={'us'} className="w-5 h-5 object-cover rounded-full" /> English</DropdownMenuItem>
                                                     <DropdownMenuItem onClick={() => { setWlang('th'); setModalO(true); }}><Flag code={'th'} className="w-5 h-5 object-cover rounded-full" /> ภาษาไทย</DropdownMenuItem>
+                                                    <DropdownMenuItem onClick={() => { setWlang('cn'); setModalO(true); }}><Flag code={'cn'} className="w-5 h-5 object-cover rounded-full" /> 中文</DropdownMenuItem>
                                                 </DropdownMenuContent>
                                             </DropdownMenu>
                                         </div>
