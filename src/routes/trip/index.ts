@@ -25,7 +25,7 @@ const getInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.st
 
                 Please generate a detailed travel itinerary in Thailand based on the following inputs:
 
-                - User want : ${message || "user dosn't provide any message"}
+                - User want : ${message || "user dosn't provide any message"} (the response follow the language of the user want)
                 - Trip duration: ${duration}
                 - Trip type: ${type} (e.g., family, adventure, romantic, cultural, food tour)
                 - Interests/tags: ${tag} (e.g., temples, street food, beaches, mountains, hidden gems)

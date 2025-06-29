@@ -53,12 +53,14 @@ const generateQuizHandler = async ({ body, set }: { body: typeof QuizRequestSche
                 }
 
                 Guidelines:
+                - No same choices like (Golden mermaid and The Golden Mermaid)
                 - Ensure the number of questions is randomly between 2 and 5.
-                - Each question must have exactly two choices.
+                - Each question must have exactly two choices or more.
                 - For each question, one choice must be marked true for "isCorrect" and the other false.
                 - The "province" field in the JSON output should be the same as the input province.
                 - The "quizTitle" should be engaging and mention the province.
                 - Questions should be relevant to the specified province (e.g., landmarks, culture, history, geography).
+                - Make the quiz challenging
                 - Return valid JSON only, no markdown or extra text.
             `;
 

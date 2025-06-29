@@ -12,6 +12,7 @@
         "elysia": "latest",
         "elysia-autoload": "^1.5.2",
         "elysia-rate-limit": "^4.4.0",
+        "elysiajs-cdn-cache": "^0.0.13",
         "firebase": "11.8.0",
         "genkit": "^1.12.0",
         "openai": "^5.5.1",
@@ -299,6 +300,8 @@
     "elysia-autoload": ["elysia-autoload@1.5.2", "", { "peerDependencies": { "elysia": "^1.3.1" } }, "sha512-qna4t/I56wuua2WlpCQ2jHRyLLXaTvjd16BwJvnqVgla7XvltXzFeTU4qT0KLSLX0ZRYy2Fu4Iz6rIwn7V/SCQ=="],
 
     "elysia-rate-limit": ["elysia-rate-limit@4.4.0", "", { "dependencies": { "@alloc/quick-lru": "5.2.0", "debug": "4.3.4" }, "peerDependencies": { "elysia": ">= 1.0.0" } }, "sha512-pyQdFEdjgf5ELx5CAEfOZ2IWhPaYv8WIQMrXimzHzslsJ9awDHoK6rcF9K7k/yAOh4qB1UhiasNeMMBGtxAwYQ=="],
+
+    "elysiajs-cdn-cache": ["elysiajs-cdn-cache@0.0.13", "", { "dependencies": { "elysia": "^1.3.1" } }, "sha512-0VIRVzTZnwRBjCw1o8qSLUEgMbSBum5VNCmE8GgH7ziLNKkXsvgh0O5BaHkNs1XMmz612AVXrZRfuNiS6yOHFQ=="],
 
     "emoji-regex": ["emoji-regex@8.0.0", "", {}, "sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A=="],
 
