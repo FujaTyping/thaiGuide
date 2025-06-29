@@ -189,7 +189,7 @@ function Quiz({ data: provinceName }: QuizProps) {
             return (
                 <>
                     <div className='flex items-center justify-center flex-col'>
-                        <ConfettiExplosion zIndex={99} />
+                        <ConfettiExplosion colors={['#ff577f', '#ff884b', '#ffd384', '#fff9b0']} zIndex={99} />
                         <motion.div key={key} {...motionAnimProps}>
                             <h2 className="md:text-3xl text-2xl font-bold mb-2">{t('finish')}</h2>
                             <p className="text-xl mb-3">

@@ -209,7 +209,7 @@ function Qr() {
                                                         </> : <>
                                                             {
                                                                 isWithinRadius ? <div className='flex items-center flex-col justify-center gap-4'>
-                                                                    <ConfettiExplosion zIndex={99} />
+                                                                    <ConfettiExplosion colors={['#ff577f', '#ff884b', '#ffd384', '#fff9b0']} zIndex={99} />
                                                                     <img src={LC.src} alt="Location Correct Icon" className='w-32 translate-x-3' />
                                                                     <div className='font-semibold'>
                                                                         <p className='flex items-center gap-2'><MapPin /> {codeData.name}</p>

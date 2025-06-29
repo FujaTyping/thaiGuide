@@ -67,14 +67,14 @@ function Points() {
                     ))
                 }
             </div>
-            <p className='-mt-10 md:-mt-0 text-lg'>{t('board.ms.other')}</p>
-            <div className='flex flex-col gap-3 -mt-10'>
+            <p className='-mt-40 md:-mt-0 text-lg'>{t('board.ms.other')}</p>
+            <div className='flex flex-col gap-5 -mt-11'>
                 {
                     data.map((item, index) => (
                         <div key={index}>
                             {
                                 index > 2 && <>
-                                    <div className={`flex items-center place-content-between ${index < 3 ? "bg-[#f7740a] text-white" : ""}   rounded-md p-3 text-lg`}>
+                                    <div className={`flex items-center place-content-between ${index < 3 ? "bg-[#f7740a] text-white" : ""}   rounded-md text-lg`}>
                                         <div className='flex items-center gap-2 font-semibold'>
                                             <p>#{index + 1}</p>
                                             <p>{item.name}</p>

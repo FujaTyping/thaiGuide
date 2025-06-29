@@ -46,6 +46,7 @@
     "next-intl": "^4.1.0",
     "nextjs-toploader": "^3.8.16",
     "react": "^19.1.0",
+    "react-confetti-boom": "^2.0.1",
     "react-confetti-explosion": "^3.0.3",
     "react-day-picker": "^9.7.0",
     "react-dom": "^19.1.0",
