@@ -16,7 +16,7 @@
     "lang": {
       "title": "Language Switch Information",
       "d0": "Switching to",
-      "d1": "is in progress. While most of the UI will be in Thai,some content may still appear in English. We are working to fully translate everything soon.",
+      "d1": "is in progress. While most of the UI will be in the choosen language,some content may still appear in English. We are working to fully translate everything soon.",
       "cancel": "Cancel",
       "change": "Change language"
     }
