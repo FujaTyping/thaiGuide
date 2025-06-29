@@ -139,13 +139,13 @@ function Resturant() {
                 <Link href={"/restaurant"}>
                   <motion.div
                     whileTap={{ scale: 0.95 }}
-                    className='flex items-center justify-center flex-col h-[350px] gap-4 md:h-[500px] bg-[#f7740a] text-white rounded-4xl'
+                    className='flex px-2 items-center justify-center flex-col h-[350px] gap-4 md:h-[500px] bg-[#f7740a] text-white rounded-4xl'
                   >
                     <div className='p-3 border-2 rounded-full'>
                       <ChefHat className='w-10 h-10' />
                     </div>
                     <div className='flex flex-col items-center justify-centerI'>
-                      <h1 className='font-semibold text-2xl mb-1'>{t('more.title')}</h1>
+                      <h1 className='font-semibold text-2xl text-center mb-1'>{t('more.title')}</h1>
                       <p className='max-w-[90%] text-center'>{t('more.decs')}</p>
                     </div>
                   </motion.div>
