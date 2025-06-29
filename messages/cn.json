@@ -36,11 +36,19 @@
         }
     },
     "IndexRus": {
-        "headder": "餐厅"
+        "headder": "餐厅",
+        "more": {
+            "title": "想吃更多？",
+            "decs": "点击查看餐厅页面"
+        }
     },
     "IndexAct": {
         "headder": "活动",
-        "no": "目前没有可用的活动"
+        "no": "目前没有可用的活动",
+        "more": {
+            "title": "探索更多活动？",
+            "decs": "点击查看活动页面"
+        }
     },
     "IndexTrip": {
         "headder": "公路旅行路线"

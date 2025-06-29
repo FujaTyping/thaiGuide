@@ -8,6 +8,7 @@ import axios from 'axios';
 import { server } from "@/app/config.json";
 import check from "@/assets/media/icon/check.png";
 import { useTranslations } from 'next-intl';
+import { motion } from "motion/react";
 
 import NF from "@/assets/media/card/icon/notfound.png";
 
@@ -57,7 +58,17 @@ function Quiz() {
                 {
                     quizz.length == 0 ? <>
                         <div className='flex items-center flex-col justify-center py-8 gap-4'>
-                            <img src={NF.src} alt="Icon" className='w-28 translate-x-3' />
+                            <motion.div
+                                animate={{
+                                    x: [0, -10, 10, -10, 10, -5, 5, 0],
+                                }}
+                                transition={{
+                                    duration: 0.5,
+                                    ease: "easeInOut"
+                                }}
+                            >
+                                <img src={NF.src} alt="Icon" className='w-28 translate-x-3' />
+                            </motion.div>
                             <p className='font-semibold'>{t('quiz.noneed')}</p>
                         </div>
                     </> : <>

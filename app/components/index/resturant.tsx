@@ -145,8 +145,8 @@ function Resturant() {
                       <ChefHat className='w-10 h-10' />
                     </div>
                     <div className='flex flex-col items-center justify-centerI'>
-                      <h1 className='font-semibold text-2xl mb-1'>Hungry for More?</h1>
-                      <p className='max-w-[90%] text-center'>Click to check out the restaurant page</p>
+                      <h1 className='font-semibold text-2xl mb-1'>{t('more.title')}</h1>
+                      <p className='max-w-[90%] text-center'>{t('more.decs')}</p>
                     </div>
                   </motion.div>
                 </Link>
