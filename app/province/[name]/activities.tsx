@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Leaf } from 'lucide-react';
 import Link from 'next/link';
 import axios from 'axios';
 import Loader from '@/app/components/loader';
@@ -10,6 +10,7 @@ import { useTranslations } from 'next-intl';
 import SwiperCore from 'swiper';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { motion } from "motion/react";
 
 interface Activity {
     name: string;
@@ -143,6 +144,22 @@ function Activities({ data: provinceName }: ActivitiesProps) {
                                         </SwiperSlide>
                                     ))
                                 }
+                                <SwiperSlide>
+                                    <Link href={"/activity"}>
+                                        <motion.div
+                                            whileTap={{ scale: 0.95 }}
+                                            className='flex items-center justify-center flex-col h-[350px] gap-4 md:h-[500px] bg-[#f7740a] text-white rounded-4xl'
+                                        >
+                                            <div className='p-3 border-2 rounded-full'>
+                                                <Leaf className='w-10 h-10' />
+                                            </div>
+                                            <div className='flex flex-col items-center justify-center px-2 text-center'>
+                                                <h1 className='font-semibold text-2xl mb-1'>{t('more.title')}</h1>
+                                                <p className='max-w-[90%] text-center'>{t('more.decs')}</p>
+                                            </div>
+                                        </motion.div>
+                                    </Link>
+                                </SwiperSlide>
                             </Swiper>
                         </>
                     ) : (

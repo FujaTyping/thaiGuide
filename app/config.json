@@ -1,4 +1,4 @@
 {
-    "server": "backend.thaiguide.siraphop.me",
-    "backup": "thapiguide.siraphop.me"
+    "server": "thapiguide.siraphop.me",
+    "backup": "backend.thaiguide.siraphop.me"
 }

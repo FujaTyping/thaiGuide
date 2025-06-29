@@ -36,11 +36,19 @@
     }
   },
   "IndexRus": {
-    "headder": "Resturant"
+    "headder": "Resturant",
+    "more": {
+      "title": "Hungry for More?",
+      "decs": "Click to check out the restaurant page"
+    }
   },
   "IndexAct": {
     "headder": "Activity",
-    "no": "No activities available at the moment"
+    "no": "No activities available at the moment",
+    "more": {
+      "title": "Explore More Activities?",
+      "decs": "Click to check out the activities page"
+    }
   },
   "IndexTrip": {
     "headder": "Road Trip Itineraries"
