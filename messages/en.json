@@ -599,13 +599,23 @@
         "header": "Most Points",
         "other": "Other Ranks",
         "pts": "Points",
-        "top": "Top"
+        "top": "Top",
+        "msg": {
+          "0": "The ultimate point collector",
+          "1": "So close! Keep up the grind",
+          "2": "Third place, but a point giant"
+        }
       },
       "mcn": {
         "header": "Most Check-In",
         "other": "Other Ranks",
         "pts": "Times",
-        "top": "Top"
+        "top": "Top",
+        "msg": {
+          "0": "Living here or just traveling 24/7?",
+          "1": "Second place, but first in mileage",
+          "2": "Third place, your feet deserve a spa"
+        }
       }
     }
   },

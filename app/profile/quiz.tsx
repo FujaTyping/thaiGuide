@@ -27,10 +27,14 @@ function Quiz() {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
                 setUser(user);
-                const checkUser = await axios.put(`https://${server}/quiz/getbyuser`, {
-                    userId: user.uid
-                })
-                setQuizz(checkUser.data.completedQuizzes);
+                try {
+                    const checkUser = await axios.put(`https://${server}/quiz/getbyuser`, {
+                        userId: user.uid
+                    })
+                    setQuizz(checkUser.data.completedQuizzes);
+                } catch {
+                    setQuizz([]);
+                }
             } else {
                 setUser(null);
             }
