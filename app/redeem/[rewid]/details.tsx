@@ -36,7 +36,8 @@ function Details({ data }: { data: any }) {
                 setUser(user);
                 const checkUser = await axios.post(`https://${server}/user`, {
                     userid: user.uid,
-                    name: user.displayName
+                    name: user.displayName,
+                    pfp: user.photoURL
                 })
                 setUData(checkUser.data);
                 setLoading(false);

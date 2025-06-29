@@ -86,7 +86,7 @@ function Simulation() {
                         exit={{ x: -10, opacity: 0 }}
                         transition={{ duration: 0.2 }}
                     >
-                        {(stateS[0] >= 2 && stateS[0] <= 4) &&
+                        {(stateS[0] >= 2 && stateS[0] <= 5) &&
                             <div className='grid md:grid-cols-2 gap-6'>
                                 <div>
                                     <div className='flex items-center gap-4'>
@@ -120,7 +120,7 @@ function Simulation() {
                                 </div>
                             </div>
                         }
-                        {(stateS[0] >= 5 && stateS[0] <= 9) &&
+                        {(stateS[0] >= 6 && stateS[0] <= 9) &&
                             <div className='grid md:grid-cols-2 gap-6'>
                                 <div>
                                     <div className='flex items-center gap-4'>

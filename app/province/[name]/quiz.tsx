@@ -10,6 +10,7 @@ import { User, onAuthStateChanged } from "firebase/auth";
 import auth from "@/lib/firebaseAuth";
 import { server } from "@/app/config.json";
 import ConfettiExplosion from 'react-confetti-explosion';
+import axios from 'axios';
 
 interface QuizProps {
     data: string;
@@ -113,6 +114,12 @@ function Quiz({ data: provinceName }: QuizProps) {
             setCurrentQuestionIndex(prevIndex => prevIndex + 1);
         } else {
             setStatus('finished');
+            if (user) {
+                axios.put(`https://${server}/quiz/check`, {
+                    userId: user.uid,
+                    quizName: provinceName
+                })
+            }
         }
     };
 

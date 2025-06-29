@@ -5,6 +5,8 @@ import Qr from './qr';
 import type { Metadata } from "next";
 import { useTranslations } from 'next-intl';
 import Didyouknow from "@/app/components/didyouknow";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Quiz from './quiz';
 
 export const metadata: Metadata = {
     title: "ThaiGuide – My Profile"
@@ -22,10 +24,24 @@ function Page() {
                 </div>
                 <p className='mt-4'>{t('decs')}</p>
                 <Card />
-                <div>
-                    <h1 className='font-bold text-2xl'>{t('transaction.title')}</h1>
-                </div>
-                <Details />
+                <Tabs defaultValue="tsn" className='w-full'>
+                    <TabsList className='w-full'>
+                        <TabsTrigger value="tsn" className='cursor-pointer'>{t('transaction.title')}</TabsTrigger>
+                        <TabsTrigger value="qz" className='cursor-pointer'>{t('quiz.title')}</TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="tsn">
+                        <div>
+                            <h1 className='font-bold text-2xl mt-1'>{t('transaction.title')}</h1>
+                        </div>
+                        <Details />
+                    </TabsContent>
+                    <TabsContent value="qz">
+                        <div>
+                            <h1 className='font-bold text-2xl mt-1'>{t('quiz.realtitle')}</h1>
+                        </div>
+                        <Quiz />
+                    </TabsContent>
+                </Tabs>
             </main>
             <Qr />
             <Didyouknow />
