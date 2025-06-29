@@ -6,13 +6,14 @@ import { t } from "elysia";
 const userSchema = t.Object({
     userid: t.String(),
     name: t.String(),
+    pfp: t.String()
 });
 
 const createUser = async ({ body, set }: { body: typeof userSchema.static, set: { status: number | string } }) => {
     try {
-        const { userid, name } = body;
+        const { userid, name, pfp } = body;
 
-        if (!userid || !name) {
+        if (!userid || !name || !pfp) {
             set.status = 400
             return { error: "All fields (userid, name) are required." }
         }
@@ -29,6 +30,7 @@ const createUser = async ({ body, set }: { body: typeof userSchema.static, set: 
 
         const userCreateData = {
             name,
+            pfp,
             point: 0,
             checkin: 0
         }
