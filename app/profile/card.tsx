@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import Atropos from 'atropos/react';
 import { User, onAuthStateChanged } from "firebase/auth";
 import auth from "@/lib/firebaseAuth";
-import { Coins } from 'lucide-react';
+import { Coins, Flame } from 'lucide-react';
 import Loader from '../components/loader';
 import axios from 'axios';
 import { server } from "@/app/config.json";
@@ -73,6 +73,7 @@ function Card() {
                     <img src={selectedBackground.src} className='w-full h-[400px] object-cover' alt="Card Background" />
                     <div className='absolute top-0 right-0 p-4 text-white'>
                         <p className='text-2xl font-semibold flex items-center gap-2'><Coins /> {uData.point}</p>
+                        <p className='text-2xl font-semibold flex items-center gap-2'><Flame /> {uData.streak || 0}</p>
                     </div>
                     <div className='absolute h-48 bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-[#f7740a]/70 to-transparent'></div>
                     <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 text-white rounded-4xl'>
