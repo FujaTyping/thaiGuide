@@ -24,7 +24,7 @@ const getInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.st
             if (docSnap.exists()) {
                 const data = docSnap.data();
                 const userData = userSnapshot.data();
-                let STEAK = 0;
+                let STEAK = userData.streak || 0;
                 if (!userData.streakYRS || (userData.streakYRS != year && year > userData.streakYRS)) {
                     if (year - userData.streakYRS >= 2) {
                         STEAK = 1;
