@@ -22,11 +22,16 @@ import AH from "@/assets/media/card/icon/login.png";
 import auth from "@/lib/firebaseAuth";
 import { getDistance } from 'geolib';
 import { server } from "@/app/config.json";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import ConfettiExplosion from 'react-confetti-explosion';
+import STK from "@/assets/media/icon/fire.gif";
+import { Button } from '@/components/ui/button';
+
 interface ApiCodeData {
     name: string;
     points: number;
+    streak: number;
+    streakYRS: number;
     location: {
         latitude: number;
         longitude: number;
@@ -45,6 +50,7 @@ function Qr() {
     const [locationLoading, setLocationLoading] = useState(true);
     const [user, setUser] = useState<User | null>(null);
     const [isWithinRadius, setIsWithinRadius] = useState(false);
+    const [succState, setSuccState] = useState(1);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -81,7 +87,9 @@ function Qr() {
     async function checkCode(code: string) {
         try {
             const response = await axios.put(`https://${server}/code/getbyid`, {
-                id: code
+                id: code,
+                uid: user?.uid,
+                year: new Date().getFullYear()
             });
 
             const resD = response.data
@@ -117,7 +125,7 @@ function Qr() {
                 {locationLoading ? <div className='bg-[#f7740a] text-white p-3 rounded-full hover:bg-white hover:text-[#f7740a] border-2 border-[#f7740a] transition-all duration-250'>
                     <LoaderCircle className='animate-spin size-8' />
                 </div> : <Dialog>
-                    <DialogTrigger onClick={() => { setData(""); setCodeData(""); }}><div className='bg-[#f7740a] cursor-pointer text-white p-3 rounded-full hover:bg-white hover:text-[#f7740a] border-2 border-[#f7740a] transition-all duration-250'>
+                    <DialogTrigger onClick={() => { setData(""); setCodeData(""); setSuccState(1); }}><div className='bg-[#f7740a] cursor-pointer text-white p-3 rounded-full hover:bg-white hover:text-[#f7740a] border-2 border-[#f7740a] transition-all duration-250'>
                         <ScanLine className='size-8' />
                     </div></DialogTrigger>
                     <DialogContent>
@@ -143,8 +151,7 @@ function Qr() {
                                                                 };
                                                             }}
                                                         />
-                                                        <p>{data}</p>
-                                                    </div>
+                                                        <p>{data}</p>                                           </div>
                                                     <p className='flex items-center justify-center mt-2 text-[#f7740a] font-semibold'>{data == "" ? <span className='flex items-center gap-2'><LoaderCircle className='animate-spin' />  {t('scan.loading')}</span> : <span className='text-center'>{data}</span>}</p>
                                                 </> : <>
                                                     <div className='flex items-center flex-col justify-center gap-4'>
@@ -208,14 +215,47 @@ function Qr() {
                                                             </div>
                                                         </> : <>
                                                             {
-                                                                isWithinRadius ? <div className='flex items-center flex-col justify-center gap-4'>
-                                                                    <ConfettiExplosion colors={['#ff577f', '#ff884b', '#ffd384', '#fff9b0']} zIndex={99} />
-                                                                    <img src={LC.src} alt="Location Correct Icon" className='w-32 translate-x-3' />
-                                                                    <div className='font-semibold'>
-                                                                        <p className='flex items-center gap-2'><MapPin /> {codeData.name}</p>
-                                                                        <p className='flex items-center gap-2 text-[#f7740a] mt-1'><Coins /> {t('scan.pe')} : +{codeData.points}</p>
+                                                                isWithinRadius ? <>
+                                                                    <div>
+                                                                        <AnimatePresence mode="wait">
+                                                                            <motion.div
+                                                                                key={succState}
+                                                                                initial={{ x: 10, opacity: 0 }}
+                                                                                animate={{ x: 0, opacity: 1 }}
+                                                                                exit={{ x: -10, opacity: 0 }}
+                                                                                transition={{
+                                                                                    type: "spring",
+                                                                                    stiffness: 300,
+                                                                                    damping: 30,
+                                                                                }}
+                                                                                className='flex items-center flex-col justify-center gap-4'
+                                                                            >
+                                                                                {
+                                                                                    succState == 1 && <>
+                                                                                        <ConfettiExplosion colors={['#ff577f', '#ff884b', '#ffd384', '#fff9b0']} zIndex={99} />
+                                                                                        <img src={LC.src} alt="Location Correct Icon" className='w-32 translate-x-3' />
+                                                                                        <div className='font-semibold'>
+                                                                                            <p className='flex items-center gap-2'><MapPin /> {codeData.name}</p>
+                                                                                            <p className='flex items-center gap-2 text-[#f7740a] mt-1'><Coins /> {t('scan.pe')} : +{codeData.points}</p>
+                                                                                        </div>
+                                                                                        <Button onClick={() => setSuccState(2)} className='bg-[#f7740a] text-white hover:bg-[#f7740a] w-full mt-2 cursor-pointer'>{t('scan.next')}</Button>
+                                                                                    </>
+                                                                                }
+                                                                                {
+                                                                                    succState == 2 && <>
+                                                                                        <>
+                                                                                            <img src={STK.src} alt="Location Correct Icon" className='w-32 translate-x-3' />
+                                                                                            <div className='text-center'>
+                                                                                                <h1 className='font-semibold text-xl'>{t("scan.stk")} : {codeData.streak}</h1>
+                                                                                                <p className='mt-1'>{codeData.streak == 1 ? <>{t('scan.stk1')}</> : <>{t('scan.stk2')}</>} : <b>{codeData.streakYRS}</b></p>
+                                                                                            </div>
+                                                                                        </>
+                                                                                    </>
+                                                                                }
+                                                                            </motion.div>
+                                                                        </AnimatePresence>
                                                                     </div>
-                                                                </div> :
+                                                                </> :
                                                                     <>
                                                                         <div className='flex items-center flex-col justify-center gap-4'>
                                                                             <motion.div

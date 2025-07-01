@@ -161,6 +161,7 @@
     "decs": "This is your personalized profile card. It displays your information, progress, and achievements within ThaiGuide.",
     "cip": "Check-In point",
     "notrans": "There is no transaction",
+    "more": "Show more",
     "transaction": {
       "title": "Transaction",
       "Redeem": "Redeem",
@@ -180,7 +181,11 @@
       "loading": "Waiting for code",
       "llnavqr": "Look like it not a valid QR-Code",
       "pe": "Points earn",
-      "pgctqrl": "Please get closer to the QR-Code location"
+      "pgctqrl": "Please get closer to the QR-Code location",
+      "next": "Next step",
+      "stk": "Streak",
+      "stk1": "Your first year in Thailand",
+      "stk2": "You're keeping your streak alive"
     }
   },
   "Redeem": {

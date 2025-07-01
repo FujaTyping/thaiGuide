@@ -8,6 +8,7 @@ import axios from 'axios';
 import { server } from "@/app/config.json";
 import { useTranslations } from 'next-intl';
 import { motion } from "motion/react";
+import { ChevronDown } from 'lucide-react';
 
 import NF from "@/assets/media/card/icon/notfound.png";
 
@@ -19,10 +20,14 @@ interface Transaction {
     place: string;
 }
 
+const INITIAL_ITEMS_TO_SHOW = 10;
+const ITEMS_PER_LOAD = 10;
+
 function Details() {
     const t = useTranslations('Profile');
     const [user, setUser] = useState<User | null>(null);
     const [transcaton, setTranscaton] = useState<Transaction[] | null>(null);
+    const [numDisplayedItems, setNumDisplayedItems] = useState<number>(INITIAL_ITEMS_TO_SHOW);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -48,6 +53,12 @@ function Details() {
         )
     }
 
+    const itemsToDisplay = transcaton.slice(0, numDisplayedItems);
+
+    const handleLoadMore = () => {
+        setNumDisplayedItems(prevCount => Math.min(prevCount + ITEMS_PER_LOAD, transcaton.length));
+    };
+
     return (
         <>
             <div className='grid grid-cols-1 gap-5 mt-4'>
@@ -69,7 +80,7 @@ function Details() {
                         </div>
                     </> : <>
                         {
-                            transcaton.map((item, index: number) => (
+                            itemsToDisplay.map((item, index: number) => (
                                 <div key={index} className='flex items-center place-content-between'>
                                     <div className='flex items-center gap-3'>
                                         {
@@ -91,6 +102,17 @@ function Details() {
                     </>
                 }
             </div>
+            {numDisplayedItems < transcaton.length && (
+                <div className="mt-8 flex items-center justify-center">
+                    <button
+                        onClick={handleLoadMore}
+                        className="flex items-center gap-3 w-full md:w-fit justify-center bg-[#f7740a] text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-[#f7640a] cursor-pointer"
+                    >
+                        <ChevronDown />
+                        {t('more')}
+                    </button>
+                </div>
+            )}
         </>
     )
 }
