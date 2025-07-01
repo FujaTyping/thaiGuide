@@ -32,7 +32,8 @@ const createUser = async ({ body, set }: { body: typeof userSchema.static, set: 
             name,
             pfp,
             point: 0,
-            checkin: 0
+            checkin: 0,
+            streak: 0
         }
 
         await setDoc(userDoc, userCreateData);
