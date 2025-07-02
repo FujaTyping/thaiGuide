@@ -10,6 +10,17 @@ import Loader from '../components/loader';
 import axios from 'axios';
 import { server } from "@/app/config.json";
 import { useTranslations } from 'next-intl';
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+} from "@/components/ui/dialog";
+import { Button } from '@/components/ui/button';
+import { AnimatePresence, motion } from "motion/react";
+import IQR from "@/assets/media/icon/scanner.png";
+import IRM from "@/assets/media/icon/gift.png";
+import ITG from "@/assets/media/icon/target.png";
 
 // Background
 import B1 from "@/assets/media/card/1.jpg";
@@ -26,6 +37,8 @@ function Card() {
     const [user, setUser] = useState<User | null>(null);
     const [uData, setUData] = useState<any | null>(null);
     const [selectedBackground, setSelectedBackground] = useState(backgrounds[0]);
+    const [isOpen, setIsOpen] = useState(false);
+    const [welState, setWelState] = useState(1);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -37,6 +50,10 @@ function Card() {
                     pfp: user.photoURL
                 })
                 setUData(checkUser.data);
+                if (checkUser.data.new) {
+                    setWelState(1);
+                    setIsOpen(true);
+                }
             } else {
                 setUser(null);
             }
@@ -88,6 +105,60 @@ function Card() {
                     </div>
                 </div>
             </Atropos>
+            <Dialog open={isOpen} onOpenChange={setIsOpen}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle className='text-2xl'>{t('welcome.title')}</DialogTitle>
+                        <p>{t('welcome.decs')}</p>
+                    </DialogHeader>
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={welState}
+                            initial={{ x: 10, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            exit={{ x: -10, opacity: 0 }}
+                            transition={{
+                                type: "spring",
+                                stiffness: 300,
+                                damping: 30,
+                            }}
+                            className='text-center md:text-left'
+                        >
+                            {welState == 1 && (
+                                <>
+                                    <div className='flex items-center justify-center py-3 md:py-2 mb-5'>
+                                        <img src={ITG.src} alt="Icon" className='w-32' />
+                                    </div>
+                                    <h2 className='text-xl font-semibold'>{t('welcome.1.title')}</h2>
+                                    <p>{t('welcome.1.decs')}</p>
+                                </>
+                            )}
+                            {welState == 2 && (
+                                <>
+                                    <div className='flex items-center justify-center py-3 md:py-2 mb-5'>
+                                        <img src={IQR.src} alt="Icon" className='w-32' />
+                                    </div>
+                                    <h2 className='text-xl font-semibold'>{t('welcome.2.title')}</h2>
+                                    <p>{t('welcome.2.decs')}</p>
+                                </>
+                            )}
+
+                            {welState == 3 && (
+                                <>
+                                    <div className='flex items-center justify-center py-3 md:py-2 mb-5'>
+                                        <img src={IRM.src} alt="Icon" className='w-32' />
+                                    </div>
+                                    <h2 className='text-xl font-semibold'>{t('welcome.3.title')}</h2>
+                                    <p>{t('welcome.3.decs')}</p>
+                                </>
+                            )}
+                        </motion.div>
+                    </AnimatePresence>
+                    <Button className='bg-[#f7740a] hover:bg-[#f7740a] text-white mt-2 cursor-pointer' onClick={() => { if (welState < 3) { setWelState(welState + 1) } else { setIsOpen(false) } }}>
+                        {welState < 3 ? "Next step" : "Get Started"}
+                    </Button>
+                </DialogContent>
+            </Dialog>
         </>
     )
 }

@@ -186,6 +186,22 @@
       "stk": "Streak",
       "stk1": "Your first year in Thailand",
       "stk2": "You're keeping your streak alive"
+    },
+    "welcome": {
+      "title": "Welcome to ThaiGuide!",
+      "decs": "Start your journey with us. Let's get to know ThaiGuide in a few quick steps",
+      "1": {
+        "title": "Our Mission",
+        "decs": "To guide tourists to lesser-known attractions, reducing overcrowding and supporting local communities"
+      },
+      "2": {
+        "title": "Earn Points Easily",
+        "decs": "Scan QR codes at various locations to earn points and unlock exciting rewards as you explore"
+      },
+      "3": {
+        "title": "Redeem Your Rewards",
+        "decs": "Use your points to redeem exclusive rewards and make every trip unforgettable"
+      }
     }
   },
   "Redeem": {
