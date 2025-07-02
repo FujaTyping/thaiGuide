@@ -28,7 +28,7 @@ const createUser = async ({ body, set }: { body: typeof userSchema.static, set: 
             return userData;
         }
 
-        const userCreateData = {
+        let userCreateData = {
             name,
             pfp,
             point: 0,
@@ -37,8 +37,7 @@ const createUser = async ({ body, set }: { body: typeof userSchema.static, set: 
         }
 
         await setDoc(userDoc, userCreateData);
-
-        return userCreateData;
+        return { ...userCreateData, new: true };
     } catch (error) {
         set.status = 500
         return { error: "Failed to process user request" }
