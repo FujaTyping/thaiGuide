@@ -1,0 +1,665 @@
+{
+    "NavBar": {
+        "title": "ThaiGuide",
+        "menu": "Menu",
+        "profile": "Profil",
+        "logout": "Log Keluar",
+        "leaderboard": "Papan Pendahulu",
+        "list": {
+            "weather": "Cuaca",
+            "planner": "Perancang Perjalanan",
+            "trips": "Lawatan Jalan Raya",
+            "redeem": "Tebus",
+            "switcher": "Bahasa",
+            "switcherlang": "Pilih Bahasa"
+        },
+        "lang": {
+            "title": "Maklumat Penukaran Bahasa",
+            "d0": "Menukar kepada",
+            "d1": "sedang dalam proses. Walaupun kebanyakan UI akan dalam bahasa yang dipilih, sesetengah kandungan mungkin masih muncul dalam bahasa Inggeris. Kami sedang berusaha untuk menterjemah sepenuhnya tidak lama lagi.",
+            "cancel": "Batal",
+            "change": "Tukar bahasa"
+        }
+    },
+    "Crisis": {
+        "alert": "Amaran Krisis"
+    },
+    "ToolBar": {
+        "title": "Alat Perjalanan",
+        "item": {
+            "restaurant": "Restoran",
+            "activity": "Aktiviti",
+            "sos": "SOS",
+            "weather": "Cuaca",
+            "vat": "Bayaran Balik VAT",
+            "SDGs": "SDG"
+        }
+    },
+    "IndexRus": {
+        "headder": "Restoran",
+        "more": {
+            "title": "Lapar Lagi?",
+            "decs": "Klik untuk melihat halaman restoran"
+        }
+    },
+    "IndexAct": {
+        "headder": "Aktiviti",
+        "no": "Tiada aktiviti tersedia pada masa ini",
+        "more": {
+            "title": "Terokai Lebih Banyak Aktiviti?",
+            "decs": "Klik untuk melihat halaman aktiviti"
+        }
+    },
+    "IndexTrip": {
+        "headder": "Jadual Perjalanan Jalan Raya"
+    },
+    "IndexFAQ": {
+        "headder": "Soalan Lazim",
+        "q": {
+            "0": "Bilakah masa terbaik untuk melancong ke Thailand?",
+            "1": "Bagaimanakah iklim Thailand?",
+            "2": "Adakah saya memerlukan visa untuk melawat Thailand?",
+            "3": "Apakah mata wang yang digunakan di Thailand?",
+            "4": "Apakah bahasa yang dituturkan di Thailand? Adakah saya boleh berkomunikasi dalam bahasa Inggeris?"
+        },
+        "a": {
+            "0": "Musim terbaik untuk melancong di Thailand ialah musim sejuk dan musim panas. Tempoh perjalanan yang paling popular adalah dari November hingga April. Walau bagaimanapun, Thailand adalah sebuah negara dengan aktiviti, perayaan, atau tradisi yang menarik sepanjang tahun di seluruh negara, dan pelbagai tarikan semula jadi boleh dilawati sepanjang tahun. Oleh itu, pelancong boleh memilih untuk melancong pada bila-bila masa sepanjang tahun, bergantung pada keselesaan mereka.",
+            "1": "Thailand mempunyai iklim tropika. Kawasan ini dipengaruhi oleh monsun barat daya yang bertiup dari Lautan Hindi, menyebabkan musim hujan, dan monsun timur laut yang bertiup dari Laut China Selatan, menyebabkan musim sejuk. Suhu purata sepanjang tahun adalah kira-kira 18-34 darjah Celsius.",
+            "2": "Keperluan visa untuk Thailand bergantung pada kewarganegaraan anda dan tempoh penginapan anda. Banyak warganegara layak mendapat pengecualian visa atau visa semasa ketibaan untuk tujuan pelancongan untuk tempoh tertentu. Adalah lebih baik untuk menyemak keperluan terkini dengan Kedutaan atau Konsulat Diraja Thai di negara anda sebelum perjalanan anda.",
+            "3": "Mata wang rasmi Thailand ialah Baht Thai (THB). Anda boleh menukar mata wang anda dengan Baht Thai di lapangan terbang, bank, dan penukar wang yang sah di seluruh negara. Kad kredit diterima secara meluas di hotel, restoran besar, dan pusat membeli-belah, tetapi dinasihatkan untuk membawa sedikit wang tunai untuk penjual kecil dan pasar tempatan.",
+            "4": "Bahasa rasmi Thailand ialah bahasa Thai. Walau bagaimanapun, di kawasan pelancongan utama, hotel, dan tarikan popular, bahasa Inggeris biasa dituturkan dan difahami, terutamanya oleh mereka yang bekerja dalam industri pelancongan. Mempelajari beberapa frasa asas bahasa Thai seperti 'Sawasdee' (Helo/Selamat Tinggal) dan 'Khop Khun' (Terima kasih) boleh dihargai oleh penduduk tempatan."
+        }
+    },
+    "GBdyk": {
+        "title": "Adakah Anda Tahu?",
+        "text": {
+            "0": "Thailand adalah rumah kepada lebih 1,400 pulau, masing-masing dengan daya tarikan tersendiri—daripada syurga parti Koh Phangan hingga Koh Lipe yang tenang berhampiran Satun, berdekatan dengan Songkhla.",
+            "1": "Songkhla terkenal dengan Patung Duyung Emas yang ikonik di Pantai Samila, yang diilhamkan oleh cerita rakyat tempatan dan tempat swafoto yang popular untuk pelancong.",
+            "2": "Thailand mempunyai salah satu pasar terbuka tertua dan terbesar di dunia—Pasar Chatuchak di Bangkok, dengan lebih 15,000 gerai!",
+            "3": "Pekan Lama Songkhla menggabungkan seni bina Cina, Thai, dan Portugis, menawarkan seni jalanan yang meriah, kafe yang selesa, dan sejarah budaya yang kaya.",
+            "4": "Arca Ular Besar Nag (Nāga) di Songkhla dipercayai memberkati pengunjung dengan nasib baik dan kemakmuran—penduduk tempatan sering membawa persembahan untuk menunjukkan rasa hormat."
+        }
+    },
+    "FooterBar": {
+        "title": "Hak Cipta © 2025 ThaiGuide semua hak terpelihara",
+        "sdg": "Komitmen Kami terhadap Matlamat Pembangunan Mampan",
+        "feedback": "Bantu kami menambah baik ThaiGuide"
+    },
+    "WeaATem": {
+        "title": "Cuaca dan Suhu",
+        "decs": "Thailand terletak di kawasan tropika berhampiran khatulistiwa, menjadikan iklim negara ini panas dan lembap. Suhu purata di seluruh negara adalah antara 18 - 38 darjah Celsius. Musim panas berlangsung kira-kira 3 bulan, dengan cuaca paling panas pada pertengahan April. Selepas itu, di bawah pengaruh monsun, Thailand memasuki musim hujan, yang berlangsung selama 6 bulan, dan musim sejuk, yang berlangsung selama 3 bulan, masing-masing.",
+        "selecttext": "Wilayah",
+        "stitle": "Simulasi Cuaca",
+        "sdecs": "Alami perwakilan visual cuaca Thailand. Animasi interaktif ini memberikan gambaran yang dipermudahkan dan menarik tentang corak cuaca biasa yang mungkin anda hadapi, menghidupkan ramalan cuaca",
+        "select": {
+            "start": "Pilih Wilayah...",
+            "search": "Cari Wilayah...",
+            "notfound": "Tiada wilayah ditemui."
+        },
+        "tab": {
+            "thai": "Jabatan Meteorologi Thai",
+            "accu": "AccuWeather"
+        },
+        "simu": {
+            "s1": "Januari",
+            "s2": "Jun",
+            "s3": "Disember",
+            "event": "Acara pada bulan ini",
+            "tip": "Petua",
+            "hot": {
+                "decs": "Musim Panas",
+                "range": "Mac - Jun",
+                "info": "Semasa musim panas Thailand, dari Mac hingga Jun, jangkakan hari yang cerah dan cerah sesuai untuk aktiviti pantai dan melompat pulau. Suhu boleh melambung tinggi, terutamanya pada bulan April, menjadikannya masa yang sesuai untuk minuman yang menyegarkan dan keseronokan berasaskan air. Tempoh ini juga menjadi tuan rumah perayaan Songkran yang terkenal (Tahun Baru Thai), di mana pertarungan air di seluruh negara menawarkan cara yang menggembirakan untuk menyejukkan badan.",
+                "tips": {
+                    "0": "Kekal terhidrat dengan minum banyak air sepanjang hari",
+                    "1": "Pakai pakaian yang ringan dan bernafas untuk kekal sejuk",
+                    "2": "Sapukan pelindung matahari SPF tinggi dengan kerap, dan pakai topi dan cermin mata hitam",
+                    "3": "Rancang aktiviti luar untuk awal pagi atau lewat petang untuk mengelakkan haba puncak"
+                }
+            },
+            "rain": {
+                "decs": "Musim Hujan",
+                "range": "Julai - Oktober",
+                "info": "Musim hujan, dari Julai hingga Oktober, membawa landskap hijau yang subur dan kurang orang ramai. Walaupun anda boleh menjangkakan hujan lebat pada sebelah petang, ia selalunya tidak lama, meninggalkan sepanjang hari cerah. Ia adalah masa yang hebat untuk melihat air terjun pada tahap paling kuat dan menikmati pemandangan yang meriah dan segar",
+                "tips": {
+                    "0": "Bawa jaket kalis air dan payung.",
+                    "1": "Pakai kasut tidak licin kerana permukaan boleh menjadi licin.",
+                    "2": "Bersikap fleksibel dengan rancangan luar kerana kemungkinan hujan.",
+                    "3": "Nikmati pemandangan hijau yang subur dan kurang pelancong."
+                }
+            },
+            "cold": {
+                "decs": "Musim Sejuk",
+                "range": "November - Februari",
+                "info": "Dari November hingga Februari, musim sejuk yang kering menawarkan suhu yang menyenangkan dan langit yang cerah, menjadikannya masa yang paling popular untuk dilawati. Ia sesuai untuk menerokai bandar, trekking di pergunungan utara, dan menikmati perayaan luar tanpa kepanasan yang terik",
+                "tips": {
+                    "0": "Bawa jaket ringan atau baju sejuk untuk malam yang lebih sejuk, terutamanya di utara.",
+                    "1": "Tempah penginapan dan penerbangan lebih awal kerana ia adalah musim puncak pelancongan.",
+                    "2": "Nikmati aktiviti luar seperti mendaki dan melawat taman negara.",
+                    "3": "Kekal terhidrat walaupun tidak panas."
+                }
+            }
+        }
+    },
+    "SOS": {
+        "title": "Hubungan Kecemasan & Keselamatan",
+        "decs": "Keselamatan anda di Thailand adalah penting. Halaman ini menyediakan senarai nombor telefon kecemasan yang penting. Simpan kenalan ini sedia ada untuk sebarang situasi mendesak yang mungkin anda hadapi.",
+        "ndtitle": "Panggilan Segera",
+        "number": {
+            "tpt": "Polis Pelancong Thailand",
+            "taot": "Lembaga Pelancongan Thailand",
+            "pt": "Polis Thailand",
+            "am": "Ambulans",
+            "tsc": "Pusat Keselamatan Pengangkutan",
+            "fd": "Jabatan Bomba",
+            "ddpm": "Jabatan Pencegahan dan Mitigasi Bencana",
+            "csd": "Bahagian Pencegahan Jenayah"
+        }
+    },
+    "Profile": {
+        "title": "Kad Profil",
+        "decs": "Ini ialah kad profil peribadi anda. Ia memaparkan maklumat, kemajuan, dan pencapaian anda dalam ThaiGuide.",
+        "cip": "Mata Daftar Masuk",
+        "notrans": "Tiada transaksi",
+        "more": "Tunjukkan lagi",
+        "transaction": {
+            "title": "Transaksi",
+            "Redeem": "Tebus",
+            "Scan QR": "Imbas QR"
+        },
+        "quiz": {
+            "title": "Kuiz",
+            "realtitle": "Selesaikan Kuiz",
+            "noneed": "Tiada kuiz yang telah diselesaikan",
+            "comat": "Selesai pada"
+        },
+        "scan": {
+            "title": "Imbas untuk menerima mata",
+            "decs": "Letakkan kod QR di dalam bingkai untuk mengimbasnya dan menerima mata anda.",
+            "pgls": "Sila berikan akses lokasi",
+            "plbrp": "Sila log masuk sebelum menerima mata",
+            "loading": "Menunggu kod",
+            "llnavqr": "Nampaknya ia bukan Kod QR yang sah",
+            "pe": "Mata diperoleh",
+            "pgctqrl": "Sila dekati lokasi Kod QR",
+            "next": "Langkah seterusnya",
+            "stk": "Rentetan",
+            "stk1": "Tahun pertama anda di Thailand",
+            "stk2": "Anda mengekalkan rentetan anda"
+        },
+        "welcome": {
+            "title": "Selamat datang ke ThaiGuide!",
+            "decs": "Mulakan perjalanan anda bersama kami. Mari kenali ThaiGuide dalam beberapa langkah pantas",
+            "1": {
+                "title": "Misi Kami",
+                "decs": "Untuk membimbing pelancong ke tarikan yang kurang dikenali, mengurangkan kesesakan dan menyokong komuniti tempatan"
+            },
+            "2": {
+                "title": "Dapatkan Mata dengan Mudah",
+                "decs": "Imbas kod QR di pelbagai lokasi untuk mendapatkan mata dan membuka kunci ganjaran menarik semasa anda meneroka"
+            },
+            "3": {
+                "title": "Tebus Ganjaran Anda",
+                "decs": "Gunakan mata anda untuk menebus ganjaran eksklusif dan menjadikan setiap perjalanan tidak dapat dilupakan"
+            }
+        }
+    },
+    "Redeem": {
+        "title": "Tebus Ganjaran",
+        "decs": "Tebus mata perjalanan anda untuk ganjaran eksklusif, produk tempatan, diskaun dan banyak lagi. Imbas, teroka dan tuntut pengalaman menakjubkan dengan ThaiGuide!",
+        "ptitle": "Bagaimana untuk mendapatkan mata",
+        "pdecs": "Imbas kod QR di setiap lokasi pelancongan untuk mendapatkan mata. Kumpul mata dan tebus untuk ganjaran.",
+        "tips": {
+            "0": "Mulakan pengembaraan ke salah satu destinasi pelancongan rakan kongsi kami. Setiap lokasi menawarkan pengalaman dan peluang unik untuk memperoleh pendapatan.",
+            "1": "Sebaik sahaja anda tiba, perhatikan! Kod QR ThaiGuide khas akan diletakkan di tempat yang agak rawak di dalam lokasi. Selamat memburu!",
+            "2": "Gunakan aplikasi ThaiGuide untuk mengimbas kod QR yang telah anda temui. Imbasan yang berjaya akan serta-merta menambah mata ke akaun anda, membawa anda lebih dekat kepada ganjaran yang menarik."
+        },
+        "items": {
+            "notfound": "Tiada data ganjaran",
+            "title": "Tebus Ganjaran",
+            "decs": "Tebus mata perjalanan anda untuk ganjaran eksklusif, produk tempatan, diskaun dan banyak lagi. Imbas, teroka dan tuntut pengalaman menakjubkan dengan ThaiGuide!",
+            "require": "Perlukan mata",
+            "now": "Tebus sekarang",
+            "sure": "Adakah anda pasti untuk menebus",
+            "error": "Ralat semasa transaksi tebus.",
+            "success": "Tebus berjaya.",
+            "cancel": "Batal",
+            "confirm": "Sahkan",
+            "needed": "Anda memerlukan lebih banyak mata",
+            "loading": "Memuatkan data pengguna",
+            "login": "Sila log masuk untuk menebus ganjaran",
+            "your": "Mata anda",
+            "modal": {
+                "0": "Tindakan ini tidak boleh dibuat asal.",
+                "1": "Mengesahkan akan menolak",
+                "2": "mata",
+                "3": "daripada akaun anda untuk ganjaran:"
+            }
+        }
+    },
+    "Planner": {
+        "title": "Perancang Perjalanan",
+        "beta": "Beta",
+        "decs": "Rancang perjalanan sempurna anda ke Thailand dengan Perancang Perjalanan AI pintar kami. Dapatkan jadual perjalanan, cadangan dan petua yang diperibadikan untuk menjadikan perjalanan anda tidak dapat dilupakan. Biarkan AI kami membantu anda menemui yang terbaik di Thailand, disesuaikan dengan pilihan dan minat anda.",
+        "ai": {
+            "title": "Beritahu kami tentang perjalanan anda",
+            "decs": "Bantu kami mengesyorkan aktiviti terbaik untuk anda",
+            "input": {
+                "placeholder": "cth., Saya sedang mencari gabungan pengalaman budaya dan pantai yang menenangkan. Saya berminat dengan kuil, pasar tempatan dan snorkeling.",
+                "duration": "Tempoh",
+                "durationplace": "cth. 2 Hari, 1 Minggu",
+                "type": "Jenis Kumpulan",
+                "typeholder": "Pilih jenis kumpulan",
+                "tag": "Tag",
+                "select": {
+                    "0": "Pilih jenis kumpulan",
+                    "1": "Solo",
+                    "2": "Pasangan",
+                    "3": "Keluarga",
+                    "4": "Rakan-rakan"
+                },
+                "tagtoggle": "Tunjukkan Lagi Tag",
+                "tagmore": "lagi",
+                "tagless": "Tunjukkan Kurang",
+                "tags": {
+                    "Adventure": "Pengembaraan",
+                    "Relaxation": "Relaksasi",
+                    "Culture": "Budaya",
+                    "Foodie": "Peminat Makanan",
+                    "Beaches": "Pantai",
+                    "Mountains": "Gunung",
+                    "City Exploration": "Penerokaan Bandar",
+                    "Historical Sites": "Tapak Bersejarah",
+                    "Nature & Wildlife": "Alam & Hidupan Liar",
+                    "Shopping": "Membeli-belah",
+                    "Nightlife": "Kehidupan Malam",
+                    "Luxury": "Mewah",
+                    "Budget-friendly": "Mesra Bajet",
+                    "Road Trip": "Lawatan Jalan Raya",
+                    "Wellness & Spa": "Kesihatan & Spa"
+                },
+                "require": "Sila isikan perihalan perjalanan, tempoh dan jenis kumpulan.",
+                "submit": "Dapatkan Cadangan",
+                "eloading": {
+                    "0": "Mencari permata tersembunyi...",
+                    "1": "Menyusun jadual perjalanan anda...",
+                    "2": "Berunding dengan pemandu tempatan...",
+                    "3": "Mengemas beg maya...",
+                    "4": "Memetakan pengembaraan anda...",
+                    "5": "Menyemak cuaca...",
+                    "6": "Menemui masakan tempatan...",
+                    "7": "Menempah tempat idaman anda...",
+                    "8": "Menterjemah frasa tempatan...",
+                    "9": "Hampir sampai...",
+                    "10": "Membongkar cadangan...",
+                    "11": "Menyempurnakan rancangan anda..."
+                }
+            },
+            "tabs": {
+                "act": "Aktiviti",
+                "food": "Makanan",
+                "day": "Hari",
+                "tips": "Petua"
+            },
+            "re": "Jana Semula"
+        }
+    },
+    "RoadTrip": {
+        "title": "Lawatan Jalan Raya",
+        "decs": "Tidak pasti ke mana hendak pergi? Bosan mencari tempat sendiri? Panduan Lawatan Jalan Raya kami adalah jawapannya! Kami telah memetakan perjalanan — anda hanya perlu memilih yang sesuai dengan gaya anda. Mari cari perjalanan yang sesuai dengan anda dan mulakan perjalanan!",
+        "ttitle": "Tapis mengikut Tag",
+        "show": "Tunjukkan",
+        "orbs": "Tunjukkan sfera lawatan jalan raya",
+        "items": "item",
+        "notfound": "Tiada lawatan jalan raya untuk tag itu",
+        "nnotfound": "Tiada data lawatan jalan raya",
+        "tags": {
+            "All Tags": "Semua Tag",
+            "Adventure": "Pengembaraan",
+            "Cultural": "Budaya",
+            "Nature": "Alam",
+            "Relax": "Santai",
+            "Food": "Makanan",
+            "Historical": "Bersejarah",
+            "Architecture": "Seni Bina",
+            "Photography": "Fotografi",
+            "Shopping": "Membeli-belah",
+            "LocalExperience": "Pengalaman Tempatan",
+            "Beach": "Pantai",
+            "Mountain": "Gunung",
+            "City": "Bandar",
+            "Village": "Kampung",
+            "Island": "Pulau",
+            "Waterfall": "Air Terjun",
+            "Temple": "Kuil",
+            "Market": "Pasar",
+            "Nightlife": "Kehidupan Malam",
+            "Festival": "Perayaan",
+            "Art": "Seni",
+            "Music": "Muzik",
+            "Sports": "Sukan",
+            "Wellness": "Kesihatan",
+            "Family": "Keluarga",
+            "Romantic": "Romantik",
+            "Budget": "Bajet",
+            "Luxury": "Mewah",
+            "OffTheBeatenPath": "Luar Laluan Biasa",
+            "Popular": "Popular"
+        },
+        "province": "Wilayah",
+        "view": {
+            "start": "Mula",
+            "end": "Tamat",
+            "overview": "Gambaran Keseluruhan Jadual Perjalanan",
+            "no": "Tiada perhentian tersedia untuk perjalanan ini.",
+            "stop": "Tempat Berhenti",
+            "stopt": "Berhenti",
+            "location": "Lokasi",
+            "recived": "Mata untuk diterima",
+            "info": {
+                "0": "Imbas kod QR di setiap lokasi pelancongan untuk mendapatkan mata.",
+                "1": "Kumpul mata dan tebus untuk ganjaran."
+            }
+        }
+    },
+    "Province": {
+        "amnat charoen": "Amnat Charoen",
+        "ang thong": "Ang Thong",
+        "bangkok": "Bangkok",
+        "bueng kan": "Bueng Kan",
+        "buriram": "Buriram",
+        "chachoengsao": "Chachoengsao",
+        "chai nat": "Chai Nat",
+        "chaiyaphum": "Chaiyaphum",
+        "chanthaburi": "Chanthaburi",
+        "chiang mai": "Chiang Mai",
+        "chiang rai": "Chiang Rai",
+        "chonburi": "Chonburi",
+        "chumphon": "Chumphon",
+        "kalasin": "Kalasin",
+        "kamphaeng phet": "Kamphaeng Phet",
+        "kanchanaburi": "Kanchanaburi",
+        "khon kaen": "Khon Kaen",
+        "krabi": "Krabi",
+        "lampang": "Lampang",
+        "lamphun": "Lamphun",
+        "loei": "Loei",
+        "lopburi": "Lopburi",
+        "mae hong son": "Mae Hong Son",
+        "maha sarakham": "Maha Sarakham",
+        "mukdahan": "Mukdahan",
+        "nakhon nayok": "Nakhon Nayok",
+        "nakhon pathom": "Nakhon Pathom",
+        "nakhon phanom": "Nakhon Phanom",
+        "nakhon ratchasima": "Nakhon Ratchasima",
+        "nakhon sawan": "Nakhon Sawan",
+        "nakhon si thammarat": "Nakhon Si Thammarat",
+        "nan": "Nan",
+        "narathiwat": "Narathiwat",
+        "nong bua lamphu": "Nong Bua Lamphu",
+        "nong khai": "Nong Khai",
+        "nonthaburi": "Nonthaburi",
+        "pathum thani": "Pathum Thani",
+        "pattani": "Pattani",
+        "phang nga": "Phang Nga",
+        "phatthalung": "Phatthalung",
+        "phayao": "Phayao",
+        "phetchabun": "Phetchabun",
+        "phetchaburi": "Phetchaburi",
+        "phichit": "Phichit",
+        "phitsanulok": "Phitsanulok",
+        "phra nakhon si ayutthaya": "Phra Nakhon Si Ayutthaya",
+        "phrae": "Phrae",
+        "phuket": "Phuket",
+        "prachinburi": "Prachinburi",
+        "prachuap khiri khan": "Prachuap Khiri Khan",
+        "ranong": "Ranong",
+        "ratchaburi": "Ratchaburi",
+        "rayong": "Rayong",
+        "roi et": "Roi Et",
+        "sa kaeo": "Sa Kaeo",
+        "sakon nakhon": "Sakon Nakhon",
+        "samut prakan": "Samut Prakan",
+        "samut sakhon": "Samut Sakhon",
+        "samut songkhram": "Samut Songkhram",
+        "saraburi": "Saraburi",
+        "satun": "Satun",
+        "songkhla": "Songkhla",
+        "sing buri": "Sing Buri",
+        "sisaket": "Sisaket",
+        "sukhothai": "Sukhothai",
+        "suphan buri": "Suphan Buri",
+        "surat thani": "Surat Thani",
+        "surin": "Surin",
+        "tak": "Tak",
+        "trang": "Trang",
+        "trat": "Trat",
+        "ubon ratchathani": "Ubon Ratchathani",
+        "udon thani": "Udon Thani",
+        "uthai thani": "Uthai Thani",
+        "uttaradit": "Uttaradit",
+        "yala": "Yala",
+        "yasothon": "Yasothon"
+    },
+    "Restaurant": {
+        "title": "Restoran dan Makanan",
+        "decs": "Terokai rasa Thailand yang meriah di sini. Halaman restoran kami ialah panduan anda kepada pengalaman kulinari Thai yang paling asli dan lazat. Daripada makanan jalanan hingga santapan mewah, terokai senarai restoran yang dipilih susun, semak imbas menu dan cari hidangan Thai kegemaran anda yang seterusnya. Sama ada anda seorang pencinta makanan Thai yang berpengalaman atau baru mengenali kelazatannya, biarkan kami membantu anda menavigasi dunia masakan Thai yang kaya dan pelbagai",
+        "fillter": "Tapis mengikut Wilayah",
+        "show": "Tunjukkan",
+        "items": "item",
+        "grid": {
+            "more": "Muat Lagi",
+            "notfound": "Tiada restoran ditemui untuk wilayah ini"
+        },
+        "select": {
+            "start": "Pilih Wilayah...",
+            "search": "Cari Wilayah...",
+            "notfound": "Tiada wilayah ditemui"
+        },
+        "tips": {
+            "title": "Petua Makanan",
+            "0": {
+                "title": "Tahap Kepedasan",
+                "decs": "Makanan Thai Selatan biasanya lebih pedas daripada kawasan lain. Minta 'mai pet' (tidak pedas) jika perlu."
+            },
+            "1": {
+                "title": "Sekatan Diet",
+                "decs": "Pilihan vegetarian tersedia tetapi mungkin mengandungi sos ikan. Sebut 'gin jay' untuk makanan vegetarian yang ketat."
+            },
+            "2": {
+                "title": "Etika Makanan & Petua Budaya",
+                "0": {
+                    "title": "Etika Makan",
+                    "0": "Gunakan sudu dan garpu (sudu di tangan kanan)",
+                    "1": "Jangan gunakan penyepit melainkan makan mi",
+                    "2": "Kongsi hidangan apabila makan dalam kumpulan",
+                    "3": "Jangan habiskan semua yang ada di pinggan anda",
+                    "4": "Tunggu orang tua mula makan dahulu"
+                },
+                "1": {
+                    "title": "Frasa Berguna",
+                    "0": "'Aroy mak' - Sangat sedap",
+                    "1": "'Mai pet' - Tidak pedas",
+                    "2": "'Gin jay' - Makanan vegetarian",
+                    "3": "'Check bin' - Minta bil"
+                }
+            }
+        },
+        "item": {
+            "notfound": "Tiada data restoran",
+            "location": "Lokasi",
+            "cost": "Kos purata",
+            "rate": "Penilaian",
+            "province": "Wilayah",
+            "open": "Buka",
+            "highlight": "Hidangan Utama",
+            "map": "Dapatkan Arah",
+            "view": "Pemandangan Jalan",
+            "noview": "Pemandangan jalan tidak tersedia untuk restoran ini"
+        }
+    },
+    "Activities": {
+        "title": "Aktiviti dan Acara",
+        "decs": "Terokai pelbagai aktiviti yang meriah dan libatkan diri anda dalam acara menarik yang ditawarkan oleh Thailand. Daripada perayaan kebudayaan hingga lawatan pengembaraan, cari pengalaman anda yang tidak dapat dilupakan seterusnya di sini",
+        "select": {
+            "start": "Pilih Wilayah...",
+            "search": "Cari Wilayah...",
+            "notfound": "Tiada wilayah ditemui"
+        },
+        "fillter": "Tapis mengikut Wilayah",
+        "show": "Tunjukkan",
+        "items": "item",
+        "more": "Muat Lagi",
+        "notfound": "Tiada aktiviti ditemui untuk wilayah ini",
+        "item": {
+            "notfound": "Tiada data aktiviti",
+            "cost": "Kos purata",
+            "rate": "Penilaian",
+            "visit": "Terbaik untuk dilawati",
+            "province": "Wilayah",
+            "call": "Panggil",
+            "point": "Mata untuk diterima",
+            "infop": {
+                "0": "Imbas kod QR di setiap lokasi pelancongan untuk mendapatkan mata",
+                "1": "Kumpul mata dan tebus untuk ganjaran"
+            },
+            "web": "Laman Web",
+            "click": "Klik untuk membuka",
+            "forecast": "Ramalan Cuaca Tempatan",
+            "map": "Lokasi Peta"
+        }
+    },
+    "SDG": {
+        "title": "Matlamat Pembangunan Mampan (SDG)",
+        "decs": "ThaiGuide komited untuk menyokong Matlamat Pembangunan Mampan (SDG) Pertubuhan Bangsa-Bangsa Bersatu. Terokai bagaimana pelancongan yang bertanggungjawab boleh memberi impak positif kepada komuniti, alam sekitar dan ekonomi, dan bagaimana kami menyumbang untuk membina masa depan yang lebih baik melalui pelbagai inisiatif kami",
+        "goal": {
+            "1": {
+                "title": "SDG 1: Tiada Kemiskinan",
+                "decs": "Dengan menggalakkan pelancong melawat tarikan tempatan yang kurang dikenali, platform ini membantu menjana pendapatan untuk komuniti yang kurang diwakili dan menyokong pembangunan ekonomi akar umbi."
+            },
+            "8": {
+                "title": "SDG 8: Pekerjaan yang Layak dan Pertumbuhan Ekonomi",
+                "decs": "Penggunaan gamifikasi dan ganjaran digital meningkatkan penglibatan dalam sektor pelancongan, memupuk penglibatan belia dan memperkasakan usahawan tempatan melalui peningkatan keterlihatan dan peluang."
+            },
+            "9": {
+                "title": "SDG 9: Industri, Inovasi dan Infrastruktur",
+                "decs": "Inovasi ini memanfaatkan teknologi baru muncul—seperti AI dan pengalaman pelancongan berasaskan misi—untuk mencipta infrastruktur pelancongan yang lebih pintar dan interaktif."
+            },
+            "10": {
+                "title": "SDG 10: Mengurangkan Ketidaksamaan",
+                "decs": "Dengan mempromosikan destinasi di luar tempat pelancongan arus perdana, platform ini membantu merapatkan jurang antara ekonomi bandar dan luar bandar dan meningkatkan akses pelancongan untuk semua komuniti."
+            },
+            "11": {
+                "title": "SDG 11: Bandar dan Komuniti Mampan",
+                "decs": "Projek ini membantu mengurangkan kesesakan di destinasi popular dengan mempromosikan laluan dan pengalaman alternatif, menyokong pembangunan bandar dan komuniti yang seimbang dan mampan."
+            }
+        }
+    },
+    "Provincess": {
+        "item": {
+            "notfound": "Tiada data untuk wilayah itu",
+            "slogan": "Slogan",
+            "softhight": "Kuasa Lembut & Sorotan",
+            "location": "Lokasi"
+        }
+    },
+    "EmQuiz": {
+        "title": "Masa Kuiz!",
+        "decs": "Bersedia untuk menguji pengetahuan anda tentang",
+        "sbtn": "Mula Kuiz",
+        "error": "Ralat Memuatkan Kuiz",
+        "errorbtn": "Cuba Lagi",
+        "finish": "Kuiz Selesai!",
+        "score": "Skor anda",
+        "restartbtn": "Mula Semula Kuiz",
+        "q": "Soalan",
+        "next": "Soalan Seterusnya",
+        "fquiz": "Selesaikan Kuiz",
+        "nolog": "Tidak log masuk. Mata tidak diberikan"
+    },
+    "Feedback": {
+        "title": "Maklum Balas dan Isu",
+        "decs": "Halaman ini membolehkan pengguna melaporkan masalah dan berkongsi cadangan untuk membantu menambah baik ThaiGuide. Maklum balas anda adalah berharga dan akan digunakan untuk menambah baik platform secara berterusan memastikan pengalaman perjalanan anda lancar, menyeronokkan dan memberi ganjaran",
+        "tally": "Klik di sini untuk mengambil tinjauan",
+        "form": {
+            "type": {
+                "title": "Pilih jenis maklum balas",
+                "required_error": "Anda perlu memilih jenis maklum balas",
+                "c1": "Isu",
+                "c2": "Maklum Balas"
+            },
+            "title": {
+                "title": "Tajuk",
+                "decs": "Tajuk Isu/Maklum Balas anda",
+                "placeholder": "Tajuk Anda",
+                "min_length": "Tajuk mestilah sekurang-kurangnya 3 aksara"
+            },
+            "message": {
+                "title": "Mesej",
+                "decs": "Beritahu kami tentang Masalah/Maklum Balas anda",
+                "placeholder": "Beritahu lebih lanjut tentang Isu/Maklum Balas anda",
+                "min_length": "Mesej mestilah sekurang-kurangnya 5 aksara",
+                "max_length": "Mesej tidak boleh lebih daripada 80 aksara"
+            },
+            "exp": {
+                "required_error": "Anda perlu memilih tahap pengalaman",
+                "title": "Nilaikan perkhidmatan kami",
+                "1": "Tidak Berpuas Hati",
+                "2": "Sedikit Tidak Berpuas Hati",
+                "3": "Sederhana Berpuas Hati",
+                "4": "Sangat Berpuas Hati",
+                "5": "Amat Berpuas Hati"
+            },
+            "verify": {
+                "title": "Pengesahan",
+                "required_error": "Sila lengkapkan pengesahan.",
+                "min_length": "Sila lengkapkan pengesahan.",
+                "decs": "Sila sahkan anda manusia untuk membantu kami mencegah spam"
+            }
+        }
+    },
+    "leaderboard": {
+        "title": "Papan Pendahulu",
+        "decs": "Lihat bagaimana anda bersaing dengan penjelajah lain! Papan Pendahulu ThaiGuide menyenaraikan pengguna berdasarkan mata yang diperoleh daripada melawat dan mendaftar masuk di pelbagai destinasi. Naik pangkat, dapatkan hak bercakap besar, dan lihat siapa penjelajah ThaiGuide yang terunggul. Terus meneroka untuk mencapai puncak!",
+        "ms": "Mata Terbanyak",
+        "mcn": "Daftar Masuk Terbanyak",
+        "board": {
+            "ms": {
+                "header": "Mata Terbanyak",
+                "other": "Pangkat Lain",
+                "pts": "Mata",
+                "top": "Teratas",
+                "msg": {
+                    "0": "Pengumpul mata terunggul",
+                    "1": "Hampir sampai! Teruskan usaha",
+                    "2": "Tempat ketiga, tetapi gergasi mata"
+                }
+            },
+            "mcn": {
+                "header": "Daftar Masuk Terbanyak",
+                "other": "Pangkat Lain",
+                "pts": "Kali",
+                "top": "Teratas",
+                "msg": {
+                    "0": "Tinggal di sini atau hanya melancong 24/7?",
+                    "1": "Tempat kedua, tetapi pertama dalam perbatuan",
+                    "2": "Tempat ketiga, kaki anda layak mendapat spa"
+                }
+            }
+        }
+    },
+    "Month": {
+        "0": "Januari",
+        "1": "Februari",
+        "2": "Mac",
+        "3": "April",
+        "4": "Mei",
+        "5": "Jun",
+        "6": "Julai",
+        "7": "Ogos",
+        "8": "September",
+        "9": "Oktober",
+        "10": "November",
+        "11": "Disember"
+    }
+}
