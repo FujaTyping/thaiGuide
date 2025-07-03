@@ -1,6 +1,6 @@
 import type { ElysiaApp } from "../../index";
 import db from "../../lib/firebase";
-import { collection, doc, getDoc, updateDoc } from "firebase/firestore";
+import { collection, doc, DocumentData, getDoc, getDocs, query, updateDoc } from "firebase/firestore";
 import { t } from "elysia";
 
 const GetByIdBodySchema = t.Object({
@@ -58,6 +58,20 @@ const getInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.st
     }
 };
 
-export default (app: ElysiaApp) => app.put("/getbyid", getInfoHandler, {
-    body: GetByIdBodySchema
-});
+const getMapInfoHandler = async ({ set }: { set: { status: number | string } }) => {
+    let Data: DocumentData[] = [];
+    const q = query(collection(db, "codes"));
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        Data.push(doc.data().location);
+    });
+
+    return Data;
+};
+
+export default (app: ElysiaApp) => app
+    .put("/getbyid", getInfoHandler, {
+        body: GetByIdBodySchema
+    })
+    .get("/randommap", getMapInfoHandler);
