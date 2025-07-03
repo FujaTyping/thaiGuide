@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { useTranslations } from 'next-intl';
 import Didyouknow from "@/app/components/didyouknow";
 import Simulation from './simulation';
+import { TriangleAlert } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: "ThaiGuide – Weather and Temperature"
@@ -28,6 +29,10 @@ function Page() {
                     <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
                 </div>
                 <p className='mt-4'>{t('sdecs')}</p>
+                <div className='mt-2'>
+                    <p className='flex items-center gap-2 text-[#f7740a]'><TriangleAlert /> <b>{t('simu.ntitle')}</b><br /></p>
+                    <p className='mt-1'>{t('simu.notice')}</p>
+                </div>
                 <div className='mt-6'>
                     <Simulation />
                 </div>

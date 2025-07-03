@@ -44,7 +44,6 @@
   },
   "IndexAct": {
     "headder": "Activity",
-    "no": "No activities available at the moment",
     "more": {
       "title": "Explore More Activities?",
       "decs": "Click to check out the activities page"
@@ -106,6 +105,8 @@
       "s3": "December",
       "event": "Event in this month",
       "tip": "Tips",
+      "ntitle": "Notice",
+      "notice": "Please note that this simulation represents general weather patterns across Thailand. Actual conditions in specific provinces may vary",
       "hot": {
         "decs": "Hot Season",
         "range": "March - June",

@@ -16,6 +16,7 @@ import Footer from "./components/footer";
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale } from 'next-intl/server';
 import TallyScript from "./script/tally";
+import { Toaster } from "@/components/ui/sonner"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -67,6 +68,7 @@ export default async function RootLayout({
           {/*<Didyouknow />*/}
           <Footer />
           {/*<Totop />*/}
+          <Toaster />
         </NextIntlClientProvider>
       </body>
       <TallyScript />
