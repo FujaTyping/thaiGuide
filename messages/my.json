@@ -44,7 +44,6 @@
     },
     "IndexAct": {
         "headder": "Aktiviti",
-        "no": "Tiada aktiviti tersedia pada masa ini",
         "more": {
             "title": "Terokai Lebih Banyak Aktiviti?",
             "decs": "Klik untuk melihat halaman aktiviti"
@@ -106,6 +105,8 @@
             "s3": "Disember",
             "event": "Acara pada bulan ini",
             "tip": "Petua",
+            "ntitle": "Perhatian",
+            "notice": "Sila ambil perhatian bahawa simulasi ini mewakili corak cuaca umum di seluruh Thailand. Keadaan sebenar di wilayah tertentu mungkin berbeza",
             "hot": {
                 "decs": "Musim Panas",
                 "range": "Mac - Jun",

@@ -90,7 +90,7 @@ function Activities() {
                         <div className='w-full flex items-center justify-center my-12'>
                             <Loader />
                         </div>
-                    ) : Data.length > 0 && currentActivity ? (
+                    ) : Data.length > 0 && currentActivity && (
                         <>
                             <AnimatePresence mode="wait">
                                 <motion.div
@@ -141,10 +141,6 @@ function Activities() {
                                 </motion.div>
                             </AnimatePresence>
                         </>
-                    ) : (
-                        <div className='w-full flex items-center justify-center my-12'>
-                            <p>{t('no')}</p>
-                        </div>
                     )
                 }
             </main>
