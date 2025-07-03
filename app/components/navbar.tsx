@@ -62,6 +62,7 @@ const NavItems = [
 
 function Navbar() {
     const t = useTranslations('NavBar');
+    const tb = useTranslations('ToolBar');
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [modalO, setModalO] = useState(false);
@@ -163,6 +164,8 @@ function Navbar() {
                                     <SheetHeader>
                                         <SheetTitle className='text-2xl font-bold text-[#f7740a]'>{t('menu')}</SheetTitle>
                                         <div className='flex flex-col gap-2 mt-3 text-lg text-[#f7740a] font-semibold'>
+                                            <a href={"/activity"}>{tb(`item.activity`)}</a>
+                                            <a href={"/restaurant"}>{tb(`item.restaurant`)}</a>
                                             {NavItems.map((item, index) => (
                                                 <a key={index} href={item.link}>{t(`list.${item.name}`)}</a>
                                             ))}
