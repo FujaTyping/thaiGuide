@@ -1,8 +1,9 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Autoplay } from 'swiper/modules';
+import PHD from "@/assets/media/Placeholder.png";
 
 // Image Assets
 import SMH from "@/assets/media/หาดสมิหลา.webp"
@@ -40,6 +41,8 @@ const BannerItems = [
 ]
 
 function Banner() {
+    const [showPlace, setShowPlace] = useState(true);
+
     return (
         <>
             <Swiper
@@ -52,7 +55,25 @@ function Banner() {
                     disableOnInteraction: false,
                 }}
                 effect={'fade'}
+                onSlideChange={(e) => {
+                    if (e.activeIndex == 1 && showPlace == true) {
+                        setShowPlace(false);
+                    }
+                }}
             >
+                {
+                    showPlace && (
+                        <SwiperSlide>
+                            <div
+                                className='relative overflow-hidden rounded-b-4xl'
+                            >
+                                <img fetchPriority={'high'} src={PHD.src} className='w-full h-[550px] md:h-[700px] object-cover' height={1080} width={1280} alt={'Placeholder'} />
+                                <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-[#f7740a]/70 to-transparent text-white rounded-b-4xl text-center'>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                    )
+                }
                 {
                     BannerItems.map((item, index) => (
                         <SwiperSlide key={index}>

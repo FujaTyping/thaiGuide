@@ -24,7 +24,7 @@ import { getDistance } from 'geolib';
 import { server } from "@/app/config.json";
 import { AnimatePresence, motion } from "motion/react";
 import ConfettiExplosion from 'react-confetti-explosion';
-import STK from "@/assets/media/icon/fire.svg";
+import STK from "@/assets/media/icon/fire.gif";
 import { Button } from '@/components/ui/button';
 
 interface ApiCodeData {
