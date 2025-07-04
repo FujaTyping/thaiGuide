@@ -10,10 +10,10 @@ import { useTranslations } from 'next-intl';
 import { motion } from "motion/react";
 import { ChevronDown } from 'lucide-react';
 
-import NF from "@/assets/media/card/icon/notfound.png";
+import NF from "@/assets/media/card/icon/notfound.svg";
 
-import PA from "@/assets/media/icon/PA.png";
-import PR from "@/assets/media/icon/PR.png";
+import PA from "@/assets/media/icon/PA.svg";
+import PR from "@/assets/media/icon/PR.svg";
 interface Transaction {
     point: string;
     type: string;

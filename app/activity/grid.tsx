@@ -24,7 +24,7 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover";
-import NF from "@/assets/media/card/icon/notfound.png";
+import NF from "@/assets/media/card/icon/notfound.svg";
 import { useTranslations } from 'next-intl';
 
 const Proworks = [

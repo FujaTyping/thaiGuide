@@ -18,8 +18,8 @@ import {
 } from "@/components/ui/dialog";
 import Loader from '@/app/components/loader';
 import { motion } from "motion/react";
-import RD from "@/assets/media/icon/redeem.png";
-import NF from "@/assets/media/card/icon/notfound.png";
+import RD from "@/assets/media/icon/redeem.svg";
+import NF from "@/assets/media/card/icon/notfound.svg";
 import { useTranslations } from 'next-intl';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 

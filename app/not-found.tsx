@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import FOF from "@/assets/media/icon/fof.png";
+import FOF from "@/assets/media/icon/fof.svg";
 import { motion } from 'motion/react';
 import Link from 'next/link';
 import {

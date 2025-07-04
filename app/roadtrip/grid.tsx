@@ -13,7 +13,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-import NF from "@/assets/media/card/icon/notfound.png";
+import NF from "@/assets/media/card/icon/notfound.svg";
 import { useTranslations } from 'next-intl';
 import InfiniteMenu from '@/components/bits/InfiniteMenu/InfiniteMenu';
 import { Orbit } from 'lucide-react';

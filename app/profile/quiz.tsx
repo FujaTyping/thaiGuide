@@ -6,11 +6,11 @@ import auth from "@/lib/firebaseAuth";
 import Loader from '../components/loader';
 import axios from 'axios';
 import { server } from "@/app/config.json";
-import check from "@/assets/media/icon/check.png";
+import check from "@/assets/media/icon/check.svg";
 import { useTranslations } from 'next-intl';
 import { motion } from "motion/react";
 
-import NF from "@/assets/media/card/icon/notfound.png";
+import NF from "@/assets/media/card/icon/notfound.svg";
 
 interface QQuizz {
     quizName: string;

@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/popover";
 import { useTranslations } from 'next-intl';
 
-import NF from "@/assets/media/card/icon/notfound.png";
+import NF from "@/assets/media/card/icon/notfound.svg";
 import { CheckIcon, ChevronDown, ChevronsUpDownIcon } from 'lucide-react';
 
 const Proworks = [
