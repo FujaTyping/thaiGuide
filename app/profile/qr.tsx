@@ -14,17 +14,17 @@ import Loader from '../components/loader';
 import axios from "axios";
 import { useTranslations } from 'next-intl';
 
-import NF from "@/assets/media/card/icon/notfound.png";
-import LC from "@/assets/media/card/icon/locationcorrect.png";
-import NL from "@/assets/media/card/icon/noaccess.png";
+import NF from "@/assets/media/card/icon/notfound.svg";
+import LC from "@/assets/media/card/icon/locationcorrect.svg";
+import NL from "@/assets/media/card/icon/noaccess.svg";
 import { User, onAuthStateChanged } from "firebase/auth";
-import AH from "@/assets/media/card/icon/login.png";
+import AH from "@/assets/media/card/icon/login.svg";
 import auth from "@/lib/firebaseAuth";
 import { getDistance } from 'geolib';
 import { server } from "@/app/config.json";
 import { AnimatePresence, motion } from "motion/react";
 import ConfettiExplosion from 'react-confetti-explosion';
-import STK from "@/assets/media/icon/fire.gif";
+import STK from "@/assets/media/icon/fire.svg";
 import { Button } from '@/components/ui/button';
 
 interface ApiCodeData {

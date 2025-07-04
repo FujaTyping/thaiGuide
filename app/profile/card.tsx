@@ -18,9 +18,9 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from '@/components/ui/button';
 import { AnimatePresence, motion } from "motion/react";
-import IQR from "@/assets/media/icon/scanner.png";
-import IRM from "@/assets/media/icon/gift.png";
-import ITG from "@/assets/media/icon/target.png";
+import IQR from "@/assets/media/icon/scanner.svg";
+import IRM from "@/assets/media/icon/gift.svg";
+import ITG from "@/assets/media/icon/target.svg";
 
 // Background
 import B1 from "@/assets/media/card/1.jpg";

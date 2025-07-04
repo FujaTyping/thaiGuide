@@ -1,6 +1,6 @@
 import React from 'react';
 import fetchData from './fetch';
-import NF from "@/assets/media/card/icon/notfound.png";
+import NF from "@/assets/media/card/icon/notfound.svg";
 import Loader from '@/app/components/loader';
 import { MapPin, Clock } from 'lucide-react';
 import type { Metadata } from "next";

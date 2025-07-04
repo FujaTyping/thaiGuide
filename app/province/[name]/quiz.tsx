@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { CheckCircle, LibraryBig, TriangleAlert, XCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import Loader from '@/app/components/loader';
-import NF from "@/assets/media/card/icon/notfound.png";
+import NF from "@/assets/media/card/icon/notfound.svg";
 import { useTranslations } from 'next-intl';
 import { User, onAuthStateChanged } from "firebase/auth";
 import auth from "@/lib/firebaseAuth";

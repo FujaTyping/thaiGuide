@@ -1,6 +1,6 @@
 import React from 'react';
 import fetchData from './fetch';
-import NF from "@/assets/media/card/icon/notfound.png";
+import NF from "@/assets/media/card/icon/notfound.svg";
 import Loader from '@/app/components/loader';
 import { Banknote, Coins, MapPinned, Phone, Star, Map, CircleHelp, MapPin } from 'lucide-react';
 import Link from 'next/link';

@@ -4,12 +4,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { server } from "@/app/config.json";
 import Loader from '../components/loader';
-import R1 from "@/assets/media/icon/Rank1.png";
-import R2 from "@/assets/media/icon/Rank2.png";
-import R3 from "@/assets/media/icon/Rank3.png";
+import R1 from "@/assets/media/icon/Rank1.svg";
+import R2 from "@/assets/media/icon/Rank2.svg";
+import R3 from "@/assets/media/icon/Rank3.svg";
 import { Flame } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import anno from "@/assets/media/icon/ano.png";
+import anno from "@/assets/media/icon/ano.svg";
 
 interface dataTypes {
     name: string;
