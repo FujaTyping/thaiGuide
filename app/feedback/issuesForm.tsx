@@ -76,7 +76,7 @@ function IssuesForm() {
     if (msg == 1) {
         return (
             <>
-                <div className='mt-4 w-full flex flex-col items-center justify-center bg-[#f7740a] text-white p-4 py-8 rounded-xl'>
+                <div className='mt-6 mb-4 w-full flex flex-col items-center justify-center bg-[#f7740a] text-white p-4 py-8 rounded-xl'>
                     <CircleCheckBig className='w-10 h-10' />
                     <div className='mt-2 text-center'>
                         <h1 className='font-semibold text-2xl mb-1'>Thank you for your feedback!</h1>
