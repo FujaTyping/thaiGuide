@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Logo from "@/assets/icon.png";
 import Image from 'next/image';
-import { KeyRound, LoaderCircle, LogOut, Menu, Smile, Trophy, UserRound } from 'lucide-react';
+import { KeyRound, Languages, LoaderCircle, LogOut, Menu, Smile, Trophy, UserRound } from 'lucide-react';
 import {
     Sheet,
     SheetContent,
@@ -134,28 +134,6 @@ function Navbar() {
                                     </Link>
                                 </motion.div>
                             ))}
-                            <motion.div
-                                whileHover={{ scale: 1.1, rotate: -5 }}
-                                whileTap={{ scale: 0.8 }}
-                            >
-                                <DropdownMenu>
-                                    <DropdownMenuTrigger>
-                                        <div className='group-hover:text-white cursor-pointer'>
-                                            {t(`list.switcher`)}
-                                        </div>
-                                    </DropdownMenuTrigger>
-                                    <DropdownMenuContent>
-                                        <DropdownMenuLabel>{t(`list.switcherlang`)}</DropdownMenuLabel>
-                                        <DropdownMenuSeparator />
-                                        <DropdownMenuItem onClick={() => { setCookie('NEXT_LOCALE', 'en', {}); window.location.reload(); }}><Flag code={'us'} className="w-5 h-5 object-cover rounded-full" /> English</DropdownMenuItem>
-                                        <DropdownMenuItem onClick={() => { setWlang('cn'); setModalO(true); }}><Flag code={'cn'} className="w-5 h-5 object-cover rounded-full" /> 中文</DropdownMenuItem>
-                                        <DropdownMenuItem onClick={() => { setWlang('ru'); setModalO(true); }}><Flag code={'ru'} className="w-5 h-5 object-cover rounded-full" /> Русский язык</DropdownMenuItem>
-                                        <DropdownMenuItem onClick={() => { setWlang('kr'); setModalO(true); }}><Flag code={'kr'} className="w-5 h-5 object-cover rounded-full" /> 한국어</DropdownMenuItem>
-                                        <DropdownMenuItem onClick={() => { setWlang('my'); setModalO(true); }}><Flag code={'my'} className="w-5 h-5 object-cover rounded-full" /> bahasa Malaysia</DropdownMenuItem>
-                                        <DropdownMenuItem onClick={() => { setWlang('th'); setModalO(true); }}><Flag code={'th'} className="w-5 h-5 object-cover rounded-full" /> ภาษาไทย</DropdownMenuItem>
-                                    </DropdownMenuContent>
-                                </DropdownMenu>
-                            </motion.div>
                         </div>
                         <div className='flex md:hidden items-center gap-6 border-1 border-[#f7740a] p-2 px-6 rounded-full text-[#f7740a] font-bold hover:bg-[#f7740a] transition-all duration-300 hover:text-white'>
                             <Sheet>
@@ -206,6 +184,23 @@ function Navbar() {
                                     </DropdownMenuContent>
                                 </DropdownMenu> : <KeyRound onClick={handleGoogleSignIn} />}
                             </>}
+                        </div>
+                        <div className='hidden md:flex items-center gap-6 border-1 border-[#f7740a] p-2 px-2 rounded-full text-[#f7740a] font-bold hover:bg-[#f7740a] transition-all duration-300 hover:text-white cursor-pointer'>
+                            <DropdownMenu>
+                                <DropdownMenuTrigger>
+                                    <Languages className='cursor-pointer' />
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent>
+                                    <DropdownMenuLabel>{t(`list.switcherlang`)}</DropdownMenuLabel>
+                                    <DropdownMenuSeparator />
+                                    <DropdownMenuItem onClick={() => { setCookie('NEXT_LOCALE', 'en', {}); window.location.reload(); }}><Flag code={'us'} className="w-5 h-5 object-cover rounded-full" /> English</DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => { setWlang('cn'); setModalO(true); }}><Flag code={'cn'} className="w-5 h-5 object-cover rounded-full" /> 中文</DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => { setWlang('ru'); setModalO(true); }}><Flag code={'ru'} className="w-5 h-5 object-cover rounded-full" /> Русский язык</DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => { setWlang('kr'); setModalO(true); }}><Flag code={'kr'} className="w-5 h-5 object-cover rounded-full" /> 한국어</DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => { setWlang('my'); setModalO(true); }}><Flag code={'my'} className="w-5 h-5 object-cover rounded-full" /> bahasa Malaysia</DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => { setWlang('th'); setModalO(true); }}><Flag code={'th'} className="w-5 h-5 object-cover rounded-full" /> ภาษาไทย</DropdownMenuItem>
+                                </DropdownMenuContent>
+                            </DropdownMenu>
                         </div>
                     </div>
                 </nav>

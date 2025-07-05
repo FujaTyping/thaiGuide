@@ -15,7 +15,6 @@ import Footer from "./components/footer";
 //import Totop from "./components/totop";
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale } from 'next-intl/server';
-import TallyScript from "./script/tally";
 import { Toaster } from "@/components/ui/sonner"
 
 const geistSans = Geist({
@@ -62,16 +61,15 @@ export default async function RootLayout({
             height={4}
             showSpinner={false}
           />
+          <Toaster position="top-center" />
           <Navbar />
           <Ealert />
           {children}
           {/*<Didyouknow />*/}
           <Footer />
           {/*<Totop />*/}
-          <Toaster />
         </NextIntlClientProvider>
       </body>
-      <TallyScript />
     </html>
   );
 }
