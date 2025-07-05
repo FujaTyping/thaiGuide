@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import IssuesForm from './issuesForm';
 import { useTranslations } from 'next-intl';
 import { Info } from 'lucide-react';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: "ThaiGuide – Feedback and Issues"
@@ -21,7 +22,7 @@ function Page() {
         <p className='mt-4'>{t('decs')}</p>
         <IssuesForm />
         <div className='flex items-center justify-center'>
-          <button data-tally-open="n9PZyp" data-tally-emoji-text="🙏🏻" data-tally-emoji-animation="wave" className='mt-2 text-[#f7740a] flex items-center gap-2 cursor-pointer font-semibold' ><Info /> {t('tally')}</button>
+          <Link href={"https://tally.so/r/n9PZyp"} className='mt-2 text-[#f7740a] flex items-center gap-2 cursor-pointer font-semibold' ><Info /> {t('tally')}</Link>
         </div>
       </main>
     </>
