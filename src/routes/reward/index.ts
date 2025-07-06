@@ -2,7 +2,6 @@ import type { ElysiaApp } from "../../index";
 import { collection, query, getDocs, DocumentData, doc, getDoc } from "firebase/firestore";
 import db from "../../lib/firebase";
 import { t } from "elysia";
-import user from "../user";
 
 const GetByIdBodySchema = t.Object({
     id: t.String()
