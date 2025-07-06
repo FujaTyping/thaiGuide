@@ -7,6 +7,7 @@ import PHD from "@/assets/media/Placeholder.png";
 import axios from 'axios';
 import Link from 'next/link';
 import { LoaderCircle } from 'lucide-react';
+import { server } from "@/app/config.json"
 
 interface BITEMS {
     title: string;
@@ -21,7 +22,7 @@ function Banner() {
 
     useEffect(() => {
         async function getdata() {
-            const res = await axios.get("https://thapiguide.siraphop.me/banner");
+            const res = await axios.get(`https://${server}/banner`);
             setBannerItems(res.data);
             setShowPlace(false);
         }
