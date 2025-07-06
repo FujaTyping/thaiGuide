@@ -113,7 +113,7 @@ function Navbar() {
     };
     return (
         <>
-            <main className='border-b-1'>
+            <main className='border-b-10 border-[#f7740a]'>
                 <nav className='max-w-7xl flex items-center mx-auto p-3 w-full place-content-between'>
                     <Link href={"/"}>
                         <div className='flex items-center gap-1'>
