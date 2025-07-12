@@ -1,5 +1,6 @@
 services:
   thaiguide-backend:
+    image: thaiguide/backend
     container_name: thaiguide-backend
     build: .
     ports:
