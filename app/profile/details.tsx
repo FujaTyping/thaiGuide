@@ -8,7 +8,15 @@ import axios from 'axios';
 import { server } from "@/app/config.json";
 import { useTranslations } from 'next-intl';
 import { motion } from "motion/react";
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, QrCode } from 'lucide-react';
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
+import QRCode from "react-qr-code";
 
 import NF from "@/assets/media/card/icon/notfound.svg";
 
@@ -18,6 +26,7 @@ interface Transaction {
     point: string;
     type: string;
     place: string;
+    id: string;
 }
 
 const INITIAL_ITEMS_TO_SHOW = 10;
@@ -28,6 +37,8 @@ function Details() {
     const [user, setUser] = useState<User | null>(null);
     const [transcaton, setTranscaton] = useState<Transaction[] | null>(null);
     const [numDisplayedItems, setNumDisplayedItems] = useState<number>(INITIAL_ITEMS_TO_SHOW);
+    const [tid, setTID] = useState('');
+    const [uid, setUID] = useState('');
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -92,7 +103,24 @@ function Details() {
                                         }
                                         <div>
                                             <p className='font-semibold text-lg'>{t(`transaction.${item.type}`)}</p>
-                                            <p>{item.place}</p>
+                                            <p className='flex items-center gap-2'>{item.place}
+                                                {
+                                                    item.point.includes("-") &&
+                                                    <Dialog>
+                                                        <DialogTrigger><QrCode onClick={() => { setTID(item.id); setUID(user.uid); }} className='text-[#f7740a] cursor-pointer' /></DialogTrigger>
+                                                        <DialogContent>
+                                                            <DialogHeader>
+                                                                <DialogTitle className='text-2xl'>Reward QR Code</DialogTitle>
+                                                                <p className='mb-4'>Present this QR code to claim your reward</p>
+                                                                <div className='flex flex-col gap-4 items-center justify-center mt-2'>
+                                                                    <QRCode value={`${tid}-${uid}`} fgColor='#f7740a' />
+                                                                    <p><b>Transaction id</b> : {tid}</p>
+                                                                </div>
+                                                            </DialogHeader>
+                                                        </DialogContent>
+                                                    </Dialog>
+                                                }
+                                            </p>
                                         </div>
                                     </div>
                                     <p className='font-semibold text-lg'>{item.point}</p>
