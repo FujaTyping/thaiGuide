@@ -4,6 +4,6 @@ services:
     container_name: thaiguide-backend
     build: .
     ports:
-      - "3000:3000"
+      - "3033:3033"
     env_file:
       - .env

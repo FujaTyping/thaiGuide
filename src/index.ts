@@ -16,7 +16,7 @@ const app = new Elysia()
     path: "/document"
   }))
   .use(await autoload())
-  .listen(3000);
+  .listen(3033);
 
 console.log(
   `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`

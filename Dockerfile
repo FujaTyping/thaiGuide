@@ -9,6 +9,6 @@ RUN bun install
 
 COPY . .
 
-EXPOSE 3000/tcp
+EXPOSE 3033/tcp
 
 CMD [ "bun","run","src/index.ts" ]
