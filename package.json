@@ -6,10 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "cf-typegen": "wrangler types --env-interface CloudflareEnv ./cloudflare-env.d.ts"
+    "lint": "next lint"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
@@ -55,6 +52,7 @@
     "react-hook-form": "^7.58.1",
     "react-photo-view": "^1.2.7",
     "react-qr-barcode-scanner": "^2.1.6",
+    "react-qr-code": "^2.0.18",
     "react-scroll-up": "^1.4.0",
     "react-turnstile": "^1.1.4",
     "react-world-flags": "^1.6.0",

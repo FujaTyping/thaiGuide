@@ -203,6 +203,12 @@
                 "title": "Tebus Ganjaran Anda",
                 "decs": "Gunakan mata anda untuk menebus ganjaran eksklusif dan menjadikan setiap perjalanan tidak dapat dilupakan"
             }
+        },
+        "redeem": {
+            "pop": "Tebus di",
+            "title": "Kod QR Ganjaran",
+            "decs": "Tunjukkan kod QR ini untuk menuntut ganjaran anda",
+            "did": "ID Transaksi"
         }
     },
     "Redeem": {
