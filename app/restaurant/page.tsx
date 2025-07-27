@@ -1,9 +1,10 @@
 import React from 'react';
 import type { Metadata } from "next";
 import Grid from './grid';
-import { Flame, Leaf, UtensilsCrossed } from 'lucide-react';
+import { Flame, Leaf, MapPinPlus, UtensilsCrossed } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Didyouknow from "@/app/components/didyouknow";
+import Link from 'next/link';
 
 export const metadata: Metadata = {
     title: "ThaiGuide – Restaurant and Food"
@@ -62,6 +63,13 @@ function Page() {
                     </div>
                 </div>
             </main>
+            <div className='fixed bottom-0 right-0 p-4'>
+                <Link href={'/request/restaurant'}>
+                    <div className='bg-[#f7740a] text-white p-3 rounded-full hover:bg-white hover:text-[#f7740a] border-2 border-[#f7740a] transition-all duration-250'>
+                        <MapPinPlus className='size-8' />
+                    </div>
+                </Link>
+            </div>
             <Didyouknow />
         </>
     )
