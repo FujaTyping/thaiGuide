@@ -203,6 +203,12 @@
         "title": "Redeem Your Rewards",
         "decs": "Use your points to redeem exclusive rewards and make every trip unforgettable"
       }
+    },
+    "redeem": {
+      "pop": "Redeem at",
+      "title": "Reward QR Code",
+      "decs": "Present this QR code to claim your reward",
+      "did": "Transaction id"
     }
   },
   "Redeem": {
