@@ -668,5 +668,9 @@
     "9": "October",
     "10": "November",
     "11": "December"
+  },
+  "Share": {
+    "title": "Share This Place",
+    "decs": "Help more people discover and enjoy this place"
   }
 }

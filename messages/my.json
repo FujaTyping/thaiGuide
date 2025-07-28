@@ -668,5 +668,9 @@
         "9": "Oktober",
         "10": "November",
         "11": "Disember"
+    },
+    "Share": {
+        "title": "Kongsi Tempat Ini",
+        "decs": "Bantu lebih ramai orang menemui dan menikmati tempat ini"
     }
 }
