@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import Didyouknow from "@/app/components/didyouknow";
 import Thumnails from './thumnails';
+import Sharebt from '@/app/components/sharebt';
 
 type Props = {
     params: Promise<{ resid: string }>
@@ -136,6 +137,7 @@ async function page({ params }: Props) {
                     </>
                 }
             </main>
+            <Sharebt />
             <Didyouknow />
         </>
     )
