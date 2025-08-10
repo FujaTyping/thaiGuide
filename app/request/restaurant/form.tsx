@@ -157,6 +157,14 @@ function ResForm() {
         gmaps: z.string().min(24, {
             message: 'กรุณาใส่ลิงค์ Google Maps ที่ถูกต้อง',
         }),
+        address: z
+            .string()
+            .min(10, {
+                message: 'ที่อยู่อย่างน้อย 10 ตัวอักษร',
+            })
+            .max(100, {
+                message: 'ที่อยู่ไม่เกิน 100 ตัวอักษร',
+            }),
         cfturn: z.string({
             required_error: 'กรุณาดำเนินการยืนยันให้เสร็จสิ้น',
         }).min(1, { message: 'กรุณาดำเนินการยืนยันให้เสร็จสิ้น' }),
@@ -170,7 +178,8 @@ function ResForm() {
             gmaps: "",
             openhour: "",
             tel: "",
-            province: ""
+            province: "",
+            address: ""
         },
     })
 
@@ -373,6 +382,23 @@ function ResForm() {
                         </div>
                         <FormField
                             control={form.control}
+                            name="address"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>{'ที่อยู่ร้านอาหาร'}</FormLabel>
+                                    <FormControl>
+                                        <Textarea
+                                            placeholder={'กรุณาใส่ที่อยู่ของร้านอาหารของคุณ เช่น 123 ถนนตัวอย่าง ตำบลตัวอย่าง อำเภอตัวอย่าง จังหวัดตัวอย่าง'}
+                                            className="resize-none"
+                                            {...field}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
                             name="cfturn"
                             render={({ field }) => (
                                 <FormItem>
@@ -395,7 +421,7 @@ function ResForm() {
                             )}
                         />
                         <div className='w-full flex items-center justify-center'>
-                            <Button disabled type="submit" className='w-full md:w-fit cursor-pointer bg-[#f7740a] text-white flex items-center gap-3 hover:bg-[#f7740a]'>{loading ? <LoaderCircle className='animate-spin' /> : <Send />} ส่งคำขอ</Button>
+                            <Button type="submit" className='w-full md:w-fit cursor-pointer bg-[#f7740a] text-white flex items-center gap-3 hover:bg-[#f7740a]'>{loading ? <LoaderCircle className='animate-spin' /> : <Send />} ส่งคำขอ</Button>
                         </div>
                     </form>
                 </Form>

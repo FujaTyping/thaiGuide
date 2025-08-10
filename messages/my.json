@@ -19,6 +19,14 @@
             "d1": "sedang dalam proses. Walaupun kebanyakan UI akan dalam bahasa yang dipilih, sesetengah kandungan mungkin masih muncul dalam bahasa Inggeris. Kami sedang berusaha untuk menterjemah sepenuhnya tidak lama lagi.",
             "cancel": "Batal",
             "change": "Tukar bahasa"
+        },
+        "login": {
+            "ing": "Log masuk...",
+            "out": "Berjaya log keluar",
+            "done": "Berjaya!",
+            "donedecs": "Akaun salah? Sila log keluar dan cuba lagi",
+            "e": "Ralat",
+            "logout": "Log Keluar"
         }
     },
     "Crisis": {

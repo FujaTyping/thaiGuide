@@ -19,6 +19,14 @@
       "d1": "is in progress. While most of the UI will be in the choosen language,some content may still appear in English. We are working to fully translate everything soon.",
       "cancel": "Cancel",
       "change": "Change language"
+    },
+    "login": {
+      "ing": "Logging in...",
+      "out": "Logged out successfully",
+      "done": "Success!",
+      "donedecs": "Wrong account? Please logout and try again",
+      "e": "Error",
+      "logout": "Logout"
     }
   },
   "Crisis": {
