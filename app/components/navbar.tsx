@@ -40,6 +40,7 @@ import {
     DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from '@/components/ui/button';
+import { toast } from "sonner"
 
 const NavItems = [
     {
@@ -94,11 +95,22 @@ function Navbar() {
     const handleGoogleSignIn = async () => {
         const provider = new GoogleAuthProvider();
         try {
+            toast(t('login.ing'), {
+                icon: <LoaderCircle size={18} className='animate-spin' />
+            });
             const result = await signInWithPopup(auth, provider);
+            toast.success(`${t('login.done')} ${result.user.email}`, {
+                description: t('login.donedecs'),
+                action: {
+                    label: t('login.logout'),
+                    onClick: handleLogout,
+                },
+            })
             setUser(result.user);
         } catch (error) {
             if (error instanceof FirebaseError) {
                 console.error("Error signing in:", error);
+                toast.error(`${t('login.e')}: ${error.message}`);
             }
         }
     };
@@ -107,6 +119,7 @@ function Navbar() {
         try {
             await signOut(auth);
             setUser(null);
+            toast.success(t('login.out'));
         } catch (error) {
             console.error("Error signing out:", error);
         }
@@ -162,6 +175,7 @@ function Navbar() {
                                                     <DropdownMenuItem onClick={() => { setWlang('kr'); setModalO(true); }}><Flag code={'kr'} className="w-5 h-5 object-cover rounded-full" /> 한국어</DropdownMenuItem>
                                                     <DropdownMenuItem onClick={() => { setWlang('my'); setModalO(true); }}><Flag code={'my'} className="w-5 h-5 object-cover rounded-full" /> bahasa Malaysia</DropdownMenuItem>
                                                     <DropdownMenuItem onClick={() => { setWlang('th'); setModalO(true); }}><Flag code={'th'} className="w-5 h-5 object-cover rounded-full" /> ภาษาไทย</DropdownMenuItem>
+                                                    <DropdownMenuItem onClick={() => { setWlang('jp'); setModalO(true); }}><Flag code={'jp'} className="w-5 h-5 object-cover rounded-full" /> 日本語</DropdownMenuItem>
                                                 </DropdownMenuContent>
                                             </DropdownMenu>
                                         </div>
@@ -199,6 +213,7 @@ function Navbar() {
                                     <DropdownMenuItem onClick={() => { setWlang('kr'); setModalO(true); }}><Flag code={'kr'} className="w-5 h-5 object-cover rounded-full" /> 한국어</DropdownMenuItem>
                                     <DropdownMenuItem onClick={() => { setWlang('my'); setModalO(true); }}><Flag code={'my'} className="w-5 h-5 object-cover rounded-full" /> bahasa Malaysia</DropdownMenuItem>
                                     <DropdownMenuItem onClick={() => { setWlang('th'); setModalO(true); }}><Flag code={'th'} className="w-5 h-5 object-cover rounded-full" /> ภาษาไทย</DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => { setWlang('jp'); setModalO(true); }}><Flag code={'jp'} className="w-5 h-5 object-cover rounded-full" /> 日本語</DropdownMenuItem>
                                 </DropdownMenuContent>
                             </DropdownMenu>
                         </div>
