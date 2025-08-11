@@ -90,7 +90,8 @@
     "FooterBar": {
         "title": "Copyright © 2025 ThaiGuide все права защищены",
         "sdg": "Наша приверженность целям устойчивого развития",
-        "feedback": "Помогите нам улучшить ThaiGuide"
+        "feedback": "Помогите нам улучшить ThaiGuide",
+        "uptime": "Монитор безотказной работы ThaiGuide"
     },
     "WeaATem": {
         "title": "Погода и температура",

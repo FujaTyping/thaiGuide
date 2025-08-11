@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Mail, MessageCircleHeart } from 'lucide-react';
+import { Activity, Mail, MessageCircleHeart } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import {
     HoverCard,
@@ -8,6 +8,11 @@ import {
     HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import Image from 'next/image';
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 // SDGs Goals
 import G1 from "@/assets/media/sdg/1.svg";
@@ -37,7 +42,14 @@ function Footer() {
                                 </HoverCardContent>
                             </HoverCard>
                         </div>
-                        <p>{t('title')}</p>
+                        <p className='flex items-center gap-2'>
+                            <Tooltip>
+                                <TooltipTrigger><Link href={'https://kuma.siraphop.me/status/thaiguide'}><Activity /></Link></TooltipTrigger>
+                                <TooltipContent>
+                                    <p>{t('uptime')}</p>
+                                </TooltipContent>
+                            </Tooltip>
+                            {t('title')}</p>
                     </div>
                     <div className='flex flex-col md:items-end gap-2'>
                         <p className='flex items-center gap-2'><Mail /> <Link href={"mailto:contact@siraphop.me"}>contact@siraphop.me</Link></p>

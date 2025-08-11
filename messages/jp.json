@@ -90,7 +90,8 @@
   "FooterBar": {
     "title": "Copyright © 2025 ThaiGuide all rights reserved",
     "sdg": "持続可能な開発目標へのコミットメント",
-    "feedback": "ThaiGuideの改善にご協力ください"
+    "feedback": "ThaiGuideの改善にご協力ください",
+    "uptime": "ThaiGuide稼働時間モニター"
   },
   "WeaATem": {
     "title": "天気と気温",
