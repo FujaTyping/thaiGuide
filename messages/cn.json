@@ -90,7 +90,8 @@
     "FooterBar": {
         "title": "版权所有 © 2025 ThaiGuide 保留所有权利",
         "sdg": "我们对可持续发展目标的承诺",
-        "feedback": "帮助我们改进 ThaiGuide"
+        "feedback": "帮助我们改进 ThaiGuide",
+        "uptime": "ThaiGuide 运行时间监控"
     },
     "WeaATem": {
         "title": "天气和温度",

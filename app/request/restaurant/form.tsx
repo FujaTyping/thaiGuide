@@ -26,6 +26,7 @@ import {
 } from "@/components/ui/radio-group"
 import { CheckIcon, ChevronsUpDownIcon, CircleCheckBig, LoaderCircle, Send } from 'lucide-react';
 import axios from 'axios';
+import { toast } from "sonner";
 
 const Proworks = [
     { value: "amnat charoen", label: "Amnat Charoen" },
@@ -128,8 +129,8 @@ function ResForm() {
     const [loading, setLoading] = useState(false);
     const [open, setOpen] = useState(false);
     const p = useTranslations('Province');
+    const el = useTranslations('NavBar');
 
-    // Define the formSchema inside the component to access the 't' function
     const formSchema = z.object({
         slevel: z.enum(["little", "normal", "spicy"], {
             required_error: "กรุณาเลือกระดับความเผ็ด",
@@ -185,10 +186,14 @@ function ResForm() {
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         setLoading(true);
-        const res = await axios.post(`https://${server}/request/restaurant`, values);
-        if (res.data) {
-            setMSG(1);
-            setLoading(false);
+        try {
+            const res = await axios.post(`https://${server}/request/restaurant`, values);
+            if (res.data) {
+                setMSG(1);
+                setLoading(false);
+            }
+        } catch (error) {
+            toast.error(`${el('login.e')}: ${error}`);
         }
     }
 
