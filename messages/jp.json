@@ -5,6 +5,8 @@
     "profile": "プロフィール",
     "logout": "ログアウト",
     "leaderboard": "リーダーボード",
+    "servererror": "サービスに接続できませんでした。後でもう一度お試しください。",
+    "statsbtn": "ステータスを確認",
     "list": {
       "weather": "天気",
       "planner": "旅行プランナー",

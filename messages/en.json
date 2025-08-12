@@ -5,6 +5,8 @@
     "profile": "Profile",
     "logout": "Logout",
     "leaderboard": "Leaderboard",
+    "servererror": "Could not connect to services Please try again later",
+    "statsbtn": "Check Status",
     "list": {
       "weather": "Weather",
       "planner": "Trip Planner",

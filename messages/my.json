@@ -5,6 +5,8 @@
         "profile": "Profil",
         "logout": "Log Keluar",
         "leaderboard": "Papan Pendahulu",
+        "servererror": "Tidak dapat menyambung ke perkhidmatan. Sila cuba lagi kemudian.",
+        "statsbtn": "Semak Status",
         "list": {
             "weather": "Cuaca",
             "planner": "Perancang Perjalanan",
