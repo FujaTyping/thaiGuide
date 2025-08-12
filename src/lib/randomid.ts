@@ -1,5 +1,5 @@
 const AUTO_ID_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-const AUTO_ID_LENGTH = 12;
+const AUTO_ID_LENGTH = 18;
 
 export const generateRandomId = (): string => {
     let id = '';
