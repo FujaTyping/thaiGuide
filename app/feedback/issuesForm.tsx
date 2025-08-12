@@ -26,11 +26,13 @@ import {
 import { CircleCheckBig, LoaderCircle, Send } from 'lucide-react';
 import axios from 'axios';
 import { useTranslations } from 'next-intl';
+import { toast } from "sonner";
 
 function IssuesForm() {
     const t = useTranslations('Feedback');
     const [msg, setMSG] = useState(0);
     const [loading, setLoading] = useState(false);
+    const el = useTranslations('NavBar');
 
     // Define the formSchema inside the component to access the 't' function
     const formSchema = z.object({
@@ -65,11 +67,16 @@ function IssuesForm() {
     })
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        setLoading(true);
-        const res = await axios.post("https://n8n.siraphop.me/webhook/e8da7725-df6b-4f2c-8e24-389958ffdc26", values);
-        if (res.data) {
-            setMSG(1);
+        try {
+            setLoading(true);
+            const res = await axios.post("https://n8n.siraphop.me/webhook/e8da7725-df6b-4f2c-8e24-389958ffdc26", values);
+            if (res.data) {
+                setMSG(1);
+                setLoading(false);
+            }
+        } catch (error) {
             setLoading(false);
+            toast.error(`${el('login.e')}: ${error}`);
         }
     }
 

@@ -28,6 +28,7 @@ function Didyouknow() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.2 }}
+                    viewport={{ once: true }}
                 >
                     <div className='bg-[#f7740a] text-white flex flex-col gap-3 items-center justify-center py-6 rounded-2xl px-4'>
                         <MessageCircleQuestion className='size-8 md:size-10' />

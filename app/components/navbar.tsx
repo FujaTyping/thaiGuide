@@ -41,6 +41,8 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from '@/components/ui/button';
 import { toast } from "sonner"
+import axios from 'axios';
+import { useRouter } from 'next/navigation'
 
 const NavItems = [
     {
@@ -62,6 +64,7 @@ const NavItems = [
 ]
 
 function Navbar() {
+    const router = useRouter()
     const t = useTranslations('NavBar');
     const tb = useTranslations('ToolBar');
     const [user, setUser] = useState<User | null>(null);
@@ -89,6 +92,22 @@ function Navbar() {
                 logEvent(analytics, "page_view");
             }
         });
+    }, []);
+
+    useEffect(() => {
+        async function checkStats() {
+            try {
+                await axios.get('https://thapiguide.siraphop.me/db/info')
+            } catch (error) {
+                toast.error(t('servererror'), {
+                    action: {
+                        label: `${t('statsbtn')}: ${error}`,
+                        onClick: () => { router.push('https://kuma.siraphop.me/status/thaiguide') },
+                    },
+                });
+            }
+        }
+        checkStats()
     }, []);
 
 

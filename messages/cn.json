@@ -5,6 +5,8 @@
         "profile": "个人资料",
         "logout": "登出",
         "leaderboard": "排行榜",
+        "servererror": "无法连接到服务，请稍后再试。",
+        "statsbtn": "检查状态",
         "list": {
             "weather": "天气",
             "planner": "行程规划",
