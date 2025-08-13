@@ -20,7 +20,8 @@
             "d0": "Menukar kepada",
             "d1": "sedang dalam proses. Walaupun kebanyakan UI akan dalam bahasa yang dipilih, sesetengah kandungan mungkin masih muncul dalam bahasa Inggeris. Kami sedang berusaha untuk menterjemah sepenuhnya tidak lama lagi.",
             "cancel": "Batal",
-            "change": "Tukar bahasa"
+            "change": "Tukar bahasa",
+            "request": "Minta Bahasa Baru"
         },
         "login": {
             "ing": "Log masuk...",
