@@ -466,6 +466,8 @@
         "fillter": "Tapis mengikut Wilayah",
         "show": "Tunjukkan",
         "items": "item",
+        "sme": "PKS",
+        "smeinfo": "Sokong perniagaan PKS",
         "grid": {
             "more": "Muat Lagi",
             "notfound": "Tiada restoran ditemui untuk wilayah ini"

@@ -117,6 +117,7 @@ interface RestaurantItem {
     name: string;
     thumnails: string;
     location: string;
+    sme: boolean;
 }
 
 import { User, onAuthStateChanged } from "firebase/auth";
@@ -267,6 +268,10 @@ function Grid() {
                                         <h1 className='text-2xl md:text-3xl font-bold pb-3 md:pb-0'>{item.name}</h1>
                                         <p className='hidden md:block'>{item.location}</p>
                                     </div>
+                                    {
+                                        item.sme &&
+                                        <p className='absolute top-0 right-0 bg-[#f7740a] text-white px-4 rounded-tr-full rounded-bl-full'><span className='py-2'>SME</span></p>
+                                    }
                                 </motion.div>
                             </Link>
                         ))}

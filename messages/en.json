@@ -466,6 +466,8 @@
     "fillter": "Filter by Province",
     "show": "Show",
     "items": "items",
+    "sme": "SME",
+    "smeinfo": "Support SME business",
     "grid": {
       "more": "Load More",
       "notfound": "No restaurants found for this province"

@@ -2,13 +2,18 @@ import React from 'react';
 import fetchData from './fetch';
 import NF from "@/assets/media/card/icon/notfound.svg";
 import Loader from '@/app/components/loader';
-import { ArrowRight, Banknote, MapPin, MapPinned, Sparkle, Star } from 'lucide-react';
+import { ArrowRight, Banknote, CircleHelp, Coins, MapPin, MapPinned, Sparkle, Star, Store } from 'lucide-react';
 import type { Metadata } from "next";
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import Didyouknow from "@/app/components/didyouknow";
 import Thumnails from './thumnails';
 import Sharebt from '@/app/components/sharebt';
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 type Props = {
     params: Promise<{ resid: string }>
@@ -33,6 +38,7 @@ async function page({ params }: Props) {
     const { resid } = await params;
     const data = await fetchData(resid) || "load";
     const t = await getTranslations('Restaurant');
+    const at = await getTranslations('Activities');
 
     if (data == "load") {
         return (<>
@@ -99,6 +105,29 @@ async function page({ params }: Props) {
                         <p className='font-semibold text-xl'>{data.details.openhour}</p>
                         <p>{t('item.open')}</p>
                     </div>
+                    {
+                        data.details.points &&
+                        <>
+                            <div className='flex flex-col gap-1 items-center justify-center'>
+                                <Coins className='text-[#f7740a] size-12' />
+                                <p className='font-semibold text-xl'>{data.details.points}</p>
+                                <p className='flex items-center gap-2'>{at('item.point')}
+                                    <Tooltip>
+                                        <TooltipTrigger><CircleHelp className='size-5 cursor-help' /></TooltipTrigger>
+                                        <TooltipContent>
+                                            <p>{at('item.infop.0')}</p>
+                                            <p>{at('item.infop.1')}</p>
+                                        </TooltipContent>
+                                    </Tooltip>
+                                </p>
+                            </div>
+                            <div className='flex flex-col gap-1 items-center justify-center'>
+                                <Store className='text-[#f7740a] size-12' />
+                                <p className='font-semibold text-xl'>{t('sme')}</p>
+                                <p className='flex items-center gap-2'>{t('smeinfo')}</p>
+                            </div>
+                        </>
+                    }
                 </div>
                 <h1 className='text-2xl font-bold'>{t('item.highlight')}</h1>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6 mt-4'>
