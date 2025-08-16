@@ -466,6 +466,8 @@
         "fillter": "按省份筛选",
         "show": "显示",
         "items": "个项目",
+        "sme": "中小企业",
+        "smeinfo": "支持中小企业",
         "grid": {
             "more": "加载更多",
             "notfound": "未找到该省份的餐厅"

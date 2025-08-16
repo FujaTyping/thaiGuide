@@ -27,6 +27,7 @@ import { CircleCheckBig, LoaderCircle, Send } from 'lucide-react';
 import axios from 'axios';
 import { useTranslations } from 'next-intl';
 import { toast } from "sonner";
+import { server } from "@/app/config.json"
 
 function IssuesForm() {
     const t = useTranslations('Feedback');
@@ -69,14 +70,24 @@ function IssuesForm() {
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
             setLoading(true);
-            const res = await axios.post("https://n8n.siraphop.me/webhook/e8da7725-df6b-4f2c-8e24-389958ffdc26", values);
-            if (res.data) {
+            if (values.type == "feedback") {
+                await axios.post(`https://${server}/feedback`, {
+                    type: values.type,
+                    title: values.title,
+                    decs: values.decs,
+                    experience: parseInt(values.experience),
+                    cfturn: values.cfturn
+                });
                 setMSG(1);
-                setLoading(false);
+            } else {
+                await axios.post("https://n8n.siraphop.me/webhook/e8da7725-df6b-4f2c-8e24-389958ffdc26", values);
+                setMSG(1);
             }
         } catch (error) {
             setLoading(false);
             toast.error(`${el('login.e')}: ${error}`);
+        } finally {
+            setLoading(false);
         }
     }
 
