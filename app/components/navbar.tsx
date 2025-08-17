@@ -86,8 +86,9 @@ function Navbar() {
                 await axios.get('https://thapiguide.siraphop.me/db/info')
             } catch (error) {
                 toast.error(t('servererror'), {
+                    description: `${error}`,
                     action: {
-                        label: `${t('statsbtn')}: ${error}`,
+                        label: `${t('statsbtn')}`,
                         onClick: () => { router.push('https://kuma.siraphop.me/status/thaiguide') },
                     },
                 });

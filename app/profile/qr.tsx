@@ -20,7 +20,6 @@ import NL from "@/assets/media/card/icon/noaccess.svg";
 import { User, onAuthStateChanged } from "firebase/auth";
 import AH from "@/assets/media/card/icon/login.svg";
 import auth from "@/lib/firebaseAuth";
-import { getDistance } from 'geolib';
 import { server } from "@/app/config.json";
 import { AnimatePresence, motion } from "motion/react";
 import ConfettiExplosion from 'react-confetti-explosion';
@@ -86,33 +85,18 @@ function Qr() {
 
     async function checkCode(code: string) {
         try {
-            const response = await axios.put(`https://${server}/code/getbyid`, {
-                id: code,
-                uid: user?.uid,
-                year: new Date().getFullYear()
-            });
-
-            const resD = response.data
-
             if (location) {
-                const distanceInMeters = getDistance(
-                    { latitude: location.latitude, longitude: location.longitude },
-                    { latitude: resD.location.latitude, longitude: resD.location.longitude }
-                );
-                const distanceInKm = distanceInMeters / 1000;
-                console.log(distanceInKm);
-                setIsWithinRadius(distanceInKm <= 2);
-                if (distanceInKm <= 2) {
-                    await axios.post(`https://${server}/transactions/transfer`, {
-                        userid: user?.uid,
-                        type: "Scan QR",
-                        place: resD.name,
-                        point: `+${resD.points}`
-                    })
-                }
-            }
+                const response = await axios.put(`https://${server}/code/getbyid`, {
+                    id: code,
+                    uid: user?.uid,
+                    year: new Date().getFullYear(),
+                    location
+                });
 
-            setCodeData(resD);
+                const resD = response.data;
+                setIsWithinRadius(resD != "NNL");
+                setCodeData(resD);
+            }
         } catch (error) {
             console.error("Error checking code:", error);
             setCodeData("error");
