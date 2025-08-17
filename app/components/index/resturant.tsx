@@ -22,10 +22,12 @@ interface RoadtripItem {
   name: string;
   thumnails: string;
   location: string;
+  sme: boolean;
 }
 
 function Resturant() {
   const t = useTranslations('IndexRus');
+  const rt = useTranslations('Restaurant');
   const [Data, setData] = useState<RoadtripItem[]>([]);
   const [loading, setLoading] = useState(true);
   const swiperRef = useRef<SwiperCore | null>(null);
@@ -130,6 +132,10 @@ function Resturant() {
                             </div>
                           </motion.div>
                         </motion.div>
+                        {
+                          item.sme &&
+                          <p className='absolute top-0 right-0 bg-[#f7740a] text-white px-4 rounded-tr-full rounded-bl-full'><span className='py-2'>{rt('sme')}</span></p>
+                        }
                       </Link>
                     </motion.div>
                   </SwiperSlide>

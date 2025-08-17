@@ -270,7 +270,7 @@ function Grid() {
                                     </div>
                                     {
                                         item.sme &&
-                                        <p className='absolute top-0 right-0 bg-[#f7740a] text-white px-4 rounded-tr-full rounded-bl-full'><span className='py-2'>SME</span></p>
+                                        <p className='absolute top-0 right-0 bg-[#f7740a] text-white px-4 rounded-tr-full rounded-bl-full'><span className='py-2'>{t('sme')}</span></p>
                                     }
                                 </motion.div>
                             </Link>
