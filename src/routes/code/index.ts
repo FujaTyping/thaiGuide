@@ -36,7 +36,7 @@ const getInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.st
                     { latitude: data.location.latitude, longitude: data.location.longitude }
                 );
                 const distanceInKm = distanceInMeters / 1000;
-                if (distanceInKm <= 2) {
+                if (distanceInKm <= 3) {
                     await axios.post(`http://${config.server}/transactions/transfer`, {
                         userid: uid,
                         type: "Scan QR",
