@@ -20,7 +20,6 @@ import NL from "@/assets/media/card/icon/noaccess.svg";
 import { User, onAuthStateChanged } from "firebase/auth";
 import AH from "@/assets/media/card/icon/login.svg";
 import auth from "@/lib/firebaseAuth";
-import { getDistance } from 'geolib';
 import { server } from "@/app/config.json";
 import { AnimatePresence, motion } from "motion/react";
 import ConfettiExplosion from 'react-confetti-explosion';
@@ -95,6 +94,7 @@ function Qr() {
                 });
 
                 const resD = response.data;
+                setIsWithinRadius(resD != "NNL");
                 setCodeData(resD);
             }
         } catch (error) {
