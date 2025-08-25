@@ -1,6 +1,6 @@
 import type { ElysiaApp } from "../../index";
 import db from "../../lib/firebase";
-import { collection, doc, DocumentData, getDoc, getDocs, query, updateDoc } from "firebase/firestore";
+import { collection, doc, DocumentData, getDoc, getDocs, query, setDoc, updateDoc } from "firebase/firestore";
 import { t } from "elysia";
 import { getDistance } from 'geolib';
 import axios from "axios";
@@ -23,9 +23,11 @@ const getInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.st
     const docuId = uid;
     const usersRef = collection(db, "Users");
     const userDoc = doc(usersRef, docuId);
+    const scanRef = doc(db, "Users", uid, "scanqr", id);
 
     try {
         const docSnap = await getDoc(docRef);
+        const scanSnap = await getDoc(scanRef);
         const userSnapshot = await getDoc(userDoc);
         if (userSnapshot.exists()) {
             if (docSnap.exists()) {
@@ -35,13 +37,30 @@ const getInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.st
                     { latitude: location.latitude, longitude: location.longitude },
                     { latitude: data.location.latitude, longitude: data.location.longitude }
                 );
+                let SetPoint = data.points;
+                if (scanSnap.exists() && scanSnap.data().count > 0) {
+                    const ScanToAdd = scanSnap.data().count + 1;
+                    const PointsDeduct = (data.points / ScanToAdd).toFixed(0);
+                    SetPoint = PointsDeduct;
+                    data.points = PointsDeduct;
+                    await updateDoc(scanRef, {
+                        count: ScanToAdd
+                    })
+                    data.originalpoint = data.points;
+                    data.samespot = true;
+                } else {
+                    await setDoc(scanRef, {
+                        count: 1
+                    })
+                    data.samespot = false;
+                }
                 const distanceInKm = distanceInMeters / 1000;
                 if (distanceInKm <= 3) {
                     await axios.post(`http://${config.server}/transactions/transfer`, {
                         userid: uid,
                         type: "Scan QR",
                         place: data.name,
-                        point: `+${data.points}`
+                        point: `+${SetPoint}`
                     })
                 } else {
                     set.status = 200;
