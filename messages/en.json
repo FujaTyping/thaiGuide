@@ -198,7 +198,9 @@
       "next": "Next step",
       "stk": "Streak",
       "stk1": "Your first year in Thailand",
-      "stk2": "You're keeping your streak alive"
+      "stk2": "You're keeping your streak alive",
+      "sametip": "Points are reduced for repeat visits. The reward is divided by your number of check-ins",
+      "samemssg": "You've visited this spot before"
     },
     "welcome": {
       "title": "Welcome to ThaiGuide!",

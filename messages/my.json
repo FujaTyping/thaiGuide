@@ -198,7 +198,9 @@
             "next": "Langkah seterusnya",
             "stk": "Rentetan",
             "stk1": "Tahun pertama anda di Thailand",
-            "stk2": "Anda mengekalkan rentetan anda"
+            "stk2": "Anda mengekalkan rentetan anda",
+            "sametip": "Mata dikurangkan untuk lawatan berulang. Ganjaran dibahagikan dengan bilangan daftar masuk anda",
+            "samemssg": "Anda pernah melawat tempat ini sebelum ini"
         },
         "welcome": {
             "title": "Selamat datang ke ThaiGuide!",

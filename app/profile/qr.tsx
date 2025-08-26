@@ -1,7 +1,7 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 "use client";
 
-import { Coins, LoaderCircle, MapPin, ScanLine } from 'lucide-react';
+import { Coins, Info, LoaderCircle, MapPin, ScanLine } from 'lucide-react';
 import React, { useState, useEffect } from 'react'; import {
     Dialog,
     DialogContent,
@@ -25,6 +25,11 @@ import { AnimatePresence, motion } from "motion/react";
 import ConfettiExplosion from 'react-confetti-explosion';
 import STK from "@/assets/media/icon/fire.gif";
 import { Button } from '@/components/ui/button';
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface ApiCodeData {
     name: string;
@@ -50,6 +55,7 @@ function Qr() {
     const [user, setUser] = useState<User | null>(null);
     const [isWithinRadius, setIsWithinRadius] = useState(false);
     const [succState, setSuccState] = useState(1);
+    const [sameSpot, setSameSpot] = useState(false);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -95,6 +101,7 @@ function Qr() {
 
                 const resD = response.data;
                 setIsWithinRadius(resD != "NNL");
+                setSameSpot(resD.samespot);
                 setCodeData(resD);
             }
         } catch (error) {
@@ -221,6 +228,16 @@ function Qr() {
                                                                                         <div className='font-semibold'>
                                                                                             <p className='flex items-center gap-2'><MapPin /> {codeData.name}</p>
                                                                                             <p className='flex items-center gap-2 text-[#f7740a] mt-1'><Coins /> {t('scan.pe')} : +{codeData.points}</p>
+                                                                                            {sameSpot && (<p className='flex items-center  justify-center mt-4 gap-2'>
+                                                                                                <Tooltip>
+                                                                                                    <TooltipTrigger>
+                                                                                                        <Info size={18} />
+                                                                                                    </TooltipTrigger>
+                                                                                                    <TooltipContent>
+                                                                                                        <p>{t('scan.sametip')}</p>
+                                                                                                    </TooltipContent>
+                                                                                                </Tooltip>
+                                                                                                {t('scan.samemssg')}</p>)}
                                                                                         </div>
                                                                                         <Button onClick={() => setSuccState(2)} className='bg-[#f7740a] text-white hover:bg-[#f7740a] w-full mt-2 cursor-pointer'>{t('scan.next')}</Button>
                                                                                     </>
