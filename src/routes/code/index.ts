@@ -32,6 +32,10 @@ const getInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.st
         if (userSnapshot.exists()) {
             if (docSnap.exists()) {
                 const data = docSnap.data();
+                const badgeRef = doc(db, "badge", data.province);
+                const UsrbadgeRef = doc(db, "Users", uid, "badge", data.province);
+                const badgeSnap = await getDoc(badgeRef);
+                const UserbadgeSnap = await getDoc(UsrbadgeRef);
                 const userData = userSnapshot.data();
                 const distanceInMeters = getDistance(
                     { latitude: location.latitude, longitude: location.longitude },
@@ -62,6 +66,19 @@ const getInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.st
                         place: data.name,
                         point: `+${SetPoint}`
                     })
+                    if (!UserbadgeSnap.exists()) {
+                        const badgeDATA = badgeSnap.data();
+                        if (badgeDATA) {
+                            const payloadBadge = {
+                                province: badgeSnap.id,
+                                imageUrl: badgeDATA.url,
+                                slogan: badgeDATA.slogan
+                            }
+                            await setDoc(UsrbadgeRef, payloadBadge)
+                            data.badge = payloadBadge
+                            data.reciveNewBadge = true
+                        }
+                    }
                 } else {
                     set.status = 200;
                     return "NNL";
