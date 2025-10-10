@@ -171,14 +171,20 @@
   },
   "Profile": {
     "title": "Profile Card",
+    "publicDecs": "This is a public profile card for a ThaiGuide traveler. You can view their progress and achievements here.",
     "decs": "This is your personalized profile card. It displays your information, progress, and achievements within ThaiGuide.",
     "cip": "Check-In point",
     "notrans": "There is no transaction",
     "more": "Show more",
+    "shareTitleM": "Tap the card to share your profile",
     "transaction": {
       "title": "Transaction",
       "Redeem": "Redeem",
       "Scan QR": "Scan QR"
+    },
+    "share": {
+      "title": "Share Your profile",
+      "decs": "Let others see your travel journey and achievements on ThaiGuide."
     },
     "quiz": {
       "title": "Quiz",
@@ -232,6 +238,12 @@
       "slogan": "Slogan",
       "new": "You just unlocked a shiny new badge"
     }
+  },
+  "PublicProfile": {
+    "noneed": "No public user found",
+    "decs": "This is a public profile card for a ThaiGuide traveler. You can view their progress and achievements here.",
+    "card": "Traveler Card",
+    "tcard": "Card"
   },
   "Redeem": {
     "title": "Redeem Reward",

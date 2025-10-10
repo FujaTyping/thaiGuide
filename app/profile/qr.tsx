@@ -234,7 +234,7 @@ function Qr() {
                                                                                         <div className='font-semibold'>
                                                                                             <p className='flex items-center gap-2'><MapPin /> {codeData.name}</p>
                                                                                             <p className='flex items-center gap-2 text-[#f7740a] mt-1'><Coins /> {t('scan.pe')} : +{codeData.points}</p>
-                                                                                            {sameSpot && (<p className='flex items-center  justify-center mt-4 gap-2'>
+                                                                                            {sameSpot && (<p className='flex items-center justify-center mt-4 gap-2'>
                                                                                                 <Tooltip>
                                                                                                     <TooltipTrigger>
                                                                                                         <Info size={18} />
@@ -245,13 +245,13 @@ function Qr() {
                                                                                                 </Tooltip>
                                                                                                 {t('scan.samemssg')}</p>)}
                                                                                         </div>
-                                                                                        <Button onClick={() => { if (codeData.reciveNewBadge) { setSuccState(succState + 1) } else { setSuccState(3) } }} className='bg-[#f7740a] text-white hover:bg-[#f7740a] w-full mt-2 cursor-pointer'>{t('scan.next')}</Button>
+                                                                                        <Button onClick={() => { if (codeData.reciveNewBadge) { setSuccState(succState + 1); const NEWBGD = new Audio('/audio/BadgeRev.mp3'); NEWBGD.volume = 0.3; NEWBGD.play(); } else { setSuccState(3) } }} className='bg-[#f7740a] text-white hover:bg-[#f7740a] w-full mt-2 cursor-pointer'>{t('scan.next')}</Button>
                                                                                     </>
                                                                                 }
                                                                                 {
                                                                                     codeData.reciveNewBadge == true && succState == 2 && <>
                                                                                         <div className='flex items-center justify-center py-4'>
-                                                                                            <img src={BadgeRev.src} alt="Bg" className='w-52 absolute -mr-4 rotate-center' />
+                                                                                            <img src={BadgeRev.src} alt="Bg" className='w-52 absolute -mr-4 rotate-center opacity-70' />
                                                                                             <motion.div
                                                                                                 initial={{ opacity: 0, scale: 0 }}
                                                                                                 animate={{ opacity: 1, scale: 1 }}
@@ -263,9 +263,9 @@ function Qr() {
                                                                                                 <img src={codeData.badge.imageUrl} alt="Badge Icon" className='w-36 translate-x-3' />
                                                                                             </motion.div>
                                                                                         </div>
-                                                                                        <div className='font-semibold flex flex-col justify-center items-center'>
+                                                                                        <div className='font-semibold'>
                                                                                             <p className='flex items-center gap-2'>{t('badge.new')}</p>
-                                                                                            <p className='flex items-center gap-2 text-[#f7740a] mt-1'><MapPin /> : {codeData.badge.province.charAt(0).toUpperCase() + codeData.badge.province.slice(1)}</p>
+                                                                                            <p className='flex items-center gap-2 text-[#f7740a] mt-1'><MapPin /> {codeData.badge.province.charAt(0).toUpperCase() + codeData.badge.province.slice(1)}</p>
                                                                                         </div>
                                                                                         <Button onClick={() => setSuccState(succState + 1)} className='bg-[#f7740a] text-white hover:bg-[#f7740a] w-full mt-2 cursor-pointer'>{t('scan.next')}</Button>
                                                                                     </>

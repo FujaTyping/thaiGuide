@@ -175,10 +175,15 @@
         "cip": "Mata Daftar Masuk",
         "notrans": "Tiada transaksi",
         "more": "Tunjukkan lagi",
+        "shareTitleM": "Ketik kad untuk berkongsi profil anda",
         "transaction": {
             "title": "Transaksi",
             "Redeem": "Tebus",
             "Scan QR": "Imbas QR"
+        },
+        "share": {
+            "title": "Kongsi Profil Anda",
+            "decs": "Biar orang lain melihat perjalanan dan pencapaian anda di ThaiGuide."
         },
         "quiz": {
             "title": "Kuiz",
@@ -233,6 +238,12 @@
       "new": "Anda baru sahaja membuka lencana baru yang berkilat"
         }
     },
+  "PublicProfile": {
+    "noneed": "Tiada pengguna awam ditemui",
+    "decs": "Ini ialah kad profil awam untuk pengembara ThaiGuide. Anda boleh melihat pencapaian mereka di sini",
+    "card": "Kad Pengembara",
+    "tcard": "Kad"
+  },
     "Redeem": {
         "title": "Tebus Ganjaran",
         "decs": "Tebus mata perjalanan anda untuk ganjaran eksklusif, produk tempatan, diskaun dan banyak lagi. Imbas, teroka dan tuntut pengalaman menakjubkan dengan ThaiGuide!",
