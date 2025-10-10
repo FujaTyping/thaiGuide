@@ -9,6 +9,10 @@ const userSchema = t.Object({
     pfp: t.String()
 });
 
+const publicUserSchema = t.Object({
+    uid: t.String()
+})
+
 const createUser = async ({ body, set }: { body: typeof userSchema.static, set: { status: number | string } }) => {
     try {
         const { userid, name, pfp } = body;
@@ -44,8 +48,59 @@ const createUser = async ({ body, set }: { body: typeof userSchema.static, set: 
     }
 };
 
-export default (app: ElysiaApp) => app.post("/", createUser,
-    {
-        body: userSchema,
+const publicUser = async ({ body, set }: { body: typeof publicUserSchema.static, set: { status: number | string } }) => {
+    try {
+        const { uid } = body;
+
+        if (!uid) {
+            set.status = 400
+            return { error: "All fields userid are required." }
+        }
+
+        const userID = atob(uid)
+        const usersRef = collection(db, "Users");
+        const userDoc = doc(usersRef, userID);
+
+        const userSnapshot = await getDoc(userDoc);
+
+        if (userSnapshot.exists()) {
+            const userData = userSnapshot.data();
+            let resData = {
+                name: userData.name,
+                pfp: userData.pfp,
+                point: userData.point,
+                checkin: userData.checkin
+            } as any
+            const badgeCollectionRef = collection(db, "Users", userID, "badge")
+            const badgesSnapshot = await getDocs(badgeCollectionRef);
+
+            if (!badgesSnapshot.empty) {
+                const badges = badgesSnapshot.docs.map(doc => ({
+                    ...doc.data()
+                }));
+                resData.badges = badges;
+            } else {
+                resData.badges = []
+            }
+            return resData;
+        } else {
+            set.status = 404
+            return { error: "User not found" }
+        }
+    } catch (error) {
+        set.status = 500
+        return { error: "Failed to process user request" }
     }
-);
+};
+
+export default (app: ElysiaApp) => app
+    .post("/", createUser,
+        {
+            body: userSchema,
+        }
+    )
+    .put("/public", publicUser,
+        {
+            body: publicUserSchema
+        }
+    );
