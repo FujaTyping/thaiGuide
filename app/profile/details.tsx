@@ -102,7 +102,7 @@ function Details() {
                     </> : <>
                         {
                             itemsToDisplay.map((item, index: number) => (
-                                <div key={index} className='flex items-center place-content-between'>
+                                <motion.div initial={{ y: 30 }} animate={{ y: 0 }} key={index} className='flex items-center place-content-between'>
                                     <div className='flex items-center gap-3'>
                                         {
                                             item.point.includes("-") ? <>
@@ -148,7 +148,7 @@ function Details() {
                                         </div>
                                     </div>
                                     <p className='font-semibold text-lg'>{item.point}</p>
-                                </div>
+                                </motion.div>
                             ))
                         }
                     </>

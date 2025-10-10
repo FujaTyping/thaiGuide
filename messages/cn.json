@@ -175,10 +175,15 @@
         "cip": "签到点",
         "notrans": "没有交易记录",
         "more": "显示更多",
+        "shareTitleM": "点击卡片分享您的个人资料",
         "transaction": {
             "title": "交易",
             "Redeem": "兑换",
             "Scan QR": "扫描二维码"
+        },
+        "share": {
+            "title": "分享您的个人资料",
+            "decs": "让其他人看到您在 ThaiGuide 上的旅行历程和成就。"
         },
         "quiz": {
             "title": "测验",
@@ -223,8 +228,22 @@
             "title": "奖励二维码",
             "decs": "出示此二维码以领取您的奖励",
             "did": "交易ID"
+        },
+        "badge": {
+            "title": "旅行徽章",
+            "section": "徽章",
+            "no": "尚未获得任何徽章",
+            "visit": "您已访问",
+            "slogan": "口号",
+            "new": "您刚刚解锁了一个闪亮的新徽章"
         }
     },
+  "PublicProfile": {
+    "noneed": "未找到公开用户",
+    "decs": "这是 ThaiGuide 旅行者的公开个人资料卡。您可以在此处查看他们的成就",
+    "card": "旅行者卡",
+    "tcard": "卡"
+  },
     "Redeem": {
         "title": "兑换奖励",
         "decs": "使用您的旅行积分兑换专属奖励、本地产品、折扣等。通过 ThaiGuide 扫描、探索并领取奇妙体验！",

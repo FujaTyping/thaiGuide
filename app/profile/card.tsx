@@ -21,6 +21,20 @@ import { AnimatePresence, motion } from "motion/react";
 import IQR from "@/assets/media/icon/scanner.svg";
 import IRM from "@/assets/media/icon/gift.svg";
 import ITG from "@/assets/media/icon/target.svg";
+import { ShareSocial } from 'react-share-social';
+
+const style = {
+    root: {
+        borderRadius: 3,
+        border: 0,
+        padding: 0,
+        color: 'white',
+    },
+    copyContainer: {
+        background: '#f7740a',
+        border: 0
+    }
+};
 
 // Background
 import B1 from "@/assets/media/card/1.jpg";
@@ -30,6 +44,8 @@ import B4 from "@/assets/media/card/4.jpg";
 import B5 from "@/assets/media/card/5.jpg";
 import B6 from "@/assets/media/card/6.jpg";
 
+import './share.css'
+
 const backgrounds = [B1, B2, B3, B4, B5, B6];
 
 function Card() {
@@ -38,6 +54,7 @@ function Card() {
     const [uData, setUData] = useState<any | null>(null);
     const [selectedBackground, setSelectedBackground] = useState(backgrounds[0]);
     const [isOpen, setIsOpen] = useState(false);
+    const [shareOpen, setShareOpen] = useState(false);
     const [welState, setWelState] = useState(1);
 
     useEffect(() => {
@@ -83,7 +100,7 @@ function Card() {
 
     return (
         <>
-            <Atropos className='my-8'>
+            <Atropos className='mt-8 cursor-pointer' onClick={() => setShareOpen(true)}>
                 <div
                     className='relative overflow-hidden rounded-4xl'
                 >
@@ -105,6 +122,7 @@ function Card() {
                     </div>
                 </div>
             </Atropos>
+            <p className='mb-8 mt-4 font-semibold text-center'>{t('shareTitleM')}</p>
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
                 <DialogContent>
                     <DialogHeader>
@@ -157,6 +175,21 @@ function Card() {
                     <Button className='bg-[#f7740a] hover:bg-[#f7740a] text-white mt-2 cursor-pointer' onClick={() => { if (welState < 3) { setWelState(welState + 1) } else { setIsOpen(false) } }}>
                         {welState < 3 ? "Next step" : "Get Started"}
                     </Button>
+                </DialogContent>
+            </Dialog>
+            <Dialog open={shareOpen} onOpenChange={setShareOpen}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle className='text-2xl'>{t('share.title')}</DialogTitle>
+                        <p className='mb-4'>{t('share.decs')}</p>
+                        <div className='flex items-center justify-center'>
+                            <ShareSocial
+                                url={`https://thaiguide.siraphop.me/profile/${btoa(user.uid)}`}
+                                style={style}
+                                socialTypes={['facebook', 'twitter', 'reddit', 'line', 'telegram']}
+                            />
+                        </div>
+                    </DialogHeader>
                 </DialogContent>
             </Dialog>
         </>
