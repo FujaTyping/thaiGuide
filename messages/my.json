@@ -223,6 +223,14 @@
             "title": "Kod QR Ganjaran",
             "decs": "Tunjukkan kod QR ini untuk menuntut ganjaran anda",
             "did": "ID Transaksi"
+    },
+    "badge": {
+      "title": "Lencana Perjalanan",
+      "section": "Lencana",
+      "no": "Belum ada lencana yang diperoleh",
+      "visit": "Anda telah melawat",
+      "slogan": "Slogan",
+      "new": "Anda baru sahaja membuka lencana baru yang berkilat"
         }
     },
     "Redeem": {

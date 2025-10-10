@@ -72,7 +72,7 @@ function Quiz() {
                             <p className='font-semibold'>{t('quiz.noneed')}</p>
                         </div>
                     </> : <>
-                        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
+                        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
                             {
                                 quizz.map((item, index: number) => (
                                     <div key={index} className='w-full border-3 border-[#f7740a] p-5 py-3 rounded-xl flex flex-col items-center justify-center'>

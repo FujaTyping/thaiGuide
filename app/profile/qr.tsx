@@ -30,16 +30,22 @@ import {
     TooltipContent,
     TooltipTrigger,
 } from "@/components/ui/tooltip";
+import BadgeRev from "@/assets/media/icon/REV.svg";
 
 interface ApiCodeData {
     name: string;
     points: number;
     streak: number;
     streakYRS: number;
+    reciveNewBadge: boolean
     location: {
         latitude: number;
         longitude: number;
     };
+    badge: {
+        imageUrl: string;
+        province: string;
+    }
 }
 
 function Qr() {
@@ -239,11 +245,33 @@ function Qr() {
                                                                                                 </Tooltip>
                                                                                                 {t('scan.samemssg')}</p>)}
                                                                                         </div>
-                                                                                        <Button onClick={() => setSuccState(2)} className='bg-[#f7740a] text-white hover:bg-[#f7740a] w-full mt-2 cursor-pointer'>{t('scan.next')}</Button>
+                                                                                        <Button onClick={() => { if (codeData.reciveNewBadge) { setSuccState(succState + 1) } else { setSuccState(3) } }} className='bg-[#f7740a] text-white hover:bg-[#f7740a] w-full mt-2 cursor-pointer'>{t('scan.next')}</Button>
                                                                                     </>
                                                                                 }
                                                                                 {
-                                                                                    succState == 2 && <>
+                                                                                    codeData.reciveNewBadge == true && succState == 2 && <>
+                                                                                        <div className='flex items-center justify-center py-4'>
+                                                                                            <img src={BadgeRev.src} alt="Bg" className='w-52 absolute -mr-4 rotate-center' />
+                                                                                            <motion.div
+                                                                                                initial={{ opacity: 0, scale: 0 }}
+                                                                                                animate={{ opacity: 1, scale: 1 }}
+                                                                                                transition={{
+                                                                                                    duration: 0.6,
+                                                                                                    scale: { type: "spring", visualDuration: 0.6, bounce: 0.7 },
+                                                                                                }}
+                                                                                            >
+                                                                                                <img src={codeData.badge.imageUrl} alt="Badge Icon" className='w-36 translate-x-3' />
+                                                                                            </motion.div>
+                                                                                        </div>
+                                                                                        <div className='font-semibold flex flex-col justify-center items-center'>
+                                                                                            <p className='flex items-center gap-2'>{t('badge.new')}</p>
+                                                                                            <p className='flex items-center gap-2 text-[#f7740a] mt-1'><MapPin /> : {codeData.badge.province.charAt(0).toUpperCase() + codeData.badge.province.slice(1)}</p>
+                                                                                        </div>
+                                                                                        <Button onClick={() => setSuccState(succState + 1)} className='bg-[#f7740a] text-white hover:bg-[#f7740a] w-full mt-2 cursor-pointer'>{t('scan.next')}</Button>
+                                                                                    </>
+                                                                                }
+                                                                                {
+                                                                                    succState == 3 && <>
                                                                                         <>
                                                                                             <img src={STK.src} alt="Location Correct Icon" className='w-32 translate-x-3' />
                                                                                             <div className='text-center'>

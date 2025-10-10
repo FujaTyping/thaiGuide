@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl';
 import Didyouknow from "@/app/components/didyouknow";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Quiz from './quiz';
+import BBadge from './badge';
 
 export const metadata: Metadata = {
     title: "ThaiGuide – My Profile"
@@ -27,6 +28,7 @@ function Page() {
                 <Tabs defaultValue="tsn" className='w-full'>
                     <TabsList className='w-full'>
                         <TabsTrigger value="tsn" className='cursor-pointer'>{t('transaction.title')}</TabsTrigger>
+                        <TabsTrigger value="bdg" className='cursor-pointer'>{t('badge.section')}</TabsTrigger>
                         <TabsTrigger value="qz" className='cursor-pointer'>{t('quiz.title')}</TabsTrigger>
                     </TabsList>
                     <TabsContent value="tsn">
@@ -34,6 +36,12 @@ function Page() {
                             <h1 className='font-bold text-2xl mt-1'>{t('transaction.title')}</h1>
                         </div>
                         <Details />
+                    </TabsContent>
+                    <TabsContent value="bdg">
+                        <div>
+                            <h1 className='font-bold text-2xl mt-1'>{t('badge.title')}</h1>
+                        </div>
+                        <BBadge />
                     </TabsContent>
                     <TabsContent value="qz">
                         <div>

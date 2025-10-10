@@ -37,6 +37,7 @@
     "firebase": "^11.9.1",
     "geolib": "^3.3.4",
     "gl-matrix": "^3.4.3",
+    "gsap": "^3.13.0",
     "lucide-react": "^0.511.0",
     "motion": "^12.17.3",
     "next": "15.3.3",

@@ -223,6 +223,14 @@
       "title": "Reward QR Code",
       "decs": "Present this QR code to claim your reward",
       "did": "Transaction id"
+    },
+    "badge": {
+      "title": "Travel Badge",
+      "section": "Badge",
+      "no": "No badges earned yet",
+      "visit": "You’ve visited",
+      "slogan": "Slogan",
+      "new": "You just unlocked a shiny new badge"
     }
   },
   "Redeem": {
