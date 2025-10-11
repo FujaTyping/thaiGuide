@@ -2,7 +2,8 @@
 "use client";
 
 import { Coins, Info, LoaderCircle, MapPin, ScanLine } from 'lucide-react';
-import React, { useState, useEffect } from 'react'; import {
+import React, { useState, useEffect } from 'react'; 
+import {
     Dialog,
     DialogContent,
     DialogHeader,
@@ -245,7 +246,7 @@ function Qr() {
                                                                                                 </Tooltip>
                                                                                                 {t('scan.samemssg')}</p>)}
                                                                                         </div>
-                                                                                        <Button onClick={() => { if (codeData.reciveNewBadge) { setSuccState(succState + 1); const NEWBGD = new Audio('/audio/BadgeRev.mp3'); NEWBGD.volume = 0.3; NEWBGD.play(); } else { setSuccState(3) } }} className='bg-[#f7740a] text-white hover:bg-[#f7740a] w-full mt-2 cursor-pointer'>{t('scan.next')}</Button>
+                                                                                        <Button onClick={() => { if (codeData.reciveNewBadge) { setSuccState(succState + 1); const NEWBGD = new Audio('/audio/BadgeRev.mp3'); NEWBGD.volume = 0.5; NEWBGD.play(); } else { setSuccState(3) } }} className='bg-[#f7740a] text-white hover:bg-[#f7740a] w-full mt-2 cursor-pointer'>{t('scan.next')}</Button>
                                                                                     </>
                                                                                 }
                                                                                 {

@@ -36,23 +36,12 @@ const style = {
     }
 };
 
-// Background
-import B1 from "@/assets/media/card/1.jpg";
-import B2 from "@/assets/media/card/2.jpg";
-import B3 from "@/assets/media/card/3.jpg";
-import B4 from "@/assets/media/card/4.jpg";
-import B5 from "@/assets/media/card/5.jpg";
-import B6 from "@/assets/media/card/6.jpg";
-
 import './share.css'
-
-const backgrounds = [B1, B2, B3, B4, B5, B6];
 
 function Card() {
     const t = useTranslations('Profile');
     const [user, setUser] = useState<User | null>(null);
     const [uData, setUData] = useState<any | null>(null);
-    const [selectedBackground, setSelectedBackground] = useState(backgrounds[0]);
     const [isOpen, setIsOpen] = useState(false);
     const [shareOpen, setShareOpen] = useState(false);
     const [welState, setWelState] = useState(1);
@@ -76,9 +65,6 @@ function Card() {
             }
         });
 
-        const randomIndex = Math.floor(Math.random() * backgrounds.length);
-        setSelectedBackground(backgrounds[randomIndex]);
-
         return () => unsubscribe();
     }, []);
 
@@ -92,7 +78,7 @@ function Card() {
 
     const formatUid = (uid: string) => {
         if (!uid) return '';
-        const trimmedUid = uid.slice(0, -5);
+        const trimmedUid = uid.slice(0, -4);
         return trimmedUid.replace(/(.{3})/g, '$1-').replace(/-$/, '');
     };
 
@@ -104,7 +90,7 @@ function Card() {
                 <div
                     className='relative overflow-hidden rounded-4xl'
                 >
-                    <img src={selectedBackground.src} className='w-full h-[400px] object-cover' alt="Card Background" />
+                    <img src={uData.bg} className='w-full h-[400px] object-cover' alt="Card Background" />
                     <div className='absolute top-0 right-0 p-4 text-white'>
                         <p className='text-2xl font-semibold flex items-center gap-2'><Coins /> {uData.point}</p>
                         <p className='text-2xl font-semibold flex items-center gap-2'><Flame /> {uData.streak || 0}</p>
@@ -122,7 +108,6 @@ function Card() {
                     </div>
                 </div>
             </Atropos>
-            <p className='mb-8 mt-4 font-semibold text-center'>{t('shareTitleM')}</p>
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
                 <DialogContent>
                     <DialogHeader>
