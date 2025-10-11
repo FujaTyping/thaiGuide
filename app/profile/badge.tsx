@@ -20,7 +20,10 @@ import { Footprints, Quote } from 'lucide-react';
 interface BBBadge {
     imageUrl: string,
     province: string,
-    slogan: string
+    slogan: string,
+    recivedAt: {
+        seconds: number;
+    }
 }
 
 function BBadge() {
@@ -95,6 +98,7 @@ function BBadge() {
                                             </Popover>
                                         </motion.div>
                                         <h2 className='font-semibold text-md md:text-lg mt-0.5'>{item.province.charAt(0).toUpperCase() + item.province.slice(1)}</h2>
+                                        <p className='text-sm md:text-base'>{new Date(item.recivedAt.seconds * 1000).toLocaleDateString()}</p>
                                     </div>
                                 ))
                             }

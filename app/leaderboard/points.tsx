@@ -10,6 +10,8 @@ import R3 from "@/assets/media/icon/Rank3.svg";
 import { Flame } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import anno from "@/assets/media/icon/ano.svg";
+import { motion } from "motion/react";
+import NF from "@/assets/media/card/icon/notfound.svg";
 
 interface dataTypes {
     name: string;
@@ -37,6 +39,23 @@ function Points() {
     if (data.length === 0) return (
         <div className='w-full flex items-center justify-center my-12'>
             <Loader />
+        </div>
+    )
+
+    if (data.length < 5) return (
+        <div className='flex items-center flex-col justify-center gap-4 mt-5'>
+            <motion.div
+                animate={{
+                    x: [0, -10, 10, -10, 10, -5, 5, 0],
+                }}
+                transition={{
+                    duration: 0.5,
+                    ease: "easeInOut"
+                }}
+            >
+                <img src={NF.src} alt="Not Found" className='w-32 ml-5' />
+            </motion.div>
+            <p className='font-semibold'>{t('noneed')}</p>
         </div>
     )
 

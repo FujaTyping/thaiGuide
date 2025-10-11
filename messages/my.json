@@ -181,6 +181,7 @@
             "bgO": "Kembali ke bahagian profil",
             "bgOF": "Klik di sini untuk memperibadikan kad anda"
         },
+        "jA": "Memulakan perjalanan mereka pada",
         "shareTitleM": "Ketik kad untuk berkongsi profil anda",
         "transaction": {
             "title": "Transaksi",
@@ -670,6 +671,7 @@
         "title": "Papan Pendahulu",
         "decs": "Lihat bagaimana anda bersaing dengan penjelajah lain! Papan Pendahulu ThaiGuide menyenaraikan pengguna berdasarkan mata yang diperoleh daripada melawat dan mendaftar masuk di pelbagai destinasi. Naik pangkat, dapatkan hak bercakap besar, dan lihat siapa penjelajah ThaiGuide yang terunggul. Terus meneroka untuk mencapai puncak!",
         "ms": "Mata Terbanyak",
+        "noneed": "Tiada papan pendahulu tersedia",
         "mcn": "Daftar Masuk Terbanyak",
         "board": {
             "ms": {

@@ -39,6 +39,7 @@ function Card(user: any) {
                                 <h2 className='font-semibold'>{t('cip')} : {user.user.checkin}</h2>
                             </div>
                         </div>
+                        <p className='text-sm font-semibold'>{t('jA')} : {new Date(user.user.joinAt.seconds * 1000).toLocaleDateString()}</p>
                     </div>
                 </div>
             </Atropos>
@@ -69,6 +70,7 @@ function Card(user: any) {
                                     <div key={index} className='flex flex-col items-center justify-center'>
                                         <img src={item.imageUrl} alt='Badge' className='w-32 md:w-40' />
                                         <h2 className='font-semibold text-md md:text-lg mt-0.5'>{item.province.charAt(0).toUpperCase() + item.province.slice(1)}</h2>
+                                        <p className='text-sm md:text-base'>{new Date(item.recivedAt.seconds * 1000).toLocaleDateString()}</p>
                                     </div>
                                 ))
                             }

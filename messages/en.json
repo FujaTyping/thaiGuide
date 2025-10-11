@@ -177,6 +177,7 @@
     "notrans": "There is no transaction",
     "more": "Show more",
     "shareTitleM": "Tap the card to share your profile",
+    "jA": "Started their journey on",
     "customize": {
       "bg": "Background",
       "or": "or",
@@ -672,6 +673,7 @@
     "decs": "See how you stack up against other explorers! The ThaiGuide Leaderboard ranks users based on points earned from visiting and checking in at various destinations. Climb the ranks, earn bragging rights, and see who is the ultimate ThaiGuide explorer. Keep exploring to reach the top!",
     "ms": "Most Points",
     "mcn": "Most Check-In",
+    "noneed": "No leaderboard available",
     "board": {
       "ms": {
         "header": "Most Points",
