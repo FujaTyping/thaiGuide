@@ -175,6 +175,12 @@
         "cip": "Mata Daftar Masuk",
         "notrans": "Tiada transaksi",
         "more": "Tunjukkan lagi",
+        "customize": {
+            "bg": "Latar Belakang",
+            "or": "atau",
+            "bgO": "Kembali ke bahagian profil",
+            "bgOF": "Klik di sini untuk memperibadikan kad anda"
+        },
         "shareTitleM": "Ketik kad untuk berkongsi profil anda",
         "transaction": {
             "title": "Transaksi",
@@ -707,5 +713,15 @@
     "Share": {
         "title": "Kongsi Tempat Ini",
         "decs": "Bantu lebih ramai orang menemui dan menikmati tempat ini"
+    },
+    "Customize": {
+        "confirm": {
+            "title": "Adakah anda pasti mahu menukar latar belakang kad anda?",
+            "done": "Latar belakang kad anda telah berjaya ditukar",
+            "err": "Ralat semasa menukar latar belakang",
+            "to": "Tindakan ini akan mengemas kini latar belakang kad anda kepada",
+            "canBTN": "Batal",
+            "conBTN": "Sahkan"
+        }
     }
 }

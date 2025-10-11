@@ -1,7 +1,7 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Atropos from 'atropos/react';
 import { Coins } from 'lucide-react';
 import Loader from '../../components/loader';
@@ -9,25 +9,8 @@ import { useTranslations } from 'next-intl';
 import { motion } from "motion/react";
 import NF from "@/assets/media/card/icon/notfound.svg";
 
-// Background
-import B1 from "@/assets/media/card/1.jpg";
-import B2 from "@/assets/media/card/2.jpg";
-import B3 from "@/assets/media/card/3.jpg";
-import B4 from "@/assets/media/card/4.jpg";
-import B5 from "@/assets/media/card/5.jpg";
-import B6 from "@/assets/media/card/6.jpg";
-
-const backgrounds = [B1, B2, B3, B4, B5, B6];
-
 function Card(user: any) {
     const t = useTranslations('Profile');
-    const [selectedBackground, setSelectedBackground] = useState(backgrounds[0]);
-
-    useEffect(() => {
-        const randomIndex = Math.floor(Math.random() * backgrounds.length);
-        setSelectedBackground(backgrounds[randomIndex]);
-
-    }, []);
 
     if (!user) {
         return (
@@ -43,7 +26,7 @@ function Card(user: any) {
                 <div
                     className='relative overflow-hidden rounded-4xl'
                 >
-                    <img src={selectedBackground.src} className='w-full h-[400px] object-cover' alt="Card Background" />
+                    <img src={user.user.bg} className='w-full h-[400px] object-cover' alt="Card Background" />
                     <div className='absolute top-0 right-0 p-4 text-white'>
                         <p className='text-2xl font-semibold flex items-center gap-2'><Coins /> {user.user.point}</p>
                     </div>

@@ -177,6 +177,12 @@
     "notrans": "There is no transaction",
     "more": "Show more",
     "shareTitleM": "Tap the card to share your profile",
+    "customize": {
+      "bg": "Background",
+      "or": "or",
+      "bgO": "Return to the profile section",
+      "bgOF": "Click here to personalize your card"
+    },
     "transaction": {
       "title": "Transaction",
       "Redeem": "Redeem",
@@ -708,5 +714,15 @@
   "Share": {
     "title": "Share This Place",
     "decs": "Help more people discover and enjoy this place"
+  },
+  "Customize": {
+    "confirm": {
+      "title": "Are you sure you want to change your card background?",
+      "done": "Your card background has been changed successfully",
+      "err": "Error during changing backround",
+      "to": "This action will update your card background to",
+      "canBTN": "Cancel",
+      "conBTN": "Confirm"
+    }
   }
 }
