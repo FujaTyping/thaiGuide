@@ -1,6 +1,6 @@
 import type { ElysiaApp } from "../../index";
 import db from "../../lib/firebase";
-import { collection, doc, getDoc, setDoc, getDocs } from "firebase/firestore";
+import { collection, doc, getDoc, setDoc, getDocs, serverTimestamp } from "firebase/firestore";
 import { t } from "elysia";
 
 const userSchema = t.Object({
@@ -37,7 +37,9 @@ const createUser = async ({ body, set }: { body: typeof userSchema.static, set: 
             pfp,
             point: 0,
             checkin: 0,
-            streak: 0
+            streak: 0,
+            joinAt: serverTimestamp(),
+            bg: "https://ik.imagekit.io/61sqw5prw/thaiGuide/profilebn/5.jpg?updatedAt=1760156459397"
         }
 
         await setDoc(userDoc, userCreateData);
@@ -69,7 +71,8 @@ const publicUser = async ({ body, set }: { body: typeof publicUserSchema.static,
                 name: userData.name,
                 pfp: userData.pfp,
                 point: userData.point,
-                checkin: userData.checkin
+                checkin: userData.checkin,
+                joinAt: userData.joinAt
             } as any
             const badgeCollectionRef = collection(db, "Users", userID, "badge")
             const badgesSnapshot = await getDocs(badgeCollectionRef);

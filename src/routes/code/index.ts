@@ -1,6 +1,6 @@
 import type { ElysiaApp } from "../../index";
 import db from "../../lib/firebase";
-import { collection, doc, DocumentData, getDoc, getDocs, query, setDoc, updateDoc } from "firebase/firestore";
+import { collection, doc, DocumentData, getDoc, getDocs, query, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
 import { t } from "elysia";
 import { getDistance } from 'geolib';
 import axios from "axios";
@@ -32,10 +32,6 @@ const getInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.st
         if (userSnapshot.exists()) {
             if (docSnap.exists()) {
                 const data = docSnap.data();
-                const badgeRef = doc(db, "badge", data.province);
-                const UsrbadgeRef = doc(db, "Users", uid, "badge", data.province);
-                const badgeSnap = await getDoc(badgeRef);
-                const UserbadgeSnap = await getDoc(UsrbadgeRef);
                 const userData = userSnapshot.data();
                 const distanceInMeters = getDistance(
                     { latitude: location.latitude, longitude: location.longitude },
@@ -58,6 +54,7 @@ const getInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.st
                     })
                     data.samespot = false;
                 }
+                console.log(data);
                 const distanceInKm = distanceInMeters / 1000;
                 if (distanceInKm <= 3) {
                     await axios.post(`http://${config.server}/transactions/transfer`, {
@@ -66,17 +63,24 @@ const getInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.st
                         place: data.name,
                         point: `+${SetPoint}`
                     })
-                    if (!UserbadgeSnap.exists()) {
-                        const badgeDATA = badgeSnap.data();
-                        if (badgeDATA) {
-                            const payloadBadge = {
-                                province: badgeSnap.id,
-                                imageUrl: badgeDATA.url,
-                                slogan: badgeDATA.slogan
+                    if (data.province) {
+                        const badgeRef = doc(db, "badge", data.province);
+                        const UsrbadgeRef = doc(db, "Users", uid, "badge", data.province);
+                        const badgeSnap = await getDoc(badgeRef);
+                        const UserbadgeSnap = await getDoc(UsrbadgeRef);
+                        if (!UserbadgeSnap.exists()) {
+                            const badgeDATA = badgeSnap.data();
+                            if (badgeDATA) {
+                                const payloadBadge = {
+                                    province: badgeSnap.id,
+                                    imageUrl: badgeDATA.url,
+                                    slogan: badgeDATA.slogan,
+                                    recivedAt: serverTimestamp()
+                                }
+                                await setDoc(UsrbadgeRef, payloadBadge);
+                                data.badge = payloadBadge
+                                data.reciveNewBadge = true
                             }
-                            await setDoc(UsrbadgeRef, payloadBadge)
-                            data.badge = payloadBadge
-                            data.reciveNewBadge = true
                         }
                     }
                 } else {

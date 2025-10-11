@@ -1,6 +1,6 @@
 import type { ElysiaApp } from "../../index";
 import db from "../../lib/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { t } from "elysia";
 
 const userSchema = t.Object({
@@ -16,12 +16,11 @@ const getBadgesByUserId = async ({ body, set }: { body: typeof userSchema.static
             return { error: "User ID is required." };
         }
 
-        const badgeCollectionRef = collection(db, "Users", userid, "badge")
+        const badgeCollectionRef = query(collection(db, "Users", userid, "badge"), orderBy("recivedAt", "desc"))
         const badgesSnapshot = await getDocs(badgeCollectionRef);
 
         if (!badgesSnapshot.empty) {
             const badges = badgesSnapshot.docs.map(doc => ({
-                id: doc.id,
                 ...doc.data()
             }));
             return { badges };
