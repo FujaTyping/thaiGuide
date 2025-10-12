@@ -31,6 +31,7 @@ import { toast } from "sonner"
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import ChangeCookie from './changeCookie';
+import { server } from "@/app/config.json";
 
 const NavItems = [
     {
@@ -83,7 +84,7 @@ function Navbar() {
     useEffect(() => {
         async function checkStats() {
             try {
-                await axios.get('https://thapiguide.siraphop.me/db/info')
+                await axios.get(`https://${server}/db/info`)
             } catch (error) {
                 toast.error(t('servererror'), {
                     description: `${error}`,
