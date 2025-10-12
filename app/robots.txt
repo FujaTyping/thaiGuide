@@ -1,3 +1,3 @@
 User-agent: *
 Disallow: /_next/
-Sitemap: https://thaiguide.siraphop.me/sitemap.xml
+Sitemap: https://www.thaiguide.in.th/sitemap.xml

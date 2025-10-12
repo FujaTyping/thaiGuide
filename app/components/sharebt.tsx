@@ -47,7 +47,7 @@ function Sharebt() {
                         <p className='mb-4'>{t('decs')}</p>
                         <div className='flex items-center justify-center'>
                             <ShareSocial
-                                url={`https://thaiguide.siraphop.me${pathname}`}
+                                url={`https://www.thaiguide.in.th${pathname}`}
                                 style={style}
                                 socialTypes={['facebook', 'twitter', 'reddit', 'line', 'telegram']}
                             />

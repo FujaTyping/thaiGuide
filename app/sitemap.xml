@@ -1,45 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url>
-  <loc>https://thaiguide.siraphop.me/</loc>
+  <loc>https://www.thaiguide.in.th/</loc>
   <lastmod>2025-06-11T01:15:32+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://thaiguide.siraphop.me/weather</loc>
+  <loc>https://www.thaiguide.in.th/weather</loc>
   <lastmod>2025-06-11T01:15:32+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://thaiguide.siraphop.me/activity</loc>
+  <loc>https://www.thaiguide.in.th/activity</loc>
   <lastmod>2025-06-11T01:15:32+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://thaiguide.siraphop.me/planner</loc>
+  <loc>https://www.thaiguide.in.th/planner</loc>
   <lastmod>2025-06-11T01:15:32+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://thaiguide.siraphop.me/roadtrip</loc>
+  <loc>https://www.thaiguide.in.th/roadtrip</loc>
   <lastmod>2025-06-11T01:15:32+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://thaiguide.siraphop.me/redeem</loc>
+  <loc>https://www.thaiguide.in.th/redeem</loc>
   <lastmod>2025-06-11T01:15:32+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://thaiguide.siraphop.me/restaurant</loc>
+  <loc>https://www.thaiguide.in.th/restaurant</loc>
   <lastmod>2025-06-11T01:15:32+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://thaiguide.siraphop.me/sos</loc>
+  <loc>https://www.thaiguide.in.th/sos</loc>
   <lastmod>2025-06-11T01:15:32+00:00</lastmod>
   <priority>0.80</priority>
 </url>
-
+<url>
+  <loc>https://www.thaiguide.in.th/terms</loc>
+  <lastmod>2025-06-11T01:15:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.thaiguide.in.th/privacy</loc>
+  <lastmod>2025-06-11T01:15:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
 
 </urlset>
