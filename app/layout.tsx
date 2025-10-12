@@ -27,10 +27,10 @@ export const metadata: Metadata = {
   description: "Experience Thailand like never before through fun travel quests, point systems, and rewards. Powered by AI and emotional design, our platform turns every trip into an adventure full of memories.",
   keywords: `thaiGuide, ThaiGuide, thaiguide, ไทยไกด์, ไทยไกด, Thailand, Thai, thailand, thai`,
   openGraph: {
-    url: 'https://thaiguide.siraphop.me/',
+    url: 'https://www.thaiguide.in.th/',
     description: `Experience Thailand like never before through fun travel quests, point systems, and rewards. Powered by AI and emotional design, our platform turns every trip into an adventure full of memories.`,
     type: 'website',
-    images: 'https://thaiguide.siraphop.me/oImage.png',
+    images: 'https://www.thaiguide.in.th/oImage.png',
   },
 };
 

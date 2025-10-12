@@ -93,8 +93,13 @@
   "FooterBar": {
     "title": "Copyright © 2025 ThaiGuide all rights reserved",
     "sdg": "Our Commitment to Sustainable Development Goals",
-    "feedback": "Help us improve ThaiGuide",
-    "uptime": "ThaiGuide Uptime Monitor"
+    "feedback": "Feedback",
+    "uptime": "ThaiGuide Uptime Monitor",
+    "mail": "Mail",
+    "CUSTitle": "Contact Us",
+    "DOCTitle": "Document",
+    "terms": "Terms of Service",
+    "pp": "Privacy Policy"
   },
   "WeaATem": {
     "title": "Weather and Temperature",
@@ -725,6 +730,60 @@
       "to": "This action will update your card background to",
       "canBTN": "Cancel",
       "conBTN": "Confirm"
+    }
+  },
+  "Terms": {
+    "title": "Terms of Service",
+    "decs": "These Terms of Service Terms govern your use of our website, mobile applications, and services collectively, the Services. By accessing or using our Services, you agree to be bound by these Terms. Please read them carefully.",
+    "date": "Effective Date",
+    "content": {
+      "1": {
+        "title": "Use of Service",
+        "decs": "ThaiGuide is designed to make your travel experience more fun and interactive through gamification. By using this platform, you agree to use it responsibly and follow all applicable laws."
+      },
+      "2": {
+        "title": "Accounts",
+        "decs": "You must provide accurate information when creating an account. You are responsible for keeping your account secure and not using someone else’s account without permission."
+      },
+      "3": {
+        "title": "Content",
+        "decs": "Content you submit (e.g., feedback, photos, or comments) remains yours, but you grant ThaiGuide permission to display it on the platform. Do not post harmful or illegal content."
+      },
+      "4": {
+        "title": "Modifications",
+        "decs": "We may update these terms at any time. If major changes occur, we will notify you through the platform or email."
+      },
+      "5": {
+        "title": "Disclaimer",
+        "decs": "ThaiGuide strives to provide accurate information but does not guarantee everything is correct or up to date. We are not responsible for loss or damage from using the platform."
+      }
+    }
+  },
+  "PP": {
+    "title": "Privacy Policy",
+    "decs": "This Privacy Policy explains how ThaiGuide collects, uses, and protects your personal information when you use our website, mobile applications, and services collectively, the Services. Your privacy is important to us, and we are committed to safeguarding it.",
+    "date": "Effective Date",
+    "content": {
+      "1": {
+        "title": "Information We Collect",
+        "decs": "We collect basic account details (e.g., name, email), non-identifiable usage data (e.g., badges earned), and optional survey or feedback responses."
+      },
+      "2": {
+        "title": "How We Use Your Information",
+        "decs": "We use your data to provide and improve the ThaiGuide experience, personalize your journey, and send optional updates or promotions."
+      },
+      "3": {
+        "title": "Data Protection",
+        "decs": "We use security measures to protect your information. We do not sell or share your personal information with third parties without your consent."
+      },
+      "4": {
+        "title": "Your Rights",
+        "decs": "You can access, change, or delete your personal data at any time and opt out of communications."
+      },
+      "5": {
+        "title": "Changes to This Policy",
+        "decs": "We may update this Privacy Policy when needed. Any changes will be posted here with a new effective date."
+      }
     }
   }
 }

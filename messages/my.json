@@ -93,8 +93,13 @@
     "FooterBar": {
         "title": "Hak Cipta © 2025 ThaiGuide semua hak terpelihara",
         "sdg": "Komitmen Kami terhadap Matlamat Pembangunan Mampan",
-        "feedback": "Bantu kami menambah baik ThaiGuide",
-        "uptime": "Monitor Waktu Operasi ThaiGuide"
+        "feedback": "Maklum Balas",
+        "uptime": "Monitor Waktu Operasi ThaiGuide",
+        "mail": "Mel",
+        "CUSTitle": "Hubungi Kami",
+        "DOCTitle": "Dokumen",
+        "terms": "Syarat Perkhidmatan",
+        "pp": "Dasar Privasi"
     },
     "WeaATem": {
         "title": "Cuaca dan Suhu",
@@ -724,6 +729,60 @@
             "to": "Tindakan ini akan mengemas kini latar belakang kad anda kepada",
             "canBTN": "Batal",
             "conBTN": "Sahkan"
+        }
+    },
+    "Terms": {
+        "title": "Syarat Perkhidmatan",
+        "decs": "Syarat Perkhidmatan ini ('Syarat') mengawal penggunaan anda terhadap laman web, aplikasi mudah alih, dan perkhidmatan kami (secara kolektif, 'Perkhidmatan'). Dengan mengakses atau menggunakan Perkhidmatan kami, anda bersetuju untuk terikat dengan Syarat ini. Sila baca dengan teliti.",
+        "date": "Tarikh Berkuatkuasa",
+        "content": {
+            "1": {
+                "title": "Penggunaan Perkhidmatan",
+                "decs": "ThaiGuide direka untuk menjadikan pengalaman perjalanan anda lebih seronok dan interaktif melalui gamifikasi. Dengan menggunakan platform ini, anda bersetuju untuk menggunakannya secara bertanggungjawab dan mematuhi semua undang-undang yang berkenaan."
+            },
+            "2": {
+                "title": "Akaun",
+                "decs": "Anda mesti memberikan maklumat yang tepat semasa membuat akaun. Anda bertanggungjawab untuk menjaga keselamatan akaun anda dan tidak menggunakan akaun orang lain tanpa kebenaran."
+            },
+            "3": {
+                "title": "Kandungan",
+                "decs": "Kandungan yang anda serahkan (cth., maklum balas, foto, atau komen) tetap menjadi milik anda, tetapi anda memberikan kebenaran kepada ThaiGuide untuk memaparkannya di platform. Jangan hantar kandungan yang berbahaya atau haram."
+            },
+            "4": {
+                "title": "Pengubahsuaian",
+                "decs": "Kami boleh mengemas kini syarat ini pada bila-bila masa. Jika perubahan besar berlaku, kami akan memberitahu anda melalui platform atau e-mel."
+            },
+            "5": {
+                "title": "Penafian",
+                "decs": "ThaiGuide berusaha untuk memberikan maklumat yang tepat tetapi tidak menjamin semuanya betul atau terkini. Kami tidak bertanggungjawab atas kehilangan atau kerosakan akibat penggunaan platform."
+            }
+        }
+    },
+    "PP": {
+        "title": "Dasar Privasi",
+        "decs": "Dasar Privasi ini menerangkan bagaimana ThaiGuide mengumpul, menggunakan, dan melindungi maklumat peribadi anda apabila anda menggunakan laman web, aplikasi mudah alih, dan perkhidmatan kami (secara kolektif, 'Perkhidmatan'). Privasi anda penting bagi kami, dan kami komited untuk melindunginya.",
+        "date": "Tarikh Berkuatkuasa",
+        "content": {
+            "1": {
+                "title": "Maklumat yang Kami Kumpul",
+                "decs": "Kami mengumpul butiran akaun asas (cth., nama, e-mel), data penggunaan yang tidak dapat dikenal pasti (cth., lencana yang diperoleh), dan respons tinjauan atau maklum balas pilihan."
+            },
+            "2": {
+                "title": "Bagaimana Kami Menggunakan Maklumat Anda",
+                "decs": "Kami menggunakan data anda untuk menyediakan dan menambah baik pengalaman ThaiGuide, memperibadikan perjalanan anda, dan menghantar kemas kini atau promosi pilihan."
+            },
+            "3": {
+                "title": "Perlindungan Data",
+                "decs": "Kami menggunakan langkah-langkah keselamatan untuk melindungi maklumat anda. Kami tidak menjual atau berkongsi maklumat peribadi anda dengan pihak ketiga tanpa persetujuan anda."
+            },
+            "4": {
+                "title": "Hak Anda",
+                "decs": "Anda boleh mengakses, menukar, atau memadam data peribadi anda pada bila-bila masa dan memilih untuk tidak menerima komunikasi."
+            },
+            "5": {
+                "title": "Perubahan pada Dasar Ini",
+                "decs": "Kami mungkin mengemas kini Dasar Privasi ini apabila diperlukan. Sebarang perubahan akan disiarkan di sini dengan tarikh berkuat kuasa yang baru."
+            }
         }
     }
 }

@@ -1,62 +1,33 @@
 import React from 'react';
 import Link from 'next/link';
-import { Activity, Mail, MessageCircleHeart } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import {
-    HoverCard,
-    HoverCardContent,
-    HoverCardTrigger,
-} from "@/components/ui/hover-card";
-import Image from 'next/image';
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipTrigger,
-} from "@/components/ui/tooltip";
-
-// SDGs Goals
-import G1 from "@/assets/media/sdg/1.svg";
-import G2 from "@/assets/media/sdg/8.svg";
-import G3 from "@/assets/media/sdg/9.svg";
-import G4 from "@/assets/media/sdg/10.svg";
-import G5 from "@/assets/media/sdg/11.svg";
+import LOGOWH from "@/assets/White-Logo.svg";
 
 function Footer() {
     const t = useTranslations('FooterBar');
     return (
         <>
-            <main className='bg-[#f7740a] py-3 border-t-2'>
-                <div className="max-w-7xl mx-auto px-3 flex flex-col md:flex-row place-content-between gap-6 md:gap-0 items-start text-white">
-                    <div className='flex flex-col gap-2'>
-                        <div>
-                            <HoverCard>
-                                <HoverCardTrigger asChild>
-                                    <Link href={"/sdgs"}>{t('sdg')}</Link>
-                                </HoverCardTrigger>
-                                <HoverCardContent>
-                                    <div className='flex items-center gap-3'>
-                                        {[G1, G2, G3, G4, G5].map((sdgImage, index) => (
-                                            <Image height={12} width={12} key={index} src={sdgImage.src} className='w-12' alt="SDGs" />
-                                        ))}
-                                    </div>
-                                </HoverCardContent>
-                            </HoverCard>
+            <main className='bg-[#f7740a] py-3 border-t-2 text-white'>
+                <div className="max-w-7xl mx-auto px-3 py-2 flex flex-col md:flex-row place-content-between gap-6 md:gap-0 items-start text-white">
+                    <div className='flex flex-col gap-2 items-center justify-center w-full md:w-fit'>
+                        <Link href={'/'}><img src={LOGOWH.src} alt="Logo" className='w-50 h-12 object-cover' /></Link>
+                    </div>
+                    <div className='flex flex-row items-start gap-5 w-full md:w-fit'>
+                        <div className='flex flex-col items-center md:items-end gap-1 w-full md:w-fit'>
+                            <h2 className='font-semibold text-lg'>{t('DOCTitle')}</h2>
+                            <Link href={"/terms"}>{t('terms')}</Link>
+                            <Link href={"/privacy"}>{t('pp')}</Link>
                         </div>
-                        <p className='flex items-center gap-2'>
-                            <Tooltip>
-                                <TooltipTrigger><Link href={'https://kuma.siraphop.me/status/thaiguide'}><Activity /></Link></TooltipTrigger>
-                                <TooltipContent>
-                                    <p>{t('uptime')}</p>
-                                </TooltipContent>
-                            </Tooltip>
-                            {t('title')}</p>
+                        <div className='flex flex-col items-center md:items-end gap-1 w-full md:w-fit'>
+                            <h2 className='font-semibold text-lg'>{t('CUSTitle')}</h2>
+                            <Link href={"/feedback"}>{t('feedback')}</Link>
+                            <Link href={"mailto:contact@thaiguide.in.th"}>{t('mail')}</Link>
+                        </div>
                     </div>
-                    <div className='flex flex-col md:items-end gap-2'>
-                        <p className='flex items-center gap-2'><Mail /> <Link href={"mailto:contact@siraphop.me"}>contact@siraphop.me</Link></p>
-                        <Link href={"/feedback"} className='flex items-center gap-2'>
-                            <MessageCircleHeart /> {t('feedback')}
-                        </Link>
-                    </div>
+                </div>
+                <div className='max-w-7xl mx-auto px-3 mt-4'>
+                    <div className='bg-white w-full h-0.5 rounded-xl'></div>
+                    <p className='text-center mt-3'>{t('title')}</p>
                 </div>
             </main>
         </>
