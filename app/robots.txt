@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /_next/
 Sitemap: https://www.thaiguide.in.th/sitemap.xml
