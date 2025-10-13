@@ -12,6 +12,14 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/@me',
+        destination: '/me',
+      },
+    ];
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();
