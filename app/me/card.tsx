@@ -169,7 +169,7 @@ function Card() {
                         <p className='mb-4'>{t('share.decs')}</p>
                         <div className='flex items-center justify-center'>
                             <ShareSocial
-                                url={`https://www.thaiguide.in.th/profile/${btoa(user.uid)}`}
+                                url={`https://www.thaiguide.in.th/traveler/${btoa(user.uid)}`}
                                 style={style}
                                 socialTypes={['facebook', 'twitter', 'reddit', 'line', 'telegram']}
                             />

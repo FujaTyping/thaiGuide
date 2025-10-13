@@ -189,7 +189,7 @@ function Navbar() {
                                     <DropdownMenuContent>
                                         <DropdownMenuLabel>{user.email}</DropdownMenuLabel>
                                         <DropdownMenuSeparator />
-                                        <Link href={"/profile"} className='flex items-center gap-2'><DropdownMenuItem><Smile className='text-[#f7740a]' /> {t('profile')}</DropdownMenuItem></Link>
+                                        <Link href={"/@me"} className='flex items-center gap-2'><DropdownMenuItem><Smile className='text-[#f7740a]' /> {t('profile')}</DropdownMenuItem></Link>
                                         <Link href={"/leaderboard"}><DropdownMenuItem className='flex items-center gap-2'><Trophy className='text-[#f7740a]' /> {t('leaderboard')}</DropdownMenuItem></Link>
                                         <DropdownMenuItem className='flex items-center gap-2' onClick={handleLogout}><LogOut className='text-[#f7740a]' /> {t('logout')}</DropdownMenuItem>
                                     </DropdownMenuContent>
