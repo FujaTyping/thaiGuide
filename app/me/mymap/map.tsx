@@ -13,22 +13,28 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover";
-import getCenter from 'geolib/es/getCenter';
 
 // Map Pin
 import MIS from "@/assets/media/map/mystery.svg";
 import FP from "@/assets/media/map/found.svg";
+import MPIN from "@/assets/media/map/pinman.svg";
 
-import { CalendarCheck2, MapPinHouse, Milestone } from 'lucide-react';
+import { CalendarCheck2, EyeClosed, MapPinHouse, Milestone, Telescope } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+
+interface MyLoca {
+    latitude: number;
+    longitude: number;
+}
 
 function PMap() {
     const t = useTranslations('Mymap');
     const [user, setUser] = useState<User | null>(null);
     const [center, setCenter] = useState<[number, number]>([13.740545687328561, 100.5328534229996]);
     const [zoom, setZoom] = useState(6);
+    const [manLO, setManLo] = useState<MyLoca>();
     const [data, setData] = useState<any>();
 
     useEffect(() => {
@@ -38,9 +44,6 @@ function PMap() {
                 try {
                     const res = await axios.put(`https://${server}/code/mapbyid`, { uid: user.uid });
                     const datt = res.data;
-                    const cenall: any = getCenter(res.data.undiscover);
-                    setCenter([cenall.latitude, cenall.longitude]);
-                    setZoom(6);
                     setData(datt);
                 } catch {
                     setUser(null);
@@ -51,6 +54,21 @@ function PMap() {
         });
 
         return () => unsubscribe();
+    }, []);
+
+    useEffect(() => {
+        if ('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    setManLo({
+                        latitude: position.coords.latitude,
+                        longitude: position.coords.longitude,
+                    });
+                    setCenter([position.coords.latitude, position.coords.longitude]);
+                    setZoom(6);
+                }
+            );
+        }
     }, []);
 
     if (!user || !data) {
@@ -64,13 +82,35 @@ function PMap() {
     return (
         <>
             <div className='max-w-7xl mx-auto px-4 py-7'>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mb-5'>
+                    <div className='border-2 border-[#f7740a] rounded-2xl p-4 px-5 flex items-start gap-6'>
+                        <div>
+                            <Telescope className='w-8 h-8' />
+                        </div>
+                        <div>
+                            <h2 className='font-bold text-xl'>{t('visited.gtitle')}</h2>
+                            <p>{t('visited.gdecs')}</p>
+                            <h2 className='font-semibold text-lg'><span className='text-xl font-bold'>{data.visited.length}</span> {t('place')}</h2>
+                        </div>
+                    </div>
+                    <div className='border-2 border-[#f7740a] rounded-2xl p-4 px-5 flex items-start gap-6'>
+                        <div>
+                            <EyeClosed className='w-8 h-8' />
+                        </div>
+                        <div>
+                            <h2 className='font-bold text-xl'>{t('unseen.gtitle')}</h2>
+                            <p>{t('unseen.gdecs')}</p>
+                            <h2 className='font-semibold text-lg'><span className='text-xl font-bold'>{data.undiscover.length}</span> {t('place')}</h2>
+                        </div>
+                    </div>
+                </div>
                 <Map attribution={false} height={600} center={center} zoom={zoom}>
                     {
                         data.undiscover.map((item: any, index: number) => (
-                            <Overlay key={index} anchor={[item.latitude, item.longitude]} offset={[42, 50]}>
+                            <Overlay className='z-1' key={index} anchor={[item.latitude, item.longitude]} offset={[40, 35]}>
                                 <Popover>
                                     <PopoverTrigger>
-                                        <img src={MIS.src} className='w-14 cursor-pointer' alt='Icon' onClick={() => { setCenter([item.latitude, item.longitude]); setZoom(14); }} />
+                                        <img src={MIS.src} className='w-10 cursor-pointer z-1' alt='Icon' onClick={() => { setCenter([item.latitude, item.longitude]); setZoom(14); }} />
                                     </PopoverTrigger>
                                     <PopoverContent>
                                         <h1 className='text-lg font-bold'>{t('unseen.title')}</h1>
@@ -84,10 +124,10 @@ function PMap() {
                     }
                     {
                         data.visited.map((item: any, index: number) => (
-                            <Overlay key={index} anchor={[item.latitude, item.longitude]} offset={[40, 35]}>
+                            <Overlay className='z-1' key={index} anchor={[item.latitude, item.longitude]} offset={[34, 20]}>
                                 <Popover>
                                     <PopoverTrigger>
-                                        <img src={FP.src} className='w-10 cursor-pointer' alt='Icon' onClick={() => { setCenter([item.latitude, item.longitude]); setZoom(15); }} />
+                                        <img src={FP.src} className='w-7 cursor-pointer z-2' alt='Icon' onClick={() => { setCenter([item.latitude, item.longitude]); setZoom(15); }} />
                                     </PopoverTrigger>
                                     <PopoverContent>
                                         <h1 className='text-lg font-bold'>{t('visited.title')}</h1>
@@ -99,6 +139,13 @@ function PMap() {
                                 </Popover>
                             </Overlay>
                         ))
+                    }
+                    {
+                        manLO && (
+                            <Overlay anchor={[manLO?.latitude, manLO?.longitude]} offset={[34, 50]} className='z-0'>
+                                <img src={MPIN.src} className='w-7 z-0' alt='Icon' />
+                            </Overlay>
+                        )
                     }
                 </Map>
             </div>
