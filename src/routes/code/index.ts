@@ -1,6 +1,6 @@
 import type { ElysiaApp } from "../../index";
 import db from "../../lib/firebase";
-import { collection, doc, DocumentData, getDoc, getDocs, query, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
+import { collection, doc, GeoPoint, getDoc, getDocs, query, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
 import { t } from "elysia";
 import { getDistance } from 'geolib';
 import axios from "axios";
@@ -15,6 +15,10 @@ const GetByIdBodySchema = t.Object({
         longitude: t.Number()
     })
 });
+
+const GetMyMaps = t.Object({
+    uid: t.String()
+})
 
 const getInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.static, set: { status: number | string } }) => {
     const { id, uid, year, location } = body
@@ -38,25 +42,35 @@ const getInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.st
                     { latitude: data.location.latitude, longitude: data.location.longitude }
                 );
                 let SetPoint = data.points;
-                if (scanSnap.exists() && scanSnap.data().count > 0) {
-                    const ScanToAdd = scanSnap.data().count + 1;
-                    const PointsDeduct = (data.points / ScanToAdd).toFixed(0);
-                    SetPoint = PointsDeduct;
-                    data.points = PointsDeduct;
-                    await updateDoc(scanRef, {
-                        count: ScanToAdd
-                    })
-                    data.originalpoint = data.points;
-                    data.samespot = true;
-                } else {
-                    await setDoc(scanRef, {
-                        count: 1
-                    })
-                    data.samespot = false;
-                }
-                console.log(data);
                 const distanceInKm = distanceInMeters / 1000;
                 if (distanceInKm <= 3) {
+                    if (scanSnap.exists() && data.otpp) {
+                        set.status = 200;
+                        return {
+                            otpp: true,
+                            name: data.name
+                        };
+                    }
+                    if (scanSnap.exists() && scanSnap.data().count > 0) {
+                        const ScanToAdd = scanSnap.data().count + 1;
+                        const PointsDeduct = (data.points / ScanToAdd).toFixed(0);
+                        SetPoint = PointsDeduct;
+                        data.points = PointsDeduct;
+                        await updateDoc(scanRef, {
+                            count: ScanToAdd
+                        })
+                        data.originalpoint = data.points;
+                        data.samespot = true;
+                    } else {
+                        console.log(data)
+                        await setDoc(scanRef, {
+                            count: 1,
+                            year: year,
+                            location: new GeoPoint(data.location.latitude, data.location.longitude),
+                            name: data.name
+                        })
+                        data.samespot = false;
+                    }
                     await axios.post(`http://${config.server}/transactions/transfer`, {
                         userid: uid,
                         type: "Scan QR",
@@ -121,13 +135,38 @@ const getInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.st
     }
 };
 
-const getMapInfoHandler = async ({ set }: { set: { status: number | string } }) => {
-    let Data: DocumentData[] = [];
+const getMapInfoHandler = async ({ body, set }: { body: typeof GetMyMaps.static, set: { status: number | string } }) => {
+    const { uid } = body;
+
+    let Data: any = {
+        undiscover: [],
+        visited: []
+    };
     const q = query(collection(db, "codes"));
+    const dis = query(collection(db, "Users", uid, "scanqr"));
 
     const querySnapshot = await getDocs(q);
+    const queryMSnapshot = await getDocs(dis);
+    const visitedLocations = new Set<string>();
+
+    queryMSnapshot.forEach((doc) => {
+        const data = doc.data();
+        const location = data.location as GeoPoint;
+        Data.visited.push({
+            latitude: location.latitude,
+            longitude: location.longitude,
+            name: data.name,
+            year: data.year
+        });
+        visitedLocations.add(`${location.latitude},${location.longitude}`);
+    });
+
     querySnapshot.forEach((doc) => {
-        Data.push(doc.data().location);
+        const location = doc.data().location as GeoPoint;
+        const locationString = `${location.latitude},${location.longitude}`;
+        if (!visitedLocations.has(locationString)) {
+            Data.undiscover.push(location);
+        }
     });
 
     return Data;
@@ -137,4 +176,6 @@ export default (app: ElysiaApp) => app
     .put("/getbyid", getInfoHandler, {
         body: GetByIdBodySchema
     })
-    .get("/randommap", getMapInfoHandler);
+    .put("/mapbyid", getMapInfoHandler, {
+        body: GetMyMaps
+    });
