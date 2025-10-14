@@ -790,16 +790,21 @@
   },
   "Mymap": {
     "title": "My Map",
+    "place": "Places",
     "decs": "Your personal map to undiscovered gems and favorite places across Thailand. Mark spots you want to visit and keep track of the places you've discovered.",
     "unseen": {
       "title": "Undiscovered Place",
       "decs": "Start exploring to uncover new destinations",
-      "di": "Get Direction"
+      "di": "Get Direction",
+      "gtitle": "Unvisited Places",
+      "gdecs": "Discover new destinations waiting for you to explore"
     },
     "visited": {
       "title": "Discovered Place",
       "name": "Name",
-      "year": "Discovered in"
+      "year": "Discovered in",
+      "gtitle": "Visited Places",
+      "gdecs": "Track how many places you’ve explored so far"
     }
   }
 }
