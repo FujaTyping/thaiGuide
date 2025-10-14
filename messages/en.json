@@ -219,7 +219,8 @@
       "stk1": "Your first year in Thailand",
       "stk2": "You're keeping your streak alive",
       "sametip": "Points are reduced for repeat visits. The reward is divided by your number of check-ins",
-      "samemssg": "You've visited this spot before"
+      "samemssg": "You've visited this spot before",
+      "limit": "has a limit for scanning the QR code to receive points"
     },
     "welcome": {
       "title": "Welcome to ThaiGuide!",
@@ -794,6 +795,11 @@
       "title": "Undiscovered Place",
       "decs": "Start exploring to uncover new destinations",
       "di": "Get Direction"
+    },
+    "visited": {
+      "title": "Discovered Place",
+      "name": "Name",
+      "year": "Discovered in"
     }
   }
 }

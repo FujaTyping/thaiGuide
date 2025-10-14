@@ -218,7 +218,8 @@
             "stk1": "Tahun pertama anda di Thailand",
             "stk2": "Anda mengekalkan rentetan anda",
             "sametip": "Mata dikurangkan untuk lawatan berulang. Ganjaran dibahagikan dengan bilangan daftar masuk anda",
-            "samemssg": "Anda pernah melawat tempat ini sebelum ini"
+            "samemssg": "Anda pernah melawat tempat ini sebelum ini",
+            "limit": "mempunyai had untuk mengimbas kod QR untuk menerima mata"
         },
         "welcome": {
             "title": "Selamat datang ke ThaiGuide!",
@@ -793,6 +794,11 @@
             "title": "Tempat Belum Ditemui",
             "decs": "Mula meneroka untuk menemui destinasi baharu.",
             "di": "Dapatkan Arah"
+        },
+        "visited": {
+            "title": "Tempat Ditemui",
+            "name": "Nama",
+            "year": "Ditemui pada"
         }
     }
 }
