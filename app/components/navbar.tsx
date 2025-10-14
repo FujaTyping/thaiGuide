@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Logo from "@/assets/icon.png";
 import Image from 'next/image';
-import { KeyRound, Languages, LoaderCircle, LogOut, Menu, Smile, Trophy, UserRound } from 'lucide-react';
+import { KeyRound, Languages, LoaderCircle, LogOut, MapPinned, Menu, Smile, Trophy, UserRound } from 'lucide-react';
 import {
     Sheet,
     SheetContent,
@@ -189,7 +189,8 @@ function Navbar() {
                                     <DropdownMenuContent>
                                         <DropdownMenuLabel>{user.email}</DropdownMenuLabel>
                                         <DropdownMenuSeparator />
-                                        <Link href={"/@me"} className='flex items-center gap-2'><DropdownMenuItem><Smile className='text-[#f7740a]' /> {t('profile')}</DropdownMenuItem></Link>
+                                        <Link href={"/@me"}><DropdownMenuItem className='flex items-center gap-2'><Smile className='text-[#f7740a]' /> {t('profile')}</DropdownMenuItem></Link>
+                                        <Link href={"/@me/mymap"}><DropdownMenuItem className='flex items-center gap-2'><MapPinned className='text-[#f7740a]' /> {t('map')}</DropdownMenuItem></Link>
                                         <Link href={"/leaderboard"}><DropdownMenuItem className='flex items-center gap-2'><Trophy className='text-[#f7740a]' /> {t('leaderboard')}</DropdownMenuItem></Link>
                                         <DropdownMenuItem className='flex items-center gap-2' onClick={handleLogout}><LogOut className='text-[#f7740a]' /> {t('logout')}</DropdownMenuItem>
                                     </DropdownMenuContent>

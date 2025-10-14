@@ -18,6 +18,10 @@ const nextConfig: NextConfig = {
         source: '/@me',
         destination: '/me',
       },
+      {
+        source: '/@me/mymap',
+        destination: '/me/mymap',
+      },
     ];
   },
 };

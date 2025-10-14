@@ -4,6 +4,7 @@
         "menu": "Menu",
         "profile": "Profil",
         "logout": "Log Keluar",
+        "map": "Peta Saya",
         "leaderboard": "Papan Pendahulu",
         "servererror": "Tidak dapat menyambung ke perkhidmatan. Sila cuba lagi kemudian.",
         "statsbtn": "Semak Status",
@@ -240,22 +241,22 @@
             "title": "Kod QR Ganjaran",
             "decs": "Tunjukkan kod QR ini untuk menuntut ganjaran anda",
             "did": "ID Transaksi"
-    },
-    "badge": {
-      "title": "Lencana Perjalanan",
-      "section": "Lencana",
-      "no": "Belum ada lencana yang diperoleh",
-      "visit": "Anda telah melawat",
-      "slogan": "Slogan",
-      "new": "Anda baru sahaja membuka lencana baru yang berkilat"
+        },
+        "badge": {
+            "title": "Lencana Perjalanan",
+            "section": "Lencana",
+            "no": "Belum ada lencana yang diperoleh",
+            "visit": "Anda telah melawat",
+            "slogan": "Slogan",
+            "new": "Anda baru sahaja membuka lencana baru yang berkilat"
         }
     },
-  "PublicProfile": {
-    "noneed": "Tiada pengguna awam ditemui",
-    "decs": "Ini ialah kad profil awam untuk pengembara ThaiGuide. Anda boleh melihat pencapaian mereka di sini",
-    "card": "Kad Pengembara",
-    "tcard": "Kad"
-  },
+    "PublicProfile": {
+        "noneed": "Tiada pengguna awam ditemui",
+        "decs": "Ini ialah kad profil awam untuk pengembara ThaiGuide. Anda boleh melihat pencapaian mereka di sini",
+        "card": "Kad Pengembara",
+        "tcard": "Kad"
+    },
     "Redeem": {
         "title": "Tebus Ganjaran",
         "decs": "Tebus mata perjalanan anda untuk ganjaran eksklusif, produk tempatan, diskaun dan banyak lagi. Imbas, teroka dan tuntut pengalaman menakjubkan dengan ThaiGuide!",
@@ -783,6 +784,15 @@
                 "title": "Perubahan pada Dasar Ini",
                 "decs": "Kami mungkin mengemas kini Dasar Privasi ini apabila diperlukan. Sebarang perubahan akan disiarkan di sini dengan tarikh berkuat kuasa yang baru."
             }
+        }
+    },
+    "Mymap": {
+        "title": "Peta Saya",
+        "decs": "Peta peribadi anda untuk permata yang belum ditemui dan tempat kegemaran di seluruh Thailand. Tandai tempat yang anda ingin lawati dan jejaki tempat yang telah anda temui.",
+        "unseen": {
+            "title": "Tempat Belum Ditemui",
+            "decs": "Mula meneroka untuk menemui destinasi baharu.",
+            "di": "Dapatkan Arah"
         }
     }
 }

@@ -5,6 +5,7 @@
     "profile": "Profile",
     "logout": "Logout",
     "leaderboard": "Leaderboard",
+    "map": "My map",
     "servererror": "Could not connect to services Please try again later",
     "statsbtn": "Check Status",
     "list": {
@@ -784,6 +785,15 @@
         "title": "Changes to This Policy",
         "decs": "We may update this Privacy Policy when needed. Any changes will be posted here with a new effective date."
       }
+    }
+  },
+  "Mymap": {
+    "title": "My Map",
+    "decs": "Your personal map to undiscovered gems and favorite places across Thailand. Mark spots you want to visit and keep track of the places you've discovered.",
+    "unseen": {
+      "title": "Undiscovered Place",
+      "decs": "Start exploring to uncover new destinations",
+      "di": "Get Direction"
     }
   }
 }
