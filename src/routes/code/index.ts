@@ -119,6 +119,7 @@ const getInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.st
                 }
                 data.streakYRS = year
                 data.streak = STEAK;
+                data.otpp = false;
                 set.status = 200;
                 return data;
             } else {
