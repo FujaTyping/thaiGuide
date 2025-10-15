@@ -32,6 +32,18 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import ChangeCookie from './changeCookie';
 import { server } from "@/app/config.json";
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+} from "@/components/ui/dialog";
+import { Button } from '@/components/ui/button';
+
+// Modal Icon
+import LIC from "@/assets/media/login/left.png";
+import CIC from "@/assets/media/login/center.png";
+import RIC from "@/assets/media/login/right.png";
 
 const NavItems = [
     {
@@ -58,6 +70,7 @@ function Navbar() {
     const tb = useTranslations('ToolBar');
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
+    const [loginM, setLoginM] = useState(false);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -98,7 +111,6 @@ function Navbar() {
         checkStats()
     }, []);
 
-
     const handleGoogleSignIn = async () => {
         const provider = new GoogleAuthProvider();
         try {
@@ -114,6 +126,8 @@ function Navbar() {
                 },
             })
             setUser(result.user);
+            setLoginM(false);
+            router.push('/@me');
         } catch (error) {
             if (error instanceof FirebaseError) {
                 console.error("Error signing in:", error);
@@ -194,7 +208,7 @@ function Navbar() {
                                         <Link href={"/leaderboard"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><Trophy className='text-[#f7740a]' /> {t('leaderboard')}</DropdownMenuItem></Link>
                                         <DropdownMenuItem className='flex items-center gap-2 cursor-pointer' onClick={handleLogout}><LogOut className='text-[#f7740a]' /> {t('logout')}</DropdownMenuItem>
                                     </DropdownMenuContent>
-                                </DropdownMenu> : <KeyRound onClick={handleGoogleSignIn} />}
+                                </DropdownMenu> : <KeyRound onClick={() => setLoginM(true)} />}
                             </>}
                         </div>
                         <div className='hidden md:flex items-center gap-6 border-1 border-[#f7740a] p-2 px-2 rounded-full text-[#f7740a] font-bold hover:bg-[#f7740a] transition-all duration-300 hover:text-white cursor-pointer'>
@@ -208,6 +222,26 @@ function Navbar() {
                     </div>
                 </nav>
             </main>
+            <Dialog open={loginM} onOpenChange={setLoginM}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle className='text-2xl'>{t('login.modal.title')}</DialogTitle>
+                        <div className='flex items-center justify-center py-2'>
+                            <div className='flex items-end gap-2'>
+                                <img src={LIC.src} alt="Icon" className='w-16 md:w-18' />
+                                <img src={CIC.src} alt="Icon" className='w-22 md:w-24' />
+                                <img src={RIC.src} alt="Icon" className='w-16 md:w-18' />
+                            </div>
+                        </div>
+                        <p>{t('login.modal.decs')}</p>
+                    </DialogHeader>
+                    <div>
+                        <Button onClick={handleGoogleSignIn} className='w-full bg-[#f7740a] hover:bg-[#f7740a] cursor-pointer'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="icon icon-tabler icons-tabler-filled icon-tabler-brand-google"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 2a9.96 9.96 0 0 1 6.29 2.226a1 1 0 0 1 .04 1.52l-1.51 1.362a1 1 0 0 1 -1.265 .06a6 6 0 1 0 2.103 6.836l.001 -.004h-3.66a1 1 0 0 1 -.992 -.883l-.007 -.117v-2a1 1 0 0 1 1 -1h6.945a1 1 0 0 1 .994 .89c.04 .367 .061 .737 .061 1.11c0 5.523 -4.477 10 -10 10s-10 -4.477 -10 -10s4.477 -10 10 -10z" /></svg>
+                            {t('login.modal.withgoogle')}</Button>
+                    </div>
+                </DialogContent>
+            </Dialog>
         </>
     )
 }

@@ -30,7 +30,12 @@
       "done": "Success!",
       "donedecs": "Wrong account? Please logout and try again",
       "e": "Error",
-      "logout": "Logout"
+      "logout": "Logout",
+      "modal": {
+        "title": "Ready to explore?",
+        "decs": "Log in to unlock your journey collect badges, track your trips, and get travel tips made just for you",
+        "withgoogle": "Login with Google"
+      }
     }
   },
   "Crisis": {

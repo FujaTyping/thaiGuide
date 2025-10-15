@@ -30,7 +30,12 @@
             "done": "Berjaya!",
             "donedecs": "Akaun salah? Sila log keluar dan cuba lagi",
             "e": "Ralat",
-            "logout": "Log Keluar"
+            "logout": "Log Keluar",
+            "modal": {
+                "title": "Sedia untuk meneroka?",
+                "decs": "Log masuk untuk memulakan perjalanan anda, kumpul lencana, jejaki perjalanan anda, dan dapatkan tip perjalanan yang dibuat khas untuk anda",
+                "withgoogle": "Log masuk dengan Google"
+            }
         }
     },
     "Crisis": {

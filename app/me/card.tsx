@@ -37,6 +37,7 @@ const style = {
 };
 
 import './share.css'
+import { useRouter } from 'next/navigation';
 
 function Card() {
     const t = useTranslations('Profile');
@@ -45,6 +46,7 @@ function Card() {
     const [isOpen, setIsOpen] = useState(false);
     const [shareOpen, setShareOpen] = useState(false);
     const [welState, setWelState] = useState(1);
+    const router = useRouter();
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -61,6 +63,7 @@ function Card() {
                     setIsOpen(true);
                 }
             } else {
+                router.push('/');
                 setUser(null);
             }
         });
