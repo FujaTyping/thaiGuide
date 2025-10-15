@@ -13,6 +13,7 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover";
+import CountUp from '@/components/bits/CountUp.tsx/CountUp';
 
 // Map Pin
 import MIS from "@/assets/media/map/mystery.svg";
@@ -65,7 +66,7 @@ function PMap() {
                         longitude: position.coords.longitude,
                     });
                     setCenter([position.coords.latitude, position.coords.longitude]);
-                    setZoom(6);
+                    setZoom(13);
                 }
             );
         }
@@ -85,22 +86,40 @@ function PMap() {
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mb-5'>
                     <div className='border-2 border-[#f7740a] rounded-2xl p-4 px-5 flex items-start gap-6'>
                         <div>
-                            <Telescope className='w-8 h-8' />
+                            <Telescope className='w-8 h-8 text-[#f7740a]' />
                         </div>
                         <div>
                             <h2 className='font-bold text-xl'>{t('visited.gtitle')}</h2>
                             <p>{t('visited.gdecs')}</p>
-                            <h2 className='font-semibold text-lg'><span className='text-xl font-bold'>{data.visited.length}</span> {t('place')}</h2>
+                            <h2 className='font-semibold text-lg'><span className='text-xl font-bold'>
+                                <CountUp
+                                    from={0}
+                                    to={data.visited.length}
+                                    separator=","
+                                    direction="up"
+                                    duration={1}
+                                    className="count-up-text"
+                                />
+                            </span> {t('place')}</h2>
                         </div>
                     </div>
                     <div className='border-2 border-[#f7740a] rounded-2xl p-4 px-5 flex items-start gap-6'>
                         <div>
-                            <EyeClosed className='w-8 h-8' />
+                            <EyeClosed className='w-8 h-8 text-[#f7740a]' />
                         </div>
                         <div>
                             <h2 className='font-bold text-xl'>{t('unseen.gtitle')}</h2>
                             <p>{t('unseen.gdecs')}</p>
-                            <h2 className='font-semibold text-lg'><span className='text-xl font-bold'>{data.undiscover.length}</span> {t('place')}</h2>
+                            <h2 className='font-semibold text-lg'><span className='text-xl font-bold'>
+                                <CountUp
+                                    from={0}
+                                    to={data.undiscover.length}
+                                    separator=","
+                                    direction="up"
+                                    duration={1}
+                                    className="count-up-text"
+                                />
+                            </span> {t('place')}</h2>
                         </div>
                     </div>
                 </div>
@@ -133,7 +152,7 @@ function PMap() {
                                         <h1 className='text-lg font-bold'>{t('visited.title')}</h1>
                                         <div className='space-y-2 md:space-y-1 mt-1'>
                                             <p className='flex md:items-center flex-col md:flex-row gap-2'><span className='font-semibold flex items-center gap-2'><MapPinHouse className='text-[#f7740a]' /> {t('visited.name')} :</span> {item.name}</p>
-                                            <p className='flex md:items-center flex-col md:flex-row gap-2'><span className='font-semibold flex items-center gap-2'><CalendarCheck2 className='text-[#f7740a]' /> {t('visited.year')} :</span> {item.year}</p>
+                                            <p className='flex items-center gap-2'><span className='font-semibold flex items-center gap-2'><CalendarCheck2 className='text-[#f7740a]' /> {t('visited.year')} :</span> {item.year}</p>
                                         </div>
                                     </PopoverContent>
                                 </Popover>
