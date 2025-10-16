@@ -69,7 +69,7 @@ function PMap() {
                         longitude: position.coords.longitude,
                     });
                     setCenter([position.coords.latitude, position.coords.longitude]);
-                    setZoom(13);
+                    setZoom(16);
                 }
             );
         }

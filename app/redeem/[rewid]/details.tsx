@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Coins, LoaderCircle, TriangleAlert } from 'lucide-react';
+import { Coins, Info, LoaderCircle, TriangleAlert } from 'lucide-react';
 import axios from 'axios';
 import { User, onAuthStateChanged } from "firebase/auth";
 import auth from "@/lib/firebaseAuth";
@@ -22,6 +22,7 @@ import RD from "@/assets/media/icon/redeem.svg";
 import NF from "@/assets/media/card/icon/notfound.svg";
 import { useTranslations } from 'next-intl';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
+import LMIT from "@/assets/media/icon/Limit.svg";
 
 function Details({ data }: { data: any }) {
     const t = useTranslations('Redeem');
@@ -29,6 +30,8 @@ function Details({ data }: { data: any }) {
     const [uData, setUData] = useState<any | null>(null);
     const [loading, setLoading] = useState(true);
     const [transcationState, setTranscationState] = useState("");
+    const [cusERR, setCusERR] = useState("");
+    const [succV, setSuccV] = useState(false);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -50,26 +53,31 @@ function Details({ data }: { data: any }) {
     }, []);
 
     async function CRedeem() {
+        const payload = {
+            userid: user?.uid,
+            type: "Redeem",
+            place: data.name,
+            point: `-${data.require}`
+        } as any;
+        if (data.virtual) {
+            payload.isV = true;
+            payload.vType = data.type;
+            payload.attach = data.attach;
+        }
         setTranscationState("loading");
         try {
-            const res = await axios.post(`https://${server}/transactions/transfer`, {
-                userid: user?.uid,
-                type: "Redeem",
-                place: data.name,
-                point: `-${data.require}`
-            });
-            if (res.status === 200 || res.status === 201) {
-                setTranscationState("success");
-                setTimeout(() => {
-                    window.location.reload();
-                }, 5000);
-            } else {
-                setTranscationState("error");
-                console.error("Transaction failed with status:", res.status, res.data);
+            const res = await axios.post(`https://${server}/transactions/transfer`, payload);
+            setSuccV(res.data.isV);
+            setTranscationState("success");
+            setTimeout(() => {
+                window.location.reload();
+            }, 5000);
+        } catch (error: any) {
+            if (error.response.data) {
+                setCusERR(error.response.data);
             }
-        } catch (error) {
-            console.error("Error during redeem transaction:", error);
             setTranscationState("error");
+            console.error("Transaction failed with status");
         }
     }
 
@@ -90,6 +98,7 @@ function Details({ data }: { data: any }) {
                 <div>
                     <h1 className='font-bold text-3xl'>{data.name}</h1>
                     <p className='mt-2'>{data.decs}</p>
+                    {data.virtual && <p className='flex items-center gap-3 mt-2 text-[#f7740a]'><Info /> <b>{t('items.isV')}</b></p>}
                     <p className='flex items-center gap-3 mt-2 text-[#f7740a]'><Coins /> <b>{t('items.require')} :</b> {data.require}</p>
                     {uData ? <>
                         <div className='mt-8'>
@@ -111,26 +120,37 @@ function Details({ data }: { data: any }) {
                                             </> : <>
                                                 {
                                                     transcationState == "error" ? <>
-                                                        <div className='flex items-center flex-col justify-center gap-4'>
-                                                            <motion.div
-                                                                animate={{
-                                                                    x: [0, -10, 10, -10, 10, -5, 5, 0],
-                                                                }}
-                                                                transition={{
-                                                                    duration: 0.5,
-                                                                    ease: "easeInOut"
-                                                                }}
-                                                            >
-                                                                <img src={NF.src} alt="Not Found" className='w-32 translate-x-3' />
-                                                            </motion.div>
-                                                            <p className='font-semibold'>{t('items.error')}</p>
-                                                        </div>
+                                                        {
+                                                            cusERR == "ITES" ?
+                                                                <div className='flex items-center flex-col justify-center'>
+                                                                    <img src={LMIT.src} alt="Not Found" className='w-32' />
+                                                                    <p className='font-semibold'>{t('items.limit')}</p>
+                                                                </div>
+                                                                :
+                                                                <div className='flex items-center flex-col justify-center gap-4'>
+                                                                    <motion.div
+                                                                        animate={{
+                                                                            x: [0, -10, 10, -10, 10, -5, 5, 0],
+                                                                        }}
+                                                                        transition={{
+                                                                            duration: 0.5,
+                                                                            ease: "easeInOut"
+                                                                        }}
+                                                                    >
+                                                                        <img src={NF.src} alt="Not Found" className='w-32 translate-x-3' />
+                                                                    </motion.div>
+                                                                    <p className='font-semibold'>{t('items.error')}</p>
+                                                                </div>
+                                                        }
                                                     </> : <>
                                                         {
                                                             transcationState == "success" ? <>
                                                                 <div className='flex items-center flex-col justify-center gap-4'>
                                                                     <img src={RD.src} alt="Not Found" className='w-32 translate-x-3' />
-                                                                    <p className='font-semibold'>{t('items.success')}</p>
+                                                                    <div className='flex items-center justify-center flex-col'>
+                                                                        <p className='font-semibold'>{t('items.success')}</p>
+                                                                        {succV && <p className='font-semibold text-[#f7740a] mt-1 flex items-center gap-2'><Info /> {t('items.locateProfile')}</p>}
+                                                                    </div>
                                                                 </div>
                                                             </> : <>
                                                                 <p>{t('items.modal.0')} <b className='text-[#f7740a]'>{t('items.modal.1')} {data.require} {t('items.modal.2')}</b> {t('items.modal.3')} {data.name}.</p>
