@@ -30,7 +30,12 @@
             "done": "Berjaya!",
             "donedecs": "Akaun salah? Sila log keluar dan cuba lagi",
             "e": "Ralat",
-            "logout": "Log Keluar"
+            "logout": "Log Keluar",
+            "modal": {
+                "title": "Sedia untuk meneroka?",
+                "decs": "Log masuk untuk memulakan perjalanan anda, kumpul lencana, jejaki perjalanan anda, dan dapatkan tip perjalanan yang dibuat khas untuk anda",
+                "withgoogle": "Log masuk dengan Google"
+            }
         }
     },
     "Crisis": {
@@ -282,6 +287,9 @@
             "needed": "Anda memerlukan lebih banyak mata",
             "loading": "Memuatkan data pengguna",
             "login": "Sila log masuk untuk menebus ganjaran",
+            "isV": "Ini adalah item maya di platform Thaiguide",
+            "limit": "Ganjaran ini mempunyai had penebusan",
+            "locateProfile": "Anda boleh melihat ganjaran ini di halaman profil anda",
             "your": "Mata anda",
             "modal": {
                 "0": "Tindakan ini tidak boleh dibuat asal.",

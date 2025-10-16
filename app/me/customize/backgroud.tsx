@@ -18,10 +18,12 @@ import {
 } from "@/components/ui/dialog";
 import NF from "@/assets/media/card/icon/notfound.svg";
 import Customization from "@/assets/media/icon/Customization.svg";
+import { Coins } from 'lucide-react';
 
 interface BannerR {
     bg: string;
     title: string;
+    redeemOnly: boolean;
 }
 
 function CustomizeBG() {
@@ -37,7 +39,7 @@ function CustomizeBG() {
             if (user) {
                 setUser(user);
                 try {
-                    const banRES = await axios.get(`https://${server}/customize/banner`)
+                    const banRES = await axios.put(`https://${server}/customize/banner`, { uid: user.uid })
                     setBannerRES(banRES.data.banners);
                 } catch {
                     setBannerRES([]);
@@ -98,6 +100,7 @@ function CustomizeBG() {
                                             <h1 className='text-xl font-bold mb-2'>{item.title}</h1>
                                         </div>
                                     </div>
+                                    {item.redeemOnly && <div className='top-2 right-2 absolute p-2 text-white rounded-full bg-[#f7740a]'><Coins size={18} /></div>}
                                     <div className='absolute h-14 md:h-12 bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-[#f7740a]/70 to-transparent'></div>
                                 </div>
                             </div>

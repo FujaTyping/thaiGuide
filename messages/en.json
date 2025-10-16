@@ -30,7 +30,12 @@
       "done": "Success!",
       "donedecs": "Wrong account? Please logout and try again",
       "e": "Error",
-      "logout": "Logout"
+      "logout": "Logout",
+      "modal": {
+        "title": "Ready to explore?",
+        "decs": "Log in to unlock your journey collect badges, track your trips, and get travel tips made just for you",
+        "withgoogle": "Login with Google"
+      }
     }
   },
   "Crisis": {
@@ -283,6 +288,9 @@
       "needed": "You need more points",
       "loading": "Loading user data",
       "login": "Please login to redeem reward",
+      "isV": "This is a virtual item on the Thaiguide platform",
+      "limit": "This reward has a limited number of redemptions",
+      "locateProfile": "You can view this reward on your profile page",
       "your": "Your points",
       "modal": {
         "0": "This action cannot be undone.",
