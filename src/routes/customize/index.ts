@@ -1,23 +1,40 @@
+import { t } from "elysia";
 import type { ElysiaApp } from "../../index";
 import db from "../../lib/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
-const getBanner = async ({ set }: { set: { status: number | string } }) => {
+const GetByIdBodySchema = t.Object({
+    uid: t.String()
+});
+
+const getBanner = async ({ body, set }: { body: typeof GetByIdBodySchema.static, set: { status: number | string } }) => {
+    const { uid } = body;
     try {
+        let Rbanners: any[] = [];
+
         const bannerCollectionRef = collection(db, "customize", 'user', 'banner');
-        const bannersSnapshot = await getDocs(bannerCollectionRef);
+        const q = query(bannerCollectionRef, where("redeemOnly", "!=", true));
+        const bannersSnapshot = await getDocs(q);
+
+        const UbannerCollectionRef = collection(db, "Users", uid, 'inventory');
+        const Uq = query(UbannerCollectionRef, where("type", "==", "background"));
+        const UbannersSnapshot = await getDocs(Uq);
 
         if (!bannersSnapshot.empty) {
-            const banners = bannersSnapshot.docs.map(doc => ({
+            bannersSnapshot.docs.map(doc => Rbanners.push({
                 ...doc.data()
             }));
-            set.status = 200;
-            return { banners };
-        } else {
-            return {
-                banners: []
-            };
         }
+
+        if (!bannersSnapshot.empty) {
+            UbannersSnapshot.docs.map(doc => Rbanners.push({
+                ...doc.data(),
+                from: "redeem"
+            }));
+        }
+
+        set.status = 200;
+        return { banners: Rbanners };
     } catch (error) {
         console.error("Failed to fetch banner:", error);
         set.status = 500;
@@ -26,4 +43,6 @@ const getBanner = async ({ set }: { set: { status: number | string } }) => {
 };
 
 export default (app: ElysiaApp) => app
-    .get("/banner", getBanner)
+    .put("/banner", getBanner, {
+        body: GetByIdBodySchema
+    })

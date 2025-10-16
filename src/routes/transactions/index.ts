@@ -1,6 +1,6 @@
 import type { ElysiaApp } from "../../index";
 import db from "../../lib/firebase";
-import { collection, getDocs, doc, setDoc, getDoc, serverTimestamp, query, orderBy } from "firebase/firestore";
+import { collection, getDocs, doc, setDoc, getDoc, serverTimestamp, query, orderBy, addDoc, where } from "firebase/firestore";
 import { t } from "elysia";
 import { generateRandomId } from '../../lib/randomid';
 
@@ -12,7 +12,10 @@ const transactionSchema = t.Object({
     userid: t.String(),
     type: t.String(),
     place: t.String(),
-    point: t.String()
+    point: t.String(),
+    isV: t.Optional(t.Boolean()),
+    vType: t.Optional(t.String()),
+    attach: t.Optional(t.Any())
 });
 
 const getTransactionsByUserId = async ({ body, set }: { body: typeof userSchema.static, set: { status: number | string } }) => {
@@ -47,12 +50,13 @@ const getTransactionsByUserId = async ({ body, set }: { body: typeof userSchema.
 
 const transferUserTransaction = async ({ body, set }: { body: typeof transactionSchema.static, set: { status: number | string } }) => {
     try {
-        const { userid, type, place, point } = body;
+        const { userid, type, place, point, isV, vType, attach } = body;
 
         if (!userid || !type || !place || !point) {
             set.status = 400;
             return { error: "All fields (userid, type, place, pointget) are required." }
         }
+        let returnDatt = { message: "Transaction added successfully" } as any;
 
         const transacid = generateRandomId();
 
@@ -69,12 +73,43 @@ const transferUserTransaction = async ({ body, set }: { body: typeof transaction
             transacid
         );
 
-        await setDoc(transactionRef, {
+        let payloadData = {
             type,
             place,
             point,
             timestamp: serverTimestamp(),
-        });
+        } as any
+
+        if (isV) {
+            if (vType == "background") {
+                const docRefI = doc(db, "customize", "user", "banner", attach);
+                const docSnapI = await getDoc(docRefI);
+                if (docSnapI.exists()) {
+                    const bannerCollectionRef = collection(db, "Users", userid, 'inventory');
+                    const q = query(bannerCollectionRef, where("title", "==", place));
+                    const bannersSnapshot = await getDocs(q);
+                    const IDATA = docSnapI.data();
+                    if (bannersSnapshot.empty) {
+                        await addDoc(collection(db, "Users", userid, 'inventory'), {
+                            ...IDATA,
+                            type: "background"
+                        });
+                        returnDatt.isV = true;
+                    } else {
+                        set.status = 400;
+                        return "ITES";
+                    }
+                } else {
+                    set.status = 500;
+                    return "ITNF";
+                }
+            }
+            payloadData.idRedeem = true;
+            payloadData.redeemAt = serverTimestamp();
+            payloadData.locateTo = 'profile';
+        }
+
+        await setDoc(transactionRef, payloadData);
 
         const userData = userSnapshot.data();
         const currentPoints = userData.point || 0;
@@ -89,10 +124,10 @@ const transferUserTransaction = async ({ body, set }: { body: typeof transaction
             checkin: newScan
         });
 
-        return { message: "Transaction added successfully" };
+        return returnDatt;
     } catch (error) {
         set.status = 500;
-        return { error: "Failed to add transaction" }
+        return { error: "Failed to add transaction", message: error }
     }
 };
 
