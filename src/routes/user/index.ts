@@ -1,6 +1,6 @@
 import type { ElysiaApp } from "../../index";
 import db from "../../lib/firebase";
-import { collection, doc, getDoc, setDoc, getDocs, serverTimestamp } from "firebase/firestore";
+import { collection, doc, getDoc, setDoc, getDocs, serverTimestamp, deleteDoc } from "firebase/firestore";
 import { t } from "elysia";
 
 const userSchema = t.Object({
@@ -10,6 +10,10 @@ const userSchema = t.Object({
 });
 
 const publicUserSchema = t.Object({
+    uid: t.String()
+})
+
+const deleteUserSchema = t.Object({
     uid: t.String()
 })
 
@@ -97,6 +101,20 @@ const publicUser = async ({ body, set }: { body: typeof publicUserSchema.static,
     }
 };
 
+const deleteUser = async ({ body, set }: { body: typeof deleteUserSchema.static, set: { status: number | string } }) => {
+    try {
+        const { uid } = body;
+
+        await deleteDoc(doc(db, "Users", uid));
+
+        set.status = 200;
+        return "Done !";
+    } catch (error) {
+        set.status = 500
+        return { error: "Failed to process user request" }
+    }
+};
+
 export default (app: ElysiaApp) => app
     .post("/", createUser,
         {
@@ -106,5 +124,10 @@ export default (app: ElysiaApp) => app
     .put("/public", publicUser,
         {
             body: publicUserSchema
+        }
+    )
+    .delete('/delete', deleteUser,
+        {
+            body: deleteUserSchema
         }
     );
