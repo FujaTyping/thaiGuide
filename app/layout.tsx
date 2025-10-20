@@ -16,6 +16,7 @@ import Footer from "./components/footer";
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale } from 'next-intl/server';
 import { Toaster } from "@/components/ui/sonner"
+import 'react-photo-view/dist/react-photo-view.css';
 
 const notoSans = Noto_Sans({
   variable: "--font-noto-sans",
