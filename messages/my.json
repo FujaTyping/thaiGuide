@@ -49,7 +49,8 @@
             "sos": "SOS",
             "weather": "Cuaca",
             "vat": "Bayaran Balik VAT",
-            "SDGs": "SDG"
+            "SDGs": "SDG",
+            "event": "Acara"
         }
     },
     "IndexRus": {
@@ -729,7 +730,7 @@
     },
     "Share": {
         "title": "Kongsi Tempat Ini",
-        "decs": "Bantu lebih ramai orang menemui dan menikmati tempat ini"
+        "decs": "Bantu lebih ramai orang menemui dan menikmati kandungan ini"
     },
     "Customize": {
         "confirm": {
@@ -812,6 +813,34 @@
             "year": "Ditemui pada",
             "gtitle": "Tempat Dilawati",
             "gdecs": "Jejaki berapa banyak tempat yang telah anda terokai setakat ini"
+        }
+    },
+    "Event": {
+        "title": "Acara dan Perayaan",
+        "decs": "Terokai acara akan datang dan perayaan meriah di seluruh Thailand. Sertai perayaan tempatan, alami tradisi unik, dan jadikan setiap perjalanan tidak dapat dilupakan.",
+        "fillter": "Tapis mengikut Wilayah",
+        "show": "Tunjukkan",
+        "items": "item",
+        "grid": {
+            "more": "Muat Lagi",
+            "notfound": "Tiada acara ditemui untuk wilayah ini"
+        },
+        "select": {
+            "start": "Pilih Wilayah...",
+            "search": "Cari Wilayah...",
+            "notfound": "Tiada wilayah ditemui"
+        },
+        "item": {
+            "notfound": "Tiada data acara",
+            "EvT": "Jenis Acara",
+            "call": "Panggil",
+            "date": "Tarikh",
+            "province": "Wilayah",
+            "map": "Dapatkan Arah",
+            "click": "Klik untuk membuka",
+            "web": "Laman Web",
+            "view": "Peta",
+            "noview": "Peta tidak tersedia untuk acara ini"
         }
     }
 }

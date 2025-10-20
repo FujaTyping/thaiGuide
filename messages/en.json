@@ -49,7 +49,8 @@
       "sos": "SOS",
       "weather": "Weather",
       "vat": "Vat Refund",
-      "SDGs": "SDGs"
+      "SDGs": "SDGs",
+      "event": "Event"
     }
   },
   "IndexRus": {
@@ -729,8 +730,8 @@
     "11": "December"
   },
   "Share": {
-    "title": "Share This Place",
-    "decs": "Help more people discover and enjoy this place"
+    "title": "Share This Content",
+    "decs": "Help more people discover and enjoy this content"
   },
   "Customize": {
     "confirm": {
@@ -813,6 +814,34 @@
       "year": "Discovered in",
       "gtitle": "Visited Places",
       "gdecs": "Track how many places you’ve explored so far"
+    }
+  },
+  "Event": {
+    "title": "Event and Festivals",
+    "decs": "Discover upcoming events and vibrant festivals across Thailand. Join local celebrations, experience unique traditions, and make every journey unforgettable.",
+    "fillter": "Filter by Province",
+    "show": "Show",
+    "items": "items",
+    "grid": {
+      "more": "Load More",
+      "notfound": "No event found for this province"
+    },
+    "select": {
+      "start": "Select Province...",
+      "search": "Search Province...",
+      "notfound": "No province found"
+    },
+    "item": {
+      "notfound": "No event data",
+      "EvT": "Event type",
+      "call": "Call",
+      "date": "Date",
+      "province": "Province",
+      "map": "Get Direction",
+      "click": "Click to open",
+      "web": "Website",
+      "view": "Map",
+      "noview": "Map not available for this event"
     }
   }
 }

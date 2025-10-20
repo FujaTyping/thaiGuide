@@ -1,6 +1,6 @@
 "use client";
 
-import { CloudSun, HandCoins, Siren, TentTree, Utensils } from 'lucide-react';
+import { CalendarDays, CloudSun, HandCoins, Siren, TentTree, Utensils } from 'lucide-react';
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Link from 'next/link';
@@ -12,6 +12,11 @@ const ToolsItems = [
         title: "restaurant",
         icon: Utensils,
         link: "/restaurant"
+    },
+    {
+        title: "event",
+        icon: CalendarDays,
+        link: "/event"
     },
     {
         title: "activity",
