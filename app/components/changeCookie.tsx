@@ -23,6 +23,15 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from 'next/link';
 
+const supportLang = [
+    { code: 'cn', text: '中文' },
+    { code: 'ru', text: 'Русский язык' },
+    { code: 'kr', text: '한국어' },
+    { code: 'my', text: 'bahasa Malaysia' },
+    { code: 'th', text: 'ภาษาไทย' },
+    { code: 'jp', text: '日本語' },
+]
+
 function ChangeCookie() {
     const t = useTranslations('NavBar');
     const [modalO, setModalO] = useState(false);
@@ -33,13 +42,12 @@ function ChangeCookie() {
             <DropdownMenuContent>
                 <DropdownMenuLabel>{t(`list.switcherlang`)}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => { setCookie('NEXT_LOCALE', 'en', {}); window.location.reload(); }}><Flag code={'us'} className="w-5 h-5 object-cover rounded-full" /> English</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => { setWlang('cn'); setModalO(true); }}><Flag code={'cn'} className="w-5 h-5 object-cover rounded-full" /> 中文</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => { setWlang('ru'); setModalO(true); }}><Flag code={'ru'} className="w-5 h-5 object-cover rounded-full" /> Русский язык</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => { setWlang('kr'); setModalO(true); }}><Flag code={'kr'} className="w-5 h-5 object-cover rounded-full" /> 한국어</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => { setWlang('my'); setModalO(true); }}><Flag code={'my'} className="w-5 h-5 object-cover rounded-full" /> bahasa Malaysia</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => { setWlang('th'); setModalO(true); }}><Flag code={'th'} className="w-5 h-5 object-cover rounded-full" /> ภาษาไทย</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => { setWlang('jp'); setModalO(true); }}><Flag code={'jp'} className="w-5 h-5 object-cover rounded-full" /> 日本語</DropdownMenuItem>
+                <DropdownMenuItem className='cursor-pointer' onClick={() => { setCookie('NEXT_LOCALE', 'en', {}); window.location.reload(); }}><Flag code={'us'} className="w-5 h-5 object-cover rounded-full" /> English</DropdownMenuItem>
+                {
+                    supportLang.map((lang, index) => (
+                        <DropdownMenuItem key={index} className='cursor-pointer' onClick={() => { setWlang(lang.code); setModalO(true); }}><Flag code={lang.code} className="w-5 h-5 object-cover rounded-full" /> {lang.text}</DropdownMenuItem>
+                    ))
+                }
                 <DropdownMenuSeparator />
                 <Link href={'https://crowdin.com/project/thaiguide'}>
                     <DropdownMenuItem className='cursor-pointer'>{t('lang.request')}</DropdownMenuItem>
