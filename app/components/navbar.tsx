@@ -39,6 +39,10 @@ import {
     DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from '@/components/ui/button';
+import {
+    setCookie,
+    deleteCookie
+} from 'cookies-next/client';
 
 // Modal Icon
 import LIC from "@/assets/media/login/left.png";
@@ -127,6 +131,7 @@ function Navbar() {
             })
             setUser(result.user);
             setLoginM(false);
+            setCookie('traveler_session', result.user.uid, {})
             router.push('/@me');
         } catch (error) {
             if (error instanceof FirebaseError) {
@@ -140,7 +145,9 @@ function Navbar() {
         try {
             await signOut(auth);
             setUser(null);
+            deleteCookie('traveler_session');
             toast.success(t('login.out'));
+            router.push('/');
         } catch (error) {
             console.error("Error signing out:", error);
         }
