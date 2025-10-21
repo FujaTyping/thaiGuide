@@ -37,21 +37,37 @@ const TEXTS = [
 
 const Tags = [
     "Adventure",
-    "Relaxation",
-    "Culture",
-    "Foodie",
-    "Beaches",
-    "Mountains",
-    "City Exploration",
-    "Historical Sites",
-    "Nature & Wildlife",
+    "Cultural",
+    "Nature",
+    "Relax",
+    "Food",
+    "Historical",
+    "Architecture",
+    "Photography",
     "Shopping",
+    "LocalExperience",
+    "Beach",
+    "Mountain",
+    "City",
+    "Village",
+    "Island",
+    "Waterfall",
+    "Temple",
+    "Market",
     "Nightlife",
+    "Festival",
+    "Art",
+    "Music",
+    "Sports",
+    "Wellness",
+    "Family",
+    "Romantic",
+    "Budget",
     "Luxury",
-    "Budget-friendly",
-    "Road Trip",
-    "Wellness & Spa"
+    "OffTheBeatenPath",
+    "Popular",
 ];
+
 interface Activity {
     title: string;
     time: string;
@@ -190,7 +206,7 @@ function TInput() {
                                     {Tags.length > 8 && (
                                         <button
                                             onClick={() => setShowAllTags(!showAllTags)}
-                                            className="mt-4 text-[#f7740a] cursor-pointer"
+                                            className="mt-4 text-[#f7740a] cursor-pointer font-semibold"
                                         >
                                             {showAllTags ? `${t('ai.input.tagless')}` : `${t('ai.input.tagtoggle')} (${Tags.length - 8} ${t('ai.input.tagmore')})`}
                                         </button>
