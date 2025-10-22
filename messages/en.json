@@ -5,6 +5,7 @@
     "profile": "Profile",
     "logout": "Logout",
     "leaderboard": "Leaderboard",
+    "dashboard": "Dashboard",
     "map": "My map",
     "servererror": "Could not connect to services Please try again later",
     "statsbtn": "Check Status",

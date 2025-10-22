@@ -5,6 +5,7 @@
     "profile": "プロフィール",
     "logout": "ログアウト",
     "leaderboard": "リーダーボード",
+    "dashboard": "ダッシュボード",
     "map": "マイマップ",
     "servererror": "サービスに接続できませんでした。後でもう一度お試しください。",
     "statsbtn": "ステータスを確認",

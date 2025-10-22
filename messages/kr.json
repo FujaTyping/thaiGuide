@@ -5,6 +5,7 @@
         "profile": "프로필",
         "logout": "로그아웃",
         "leaderboard": "리더보드",
+        "dashboard": "대시보드",
         "map": "내 지도",
         "servererror": "서비스에 연결할 수 없습니다. 나중에 다시 시도해 주세요.",
         "statsbtn": "상태 확인",

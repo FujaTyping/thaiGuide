@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Logo from "@/assets/icon.png";
 import Image from 'next/image';
-import { KeyRound, Languages, LoaderCircle, LogOut, MapPinned, Menu, Smile, Trophy, UserRound } from 'lucide-react';
+import { Columns3Cog, KeyRound, Languages, LoaderCircle, LogOut, MapPinned, Menu, Smile, Trophy, UserRound } from 'lucide-react';
 import {
     Sheet,
     SheetContent,
@@ -41,7 +41,8 @@ import {
 import { Button } from '@/components/ui/button';
 import {
     setCookie,
-    deleteCookie
+    deleteCookie,
+    getCookie
 } from 'cookies-next/client';
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -90,6 +91,7 @@ function Navbar() {
     const [loading, setLoading] = useState<boolean>(true);
     const [loginM, setLoginM] = useState(false);
     const [wantAd, setWantAd] = useState(false);
+    const [isAd, setIsAd] = useState(false);
 
     const adminFormSchema = z.object({
         email: z.string().min(11, t('login.admin.require.username')),
@@ -104,19 +106,19 @@ function Navbar() {
         },
     })
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setUser(user);
-                setLoading(false);
-            } else {
-                setUser(null);
-                setLoading(false);
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            setUser(user);
+            setLoading(false);
+            const userperms = getCookie('traveler_session')?.split('--')
+            if (userperms && userperms[1]) {
+                setIsAd(true);
             }
-        });
-
-        return () => unsubscribe();
-    }, []);
+        } else {
+            setUser(null);
+            setLoading(false);
+        }
+    });
 
     useEffect(() => {
         analyticsPromise.then((analytics) => {
@@ -262,6 +264,7 @@ function Navbar() {
                                     <DropdownMenuContent>
                                         <DropdownMenuLabel>{user.email}</DropdownMenuLabel>
                                         <DropdownMenuSeparator />
+                                        {isAd && <Link href={"/dashboard"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><Columns3Cog className='text-[#f7740a]' /> {t('dashboard')}</DropdownMenuItem></Link>}
                                         <Link href={"/@me"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><Smile className='text-[#f7740a]' /> {t('profile')}</DropdownMenuItem></Link>
                                         <Link href={"/@me/mymap"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><MapPinned className='text-[#f7740a]' /> {t('map')}</DropdownMenuItem></Link>
                                         <Link href={"/leaderboard"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><Trophy className='text-[#f7740a]' /> {t('leaderboard')}</DropdownMenuItem></Link>
