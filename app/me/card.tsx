@@ -37,7 +37,6 @@ const style = {
 };
 
 import './share.css'
-import { useRouter } from 'next/navigation';
 
 function Card() {
     const t = useTranslations('Profile');
@@ -46,7 +45,6 @@ function Card() {
     const [isOpen, setIsOpen] = useState(false);
     const [shareOpen, setShareOpen] = useState(false);
     const [welState, setWelState] = useState(1);
-    const router = useRouter();
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -54,17 +52,14 @@ function Card() {
                 setUser(user);
                 const checkUser = await axios.post(`https://${server}/user`, {
                     userid: user.uid,
-                    name: user.displayName,
-                    pfp: user.photoURL
+                    name: user.displayName || user.email,
+                    pfp: user.photoURL || "https://ik.imagekit.io/61sqw5prw/thaiGuide/ano.svg?updatedAt=1761136329818"
                 })
                 setUData(checkUser.data);
                 if (checkUser.data.new) {
                     setWelState(1);
                     setIsOpen(true);
                 }
-            } else {
-                router.push('/');
-                setUser(null);
             }
         });
 
@@ -101,9 +96,9 @@ function Card() {
                     <div className='absolute h-48 bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-[#f7740a]/70 to-transparent'></div>
                     <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 text-white rounded-4xl'>
                         <div className='mb-6 flex flex-col gap-2'>
-                            <img src={`${user.photoURL}`} alt="Profile" className='w-28 rounded-full' />
+                            <img src={`${user.photoURL || uData.pfp}`} alt="Profile" className='w-28 rounded-full' />
                             <div>
-                                <h1 className='text-3xl md:text-4xl font-bold mb-2'>{user.displayName}</h1>
+                                <h1 className='text-3xl md:text-4xl font-bold mb-2'>{user.displayName || user.email}</h1>
                                 <h2 className='font-semibold'>{t('cip')} : {uData.checkin}</h2>
                             </div>
                         </div>

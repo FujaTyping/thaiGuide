@@ -24,7 +24,6 @@ import { CalendarCheck2, EyeClosed, MapPinHouse, Milestone, Telescope } from 'lu
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
 
 interface MyLoca {
     latitude: number;
@@ -38,7 +37,6 @@ function PMap() {
     const [zoom, setZoom] = useState(6);
     const [manLO, setManLo] = useState<MyLoca>();
     const [data, setData] = useState<any>();
-    const router = useRouter();
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -51,9 +49,6 @@ function PMap() {
                 } catch {
                     setUser(null);
                 }
-            } else {
-                router.push('/');
-                setUser(null);
             }
         });
 

@@ -5,6 +5,7 @@
         "profile": "个人资料",
         "logout": "登出",
         "map": "我的地图",
+        "dashboard": "仪表板",
         "leaderboard": "排行榜",
         "servererror": "无法连接到服务，请稍后再试。",
         "statsbtn": "检查状态",
@@ -35,7 +36,22 @@
                 "title": "准备好探索了吗？",
                 "decs": "登录以解锁您的旅程，收集徽章，跟踪您的旅行，并获得为您量身定制的旅行提示",
                 "withgoogle": "使用谷歌登录"
-            }
+            },
+            "admin": {
+                "title": "管理员登录",
+                "decs": "安全访问管理员仪表板以管理内容、用户和系统设置。请使用您的管理员凭据登录。",
+                "form": {
+                    "username": "用户名",
+                    "pwd": "密码"
+                },
+                "require": {
+                    "username": "请输入您的电子邮件地址",
+                    "pwd": "必须至少包含12个字符"
+                },
+                "login": "登录"
+            },
+            "switcherAd": "以管理员身份登录",
+            "switcherTra": "以旅行者身份登录"
         }
     },
     "Crisis": {
