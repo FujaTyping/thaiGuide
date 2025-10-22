@@ -11,7 +11,7 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import Link from 'next/link';
 import { FirebaseError } from 'firebase/app';
 import { signInWithPopup, GoogleAuthProvider, User, onAuthStateChanged, signOut } from "firebase/auth";
@@ -43,11 +43,25 @@ import {
     setCookie,
     deleteCookie
 } from 'cookies-next/client';
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 // Modal Icon
 import LIC from "@/assets/media/login/left.png";
 import CIC from "@/assets/media/login/center.png";
 import RIC from "@/assets/media/login/right.png";
+
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
 
 const NavItems = [
     {
@@ -75,6 +89,20 @@ function Navbar() {
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [loginM, setLoginM] = useState(false);
+    const [wantAd, setWantAd] = useState(false);
+
+    const adminFormSchema = z.object({
+        email: z.string().min(11, t('login.admin.require.username')),
+        password: z.string().min(12, t('login.admin.require.pwd'))
+    })
+
+    const form = useForm<z.infer<typeof adminFormSchema>>({
+        resolver: zodResolver(adminFormSchema),
+        defaultValues: {
+            email: "",
+            password: ""
+        },
+    })
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -131,7 +159,7 @@ function Navbar() {
             })
             setUser(result.user);
             setLoginM(false);
-            setCookie('traveler_session', result.user.uid, {})
+            setCookie('traveler_session', `${btoa(result.user.uid)}`, {})
             router.push('/@me');
         } catch (error) {
             if (error instanceof FirebaseError) {
@@ -152,6 +180,30 @@ function Navbar() {
             console.error("Error signing out:", error);
         }
     };
+
+    function onSubmit(values: z.infer<typeof adminFormSchema>) {
+        toast(t('login.ing'), {
+            icon: <LoaderCircle size={18} className='animate-spin' />
+        });
+        signInWithEmailAndPassword(auth, values.email, values.password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                setCookie('traveler_session', `${btoa(user.uid)}--admin`, {});
+                toast.success(`${t('login.done')} ${user.email}`, {
+                    description: t('login.donedecs'),
+                    action: {
+                        label: t('login.logout'),
+                        onClick: handleLogout,
+                    },
+                })
+                setUser(user);
+                setLoginM(false);
+                router.push('/@me');
+            })
+            .catch((error) => {
+                toast.error(`${t('login.e')}: ${error.message}`);
+            });
+    }
     return (
         <>
             <main className='border-b-10 border-[#f7740a]'>
@@ -229,24 +281,77 @@ function Navbar() {
                     </div>
                 </nav>
             </main>
-            <Dialog open={loginM} onOpenChange={setLoginM}>
+            <Dialog open={loginM} onOpenChange={setLoginM} >
                 <DialogContent>
-                    <DialogHeader>
-                        <DialogTitle className='text-2xl'>{t('login.modal.title')}</DialogTitle>
-                        <div className='flex items-center justify-center py-2'>
-                            <div className='flex items-end gap-2'>
-                                <img src={LIC.src} alt="Icon" className='w-16 md:w-18' />
-                                <img src={CIC.src} alt="Icon" className='w-22 md:w-24' />
-                                <img src={RIC.src} alt="Icon" className='w-16 md:w-18' />
-                            </div>
-                        </div>
-                        <p>{t('login.modal.decs')}</p>
-                    </DialogHeader>
-                    <div>
-                        <Button onClick={handleGoogleSignIn} className='w-full bg-[#f7740a] hover:bg-[#f7740a] cursor-pointer'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="icon icon-tabler icons-tabler-filled icon-tabler-brand-google"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 2a9.96 9.96 0 0 1 6.29 2.226a1 1 0 0 1 .04 1.52l-1.51 1.362a1 1 0 0 1 -1.265 .06a6 6 0 1 0 2.103 6.836l.001 -.004h-3.66a1 1 0 0 1 -.992 -.883l-.007 -.117v-2a1 1 0 0 1 1 -1h6.945a1 1 0 0 1 .994 .89c.04 .367 .061 .737 .061 1.11c0 5.523 -4.477 10 -10 10s-10 -4.477 -10 -10s4.477 -10 10 -10z" /></svg>
-                            {t('login.modal.withgoogle')}</Button>
-                    </div>
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={wantAd ? 'show' : 'hide'}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                        >
+                            {
+                                wantAd ? <>
+                                    <DialogHeader>
+                                        <DialogTitle className='text-2xl'>{t('login.admin.title')}</DialogTitle>
+                                        <p>{t('login.admin.decs')}</p>
+                                    </DialogHeader>
+                                    <div className='mt-3'>
+                                        <Form {...form}>
+                                            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
+                                                <FormField
+                                                    control={form.control}
+                                                    name="email"
+                                                    render={({ field }) => (
+                                                        <FormItem>
+                                                            <FormLabel>{t('login.admin.form.username')}</FormLabel>
+                                                            <FormControl>
+                                                                <Input type='email' placeholder="name@thaiguide.in.th" {...field} />
+                                                            </FormControl>
+                                                            <FormMessage />
+                                                        </FormItem>
+                                                    )}
+                                                />
+                                                <FormField
+                                                    control={form.control}
+                                                    name="password"
+                                                    render={({ field }) => (
+                                                        <FormItem>
+                                                            <FormLabel>{t('login.admin.form.pwd')}</FormLabel>
+                                                            <FormControl>
+                                                                <Input type='password' placeholder="••••••••••••" {...field} />
+                                                            </FormControl>
+                                                            <FormMessage />
+                                                        </FormItem>
+                                                    )}
+                                                />
+                                                <Button type="submit" className='w-full cursor-pointer bg-[#f7740a] hover:bg-[#f7740a] text-white'><KeyRound />{t('login.admin.login')}</Button>
+                                            </form>
+                                        </Form>
+                                    </div>
+                                </> : <>
+                                    <DialogHeader>
+                                        <DialogTitle className='text-2xl'>{t('login.modal.title')}</DialogTitle>
+                                        <div className='flex items-center justify-center py-2'>
+                                            <div className='flex items-end gap-2'>
+                                                <img src={LIC.src} alt="Icon" className='w-16 md:w-18' />
+                                                <img src={CIC.src} alt="Icon" className='w-22 md:w-24' />
+                                                <img src={RIC.src} alt="Icon" className='w-16 md:w-18' />
+                                            </div>
+                                        </div>
+                                        <p>{t('login.modal.decs')}</p>
+                                    </DialogHeader>
+                                    <div className='mt-3'>
+                                        <Button onClick={handleGoogleSignIn} className='w-full bg-[#f7740a] hover:bg-[#f7740a] cursor-pointer'>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="icon icon-tabler icons-tabler-filled icon-tabler-brand-google"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 2a9.96 9.96 0 0 1 6.29 2.226a1 1 0 0 1 .04 1.52l-1.51 1.362a1 1 0 0 1 -1.265 .06a6 6 0 1 0 2.103 6.836l.001 -.004h-3.66a1 1 0 0 1 -.992 -.883l-.007 -.117v-2a1 1 0 0 1 1 -1h6.945a1 1 0 0 1 .994 .89c.04 .367 .061 .737 .061 1.11c0 5.523 -4.477 10 -10 10s-10 -4.477 -10 -10s4.477 -10 10 -10z" /></svg>
+                                            {t('login.modal.withgoogle')}</Button>
+                                    </div>
+                                </>
+                            }
+                        </motion.div>
+                    </AnimatePresence>
+                    <p onClick={() => setWantAd(!wantAd)} className='text-center text-[#f7740a] font-semibold text-sm -mt-2 cursor-pointer'>{wantAd ? t('login.switcherTra') : t('login.switcherAd')}</p>
                 </DialogContent>
             </Dialog>
         </>

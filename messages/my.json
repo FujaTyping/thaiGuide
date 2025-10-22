@@ -35,7 +35,22 @@
                 "title": "Sedia untuk meneroka?",
                 "decs": "Log masuk untuk memulakan perjalanan anda, kumpul lencana, jejaki perjalanan anda, dan dapatkan tip perjalanan yang dibuat khas untuk anda",
                 "withgoogle": "Log masuk dengan Google"
-            }
+            },
+            "admin": {
+                "title": "Log Masuk Pentadbir",
+                "decs": "Akses papan pemuka pentadbir dengan selamat untuk mengurus kandungan, pengguna dan tetapan sistem. Sila log masuk dengan kelayakan pentadbir anda.",
+                "form": {
+                    "username": "Nama Pengguna",
+                    "pwd": "Kata Laluan"
+                },
+                "require": {
+                    "username": "Sila masukkan alamat e-mel anda",
+                    "pwd": "Mestilah sekurang-kurangnya 12 aksara panjang"
+                },
+                "login": "Log Masuk"
+            },
+            "switcherAd": "Log Masuk sebagai Pentadbir",
+            "switcherTra": "Log Masuk sebagai Pengembara"
         }
     },
     "Crisis": {

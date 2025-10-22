@@ -35,7 +35,22 @@
         "title": "Ready to explore?",
         "decs": "Log in to unlock your journey collect badges, track your trips, and get travel tips made just for you",
         "withgoogle": "Login with Google"
-      }
+      },
+      "admin": {
+        "title": "Administrator Login",
+        "decs": "Access the admin dashboard securely to manage content, users, and system settings. Please log in with your administrator credentials.",
+        "form": {
+          "username": "Username",
+          "pwd": "Password"
+        },
+        "require": {
+          "username": "Please enter your email address",
+          "pwd": "Must be at least 12 characters long"
+        },
+        "login": "Login"
+      },
+      "switcherAd": "Login as Administrator",
+      "switcherTra": "Login as Traveler"
     }
   },
   "Crisis": {
