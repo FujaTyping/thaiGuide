@@ -5,11 +5,19 @@ import db from "../../lib/firebase";
 const getInfoHandler = async () => {
     let Data: DocumentData[] = [];
     const q = query(collection(db, "Users"), orderBy("point", "desc"));
-
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
         let qd = doc.data();
-        Data.push(qd);
+        if (!qd.partners) {
+            Data.push({
+                name: qd.name,
+                checkin: qd.checkin,
+                point: qd.point,
+                pfp: qd.pfp,
+                streak: qd.streak,
+                id: btoa(doc.id)
+            });
+        }
     });
 
     return Data;
@@ -22,7 +30,16 @@ const getCheckInfoHandler = async () => {
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
         let qd = doc.data();
-        Data.push(qd);
+        if (!qd.partners) {
+            Data.push({
+                name: qd.name,
+                checkin: qd.checkin,
+                point: qd.point,
+                pfp: qd.pfp,
+                streak: qd.streak,
+                id: btoa(doc.id)
+            });
+        }
     });
 
     return Data;

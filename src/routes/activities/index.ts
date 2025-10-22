@@ -11,6 +11,10 @@ const GetByProvinceBodySchema = t.Object({
     province: t.String()
 });
 
+const GetRandomActivitiesProvinceBodySchema = t.Object({
+    province: t.String()
+});
+
 const getInfoHandler = async () => {
     let Data: DocumentData[] = [];
     const q = query(collection(db, "activities"));
@@ -110,6 +114,32 @@ const getProvinceInfoHandler = async ({ body, set }: { body: typeof GetByProvinc
     }
 };
 
+const getRandomActProvinceInfoHandler = async ({ body, set }: { body: typeof GetRandomActivitiesProvinceBodySchema.static, set: { status: number | string } }) => {
+    const { province } = body;
+
+    try {
+        const activitiesCollectionRef = collection(db, "activities");
+        const q = query(activitiesCollectionRef, where("province", "==", province));
+        const querySnapshot = await getDocs(q);
+
+        if (querySnapshot.empty) {
+            set.status = 404;
+            return { message: "No data found for the specified province" };
+        }
+
+        let data: any = []
+        querySnapshot.docs.map(doc => {
+            data.push(doc.data())
+        })
+
+        return data[Math.floor(Math.random() * data.length)]
+    } catch (error) {
+        console.error("Error fetching activities by province:", error);
+        set.status = 500;
+        return { error: "An error occurred while fetching activities by province." };
+    }
+};
+
 export default (app: ElysiaApp) => app
     .get("/", getInfoHandler)
     .put("/getbyid", getIdInfoHandler, {
@@ -117,4 +147,7 @@ export default (app: ElysiaApp) => app
     })
     .put("/getbyprovince", getProvinceInfoHandler, {
         body: GetByProvinceBodySchema
+    })
+    .put("/randombyprovince", getRandomActProvinceInfoHandler, {
+        body: GetRandomActivitiesProvinceBodySchema
     });
