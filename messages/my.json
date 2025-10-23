@@ -47,7 +47,7 @@
                 },
                 "require": {
                     "username": "Sila masukkan alamat e-mel anda",
-                    "pwd": "Mestilah sekurang-kurangnya 12 aksara panjang"
+                    "pwd": "Sila masukkan kata laluan yang tidak sah"
                 },
                 "login": "Log Masuk"
             },
@@ -903,6 +903,16 @@
                 "d4": "akan dipadamkan secara kekal serta-merta.",
                 "canBTN": "Batal",
                 "conBTN": "Sahkan"
+            },
+            "name": {
+                "reqsame": "Nama baru anda sama dengan nama lama",
+                "reqshort": "Nama anda mesti sekurang-kurangnya 4 aksara",
+                "reqipp": "Nama anda mengandungi perkataan yang tidak sesuai",
+                "succ": "Berjaya menukar nama anda",
+                "err": "Ralat menukar nama anda",
+                "confirm": "Sahkan",
+                "cancel": "Batal",
+                "hint": "Tukar nama anda"
             }
         }
     }

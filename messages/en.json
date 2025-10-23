@@ -47,7 +47,7 @@
         },
         "require": {
           "username": "Please enter your email address",
-          "pwd": "Must be at least 12 characters long"
+          "pwd": "Please enter invalid password"
         },
         "login": "Login"
       },
@@ -904,6 +904,16 @@
         "d4": "will be permanently deleted immediately.",
         "canBTN": "Cancel",
         "conBTN": "Confirm"
+      },
+      "name": {
+        "reqsame": "Your new name is the same as the old one",
+        "reqshort": "Your name must be at least 4 characters long",
+        "reqipp": "Your name contains inappropriate words",
+        "succ": "Success changed your name",
+        "err": "Error changing your name",
+        "confirm": "Confirm",
+        "cancel": "Cancel",
+        "hint": "Change your name"
       }
     }
   }
