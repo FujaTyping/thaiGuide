@@ -1,11 +1,8 @@
-# 🌏 ThaiGuide
-
-### Where Every Journey Feels Like a Game
+<img style="width: 400px" src="https://github.com/user-attachments/assets/de7a14e6-92ae-450d-9ff5-c1485a1f30db"/>
+<br />
 
 **ThaiGuide** is a gamified travel platform designed to promote tourism across Thailand through fun challenges, badges, and digital rewards.  
 By combining technology and gamification, ThaiGuide encourages travelers to explore hidden destinations, earn points, and contribute to local communities, making every trip meaningful and exciting.  
-
----
 
 ## 🤝 Contribution
 
@@ -14,17 +11,13 @@ Developers, designers, and tourism enthusiasts are welcome to contribute.
 
 **Stay tuned contribution guidelines will be available when the repository opens to the public.**
 
----
-
 ## 🧭 Vision
 
 To make traveling in Thailand more engaging, inclusive, and sustainable , using technology to connect people with culture, community, and adventure.
 
----
-
 ## ✨ Acknowledgments
 
-- Supported by the **Tourism Authority of Thailand (TAT)**  
+- Supported by the **Tourism Authority of Thailand (TAT)**
 - Inspired by the beauty and diversity of Thai culture  
 - Built with love ❤️ by young innovators from Hatyai
 
