@@ -1,6 +1,6 @@
 import type { ElysiaApp } from "../../index";
 import db from "../../lib/firebase";
-import { collection, doc, getDoc, setDoc, getDocs, serverTimestamp, deleteDoc } from "firebase/firestore";
+import { collection, doc, getDoc, setDoc, getDocs, serverTimestamp, deleteDoc, query } from "firebase/firestore";
 import { t } from "elysia";
 
 const userSchema = t.Object({
@@ -104,14 +104,24 @@ const publicUser = async ({ body, set }: { body: typeof publicUserSchema.static,
 const deleteUser = async ({ body, set }: { body: typeof deleteUserSchema.static, set: { status: number | string } }) => {
     try {
         const { uid } = body;
+        const userDocRef = doc(db, "Users", uid);
 
-        await deleteDoc(doc(db, "Users", uid));
+        const subcollections = ['inventory', 'badge', 'quiz', 'scanqr', 'transactions'];
+
+        for (const subcollectionName of subcollections) {
+            const subcollectionRef = collection(userDocRef, subcollectionName);
+            const subcollectionSnapshot = await getDocs(query(subcollectionRef));
+            const deletePromises = subcollectionSnapshot.docs.map(docSnapshot => deleteDoc(docSnapshot.ref));
+            await Promise.all(deletePromises);
+        }
+
+        await deleteDoc(userDocRef);
 
         set.status = 200;
         return "Done !";
     } catch (error) {
         set.status = 500
-        return { error: "Failed to process user request" }
+        return { error: "Failed to process user deletion request" }
     }
 };
 
