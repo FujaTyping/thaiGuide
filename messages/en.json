@@ -7,6 +7,7 @@
     "leaderboard": "Leaderboard",
     "dashboard": "Dashboard",
     "map": "My map",
+    "account": "Option",
     "servererror": "Could not connect to services Please try again later",
     "statsbtn": "Check Status",
     "list": {
@@ -110,7 +111,12 @@
       "1": "Songkhla is famous for its iconic Golden Mermaid Statue at Samila Beach, inspired by a local folktale and a popular selfie spot for tourists.",
       "2": "Thailand has one of the world’s oldest and largest open-air markets—the Chatuchak Market in Bangkok, with over 15,000 stalls!",
       "3": "Songkhla Old Town blends Chinese, Thai, and Portuguese architecture, offering vibrant street art, cozy cafes, and rich cultural history.",
-      "4": "The Great Serpent Nag (Nāga) sculpture in Songkhla is believed to bless visitors with good fortune and prosperity—locals often bring offerings to show respect."
+      "4": "The Great Serpent Nag (Nāga) sculpture in Songkhla is believed to bless visitors with good fortune and prosperity—locals often bring offerings to show respect.",
+      "5": "Bangkok's full ceremonial name is one of the longest in the world: Krung Thep Mahanakhon Amon Rattanakosin Mahinthara Ayuthaya Mahadilok Phop Noppharat Ratchathani Burirom Udomratchaniwet Mahasathan Amon Piman Awatan Sathit Sakkathattiya Witsanukam Prasit.",
+      "6": "The world-famous energy drink, Red Bull, was originally based on a Thai drink called Krating Daeng, created by Chaleo Yoovidhya in the 1970s.",
+      "7": "Thailand is home to the world's smallest mammal, the Kitti's hog-nosed bat (also known as the bumblebee bat), which is about the size of a large bumblebee.",
+      "8": "In Thai culture, the head is considered the most sacred part of the body. It is considered disrespectful to touch someone's head, even a child's.",
+      "9": "The national animal of Thailand is the elephant. These majestic creatures have been a symbol of the nation for centuries and are deeply respected in Thai culture."
     }
   },
   "FooterBar": {
@@ -250,6 +256,8 @@
     },
     "welcome": {
       "title": "Welcome to ThaiGuide!",
+      "next": "Next step",
+      "start": "Get Started",
       "decs": "Start your journey with us. Let's get to know ThaiGuide in a few quick steps",
       "1": {
         "title": "Our Mission",
@@ -878,6 +886,25 @@
       "web": "Website",
       "view": "Map",
       "noview": "Map not available for this event"
+    }
+  },
+  "Account": {
+    "title": "Traveler Account Settings",
+    "decs": "Manage your ThaiGuide profile, preferences, and travel options, customize your journey, privacy, and app experience to make every trip uniquely yours.",
+    "option": {
+      "delete": {
+        "btnla": "Delete my account",
+        "btn": "Delete",
+        "confirmTitle": "Confirm Account Deletion",
+        "err": "Can't delete your account",
+        "succ": "Your account has been successfully deleted.",
+        "d1": "Are you sure you want to delete your account?",
+        "d2": "This action cannot be undone.",
+        "d3": "All your data, including points, transactions, badges, and other information,",
+        "d4": "will be permanently deleted immediately.",
+        "canBTN": "Cancel",
+        "conBTN": "Confirm"
+      }
     }
   }
 }

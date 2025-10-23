@@ -156,7 +156,7 @@ function Card() {
                         </motion.div>
                     </AnimatePresence>
                     <Button className='bg-[#f7740a] hover:bg-[#f7740a] text-white mt-2 cursor-pointer' onClick={() => { if (welState < 3) { setWelState(welState + 1) } else { setIsOpen(false) } }}>
-                        {welState < 3 ? "Next step" : "Get Started"}
+                        {welState < 3 ? t('welcome.next') : t('welcome.start')}
                     </Button>
                 </DialogContent>
             </Dialog>
