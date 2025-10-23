@@ -5,6 +5,7 @@
         "profile": "Profil",
         "logout": "Log Keluar",
         "map": "Peta Saya",
+        "account": "Pilihan",
         "dashboard": "Papan Pemuka",
         "leaderboard": "Papan Pendahulu",
         "servererror": "Tidak dapat menyambung ke perkhidmatan. Sila cuba lagi kemudian.",
@@ -110,7 +111,12 @@
             "1": "Songkhla terkenal dengan Patung Duyung Emas yang ikonik di Pantai Samila, yang diilhamkan oleh cerita rakyat tempatan dan tempat swafoto yang popular untuk pelancong.",
             "2": "Thailand mempunyai salah satu pasar terbuka tertua dan terbesar di dunia—Pasar Chatuchak di Bangkok, dengan lebih 15,000 gerai!",
             "3": "Pekan Lama Songkhla menggabungkan seni bina Cina, Thai, dan Portugis, menawarkan seni jalanan yang meriah, kafe yang selesa, dan sejarah budaya yang kaya.",
-            "4": "Arca Ular Besar Nag (Nāga) di Songkhla dipercayai memberkati pengunjung dengan nasib baik dan kemakmuran—penduduk tempatan sering membawa persembahan untuk menunjukkan rasa hormat."
+            "4": "Arca Ular Besar Nag (Nāga) di Songkhla dipercayai memberkati pengunjung dengan nasib baik dan kemakmuran—penduduk tempatan sering membawa persembahan untuk menunjukkan rasa hormat.",
+            "5": "Nama penuh istiadat Bangkok adalah salah satu yang terpanjang di dunia: Krung Thep Mahanakhon Amon Rattanakosin Mahinthara Ayuthaya Mahadilok Phop Noppharat Ratchathani Burirom Udomratchaniwet Mahasathan Amon Piman Awatan Sathit Sakkathattiya Witsanukam Prasit.",
+            "6": "Minuman tenaga terkenal di dunia, Red Bull, pada asalnya berdasarkan minuman Thai yang dipanggil Krating Daeng, yang dicipta oleh Chaleo Yoovidhya pada tahun 1970-an.",
+            "7": "Thailand adalah rumah kepada mamalia terkecil di dunia, kelawar hidung babi Kitti (juga dikenali sebagai kelawar lebah), yang saiznya kira-kira sebesar lebah besar.",
+            "8": "Dalam budaya Thai, kepala dianggap sebagai bahagian badan yang paling suci. Dianggap tidak sopan untuk menyentuh kepala seseorang, walaupun kepala kanak-kanak.",
+            "9": "Haiwan kebangsaan Thailand ialah gajah. Makhluk-makhluk megah ini telah menjadi simbol negara selama berabad-abad dan sangat dihormati dalam budaya Thai."
         }
     },
     "FooterBar": {
@@ -249,6 +255,8 @@
         },
         "welcome": {
             "title": "Selamat datang ke ThaiGuide!",
+            "next": "Langkah seterusnya",
+            "start": "Mulakan",
             "decs": "Mulakan perjalanan anda bersama kami. Mari kenali ThaiGuide dalam beberapa langkah pantas",
             "1": {
                 "title": "Misi Kami",
@@ -877,6 +885,25 @@
             "web": "Laman Web",
             "view": "Peta",
             "noview": "Peta tidak tersedia untuk acara ini"
+        }
+    },
+    "Account": {
+        "title": "Tetapan Akaun Pengembara",
+        "decs": "Urus profil, keutamaan, dan pilihan perjalanan ThaiGuide anda, sesuaikan perjalanan, privasi, dan pengalaman aplikasi anda untuk menjadikan setiap perjalanan unik milik anda.",
+        "option": {
+            "delete": {
+                "btnla": "Padam akaun saya",
+                "btn": "Padam",
+                "confirmTitle": "Sahkan Pemadaman Akaun",
+                "err": "Tidak dapat memadam akaun anda",
+                "succ": "Akaun anda telah berjaya dipadamkan.",
+                "d1": "Adakah anda pasti mahu memadam akaun anda?",
+                "d2": "Tindakan ini tidak boleh dibatalkan.",
+                "d3": "Semua data anda, termasuk mata, transaksi, lencana, dan maklumat lain,",
+                "d4": "akan dipadamkan secara kekal serta-merta.",
+                "canBTN": "Batal",
+                "conBTN": "Sahkan"
+            }
         }
     }
 }

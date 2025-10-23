@@ -22,6 +22,10 @@ const nextConfig: NextConfig = {
         source: '/@me/mymap',
         destination: '/me/mymap',
       },
+      {
+        source: '/@me/option',
+        destination: '/me/option',
+      },
     ];
   },
 };

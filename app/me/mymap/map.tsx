@@ -82,7 +82,7 @@ function PMap() {
         <>
             <div className='max-w-7xl mx-auto px-4 py-7'>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mb-5'>
-                    <div className='border-2 border-[#f7740a] rounded-2xl p-4 px-5 flex items-start gap-6'>
+                    <div className='border-3 border-[#f7740a] rounded-2xl p-4 px-5 flex items-start gap-6'>
                         <div>
                             <Telescope className='w-8 h-8 text-[#f7740a]' />
                         </div>
@@ -101,7 +101,7 @@ function PMap() {
                             </span> {t('place')}</h2>
                         </div>
                     </div>
-                    <div className='border-2 border-[#f7740a] rounded-2xl p-4 px-5 flex items-start gap-6'>
+                    <div className='border-3 border-[#f7740a] rounded-2xl p-4 px-5 flex items-start gap-6'>
                         <div>
                             <EyeClosed className='w-8 h-8 text-[#f7740a]' />
                         </div>
