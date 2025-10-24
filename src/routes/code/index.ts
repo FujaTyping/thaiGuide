@@ -152,21 +152,27 @@ const getMapInfoHandler = async ({ body, set }: { body: typeof GetMyMaps.static,
 
     queryMSnapshot.forEach((doc) => {
         const data = doc.data();
-        const location = data.location as GeoPoint;
-        Data.visited.push({
-            latitude: location.latitude,
-            longitude: location.longitude,
-            name: data.name,
-            year: data.year
-        });
-        visitedLocations.add(`${location.latitude},${location.longitude}`);
+        if (!data.otpp) {
+            const location = data.location as GeoPoint;
+            Data.visited.push({
+                latitude: location.latitude,
+                longitude: location.longitude,
+                name: data.name,
+                year: data.year
+            });
+            visitedLocations.add(`${location.latitude},${location.longitude}`);
+        }
+
     });
 
     querySnapshot.forEach((doc) => {
-        const location = doc.data().location as GeoPoint;
-        const locationString = `${location.latitude},${location.longitude}`;
-        if (!visitedLocations.has(locationString)) {
-            Data.undiscover.push(location);
+        const data = doc.data();
+        if (!data.otpp) {
+            const location = doc.data().location as GeoPoint;
+            const locationString = `${location.latitude},${location.longitude}`;
+            if (!visitedLocations.has(locationString)) {
+                Data.undiscover.push(location);
+            }
         }
     });
 
