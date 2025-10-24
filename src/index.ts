@@ -6,12 +6,14 @@ import { rateLimit } from 'elysia-rate-limit';
 import { cacheControl } from "elysiajs-cdn-cache";
 
 const app = new Elysia()
+  .use(cors({
+    origin: /.*\.thaiguide\.in\.th$/
+  }))
   .use(cacheControl())
   .use(rateLimit({
     max: 10,
     duration: 2000
   }))
-  .use(cors())
   .use(swagger({
     path: "/document"
   }))
