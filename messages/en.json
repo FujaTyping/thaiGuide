@@ -47,7 +47,7 @@
         },
         "require": {
           "username": "Please enter your email address",
-          "pwd": "Must be at least 12 characters long"
+          "pwd": "Please enter invalid password"
         },
         "login": "Login"
       },
@@ -904,7 +904,29 @@
         "d4": "will be permanently deleted immediately.",
         "canBTN": "Cancel",
         "conBTN": "Confirm"
+      },
+      "name": {
+        "reqsame": "Your new name is the same as the old one",
+        "reqshort": "Your name must be at least 4 characters long",
+        "reqipp": "Your name contains inappropriate words",
+        "succ": "Success changed your name",
+        "err": "Error changing your name",
+        "confirm": "Confirm",
+        "cancel": "Cancel",
+        "hint": "Change your name",
+        "dereqsame": "Please enter a different name to make the change effective",
+        "dereqshort": "Make sure your new name has 4 or more characters for better readability",
+        "dereqipp": "Please remove any offensive or restricted words before saving your new name"
       }
     }
+  },
+  "Dashboard": {
+    "title": "Administrator Dashboard",
+    "decs": "The Administrator Dashboard is a central hub for managing users, monitoring activities, and maintaining system performance. Easily review data, configure settings, and ensure a smooth experience for all platform users.",
+    "grid": {
+      "code": "Qr Code"
+    },
+    "manage": "Manage",
+    "noticelang": "The dashboard currently supports only Thai and English languages"
   }
 }
