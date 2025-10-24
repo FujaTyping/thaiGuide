@@ -98,7 +98,7 @@ function Card() {
                         <div className='mb-6 flex flex-col gap-2'>
                             <img src={`${user.photoURL || uData.pfp}`} alt="Profile" className='w-28 rounded-full' />
                             <div>
-                                <h1 className='text-3xl md:text-4xl font-bold mb-2'>{user.displayName || user.email}</h1>
+                                <h1 className='text-3xl md:text-4xl font-bold mb-2'>{user.displayName || uData.name}</h1>
                                 <h2 className='font-semibold'>{t('cip')} : {uData.checkin}</h2>
                             </div>
                         </div>

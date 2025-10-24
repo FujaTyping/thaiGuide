@@ -916,5 +916,14 @@
         "hint": "Change your name"
       }
     }
+  },
+  "Dashboard": {
+    "title": "Administrator Dashboard",
+    "decs": "The Administrator Dashboard is a central hub for managing users, monitoring activities, and maintaining system performance. Easily review data, configure settings, and ensure a smooth experience for all platform users.",
+    "grid": {
+      "code": "Qr Code"
+    },
+    "manage": "Manage",
+    "noticelang": "The dashboard currently supports only Thai and English languages"
   }
 }

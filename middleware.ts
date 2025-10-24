@@ -11,11 +11,17 @@ export function middleware(request: NextRequest) {
     }
   }
 
+  if (pathname.startsWith('/@me')) {
+    if (request.cookies.has('traveler_session') && cookie?.split('--')[1] == 'admin') {
+      return NextResponse.redirect(new URL('/dashboard', request.url))
+    }
+  }
+
   if (!request.cookies.has('traveler_session')) {
     return NextResponse.redirect(new URL('/', request.url))
   }
 }
 
 export const config = {
-  matcher: ['/@me/:path*', '/request/restaurant', '/dashboard/:path*', '/me/:path*'],
+  matcher: ['/@me/:path*', '/request/restaurant', '/dashboard/:path*', '/me/:path*', '/leaderboard'],
 }

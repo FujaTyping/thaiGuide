@@ -265,10 +265,14 @@ function Navbar() {
                                         <DropdownMenuLabel>{user.email}</DropdownMenuLabel>
                                         <DropdownMenuSeparator />
                                         {isAd && <Link href={"/dashboard"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><Columns3Cog className='text-[#f7740a]' /> {t('dashboard')}</DropdownMenuItem></Link>}
-                                        <Link href={"/@me"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><Smile className='text-[#f7740a]' /> {t('profile')}</DropdownMenuItem></Link>
-                                        <Link href={"/@me/mymap"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><MapPinned className='text-[#f7740a]' /> {t('map')}</DropdownMenuItem></Link>
-                                        <Link href={"/leaderboard"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><Trophy className='text-[#f7740a]' /> {t('leaderboard')}</DropdownMenuItem></Link>
-                                        {!isAd && <Link href={"/@me/option"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><Settings2 className='text-[#f7740a]' /> {t('account')}</DropdownMenuItem></Link>}
+                                        {!isAd &&
+                                            <>
+                                                <Link href={"/@me"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><Smile className='text-[#f7740a]' /> {t('profile')}</DropdownMenuItem></Link>
+                                                <Link href={"/@me/mymap"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><MapPinned className='text-[#f7740a]' /> {t('map')}</DropdownMenuItem></Link>
+                                                <Link href={"/leaderboard"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><Trophy className='text-[#f7740a]' /> {t('leaderboard')}</DropdownMenuItem></Link>
+                                                <Link href={"/@me/option"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><Settings2 className='text-[#f7740a]' /> {t('account')}</DropdownMenuItem></Link>
+                                            </>
+                                        }
                                         <DropdownMenuItem className='flex items-center gap-2 cursor-pointer' onClick={handleLogout}><LogOut className='text-[#f7740a]' /> {t('logout')}</DropdownMenuItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu> : <KeyRound onClick={() => setLoginM(true)} />}
