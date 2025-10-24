@@ -84,11 +84,17 @@ function Setting() {
     async function changeYourName() {
         setNameLoading(true);
         if (vName == uData.name) {
-            toast.error(t('option.name.reqsame'));
+            toast.error(t('option.name.reqsame'), {
+                description: t('option.name.dereqsame')
+            });
         } else if (vName.length < 4) {
-            toast.error(t('option.name.reqshort'));
+            toast.error(t('option.name.reqshort'), {
+                description: t('option.name.dereqshort')
+            });
         } else if (filter.isProfane(vName)) {
-            toast.error(t('option.name.reqipp'));
+            toast.error(t('option.name.reqipp'), {
+                description: t('option.name.dereqipp')
+            });
         } else {
             try {
                 await axios.post(`https://${server}/customize/user/name`, {
