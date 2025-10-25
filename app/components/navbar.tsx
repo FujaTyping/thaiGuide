@@ -91,7 +91,7 @@ function Navbar() {
     const [loading, setLoading] = useState<boolean>(true);
     const [loginM, setLoginM] = useState(false);
     const [wantAd, setWantAd] = useState(false);
-    const [isAd, setIsAd] = useState(false);
+    const [isAd, setIsAd] = useState<boolean>(false);
 
     const adminFormSchema = z.object({
         email: z.string().min(11, t('login.admin.require.username')),
@@ -248,7 +248,7 @@ function Navbar() {
                                                         <Languages /> {t(`list.switcher`)}
                                                     </div>
                                                 </DropdownMenuTrigger>
-                                                <ChangeCookie />
+                                                <ChangeCookie isAdmin={isAd} />
                                             </DropdownMenu>
                                         </div>
                                     </SheetHeader>
@@ -283,7 +283,7 @@ function Navbar() {
                                 <DropdownMenuTrigger>
                                     <Languages className='cursor-pointer' />
                                 </DropdownMenuTrigger>
-                                <ChangeCookie />
+                                <ChangeCookie isAdmin={isAd} />
                             </DropdownMenu>
                         </div>
                     </div>

@@ -26,7 +26,7 @@ function Page() {
             </main>
             <div className='max-w-7xl mx-auto px-4 pb-8'>
                 <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
-                    <Link href={'/dashboard/manage/code'}>
+                    <Link href={'/dashboard/manage/qrcode'}>
                         <div className='cursor-pointer border-3 rounded-2xl border-[#f7740a] p-4 px-5 flex flex-col items-center justify-center gap-2'>
                             <QrCode className='w-10 h-10 text-[#f7740a]' />
                             <div className='text-center'>

@@ -690,6 +690,10 @@
         "title": "Maklum Balas dan Isu",
         "decs": "Halaman ini membolehkan pengguna melaporkan masalah dan berkongsi cadangan untuk membantu menambah baik ThaiGuide. Maklum balas anda adalah berharga dan akan digunakan untuk menambah baik platform secara berterusan memastikan pengalaman perjalanan anda lancar, menyeronokkan dan memberi ganjaran",
         "tally": "Klik di sini untuk mengambil tinjauan",
+    "pptitle": "Apa yang orang katakan",
+    "ppdecs": "Apa yang orang katakan tentang ThaiGuide. Anda juga boleh berkongsi pendapat anda dengan menghantar borang di atas.",
+    "pptk": "Terima kasih atas maklum balas anda!",
+    "pptkdecs": "Kami menghargai anda meluangkan masa untuk memberikannya. Untuk sebarang isu yang dilaporkan, kami akan melakukan yang terbaik untuk menyelesaikan masalah itu secepat mungkin.",
         "form": {
             "type": {
                 "title": "Pilih jenis maklum balas",
@@ -912,7 +916,10 @@
                 "err": "Ralat menukar nama anda",
                 "confirm": "Sahkan",
                 "cancel": "Batal",
-                "hint": "Tukar nama anda"
+                "hint": "Tukar nama anda",
+                "dereqsame": "Sila masukkan nama yang berbeza untuk perubahan berkuat kuasa",
+                "dereqshort": "Pastikan nama baru anda mempunyai 4 atau lebih aksara untuk kebolehbacaan yang lebih baik",
+                "dereqipp": "Sila alih keluar sebarang perkataan yang menyinggung atau terhad sebelum menyimpan nama baru anda"
             }
         }
     }
