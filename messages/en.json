@@ -691,6 +691,10 @@
     "title": "Feedback and Issues",
     "decs": "This page allows users to report problems and share suggestions to help improve ThaiGuide. Your feedback is valuable and will be used to enhance the platform continuously ensuring your travel experience is smooth, enjoyable, and rewarding",
     "tally": "Click here to take the survey",
+    "pptitle": "What people are saying",
+    "ppdecs": "What people are saying about ThaiGuide. You can also share your thoughts by submitting the form above",
+    "pptk": "Thank you for your feedback!",
+    "pptkdecs": "We appreciate you taking the time to provide it. For any reported issues, we will do our best to solve the problem as soon as possible",
     "form": {
       "type": {
         "title": "Choose feedback type",

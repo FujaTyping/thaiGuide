@@ -23,10 +23,10 @@ function Page() {
         <p className='mt-4'>{t('decs')}</p>
         <IssuesForm />
         <div className='mt-6'>
-          <h1 className='font-bold text-4xl flex items-center gap-4'>What people are saying</h1>
+          <h1 className='font-bold text-4xl flex items-center gap-4'>{t('pptitle')}</h1>
           <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
         </div>
-        <p className='mt-4'>What people are saying about ThaiGuide. You can also share your thoughts by submitting the form above</p>
+        <p className='mt-4'>{t('ppdecs')}</p>
         <FeedbackBoard />
         <div className='flex items-center justify-center'>
           <Link href={"https://tally.so/r/n9PZyp"} className='mt-2 text-[#f7740a] flex items-center gap-2 cursor-pointer font-semibold' ><Info /> {t('tally')}</Link>
