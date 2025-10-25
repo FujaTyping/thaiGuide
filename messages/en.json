@@ -942,6 +942,8 @@
           "action": "Action",
           "otptool": "This QR code can only be scanned once"
         },
+        "newqr": "Create new code",
+        "delqr": "Delete this code",
         "deleteTitle": "Delete QR Code?",
         "err": "Something went wrong, Please try again later",
         "done": "QR Code has been deleted successfully",
@@ -952,7 +954,41 @@
         "qrid": "Qr code id",
         "mty": "No results",
         "prev": "Previous",
-        "next": "Next"
+        "next": "Next",
+        "create": {
+          "title": "Create New QR Code",
+          "decs": "Set up a new QR code for travelers to scan and earn points. Customize the details, location, and reward options to make it easy to manage and track participation",
+          "name": "Location Name",
+          "nph": "Enter the location name",
+          "reward": "Reward Points",
+          "rwph": "Enter points to reward",
+          "province": "Province",
+          "nopro": "No province that you find",
+          "spro": "Search province",
+          "slpro": "Select province",
+          "lat": "Latitude",
+          "lph": "Enter latitude coordinate",
+          "lng": "Longitude",
+          "laph": "Enter longitude coordinate",
+          "captcha": "Captcha",
+          "capph": "Please verify you are human to help us prevent spam",
+          "sguqr": "Single-use QR Code",
+          "submit": "Submit",
+          "schemaerr": {
+            "name": "Name must be at least 5 characters long",
+            "lat": "Please enter a valid latitude",
+            "lng": "Please enter a valid longitude",
+            "points": "Please specify the number of points",
+            "province": "Province name must be at least 3 characters long",
+            "cap": "Please complete the CAPTCHA verification"
+          },
+          "toast": {
+            "succ": "Qrcode generated successfully",
+            "decss": "Generated with ID",
+            "err": "Something went wrong",
+            "decse": "Please try again later"
+          }
+        }
       }
     }
   }

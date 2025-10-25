@@ -20,11 +20,17 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { Trash2 } from "lucide-react"
+import { Plus, Trash2 } from "lucide-react"
 import { motion } from "motion/react"
 import NF from "@/assets/media/card/icon/notfound.svg";
 import DeleteModal from "./deleteModal"
-import { useTranslations } from "next-intl"
+import { useTranslations } from "next-intl";
+import Link from "next/link"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -56,7 +62,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <>
-      <div className="flex items-center pb-4">
+      <div className="flex items-center place-content-between pb-4 gap-3">
         <Input
           placeholder={`${t('table.search')}`}
           value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
@@ -65,13 +71,22 @@ export function DataTable<TData, TValue>({
           }
           className="max-w-sm"
         />
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Link href={'/dashboard/manage/qrcode/create'}>
+              <Button className="bg-[#f7740a] hover:bg-[#f7740a] cursor-pointer"><Plus /></Button>
+            </Link>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>{t('newqr')}</p>
+          </TooltipContent>
+        </Tooltip>
       </div>
       <div className="overflow-hidden rounded-md border">
-
         <Table>
-          <TableHeader className="bg-[#f7740a] hover:bg-[#f7740a]">
+          <TableHeader className="bg-[#f7740a]">
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
+              <TableRow key={headerGroup.id} className="hover:bg-[#f7740a]">
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id} className="text-white font-bold">
@@ -104,10 +119,17 @@ export function DataTable<TData, TValue>({
                     </TableCell>
                   ))}
                   <TableCell key={'action'}>
-                    <Trash2 size={18} onClick={() => {
-                      setOpen(true)
-                      setTargetId(row.getValue('id'))
-                    }} className="text-[#f7740a] cursor-pointer" />
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Trash2 size={18} onClick={() => {
+                          setOpen(true)
+                          setTargetId(row.getValue('id'))
+                        }} className="text-[#f7740a] cursor-pointer" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>{t('delqr')}</p>
+                      </TooltipContent>
+                    </Tooltip>
                   </TableCell>
                 </TableRow>
               ))
