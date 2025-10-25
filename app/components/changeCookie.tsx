@@ -32,7 +32,7 @@ const supportLang = [
     { code: 'jp', text: '日本語' },
 ]
 
-function ChangeCookie() {
+function ChangeCookie({ isAdmin }: { isAdmin: boolean }) {
     const t = useTranslations('NavBar');
     const [modalO, setModalO] = useState(false);
     const [wlang, setWlang] = useState('us');
@@ -44,9 +44,16 @@ function ChangeCookie() {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem className='cursor-pointer' onClick={() => { setCookie('NEXT_LOCALE', 'en', {}); window.location.reload(); }}><Flag code={'us'} className="w-5 h-5 object-cover rounded-full" /> English</DropdownMenuItem>
                 {
-                    supportLang.map((lang, index) => (
-                        <DropdownMenuItem key={index} className='cursor-pointer' onClick={() => { setWlang(lang.code); setModalO(true); }}><Flag code={lang.code} className="w-5 h-5 object-cover rounded-full" /> {lang.text}</DropdownMenuItem>
-                    ))
+                    isAdmin ? <>
+                        <DropdownMenuItem className='cursor-pointer' onClick={() => { setWlang('th'); setModalO(true); }}><Flag code={'th'} className="w-5 h-5 object-cover rounded-full" /> ภาษาไทย</DropdownMenuItem>
+                    </> : <>
+                        {
+                            supportLang.map((lang, index) => (
+                                <DropdownMenuItem key={index} className='cursor-pointer' onClick={() => { setWlang(lang.code); setModalO(true); }}><Flag code={lang.code} className="w-5 h-5 object-cover rounded-full" /> {lang.text}</DropdownMenuItem>
+                            ))
+                        }
+
+                    </>
                 }
                 <DropdownMenuSeparator />
                 <Link href={'https://crowdin.com/project/thaiguide'}>

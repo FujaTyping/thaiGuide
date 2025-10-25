@@ -927,6 +927,33 @@
       "code": "Qr Code"
     },
     "manage": "Manage",
-    "noticelang": "The dashboard currently supports only Thai and English languages"
+    "noticelang": "The dashboard currently supports only Thai and English languages",
+    "item": {
+      "qrcode": {
+        "title": "QR Code Management",
+        "decs": "Easily manage, track, and generate QR codes for events, attractions, or campaigns. This section helps administrators organize and monitor QR-based activities to enhance engagement and data collection",
+        "table": {
+          "search": "Filter by name",
+          "id": "Id",
+          "name": "Name",
+          "points": "Points",
+          "province": "Province",
+          "otpp": "OneTime",
+          "action": "Action",
+          "otptool": "This QR code can only be scanned once"
+        },
+        "deleteTitle": "Delete QR Code?",
+        "err": "Something went wrong, Please try again later",
+        "done": "QR Code has been deleted successfully",
+        "canBTN": "Cancel",
+        "conBTN": "Confirm",
+        "d1": "Are you sure you want to delete this QR code?",
+        "d2": "Once deleted, all related data and tracking information will be permanently removed and cannot be recovered",
+        "qrid": "Qr code id",
+        "mty": "No results",
+        "prev": "Previous",
+        "next": "Next"
+      }
+    }
   }
 }
