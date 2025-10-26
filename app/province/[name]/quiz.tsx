@@ -286,7 +286,7 @@ function Quiz({ data: provinceName }: QuizProps) {
 
     if (isAuthLoading) {
         return (
-            <div className='max-w-7xl mx-auto px-4 py-6'>
+            <div className='tg-container'>
                 <div className='w-full bg-[#f7740a] py-6 px-4 rounded-xl text-center'>
                     <div className='flex items-center justify-center rounded-xl'>
                         <Loader />
@@ -297,7 +297,7 @@ function Quiz({ data: provinceName }: QuizProps) {
     }
 
     return (
-        <div className='max-w-7xl mx-auto px-4 py-6'>
+        <div className='tg-container'>
             <div className='w-full bg-[#f7740a] py-6 px-4 rounded-xl text-center text-white'>
                 <AnimatePresence>
                     {(status !== 'loading' && status !== 'error') && (

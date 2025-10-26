@@ -58,7 +58,7 @@ async function page({ params }: Props) {
 
     return (
         <>
-            <main className='max-w-7xl mx-auto px-4 py-6'>
+            <main className='tg-container'>
                 <div className='grid grid-col-1 md:grid-cols-2 gap-8'>
                     <div>
                         <Thumnails image={data.image} />

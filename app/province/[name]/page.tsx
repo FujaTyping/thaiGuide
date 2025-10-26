@@ -60,7 +60,7 @@ async function page({ params }: Props) {
                     <h1 className='text-3xl md:text-4xl font-bold mb-2'>{data.ndtitle}</h1>
                 </div>
             </div>
-            <main className='max-w-7xl mx-auto px-4 py-6'>
+            <main className='tg-container'>
                 <div>
                     <h1 className='font-bold text-4xl'>{data.name}</h1>
                     <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
@@ -73,7 +73,7 @@ async function page({ params }: Props) {
                 </div>
                 <p className='mt-1'>{data.slogan}</p>
             </main>
-            <main className='max-w-7xl mx-auto px-4 py-6'>
+            <main className='tg-container'>
                 <div>
                     <h1 className='font-bold text-4xl'>{t('item.softhight')}</h1>
                     <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>

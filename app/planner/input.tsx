@@ -13,12 +13,17 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Brush, Info, MapPin, RefreshCcw, TriangleAlert } from 'lucide-react';
 import axios from 'axios';
-import Triploader from './triploader';
+// import Triploader from './triploader';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "motion/react";
 import { useTranslations } from 'next-intl';
 import RotatingText from '@/components/bits/RotatingText/RotatingText';
 import { server } from "@/app/config.json"
+
+// Photo
+import IDLEPH from "@/assets/media/maskot/photo/Idle.webp";
+import THINKPH from "@/assets/media/maskot/photo/Thinking.gif";
+import TALKPH from "@/assets/media/maskot/photo/Talking.svg";
 
 const TEXTS = [
     '0',
@@ -118,7 +123,7 @@ function TInput() {
         }
         try {
             setData("loading");
-            const Res = await axios.post(`https://${server}/trip/gen`, {
+            const Res = await axios.post(`http://${server}/trip/gen`, {
                 message: message,
                 tag: selectedTags.join(','),
                 duration: duration,
@@ -151,11 +156,22 @@ function TInput() {
                 >
                     {
                         Data == "" ? <>
-                            <div className='mt-6'>
-                                <div>
-                                    <h1 className='font-semibold text-xl'>{t('ai.title')}</h1>
-                                    <p className='mt-1'>{t('ai.decs')}</p>
+                            <div className='mt-4 sm:-mt-3 md:mt-1'>
+                                <div className='flex flex-row-reverse md:place-content-start place-content-between md:flex-row items-end md:items-center gap-4 mb-4 md:mb-0'>
+                                    <motion.div
+                                        animate={{
+                                            y: [0, 5, 0, 4, 0],
+                                            transition: { duration: 3, repeat: Infinity },
+                                        }}
+                                    >
+                                        <img src={IDLEPH.src} alt="Photo" className='w-18 md:w-24 -rotate-8' />
+                                    </motion.div>
+                                    <div>
+                                        <h1 className='font-semibold text-lg md:text-xl'>{t('ai.title')}</h1>
+                                        <p className='mt-1 hidden md:block'>{t('ai.decs')}</p>
+                                    </div>
                                 </div>
+                                <p className='-mt-3 block md:hidden'>{t('ai.decs')}</p>
                                 <Textarea
                                     placeholder={`${t('ai.input.placeholder')}`}
                                     className='mt-2'
@@ -244,7 +260,8 @@ function TInput() {
                             {
                                 Data == "loading" ? <>
                                     <div className='flex items-center justify-center py-12 flex-col gap-4'>
-                                        <Triploader />
+                                        <img src={THINKPH.src} alt="Photo" className='w-48 md:w-52 -mb-6 -mt-6' />
+                                        {/* {<Triploader />} */}
                                         <RotatingText
                                             texts={loadingTexts}
                                             mainClassName="w-fit font-semibold text-black overflow-hidden justify-center rounded-lg"
@@ -261,8 +278,27 @@ function TInput() {
                                 </> : <>
                                     {typeof Data === 'object' && Data !== null && (
                                         <div className='mt-6'>
-                                            <h1 className='font-semibold text-xl mb-1'>{Data.tripTitle}</h1>
-                                            <p>{Data.description}</p>
+                                            <div className='flex flex-col md:flex-row items-start gap-4'>
+                                                <div className='flex items-center gap-4 -mt-4 -mb-3 md:-mb-0 py-3 md:py-0'>
+                                                    <motion.div
+                                                        animate={{
+                                                            x: [0, 4, 0, 5, 0],
+                                                            y: [0, 3, -4, 6, 2, 0],
+                                                            transition: { duration: 4, repeat: Infinity }
+                                                        }}
+                                                    >
+                                                        <img src={TALKPH.src} alt="Photo" className='w-18 md:w-24 rotate-2' />
+                                                    </motion.div>
+                                                    <div className='block md:hidden'>
+                                                        <p className='font-semibold text-lg'>{t('ai.donettitle')}</p>
+                                                        <p>{t('ai.donetdecs')}</p>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h1 className='font-semibold text-xl mb-1'>{Data.tripTitle}</h1>
+                                                    <p>{Data.description}</p>
+                                                </div>
+                                            </div>
                                             <Tabs defaultValue="activities" className='mt-2'>
                                                 <TabsList className='w-full'>
                                                     <TabsTrigger value="activities" className='cursor-pointer'>{t('ai.tabs.act')}</TabsTrigger>
