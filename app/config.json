@@ -1,4 +1,4 @@
 {
-    "server": "fallback.api.thaiguide.in.th",
+    "server": "localhost:3033",
     "backup": "api.thaiguide.in.th"
 }

@@ -80,7 +80,7 @@ function Activities({ data: provinceName }: ActivitiesProps) {
 
     return (
         <>
-            <main className='max-w-7xl mx-auto px-4 py-6'>
+            <main className='tg-container'>
                 <div className='flex items-center place-content-between mb-6'>
                     <div>
                         <h1 className='font-bold text-4xl'>{t('headder')}</h1>

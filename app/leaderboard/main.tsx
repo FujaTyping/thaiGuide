@@ -13,7 +13,7 @@ function Main() {
     return (
         <>
             <Confetti mode='fall' particleCount={8} fadeOutHeight={0.5} />
-            <main className='max-w-7xl mx-auto px-4 py-6'>
+            <main className='tg-container'>
                 <div>
                     <h1 className='font-bold text-4xl flex items-center gap-4'>{t('title')}</h1>
                     <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>

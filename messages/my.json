@@ -335,6 +335,8 @@
         "ai": {
             "title": "Beritahu kami tentang perjalanan anda",
             "decs": "Bantu kami mengesyorkan aktiviti terbaik untuk anda",
+      "donettitle": "Semua bersedia untuk pengembaraan!",
+      "donetdecs": "Photo telah merancang perjalanan yang sempurna untuk anda",
             "input": {
                 "placeholder": "cth., Saya sedang mencari gabungan pengalaman budaya dan pantai yang menenangkan. Saya berminat dengan kuil, pasar tempatan dan snorkeling.",
                 "duration": "Tempoh",

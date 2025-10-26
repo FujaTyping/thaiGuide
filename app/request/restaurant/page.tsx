@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 function page() {
   return (
     <>
-      <main className='max-w-7xl mx-auto px-4 py-6'>
+      <main className='tg-container'>
         <div>
           <h1 className='font-bold text-4xl'>เพิ่มร้านอาหารของคุณ</h1>
           <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>

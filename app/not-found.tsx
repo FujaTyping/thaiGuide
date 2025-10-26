@@ -13,7 +13,7 @@ import {
 function Notfound() {
     return (
         <>
-            <div className='max-w-7xl mx-auto px-4 py-6 h-[70vh] flex flex-col md:flex-row items-center justify-center gap-8u md:gap-24'>
+            <div className='tg-container h-[70vh] flex flex-col md:flex-row items-center justify-center gap-8u md:gap-24'>
                 <motion.div
                     animate={{
                         x: [0, 20, 5, -15, -10, 0],
