@@ -255,3 +255,7 @@
 .tg-container {
   @apply max-w-7xl mx-auto px-4 py-6;
 }
+
+.tg-btn {
+  @apply bg-[#f7740a] hover:bg-[#f7740a] cursor-pointer
+}
