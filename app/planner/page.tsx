@@ -16,8 +16,8 @@ function Page() {
         <>
             <main className='tg-container'>
                 <div>
-                    <h1 className='font-bold text-4xl flex items-center gap-4'>{t('title')} <Badge className='text-white bg-[#f7740a]'>{t('beta')}</Badge></h1>
-                    <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
+                    <h1 className='font-bold text-4xl flex items-center gap-4'>{t('title')} <Badge className='text-white bg-primary'>{t('beta')}</Badge></h1>
+                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
                 </div>
                 <p className='mt-4 mb-3 sm:mb-0'>{t('decs')}</p>
                 <TInput />

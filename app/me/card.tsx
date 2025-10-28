@@ -93,7 +93,7 @@ function Card() {
                         <p className='text-2xl font-semibold flex items-center gap-2'><Coins /> {uData.point}</p>
                         <p className='text-2xl font-semibold flex items-center gap-2'><Flame /> {uData.streak || 0}</p>
                     </div>
-                    <div className='absolute h-48 bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-[#f7740a]/70 to-transparent'></div>
+                    <div className='absolute h-48 bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-primary/70 to-transparent'></div>
                     <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 text-white rounded-4xl'>
                         <div className='mb-6 flex flex-col gap-2'>
                             <img src={`${user.photoURL || uData.pfp}`} alt="Profile" className='w-28 rounded-full' />
@@ -155,7 +155,7 @@ function Card() {
                             )}
                         </motion.div>
                     </AnimatePresence>
-                    <Button className='bg-[#f7740a] hover:bg-[#f7740a] text-white mt-2 cursor-pointer' onClick={() => { if (welState < 3) { setWelState(welState + 1) } else { setIsOpen(false) } }}>
+                    <Button className='bg-primary hover:bg-primary text-white mt-2 cursor-pointer' onClick={() => { if (welState < 3) { setWelState(welState + 1) } else { setIsOpen(false) } }}>
                         {welState < 3 ? t('welcome.next') : t('welcome.start')}
                     </Button>
                 </DialogContent>

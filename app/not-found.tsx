@@ -37,7 +37,7 @@ function Notfound() {
                     </Link>
                 </motion.div>
                 <div className='max-w-2xl'>
-                    <h1 className='mb-2 font-bold text-4xl text-[#f7740a]'>404</h1>
+                    <h1 className='mb-2 font-bold text-4xl text-primary'>404</h1>
                     <h1 className='font-bold text-3xl'>It looks like the tuk-tuk took the scenic route - and ended up here instead!</h1>
                     <p className='mt-2'>But {"don’t"} worry, every great journey has a few surprises. Why not get back on track and discover something amazing in Thailand? <b>Click the tuk-tuk to get to home</b>.</p>
                 </div>

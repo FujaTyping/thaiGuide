@@ -63,7 +63,7 @@ function Points() {
 
     return (
         <>
-            <p className='flex items-center gap-2 py-2 text-lg text-[#f7740a] font-semibold'><Flame /> {t('board.ms.header')}</p>
+            <p className='flex items-center gap-2 py-2 text-lg text-primary font-semibold'><Flame /> {t('board.ms.header')}</p>
             <div className='flex flex-col gap-16 md:grid grid-cols-3 md:gap-6 mt-14'>
                 {
                     data.map((item, index) => (
@@ -71,8 +71,8 @@ function Points() {
                             {
                                 index < 3 && <>
                                     <Link href={`/traveler/${item.id}`}>
-                                        <div className={`relative flex flex-col items-end py-3 md:py-6 gap-1 h-full ${index < 3 ? "bg-[#f7740a] text-white" : ""}   rounded-md p-3 text-lg`}>
-                                            <img src={item.pfp || anno.src} alt="Profile" className='w-24 md:w-28 absolute left-0 top-0 -mt-12 border-6 border-[#f7740a] rounded-full' />
+                                        <div className={`relative flex flex-col items-end py-3 md:py-6 gap-1 h-full ${index < 3 ? "bg-primary text-white" : ""}   rounded-md p-3 text-lg`}>
+                                            <img src={item.pfp || anno.src} alt="Profile" className='w-24 md:w-28 absolute left-0 top-0 -mt-12 border-6 border-primary rounded-full' />
                                             {index === 0 && <img src={R1.src} alt="Rank 1" className='w-14 absolute right-0 top-0 -mt-5' />}
                                             {index === 1 && <img src={R2.src} alt="Rank 2" className='w-14 absolute right-0 top-0 -mt-5' />}
                                             {index === 2 && <img src={R3.src} alt="Rank 3" className='w-14 absolute right-0 top-0 -mt-5' />}
@@ -98,7 +98,7 @@ function Points() {
                             {
                                 index > 2 && <>
                                     <Link href={`/traveler/${item.id}`}>
-                                        <div className={`flex items-center place-content-between ${index < 3 ? "bg-[#f7740a] text-white" : ""}   rounded-md text-lg`}>
+                                        <div className={`flex items-center place-content-between ${index < 3 ? "bg-primary text-white" : ""}   rounded-md text-lg`}>
                                             <div className='flex items-center gap-2 font-semibold'>
                                                 <p>#{index + 1}</p>
                                                 <p>{item.name}</p>

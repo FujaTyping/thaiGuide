@@ -40,11 +40,11 @@ function Ealert() {
         <>
             {Data.type &&
                 <>
-                    <main className='bg-[#f7740a] text-white border-b-1'>
+                    <main className='bg-primary text-white border-b-1'>
                         {
                             Data.reference ? <Link href={Data.reference}>
                                 <section className='max-w-7xl mx-auto  -mt-1 pb-1.5 px-4 items-center gap-8 relative'>
-                                    <div className='flex items-center gap-2 col-span-2 bg-[#f7740a] w-fit absolute z-2 pr-4'>
+                                    <div className='flex items-center gap-2 col-span-2 bg-primary w-fit absolute z-2 pr-4'>
                                         <TriangleAlert />
                                         <h1 className='font-bold'>{t('alert')}</h1>
                                     </div>
@@ -53,7 +53,7 @@ function Ealert() {
                                     </Marquee>
                                 </section>
                             </Link> : <section className='max-w-7xl mx-auto -mt-1 pb-1.5 px-4 items-center gap-8 relative'>
-                                <div className='flex items-center gap-2 col-span-2 bg-[#f7740a] w-fit absolute z-2 pr-4'>
+                                <div className='flex items-center gap-2 col-span-2 bg-primary w-fit absolute z-2 pr-4'>
                                     <TriangleAlert />
                                     <h1 className='font-bold'>{t('alert')}</h1>
                                 </div>

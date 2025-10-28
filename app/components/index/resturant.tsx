@@ -73,13 +73,13 @@ function Resturant() {
     <>
       <main className='max-w-7xl mx-auto px-3 py-6'>
         <div className='flex items-center place-content-between mb-6'>
-          <h1 className='text-2xl md:text-3xl font-bold text-[#f7740a]'>{t('headder')}</h1>
+          <h1 className='text-2xl md:text-3xl font-bold text-primary'>{t('headder')}</h1>
           <div className='flex items-center gap-3'>
-            <div className='border-2 border-[#f7740a] rounded-full p-2 hover:bg-[#f7740a] group transition-all duration-200 cursor-pointer' onClick={goPrev}>
-              <ChevronLeft className='text-[#f7740a] group-hover:text-white' />
+            <div className='border-2 border-primary rounded-full p-2 hover:bg-primary group transition-all duration-200 cursor-pointer' onClick={goPrev}>
+              <ChevronLeft className='text-primary group-hover:text-white' />
             </div>
-            <div className='border-2 border-[#f7740a] rounded-full p-2 hover:bg-[#f7740a] group transition-all duration-200 cursor-pointer' onClick={goNext}>
-              <ChevronRight className='text-[#f7740a] group-hover:text-white' />
+            <div className='border-2 border-primary rounded-full p-2 hover:bg-primary group transition-all duration-200 cursor-pointer' onClick={goNext}>
+              <ChevronRight className='text-primary group-hover:text-white' />
             </div>
           </div>
         </div>
@@ -121,7 +121,7 @@ function Resturant() {
                             className="w-full h-[350px] md:h-[500px] rounded-4xl overflow-hidden relative"
                           >
                             <Image width={1080} height={1280} className='w-full h-full object-cover' src={item.thumnails} alt={item.name} />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#f7740a]/70 via-transparent to-transparent"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"></div>
                           </div>
                           <motion.div
                             variants={textVariants}
@@ -134,7 +134,7 @@ function Resturant() {
                         </motion.div>
                         {
                           item.sme &&
-                          <p className='absolute top-0 right-0 bg-[#f7740a] text-white px-4 rounded-tr-full rounded-bl-full'><span className='py-2'>{rt('sme')}</span></p>
+                          <p className='absolute top-0 right-0 bg-primary text-white px-4 rounded-tr-full rounded-bl-full'><span className='py-2'>{rt('sme')}</span></p>
                         }
                       </Link>
                     </motion.div>
@@ -145,7 +145,7 @@ function Resturant() {
                 <Link href={"/restaurant"}>
                   <motion.div
                     whileTap={{ scale: 0.95 }}
-                    className='flex px-2 items-center justify-center flex-col h-[350px] gap-4 md:h-[500px] bg-[#f7740a] text-white rounded-4xl'
+                    className='flex px-2 items-center justify-center flex-col h-[350px] gap-4 md:h-[500px] bg-primary text-white rounded-4xl'
                   >
                     <div className='p-3 border-2 rounded-full'>
                       <ChefHat className='w-10 h-10' />

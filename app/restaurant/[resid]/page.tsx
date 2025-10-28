@@ -63,18 +63,18 @@ async function page({ params }: Props) {
                 className='relative overflow-hidden rounded-b-4xl'
             >
                 <img src={data.image} className='w-full h-[550px] md:h-[700px] object-cover' alt={data.name} />
-                <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-[#f7740a]/70 to-transparent text-white rounded-b-4xl text-center'>
+                <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-primary/70 to-transparent text-white rounded-b-4xl text-center'>
                     <h1 className='text-3xl md:text-4xl font-bold mb-2'>{data.ndname}</h1>
                 </div>
             </div>
             <main className='tg-container'>
                 <div>
                     <h1 className='font-bold text-4xl'>{data.name}</h1>
-                    <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
+                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
                 </div>
                 <div className='flex flex-col md:flex-row md:items-center gap-1 md:gap-2 mt-3'>
                     <div className='flex items-center gap-2'>
-                        <MapPin className='font-semibold text-[#f7740a]' />
+                        <MapPin className='font-semibold text-primary' />
                         <h1 className='font-semibold'>{t('item.location')} : </h1>
                     </div>
                     <p>{data.location}</p>
@@ -82,7 +82,7 @@ async function page({ params }: Props) {
                 <Link href={`/province/${data.province}`}>
                     <div className='flex flex-row md:items-center gap-1 md:gap-2 mt-3'>
                         <div className='flex items-center gap-2'>
-                            <MapPin className='font-semibold text-[#f7740a]' />
+                            <MapPin className='font-semibold text-primary' />
                             <h1 className='font-semibold'>{t('item.province')} : </h1>
                         </div>
                         <p>{data.province.charAt(0).toUpperCase() + data.province.slice(1)}</p>
@@ -91,17 +91,17 @@ async function page({ params }: Props) {
                 <p className='mt-4'>{data.decs}</p>
                 <div className='grid grid-cols-2 md:grid-cols-3 py-8 gap-8'>
                     <div className='flex flex-col gap-1 items-center justify-center'>
-                        <Banknote className='text-[#f7740a] size-14' />
+                        <Banknote className='text-primary size-14' />
                         <p className='font-semibold text-xl'>{data.price}</p>
                         <p>{t('item.cost')}</p>
                     </div>
                     <div className='flex flex-col gap-1 items-center justify-center'>
-                        <Star className='text-[#f7740a] size-12' />
+                        <Star className='text-primary size-12' />
                         <p className='font-semibold text-xl'>{data.rating}</p>
                         <p>{t('item.rate')}</p>
                     </div>
                     <div className='flex flex-col gap-1 items-center justify-center'>
-                        <MapPinned className='text-[#f7740a] size-12' />
+                        <MapPinned className='text-primary size-12' />
                         <p className='font-semibold text-xl'>{data.details.openhour}</p>
                         <p>{t('item.open')}</p>
                     </div>
@@ -109,7 +109,7 @@ async function page({ params }: Props) {
                         data.details.points &&
                         <>
                             <div className='flex flex-col gap-1 items-center justify-center'>
-                                <Coins className='text-[#f7740a] size-12' />
+                                <Coins className='text-primary size-12' />
                                 <p className='font-semibold text-xl'>{data.details.points}</p>
                                 <p className='flex items-center gap-2'>{at('item.point')}
                                     <Tooltip>
@@ -122,7 +122,7 @@ async function page({ params }: Props) {
                                 </p>
                             </div>
                             <div className='flex flex-col gap-1 items-center justify-center'>
-                                <Store className='text-[#f7740a] size-12' />
+                                <Store className='text-primary size-12' />
                                 <p className='font-semibold text-xl'>{t('sme')}</p>
                                 <p className='flex items-center gap-2'>{t('smeinfo')}</p>
                             </div>
@@ -138,12 +138,12 @@ async function page({ params }: Props) {
                         {
                             data.dish.map((item: string, index: number) => (
                                 <div key={index} className='flex items-center gap-2'>
-                                    <Sparkle className='text-[#f7740a]' />
+                                    <Sparkle className='text-primary' />
                                     <p className='text-lg'>{item}</p>
                                 </div>
                             ))
                         }
-                        <Link href={data.link} className='bg-[#f7740a] group w-full md:w-fit p-2 px-4 rounded-xl text-white mt-4 flex justify-center items-center gap-2'>
+                        <Link href={data.link} className='bg-primary group w-full md:w-fit p-2 px-4 rounded-xl text-white mt-4 flex justify-center items-center gap-2'>
                             {t('item.map')}
                             <ArrowRight className='group-hover:translate-x-1 transition-all duration-200' />
                         </Link>
@@ -153,7 +153,7 @@ async function page({ params }: Props) {
             <main className='max-w-7xl mx-auto px-4 pb-6'>
                 <div className='mb-5'>
                     <h1 className='font-bold text-4xl'>{t('item.view')}</h1>
-                    <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
+                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
                 </div>
                 {
                     data.streetview != "" ? <>

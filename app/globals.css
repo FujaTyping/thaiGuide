@@ -49,7 +49,7 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --primary: #f7740a;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -257,5 +257,5 @@
 }
 
 .tg-btn {
-  @apply bg-[#f7740a] hover:bg-[#f7740a] cursor-pointer
+  @apply bg-primary hover:bg-primary cursor-pointer
 }

@@ -42,18 +42,18 @@ const TripStopsSwiper: React.FC<TripStopsSwiperProps> = ({ stops }) => {
                 <div className='flex items-center gap-2'>
                     <div className='md:flex items-center justify-center hidden'>
                         <div
-                            className='border-2 border-[#f7740a] rounded-full p-2 hover:bg-[#f7740a] flex items-center justify-center group transition-all duration-200 cursor-pointer'
+                            className='border-2 border-primary rounded-full p-2 hover:bg-primary flex items-center justify-center group transition-all duration-200 cursor-pointer'
                             onClick={() => swiperInstance?.slidePrev()}
                         >
-                            <ChevronLeft className='text-[#f7740a] group-hover:text-white' />
+                            <ChevronLeft className='text-primary group-hover:text-white' />
                         </div>
                     </div>
                     <div className='hidden md:flex items-center justify-center'>
                         <div
-                            className='border-2 border-[#f7740a] rounded-full p-2 hover:bg-[#f7740a] flex items-center justify-center group transition-all duration-200 cursor-pointer'
+                            className='border-2 border-primary rounded-full p-2 hover:bg-primary flex items-center justify-center group transition-all duration-200 cursor-pointer'
                             onClick={() => swiperInstance?.slideNext()}
                         >
-                            <ChevronRight className='text-[#f7740a] group-hover:text-white' />
+                            <ChevronRight className='text-primary group-hover:text-white' />
                         </div>
                     </div>
                 </div>
@@ -74,13 +74,13 @@ const TripStopsSwiper: React.FC<TripStopsSwiperProps> = ({ stops }) => {
                                     <h1 className="text-2xl md:text-3xl font-semibold mb-2">{t('view.stopt')} {stopId}: {stopData.name} {stopData.opt ? '(Optional)' : ''}</h1>
                                     <div className='flex flex-col md:flex-row md:items-center md:gap-2 py-2'>
                                         <div className='flex items-center gap-2'>
-                                            <MapPin className='text-[#f7740a]' /> <b>{t('view.location')}:</b>
+                                            <MapPin className='text-primary' /> <b>{t('view.location')}:</b>
                                         </div>
                                         <p>{stopData.location}</p>
                                     </div>
                                     <div className='flex items-center gap-2 pb-2'>
                                         <div className='flex items-center gap-2'>
-                                            <Coins className='text-[#f7740a]' /> <b>{t('view.recived')}:</b>
+                                            <Coins className='text-primary' /> <b>{t('view.recived')}:</b>
                                         </div>
                                         <p>{stopData.point}</p>
                                         <Tooltip>
@@ -100,16 +100,16 @@ const TripStopsSwiper: React.FC<TripStopsSwiperProps> = ({ stops }) => {
             </div>
             <div className='grid md:hidden grid-cols-2 gap-3 mt-5'>
                 <div
-                    className='border-2 border-[#f7740a] rounded-xl p-2 hover:bg-[#f7740a] flex items-center justify-center group transition-all duration-200 cursor-pointer'
+                    className='border-2 border-primary rounded-xl p-2 hover:bg-primary flex items-center justify-center group transition-all duration-200 cursor-pointer'
                     onClick={() => swiperInstance?.slidePrev()}
                 >
-                    <ChevronLeft className='text-[#f7740a] group-hover:text-white' />
+                    <ChevronLeft className='text-primary group-hover:text-white' />
                 </div>
                 <div
-                    className='border-2 border-[#f7740a] rounded-xl p-2 hover:bg-[#f7740a] flex items-center justify-center group transition-all duration-200 cursor-pointer'
+                    className='border-2 border-primary rounded-xl p-2 hover:bg-primary flex items-center justify-center group transition-all duration-200 cursor-pointer'
                     onClick={() => swiperInstance?.slideNext()}
                 >
-                    <ChevronRight className='text-[#f7740a] group-hover:text-white' />
+                    <ChevronRight className='text-primary group-hover:text-white' />
                 </div>
             </div>
         </div>

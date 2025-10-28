@@ -126,7 +126,7 @@ function Grid() {
                     <Tooltip>
                         <TooltipTrigger
                             onClick={() => setShowOverview(!showOverview)}
-                            className="text-[#f7740a] lg:block hidden cursor-pointer"
+                            className="text-primary lg:block hidden cursor-pointer"
                         >
                             <Orbit />
                         </TooltipTrigger>
@@ -154,7 +154,7 @@ function Grid() {
                                         className="w-full h-[350px] md:h-[500px] rounded-4xl overflow-hidden relative"
                                     >
                                         <img className='w-full h-full object-cover' src={item.thumnails} alt={item.title} />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-[#f7740a]/70 via-transparent to-transparent"></div>
+                                        <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"></div>
                                     </div>
                                     <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 text-white rounded-b-4xl flex flex-col gap-2'>
                                         <h1 className='text-2xl md:text-3xl font-bold pb-3 md:pb-0'>{item.title}</h1>

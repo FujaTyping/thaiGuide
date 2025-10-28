@@ -83,11 +83,11 @@ function DeleteModal({ open, setOpen, id }: { open: boolean, setOpen: React.Disp
                                             </div>
                                         </> : <>
                                             <div>
-                                                <p>{t('d1')} <span className='font-semibold text-[#f7740a]'>{t('d2')}</span></p>
-                                                <p className='flex items-center gap-1 mt-2'><span className='font-semibold text-[#f7740a] flex items-center gap-2'><FileScan size={20} /> {t('qrid')} :</span> {id}</p>
+                                                <p>{t('d1')} <span className='font-semibold text-primary'>{t('d2')}</span></p>
+                                                <p className='flex items-center gap-1 mt-2'><span className='font-semibold text-primary flex items-center gap-2'><FileScan size={20} /> {t('qrid')} :</span> {id}</p>
                                             </div>
                                             <DialogFooter className='mt-2'>
-                                                <button onClick={deleteNow} className='bg-[#f7740a] text-white p-2 px-5 rounded-xl cursor-pointer'>
+                                                <button onClick={deleteNow} className='bg-primary text-white p-2 px-5 rounded-xl cursor-pointer'>
                                                     {t('conBTN')}
                                                 </button>
                                                 <DialogClose asChild>

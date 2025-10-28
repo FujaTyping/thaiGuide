@@ -61,19 +61,19 @@ async function page({ params }: Props) {
                 className='relative overflow-hidden rounded-b-4xl'
             >
                 <img src={data.thumnails} className='w-full h-[550px] md:h-[700px] object-cover' alt={data.title} />
-                <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-[#f7740a]/70 to-transparent text-white rounded-b-4xl text-center'>
+                <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-primary/70 to-transparent text-white rounded-b-4xl text-center'>
                     <h1 className='text-3xl md:text-4xl font-bold mb-2'>{data.ndtitle}</h1>
                 </div>
             </div>
             <main className='tg-container'>
                 <div>
                     <h1 className='font-bold text-4xl'>{data.title}</h1>
-                    <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
+                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
                 </div>
                 <Link href={`/province/${data.province}`} className='mt-3'>
                     <div className='flex flex-row md:items-center gap-1 md:gap-2 mt-3'>
                         <div className='flex items-center gap-2'>
-                            <MapPin className='font-semibold text-[#f7740a]' />
+                            <MapPin className='font-semibold text-primary' />
                             <h1 className='font-semibold'>{t('item.province')} : </h1>
                         </div>
                         <p>{data.province.charAt(0).toUpperCase() + data.province.slice(1)}</p>
@@ -82,29 +82,29 @@ async function page({ params }: Props) {
                 <p className='mt-2'>{data.decs}</p>
                 <div className='grid grid-cols-2 md:grid-cols-3 py-8 gap-8'>
                     <div className='flex flex-col gap-1 items-center justify-center'>
-                        <Banknote className='text-[#f7740a] size-14' />
+                        <Banknote className='text-primary size-14' />
                         <p className='font-semibold text-xl'>{data.pricing}</p>
                         <p>{t('item.cost')}</p>
                     </div>
                     <div className='flex flex-col gap-1 items-center justify-center'>
-                        <Star className='text-[#f7740a] size-12' />
+                        <Star className='text-primary size-12' />
                         <p className='font-semibold text-xl'>{data.rating}</p>
                         <p>{t('item.rate')}</p>
                     </div>
                     <div className='flex flex-col gap-1 items-center justify-center'>
-                        <MapPinned className='text-[#f7740a] size-12' />
+                        <MapPinned className='text-primary size-12' />
                         <p className='font-semibold text-xl'>{data.popular}</p>
                         <p>{t('item.visit')}</p>
                     </div>
                     {
                         data.details && (<>
                             <div className='flex flex-col gap-1 items-center justify-center'>
-                                <Phone className='text-[#f7740a] size-12' />
+                                <Phone className='text-primary size-12' />
                                 <p className='font-semibold text-xl'>{data.details.tel}</p>
                                 <p>{t('item.call')}</p>
                             </div>
                             <div className='flex flex-col gap-1 items-center justify-center'>
-                                <Coins className='text-[#f7740a] size-12' />
+                                <Coins className='text-primary size-12' />
                                 <p className='font-semibold text-xl'>{data.details.points}</p>
                                 <p className='flex items-center gap-2'>{t('item.point')}
                                     <Tooltip>
@@ -119,7 +119,7 @@ async function page({ params }: Props) {
                             {
                                 data.details.website != "-" && <>
                                     <Link href={data.details.website} className='flex flex-col gap-1 items-center justify-center'>
-                                        <Map className='text-[#f7740a] size-12' />
+                                        <Map className='text-primary size-12' />
                                         <p className='font-semibold text-xl'>{t('item.click')}</p>
                                         <p>{t('item.web')}</p>
                                     </Link>
@@ -132,14 +132,14 @@ async function page({ params }: Props) {
             <main className='max-w-7xl mx-auto px-4 pb-6'>
                 <div className='mb-5'>
                     <h1 className='font-bold text-4xl'>{t('item.forecast')}</h1>
-                    <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
+                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
                 </div>
                 <iframe src={`https://www.tmd.go.th/en/weatherForecast7DaysWidget?province=${data.province}`} height="400" className='w-full border-0' scrolling="no" title={`Weather forecast`}></iframe>
             </main>
             <main className='max-w-7xl mx-auto px-4 pb-6'>
                 <div className='mb-5'>
                     <h1 className='font-bold text-4xl'>{t('item.map')}</h1>
-                    <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
+                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
                 </div>
                 <iframe src={data.mapembed} className='w-full h-[500px] rounded-2xl' loading="lazy"></iframe>
             </main>

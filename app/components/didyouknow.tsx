@@ -35,7 +35,7 @@ function Didyouknow() {
                     transition={{ delay: 0.2 }}
                     viewport={{ once: true }}
                 >
-                    <div className='bg-[#f7740a] text-white flex flex-col gap-3 items-center justify-center py-6 rounded-2xl px-4'>
+                    <div className='bg-primary text-white flex flex-col gap-3 items-center justify-center py-6 rounded-2xl px-4'>
                         <MessageCircleQuestion className='size-8 md:size-10' />
                         <h1 className='font-bold text-2xl md:text-3xl'>{t('title')}</h1>
                         <p className='max-w-3xl'>{t(`text.${selectedFact}`)}</p>

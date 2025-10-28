@@ -47,7 +47,7 @@ function Grid() {
                         <Link href={`/redeem/${item.id}`} key={index}>
                             <div className='flex items-center flex-col place-content-between gap-6 hover:scale-105 transition-all duration-200'>
                                 <img src={item.image} alt="Product" className='rounded-xl h-62 object-cover' />
-                                <div className='bg-[#f7740a] w-full rounded-xl p-4 text-white'>
+                                <div className='bg-primary w-full rounded-xl p-4 text-white'>
                                     <h1 className='font-semibold text-xl'>{item.name}</h1>
                                     <p className='mt-1 mb-2'>{item.decs}</p>
                                     <p className='flex justify-end gap-2 font-semibold'><Coins /> {item.require}</p>

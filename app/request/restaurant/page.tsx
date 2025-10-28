@@ -12,7 +12,7 @@ function page() {
       <main className='tg-container'>
         <div>
           <h1 className='font-bold text-4xl'>เพิ่มร้านอาหารของคุณ</h1>
-          <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
+          <div className='w-32 h-1.5 bg-primary mt-2'></div>
           <p className='mt-4'>สนับสนุนธุรกิจในท้องถิ่นโดยการเพิ่มร้านอาหารของคุณลงในแพลตฟอร์มของเราได้ฟรี</p>
         </div>
         <ResForm />

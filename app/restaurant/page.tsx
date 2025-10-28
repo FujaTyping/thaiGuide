@@ -17,7 +17,7 @@ function Page() {
             <main className='tg-container'>
                 <div>
                     <h1 className='font-bold text-4xl'>{t('title')}</h1>
-                    <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
+                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
                 </div>
                 <p className='mt-4'>{t('decs')}</p>
                 <Grid />
@@ -25,19 +25,19 @@ function Page() {
             <main className='tg-container'>
                 <div>
                     <h1 className='font-bold text-4xl'>{t('tips.title')}</h1>
-                    <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
+                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-4'>
-                    <div className='border-3 rounded-xl p-4 border-[#f7740a]'>
-                        <h1 className='text-xl font-semibold mb-2 flex items-center gap-2'><Flame className='text-[#f7740a]' /> {t('tips.0.title')}</h1>
+                    <div className='border-3 rounded-xl p-4 border-primary'>
+                        <h1 className='text-xl font-semibold mb-2 flex items-center gap-2'><Flame className='text-primary' /> {t('tips.0.title')}</h1>
                         <p>{t('tips.0.decs')}</p>
                     </div>
-                    <div className='border-3 rounded-xl p-4 border-[#f7740a]'>
-                        <h1 className='text-xl font-semibold mb-2 flex items-center gap-2'><Leaf className='text-[#f7740a]' /> {t('tips.1.title')}</h1>
+                    <div className='border-3 rounded-xl p-4 border-primary'>
+                        <h1 className='text-xl font-semibold mb-2 flex items-center gap-2'><Leaf className='text-primary' /> {t('tips.1.title')}</h1>
                         <p>{t('tips.1.decs')}</p>
                     </div>
-                    <div className='border-3 rounded-xl p-4 border-[#f7740a] md:col-span-2'>
-                        <h1 className='text-xl font-semibold mb-2 flex items-center gap-2'><UtensilsCrossed className='text-[#f7740a]' /> {t('tips.2.title')}</h1>
+                    <div className='border-3 rounded-xl p-4 border-primary md:col-span-2'>
+                        <h1 className='text-xl font-semibold mb-2 flex items-center gap-2'><UtensilsCrossed className='text-primary' /> {t('tips.2.title')}</h1>
                         <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
                             <div>
                                 <h1 className='text-lg font-semibold mb-1'>{t('tips.2.0.title')}</h1>

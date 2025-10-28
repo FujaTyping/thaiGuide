@@ -84,22 +84,22 @@ function Activities({ data: provinceName }: ActivitiesProps) {
                 <div className='flex items-center place-content-between mb-6'>
                     <div>
                         <h1 className='font-bold text-4xl'>{t('headder')}</h1>
-                        <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
+                        <div className='w-32 h-1.5 bg-primary mt-2'></div>
                     </div>
                     <div className='flex items-center gap-3'>
                         {Data.length > 1 && (
                             <>
                                 <div
-                                    className='border-2 border-[#f7740a] rounded-full p-2 hover:bg-[#f7740a] group transition-all duration-200 cursor-pointer'
+                                    className='border-2 border-primary rounded-full p-2 hover:bg-primary group transition-all duration-200 cursor-pointer'
                                     onClick={goPrev}
                                 >
-                                    <ChevronLeft className='text-[#f7740a] group-hover:text-white' />
+                                    <ChevronLeft className='text-primary group-hover:text-white' />
                                 </div>
                                 <div
-                                    className='border-2 border-[#f7740a] rounded-full p-2 hover:bg-[#f7740a] group transition-all duration-200 cursor-pointer'
+                                    className='border-2 border-primary rounded-full p-2 hover:bg-primary group transition-all duration-200 cursor-pointer'
                                     onClick={goNext}
                                 >
-                                    <ChevronRight className='text-[#f7740a] group-hover:text-white' />
+                                    <ChevronRight className='text-primary group-hover:text-white' />
                                 </div>
                             </>
                         )}
@@ -135,7 +135,7 @@ function Activities({ data: provinceName }: ActivitiesProps) {
                                                     className="w-full h-[350px] md:h-[500px] rounded-4xl overflow-hidden relative"
                                                 >
                                                     <Image width={1080} height={1280} className='w-full h-full object-cover' src={item.thumnails} alt={`${item.title}`} />
-                                                    <div className="absolute inset-0 bg-gradient-to-t from-[#f7740a]/70 via-transparent to-transparent"></div>
+                                                    <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"></div>
                                                 </div>
                                                 <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 text-white rounded-b-4xl'>
                                                     <h1 className='text-2xl md:text-3xl font-bold pb-3 md:pb-0 group-hover:-translate-y-4 transition-all duration-200'>{item.ndtitle}</h1>
@@ -148,7 +148,7 @@ function Activities({ data: provinceName }: ActivitiesProps) {
                                     <Link href={"/activity"}>
                                         <motion.div
                                             whileTap={{ scale: 0.95 }}
-                                            className='flex items-center justify-center flex-col h-[350px] gap-4 md:h-[500px] bg-[#f7740a] text-white rounded-4xl'
+                                            className='flex items-center justify-center flex-col h-[350px] gap-4 md:h-[500px] bg-primary text-white rounded-4xl'
                                         >
                                             <div className='p-3 border-2 rounded-full'>
                                                 <Leaf className='w-10 h-10' />

@@ -52,7 +52,11 @@
                 "login": "로그인"
             },
             "switcherAd": "관리자로 로그인",
-            "switcherTra": "여행자로 로그인"
+            "switcherTra": "여행자로 로그인",
+            "ac1": "로그인하면 당사의",
+            "terms": "서비스 약관",
+            "ac2": "및",
+            "privacy": "개인정보 처리방침"
         }
     },
     "Crisis": {

@@ -82,9 +82,9 @@ function PMap() {
         <>
             <div className='max-w-7xl mx-auto px-4 py-7'>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mb-5'>
-                    <div className='border-3 border-[#f7740a] rounded-2xl p-4 px-5 flex items-start gap-6'>
+                    <div className='border-3 border-primary rounded-2xl p-4 px-5 flex items-start gap-6'>
                         <div>
-                            <Telescope className='w-8 h-8 text-[#f7740a]' />
+                            <Telescope className='w-8 h-8 text-primary' />
                         </div>
                         <div>
                             <h2 className='font-bold text-xl'>{t('visited.gtitle')}</h2>
@@ -101,9 +101,9 @@ function PMap() {
                             </span> {t('place')}</h2>
                         </div>
                     </div>
-                    <div className='border-3 border-[#f7740a] rounded-2xl p-4 px-5 flex items-start gap-6'>
+                    <div className='border-3 border-primary rounded-2xl p-4 px-5 flex items-start gap-6'>
                         <div>
-                            <EyeClosed className='w-8 h-8 text-[#f7740a]' />
+                            <EyeClosed className='w-8 h-8 text-primary' />
                         </div>
                         <div>
                             <h2 className='font-bold text-xl'>{t('unseen.gtitle')}</h2>
@@ -133,7 +133,7 @@ function PMap() {
                                         <h1 className='text-lg font-bold'>{t('unseen.title')}</h1>
                                         <p>{t('unseen.decs')}</p>
                                         {/*<p className='flex items-center gap-2 mt-2'><Coins /> 0</p>*/}
-                                        <Link href={`https://www.google.com/maps/place/${item.latitude},${item.longitude}`}><Button className='w-full mt-3 cursor-pointer bg-[#f7740a] hover:bg-[#f7740a]'><Milestone /> {t('unseen.di')}</Button></Link>
+                                        <Link href={`https://www.google.com/maps/place/${item.latitude},${item.longitude}`}><Button className='w-full mt-3 cursor-pointer bg-primary hover:bg-primary'><Milestone /> {t('unseen.di')}</Button></Link>
                                     </PopoverContent>
                                 </Popover>
                             </Overlay>
@@ -149,8 +149,8 @@ function PMap() {
                                     <PopoverContent>
                                         <h1 className='text-lg font-bold'>{t('visited.title')}</h1>
                                         <div className='space-y-2 md:space-y-1 mt-1'>
-                                            <p className='flex md:items-center flex-col md:flex-row gap-2'><span className='font-semibold flex items-center gap-2'><MapPinHouse className='text-[#f7740a]' /> {t('visited.name')} :</span> {item.name}</p>
-                                            <p className='flex items-center gap-2'><span className='font-semibold flex items-center gap-2'><CalendarCheck2 className='text-[#f7740a]' /> {t('visited.year')} :</span> {item.year}</p>
+                                            <p className='flex md:items-center flex-col md:flex-row gap-2'><span className='font-semibold flex items-center gap-2'><MapPinHouse className='text-primary' /> {t('visited.name')} :</span> {item.name}</p>
+                                            <p className='flex items-center gap-2'><span className='font-semibold flex items-center gap-2'><CalendarCheck2 className='text-primary' /> {t('visited.year')} :</span> {item.year}</p>
                                         </div>
                                     </PopoverContent>
                                 </Popover>

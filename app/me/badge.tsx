@@ -92,8 +92,8 @@ function BBadge() {
                                                     <img src={item.imageUrl} alt='Badge' className='w-32 md:w-40 cursor-pointer' />
                                                 </PopoverTrigger>
                                                 <PopoverContent>
-                                                    <h1 className='flex items-center gap-2'><b className='flex items-center gap-1'><Footprints className='text-[#f7740a]' /> {t('badge.visit')} :</b> {item.province.charAt(0).toUpperCase() + item.province.slice(1)}</h1>
-                                                    <h2 className='mt-1'><b className='flex items-center gap-1'><Quote className='text-[#f7740a]' /> {t('badge.slogan')} : </b> {item.slogan}</h2>
+                                                    <h1 className='flex items-center gap-2'><b className='flex items-center gap-1'><Footprints className='text-primary' /> {t('badge.visit')} :</b> {item.province.charAt(0).toUpperCase() + item.province.slice(1)}</h1>
+                                                    <h2 className='mt-1'><b className='flex items-center gap-1'><Quote className='text-primary' /> {t('badge.slogan')} : </b> {item.slogan}</h2>
                                                 </PopoverContent>
                                             </Popover>
                                         </motion.div>

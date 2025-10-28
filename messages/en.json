@@ -52,7 +52,11 @@
         "login": "Login"
       },
       "switcherAd": "Login as Administrator",
-      "switcherTra": "Login as Traveler"
+      "switcherTra": "Login as Traveler",
+      "ac1": "By logging in you agree to our",
+      "terms": "Terms of Service",
+      "ac2": "and",
+      "privacy": "Privacy Policy"
     }
   },
   "Crisis": {

@@ -124,7 +124,7 @@ function Setting() {
     return (
         <>
             <div className='max-w-7xl mx-auto px-4 py-7'>
-                <div className='flex flex-col md:flex-row gap-4 md:gap-0 items-center place-content-between border-[#f7740a] rounded-2xl p-6 md:p-3 px-5 md:px-4 border-3'>
+                <div className='flex flex-col md:flex-row gap-4 md:gap-0 items-center place-content-between border-primary rounded-2xl p-6 md:p-3 px-5 md:px-4 border-3'>
                     <img src={uData.pfp} alt="Avatar" className='w-28 rounded-full' />
                     <div className='flex flex-col items-center md:items-end gap-1'>
                         <div className='flex items-center gap-2'>
@@ -133,7 +133,7 @@ function Setting() {
                             </> : <>
                                 <h1 className='text-2xl font-bold flex items-center gap-2'>{uData.name}</h1>
                             </>}
-                            {statName ? <><div className='flex items-center gap-1 text-[#f7740a] font-bold cursor-pointer'>
+                            {statName ? <><div className='flex items-center gap-1 text-primary font-bold cursor-pointer'>
                                 {
                                     nameLoading ? <>
                                         <LoaderCircle className='animate-spin' />
@@ -160,7 +160,7 @@ function Setting() {
                             </div></> : <>
                                 <Tooltip>
                                     <TooltipTrigger asChild>
-                                        <Pencil className='text-[#f7740a] font-bold cursor-pointer' onClick={() => setStaName(true)} />
+                                        <Pencil className='text-primary font-bold cursor-pointer' onClick={() => setStaName(true)} />
                                     </TooltipTrigger>
                                     <TooltipContent>
                                         <p>{t('option.name.hint')}</p>
@@ -173,9 +173,9 @@ function Setting() {
                 </div>
                 <div className='pt-5'>
                     <div className='flex items-center place-content-between'>
-                        <h2 className='flex items-center gap-2 font-semibold'><Trash2 className='text-[#f7740a] font-bold' /> {t('option.delete.btnla')}</h2>
+                        <h2 className='flex items-center gap-2 font-semibold'><Trash2 className='text-primary font-bold' /> {t('option.delete.btnla')}</h2>
                         <Dialog>
-                            <DialogTrigger onClick={() => setReqState("")} className='bg-[#f7740a] text-white p-2 rounded-xl px-5 mt-2 w-fit cursor-pointer'>
+                            <DialogTrigger onClick={() => setReqState("")} className='bg-primary text-white p-2 rounded-xl px-5 mt-2 w-fit cursor-pointer'>
                                 {t('option.delete.btn')}
                             </DialogTrigger>
                             <DialogContent>
@@ -216,11 +216,11 @@ function Setting() {
                                                     </> : <>
                                                         <div>
                                                             <p>{t('option.delete.d1')}
-                                                                <span className='text-[#f7740a] font-semibold mx-2'>{t('option.delete.d2')}</span>{t('option.delete.d3')}<span className='text-[#f7740a] font-semibold mx-2'>{t('option.delete.d4')}</span>
+                                                                <span className='text-primary font-semibold mx-2'>{t('option.delete.d2')}</span>{t('option.delete.d3')}<span className='text-primary font-semibold mx-2'>{t('option.delete.d4')}</span>
                                                             </p>
                                                         </div>
                                                         <DialogFooter className='mt-2'>
-                                                            <button onClick={deleteMyAccountNow} className='bg-[#f7740a] text-white p-2 px-5 rounded-xl cursor-pointer'>
+                                                            <button onClick={deleteMyAccountNow} className='bg-primary text-white p-2 px-5 rounded-xl cursor-pointer'>
                                                                 {t('option.delete.conBTN')}
                                                             </button>
                                                             <DialogClose asChild>

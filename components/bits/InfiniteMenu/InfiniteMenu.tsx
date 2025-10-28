@@ -1284,10 +1284,10 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [] }) => {
         </>
     );
 
-    const buttonClassName = `cursor-pointer bg-white border-2 p-2 px-6 rounded-2xl border-[#f7740a] ftitle absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col gap-1 items-center justify-center ${isMoving ? "inactive" : "active"}`;
+    const buttonClassName = `cursor-pointer bg-white border-2 p-2 px-6 rounded-2xl border-primary ftitle absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col gap-1 items-center justify-center ${isMoving ? "inactive" : "active"}`;
 
     return (
-        <div style={{ position: "relative", width: "100%", height: "100%" }} className="text-[#f7740a]">
+        <div style={{ position: "relative", width: "100%", height: "100%" }} className="text-primary">
             <canvas id="infinite-grid-menu-canvas" ref={canvasRef} />
 
             {activeItem?.link && (

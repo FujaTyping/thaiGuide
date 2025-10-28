@@ -182,7 +182,7 @@ function Grid() {
                                         className="w-full h-[350px] md:h-[500px] rounded-4xl overflow-hidden relative"
                                     >
                                         <img className='w-full h-full object-cover' src={item.thumnails} alt={item.name} />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-[#f7740a]/70 via-transparent to-transparent"></div>
+                                        <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"></div>
                                     </div>
                                     <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 text-white rounded-b-4xl flex flex-col gap-2'>
                                         <h1 className='text-2xl md:text-3xl font-bold pb-3 md:pb-0'>{item.name}</h1>
@@ -190,7 +190,7 @@ function Grid() {
                                     </div>
                                     {
                                         item.sme &&
-                                        <p className='absolute top-0 right-0 bg-[#f7740a] text-white px-4 rounded-tr-full rounded-bl-full'><span className='py-2'>{t('sme')}</span></p>
+                                        <p className='absolute top-0 right-0 bg-primary text-white px-4 rounded-tr-full rounded-bl-full'><span className='py-2'>{t('sme')}</span></p>
                                     }
                                 </motion.div>
                             </Link>
@@ -200,7 +200,7 @@ function Grid() {
                         <div className="mt-8 flex items-center justify-center">
                             <button
                                 onClick={handleLoadMore}
-                                className="flex items-center gap-3 w-full md:w-fit justify-center bg-[#f7740a] text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-[#f7640a] cursor-pointer"
+                                className="flex items-center gap-3 w-full md:w-fit justify-center bg-primary text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-[#f7640a] cursor-pointer"
                             >
                                 <ChevronDown />
                                 {t('grid.more')}
@@ -227,7 +227,7 @@ function Grid() {
             {
                 user !== null && <div className='fixed bottom-0 right-0 p-4'>
                     <Link href={'/request/restaurant'}>
-                        <div className='bg-[#f7740a] text-white p-3 rounded-full hover:bg-white hover:text-[#f7740a] border-2 border-[#f7740a] transition-all duration-250'>
+                        <div className='bg-primary text-white p-3 rounded-full hover:bg-white hover:text-primary border-2 border-primary transition-all duration-250'>
                             <MapPinPlus className='size-8' />
                         </div>
                     </Link>

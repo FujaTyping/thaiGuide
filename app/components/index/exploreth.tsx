@@ -76,13 +76,13 @@ function Exploreth() {
         <>
             <main className='max-w-7xl mx-auto px-3 py-6'>
                 <div className='flex items-center place-content-between mb-6'>
-                    <h1 className='text-2xl md:text-3xl font-bold text-[#f7740a]'>Destination By Region</h1>
+                    <h1 className='text-2xl md:text-3xl font-bold text-primary'>Destination By Region</h1>
                     <div className='flex items-center gap-3'>
-                        <div className='border-2 border-[#f7740a] rounded-full p-2 hover:bg-[#f7740a] group transition-all duration-200 cursor-pointer' onClick={goPrev}>
-                            <ChevronLeft className='text-[#f7740a] group-hover:text-white' />
+                        <div className='border-2 border-primary rounded-full p-2 hover:bg-primary group transition-all duration-200 cursor-pointer' onClick={goPrev}>
+                            <ChevronLeft className='text-primary group-hover:text-white' />
                         </div>
-                        <div className='border-2 border-[#f7740a] rounded-full p-2 hover:bg-[#f7740a] group transition-all duration-200 cursor-pointer' onClick={goNext}>
-                            <ChevronRight className='text-[#f7740a] group-hover:text-white' />
+                        <div className='border-2 border-primary rounded-full p-2 hover:bg-primary group transition-all duration-200 cursor-pointer' onClick={goNext}>
+                            <ChevronRight className='text-primary group-hover:text-white' />
                         </div>
                     </div>
                 </div>
@@ -118,7 +118,7 @@ function Exploreth() {
                                                 className="w-full h-[350px] md:h-[500px] rounded-4xl overflow-hidden relative"
                                             >
                                                 <img className='w-full h-full object-cover' src={item.image.src} alt={item.title} />
-                                                <div className="absolute inset-0 bg-gradient-to-t from-[#f7740a]/70 via-transparent to-transparent"></div>
+                                                <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"></div>
                                             </div>
                                             <motion.div
                                                 variants={textVariants}

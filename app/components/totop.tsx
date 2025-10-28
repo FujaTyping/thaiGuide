@@ -8,7 +8,7 @@ function Totop() {
     return (
         <>
             <ScrollToTop showUnder={160}>
-                <div className='bg-[#f7740a] text-white p-2 rounded-full'>
+                <div className='bg-primary text-white p-2 rounded-full'>
                     <ChevronUp />
                 </div>
             </ScrollToTop>
