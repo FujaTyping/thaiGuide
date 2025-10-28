@@ -56,19 +56,19 @@ async function page({ params }: Props) {
                 className='relative overflow-hidden rounded-b-4xl'
             >
                 <img src={data.thumbnails} className='w-full h-[550px] md:h-[700px] object-cover' alt={data.name} />
-                <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-[#f7740a]/70 to-transparent text-white rounded-b-4xl text-center'>
+                <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-primary/70 to-transparent text-white rounded-b-4xl text-center'>
                     <h1 className='text-3xl md:text-4xl font-bold mb-2'>{data.ndtitle}</h1>
                 </div>
             </div>
             <main className='tg-container'>
                 <div>
                     <h1 className='font-bold text-4xl'>{data.name}</h1>
-                    <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
+                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
                 </div>
-                <p className='mt-3 font-semibold flex items-center gap-2'><MapPin className='text-[#f7740a]' /> {data.location}</p>
+                <p className='mt-3 font-semibold flex items-center gap-2'><MapPin className='text-primary' /> {data.location}</p>
                 <p className='mt-2'>{data.decs}</p>
                 <div className='flex items-center gap-2 mt-6'>
-                    <Quote className='text-[#f7740a]' />
+                    <Quote className='text-primary' />
                     <h1 className='font-semibold'>{t('item.slogan')}</h1>
                 </div>
                 <p className='mt-1'>{data.slogan}</p>
@@ -76,7 +76,7 @@ async function page({ params }: Props) {
             <main className='tg-container'>
                 <div>
                     <h1 className='font-bold text-4xl'>{t('item.softhight')}</h1>
-                    <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
+                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-8 mt-6'>
                     {
@@ -93,7 +93,7 @@ async function page({ params }: Props) {
                                     <h1 className='font-semibold text-xl mb-1'>{item.name}</h1>
                                     <p>{item.decs}</p>
                                     <p className='flex flex-col mt-2'><span className='flex items-center font-semibold mb-1 gap-1'>
-                                        <MapPin className='text-[#f7740a]' /> {t('item.location')}</span>
+                                        <MapPin className='text-primary' /> {t('item.location')}</span>
                                         {item.location}</p>
                                 </div>
                             </div>

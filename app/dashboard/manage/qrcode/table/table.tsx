@@ -74,7 +74,7 @@ export function DataTable<TData, TValue>({
         <Tooltip>
           <TooltipTrigger asChild>
             <Link href={'/dashboard/manage/qrcode/create'}>
-              <Button className="bg-[#f7740a] hover:bg-[#f7740a] cursor-pointer"><Plus /></Button>
+              <Button className="bg-primary hover:bg-primary cursor-pointer"><Plus /></Button>
             </Link>
           </TooltipTrigger>
           <TooltipContent>
@@ -84,9 +84,9 @@ export function DataTable<TData, TValue>({
       </div>
       <div className="overflow-hidden rounded-md border">
         <Table>
-          <TableHeader className="bg-[#f7740a]">
+          <TableHeader className="bg-primary">
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id} className="hover:bg-[#f7740a]">
+              <TableRow key={headerGroup.id} className="hover:bg-primary">
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id} className="text-white font-bold">
@@ -124,7 +124,7 @@ export function DataTable<TData, TValue>({
                         <Trash2 size={18} onClick={() => {
                           setOpen(true)
                           setTargetId(row.getValue('id'))
-                        }} className="text-[#f7740a] cursor-pointer" />
+                        }} className="text-primary cursor-pointer" />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>{t('delqr')}</p>
@@ -159,7 +159,7 @@ export function DataTable<TData, TValue>({
       <div className="flex items-center justify-end space-x-2 pt-4">
         <Button
           variant="outline"
-          className="border-[#f7740a] border-2"
+          className="border-primary border-2"
           size="sm"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
@@ -168,7 +168,7 @@ export function DataTable<TData, TValue>({
         </Button>
         <Button
           variant="outline"
-          className="border-[#f7740a] border-2"
+          className="border-primary border-2"
           size="sm"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}

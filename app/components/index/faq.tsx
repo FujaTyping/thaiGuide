@@ -13,7 +13,7 @@ function Faq() {
     return (
         <>
             <main className='max-w-7xl mx-auto px-3 py-6'>
-                <h1 className='text-2xl md:text-3xl font-bold text-[#f7740a]'>{t('headder')}</h1>
+                <h1 className='text-2xl md:text-3xl font-bold text-primary'>{t('headder')}</h1>
                 <Accordion type="single" collapsible className='mt-4'>
                     {
                         Array.from({ length: 5 }).map((_, index) => (

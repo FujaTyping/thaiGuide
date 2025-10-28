@@ -168,7 +168,7 @@ function Grid() {
                                             className="w-full h-[350px] md:h-[500px] rounded-4xl overflow-hidden relative"
                                         >
                                             <img className='w-full h-full object-cover' src={item.thumnails} alt={item.title} />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-[#f7740a]/70 via-transparent to-transparent"></div>
+                                            <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"></div>
                                         </div>
                                         <div className='absolute top-0 right-0 p-4 md:p-8 text-white rounded-b-4xl flex gap-2 items-center'>
                                             <Star />
@@ -187,7 +187,7 @@ function Grid() {
                         <div className="mt-8 flex items-center justify-center">
                             <button
                                 onClick={handleLoadMore}
-                                className="flex items-center gap-3 w-full md:w-fit justify-center bg-[#f7740a] text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-[#f7640a] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#f7740a] focus:ring-opacity-50"
+                                className="flex items-center gap-3 w-full md:w-fit justify-center bg-primary text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-[#f7640a] cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
                             >
                                 <ChevronDown />
                                 {t('more')}

@@ -58,33 +58,33 @@ async function page({ params }: Props) {
                 className='relative overflow-hidden rounded-b-4xl'
             >
                 <img src={data.thumnails} className='w-full h-[550px] md:h-[700px] object-cover' alt={data.title} />
-                <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-[#f7740a]/70 to-transparent text-white rounded-b-4xl text-center'>
+                <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-primary/70 to-transparent text-white rounded-b-4xl text-center'>
                     <h1 className='text-3xl md:text-4xl font-bold mb-2'>{data.ndtitle}</h1>
                 </div>
             </div>
             <main className='tg-container'>
                 <div>
                     <h1 className='font-bold text-4xl'>{data.title}</h1>
-                    <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
+                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
                 </div>
                 <div className='flex flex-col md:flex-row md:items-center gap-3 mt-4'>
                     <div className='flex items-center gap-1'>
-                        <MapPin className='text-[#f7740a]' />
+                        <MapPin className='text-primary' />
                         <p><b>{t('view.start')}:</b> {data.start}</p>
                     </div>
                     <div className='flex items-center gap-1'>
-                        <MapPin className='text-[#f7740a]' />
+                        <MapPin className='text-primary' />
                         <p><b>{t('view.end')}:</b> {data.end}</p>
                     </div>
                     <div className='flex items-center gap-1'>
-                        <Clock className='text-[#f7740a]' />
+                        <Clock className='text-primary' />
                         <p>{data.long}</p>
                     </div>
                 </div>
                 <Link href={`/province/${data.province}`}>
                     <div className='flex flex-row md:items-center gap-1 md:gap-2 mt-3'>
                         <div className='flex items-center gap-2'>
-                            <MapPin className='font-semibold text-[#f7740a]' />
+                            <MapPin className='font-semibold text-primary' />
                             <h1 className='font-semibold'>{t('province')} : </h1>
                         </div>
                         <p>{data.province.charAt(0).toUpperCase() + data.province.slice(1)}</p>
@@ -94,7 +94,7 @@ async function page({ params }: Props) {
                 <div className='flex items-center gap-2 mt-2 mb-10'>
                     {
                         data.tags.map((tag: string, index: number) => (
-                            <Badge key={index} className='bg-[#f7740a] text-white'>{tag}</Badge>
+                            <Badge key={index} className='bg-primary text-white'>{tag}</Badge>
                         ))
                     }
                 </div>
@@ -103,7 +103,7 @@ async function page({ params }: Props) {
             <main className='max-w-7xl mx-auto px-4 pb-6'>
                 <div className='mb-5'>
                     <h1 className='font-bold text-4xl'>{t('view.overview')}</h1>
-                    <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
+                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
                 </div>
                 <iframe src={data.map} className='w-full h-[500px] rounded-2xl' loading="lazy"></iframe>
             </main>

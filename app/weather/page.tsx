@@ -18,7 +18,7 @@ function Page() {
             <main className='tg-container'>
                 <div>
                     <h1 className='font-bold text-4xl'>{t('title')}</h1>
-                    <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
+                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
                 </div>
                 <p className='mt-4'>{t('decs')}</p>
                 <div className='mt-8'>
@@ -26,11 +26,11 @@ function Page() {
                 </div>
                 <div>
                     <h1 className='font-bold text-4xl'>{t('stitle')}</h1>
-                    <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
+                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
                 </div>
                 <p className='mt-4'>{t('sdecs')}</p>
                 <div className='mt-2'>
-                    <p className='flex items-center gap-2 text-[#f7740a]'><TriangleAlert /> <b>{t('simu.ntitle')}</b><br /></p>
+                    <p className='flex items-center gap-2 text-primary'><TriangleAlert /> <b>{t('simu.ntitle')}</b><br /></p>
                     <p className='mt-1'>{t('simu.notice')}</p>
                 </div>
                 <div className='mt-6'>

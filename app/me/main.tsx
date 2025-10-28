@@ -16,7 +16,7 @@ function Main() {
 
     return (
         <>
-            <p className='mb-6 mt-4 font-semibold text-center'>{t('shareTitleM')} {t('customize.or')} <span onClick={() => setEditPFP(!editpfp)} className='text-[#f7740a] cursor-pointer'>{editpfp ? `${t('customize.bgO')}` : `${t('customize.bgOF')}`}</span></p>
+            <p className='mb-6 mt-4 font-semibold text-center'>{t('shareTitleM')} {t('customize.or')} <span onClick={() => setEditPFP(!editpfp)} className='text-primary cursor-pointer'>{editpfp ? `${t('customize.bgO')}` : `${t('customize.bgOF')}`}</span></p>
             {
                 editpfp ?
                     <Tabs value={activeCUSTab} onValueChange={setActiveCUSTab} id='cus' defaultValue="bgg" className='w-full'>

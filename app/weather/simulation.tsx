@@ -102,7 +102,7 @@ function Simulation() {
                                     <p className='mt-2'>{t('simu.hot.info')}</p>
                                 </div>
                                 <div>
-                                    <h1 className='flex items-center gap-2 font-semibold text-lg'><CalendarClock className='text-[#f7740a]' /> {t('simu.event')}</h1>
+                                    <h1 className='flex items-center gap-2 font-semibold text-lg'><CalendarClock className='text-primary' /> {t('simu.event')}</h1>
                                     <ul className='mt-2 list-disc list-inside'>
                                         {
                                             Event[stateS[0]].map((event, index) => (
@@ -110,7 +110,7 @@ function Simulation() {
                                             ))
                                         }
                                     </ul>
-                                    <h1 className='mt-4 flex items-center gap-2 font-semibold text-lg'><Info className='text-[#f7740a]' /> {t('simu.tip')}</h1>
+                                    <h1 className='mt-4 flex items-center gap-2 font-semibold text-lg'><Info className='text-primary' /> {t('simu.tip')}</h1>
                                     <ul className='mt-2 list-disc list-inside'>
                                         <li>{t('simu.hot.tips.0')}</li>
                                         <li>{t('simu.hot.tips.1')}</li>
@@ -136,7 +136,7 @@ function Simulation() {
                                     <p className='mt-2'>{t('simu.rain.info')}</p>
                                 </div>
                                 <div>
-                                    <h1 className='flex items-center gap-2 font-semibold text-lg'><CalendarClock className='text-[#f7740a]' /> {t('simu.event')}</h1>
+                                    <h1 className='flex items-center gap-2 font-semibold text-lg'><CalendarClock className='text-primary' /> {t('simu.event')}</h1>
                                     <ul className='mt-2 list-disc list-inside'>
                                         {
                                             Event[stateS[0]].map((event, index) => (
@@ -144,7 +144,7 @@ function Simulation() {
                                             ))
                                         }
                                     </ul>
-                                    <h1 className='mt-4 flex items-center gap-2 font-semibold text-lg'><Info className='text-[#f7740a]' /> {t('simu.tip')}</h1>
+                                    <h1 className='mt-4 flex items-center gap-2 font-semibold text-lg'><Info className='text-primary' /> {t('simu.tip')}</h1>
                                     <ul className='mt-2 list-disc list-inside'>
                                         <li>{t('simu.rain.tips.0')}</li>
                                         <li>{t('simu.rain.tips.1')}</li>
@@ -170,7 +170,7 @@ function Simulation() {
                                     <p className='mt-2'>{t('simu.cold.info')}</p>
                                 </div>
                                 <div>
-                                    <h1 className='flex items-center gap-2 font-semibold text-lg'><CalendarClock className='text-[#f7740a]' /> {t('simu.event')}</h1>
+                                    <h1 className='flex items-center gap-2 font-semibold text-lg'><CalendarClock className='text-primary' /> {t('simu.event')}</h1>
                                     <ul className='mt-2 list-disc list-inside'>
                                         {
                                             Event[stateS[0]].map((event, index) => (
@@ -178,7 +178,7 @@ function Simulation() {
                                             ))
                                         }
                                     </ul>
-                                    <h1 className='mt-4 flex items-center gap-2 font-semibold text-lg'><Info className='text-[#f7740a]' /> {t('simu.tip')}</h1>
+                                    <h1 className='mt-4 flex items-center gap-2 font-semibold text-lg'><Info className='text-primary' /> {t('simu.tip')}</h1>
                                     <ul className='mt-2 list-disc list-inside'>
                                         <li>{t('simu.cold.tips.0')}</li>
                                         <li>{t('simu.cold.tips.1')}</li>

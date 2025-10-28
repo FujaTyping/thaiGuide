@@ -36,7 +36,7 @@ function Sharebt() {
             <Dialog>
                 <DialogTrigger>
                     <div className='fixed bottom-0 right-0 p-4'>
-                        <div className='bg-[#f7740a] text-white p-3 rounded-full hover:bg-white hover:text-[#f7740a] border-2 border-[#f7740a] transition-all duration-250 cursor-pointer'>
+                        <div className='bg-primary text-white p-3 rounded-full hover:bg-white hover:text-primary border-2 border-primary transition-all duration-250 cursor-pointer'>
                             <Share2 className='size-8' />
                         </div>
                     </div>

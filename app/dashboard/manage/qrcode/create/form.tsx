@@ -237,7 +237,7 @@ function NewForm() {
                             )}
                         />
                         <div className='flex items-center justify-center flex-col-reverse gap-4 mt-8 md:mt-0'>
-                            <Button type="submit" className='bg-[#f7740a] hover:bg-[#f7740a] cursor-pointer w-full md:w-fit'>{loading ? <LoaderCircleIcon className='animate-spin' /> : <Send />}{t('submit')}</Button>
+                            <Button type="submit" className='bg-primary hover:bg-primary cursor-pointer w-full md:w-fit'>{loading ? <LoaderCircleIcon className='animate-spin' /> : <Send />}{t('submit')}</Button>
                             <FormField
                                 control={form.control}
                                 name="onetime"

@@ -94,7 +94,7 @@ function IssuesForm() {
     if (msg == 1) {
         return (
             <>
-                <div className='mt-6 mb-4 w-full flex flex-col items-center justify-center bg-[#f7740a] text-white p-4 py-8 rounded-xl'>
+                <div className='mt-6 mb-4 w-full flex flex-col items-center justify-center bg-primary text-white p-4 py-8 rounded-xl'>
                     <CircleCheckBig className='w-10 h-10' />
                     <div className='mt-2 text-center'>
                         <h1 className='font-semibold text-2xl mb-1'>{t('pptk')}</h1>
@@ -261,7 +261,7 @@ function IssuesForm() {
                             )}
                         />
                         <div className='w-full flex items-center justify-center'>
-                            <Button type="submit" className='w-full md:w-fit cursor-pointer bg-[#f7740a] text-white flex items-center gap-3 hover:bg-[#f7740a]'>{loading ? <LoaderCircle className='animate-spin' /> : <Send />} Submit</Button>
+                            <Button type="submit" className='w-full md:w-fit cursor-pointer bg-primary text-white flex items-center gap-3 hover:bg-primary'>{loading ? <LoaderCircle className='animate-spin' /> : <Send />} Submit</Button>
                         </div>
                     </form>
                 </Form>

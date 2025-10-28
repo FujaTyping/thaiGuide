@@ -105,10 +105,10 @@ function Qr() {
     return (
         <>
             <div className='fixed bottom-0 right-0 p-4'>
-                {locationLoading ? <div className='bg-[#f7740a] text-white p-3 rounded-full hover:bg-white hover:text-[#f7740a] border-2 border-[#f7740a] transition-all duration-250'>
+                {locationLoading ? <div className='bg-primary text-white p-3 rounded-full hover:bg-white hover:text-primary border-2 border-primary transition-all duration-250'>
                     <LoaderCircle className='animate-spin size-8' />
                 </div> : <Dialog>
-                    <DialogTrigger onClick={() => { setData(""); setCodeData(""); setSuccState(1); }}><div className='bg-[#f7740a] cursor-pointer text-white p-3 rounded-full hover:bg-white hover:text-[#f7740a] border-2 border-[#f7740a] transition-all duration-250'>
+                    <DialogTrigger onClick={() => { setData(""); setCodeData(""); setSuccState(1); }}><div className='bg-primary cursor-pointer text-white p-3 rounded-full hover:bg-white hover:text-primary border-2 border-primary transition-all duration-250'>
                         <ScanLine className='size-8' />
                     </div></DialogTrigger>
                     <DialogContent>
@@ -135,7 +135,7 @@ function Qr() {
                                                             }}
                                                         />
                                                         <p>{data}</p>                                           </div>
-                                                    <p className='flex items-center justify-center mt-2 text-[#f7740a] font-semibold'>{data == "" ? <span className='flex items-center gap-2'><LoaderCircle className='animate-spin' />  {t('scan.loading')}</span> : <span className='text-center'>{data}</span>}</p>
+                                                    <p className='flex items-center justify-center mt-2 text-primary font-semibold'>{data == "" ? <span className='flex items-center gap-2'><LoaderCircle className='animate-spin' />  {t('scan.loading')}</span> : <span className='text-center'>{data}</span>}</p>
                                                 </> : <>
                                                     <div className='flex items-center flex-col justify-center gap-4'>
                                                         <motion.div
@@ -227,7 +227,7 @@ function Qr() {
                                                                                                     <img src={LC.src} alt="Location Correct Icon" className='w-32 translate-x-3' />
                                                                                                     <div className='font-semibold'>
                                                                                                         <p className='flex items-center gap-2'><MapPin /> {codeData.name}</p>
-                                                                                                        <p className='flex items-center gap-2 text-[#f7740a] mt-1'><Coins /> {t('scan.pe')} : +{codeData.points}</p>
+                                                                                                        <p className='flex items-center gap-2 text-primary mt-1'><Coins /> {t('scan.pe')} : +{codeData.points}</p>
                                                                                                         {sameSpot && (<p className='flex items-center justify-center mt-4 gap-2'>
                                                                                                             <Tooltip>
                                                                                                                 <TooltipTrigger>
@@ -239,7 +239,7 @@ function Qr() {
                                                                                                             </Tooltip>
                                                                                                             {t('scan.samemssg')}</p>)}
                                                                                                     </div>
-                                                                                                    <Button onClick={() => { if (codeData.reciveNewBadge) { setSuccState(succState + 1); const NEWBGD = new Audio('/audio/BadgeRev.mp3'); NEWBGD.volume = 0.5; NEWBGD.play(); } else { setSuccState(3) } }} className='bg-[#f7740a] text-white hover:bg-[#f7740a] w-full mt-2 cursor-pointer'>{t('scan.next')}</Button>
+                                                                                                    <Button onClick={() => { if (codeData.reciveNewBadge) { setSuccState(succState + 1); const NEWBGD = new Audio('/audio/BadgeRev.mp3'); NEWBGD.volume = 0.5; NEWBGD.play(); } else { setSuccState(3) } }} className='bg-primary text-white hover:bg-primary w-full mt-2 cursor-pointer'>{t('scan.next')}</Button>
                                                                                                 </>
                                                                                             }
                                                                                             {
@@ -259,9 +259,9 @@ function Qr() {
                                                                                                     </div>
                                                                                                     <div className='font-semibold'>
                                                                                                         <p className='flex items-center gap-2'>{t('badge.new')}</p>
-                                                                                                        <p className='flex items-center gap-2 text-[#f7740a] mt-1'><MapPin /> {codeData.badge.province.charAt(0).toUpperCase() + codeData.badge.province.slice(1)}</p>
+                                                                                                        <p className='flex items-center gap-2 text-primary mt-1'><MapPin /> {codeData.badge.province.charAt(0).toUpperCase() + codeData.badge.province.slice(1)}</p>
                                                                                                     </div>
-                                                                                                    <Button onClick={() => setSuccState(succState + 1)} className='bg-[#f7740a] text-white hover:bg-[#f7740a] w-full mt-2 cursor-pointer'>{t('scan.next')}</Button>
+                                                                                                    <Button onClick={() => setSuccState(succState + 1)} className='bg-primary text-white hover:bg-primary w-full mt-2 cursor-pointer'>{t('scan.next')}</Button>
                                                                                                 </>
                                                                                             }
                                                                                             {

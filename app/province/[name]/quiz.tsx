@@ -235,14 +235,14 @@ function Quiz({ data: provinceName }: QuizProps) {
                                     if (isThisChoiceSelected) {
                                         if (isThisChoiceCorrect) {
                                             buttonClass += "bg-white text-black";
-                                            icon = <CheckCircle className="h-5 w-5 text-[#f7740a]" />;
+                                            icon = <CheckCircle className="h-5 w-5 text-primary" />;
                                         } else {
                                             buttonClass += "bg-gray-200 text-black";
-                                            icon = <XCircle className="h-5 w-5 text-[#f7740a]" />;
+                                            icon = <XCircle className="h-5 w-5 text-primary" />;
                                         }
                                     } else if (isThisChoiceCorrect) {
                                         buttonClass += "text-black bg-white cursor-not-allowed";
-                                        icon = <CheckCircle className="h-5 w-5 text-[#f7740a]" />;
+                                        icon = <CheckCircle className="h-5 w-5 text-primary" />;
                                     } else {
                                         buttonClass += "bg-gray-200 text-black cursor-not-allowed";
                                     }
@@ -287,7 +287,7 @@ function Quiz({ data: provinceName }: QuizProps) {
     if (isAuthLoading) {
         return (
             <div className='tg-container'>
-                <div className='w-full bg-[#f7740a] py-6 px-4 rounded-xl text-center'>
+                <div className='w-full bg-primary py-6 px-4 rounded-xl text-center'>
                     <div className='flex items-center justify-center rounded-xl'>
                         <Loader />
                     </div>
@@ -298,7 +298,7 @@ function Quiz({ data: provinceName }: QuizProps) {
 
     return (
         <div className='tg-container'>
-            <div className='w-full bg-[#f7740a] py-6 px-4 rounded-xl text-center text-white'>
+            <div className='w-full bg-primary py-6 px-4 rounded-xl text-center text-white'>
                 <AnimatePresence>
                     {(status !== 'loading' && status !== 'error') && (
                         <motion.div

@@ -66,25 +66,25 @@ async function page({ params }: Props) {
                     <div>
                         <div>
                             <h1 className='font-bold text-4xl'>{data.title}</h1>
-                            <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
+                            <div className='w-32 h-1.5 bg-primary mt-2'></div>
                         </div>
                         <Link href={`/province/${data.province}`}>
                             <div className='flex flex-row md:items-center gap-1 md:gap-2 mt-3'>
                                 <div className='flex items-center gap-2'>
-                                    <MapPin className='font-semibold text-[#f7740a]' />
+                                    <MapPin className='font-semibold text-primary' />
                                     <h1 className='font-semibold'>{t('item.province')} : </h1>
                                 </div>
                                 <p>{data.province.charAt(0).toUpperCase() + data.province.slice(1)}</p>
                             </div>
                         </Link>
-                        <p className='flex items-center gap-2 mt-2'><Ticket className='font-semibold text-[#f7740a]' /> <span className='font-semibold'>{t('item.EvT')} :</span> {data.category.charAt(0).toUpperCase() + data.category.slice(1)}</p>
-                        <p className='flex items-center gap-2 mt-2'><CalendarArrowUp className='font-semibold text-[#f7740a]' /> <span className='font-semibold'>{t('item.date')} :</span> {formatDate(data.time.seconds)} - {formatDate(data.due.seconds)}</p>
+                        <p className='flex items-center gap-2 mt-2'><Ticket className='font-semibold text-primary' /> <span className='font-semibold'>{t('item.EvT')} :</span> {data.category.charAt(0).toUpperCase() + data.category.slice(1)}</p>
+                        <p className='flex items-center gap-2 mt-2'><CalendarArrowUp className='font-semibold text-primary' /> <span className='font-semibold'>{t('item.date')} :</span> {formatDate(data.time.seconds)} - {formatDate(data.due.seconds)}</p>
                         <p className='mt-4'>{data.decs}</p>
                         {
                             data.details && <div className='grid grid-cols-2 md:grid-cols-3 py-8 gap-8'>
                                 {
                                     data.details.tel && <div className='flex flex-col gap-1 items-center justify-center'>
-                                        <Phone className='text-[#f7740a] size-14' />
+                                        <Phone className='text-primary size-14' />
                                         <p className='font-semibold text-xl'>{data.details.tel.value}</p>
                                         <p>{t('item.call')}</p>
                                     </div>
@@ -92,7 +92,7 @@ async function page({ params }: Props) {
                                 {
                                     data.details.website && <>
                                         <Link href={data.details.website.value} className='flex flex-col gap-1 items-center justify-center'>
-                                            <Map className='text-[#f7740a] size-12' />
+                                            <Map className='text-primary size-12' />
                                             <p className='font-semibold text-xl'>{t('item.click')}</p>
                                             <p>{t('item.web')}</p>
                                         </Link>
@@ -101,7 +101,7 @@ async function page({ params }: Props) {
                                 {
                                     data.details.link && <>
                                         <Link href={data.details.link.value} className='flex flex-col gap-1 items-center justify-center'>
-                                            <LLink className='text-[#f7740a] size-12' />
+                                            <LLink className='text-primary size-12' />
                                             <p className='font-semibold text-xl text-center'>{data.details.link.text}</p>
                                             <p>{data.details.link.type}</p>
                                         </Link>
@@ -110,7 +110,7 @@ async function page({ params }: Props) {
                             </div>
                         }
                         <div>
-                            <Link href={data.direction} className='bg-[#f7740a] group w-full md:w-fit p-2 px-4 rounded-xl text-white mt-4 flex justify-center items-center gap-2'>
+                            <Link href={data.direction} className='bg-primary group w-full md:w-fit p-2 px-4 rounded-xl text-white mt-4 flex justify-center items-center gap-2'>
                                 {t('item.map')}
                                 <ArrowRight className='group-hover:translate-x-1 transition-all duration-200' />
                             </Link>
@@ -122,7 +122,7 @@ async function page({ params }: Props) {
                 <div>
                     <div className='mb-5'>
                         <h1 className='font-bold text-4xl'>{t('item.view')}</h1>
-                        <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
+                        <div className='w-32 h-1.5 bg-primary mt-2'></div>
                     </div>
                     {
                         data.mapEmbed != "" ? <>

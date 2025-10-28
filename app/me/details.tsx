@@ -120,14 +120,14 @@ function Details() {
                                                             {
                                                                 item.idRedeem ? (
                                                                     <Tooltip>
-                                                                        <TooltipTrigger><TicketCheck className='text-[#f7740a] cursor-help' /></TooltipTrigger>
+                                                                        <TooltipTrigger><TicketCheck className='text-primary cursor-help' /></TooltipTrigger>
                                                                         <TooltipContent>
                                                                             {t('redeem.pop')} {new Date(item.redeemAt.seconds * 1000).toLocaleDateString()}
                                                                         </TooltipContent>
                                                                     </Tooltip>
                                                                 ) : (
                                                                     <Dialog>
-                                                                        <DialogTrigger><QrCode onClick={() => { setTID(item.id); setUID(user.uid); }} className='text-[#f7740a] cursor-pointer' /></DialogTrigger>
+                                                                        <DialogTrigger><QrCode onClick={() => { setTID(item.id); setUID(user.uid); }} className='text-primary cursor-pointer' /></DialogTrigger>
                                                                         <DialogContent>
                                                                             <DialogHeader>
                                                                                 <DialogTitle className='text-2xl'>{t('redeem.title')}</DialogTitle>
@@ -158,7 +158,7 @@ function Details() {
                 <div className="mt-8 flex items-center justify-center">
                     <button
                         onClick={handleLoadMore}
-                        className="flex items-center gap-3 w-full md:w-fit justify-center bg-[#f7740a] text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-[#f7640a] cursor-pointer"
+                        className="flex items-center gap-3 w-full md:w-fit justify-center bg-primary text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-[#f7640a] cursor-pointer"
                     >
                         <ChevronDown />
                         {t('more')}

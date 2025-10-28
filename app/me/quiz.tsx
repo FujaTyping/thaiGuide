@@ -75,7 +75,7 @@ function Quiz() {
                         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
                             {
                                 quizz.map((item, index: number) => (
-                                    <div key={index} className='w-full border-3 border-[#f7740a] p-5 py-3 rounded-xl flex flex-col items-center justify-center'>
+                                    <div key={index} className='w-full border-3 border-primary p-5 py-3 rounded-xl flex flex-col items-center justify-center'>
                                         <img src={check.src} alt="Icon" className='w-14 mb-1' />
                                         <div className='text-center'>
                                             <h1 className='text-lg font-semibold'>{item.quizName.charAt(0).toUpperCase() + item.quizName.slice(1)}</h1>

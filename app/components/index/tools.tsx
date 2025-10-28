@@ -57,7 +57,7 @@ function Tools() {
     return (
         <>
             <main className='max-w-7xl mx-auto px-3 py-6'>
-                <h1 className='text-2xl md:text-3xl font-bold text-[#f7740a] mb-5'>{t('title')}</h1>
+                <h1 className='text-2xl md:text-3xl font-bold text-primary mb-5'>{t('title')}</h1>
                 <Swiper
                     spaceBetween={10}
                     slidesPerView={3}
@@ -87,7 +87,7 @@ function Tools() {
                             <SwiperSlide key={index}>
                                 <Link href={item.link}>
                                     <div className='flex flex-col items-center gap-2 group'>
-                                        <div className='bg-[#f7740a] w-fit p-4 rounded-full'>
+                                        <div className='bg-primary w-fit p-4 rounded-full'>
                                             {
                                                 item.image ? (
                                                     <img className='group-hover:scale-120 transition-all duration-150 w-6.5' src={item.image.src} alt="Icon" />
@@ -96,7 +96,7 @@ function Tools() {
                                                 )
                                             }
                                         </div>
-                                        <h1 className='text-lg font-semibold group-hover:text-[#f7740a] transition-all duration-150'>{t(`item.${item.title}`)}</h1>
+                                        <h1 className='text-lg font-semibold group-hover:text-primary transition-all duration-150'>{t(`item.${item.title}`)}</h1>
                                     </div>
                                 </Link>
                             </SwiperSlide>

@@ -59,7 +59,7 @@ export const columns: ColumnDef<DataSchema>[] = (() => {
             },
             cell: ({ row }) => {
                 const isYes = row.getValue("otpp")
-                return <div>{isYes ? <Check size={18} className="text-[#f7740a]" /> : <X size={18} className="text-[#f7740a]" />}</div>
+                return <div>{isYes ? <Check size={18} className="text-primary" /> : <X size={18} className="text-primary" />}</div>
             },
         }
     ]

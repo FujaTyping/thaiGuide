@@ -72,7 +72,7 @@ function Page() {
             <main className='tg-container'>
                 <div>
                     <h1 className='font-bold text-4xl'>{t('title')}</h1>
-                    <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
+                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
                 </div>
                 <p className='mt-4'>{t('decs')}</p>
                 <div className='my-12 grid grid-cols-1 md:grid-cols-3 gap-12'>
@@ -82,7 +82,7 @@ function Page() {
                                 <img src={item.image.src} alt="Icon" className='w-20' />
                                 <p className='font-semibold text-2xl'>{t(`number.${item.name}`)}</p>
                                 <Link href={`tel:${item.telephone}`}>
-                                    <p className='flex flex-row items-center gap-2 text-xl text-[#f7740a]'><Phone /> <b>{item.telephone}</b></p>
+                                    <p className='flex flex-row items-center gap-2 text-xl text-primary'><Phone /> <b>{item.telephone}</b></p>
                                 </Link>
                             </div>
                         ))
@@ -90,7 +90,7 @@ function Page() {
                 </div>
                 <div>
                     <h1 className='font-bold text-4xl'>{t('ndtitle')}</h1>
-                    <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
+                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
                 </div>
                 <div className='mt-12 grid grid-cols-1 md:grid-cols-3 gap-12'>
                     {
@@ -99,7 +99,7 @@ function Page() {
                                 <img src={item.image.src} alt="Icon" className='w-20' />
                                 <p className='font-semibold text-2xl text-center'>{t(`number.${item.name}`)}</p>
                                 <Link href={`tel:${item.telephone}`}>
-                                    <p className='flex flex-row items-center gap-2 text-xl text-[#f7740a]'><Phone /> <b>{item.telephone}</b></p>
+                                    <p className='flex flex-row items-center gap-2 text-xl text-primary'><Phone /> <b>{item.telephone}</b></p>
                                 </Link>
                             </div>
                         ))

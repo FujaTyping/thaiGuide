@@ -53,7 +53,7 @@ function Roadtrip() {
         <>
             <main className='max-w-7xl mx-auto px-3 py-6'>
                 <div className='flex items-center place-content-between mb-6'>
-                    <h1 className='text-2xl md:text-3xl font-bold text-[#f7740a]'>{t('headder')}</h1>
+                    <h1 className='text-2xl md:text-3xl font-bold text-primary'>{t('headder')}</h1>
                 </div>
                 {
                     loading ? <>
@@ -74,7 +74,7 @@ function Roadtrip() {
                                                     className="w-full h-[120px] md:h-[150px] rounded-2xl overflow-hidden relative"
                                                 >
                                                     <Image width={1280} height={720} className='w-full h-full object-cover' src={item.thumnails} alt={item.title} />
-                                                    <div className="absolute inset-0 bg-gradient-to-t from-[#f7740a]/70 to-transparent"></div>
+                                                    <div className="absolute inset-0 bg-gradient-to-t from-primary/70 to-transparent"></div>
                                                 </div>
                                                 <div className='absolute left-0 right-0 top-1/2 -translate-y-1/2 p-4 md:p-8 text-white rounded-4xl text-center'>
                                                     <h1 className='text-2xl md:text-3xl font-bold pb-0 md:pb-1'>{item.title}</h1>

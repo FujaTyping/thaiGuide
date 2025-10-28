@@ -76,7 +76,7 @@ function Cam() {
                             </> : <>
                                 {
                                     images ? <div className='relative'>
-                                        <div className='absolute bottom-4 flex items-end gap-2 justify-center w-full text-white'>
+                                        <div className='z-2 absolute bottom-4 flex items-end gap-2 justify-center w-full text-white'>
                                             <Tooltip>
                                                 <TooltipTrigger asChild>
                                                     <motion.div
@@ -111,7 +111,7 @@ function Cam() {
                                         <img src={images} alt='Photo' className='w-full' />
                                     </div>
                                         : <div className='relative'>
-                                            <div className='absolute bottom-4 flex items-end gap-2 justify-center w-full text-white'>
+                                            <div className='z-2 absolute bottom-4 flex items-end gap-2 justify-center w-full text-white'>
                                                 <Tooltip>
                                                     <TooltipTrigger asChild>
                                                         <motion.div

@@ -52,7 +52,11 @@
                 "login": "登录"
             },
             "switcherAd": "以管理员身份登录",
-            "switcherTra": "以旅行者身份登录"
+            "switcherTra": "以旅行者身份登录",
+            "ac1": "登录即表示您同意我们的",
+            "terms": "服务条款",
+            "ac2": "和",
+            "privacy": "隐私政策"
         }
     },
     "Crisis": {

@@ -65,21 +65,21 @@ function Activities() {
         <>
             <main className='max-w-7xl mx-auto px-3 py-6'>
                 <div className='flex items-center place-content-between mb-6'>
-                    <h1 className='text-2xl md:text-3xl font-bold text-[#f7740a]'>{t('headder')}</h1>
+                    <h1 className='text-2xl md:text-3xl font-bold text-primary'>{t('headder')}</h1>
                     <div className='flex items-center gap-3'>
                         {Data.length > 1 && (
                             <>
                                 <div
-                                    className='border-2 border-[#f7740a] rounded-full p-2 hover:bg-[#f7740a] group transition-all duration-200 cursor-pointer'
+                                    className='border-2 border-primary rounded-full p-2 hover:bg-primary group transition-all duration-200 cursor-pointer'
                                     onClick={handlePrev}
                                 >
-                                    <ChevronLeft className='text-[#f7740a] group-hover:text-white' />
+                                    <ChevronLeft className='text-primary group-hover:text-white' />
                                 </div>
                                 <div
-                                    className='border-2 border-[#f7740a] rounded-full p-2 hover:bg-[#f7740a] group transition-all duration-200 cursor-pointer'
+                                    className='border-2 border-primary rounded-full p-2 hover:bg-primary group transition-all duration-200 cursor-pointer'
                                     onClick={handleNext}
                                 >
-                                    <ChevronRight className='text-[#f7740a] group-hover:text-white' />
+                                    <ChevronRight className='text-primary group-hover:text-white' />
                                 </div>
                             </>
                         )}
@@ -115,7 +115,7 @@ function Activities() {
                                                     height={1000}
                                                     width={1280}
                                                 />
-                                                <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-[#f7740a]/70 to-transparent text-white rounded-b-4xl'>
+                                                <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-primary/70 to-transparent text-white rounded-b-4xl'>
                                                     <h1 className='text-2xl md:text-3xl lg:text-4xl font-bold mb-2'>{currentActivity.title}</h1>
                                                     <p className='text-xs md:text-sm'>{currentActivity.location}</p>
                                                 </div>

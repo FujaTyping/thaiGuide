@@ -52,7 +52,11 @@
                 "login": "Log Masuk"
             },
             "switcherAd": "Log Masuk sebagai Pentadbir",
-            "switcherTra": "Log Masuk sebagai Pengembara"
+            "switcherTra": "Log Masuk sebagai Pengembara",
+            "ac1": "Dengan log masuk anda bersetuju dengan",
+            "terms": "Syarat Perkhidmatan",
+            "ac2": "dan",
+            "privacy": "Dasar Privasi"
         }
     },
     "Crisis": {

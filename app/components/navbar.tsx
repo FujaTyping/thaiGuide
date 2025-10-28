@@ -213,16 +213,16 @@ function Navbar() {
     }
     return (
         <>
-            <main className='border-b-10 border-[#f7740a]'>
+            <main className='border-b-10 border-primary'>
                 <nav className='max-w-7xl flex items-center mx-auto p-3 w-full place-content-between'>
                     <Link href={"/"}>
                         <div className='flex items-center gap-1'>
                             <Image src={Logo.src} width={58} height={58} alt='Logo' />
-                            <h1 className='font-bold text-2xl text-[#f7740a]'>{t('title')}</h1>
+                            <h1 className='font-bold text-2xl text-primary'>{t('title')}</h1>
                         </div>
                     </Link>
                     <div className='flex items-center gap-2'>
-                        <div className='hidden md:flex items-center gap-6 border-1 border-[#f7740a] p-2 px-6 rounded-full text-[#f7740a] font-bold hover:bg-[#f7740a] transition-all duration-300 group'>
+                        <div className='hidden md:flex items-center gap-6 border-1 border-primary p-2 px-6 rounded-full text-primary font-bold hover:bg-primary transition-all duration-300 group'>
                             {NavItems.map((item, index) => (
                                 <motion.div
                                     whileHover={{ scale: 1.1, rotate: -5 }}
@@ -235,13 +235,13 @@ function Navbar() {
                                 </motion.div>
                             ))}
                         </div>
-                        <div className='flex md:hidden items-center gap-6 border-1 border-[#f7740a] p-2 px-6 rounded-full text-[#f7740a] font-bold hover:bg-[#f7740a] transition-all duration-300 hover:text-white'>
+                        <div className='flex md:hidden items-center gap-6 border-1 border-primary p-2 px-6 rounded-full text-primary font-bold hover:bg-primary transition-all duration-300 hover:text-white'>
                             <Sheet>
                                 <SheetTrigger><p className='flex items-center gap-2'><Menu /> {t('menu')}</p></SheetTrigger>
                                 <SheetContent>
                                     <SheetHeader>
-                                        <SheetTitle className='text-2xl font-bold text-[#f7740a]'>{t('menu')}</SheetTitle>
-                                        <div className='flex flex-col gap-2 mt-3 text-lg text-[#f7740a] font-semibold'>
+                                        <SheetTitle className='text-2xl font-bold text-primary'>{t('menu')}</SheetTitle>
+                                        <div className='flex flex-col gap-2 mt-3 text-lg text-primary font-semibold'>
                                             <a href={"/activity"}>{tb(`item.activity`)}</a>
                                             <a href={"/restaurant"}>{tb(`item.restaurant`)}</a>
                                             {NavItems.map((item, index) => (
@@ -260,7 +260,7 @@ function Navbar() {
                                 </SheetContent>
                             </Sheet>
                         </div>
-                        <div className='flex items-center gap-6 border-1 border-[#f7740a] p-2 px-2 rounded-full text-[#f7740a] font-bold hover:bg-[#f7740a] transition-all duration-300 hover:text-white cursor-pointer'>
+                        <div className='flex items-center gap-6 border-1 border-primary p-2 px-2 rounded-full text-primary font-bold hover:bg-primary transition-all duration-300 hover:text-white cursor-pointer'>
                             {loading ? <>
                                 <LoaderCircle className='animate-spin' />
                             </> : <>
@@ -269,21 +269,21 @@ function Navbar() {
                                     <DropdownMenuContent>
                                         <DropdownMenuLabel>{user.email}</DropdownMenuLabel>
                                         <DropdownMenuSeparator />
-                                        {isAd && <Link href={"/dashboard"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><Columns3Cog className='text-[#f7740a]' /> {t('dashboard')}</DropdownMenuItem></Link>}
+                                        {isAd && <Link href={"/dashboard"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><Columns3Cog className='text-primary' /> {t('dashboard')}</DropdownMenuItem></Link>}
                                         {!isAd &&
                                             <>
-                                                <Link href={"/@me"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><Smile className='text-[#f7740a]' /> {t('profile')}</DropdownMenuItem></Link>
-                                                <Link href={"/@me/mymap"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><MapPinned className='text-[#f7740a]' /> {t('map')}</DropdownMenuItem></Link>
-                                                <Link href={"/leaderboard"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><Trophy className='text-[#f7740a]' /> {t('leaderboard')}</DropdownMenuItem></Link>
-                                                <Link href={"/@me/option"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><Settings2 className='text-[#f7740a]' /> {t('account')}</DropdownMenuItem></Link>
+                                                <Link href={"/@me"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><Smile className='text-primary' /> {t('profile')}</DropdownMenuItem></Link>
+                                                <Link href={"/@me/mymap"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><MapPinned className='text-primary' /> {t('map')}</DropdownMenuItem></Link>
+                                                <Link href={"/leaderboard"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><Trophy className='text-primary' /> {t('leaderboard')}</DropdownMenuItem></Link>
+                                                <Link href={"/@me/option"}><DropdownMenuItem className='flex items-center gap-2 cursor-pointer'><Settings2 className='text-primary' /> {t('account')}</DropdownMenuItem></Link>
                                             </>
                                         }
-                                        <DropdownMenuItem className='flex items-center gap-2 cursor-pointer' onClick={handleLogout}><LogOut className='text-[#f7740a]' /> {t('logout')}</DropdownMenuItem>
+                                        <DropdownMenuItem className='flex items-center gap-2 cursor-pointer' onClick={handleLogout}><LogOut className='text-primary' /> {t('logout')}</DropdownMenuItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu> : <KeyRound onClick={() => setLoginM(true)} />}
                             </>}
                         </div>
-                        <div className='hidden md:flex items-center gap-6 border-1 border-[#f7740a] p-2 px-2 rounded-full text-[#f7740a] font-bold hover:bg-[#f7740a] transition-all duration-300 hover:text-white cursor-pointer'>
+                        <div className='hidden md:flex items-center gap-6 border-1 border-primary p-2 px-2 rounded-full text-primary font-bold hover:bg-primary transition-all duration-300 hover:text-white cursor-pointer'>
                             <DropdownMenu>
                                 <DropdownMenuTrigger>
                                     <Languages className='cursor-pointer' />
@@ -339,7 +339,7 @@ function Navbar() {
                                                         </FormItem>
                                                     )}
                                                 />
-                                                <Button type="submit" className='w-full cursor-pointer bg-[#f7740a] hover:bg-[#f7740a] text-white'><KeyRound />{t('login.admin.login')}</Button>
+                                                <Button type="submit" className='w-full cursor-pointer bg-primary hover:bg-primary text-white'><KeyRound />{t('login.admin.login')}</Button>
                                             </form>
                                         </Form>
                                     </div>
@@ -356,7 +356,7 @@ function Navbar() {
                                         <p>{t('login.modal.decs')}</p>
                                     </DialogHeader>
                                     <div className='mt-3'>
-                                        <Button onClick={handleGoogleSignIn} className='w-full bg-[#f7740a] hover:bg-[#f7740a] cursor-pointer'>
+                                        <Button onClick={handleGoogleSignIn} className='w-full bg-primary hover:bg-primary cursor-pointer'>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="icon icon-tabler icons-tabler-filled icon-tabler-brand-google"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 2a9.96 9.96 0 0 1 6.29 2.226a1 1 0 0 1 .04 1.52l-1.51 1.362a1 1 0 0 1 -1.265 .06a6 6 0 1 0 2.103 6.836l.001 -.004h-3.66a1 1 0 0 1 -.992 -.883l-.007 -.117v-2a1 1 0 0 1 1 -1h6.945a1 1 0 0 1 .994 .89c.04 .367 .061 .737 .061 1.11c0 5.523 -4.477 10 -10 10s-10 -4.477 -10 -10s4.477 -10 10 -10z" /></svg>
                                             {t('login.modal.withgoogle')}</Button>
                                     </div>
@@ -364,7 +364,10 @@ function Navbar() {
                             }
                         </motion.div>
                     </AnimatePresence>
-                    <p onClick={() => setWantAd(!wantAd)} className='text-center text-[#f7740a] font-semibold text-sm -mt-2 cursor-pointer'>{wantAd ? t('login.switcherTra') : t('login.switcherAd')}</p>
+                    <div className='space-y-1'>
+                        <p className='text-sm text-center'>{t('login.ac1')} <Link onClick={() => setLoginM(false)} href={'/terms'} className='text-primary font-semibold'>{t('login.terms')}</Link> {t('login.ac2')} <Link onClick={() => setLoginM(false)} href={'/privacy'} className='text-primary font-semibold'>{t('login.privacy')}</Link></p>
+                        <p onClick={() => setWantAd(!wantAd)} className='text-center text-primary font-semibold text-sm cursor-pointer'>{wantAd ? t('login.switcherTra') : t('login.switcherAd')}</p>
+                    </div>
                 </DialogContent>
             </Dialog>
         </>

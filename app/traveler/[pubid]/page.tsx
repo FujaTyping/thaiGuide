@@ -59,7 +59,7 @@ async function page({ params }: Props) {
             <main className='tg-container'>
                 <div>
                     <h1 className='font-bold text-4xl'>{cardTitle}</h1>
-                    <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
+                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
                 </div>
                 <p className='mt-4'>{t('decs')}</p>
                 <Card user={data} />

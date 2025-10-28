@@ -16,7 +16,7 @@ function Main() {
             <main className='tg-container'>
                 <div>
                     <h1 className='font-bold text-4xl flex items-center gap-4'>{t('title')}</h1>
-                    <div className='w-32 h-1.5 bg-[#f7740a] mt-2'></div>
+                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
                 </div>
                 <p className='mt-3'>{t('decs')}</p>
                 <Tabs defaultValue="pt" className="w-full mt-4">

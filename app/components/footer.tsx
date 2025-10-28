@@ -12,7 +12,7 @@ function Footer() {
   const t = useTranslations("FooterBar");
   return (
     <>
-      <main className="bg-[#f7740a] py-3 border-t-2 text-white">
+      <main className="bg-primary py-3 border-t-2 text-white">
         <div className="max-w-7xl mx-auto px-3 py-2 flex flex-col md:flex-row place-content-between gap-6 md:gap-0 items-start text-white">
           <div className="flex flex-col items-center md:items-end gap-1 w-full md:w-fit">
             <h2 className="font-semibold text-lg">{t("alli")}</h2>
