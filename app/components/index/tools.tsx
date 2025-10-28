@@ -1,8 +1,9 @@
 "use client";
 
-import { CalendarDays, CloudSun, HandCoins, Siren, TentTree, Utensils } from 'lucide-react';
+import { CalendarDays, Camera, CloudSun, HandCoins, Siren, TentTree, Utensils } from 'lucide-react';
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import SDG from "@/assets/media/sdg/SDGs.svg";
@@ -32,6 +33,11 @@ const ToolsItems = [
         title: "weather",
         icon: CloudSun,
         link: "/weather"
+    },
+    {
+        title: "Camera",
+        icon: Camera,
+        link: "/camera"
     },
     {
         title: "vat",
@@ -68,6 +74,12 @@ function Tools() {
                             slidesPerView: 5,
                             spaceBetween: 50,
                         },
+                    }}
+                    modules={[Autoplay]}
+                    loop={true}
+                    autoplay={{
+                        delay: 5000,
+                        disableOnInteraction: false,
                     }}
                 >
                     {

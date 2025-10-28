@@ -54,6 +54,8 @@ import LIC from "@/assets/media/login/left.png";
 import CIC from "@/assets/media/login/center.png";
 import RIC from "@/assets/media/login/right.png";
 
+import { H } from '@highlight-run/next/client';
+
 import {
     Form,
     FormControl,
@@ -109,6 +111,9 @@ function Navbar() {
     onAuthStateChanged(auth, (user) => {
         if (user) {
             setUser(user);
+            H.identify(`${user.email}`, {
+                id: user.uid
+            });
             setLoading(false);
             const userperms = getCookie('traveler_session')?.split('--')
             if (userperms && userperms[1]) {

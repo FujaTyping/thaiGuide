@@ -18,6 +18,8 @@ import { getLocale } from 'next-intl/server';
 import { Toaster } from "@/components/ui/sonner"
 import 'react-photo-view/dist/react-photo-view.css';
 
+import { HighlightInit } from '@highlight-run/next/client';
+
 const notoSans = Noto_Sans({
   variable: "--font-noto-sans",
   subsets: ["latin"],
@@ -47,25 +49,37 @@ export default async function RootLayout({
   const locale = await getLocale();
 
   return (
-    <html lang={locale}>
-      <body
-        className={`${notoSans.variable} antialiased`}
-      >
-        <NextIntlClientProvider>
-          <NextTopLoader
-            color="#f7740a"
-            height={4}
-            showSpinner={false}
-          />
-          <Toaster position="top-center" />
-          <Navbar />
-          <Ealert />
-          {children}
-          {/*<Didyouknow />*/}
-          <Footer />
-          {/*<Totop />*/}
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <>
+      <HighlightInit
+        projectId={'3ej76y3e'}
+        serviceName="thaiguide"
+        tracingOrigins
+        networkRecording={{
+          enabled: true,
+          recordHeadersAndBody: true,
+          urlBlocklist: [],
+        }}
+      />
+      <html lang={locale}>
+        <body
+          className={`${notoSans.variable} antialiased`}
+        >
+          <NextIntlClientProvider>
+            <NextTopLoader
+              color="#f7740a"
+              height={4}
+              showSpinner={false}
+            />
+            <Toaster position="top-center" />
+            <Navbar />
+            <Ealert />
+            {children}
+            {/*<Didyouknow />*/}
+            <Footer />
+            {/*<Totop />*/}
+          </NextIntlClientProvider>
+        </body>
+      </html>
+    </>
   );
 }

@@ -6,6 +6,11 @@ import { Camera, Download, RotateCcw, SwitchCamera } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import NF from "@/assets/media/card/icon/notfound.svg";
 import { useTranslations } from 'next-intl';
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 function Cam() {
     const cameraHandler = useRef<WebCameraHandler>(null);
@@ -72,15 +77,71 @@ function Cam() {
                                 {
                                     images ? <div className='relative'>
                                         <div className='absolute bottom-4 flex items-end gap-2 justify-center w-full text-white'>
-                                            <div className='tg-btn rounded-full p-2' onClick={handleDownload}><Download /></div>
-                                            <div className='tg-btn rounded-full p-2' onClick={() => setImages(null)}><RotateCcw /></div>
+                                            <Tooltip>
+                                                <TooltipTrigger asChild>
+                                                    <motion.div
+                                                        whileHover={{ scale: 1.1 }}
+                                                        whileTap={{ scale: 0.95 }}
+                                                        className='tg-btn rounded-full p-2 cursor-pointer'
+                                                        onClick={handleDownload}
+                                                    >
+                                                        <Download />
+                                                    </motion.div>
+                                                </TooltipTrigger>
+                                                <TooltipContent>
+                                                    <p>{t('hover.save')}</p>
+                                                </TooltipContent>
+                                            </Tooltip>
+                                            <Tooltip>
+                                                <TooltipTrigger asChild>
+                                                    <motion.div
+                                                        whileHover={{ scale: 1.1 }}
+                                                        whileTap={{ scale: 0.95 }}
+                                                        className='tg-btn rounded-full p-2 cursor-pointer'
+                                                        onClick={() => setImages(null)}
+                                                    >
+                                                        <RotateCcw />
+                                                    </motion.div>
+                                                </TooltipTrigger>
+                                                <TooltipContent>
+                                                    <p>{t('hover.retake')}</p>
+                                                </TooltipContent>
+                                            </Tooltip>
                                         </div>
                                         <img src={images} alt='Photo' className='w-full' />
                                     </div>
                                         : <div className='relative'>
                                             <div className='absolute bottom-4 flex items-end gap-2 justify-center w-full text-white'>
-                                                <div className='tg-btn rounded-full h-14 w-14 md:w-18 md:h-18 flex items-center justify-center' onClick={handleCapture}><Camera className='w-8 h-8 md:w-10 md:h-10' /></div>
-                                                <div className='tg-btn rounded-full p-2' onClick={handleSwitch}><SwitchCamera /></div>
+                                                <Tooltip>
+                                                    <TooltipTrigger asChild>
+                                                        <motion.div
+                                                            whileHover={{ scale: 1.1 }}
+                                                            whileTap={{ scale: 0.95 }}
+                                                            className='tg-btn rounded-full h-14 w-14 md:w-18 md:h-18 flex items-center justify-center cursor-pointer'
+                                                            onClick={handleCapture}
+                                                        >
+                                                            <Camera className='w-8 h-8 md:w-10 md:h-10' />
+                                                        </motion.div>
+                                                    </TooltipTrigger>
+                                                    <TooltipContent>
+                                                        <p>{t('hover.take')}</p>
+                                                    </TooltipContent>
+                                                </Tooltip>
+                                                <Tooltip>
+                                                    <TooltipTrigger asChild>
+                                                        <motion.div
+                                                            whileHover={{ scale: 1.1 }}
+                                                            whileTap={{ scale: 0.95 }}
+                                                            className='tg-btn rounded-full p-2 cursor-pointer'
+                                                            onClick={handleSwitch}
+                                                        >
+                                                            <SwitchCamera />
+                                                        </motion.div>
+                                                    </TooltipTrigger>
+                                                    <TooltipContent>
+                                                        <p>{t('hover.switch')}</p>
+                                                    </TooltipContent>
+                                                </Tooltip>
                                             </div>
                                             <WebCamera
                                                 className="camera-container"
