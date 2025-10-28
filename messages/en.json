@@ -67,7 +67,8 @@
       "weather": "Weather",
       "vat": "Vat Refund",
       "SDGs": "SDGs",
-      "event": "Event"
+      "event": "Event",
+      "Camera": "Camera"
     }
   },
   "IndexRus": {
@@ -1001,6 +1002,13 @@
   "camera": {
     "title": "ThaiGuide Camera",
     "decs": "Capture your travel memories in style! Add unique frames, fun effects, and special Thai-themed filters to make every photo truly unforgettable",
-    "err": "Error"
+    "err": "Error",
+    "beta": "Beta",
+    "hover": {
+      "save": "Save image",
+      "retake": "Retake",
+      "take": "Take photo",
+      "switch": "Switch camera"
+    }
   }
 }
