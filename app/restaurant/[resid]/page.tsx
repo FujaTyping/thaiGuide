@@ -14,6 +14,7 @@ import {
     TooltipContent,
     TooltipTrigger,
 } from "@/components/ui/tooltip";
+import TGtitle from '@/app/components/tgtitle';
 
 type Props = {
     params: Promise<{ resid: string }>
@@ -68,10 +69,7 @@ async function page({ params }: Props) {
                 </div>
             </div>
             <main className='tg-container'>
-                <div>
-                    <h1 className='font-bold text-4xl'>{data.name}</h1>
-                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
-                </div>
+                <TGtitle title={data.name} />
                 <div className='flex flex-col md:flex-row md:items-center gap-1 md:gap-2 mt-3'>
                     <div className='flex items-center gap-2'>
                         <MapPin className='font-semibold text-primary' />
@@ -151,10 +149,7 @@ async function page({ params }: Props) {
                 </div>
             </main>
             <main className='max-w-7xl mx-auto px-4 pb-6'>
-                <div className='mb-5'>
-                    <h1 className='font-bold text-4xl'>{t('item.view')}</h1>
-                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
-                </div>
+                <TGtitle title={t('item.view')} />
                 {
                     data.streetview != "" ? <>
                         <iframe src={data.streetview} className='w-full h-[500px] rounded-2xl' loading="lazy"></iframe>
@@ -167,7 +162,7 @@ async function page({ params }: Props) {
                 }
             </main>
             <Sharebt />
-            <Didyouknow />
+            
         </>
     )
 }

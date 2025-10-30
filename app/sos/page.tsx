@@ -13,6 +13,7 @@ import ONN from "@/assets/media/sos/199.png";
 import OSEF from "@/assets/media/sos/1784.png";
 import OONF from "@/assets/media/sos/1195.png";
 import OTFS from "@/assets/media/sos/1356.png";
+import TGtitle from '../components/tgtitle';
 
 const EPhoneBook = [
     {
@@ -70,11 +71,7 @@ function Page() {
     return (
         <>
             <main className='tg-container'>
-                <div>
-                    <h1 className='font-bold text-4xl'>{t('title')}</h1>
-                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
-                </div>
-                <p className='mt-4'>{t('decs')}</p>
+                <TGtitle title={t('title')} decs={t('decs')} />
                 <div className='my-12 grid grid-cols-1 md:grid-cols-3 gap-12'>
                     {
                         EPhoneBook.map((item, index) => (
@@ -88,10 +85,7 @@ function Page() {
                         ))
                     }
                 </div>
-                <div>
-                    <h1 className='font-bold text-4xl'>{t('ndtitle')}</h1>
-                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
-                </div>
+                <TGtitle title={t('ndtitle')} />
                 <div className='mt-12 grid grid-cols-1 md:grid-cols-3 gap-12'>
                     {
                         PhoneBook.map((item, index) => (
@@ -106,7 +100,7 @@ function Page() {
                     }
                 </div>
             </main>
-            <Didyouknow />
+            
         </>
     )
 }

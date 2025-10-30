@@ -3,7 +3,7 @@ import { server } from "@/app/config.json"
 
 export default async function fetchData(id: string) {
     try {
-        const response = await axios.put(`https://${server}/roadtrip/getbyid`, {
+        const response = await axios.put(`${server}/roadtrip/getbyid`, {
             id: id
         });
         return response.data;

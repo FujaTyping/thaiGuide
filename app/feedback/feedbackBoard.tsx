@@ -21,7 +21,7 @@ function FeedbackBoard() {
 
     useEffect(() => {
         async function fetchData() {
-            const res = await axios.get(`https://${server}/feedback`);
+            const res = await axios.get(`${server}/feedback`);
             setData(res.data);
         }
         fetchData();

@@ -3,7 +3,7 @@ import { server } from "@/app/config.json"
 
 export default async function fetchData(id: string) {
     try {
-        const response = await axios.put(`https://${server}/event/getbyid`, {
+        const response = await axios.put(`${server}/event/getbyid`, {
             id: id
         });
         return response.data;

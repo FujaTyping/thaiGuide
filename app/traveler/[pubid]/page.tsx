@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { getTranslations } from 'next-intl/server';
 import Didyouknow from "@/app/components/didyouknow";
 import Card from './card';
+import TGtitle from '@/app/components/tgtitle';
 
 type Props = {
     params: Promise<{ pubid: string }>
@@ -57,14 +58,10 @@ async function page({ params }: Props) {
     return (
         <>
             <main className='tg-container'>
-                <div>
-                    <h1 className='font-bold text-4xl'>{cardTitle}</h1>
-                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
-                </div>
-                <p className='mt-4'>{t('decs')}</p>
+                <TGtitle title={cardTitle} decs={t('decs')} />
                 <Card user={data} />
             </main>
-            <Didyouknow />
+            
         </>
     )
 }

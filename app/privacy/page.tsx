@@ -3,6 +3,7 @@ import React from 'react';
 import type { Metadata } from "next";
 import Didyouknow from '../components/didyouknow';
 import { useTranslations } from 'next-intl';
+import TGtitle from '../components/tgtitle';
 
 export const metadata: Metadata = {
     title: "ThaiGuide – Privacy Policy"
@@ -14,11 +15,7 @@ function Page() {
     return (
         <>
             <main className='tg-container'>
-                <div>
-                    <h1 className='font-bold text-4xl'>{t('title')}</h1>
-                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
-                </div>
-                <p className='mt-4'>{t('decs')}</p>
+                <TGtitle title={t('title')} decs={t('decs')} />
                 <h2 className='font-semibold mt-2 flex items-center gap-2'><CalendarDays size={20} className='text-primary' /> {t('date')} : 10/13/25</h2>
                 <div className='mt-6'>
                     <h3 className="text-xl font-semibold mt-4 mb-2">1. {t('content.1.title')}</h3>
@@ -43,7 +40,7 @@ function Page() {
                     </p>
                 </div>
             </main>
-            <Didyouknow />
+            
         </>
     )
 }

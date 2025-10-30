@@ -32,7 +32,7 @@ function Activities() {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const response = await axios.get(`https://${server}/activities`);
+                const response = await axios.get(`${server}/activities`);
                 const fetchedActivities: Activity[] = response.data || [];
 
                 if (fetchedActivities.length > 5) {

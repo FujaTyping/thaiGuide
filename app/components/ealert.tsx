@@ -24,7 +24,7 @@ function Ealert() {
     useEffect(() => {
         async function fetchdata() {
             try {
-                const res = await axios.get(`https://${server}/aleart`)
+                const res = await axios.get(`${server}/aleart`)
                 setData(res.data)
             } catch {
                 setData({

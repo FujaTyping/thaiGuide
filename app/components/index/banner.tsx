@@ -22,7 +22,7 @@ function Banner() {
 
     useEffect(() => {
         async function getdata() {
-            const res = await axios.get(`https://${server}/banner`);
+            const res = await axios.get(`${server}/banner`);
             setBannerItems(res.data);
             setShowPlace(false);
         }

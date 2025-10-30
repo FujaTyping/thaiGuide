@@ -66,7 +66,7 @@ function Grid() {
         const fetchData = async () => {
             setIsLoading(true);
             try {
-                const response = await axios.get(`https://${server}/event`);
+                const response = await axios.get(`${server}/event`);
                 setData(response.data);
             } catch (err) {
                 console.error("Error fetching event:", err);

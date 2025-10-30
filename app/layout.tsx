@@ -9,7 +9,7 @@ import 'swiper/css/effect-fade';
 import 'swiper/css/grid';
 import 'atropos/css';
 import 'swiper/css/navigation';
-//import Didyouknow from "./components/didyouknow";
+import Didyouknow from "./components/didyouknow";
 import NextTopLoader from 'nextjs-toploader';
 import Footer from "./components/footer";
 //import Totop from "./components/totop";
@@ -74,7 +74,7 @@ export default async function RootLayout({
             <Navbar />
             <Ealert />
             {children}
-            {/*<Didyouknow />*/}
+            <Didyouknow />
             <Footer />
             {/*<Totop />*/}
           </NextIntlClientProvider>

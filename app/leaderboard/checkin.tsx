@@ -28,7 +28,7 @@ function Checkin() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`https://${server}/leaderboard/getbycheckin`);
+                const response = await axios.get(`${server}/leaderboard/getbycheckin`);
                 setData(response.data);
             } catch (err) {
                 console.error("Error fetching :", err);

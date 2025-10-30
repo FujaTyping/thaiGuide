@@ -43,7 +43,7 @@ function PMap() {
             if (user) {
                 setUser(user);
                 try {
-                    const res = await axios.put(`https://${server}/code/mapbyid`, { uid: user.uid });
+                    const res = await axios.put(`${server}/code/mapbyid`, { uid: user.uid });
                     const datt = res.data;
                     setData(datt);
                 } catch {

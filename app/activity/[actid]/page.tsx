@@ -13,6 +13,7 @@ import {
 import { getTranslations } from 'next-intl/server';
 import Didyouknow from "@/app/components/didyouknow";
 import Sharebt from '@/app/components/sharebt';
+import TGtitle from '@/app/components/tgtitle';
 
 type Props = {
     params: Promise<{ actid: string }>
@@ -66,10 +67,7 @@ async function page({ params }: Props) {
                 </div>
             </div>
             <main className='tg-container'>
-                <div>
-                    <h1 className='font-bold text-4xl'>{data.title}</h1>
-                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
-                </div>
+                <TGtitle title={data.title} />
                 <Link href={`/province/${data.province}`} className='mt-3'>
                     <div className='flex flex-row md:items-center gap-1 md:gap-2 mt-3'>
                         <div className='flex items-center gap-2'>
@@ -130,21 +128,15 @@ async function page({ params }: Props) {
                 </div>
             </main>
             <main className='max-w-7xl mx-auto px-4 pb-6'>
-                <div className='mb-5'>
-                    <h1 className='font-bold text-4xl'>{t('item.forecast')}</h1>
-                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
-                </div>
+                <TGtitle title={t('item.forecast')} />
                 <iframe src={`https://www.tmd.go.th/en/weatherForecast7DaysWidget?province=${data.province}`} height="400" className='w-full border-0' scrolling="no" title={`Weather forecast`}></iframe>
             </main>
             <main className='max-w-7xl mx-auto px-4 pb-6'>
-                <div className='mb-5'>
-                    <h1 className='font-bold text-4xl'>{t('item.map')}</h1>
-                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
-                </div>
+                <TGtitle title={t('item.map')} />
                 <iframe src={data.mapembed} className='w-full h-[500px] rounded-2xl' loading="lazy"></iframe>
             </main>
             <Sharebt />
-            <Didyouknow />
+            
         </>
     )
 }

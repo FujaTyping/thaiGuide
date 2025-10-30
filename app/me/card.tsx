@@ -22,6 +22,8 @@ import IQR from "@/assets/media/icon/scanner.svg";
 import IRM from "@/assets/media/icon/gift.svg";
 import ITG from "@/assets/media/icon/target.svg";
 import { ShareSocial } from 'react-share-social';
+import TANDIA from "@/assets/media/maskot/tan/TanUpper.webp";
+import SplitText from '@/components/bits/SplitText/SplitText';
 
 const style = {
     root: {
@@ -50,7 +52,7 @@ function Card() {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
                 setUser(user);
-                const checkUser = await axios.post(`https://${server}/user`, {
+                const checkUser = await axios.post(`${server}/user`, {
                     userid: user.uid,
                     name: user.displayName || user.email,
                     pfp: user.photoURL || "https://ik.imagekit.io/61sqw5prw/thaiGuide/ano.svg?updatedAt=1761136329818"
@@ -112,52 +114,67 @@ function Card() {
                         <DialogTitle className='text-2xl'>{t('welcome.title')}</DialogTitle>
                         <p>{t('welcome.decs')}</p>
                     </DialogHeader>
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={welState}
-                            initial={{ x: 10, opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            exit={{ x: -10, opacity: 0 }}
-                            transition={{
-                                type: "spring",
-                                stiffness: 300,
-                                damping: 30,
-                            }}
-                            className='text-center md:text-left'
-                        >
-                            {welState == 1 && (
-                                <>
-                                    <div className='flex items-center justify-center py-3 md:py-2 mb-5'>
-                                        <img src={ITG.src} alt="Icon" className='w-32' />
-                                    </div>
-                                    <h2 className='text-xl font-semibold'>{t('welcome.1.title')}</h2>
-                                    <p>{t('welcome.1.decs')}</p>
-                                </>
-                            )}
-                            {welState == 2 && (
-                                <>
-                                    <div className='flex items-center justify-center py-3 md:py-2 mb-5'>
-                                        <img src={IQR.src} alt="Icon" className='w-32' />
-                                    </div>
-                                    <h2 className='text-xl font-semibold'>{t('welcome.2.title')}</h2>
-                                    <p>{t('welcome.2.decs')}</p>
-                                </>
-                            )}
+                    <div className='flex items-center justify-center flex-col'>
+                        <div className='-ml-6 relative w-full flex items-center justify-center'>
+                            <img src={TANDIA.src} alt="Tan" className='w-[250px] z-2' />
+                            <img src={IQR.src} alt="Icon" className='w-16 rotate-4 opacity-65 absolute -ml-[200px] -mt-35' />
+                            <img src={IRM.src} alt="Icon" className='w-16 -rotate-4 opacity-65 absolute -mr-[250px]' />
+                            <img src={ITG.src} alt="Icon" className='w-16 -rotate-4 opacity-65 absolute -ml-[200px] -mb-25' />
+                        </div>
+                        <div className='border-primary border-3 p-2 px-4 rounded-2xl'>
+                            <h1 className='text-lg font-semibold mb-1'>{t('welcome.name')} {`(${t('welcome.nickname')})`}</h1>
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={welState}
+                                    initial={{ x: 10, opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    exit={{ x: -10, opacity: 0 }}
+                                    transition={{
+                                        type: "spring",
+                                        stiffness: 300,
+                                        damping: 30,
+                                    }}
+                                    className='text-center md:text-left'
+                                >
+                                    {welState == 1 && (
+                                        <SplitText
+                                            text={t('welcome.1.decs')}
+                                            splitType="words"
+                                            from={{ opacity: 0, y: 40 }}
+                                            to={{ opacity: 1, y: 0 }}
+                                            threshold={0.1}
+                                            textAlign="left"
+                                        />
+                                    )}
+                                    {welState == 2 && (
+                                        <SplitText
+                                            text={t('welcome.2.decs')}
+                                            splitType="words"
+                                            from={{ opacity: 0, y: 40 }}
+                                            to={{ opacity: 1, y: 0 }}
+                                            threshold={0.1}
+                                            textAlign="left"
+                                        />
+                                    )}
 
-                            {welState == 3 && (
-                                <>
-                                    <div className='flex items-center justify-center py-3 md:py-2 mb-5'>
-                                        <img src={IRM.src} alt="Icon" className='w-32' />
-                                    </div>
-                                    <h2 className='text-xl font-semibold'>{t('welcome.3.title')}</h2>
-                                    <p>{t('welcome.3.decs')}</p>
-                                </>
-                            )}
-                        </motion.div>
-                    </AnimatePresence>
-                    <Button className='bg-primary hover:bg-primary text-white mt-2 cursor-pointer' onClick={() => { if (welState < 3) { setWelState(welState + 1) } else { setIsOpen(false) } }}>
-                        {welState < 3 ? t('welcome.next') : t('welcome.start')}
-                    </Button>
+                                    {welState == 3 && (
+                                        <SplitText
+                                            text={t('welcome.3.decs')}
+                                            splitType="words"
+                                            from={{ opacity: 0, y: 40 }}
+                                            to={{ opacity: 1, y: 0 }}
+                                            threshold={0.1}
+                                            textAlign="left"
+                                        />
+                                    )}
+                                </motion.div>
+                            </AnimatePresence>
+
+                        </div>
+                        <Button className='bg-primary hover:bg-primary text-white mt-2 cursor-pointer w-full' onClick={() => { if (welState < 3) { setWelState(welState + 1) } else { setIsOpen(false) } }}>
+                            {welState < 3 ? t('welcome.next') : t('welcome.start')}
+                        </Button>
+                    </div>
                 </DialogContent>
             </Dialog>
             <Dialog open={shareOpen} onOpenChange={setShareOpen}>

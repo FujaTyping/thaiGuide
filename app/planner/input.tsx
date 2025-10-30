@@ -123,7 +123,7 @@ function TInput() {
         }
         try {
             setData("loading");
-            const Res = await axios.post(`https://${server}/trip/gen`, {
+            const Res = await axios.post(`${server}/trip/gen`, {
                 message: message,
                 tag: selectedTags.join(','),
                 duration: duration,

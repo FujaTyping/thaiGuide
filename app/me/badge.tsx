@@ -36,7 +36,7 @@ function BBadge() {
             if (user) {
                 setUser(user);
                 try {
-                    const checkUser = await axios.put(`https://${server}/badge/getbyuser`, {
+                    const checkUser = await axios.put(`${server}/badge/getbyuser`, {
                         userid: user.uid
                     })
                     setBadgee(checkUser.data.badges);

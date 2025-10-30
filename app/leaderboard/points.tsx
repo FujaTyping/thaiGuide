@@ -28,7 +28,7 @@ function Points() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`https://${server}/leaderboard/getbypoints`);
+                const response = await axios.get(`${server}/leaderboard/getbypoints`);
                 setData(response.data);
             } catch (err) {
                 console.error("Error fetching :", err);

@@ -71,7 +71,7 @@ function IssuesForm() {
         try {
             setLoading(true);
             if (values.type == "feedback") {
-                await axios.post(`https://${server}/feedback`, {
+                await axios.post(`${server}/feedback`, {
                     type: values.type,
                     title: values.title,
                     decs: values.decs,

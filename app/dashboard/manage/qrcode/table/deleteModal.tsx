@@ -31,7 +31,7 @@ function DeleteModal({ open, setOpen, id }: { open: boolean, setOpen: React.Disp
     async function deleteNow() {
         setDelStatus('loading');
         try {
-            await axios.delete(`https://${server}/edit/code/remove`, {
+            await axios.delete(`${server}/edit/code/remove`, {
                 data: {
                     id: id
                 }

@@ -66,7 +66,7 @@ function Quiz({ data: provinceName }: QuizProps) {
         setSelectedAnswerText(null);
 
         try {
-            const response = await fetch(`https://${server}/quiz/gen`, {
+            const response = await fetch(`${server}/quiz/gen`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -115,7 +115,7 @@ function Quiz({ data: provinceName }: QuizProps) {
         } else {
             setStatus('finished');
             if (user) {
-                axios.put(`https://${server}/quiz/check`, {
+                axios.put(`${server}/quiz/check`, {
                     userId: user.uid,
                     quizName: provinceName
                 })

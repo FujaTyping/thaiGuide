@@ -4,7 +4,7 @@ import { server } from "@/app/config.json"
 export default async function fetchData(uid: string) {
     const decodedUid = decodeURIComponent(uid);
     try {
-        const response = await axios.put(`https://${server}/user/public`, {
+        const response = await axios.put(`${server}/user/public`, {
             uid: decodedUid
         });
         return response.data;

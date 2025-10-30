@@ -136,7 +136,7 @@ function Navbar() {
     useEffect(() => {
         async function checkStats() {
             try {
-                await axios.get(`https://${server}/db/info`)
+                await axios.get(`${server}/db/info`)
             } catch (error) {
                 toast.error(t('servererror'), {
                     description: `${error}`,

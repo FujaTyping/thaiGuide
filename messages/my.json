@@ -260,19 +260,21 @@
         "welcome": {
             "title": "Selamat datang ke ThaiGuide!",
             "next": "Langkah seterusnya",
-            "start": "Mulakan",
+            "start": "Saya faham",
+            "name": "Tanyaphat Aimsuk",
+            "nickname": "Tan",
             "decs": "Mulakan perjalanan anda bersama kami. Mari kenali ThaiGuide dalam beberapa langkah pantas",
             "1": {
                 "title": "Misi Kami",
-                "decs": "Untuk membimbing pelancong ke tarikan yang kurang dikenali, mengurangkan kesesakan dan menyokong komuniti tempatan"
+                "decs": "Hai! Saya Tan, rakan pengembaraan anda dari ThaiGuide! Misi kami adalah untuk membimbing anda ke permata tersembunyi Thailand, membantu komuniti tempatan sambil menjadikan perjalanan menyeronokkan dan bermakna!"
             },
             "2": {
                 "title": "Dapatkan Mata dengan Mudah",
-                "decs": "Imbas kod QR di pelbagai lokasi untuk mendapatkan mata dan membuka kunci ganjaran menarik semasa anda meneroka"
+                "decs": "Semasa anda mengembara, hanya imbas kod QR di setiap tempat yang anda lawati! Semakin banyak anda meneroka, semakin banyak mata yang anda peroleh—semudah itu!"
             },
             "3": {
                 "title": "Tebus Ganjaran Anda",
-                "decs": "Gunakan mata anda untuk menebus ganjaran eksklusif dan menjadikan setiap perjalanan tidak dapat dilupakan"
+                "decs": "Gunakan mata anda untuk menebus ganjaran menarik dan menjadikan setiap perjalanan tidak dapat dilupakan. Kembara, kumpul, dan nikmati—itulah cara ThaiGuide!"
             }
         },
         "redeem": {
