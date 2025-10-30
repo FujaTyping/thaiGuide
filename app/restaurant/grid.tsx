@@ -54,7 +54,7 @@ function Grid() {
         const fetchData = async () => {
             setIsLoading(true);
             try {
-                const response = await axios.get(`https://${server}/restaurant`);
+                const response = await axios.get(`${server}/restaurant`);
                 setData(response.data);
             } catch (err) {
                 console.error("Error fetching restaurant:", err);

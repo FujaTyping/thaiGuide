@@ -84,7 +84,7 @@ function Qr() {
     async function checkCode(code: string) {
         try {
             if (location) {
-                const response = await axios.put(`https://${server}/code/getbyid`, {
+                const response = await axios.put(`${server}/code/getbyid`, {
                     id: code,
                     uid: user?.uid,
                     year: new Date().getFullYear(),

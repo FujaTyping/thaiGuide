@@ -21,7 +21,7 @@ function Grid() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`https://${server}/reward`);
+                const response = await axios.get(`${server}/reward`);
                 setData(response.data);
             } catch (err) {
                 console.error("Error fetching redeem:", err);

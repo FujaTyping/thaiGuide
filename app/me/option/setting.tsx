@@ -48,7 +48,7 @@ function Setting() {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
                 setUser(user);
-                const checkUser = await axios.post(`https://${server}/user`, {
+                const checkUser = await axios.post(`${server}/user`, {
                     userid: user.uid,
                     name: user.displayName,
                     pfp: user.photoURL
@@ -64,7 +64,7 @@ function Setting() {
     async function deleteMyAccountNow() {
         setReqState("loading");
         try {
-            await axios.delete(`https://${server}/user/delete`, {
+            await axios.delete(`${server}/user/delete`, {
                 data: {
                     uid: user?.uid
                 }
@@ -97,7 +97,7 @@ function Setting() {
             });
         } else {
             try {
-                await axios.post(`https://${server}/customize/user/name`, {
+                await axios.post(`${server}/customize/user/name`, {
                     uid: user?.uid,
                     name: vName
                 })

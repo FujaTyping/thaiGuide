@@ -83,7 +83,7 @@ function NewForm() {
                 province: values.province,
             } as any
             if (values.onetime) payload.onetime = values.onetime
-            const res: { data: { id: string } } = await axios.post(`https://${server}/edit/code/new`, payload)
+            const res: { data: { id: string } } = await axios.post(`${server}/edit/code/new`, payload)
             toast.success(t('toast.succ'), {
                 description: `${t('toast.decss')} ${res.data.id}`
             });

@@ -59,7 +59,7 @@ function Grid() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`https://${server}/activities`);
+                const response = await axios.get(`${server}/activities`);
                 setData(response.data);
                 setLoading(false);
             } catch (err) {

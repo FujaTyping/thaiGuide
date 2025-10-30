@@ -48,7 +48,7 @@ function Resturant() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`https://${server}/restaurant`);
+        const response = await axios.get(`${server}/restaurant`);
         const fetchedRestaurants: RoadtripItem[] = response.data || [];
 
         if (fetchedRestaurants.length > 7) {

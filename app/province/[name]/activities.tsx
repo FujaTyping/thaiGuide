@@ -46,7 +46,7 @@ function Activities({ data: provinceName }: ActivitiesProps) {
             setLoading(true);
             try {
                 const response = await axios.put(
-                    `https://${server}/activities/getbyprovince`,
+                    `${server}/activities/getbyprovince`,
                     { province: provinceName }
                 );
                 const fetchedActivities: Activity[] = response.data || [];

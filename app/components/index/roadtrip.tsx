@@ -29,7 +29,7 @@ function Roadtrip() {
         const fetchData = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get(`https://${server}/roadtrip`);
+                const response = await axios.get(`${server}/roadtrip`);
                 const fetchedRoadtrips: RoadtripItem[] = response.data || [];
 
                 if (fetchedRoadtrips.length > 3) {

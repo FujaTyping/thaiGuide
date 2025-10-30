@@ -54,7 +54,7 @@ function Details() {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
                 setUser(user);
-                const checkUser = await axios.put(`https://${server}/transactions/getbyuser`, {
+                const checkUser = await axios.put(`${server}/transactions/getbyuser`, {
                     userid: user.uid
                 })
                 setTranscaton(checkUser.data.transactions);

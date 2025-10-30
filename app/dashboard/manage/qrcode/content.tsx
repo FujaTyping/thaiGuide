@@ -14,7 +14,7 @@ function Content() {
     useEffect(() => {
         async function getData() {
             setLoading(true);
-            const datt = await axios.get(`https://${server}/edit/code/getall`)
+            const datt = await axios.get(`${server}/edit/code/getall`)
             setData(datt.data);
             setLoading(false);
         }

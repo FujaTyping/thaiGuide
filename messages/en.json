@@ -261,20 +261,22 @@
     },
     "welcome": {
       "title": "Welcome to ThaiGuide!",
-      "next": "Next step",
-      "start": "Get Started",
+      "next": "Next",
+      "start": "I Understand",
+      "name": "Tanyaphat Aimsuk",
+      "nickname": "Tan",
       "decs": "Start your journey with us. Let's get to know ThaiGuide in a few quick steps",
       "1": {
         "title": "Our Mission",
-        "decs": "To guide tourists to lesser-known attractions, reducing overcrowding and supporting local communities"
+        "decs": "Hi there! I’m Tan your travel buddy from ThaiGuide! Our mission is to guide you to Thailand’s hidden gems, helping local communities while keeping travel fun and meaningful!"
       },
       "2": {
         "title": "Earn Points Easily",
-        "decs": "Scan QR codes at various locations to earn points and unlock exciting rewards as you explore"
+        "decs": "As you travel, just scan QR codes at each spot you visit! The more you explore, the more points you earn it’s that easy!"
       },
       "3": {
         "title": "Redeem Your Rewards",
-        "decs": "Use your points to redeem exclusive rewards and make every trip unforgettable"
+        "decs": "Use your points to redeem exciting rewards and make every trip unforgettable. Travel, collect, and enjoy that’s the ThaiGuide way!"
       }
     },
     "redeem": {

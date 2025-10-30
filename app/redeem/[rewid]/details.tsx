@@ -37,7 +37,7 @@ function Details({ data }: { data: any }) {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
                 setUser(user);
-                const checkUser = await axios.post(`https://${server}/user`, {
+                const checkUser = await axios.post(`${server}/user`, {
                     userid: user.uid,
                     name: user.displayName,
                     pfp: user.photoURL
@@ -66,7 +66,7 @@ function Details({ data }: { data: any }) {
         }
         setTranscationState("loading");
         try {
-            const res = await axios.post(`https://${server}/transactions/transfer`, payload);
+            const res = await axios.post(`${server}/transactions/transfer`, payload);
             setSuccV(res.data.isV);
             setTranscationState("success");
             setTimeout(() => {
