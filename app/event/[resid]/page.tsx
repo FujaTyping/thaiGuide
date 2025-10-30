@@ -9,6 +9,7 @@ import { getTranslations } from 'next-intl/server';
 import Didyouknow from "@/app/components/didyouknow";
 import Thumnails from './thumnails';
 import Sharebt from '@/app/components/sharebt';
+import TGtitle from '@/app/components/tgtitle';
 
 type Props = {
     params: Promise<{ resid: string }>
@@ -64,10 +65,7 @@ async function page({ params }: Props) {
                         <Thumnails image={data.image} />
                     </div>
                     <div>
-                        <div>
-                            <h1 className='font-bold text-4xl'>{data.title}</h1>
-                            <div className='w-32 h-1.5 bg-primary mt-2'></div>
-                        </div>
+                        <TGtitle title={data.title} />
                         <Link href={`/province/${data.province}`}>
                             <div className='flex flex-row md:items-center gap-1 md:gap-2 mt-3'>
                                 <div className='flex items-center gap-2'>
@@ -137,7 +135,7 @@ async function page({ params }: Props) {
                 </div>
             </main>
             <Sharebt />
-            <Didyouknow />
+            
         </>
     )
 }

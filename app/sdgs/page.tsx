@@ -14,6 +14,7 @@ import G2 from "@/assets/media/sdg/8.svg";
 import G3 from "@/assets/media/sdg/9.svg";
 import G4 from "@/assets/media/sdg/10.svg";
 import G5 from "@/assets/media/sdg/11.svg";
+import TGtitle from '../components/tgtitle';
 
 const Data = [
     {
@@ -44,11 +45,7 @@ function Page() {
     return (
         <>
             <main className='tg-container'>
-                <div>
-                    <h1 className='font-bold text-4xl'>{t('title')}</h1>
-                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
-                </div>
-                <p className='mt-3'>{t('decs')}</p>
+                <TGtitle title={t('title')} decs={t('decs')} />
                 <div className='flex flex-col gap-10 md:gap-6 mt-8'>
                     {Data.map((item) => (
                         <div key={item.id} className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-6">
@@ -61,7 +58,7 @@ function Page() {
                     ))}
                 </div>
             </main>
-            <Didyouknow />
+            
         </>
     )
 }

@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Info } from 'lucide-react';
 import Link from 'next/link';
 import FeedbackBoard from './feedbackBoard';
+import TGtitle from '../components/tgtitle';
 
 export const metadata: Metadata = {
   title: "ThaiGuide – Feedback and Issues"
@@ -16,17 +17,9 @@ function Page() {
   return (
     <>
       <main className='tg-container'>
-        <div>
-          <h1 className='font-bold text-4xl flex items-center gap-4'>{t('title')}</h1>
-          <div className='w-32 h-1.5 bg-primary mt-2'></div>
-        </div>
-        <p className='mt-4'>{t('decs')}</p>
+        <TGtitle title={t('title')} decs={t('decs')} />
         <IssuesForm />
-        <div className='mt-6'>
-          <h1 className='font-bold text-4xl flex items-center gap-4'>{t('pptitle')}</h1>
-          <div className='w-32 h-1.5 bg-primary mt-2'></div>
-        </div>
-        <p className='mt-4'>{t('ppdecs')}</p>
+        <TGtitle title={t('pptitle')} decs={t('ppdecs')} />
         <FeedbackBoard />
         <div className='flex items-center justify-center'>
           <Link href={"https://tally.so/r/n9PZyp"} className='mt-2 text-primary flex items-center gap-2 cursor-pointer font-semibold' ><Info /> {t('tally')}</Link>

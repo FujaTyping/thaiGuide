@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Grid from './grid';
 import { useTranslations } from 'next-intl';
 import Didyouknow from "@/app/components/didyouknow";
+import TGtitle from '../components/tgtitle';
 
 export const metadata: Metadata = {
     title: "ThaiGuide – Redeem"
@@ -20,17 +21,9 @@ function Page() {
     return (
         <>
             <main className='tg-container'>
-                <div>
-                    <h1 className='font-bold text-4xl'>{t('title')}</h1>
-                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
-                    <p className='mt-3'>{t('decs')}</p>
-                </div>
+                <TGtitle title={t('title')} decs={t('decs')} />
                 <Grid />
-                <div className='mt-12'>
-                    <h1 className='font-bold text-4xl'>{t('ptitle')}</h1>
-                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
-                    <p className='mt-3'>{t('pdecs')}</p>
-                </div>
+                <TGtitle title={t('ptitle')} decs={t('pdecs')} />
                 <div className='mt-3 flex flex-col gap-4'>
                     {
                         Data.map((item, index) => (
@@ -44,7 +37,7 @@ function Page() {
                     }
                 </div>
             </main>
-            <Didyouknow />
+            
         </>
     )
 }

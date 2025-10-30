@@ -10,6 +10,7 @@ import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 import Didyouknow from "@/app/components/didyouknow";
 import Sharebt from '@/app/components/sharebt';
+import TGtitle from '@/app/components/tgtitle';
 
 type Props = {
     params: Promise<{ tripid: string }>
@@ -63,10 +64,7 @@ async function page({ params }: Props) {
                 </div>
             </div>
             <main className='tg-container'>
-                <div>
-                    <h1 className='font-bold text-4xl'>{data.title}</h1>
-                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
-                </div>
+                <TGtitle title={data.title} />
                 <div className='flex flex-col md:flex-row md:items-center gap-3 mt-4'>
                     <div className='flex items-center gap-1'>
                         <MapPin className='text-primary' />
@@ -101,14 +99,11 @@ async function page({ params }: Props) {
                 <TripStopsSwiper stops={data.stops} />
             </main>
             <main className='max-w-7xl mx-auto px-4 pb-6'>
-                <div className='mb-5'>
-                    <h1 className='font-bold text-4xl'>{t('view.overview')}</h1>
-                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
-                </div>
+                <TGtitle title={t('view.overview')} />
                 <iframe src={data.map} className='w-full h-[500px] rounded-2xl' loading="lazy"></iframe>
             </main>
             <Sharebt />
-            <Didyouknow />
+            
         </>
     )
 }

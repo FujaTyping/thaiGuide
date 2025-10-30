@@ -4,6 +4,7 @@ import Grid from './grid';
 import { Flame, Leaf, UtensilsCrossed } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Didyouknow from "@/app/components/didyouknow";
+import TGtitle from '../components/tgtitle';
 
 export const metadata: Metadata = {
     title: "ThaiGuide – Restaurant and Food"
@@ -15,18 +16,11 @@ function Page() {
     return (
         <>
             <main className='tg-container'>
-                <div>
-                    <h1 className='font-bold text-4xl'>{t('title')}</h1>
-                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
-                </div>
-                <p className='mt-4'>{t('decs')}</p>
+                <TGtitle title={t('title')} decs={t('decs')} />
                 <Grid />
             </main>
             <main className='tg-container'>
-                <div>
-                    <h1 className='font-bold text-4xl'>{t('tips.title')}</h1>
-                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
-                </div>
+                <TGtitle title={t('tips.title')} />
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-4'>
                     <div className='border-3 rounded-xl p-4 border-primary'>
                         <h1 className='text-xl font-semibold mb-2 flex items-center gap-2'><Flame className='text-primary' /> {t('tips.0.title')}</h1>
@@ -62,7 +56,7 @@ function Page() {
                     </div>
                 </div>
             </main>
-            <Didyouknow />
+            
         </>
     )
 }

@@ -8,6 +8,7 @@ import { getTranslations } from 'next-intl/server';
 import { MapPin, Quote } from 'lucide-react';
 import Activities from './activities';
 import Quiz from './quiz';
+import TGtitle from '@/app/components/tgtitle';
 
 type Props = {
     params: Promise<{ name: string }>
@@ -61,10 +62,7 @@ async function page({ params }: Props) {
                 </div>
             </div>
             <main className='tg-container'>
-                <div>
-                    <h1 className='font-bold text-4xl'>{data.name}</h1>
-                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
-                </div>
+                <TGtitle title={data.name} />
                 <p className='mt-3 font-semibold flex items-center gap-2'><MapPin className='text-primary' /> {data.location}</p>
                 <p className='mt-2'>{data.decs}</p>
                 <div className='flex items-center gap-2 mt-6'>
@@ -74,10 +72,7 @@ async function page({ params }: Props) {
                 <p className='mt-1'>{data.slogan}</p>
             </main>
             <main className='tg-container'>
-                <div>
-                    <h1 className='font-bold text-4xl'>{t('item.softhight')}</h1>
-                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
-                </div>
+                <TGtitle title={t('item.softhight')} />
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-8 mt-6'>
                     {
                         data.softpower.map((item: any, index: number) => (

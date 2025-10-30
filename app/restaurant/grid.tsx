@@ -24,7 +24,7 @@ import {
 import { useTranslations } from 'next-intl';
 
 import NF from "@/assets/media/card/icon/notfound.svg";
-import { CheckIcon, ChevronDown, ChevronsUpDownIcon, MapPinPlus } from 'lucide-react';
+import { CheckIcon, ChevronDown, ChevronsUpDownIcon } from 'lucide-react';
 import Proworks from '@/data/province';
 const ALL_PROVINCES_VALUE = "All";
 
@@ -40,9 +40,6 @@ interface RestaurantItem {
     sme: boolean;
 }
 
-import { User, onAuthStateChanged } from "firebase/auth";
-import auth from "@/lib/firebaseAuth";
-
 function Grid() {
     const [data, setData] = useState<RestaurantItem[]>([]);
     const [selectedProvince, setSelectedProvince] = useState<string>("Songkhla");
@@ -52,20 +49,6 @@ function Grid() {
     const [value, setValue] = useState("songkhla");
     const t = useTranslations('Restaurant');
     const p = useTranslations('Province');
-    const [user, setUser] = useState<User | null>(null);
-
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                setUser(user);
-            } else {
-                setUser(null);
-            }
-            console.log(user);
-        });
-
-        return () => unsubscribe();
-    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -224,15 +207,6 @@ function Grid() {
                     <p className='font-semibold'>{t('grid.notfound')}</p>
                 </div>
             )}
-            {
-                user !== null && <div className='fixed bottom-0 right-0 p-4'>
-                    <Link href={'/request/restaurant'}>
-                        <div className='bg-primary text-white p-3 rounded-full hover:bg-white hover:text-primary border-2 border-primary transition-all duration-250'>
-                            <MapPinPlus className='size-8' />
-                        </div>
-                    </Link>
-                </div>
-            }
         </>
     )
 }

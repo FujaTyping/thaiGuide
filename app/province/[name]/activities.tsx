@@ -11,6 +11,7 @@ import SwiperCore from 'swiper';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { motion } from "motion/react";
+import TGtitle from '@/app/components/tgtitle';
 
 interface Activity {
     name: string;
@@ -82,10 +83,7 @@ function Activities({ data: provinceName }: ActivitiesProps) {
         <>
             <main className='tg-container'>
                 <div className='flex items-center place-content-between mb-6'>
-                    <div>
-                        <h1 className='font-bold text-4xl'>{t('headder')}</h1>
-                        <div className='w-32 h-1.5 bg-primary mt-2'></div>
-                    </div>
+                    <TGtitle title={t('headder')} />
                     <div className='flex items-center gap-3'>
                         {Data.length > 1 && (
                             <>

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Didyouknow from '@/app/components/didyouknow';
 import Setting from './setting';
 import { useTranslations } from 'next-intl';
+import TGtitle from '@/app/components/tgtitle';
 
 export const metadata: Metadata = {
     title: "ThaiGuide – Option"
@@ -14,14 +15,10 @@ function Page() {
     return (
         <>
             <main className='max-w-7xl mx-auto px-4 pt-6'>
-                <div>
-                    <h1 className='font-bold text-4xl'>{t('title')}</h1>
-                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
-                </div>
-                <p className='mt-4'>{t('decs')}</p>
+                <TGtitle title={t('title')} decs={t('decs')} />
             </main>
             <Setting />
-            <Didyouknow />
+            
         </>
     )
 }

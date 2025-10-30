@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import Didyouknow from "@/app/components/didyouknow";
 import Simulation from './simulation';
 import { TriangleAlert } from 'lucide-react';
+import TGtitle from '../components/tgtitle';
 
 export const metadata: Metadata = {
     title: "ThaiGuide – Weather and Temperature"
@@ -16,19 +17,11 @@ function Page() {
     return (
         <>
             <main className='tg-container'>
-                <div>
-                    <h1 className='font-bold text-4xl'>{t('title')}</h1>
-                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
-                </div>
-                <p className='mt-4'>{t('decs')}</p>
+                <TGtitle title={t('title')} decs={t('decs')} />
                 <div className='mt-8'>
                     <Embed />
                 </div>
-                <div>
-                    <h1 className='font-bold text-4xl'>{t('stitle')}</h1>
-                    <div className='w-32 h-1.5 bg-primary mt-2'></div>
-                </div>
-                <p className='mt-4'>{t('sdecs')}</p>
+                <TGtitle title={t('stitle')} decs={t('sdecs')} />
                 <div className='mt-2'>
                     <p className='flex items-center gap-2 text-primary'><TriangleAlert /> <b>{t('simu.ntitle')}</b><br /></p>
                     <p className='mt-1'>{t('simu.notice')}</p>
@@ -37,7 +30,7 @@ function Page() {
                     <Simulation />
                 </div>
             </main>
-            <Didyouknow />
+            
         </>
     )
 }
