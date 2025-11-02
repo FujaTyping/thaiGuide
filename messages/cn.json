@@ -942,5 +942,10 @@
             "take": "拍照",
             "switch": "切换相机"
         }
+    },
+    "installbx": {
+        "title": "提升您的旅程",
+        "decs": "安装ThaiGuide以实现更快的签到和即时奖励！",
+        "idontwanasee": "不再显示"
     }
 }

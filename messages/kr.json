@@ -942,5 +942,10 @@
             "take": "사진 찍기",
             "switch": "카메라 전환"
         }
+    },
+    "installbx": {
+        "title": "여행의 수준을 높이세요",
+        "decs": "더 빠른 체크인과 즉각적인 보상을 위해 ThaiGuide를 설치하세요!",
+        "idontwanasee": "다시 보지 않기"
     }
 }
