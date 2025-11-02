@@ -17,6 +17,8 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getLocale } from 'next-intl/server';
 import { Toaster } from "@/components/ui/sonner"
 import 'react-photo-view/dist/react-photo-view.css';
+import Alertbox from "./components/alertbox";
+import { keywords } from "./seo.json"
 
 import { HighlightInit } from '@highlight-run/next/client';
 
@@ -28,7 +30,7 @@ const notoSans = Noto_Sans({
 export const metadata: Metadata = {
   title: "ThaiGuide – Explore, Earn, and Enjoy",
   description: "Experience Thailand like never before through fun travel quests, point systems, and rewards. Powered by AI and emotional design, our platform turns every trip into an adventure full of memories.",
-  keywords: `thaiGuide, ThaiGuide, thaiguide, ไทยไกด์, ไทยไกด, Thailand, Thai, thailand, thai`,
+  keywords: keywords,
   openGraph: {
     url: 'https://www.thaiguide.in.th/',
     description: `Experience Thailand like never before through fun travel quests, point systems, and rewards. Powered by AI and emotional design, our platform turns every trip into an adventure full of memories.`,
@@ -76,6 +78,7 @@ export default async function RootLayout({
             {children}
             <Didyouknow />
             <Footer />
+            <Alertbox />
             {/*<Totop />*/}
           </NextIntlClientProvider>
         </body>

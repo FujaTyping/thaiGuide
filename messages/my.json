@@ -942,5 +942,10 @@
             "take": "Ambil gambar",
             "switch": "Tukar kamera"
         }
+    },
+    "installbx": {
+        "title": "Tingkatkan perjalanan anda",
+        "decs": "Pasang ThaiGuide untuk daftar masuk yang lebih pantas dan ganjaran segera!",
+        "idontwanasee": "Jangan tunjukkan ini lagi"
     }
 }

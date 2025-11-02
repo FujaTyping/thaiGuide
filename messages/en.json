@@ -1016,5 +1016,10 @@
       "take": "Take photo",
       "switch": "Switch camera"
     }
+  },
+  "installbx": {
+    "title": "Level up your journey",
+    "decs": "Install ThaiGuide for faster check-ins and instant rewards!",
+    "idontwanasee": "Don't show this again"
   }
 }

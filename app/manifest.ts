@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
         name: 'ThaiGuide',
         short_name: 'ThaiGuide',
         description: 'Explore, Earn, and Enjoy',
-        start_url: '/',
+        start_url: '/@me',
         display: 'standalone',
         background_color: '#ffffff',
         theme_color: '#f7740a',

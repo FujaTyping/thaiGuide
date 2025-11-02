@@ -1,18 +1,27 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Quiz from './quiz';
 import BBadge from './badge';
 import Details from './details';
 import { useTranslations } from 'next-intl';
 import CustomizeBG from './customize/backgroud';
+import { getCookie, setCookie } from 'cookies-next/client';
 
 function Main() {
     const t = useTranslations('Profile');
     const [editpfp, setEditPFP] = useState(false);
     const [activeTab, setActiveTab] = useState("tsn");
     const [activeCUSTab, setActiveCUSTab] = useState("bgg");
+
+    useEffect(() => {
+        function IwantAd() {
+            const datt = getCookie("DownloadCTA");
+            if (datt == undefined) setCookie('DownloadCTA', 'AoAdma', {});
+        }
+        IwantAd();
+    }, [])
 
     return (
         <>
