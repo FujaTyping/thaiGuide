@@ -1,4 +1,4 @@
 {
-    "server": "https://fallback.api.thaiguide.in.th",
-    "backup": "https://api.thaiguide.in.th"
+    "server": "https://api.thaiguide.in.th",
+    "backup": "https://fallback.api.thaiguide.in.th"
 }
