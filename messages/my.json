@@ -341,8 +341,8 @@
         "ai": {
             "title": "Beritahu kami tentang perjalanan anda",
             "decs": "Bantu kami mengesyorkan aktiviti terbaik untuk anda",
-      "donettitle": "Semua bersedia untuk pengembaraan!",
-      "donetdecs": "Photo telah merancang perjalanan yang sempurna untuk anda",
+            "donettitle": "Semua bersedia untuk pengembaraan!",
+            "donetdecs": "Photo telah merancang perjalanan yang sempurna untuk anda",
             "input": {
                 "placeholder": "cth., Saya sedang mencari gabungan pengalaman budaya dan pantai yang menenangkan. Saya berminat dengan kuil, pasar tempatan dan snorkeling.",
                 "duration": "Tempoh",
@@ -698,10 +698,10 @@
         "title": "Maklum Balas dan Isu",
         "decs": "Halaman ini membolehkan pengguna melaporkan masalah dan berkongsi cadangan untuk membantu menambah baik ThaiGuide. Maklum balas anda adalah berharga dan akan digunakan untuk menambah baik platform secara berterusan memastikan pengalaman perjalanan anda lancar, menyeronokkan dan memberi ganjaran",
         "tally": "Klik di sini untuk mengambil tinjauan",
-    "pptitle": "Apa yang orang katakan",
-    "ppdecs": "Apa yang orang katakan tentang ThaiGuide. Anda juga boleh berkongsi pendapat anda dengan menghantar borang di atas.",
-    "pptk": "Terima kasih atas maklum balas anda!",
-    "pptkdecs": "Kami menghargai anda meluangkan masa untuk memberikannya. Untuk sebarang isu yang dilaporkan, kami akan melakukan yang terbaik untuk menyelesaikan masalah itu secepat mungkin.",
+        "pptitle": "Apa yang orang katakan",
+        "ppdecs": "Apa yang orang katakan tentang ThaiGuide. Anda juga boleh berkongsi pendapat anda dengan menghantar borang di atas.",
+        "pptk": "Terima kasih atas maklum balas anda!",
+        "pptkdecs": "Kami menghargai anda meluangkan masa untuk memberikannya. Untuk sebarang isu yang dilaporkan, kami akan melakukan yang terbaik untuk menyelesaikan masalah itu secepat mungkin.",
         "form": {
             "type": {
                 "title": "Pilih jenis maklum balas",
@@ -947,5 +947,22 @@
         "title": "Tingkatkan perjalanan anda",
         "decs": "Pasang ThaiGuide untuk daftar masuk yang lebih pantas dan ganjaran segera!",
         "idontwanasee": "Jangan tunjukkan ini lagi"
+    },
+    "Install": {
+        "title": "Pasang ThaiGuide",
+        "decs": "Tambah ThaiGuide ke skrin utama anda untuk akses pantas, meneroka, daftar masuk, dan dapatkan mata pada bila-bila masa dengan hanya satu ketukan!",
+        "android": {
+            "1": "Buka ThaiGuide dalam pelayar anda",
+            "2": "Ketik tiga titik ⋮ di penjuru atas kanan",
+            "3": "Pilih Tambah ke Skrin Utama",
+            "4": "Ketik Pasang untuk mengesahkan",
+            "5": "Anda kini akan melihat ikon aplikasi ThaiGuide pada skrin utama anda, sedia untuk meneroka!"
+        },
+        "ios": {
+            "1": "Ketik ikon Kongsi di bahagian bawah Safari",
+            "2": "Tatal ke bawah dan pilih Tambah ke Skrin Utama",
+            "3": "Ketik Tambah untuk mengesahkan pemasangan",
+            "4": "Cari aplikasi ThaiGuide pada skrin utama anda, sedia untuk memulakan perjalanan anda!"
+        }
     }
 }
