@@ -1021,5 +1021,22 @@
     "title": "Level up your journey",
     "decs": "Install ThaiGuide for faster check-ins and instant rewards!",
     "idontwanasee": "Don't show this again"
+  },
+  "Install": {
+    "title": "Install ThaiGuide",
+    "decs": "Add ThaiGuide to your home screen for quick access, explore, check in, and earn points anytime with just one tap!",
+    "android": {
+      "1": "Open ThaiGuide in your browser",
+      "2": "Tap the three dots ⋮ in the top-right corner",
+      "3": "Select Add to Home screen",
+      "4": "Tap Install to confirm",
+      "5": "You’ll now see the ThaiGuide app icon on your home screen, ready to explore!"
+    },
+    "ios": {
+      "1": "Tap the Share icon at the bottom of Safari",
+      "2": "Scroll down and select Add to Home Screen",
+      "3": "Tap Add to confirm installation",
+      "4": "Find the ThaiGuide app on your home screen, ready to start your journey!"
+    }
   }
 }
