@@ -1038,5 +1038,34 @@
       "3": "Tap Add to confirm installation",
       "4": "Find the ThaiGuide app on your home screen, ready to start your journey!"
     }
+  },
+  "Sitemap": {
+    "title": "Sitemap",
+    "decs": "Easily navigate through all sections of our website.",
+    "links": {
+      "Activity": "Activity",
+      "Camera": "Camera",
+      "Event": "Event",
+      "Feedback": "Feedback",
+      "Install": "Install",
+      "Planner": "Planner",
+      "Privacy Policy": "Privacy Policy",
+      "Redeem": "Redeem",
+      "Restaurant": "Restaurant",
+      "Roadtrip": "Roadtrip",
+      "SDGs": "SDGs",
+      "Sitemap": "Sitemap",
+      "SOS": "SOS",
+      "Terms of Service": "Terms of Service",
+      "Weather": "Weather"
+    },
+    "utitle": "User Sitemap",
+    "udecs": "A personalized map of all pages and features available to your account. Only logged-in users can access this section for easier navigation.",
+    "ulinks": {
+      "Leaderboard": "Leaderboard",
+      "Profile": "Profile",
+      "Maps": "Maps",
+      "Option": "Option"
+    }
   }
 }

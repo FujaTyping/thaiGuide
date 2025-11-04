@@ -964,5 +964,34 @@
             "3": "'추가'를 탭하여 설치를 확인합니다",
             "4": "홈 화면에서 ThaiGuide 앱을 찾아 여정을 시작할 수 있습니다!"
         }
+    },
+    "Sitemap": {
+        "title": "사이트맵",
+        "decs": "저희 웹사이트의 모든 섹션을 쉽게 탐색하세요.",
+        "links": {
+            "Activity": "활동",
+            "Camera": "카메라",
+            "Event": "이벤트",
+            "Feedback": "피드백",
+            "Install": "설치",
+            "Planner": "플래너",
+            "Privacy Policy": "개인정보 처리방침",
+            "Redeem": "교환",
+            "Restaurant": "레스토랑",
+            "Roadtrip": "로드트립",
+            "SDGs": "SDGs",
+            "Sitemap": "사이트맵",
+            "SOS": "SOS",
+            "Terms of Service": "서비스 약관",
+            "Weather": "날씨"
+        },
+        "utitle": "사용자 사이트맵",
+        "udecs": "귀하의 계정에서 사용할 수 있는 모든 페이지 및 기능의 개인화된 지도입니다. 로그인한 사용자만 더 쉬운 탐색을 위해 이 섹션에 액세스할 수 있습니다.",
+        "ulinks": {
+            "Leaderboard": "리더보드",
+            "Profile": "프로필",
+            "Maps": "지도",
+            "Option": "옵션"
+        }
     }
 }

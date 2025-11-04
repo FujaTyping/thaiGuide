@@ -99,7 +99,7 @@ async function page({ params }: Props) {
                 <TripStopsSwiper stops={data.stops} />
             </main>
             <main className='max-w-7xl mx-auto px-4 pb-6'>
-                <TGtitle title={t('view.overview')} />
+                <TGtitle second={true} title={t('view.overview')} />
                 <iframe src={data.map} className='w-full h-[500px] rounded-2xl' loading="lazy"></iframe>
             </main>
             <Sharebt />

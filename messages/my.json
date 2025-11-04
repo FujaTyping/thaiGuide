@@ -964,5 +964,34 @@
             "3": "Ketik Tambah untuk mengesahkan pemasangan",
             "4": "Cari aplikasi ThaiGuide pada skrin utama anda, sedia untuk memulakan perjalanan anda!"
         }
+    },
+    "Sitemap": {
+        "title": "Peta Laman",
+        "decs": "Navigasi dengan mudah melalui semua bahagian laman web kami.",
+        "links": {
+            "Activity": "Aktiviti",
+            "Camera": "Kamera",
+            "Event": "Acara",
+            "Feedback": "Maklum Balas",
+            "Install": "Pasang",
+            "Planner": "Perancang",
+            "Privacy Policy": "Dasar Privasi",
+            "Redeem": "Tebus",
+            "Restaurant": "Restoran",
+            "Roadtrip": "Perjalanan Darat",
+            "SDGs": "SDG",
+            "Sitemap": "Peta Laman",
+            "SOS": "SOS",
+            "Terms of Service": "Syarat Perkhidmatan",
+            "Weather": "Cuaca"
+        },
+        "utitle": "Peta Laman Pengguna",
+        "udecs": "Peta diperibadikan bagi semua halaman dan ciri yang tersedia untuk akaun anda. Hanya pengguna yang log masuk boleh mengakses bahagian ini untuk navigasi yang lebih mudah.",
+        "ulinks": {
+            "Leaderboard": "Papan Pendahulu",
+            "Profile": "Profil",
+            "Maps": "Peta",
+            "Option": "Pilihan"
+        }
     }
 }
