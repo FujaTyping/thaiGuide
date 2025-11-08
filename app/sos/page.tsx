@@ -87,7 +87,7 @@ function Page() {
                 <div className='flex flex-col gap-4 mt-4'>
                     {
                         embassy.map((item, index) => (
-                            <div key={index} className={`flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-4 place-content-between ${index + 1 != embassy.length && 'border-b-2'} ${index + 1 == 1 && 'border-t-2 pt-4'} pb-3`}>
+                            <div key={index} className={`flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-4 place-content-between ${index + 1 != embassy.length && 'border-b'} pb-3 py-2`}>
                                 <div className='space-y-1 md:space-y-2'>
                                     <div className='flex items-center gap-3'>
                                         <Flag className='w-5 h-5  object-cover rounded-full' code={item.country_code} />
