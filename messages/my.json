@@ -211,7 +211,9 @@
             "fd": "Jabatan Bomba",
             "ddpm": "Jabatan Pencegahan dan Mitigasi Bencana",
             "csd": "Bahagian Pencegahan Jenayah"
-        }
+        },
+        "emtitle": "Kedutaan",
+        "emdecs": "Dapatkan maklumat hubungan dan lokasi kedutaan serta konsulat di Thailand untuk membantu anda semasa perjalanan anda."
     },
     "Profile": {
         "title": "Kad Profil",

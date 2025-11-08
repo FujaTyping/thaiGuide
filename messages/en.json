@@ -212,7 +212,9 @@
       "fd": "Fire Department",
       "ddpm": "Department of Disaster Prevention and Mitigation",
       "csd": "Crime Suppression Division"
-    }
+    },
+    "emtitle":"Embassy",
+    "emdecs":"Find contact information and locations of embassies and consulates in Thailand to help you during your travels."
   },
   "Profile": {
     "title": "Profile Card",
