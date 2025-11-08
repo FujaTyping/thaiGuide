@@ -149,7 +149,7 @@ async function page({ params }: Props) {
                 </div>
             </main>
             <main className='max-w-7xl mx-auto px-4 pb-6'>
-                <TGtitle title={t('item.view')} />
+                <TGtitle title={t('item.view')} second={true} />
                 {
                     data.streetview != "" ? <>
                         <iframe src={data.streetview} className='w-full h-[500px] rounded-2xl' loading="lazy"></iframe>
@@ -162,7 +162,7 @@ async function page({ params }: Props) {
                 }
             </main>
             <Sharebt />
-            
+
         </>
     )
 }

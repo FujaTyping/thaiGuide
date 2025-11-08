@@ -33,7 +33,11 @@ function Footer() {
               </Tooltip>
             </div>
           </div>
-          <div className="flex flex-row items-start gap-5 w-full md:w-fit">
+          <div className="grid grid-cols-2 md:flex md:flex-row items-start gap-5 w-full md:w-fit">
+            <div className="flex flex-col items-center md:items-end gap-1 w-full md:w-fit">
+              <h2 className="font-semibold text-lg">{t('usefull')}</h2>
+              <Link href={"/sitemap"}>{t('sitemap')}</Link>
+            </div>
             <div className="flex flex-col items-center md:items-end gap-1 w-full md:w-fit">
               <h2 className="font-semibold text-lg">{t("DOCTitle")}</h2>
               <Link href={"/terms"}>{t("terms")}</Link>

@@ -132,6 +132,8 @@
         "CUSTitle": "联系我们",
         "DOCTitle": "文档",
         "terms": "服务条款",
+        "usefull": "有用链接",
+        "sitemap": "网站地图",
         "pp": "隐私政策",
         "alli": "合作伙伴",
         "parther": {
@@ -209,7 +211,9 @@
             "fd": "消防局",
             "ddpm": "防灾减灾部门",
             "csd": "犯罪打击部门"
-        }
+        },
+        "emtitle": "大使馆",
+        "emdecs": "查找泰国大使馆和领事馆的联系信息和地点，以便在您的旅行中为您提供帮助。"
     },
     "Profile": {
         "title": "个人资料卡",
@@ -963,6 +967,35 @@
             "2": "向下滚动并选择 添加到主屏幕",
             "3": "点击 添加 确认安装",
             "4": "在您的主屏幕上找到 ThaiGuide 应用，准备好开始您的旅程！"
+        }
+    },
+    "Sitemap": {
+        "title": "网站地图",
+        "decs": "轻松浏览我们网站的所有部分。",
+        "links": {
+            "Activity": "活动",
+            "Camera": "相机",
+            "Event": "事件",
+            "Feedback": "反馈",
+            "Install": "安装",
+            "Planner": "规划器",
+            "Privacy Policy": "隐私政策",
+            "Redeem": "兑换",
+            "Restaurant": "餐厅",
+            "Roadtrip": "公路旅行",
+            "SDGs": "可持续发展目标",
+            "Sitemap": "网站地图",
+            "SOS": "紧急求助",
+            "Terms of Service": "服务条款",
+            "Weather": "天气"
+        },
+        "utitle": "用户网站地图",
+        "udecs": "您账户可访问的所有页面和功能的个性化地图。只有登录用户才能访问此部分以方便导航。",
+        "ulinks": {
+            "Leaderboard": "排行榜",
+            "Profile": "个人资料",
+            "Maps": "地图",
+            "Option": "选项"
         }
     }
 }

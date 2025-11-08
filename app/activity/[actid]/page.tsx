@@ -128,11 +128,11 @@ async function page({ params }: Props) {
                 </div>
             </main>
             <main className='max-w-7xl mx-auto px-4 pb-6'>
-                <TGtitle title={t('item.forecast')} />
+                <TGtitle second={true} title={t('item.forecast')} />
                 <iframe src={`https://www.tmd.go.th/en/weatherForecast7DaysWidget?province=${data.province}`} height="400" className='w-full border-0' scrolling="no" title={`Weather forecast`}></iframe>
             </main>
             <main className='max-w-7xl mx-auto px-4 pb-6'>
-                <TGtitle title={t('item.map')} />
+                <TGtitle second={true} title={t('item.map')} />
                 <iframe src={data.mapembed} className='w-full h-[500px] rounded-2xl' loading="lazy"></iframe>
             </main>
             <Sharebt />

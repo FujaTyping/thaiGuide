@@ -1,0 +1,314 @@
+{
+    "embassy": [
+        {
+            "name": "Greece Embassy in Thailand",
+            "tel": "026791462",
+            "location": "9th Floor, Bangkok Insurance Building, 25 South Sathorn Road, Thung Mahamek, Sathon, Bangkok",
+            "country_code": "gr"
+        },
+        {
+            "name": "Embassy of the State of Qatar in Thailand",
+            "tel": "026601111",
+            "url": "http://www.qatarembassy.or.th/",
+            "location": "14th Floor, Capital Tower, All Seasons Place, 87/1 Wireless Road, Lumpini, Pathum Wan, Bangkok 10330",
+            "country_code": "qa"
+        },
+        {
+            "name": "Korean Embassy (North Korea) in Thailand",
+            "tel": "023192686",
+            "location": "14 Suan Laem Thong 2 Village, Phatthanakan Road, Soi 28, Suan Luang, Bangkok 10250",
+            "country_code": "kp"
+        },
+        {
+            "name": "Korean Embassy (South Korea) in Thailand",
+            "tel": "02247753741",
+            "location": "23 Thiam-Ruam Mit Road, Ratchadaphisek, Huai Khwang, Bangkok 10320",
+            "country_code": "kr"
+        },
+        {
+            "name": "Kazakhstan Embassy in Thailand",
+            "tel": "022346365",
+            "location": "4301, 43rd Floor, JTC Building, 919/501 Silom Road, Bang Rak, Bangkok 10500",
+            "country_code": "kz"
+        },
+        {
+            "name": "Canada Embassy in Thailand",
+            "tel": "026360540",
+            "url": "http://www.canadainternational.gc.ca/thailand-thailande/",
+            "location": "15th Floor, Abdulrahim Place, 990 Rama IV Road, Bangkok 10500",
+            "country_code": "ca"
+        },
+        {
+            "name": "Embassy of The People’s Republic of China in Thailand",
+            "tel": "022457032",
+            "url": "http://www.chinaembassy.or.th",
+            "location": "57 Ratchadaphisek Road, Bangkok 10310",
+            "country_code": "cn"
+        },
+        {
+            "name": "Chile Embassy in Thailand",
+            "tel": "6602251947074",
+            "url": "http://www.chile-thai.com/",
+            "location": "83/17 Witthayu Soi 1, Witthayu Road, Bangkok",
+            "country_code": "cl"
+        },
+        {
+            "name": "The Czech Republic Embassy in Thailand",
+            "tel": "022555060",
+            "location": "71/6 Soi Ruamrudee 2, Phloen Chit Road, Bangkok 10330",
+            "country_code": "cz"
+        },
+        {
+            "name": "Saudi Arabia Embassy in Thailand",
+            "tel": "026392999",
+            "location": "23rd, 24th Floor, Saeng Thong Thani Building, 82 North Sathorn Road, Bangkok 10500",
+            "country_code": "sa"
+        },
+        {
+            "name": "Japanese Embassy in Thailand",
+            "tel": "022078500",
+            "url": "http://www.th.emb-japan.go.jp/th/index.htm",
+            "location": "177 Witthayu Road, Lumpini, Pathum Wan, Bangkok 10330",
+            "country_code": "jp"
+        },
+        {
+            "name": "Denmark Embassy in Thailand",
+            "tel": "023431100",
+            "url": "http://www.ambbangkok.um.dk",
+            "location": "10 Sathorn Road, Soi 1 (Soi Attakarnprasit), South Sathorn Road, Bangkok 10120",
+            "country_code": "dk"
+        },
+        {
+            "name": "Turkey Embassy in Thailand",
+            "tel": "0235554868",
+            "location": "61/1 Soi Chatsan, Sutthisan Road, Bangkok 10310",
+            "country_code": "tr"
+        },
+        {
+            "name": "Taipei Economic and Cultural Office (Taiwan)",
+            "tel": "0267002009",
+            "url": "http://www.mofa.gov.tw/webapp/mp?mp=6",
+            "location": "195 Empire Tower, 20th Floor, South Sathorn Road, Bangkok 10120",
+            "country_code": "tw"
+        },
+        {
+            "name": "Royal Norwegian Embassy in Thailand",
+            "tel": "022046500",
+            "url": "http://www.emb-norway.or.th/",
+            "location": "18th Floor, UBC 2 Building, 591 Sukhumvit Road, Soi 33, Bangkok 10110",
+            "country_code": "no"
+        },
+        {
+            "name": "New Zealand Embassy in Thailand",
+            "tel": "026543444",
+            "url": "http://www.immigration.govt.nz/branch/BangkokBranchHome/",
+            "location": "15th Floor, M-Thai Tower, All Seasons Place, 87 Wireless Road, Lumpini, Bangkok 10330",
+            "country_code": "nz"
+        },
+        {
+            "name": "The Embassy of Nepal",
+            "tel": "023902280",
+            "location": "189 Sukhumvit 71, Phra Khanong, Bangkok 10110",
+            "country_code": "np"
+        },
+        {
+            "name": "Embassy of the Kingdom of the Netherlands in Bangkok",
+            "tel": "023095200",
+            "url": "http://www.netherlandsembassy.in.th",
+            "location": "15 Soi Ton Son, Phloen Chit Road, Lumpini, Pathum Wan, Bangkok 10300",
+            "country_code": "nl"
+        },
+        {
+            "name": "Embassy of Nigeria",
+            "tel": "0271130768",
+            "location": "412 Sukhumvit 71, Phra Khanong, Watthana, Bangkok 10110",
+            "country_code": "ng"
+        },
+        {
+            "name": "Embassy of Brazil in Bangkok",
+            "tel": "026798567",
+            "url": "http://www.brazilembassy.or.th",
+            "location": "34th Floor, Lumpini Tower, 1168/101 Rama 4 Road, Thung Mahamek, Sathon, Bangkok 10120",
+            "country_code": "br"
+        },
+        {
+            "name": "Brunei Embassy in Thailand",
+            "tel": "0220414769",
+            "location": "132 Sukhumvit 23, Khlong Toei, Watthana, Bangkok 10110",
+            "country_code": "bn"
+        },
+        {
+            "name": "Bangladesh Embassy in Thailand",
+            "tel": "023929437",
+            "location": "727 Soi Thong Lo, Sukhumvit 55, Bangkok 10110",
+            "country_code": "bd"
+        },
+        {
+            "name": "Bulgarian Embassy in Thailand",
+            "tel": "023916180",
+            "location": "64/4 Soi Charoenmit (Ekkamai 10), Sukhumvit 63, Watthana, Bangkok 10110",
+            "country_code": "bg"
+        },
+        {
+            "name": "Embassy of Belgium, Bangkok",
+            "tel": "026795454",
+            "url": "http://www.diplomatie.be/bangkok/",
+            "location": "17th Floor, Sathorn City Tower, 175 South Sathorn Road, Thung Mahamek, Bangkok 10120",
+            "country_code": "be"
+        },
+        {
+            "name": "Pakistan Embassy in Thailand",
+            "tel": "022530288",
+            "location": "31 Soi Nana Nuea 3, Sukhumvit, Bangkok 10110",
+            "country_code": "pk"
+        },
+        {
+            "name": "Panama Embassy in Thailand",
+            "tel": "022379008",
+            "location": "7th Floor, Sarasin Building, 14 Surasak Road, Silom, Bangkok 10500",
+            "country_code": "pa"
+        },
+        {
+            "name": "Peru Embassy in Thailand",
+            "tel": "022606243",
+            "location": "16th Floor, Glass House Building, 1 Sukhumvit 25, Watthana, Bangkok 10110",
+            "country_code": "pe"
+        },
+        {
+            "name": "Portuguese Embassy in Thailand",
+            "tel": "022342123",
+            "location": "26 Charoen Krung 30, Captain Bush Lane, Bangkok 10500",
+            "country_code": "pt"
+        },
+        {
+            "name": "The Embassy of The Republic of Poland",
+            "tel": "66264503679",
+            "url": "http://www.bangkok.polemb.net/",
+            "location": "100/81-82 Vongvanij Building B, 25th Floor, Rama 9 Road, Huai Khwang, Bangkok 10310",
+            "country_code": "pl"
+        },
+        {
+            "name": "French Embassy in Thailand",
+            "tel": "026575100",
+            "url": "http://www.ambafrance-th.org/",
+            "location": "35 Soi Rong Phraya Kao, Charoen Krung 36, Bangkok 10500; Visa Section: 29 South Sathorn Road, Yannawa, Bangkok 10120",
+            "country_code": "fr"
+        },
+        {
+            "name": "Myanmar Embassy in Thailand",
+            "tel": "6622332237",
+            "location": "132 North Sathorn Road, Bangkok 10500",
+            "country_code": "mm"
+        },
+        {
+            "name": "Finland Embassy in Thailand",
+            "tel": "022508801",
+            "url": "http://www.finland.or.th/fi/",
+            "location": "16th Floor, Amarin Tower, 500 Phloen Chit Road, Bangkok 10330",
+            "country_code": "fi"
+        },
+        {
+            "name": "Malaysia Embassy in Thailand",
+            "tel": "026296800",
+            "location": "33-35 South Sathorn Road, Thung Mahamek, Bangkok 10120",
+            "country_code": "my"
+        },
+        {
+            "name": "Mexico Embassy in Thailand",
+            "tel": "022850995",
+            "location": "20th Floor, Thai Wah Tower 1, 20/60-62 South Sathorn Road, Bangkok 10120",
+            "country_code": "mx"
+        },
+        {
+            "name": "Morocco Embassy in Thailand",
+            "tel": "026795604",
+            "location": "175 Sathorn City Tower, South Sathorn Road, Bangkok 10120",
+            "country_code": "ma"
+        },
+        {
+            "name": "Deutsche Botschaft in Thailand (German Embassy)",
+            "tel": "022879000",
+            "url": "http://www.bangkok.diplo.de/Vertretung/bangkok/de/Startseite.html",
+            "location": "9 South Sathorn Road, Bangkok 10120",
+            "country_code": "de"
+        },
+        {
+            "name": "Embassy of the Russian Federation in Thailand",
+            "tel": "022681169",
+            "url": "http://www.thailand.mid.ru/Win_work/intro.htm",
+            "location": "78 Sap Road, Suriyawong, Bang Rak, Bangkok 10500",
+            "country_code": "ru"
+        },
+        {
+            "name": "Ramania Embassy in Thaiand (Romania Embassy)",
+            "tel": "026171551",
+            "location": "120/1 Soi Ratchakru, Phahonyothin 5, Bangkok 10400",
+            "country_code": "ro"
+        },
+        {
+            "name": "Lao Embassy in Thailand",
+            "tel": "025396667",
+            "url": "http://www.bkklaoembassy.com/",
+            "location": "502/502/1-3 Soi Sahakan Pramun, Pracha Uthit, Wang Thonglang, Bangkok 10310",
+            "country_code": "la"
+        },
+        {
+            "name": "Vietnamese Embassy in Thailand",
+            "tel": "022515836",
+            "url": "http://www.vietnamembassy-thailand.org/en/",
+            "location": "83/1 Wireless Road, Lumpini, Pathum Wan, Bangkok 10330",
+            "country_code": "vn"
+        },
+        {
+            "name": "Switzerland Embassy in Thailand",
+            "tel": "022544596",
+            "location": "35 Witthayu Road, Lumpini, Pathum Wan, Bangkok 10330",
+            "country_code": "ch"
+        },
+        {
+            "name": "Swedish Embassy in Thailand",
+            "tel": "022637200",
+            "location": "20th Floor, Pacific Place 1, 140 Sukhumvit Road (between Soi 4 and Soi 6), Bangkok 10110",
+            "country_code": "se"
+        },
+        {
+            "name": "UAE Embassy in Thailand",
+            "tel": "6624024000",
+            "location": "CRC Tower, 29th Floor, All Seasons Place, 87/2 Wireless Road, Lumpini, Pathum Wan, Bangkok 10330",
+            "country_code": "ae"
+        },
+        {
+            "name": "Spanish Embassy in Thailand",
+            "tel": "026618284",
+            "url": "http://www.embesp.or.th/",
+            "location": "93/98-99 Lake Rajada Complex, 23rd Floor, Ratchadaphisek Road, Khlong Toei, Bangkok 10110",
+            "country_code": "es"
+        },
+        {
+            "name": "Slovak Embassy in Thailand",
+            "tel": "026773445",
+            "location": "22nd Floor, Thai Wah Tower 2, 21/144 South Sathorn Road, Bangkok 10120",
+            "country_code": "sk"
+        },
+        {
+            "name": "Singapore Embassy in Thailand",
+            "tel": "022862111",
+            "url": "www.mfa.gov.sg/bangkok/",
+            "location": "129 South Sathorn Road, Bangkok 10120",
+            "country_code": "sg"
+        },
+        {
+            "name": "Australian Embassy in Thailand",
+            "tel": "023446300",
+            "url": "http://www.thailand.embassy.gov.au/bkok/home.html",
+            "location": "37 South Sathorn Road, Bangkok 10120; Australian Visa Application Centre: The Trendy Office Building, 28th Floor, Sukhumvit Soi 13, Khlong Toei Nuea, Watthana, Bangkok 10110",
+            "country_code": "au"
+        },
+        {
+            "name": "Austria Embassy in Thailand",
+            "tel": "023036057",
+            "location": "14 Soi Nantha, South Sathorn Road, Bangkok 10120",
+            "country_code": "at"
+        }
+    ]
+}

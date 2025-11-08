@@ -1,0 +1,82 @@
+{
+    "links": [
+        {
+            "title": "Activity",
+            "link": "/activity"
+        },
+        {
+            "title": "Camera",
+            "link": "/camera"
+        },
+        {
+            "title": "Event",
+            "link": "/event"
+        },
+        {
+            "title": "Feedback",
+            "link": "/feedback"
+        },
+        {
+            "title": "Install",
+            "link": "/install"
+        },
+        {
+            "title": "Planner",
+            "link": "/planner"
+        },
+        {
+            "title": "Privacy Policy",
+            "link": "/privacy"
+        },
+        {
+            "title": "Redeem",
+            "link": "/redeem"
+        },
+        {
+            "title": "Restaurant",
+            "link": "/restaurant"
+        },
+        {
+            "title": "Roadtrip",
+            "link": "/roadtrip"
+        },
+        {
+            "title": "SDGs",
+            "link": "/sdgs"
+        },
+        {
+            "title": "Sitemap",
+            "link": "/sitemap"
+        },
+        {
+            "title": "SOS",
+            "link": "/sos"
+        },
+        {
+            "title": "Terms of Service",
+            "link": "/terms"
+        },
+        {
+            "title": "Weather",
+            "link": "/weather"
+        }
+    ],
+    "uLinks": [
+        {
+            "title": "Leaderboard",
+            "link": "/leaderboard"
+        },
+        {
+            "title": "Profile",
+            "link": "/@me"
+        },
+        {
+            "title": "Maps",
+            "link": "/@me/mymap"
+        },
+        {
+            "title": "Option",
+            "link": "/@me/option"
+        }
+    ]
+}
