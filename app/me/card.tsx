@@ -21,7 +21,6 @@ import { AnimatePresence, motion } from "motion/react";
 import IQR from "@/assets/media/icon/scanner.svg";
 import IRM from "@/assets/media/icon/gift.svg";
 import ITG from "@/assets/media/icon/target.svg";
-import { ShareSocial } from 'react-share-social';
 import TANDIA from "@/assets/media/maskot/tan/TanUpper.webp";
 import SplitText from '@/components/bits/SplitText/SplitText';
 
@@ -39,6 +38,7 @@ const style = {
 };
 
 import './share.css'
+import Sharebt from '../components/sharebt';
 
 function Card() {
     const t = useTranslations('Profile');
@@ -182,13 +182,7 @@ function Card() {
                     <DialogHeader>
                         <DialogTitle className='text-2xl'>{t('share.title')}</DialogTitle>
                         <p className='mb-4'>{t('share.decs')}</p>
-                        <div className='flex items-center justify-center'>
-                            <ShareSocial
-                                url={`https://www.thaiguide.in.th/traveler/${btoa(user.uid)}`}
-                                style={style}
-                                socialTypes={['facebook', 'twitter', 'reddit', 'line', 'telegram']}
-                            />
-                        </div>
+                        <Sharebt onlyContent={true} link={`https://www.thaiguide.in.th/traveler/${btoa(user.uid)}`} />
                     </DialogHeader>
                 </DialogContent>
             </Dialog>

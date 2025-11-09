@@ -7,6 +7,7 @@ import Details from './details';
 import { getTranslations } from 'next-intl/server';
 import Didyouknow from "@/app/components/didyouknow";
 import TGtitle from '@/app/components/tgtitle';
+import ContentNotfound from '@/app/components/contentNotfound';
 
 type Props = {
     params: Promise<{ rewid: string }>
@@ -41,12 +42,7 @@ async function Page({ params }: Props) {
     }
 
     if (data == "error") {
-        return (<>
-            <div className='flex items-center flex-col justify-center gap-4 py-8'>
-                <img src={NF.src} alt="Icon" className='w-32 translate-x-3' />
-                <p className='font-semibold text-2xl'>{t('items.notfound')}</p>
-            </div>
-        </>)
+        return <ContentNotfound />
     }
 
     return (

@@ -2,7 +2,6 @@
 
 import { Share2 } from 'lucide-react';
 import React from 'react';
-import { ShareSocial } from 'react-share-social';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import {
@@ -12,24 +11,32 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog";
-import './share.css'
+import { SocialIcon } from 'react-social-icons';
 
-const style = {
-    root: {
-        borderRadius: 3,
-        border: 0,
-        padding: 0,
-        color: 'white',
-    },
-    copyContainer: {
-        background: '#f7740a',
-        border: 0
-    }
-};
-
-function Sharebt() {
+function Sharebt({ link, onlyContent }: { link?: string, onlyContent?: boolean }) {
     const pathname = usePathname();
     const t = useTranslations('Share');
+    const fullPath = link || `https://www.thaiguide.in.th${pathname}`
+
+    const shareLink = [
+        `https://www.reddit.com/submit?url=${fullPath}&title=&type=LINK`,
+        `https://x.com/intent/post?url=${fullPath}&text=`,
+        `https://telegram.me/share/url?url=${fullPath}&text=`,
+        `https://www.facebook.com/sharer/sharer.php?u=${fullPath}&text=`
+    ]
+
+    if (onlyContent) return (
+        <>
+            <div className='flex items-center justify-center gap-3'>
+                {
+                    shareLink.map((link, index) => (
+                        <SocialIcon bgColor='#f7740a' key={index} url={link} style={{ height: 45, width: 45 }} />
+                    ))
+                }
+            </div>
+            <p className='text-sm text-primary font-semibold text-center mt-1'>{fullPath}</p>
+        </>
+    )
 
     return (
         <>
@@ -45,13 +52,14 @@ function Sharebt() {
                     <DialogHeader>
                         <DialogTitle className='text-2xl'>{t('title')}</DialogTitle>
                         <p className='mb-4'>{t('decs')}</p>
-                        <div className='flex items-center justify-center'>
-                            <ShareSocial
-                                url={`https://www.thaiguide.in.th${pathname}`}
-                                style={style}
-                                socialTypes={['facebook', 'twitter', 'reddit', 'line', 'telegram']}
-                            />
+                        <div className='flex items-center justify-center gap-3'>
+                            {
+                                shareLink.map((link, index) => (
+                                    <SocialIcon bgColor='#f7740a' key={index} url={link} style={{ height: 45, width: 45 }} />
+                                ))
+                            }
                         </div>
+                        <p className='text-sm text-primary font-semibold text-center mt-1'>{fullPath}</p>
                     </DialogHeader>
                 </DialogContent>
             </Dialog>

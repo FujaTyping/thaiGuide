@@ -9,6 +9,7 @@ import { MapPin, Quote } from 'lucide-react';
 import Activities from './activities';
 import Quiz from './quiz';
 import TGtitle from '@/app/components/tgtitle';
+import ContentNotfound from '@/app/components/contentNotfound';
 
 type Props = {
     params: Promise<{ name: string }>
@@ -43,12 +44,7 @@ async function page({ params }: Props) {
     }
 
     if (data == "error") {
-        return (<>
-            <div className='flex items-center flex-col justify-center gap-4 py-8'>
-                <img src={NF.src} alt="Icon" className='w-32 translate-x-3' />
-                <p className='font-semibold text-2xl'>{t('item.notfound')}</p>
-            </div>
-        </>)
+        return <ContentNotfound />
     }
 
     return (
