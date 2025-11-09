@@ -57,6 +57,10 @@ const redeemIdInfoHandler = async ({ body, set }: { body: typeof RedeemByIdBodyS
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
+            if (docSnap.data().idRedeem) {
+                set.status = 400;
+                return { message: "Already redeemed" };
+            }
             await updateDoc(docRef, {
                 idRedeem: true,
                 redeemAt: serverTimestamp(),
