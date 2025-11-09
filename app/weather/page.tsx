@@ -30,7 +30,6 @@ function Page() {
                     <Simulation />
                 </div>
             </main>
-            
         </>
     )
 }
