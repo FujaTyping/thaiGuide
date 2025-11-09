@@ -14,6 +14,7 @@ import { getTranslations } from 'next-intl/server';
 import Didyouknow from "@/app/components/didyouknow";
 import Sharebt from '@/app/components/sharebt';
 import TGtitle from '@/app/components/tgtitle';
+import ContentNotfound from '@/app/components/contentNotfound';
 
 type Props = {
     params: Promise<{ actid: string }>
@@ -48,12 +49,7 @@ async function page({ params }: Props) {
     }
 
     if (data == "error") {
-        return (<>
-            <div className='flex items-center flex-col justify-center gap-4 py-8'>
-                <img src={NF.src} alt="Icon" className='w-32 translate-x-3' />
-                <p className='font-semibold text-2xl'>{t('item.notfound')}</p>
-            </div>
-        </>)
+        return <ContentNotfound />
     }
 
     return (
@@ -136,7 +132,7 @@ async function page({ params }: Props) {
                 <iframe src={data.mapembed} className='w-full h-[500px] rounded-2xl' loading="lazy"></iframe>
             </main>
             <Sharebt />
-            
+
         </>
     )
 }

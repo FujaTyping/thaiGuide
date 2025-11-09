@@ -997,5 +997,9 @@
             "Maps": "Peta",
             "Option": "Pilihan"
         }
+    },
+    "NotFound": {
+        "title": "Kandungan ini tidak tersedia",
+        "decs": "Kandungan mungkin telah dialih keluar atau tidak tersedia pada masa ini"
     }
 }
