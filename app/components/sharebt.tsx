@@ -34,7 +34,7 @@ function Sharebt({ link, onlyContent }: { link?: string, onlyContent?: boolean }
                     ))
                 }
             </div>
-            <p className='text-sm text-primary font-semibold text-center mt-1'>{fullPath}</p>
+            <p className='text-sm text-primary font-semibold text-center mt-1 break-all'>{fullPath}</p>
         </>
     )
 
@@ -59,7 +59,7 @@ function Sharebt({ link, onlyContent }: { link?: string, onlyContent?: boolean }
                                 ))
                             }
                         </div>
-                        <p className='text-sm text-primary font-semibold text-center mt-1'>{fullPath}</p>
+                        <p className='text-sm text-primary font-semibold text-center mt-1 break-all'>{fullPath}</p>
                     </DialogHeader>
                 </DialogContent>
             </Dialog>
