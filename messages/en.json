@@ -213,8 +213,8 @@
       "ddpm": "Department of Disaster Prevention and Mitigation",
       "csd": "Crime Suppression Division"
     },
-    "emtitle":"Embassy",
-    "emdecs":"Find contact information and locations of embassies and consulates in Thailand to help you during your travels."
+    "emtitle": "Embassy",
+    "emdecs": "Find contact information and locations of embassies and consulates in Thailand to help you during your travels."
   },
   "Profile": {
     "title": "Profile Card",
@@ -1006,6 +1006,21 @@
             "decse": "Please try again later"
           }
         }
+      },
+      "redeem": {
+        "title": "Reward Redemption Management",
+        "decs": "Manage and verify users reward redemption requests, track point usage, and ensure smooth distribution of rewards",
+        "wait": "Waiting for code",
+        "again": "Scan Again",
+        "succ": {
+          "h2": "Reward Redeemed Successfully",
+          "decs": "points have been updated and the user’s reward record is now complete"
+        },
+        "err": {
+          "h2": "Reward Redemption Failed",
+          "decs": "The QR code is invalid or has already been used. Please try again with a valid code"
+        },
+        "onlymobile": "You can only access the Redeem Reward feature on mobile devices"
       }
     }
   },

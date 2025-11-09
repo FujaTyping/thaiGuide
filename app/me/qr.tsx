@@ -134,7 +134,8 @@ function Qr() {
                                                                 };
                                                             }}
                                                         />
-                                                        <p>{data}</p>                                           </div>
+                                                        <p>{data}</p>
+                                                    </div>
                                                     <p className='flex items-center justify-center mt-2 text-primary font-semibold'>{data == "" ? <span className='flex items-center gap-2'><LoaderCircle className='animate-spin' />  {t('scan.loading')}</span> : <span className='text-center'>{data}</span>}</p>
                                                 </> : <>
                                                     <div className='flex items-center flex-col justify-center gap-4'>
