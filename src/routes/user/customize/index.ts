@@ -3,14 +3,19 @@ import db from "../../../lib/firebase";
 import { collection, doc, getDoc, updateDoc } from "firebase/firestore";
 import { t } from "elysia";
 
-const updateBannerBGSchema = t.Object({
-    url: t.String(),
-    uid: t.String()
-})
+const updateBannerBGSchema = {
+    body: t.Object({
+        url: t.String()
+    }),
+    headers: t.Object({
+        aetheruid: t.String()
+    }),
+}
 
-const changeUserBanner = async ({ body, set }: { body: typeof updateBannerBGSchema.static, set: { status: number | string } }) => {
+const changeUserBanner = async ({ body, set, headers }: { headers: typeof updateBannerBGSchema.headers.static, body: typeof updateBannerBGSchema.body.static, set: { status: number | string } }) => {
     try {
-        const { url, uid } = body;
+        const { url } = body;
+        const uid = headers.aetheruid;
 
         if (!uid || !url) {
             set.status = 400
@@ -39,8 +44,4 @@ const changeUserBanner = async ({ body, set }: { body: typeof updateBannerBGSche
 };
 
 export default (app: ElysiaApp) => app
-    .patch("/banner", changeUserBanner,
-        {
-            body: updateBannerBGSchema,
-        }
-    );
+    .patch("/banner", changeUserBanner, updateBannerBGSchema);
