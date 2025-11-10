@@ -29,8 +29,10 @@ function Quiz() {
             if (user) {
                 setUser(user);
                 try {
-                    const checkUser = await axios.put(`${server}/quiz/getbyuser`, {
-                        userId: user.uid
+                    const checkUser = await axios.put(`${server}/quiz/getbyuser`, {}, {
+                        headers: {
+                            aetheruid: user.uid
+                        }
                     })
                     setQuizz(checkUser.data.completedQuizzes);
                 } catch {

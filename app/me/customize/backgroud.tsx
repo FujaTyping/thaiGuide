@@ -39,7 +39,11 @@ function CustomizeBG() {
             if (user) {
                 setUser(user);
                 try {
-                    const banRES = await axios.put(`${server}/customize/banner`, { uid: user.uid })
+                    const banRES = await axios.put(`${server}/customize/banner`, {}, {
+                        headers: {
+                            aetheruid: user.uid
+                        }
+                    })
                     setBannerRES(banRES.data.banners);
                 } catch {
                     setBannerRES([]);
@@ -57,9 +61,8 @@ function CustomizeBG() {
         if (user) {
             try {
                 await axios.patch(`${server}/user/customize/banner`, {
-                    uid: user.uid,
                     url: wantCbg?.bg
-                })
+                }, { headers: { aetheruid: user.uid, } })
                 setStatuss('done');
 
                 setTimeout(() => {

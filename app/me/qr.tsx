@@ -86,9 +86,12 @@ function Qr() {
             if (location) {
                 const response = await axios.put(`${server}/code/getbyid`, {
                     id: code,
-                    uid: user?.uid,
                     year: new Date().getFullYear(),
                     location
+                }, {
+                    headers: {
+                        aetheruid: user?.uid
+                    }
                 });
 
                 const resD = response.data;
