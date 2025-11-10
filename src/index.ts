@@ -7,7 +7,8 @@ import { cacheControl } from "elysiajs-cdn-cache";
 
 const app = new Elysia()
   .use(cors({
-    origin: "localhost:3000"  }))
+    origin: /.*\.thaiguide\.in\.th$/
+  }))
   .use(cacheControl())
   .use(rateLimit({
     max: 10,
