@@ -4,10 +4,10 @@ import db from "../../lib/firebase";
 import { t } from "elysia";
 
 const GetByIdBodySchema = {
-    headers: t.Object({
-        aetheruid: t.String()
+    body: t.Object({
+        id: t.String()
     })
-}
+};
 
 const RedeemByIdBodySchema = t.Object({
     raw: t.String()
@@ -27,8 +27,8 @@ const getInfoHandler = async () => {
     return Data;
 };
 
-const getIdInfoHandler = async ({ headers, set }: { headers: typeof GetByIdBodySchema.headers.static, set: { status: number | string } }) => {
-    const docId = headers.aetheruid;
+const getIdInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.body.static, set: { status: number | string } }) => {
+    const docId = body.id;
     const docRef = doc(db, "redeem", docId);
 
     try {
