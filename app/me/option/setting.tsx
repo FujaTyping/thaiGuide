@@ -49,9 +49,12 @@ function Setting() {
             if (user) {
                 setUser(user);
                 const checkUser = await axios.post(`${server}/user`, {
-                    userid: user.uid,
                     name: user.displayName,
                     pfp: user.photoURL
+                }, {
+                    headers: {
+                        aetheruid: user.uid
+                    }
                 })
                 setUData(checkUser.data);
                 setVName(checkUser.data.name);
@@ -65,8 +68,8 @@ function Setting() {
         setReqState("loading");
         try {
             await axios.delete(`${server}/user/delete`, {
-                data: {
-                    uid: user?.uid
+                headers: {
+                    aetheruid: user?.uid
                 }
             })
             setReqState("success");
@@ -98,8 +101,11 @@ function Setting() {
         } else {
             try {
                 await axios.post(`${server}/customize/user/name`, {
-                    uid: user?.uid,
                     name: vName
+                }, {
+                    headers: {
+                        aetheruid: user?.uid
+                    }
                 })
                 toast.success(t('option.name.succ'));
                 setNameLoading(false);

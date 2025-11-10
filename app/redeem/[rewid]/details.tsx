@@ -38,9 +38,12 @@ function Details({ data }: { data: any }) {
             if (user) {
                 setUser(user);
                 const checkUser = await axios.post(`${server}/user`, {
-                    userid: user.uid,
                     name: user.displayName,
                     pfp: user.photoURL
+                }, {
+                    headers: {
+                        aetheruid: user.uid
+                    }
                 })
                 setUData(checkUser.data);
                 setLoading(false);
@@ -54,7 +57,6 @@ function Details({ data }: { data: any }) {
 
     async function CRedeem() {
         const payload = {
-            userid: user?.uid,
             type: "Redeem",
             place: data.name,
             point: `-${data.require}`
@@ -66,7 +68,11 @@ function Details({ data }: { data: any }) {
         }
         setTranscationState("loading");
         try {
-            const res = await axios.post(`${server}/transactions/transfer`, payload);
+            const res = await axios.post(`${server}/transactions/transfer`, payload, {
+                headers: {
+                    aetheruid: user?.uid
+                }
+            });
             setSuccV(res.data.isV);
             setTranscationState("success");
             setTimeout(() => {

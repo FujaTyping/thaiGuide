@@ -53,9 +53,12 @@ function Card() {
             if (user) {
                 setUser(user);
                 const checkUser = await axios.post(`${server}/user`, {
-                    userid: user.uid,
                     name: user.displayName || user.email,
                     pfp: user.photoURL || "https://ik.imagekit.io/61sqw5prw/thaiGuide/ano.svg?updatedAt=1761136329818"
+                }, {
+                    headers: {
+                        aetheruid: user.uid
+                    }
                 })
                 setUData(checkUser.data);
                 if (checkUser.data.new) {
