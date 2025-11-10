@@ -4,23 +4,29 @@ import { collection, getDocs, doc, setDoc, getDoc, serverTimestamp, query, order
 import { t } from "elysia";
 import { generateRandomId } from '../../lib/randomid';
 
-const userSchema = t.Object({
-    userid: t.String()
-});
+const userSchema = {
+    headers: t.Object({
+        aetheruid: t.String()
+    })
+}
 
-const transactionSchema = t.Object({
-    userid: t.String(),
-    type: t.String(),
-    place: t.String(),
-    point: t.String(),
-    isV: t.Optional(t.Boolean()),
-    vType: t.Optional(t.String()),
-    attach: t.Optional(t.Any())
-});
+const transactionSchema = {
+    body: t.Object({
+        type: t.String(),
+        place: t.String(),
+        point: t.String(),
+        isV: t.Optional(t.Boolean()),
+        vType: t.Optional(t.String()),
+        attach: t.Optional(t.Any())
+    }),
+    headers: t.Object({
+        aetheruid: t.String()
+    })
+}
 
-const getTransactionsByUserId = async ({ body, set }: { body: typeof userSchema.static, set: { status: number | string } }) => {
+const getTransactionsByUserId = async ({ headers, set }: { headers: typeof userSchema.headers.static, set: { status: number | string } }) => {
     try {
-        const { userid } = body;
+        const userid = headers.aetheruid;
 
         if (!userid) {
             set.status = 400;
@@ -48,9 +54,10 @@ const getTransactionsByUserId = async ({ body, set }: { body: typeof userSchema.
     }
 };
 
-const transferUserTransaction = async ({ body, set }: { body: typeof transactionSchema.static, set: { status: number | string } }) => {
+const transferUserTransaction = async ({ body, set, headers }: { headers: typeof transactionSchema.headers.static, body: typeof transactionSchema.body.static, set: { status: number | string } }) => {
     try {
-        const { userid, type, place, point, isV, vType, attach } = body;
+        const { type, place, point, isV, vType, attach } = body;
+        const userid = headers.aetheruid;
 
         if (!userid || !type || !place || !point) {
             set.status = 400;
@@ -131,15 +138,6 @@ const transferUserTransaction = async ({ body, set }: { body: typeof transaction
     }
 };
 
-export default (app: ElysiaApp) => app.put("/getbyuser", getTransactionsByUserId,
-    {
-        body: userSchema,
-    }
-)
-    .post(
-        "/transfer",
-        transferUserTransaction,
-        {
-            body: transactionSchema,
-        }
-    );
+export default (app: ElysiaApp) => app
+    .put("/getbyuser", getTransactionsByUserId, userSchema)
+    .post("/transfer", transferUserTransaction, transactionSchema);

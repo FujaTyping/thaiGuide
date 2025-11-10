@@ -3,12 +3,14 @@ import type { ElysiaApp } from "../../index";
 import db from "../../lib/firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 
-const GetByIdBodySchema = t.Object({
-    uid: t.String()
-});
+const GetByIdBodySchema = {
+    headers: t.Object({
+        aetheruid: t.String()
+    })
+}
 
-const getBanner = async ({ body, set }: { body: typeof GetByIdBodySchema.static, set: { status: number | string } }) => {
-    const { uid } = body;
+const getBanner = async ({ headers, set }: { headers: typeof GetByIdBodySchema.headers.static, set: { status: number | string } }) => {
+    const uid = headers.aetheruid;
     try {
         let Rbanners: any[] = [];
 
@@ -43,6 +45,4 @@ const getBanner = async ({ body, set }: { body: typeof GetByIdBodySchema.static,
 };
 
 export default (app: ElysiaApp) => app
-    .put("/banner", getBanner, {
-        body: GetByIdBodySchema
-    })
+    .put("/banner", getBanner, GetByIdBodySchema)

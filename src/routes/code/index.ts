@@ -16,9 +16,11 @@ const GetByIdBodySchema = t.Object({
     })
 });
 
-const GetMyMaps = t.Object({
-    uid: t.String()
-})
+const GetMyMaps = {
+    headers: t.Object({
+        aetheruid: t.String()
+    })
+}
 
 const getInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.static, set: { status: number | string } }) => {
     const { id, uid, year, location } = body
@@ -136,8 +138,8 @@ const getInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.st
     }
 };
 
-const getMapInfoHandler = async ({ body, set }: { body: typeof GetMyMaps.static, set: { status: number | string } }) => {
-    const { uid } = body;
+const getMapInfoHandler = async ({ headers, set }: { headers: typeof GetMyMaps.headers.static, set: { status: number | string } }) => {
+    const uid = headers.aetheruid;
 
     let Data: any = {
         undiscover: [],
@@ -183,6 +185,4 @@ export default (app: ElysiaApp) => app
     .put("/getbyid", getInfoHandler, {
         body: GetByIdBodySchema
     })
-    .put("/mapbyid", getMapInfoHandler, {
-        body: GetMyMaps
-    });
+    .put("/mapbyid", getMapInfoHandler, GetMyMaps);

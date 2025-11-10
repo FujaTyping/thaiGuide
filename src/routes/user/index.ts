@@ -3,23 +3,32 @@ import db from "../../lib/firebase";
 import { collection, doc, getDoc, setDoc, getDocs, serverTimestamp, deleteDoc, query } from "firebase/firestore";
 import { t } from "elysia";
 
-const userSchema = t.Object({
-    userid: t.String(),
-    name: t.String(),
-    pfp: t.String()
-});
+const userSchema = {
+    body: t.Object({
+        name: t.String(),
+        pfp: t.String()
+    }),
+    headers: t.Object({
+        aetheruid: t.String()
+    })
+};
 
-const publicUserSchema = t.Object({
-    uid: t.String()
-})
+const publicUserSchema = {
+    headers: t.Object({
+        aetheruid: t.String()
+    })
+}
 
-const deleteUserSchema = t.Object({
-    uid: t.String()
-})
+const deleteUserSchema = {
+    headers: t.Object({
+        aetheruid: t.String()
+    })
+}
 
-const createUser = async ({ body, set }: { body: typeof userSchema.static, set: { status: number | string } }) => {
+const createUser = async ({ body, headers, set }: { body: typeof userSchema.body.static, headers: typeof userSchema.headers.static, set: { status: number | string } }) => {
     try {
-        const { userid, name, pfp } = body;
+        const { name, pfp } = body;
+        const userid = headers.aetheruid;
 
         if (!userid || !name || !pfp) {
             set.status = 400
@@ -54,9 +63,9 @@ const createUser = async ({ body, set }: { body: typeof userSchema.static, set: 
     }
 };
 
-const publicUser = async ({ body, set }: { body: typeof publicUserSchema.static, set: { status: number | string } }) => {
+const publicUser = async ({ headers, set }: { headers: typeof publicUserSchema.headers.static, set: { status: number | string } }) => {
     try {
-        const { uid } = body;
+        const uid = headers.aetheruid;
 
         if (!uid) {
             set.status = 400
@@ -101,9 +110,9 @@ const publicUser = async ({ body, set }: { body: typeof publicUserSchema.static,
     }
 };
 
-const deleteUser = async ({ body, set }: { body: typeof deleteUserSchema.static, set: { status: number | string } }) => {
+const deleteUser = async ({ headers, set }: { headers: typeof deleteUserSchema.headers.static, set: { status: number | string } }) => {
     try {
-        const { uid } = body;
+        const uid = headers.aetheruid;
         const userDocRef = doc(db, "Users", uid);
 
         const subcollections = ['inventory', 'badge', 'quiz', 'scanqr', 'transactions'];
@@ -126,18 +135,6 @@ const deleteUser = async ({ body, set }: { body: typeof deleteUserSchema.static,
 };
 
 export default (app: ElysiaApp) => app
-    .post("/", createUser,
-        {
-            body: userSchema,
-        }
-    )
-    .put("/public", publicUser,
-        {
-            body: publicUserSchema
-        }
-    )
-    .delete('/delete', deleteUser,
-        {
-            body: deleteUserSchema
-        }
-    );
+    .post("/", createUser, userSchema)
+    .put("/public", publicUser, publicUserSchema)
+    .delete('/delete', deleteUser, deleteUserSchema);

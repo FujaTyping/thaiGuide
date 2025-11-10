@@ -3,15 +3,17 @@ import db from "../../lib/firebase";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { t } from "elysia";
 
-const userSchema = t.Object({
-    userid: t.String()
-});
+const userSchema = {
+    headers: t.Object({
+        aetheruid: t.String()
+    })
+}
 
-const getBadgesByUserId = async ({ body, set }: { body: typeof userSchema.static, set: { status: number | string } }) => {
+const getBadgesByUserId = async ({ headers, set }: { headers: typeof userSchema.headers.static, set: { status: number | string } }) => {
     try {
-        const { userid } = body;
+        const userid = headers.aetheruid;
 
-        if (!userid) {
+        if (!headers.aetheruid) {
             set.status = 400;
             return { error: "User ID is required." };
         }
@@ -37,8 +39,4 @@ const getBadgesByUserId = async ({ body, set }: { body: typeof userSchema.static
 };
 
 export default (app: ElysiaApp) => app
-    .put("/getbyuser", getBadgesByUserId,
-        {
-            body: userSchema,
-        }
-    )
+    .put("/getbyuser", getBadgesByUserId, userSchema)
