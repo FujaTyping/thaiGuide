@@ -6,15 +6,19 @@ import { getDistance } from 'geolib';
 import axios from "axios";
 import config from "../../config.json";
 
-const GetByIdBodySchema = t.Object({
-    id: t.String(),
-    uid: t.String(),
-    year: t.Number(),
-    location: t.Object({
-        latitude: t.Number(),
-        longitude: t.Number()
+const GetByIdBodySchema = {
+    body: t.Object({
+        id: t.String(),
+        year: t.Number(),
+        location: t.Object({
+            latitude: t.Number(),
+            longitude: t.Number()
+        })
+    }),
+    headers: t.Object({
+        aetheruid: t.String()
     })
-});
+};
 
 const GetMyMaps = {
     headers: t.Object({
@@ -22,8 +26,10 @@ const GetMyMaps = {
     })
 }
 
-const getInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.static, set: { status: number | string } }) => {
-    const { id, uid, year, location } = body
+const getInfoHandler = async ({ body, set, headers }: { headers: typeof GetByIdBodySchema.headers.static, body: typeof GetByIdBodySchema.body.static, set: { status: number | string } }) => {
+    const { id, year, location } = body
+    const uid = headers.aetheruid;
+
     const docId = id;
     const docRef = doc(db, "codes", docId);
     const docuId = uid;
@@ -74,10 +80,13 @@ const getInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.st
                         data.samespot = false;
                     }
                     await axios.post(`http://${config.server}/transactions/transfer`, {
-                        userid: uid,
                         type: "Scan QR",
                         place: data.name,
                         point: `+${SetPoint}`
+                    }, {
+                        headers: {
+                            aetheruid: uid
+                        }
                     })
                     if (data.province) {
                         const badgeRef = doc(db, "badge", data.province);
@@ -182,7 +191,5 @@ const getMapInfoHandler = async ({ headers, set }: { headers: typeof GetMyMaps.h
 };
 
 export default (app: ElysiaApp) => app
-    .put("/getbyid", getInfoHandler, {
-        body: GetByIdBodySchema
-    })
+    .put("/getbyid", getInfoHandler, GetByIdBodySchema)
     .put("/mapbyid", getMapInfoHandler, GetMyMaps);
