@@ -19,7 +19,7 @@ function Page() {
       <main className='tg-container'>
         <TGtitle title={t('title')} decs={t('decs')} />
         <IssuesForm />
-        <TGtitle title={t('pptitle')} decs={t('ppdecs')} />
+        <TGtitle title={t('pptitle')} decs={t('ppdecs')} second={true} />
         <FeedbackBoard />
         <div className='flex items-center justify-center'>
           <Link href={"https://tally.so/r/n9PZyp"} className='mt-2 text-primary flex items-center gap-2 cursor-pointer font-semibold' ><Info /> {t('tally')}</Link>
