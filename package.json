@@ -59,6 +59,7 @@
     "react-dom": "^19.2.0",
     "react-fast-marquee": "^1.6.5",
     "react-hook-form": "^7.65.0",
+    "react-markdown": "^10.1.0",
     "react-photo-view": "^1.2.7",
     "react-qr-barcode-scanner": "^2.1.16",
     "react-qr-code": "^2.0.18",
