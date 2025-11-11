@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText as GSAPSplitText } from 'gsap/SplitText';
 import { useGSAP } from '@gsap/react';
+import Markdown from 'react-markdown'
 
 gsap.registerPlugin(ScrollTrigger, GSAPSplitText, useGSAP);
 
@@ -62,7 +63,7 @@ const SplitText: React.FC<SplitTextProps> = ({
       if (el._rbsplitInstance) {
         try {
           el._rbsplitInstance.revert();
-        } catch (_) {}
+        } catch (_) { }
         el._rbsplitInstance = undefined;
       }
 
@@ -126,7 +127,7 @@ const SplitText: React.FC<SplitTextProps> = ({
         });
         try {
           splitInstance.revert();
-        } catch (_) {}
+        } catch (_) { }
         el._rbsplitInstance = undefined;
       };
     },
@@ -198,7 +199,7 @@ const SplitText: React.FC<SplitTextProps> = ({
       default:
         return (
           <p ref={ref} style={style} className={classes}>
-            {text}
+            <Markdown>{text}</Markdown>
           </p>
         );
     }

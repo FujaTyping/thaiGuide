@@ -261,7 +261,26 @@
       "stk2": "You're keeping your streak alive",
       "sametip": "Points are reduced for repeat visits. The reward is divided by your number of check-ins",
       "samemssg": "You've visited this spot before",
-      "limit": "has a limit for scanning the QR code to receive points"
+      "limit": "has a limit for scanning the QR code to receive points",
+      "state1": {
+        "1": "Oh, you’re back at",
+        "2": "Yay! Scan successful! You’ve just checked in at",
+        "3": "You earned",
+        "4": "points for this visit!",
+        "5": "Looks like you’ve already checked in here before. Let’s find a new spot to explore and earn more points!"
+      },
+      "state2": {
+        "1": "You just unlocked a shiny new badge",
+        "2": "Keep exploring and collect them all to become a true Thailand Explorer!"
+      },
+      "state3": {
+        "1": "You now have",
+        "2": "years of continuous travel! That’s",
+        "3": "year exploring Thailand amazing dedication!",
+        "4": "Keep discovering new places and see how far your journey can go!"
+      },
+      "gotit": " I got it",
+      "mkname": "Photo (Companion)"
     },
     "welcome": {
       "title": "Welcome to ThaiGuide!",

@@ -14,6 +14,8 @@ import BarcodeScanner from "react-qr-barcode-scanner";
 import Loader from '../components/loader';
 import axios from "axios";
 import { useTranslations } from 'next-intl';
+import PTH from "@/assets/media/maskot/photo/BackHappy.webp";
+import SplitText from '@/components/bits/SplitText/SplitText';
 
 import NF from "@/assets/media/card/icon/notfound.svg";
 import LC from "@/assets/media/card/icon/locationcorrect.svg";
@@ -26,11 +28,6 @@ import { AnimatePresence, motion } from "motion/react";
 import ConfettiExplosion from 'react-confetti-explosion';
 import STK from "@/assets/media/icon/fire.gif";
 import { Button } from '@/components/ui/button';
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipTrigger,
-} from "@/components/ui/tooltip";
 import BadgeRev from "@/assets/media/icon/REV.svg";
 import LMT from "@/assets/media/icon/Limit.svg";
 
@@ -48,6 +45,7 @@ function Qr() {
     const [isWithinRadius, setIsWithinRadius] = useState(false);
     const [succState, setSuccState] = useState(1);
     const [sameSpot, setSameSpot] = useState(false);
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -110,207 +108,260 @@ function Qr() {
             <div className='fixed bottom-0 right-0 p-4'>
                 {locationLoading ? <div className='bg-primary text-white p-3 rounded-full hover:bg-white hover:text-primary border-2 border-primary transition-all duration-250'>
                     <LoaderCircle className='animate-spin size-8' />
-                </div> : <Dialog>
-                    <DialogTrigger onClick={() => { setData(""); setCodeData(""); setSuccState(1); }}><div className='bg-primary cursor-pointer text-white p-3 rounded-full hover:bg-white hover:text-primary border-2 border-primary transition-all duration-250'>
+                </div> : <>
+                    <div onClick={() => { setData(""); setCodeData(""); setSuccState(1); setOpen(true); }} className='bg-primary cursor-pointer text-white p-3 rounded-full hover:bg-white hover:text-primary border-2 border-primary transition-all duration-250'>
                         <ScanLine className='size-8' />
-                    </div></DialogTrigger>
-                    <DialogContent>
-                        <DialogHeader>
-                            <DialogTitle className='text-2xl'>{t('scan.title')}</DialogTitle>
-                            <p className='mb-4'>{t('scan.decs')}</p>
-                            {
-                                data == "" ? <>
-                                    {
-                                        !error ? <>
-                                            {
-                                                user ? <>
-                                                    <div className='rounded-2xl'>
-                                                        <BarcodeScanner
-                                                            width={500}
-                                                            height={400}
-                                                            onUpdate={(err, result: any) => {
-                                                                if (result) {
-                                                                    setData(result.text);
-                                                                    checkCode(result.text);
-                                                                } else {
-                                                                    setData("")
-                                                                };
-                                                            }}
-                                                        />
-                                                        <p>{data}</p>
-                                                    </div>
-                                                    <p className='flex items-center justify-center mt-2 text-primary font-semibold'>{data == "" ? <span className='flex items-center gap-2'><LoaderCircle className='animate-spin' />  {t('scan.loading')}</span> : <span className='text-center'>{data}</span>}</p>
-                                                </> : <>
-                                                    <div className='flex items-center flex-col justify-center gap-4'>
-                                                        <motion.div
-                                                            animate={{
-                                                                x: [0, -10, 10, -10, 10, -5, 5, 0],
-                                                            }}
-                                                            transition={{
-                                                                duration: 0.5,
-                                                                ease: "easeInOut"
-                                                            }}
-                                                        >
-                                                            <img src={AH.src} alt="Icon" className='w-32 translate-x-3' />
-                                                        </motion.div>
-                                                        <p className='font-semibold'>{t('scan.plbrp')}</p>
-                                                    </div>
-                                                </>
-                                            }
-                                        </> : <>
-                                            <div className='flex items-center flex-col justify-center gap-4'>
-                                                <motion.div
-                                                    animate={{
-                                                        x: [0, -10, 10, -10, 10, -5, 5, 0],
-                                                    }}
-                                                    transition={{
-                                                        duration: 0.5,
-                                                        ease: "easeInOut"
-                                                    }}
-                                                >
-                                                    <img src={NL.src} alt="Icon" className='w-32' />
-                                                </motion.div>
-                                                <p className='font-semibold'>{t('scan.pgls')} {`(${error})`}</p>
-                                            </div>
-                                        </>
-                                    }
-                                </> :
-                                    <>
+                    </div>
+                    <Dialog open={open} onOpenChange={setOpen}>
+                        <DialogContent>
+                            <DialogHeader>
+                                <DialogTitle className='text-2xl'>{t('scan.title')}</DialogTitle>
+                                <p className='mb-4'>{t('scan.decs')}</p>
+                                {
+                                    data == "" ? <>
                                         {
-                                            codeData == "" ?
-                                                <>
-                                                    <div className='w-full flex items-center justify-center my-8'>
-                                                        <Loader />
-                                                    </div>
-                                                </> :
-                                                <>
-                                                    {
-                                                        codeData === "error" ? <>
-                                                            <div className='flex items-center flex-col justify-center gap-4'>
-                                                                <motion.div
-                                                                    animate={{
-                                                                        x: [0, -10, 10, -10, 10, -5, 5, 0],
-                                                                    }}
-                                                                    transition={{
-                                                                        duration: 0.5,
-                                                                        ease: "easeInOut"
-                                                                    }}
-                                                                >
-                                                                    <img src={NF.src} alt="Icon" className='w-32 translate-x-3' />
-                                                                </motion.div>
-                                                                <p className='font-semibold'>{t('scan.llnavqr')}</p>
-                                                            </div>
-                                                        </> : <>
-                                                            {
-                                                                codeData.otpp == true ? <>
-                                                                    <div className='flex items-center flex-col justify-center'>
-                                                                        <img src={LMT.src} alt="Icon" className='w-32' />
-                                                                        <p className='font-semibold'>{codeData.name} {t('scan.limit')}</p>
-                                                                    </div>
-                                                                </> :
-                                                                    <>
-                                                                        {
-                                                                            isWithinRadius ? <>
-                                                                                <div>
-                                                                                    <AnimatePresence mode="wait">
-                                                                                        <motion.div
-                                                                                            key={succState}
-                                                                                            initial={{ x: 10, opacity: 0 }}
-                                                                                            animate={{ x: 0, opacity: 1 }}
-                                                                                            exit={{ x: -10, opacity: 0 }}
-                                                                                            transition={{
-                                                                                                type: "spring",
-                                                                                                stiffness: 300,
-                                                                                                damping: 30,
-                                                                                            }}
-                                                                                            className='flex items-center flex-col justify-center gap-4'
-                                                                                        >
-                                                                                            {
-                                                                                                succState == 1 && <>
-                                                                                                    <ConfettiExplosion colors={['#ff577f', '#ff884b', '#ffd384', '#fff9b0']} zIndex={99} />
-                                                                                                    <img src={LC.src} alt="Location Correct Icon" className='w-32 translate-x-3' />
-                                                                                                    <div className='font-semibold'>
-                                                                                                        <p className='flex items-center gap-2'><MapPin /> {codeData.name}</p>
-                                                                                                        <p className='flex items-center gap-2 text-primary mt-1'><Coins /> {t('scan.pe')} : +{codeData.points}</p>
-                                                                                                        {sameSpot && (<p className='flex items-center justify-center mt-4 gap-2'>
-                                                                                                            <Tooltip>
-                                                                                                                <TooltipTrigger>
-                                                                                                                    <Info size={18} />
-                                                                                                                </TooltipTrigger>
-                                                                                                                <TooltipContent>
-                                                                                                                    <p>{t('scan.sametip')}</p>
-                                                                                                                </TooltipContent>
-                                                                                                            </Tooltip>
-                                                                                                            {t('scan.samemssg')}</p>)}
-                                                                                                    </div>
-                                                                                                    <Button onClick={() => { if (codeData.reciveNewBadge) { setSuccState(succState + 1); const NEWBGD = new Audio('/audio/BadgeRev.mp3'); NEWBGD.volume = 0.5; NEWBGD.play(); } else { setSuccState(3) } }} className='bg-primary text-white hover:bg-primary w-full mt-2 cursor-pointer'>{t('scan.next')}</Button>
-                                                                                                </>
-                                                                                            }
-                                                                                            {
-                                                                                                codeData.reciveNewBadge == true && succState == 2 && <>
-                                                                                                    <div className='flex items-center justify-center py-4'>
-                                                                                                        <img src={BadgeRev.src} alt="Bg" className='w-52 absolute -mr-4 rotate-center opacity-70' />
-                                                                                                        <motion.div
-                                                                                                            initial={{ opacity: 0, scale: 0 }}
-                                                                                                            animate={{ opacity: 1, scale: 1 }}
-                                                                                                            transition={{
-                                                                                                                duration: 0.6,
-                                                                                                                scale: { type: "spring", visualDuration: 0.6, bounce: 0.7 },
-                                                                                                            }}
-                                                                                                        >
-                                                                                                            <img src={codeData.badge.imageUrl} alt="Badge Icon" className='w-36 translate-x-3' />
-                                                                                                        </motion.div>
-                                                                                                    </div>
-                                                                                                    <div className='font-semibold'>
-                                                                                                        <p className='flex items-center gap-2'>{t('badge.new')}</p>
-                                                                                                        <p className='flex items-center gap-2 text-primary mt-1'><MapPin /> {codeData.badge.province.charAt(0).toUpperCase() + codeData.badge.province.slice(1)}</p>
-                                                                                                    </div>
-                                                                                                    <Button onClick={() => setSuccState(succState + 1)} className='bg-primary text-white hover:bg-primary w-full mt-2 cursor-pointer'>{t('scan.next')}</Button>
-                                                                                                </>
-                                                                                            }
-                                                                                            {
-                                                                                                succState == 3 && <>
-                                                                                                    <>
-                                                                                                        <img src={STK.src} alt="Location Correct Icon" className='w-32 translate-x-3' />
-                                                                                                        <div className='text-center'>
-                                                                                                            <h1 className='font-semibold text-xl'>{t("scan.stk")} : {codeData.streak}</h1>
-                                                                                                            <p className='mt-1'>{codeData.streak == 1 ? <>{t('scan.stk1')}</> : <>{t('scan.stk2')}</>} : <b>{codeData.streakYRS}</b></p>
-                                                                                                        </div>
-                                                                                                    </>
-                                                                                                </>
-                                                                                            }
-                                                                                        </motion.div>
-                                                                                    </AnimatePresence>
-                                                                                </div>
-                                                                            </> :
-                                                                                <>
-                                                                                    <div className='flex items-center flex-col justify-center gap-4'>
+                                            !error ? <>
+                                                {
+                                                    user ? <>
+                                                        <div className='rounded-2xl'>
+                                                            <BarcodeScanner
+                                                                width={500}
+                                                                height={400}
+                                                                onUpdate={(err, result: any) => {
+                                                                    if (result) {
+                                                                        setData(result.text);
+                                                                        checkCode(result.text);
+                                                                    } else {
+                                                                        setData("")
+                                                                    };
+                                                                }}
+                                                            />
+                                                            <p>{data}</p>
+                                                        </div>
+                                                        <p className='flex items-center justify-center mt-2 text-primary font-semibold'>{data == "" ? <span className='flex items-center gap-2'><LoaderCircle className='animate-spin' />  {t('scan.loading')}</span> : <span className='text-center'>{data}</span>}</p>
+                                                    </> : <>
+                                                        <div className='flex items-center flex-col justify-center gap-4'>
+                                                            <motion.div
+                                                                animate={{
+                                                                    x: [0, -10, 10, -10, 10, -5, 5, 0],
+                                                                }}
+                                                                transition={{
+                                                                    duration: 0.5,
+                                                                    ease: "easeInOut"
+                                                                }}
+                                                            >
+                                                                <img src={AH.src} alt="Icon" className='w-32 translate-x-3' />
+                                                            </motion.div>
+                                                            <p className='font-semibold'>{t('scan.plbrp')}</p>
+                                                        </div>
+                                                    </>
+                                                }
+                                            </> : <>
+                                                <div className='flex items-center flex-col justify-center gap-4'>
+                                                    <motion.div
+                                                        animate={{
+                                                            x: [0, -10, 10, -10, 10, -5, 5, 0],
+                                                        }}
+                                                        transition={{
+                                                            duration: 0.5,
+                                                            ease: "easeInOut"
+                                                        }}
+                                                    >
+                                                        <img src={NL.src} alt="Icon" className='w-32' />
+                                                    </motion.div>
+                                                    <p className='font-semibold'>{t('scan.pgls')} {`(${error})`}</p>
+                                                </div>
+                                            </>
+                                        }
+                                    </> :
+                                        <>
+                                            {
+                                                codeData == "" ?
+                                                    <>
+                                                        <div className='w-full flex items-center justify-center my-8'>
+                                                            <Loader />
+                                                        </div>
+                                                    </> :
+                                                    <>
+                                                        {
+                                                            codeData === "error" ? <>
+                                                                <div className='flex items-center flex-col justify-center gap-4'>
+                                                                    <motion.div
+                                                                        animate={{
+                                                                            x: [0, -10, 10, -10, 10, -5, 5, 0],
+                                                                        }}
+                                                                        transition={{
+                                                                            duration: 0.5,
+                                                                            ease: "easeInOut"
+                                                                        }}
+                                                                    >
+                                                                        <img src={NF.src} alt="Icon" className='w-32 translate-x-3' />
+                                                                    </motion.div>
+                                                                    <p className='font-semibold'>{t('scan.llnavqr')}</p>
+                                                                </div>
+                                                            </> : <>
+                                                                {
+                                                                    codeData.otpp == true ? <>
+                                                                        <div className='flex items-center flex-col justify-center'>
+                                                                            <img src={LMT.src} alt="Icon" className='w-32' />
+                                                                            <p className='font-semibold'>{codeData.name} {t('scan.limit')}</p>
+                                                                        </div>
+                                                                    </> :
+                                                                        <>
+                                                                            {
+                                                                                isWithinRadius ? <>
+                                                                                    <div className='flex items-center justify-center flex-col w-full relative'>
+                                                                                        <ConfettiExplosion colors={['#ff577f', '#ff884b', '#ffd384', '#fff9b0']} zIndex={99} />
                                                                                         <motion.div
                                                                                             animate={{
-                                                                                                x: [0, -10, 10, -10, 10, -5, 5, 0],
+                                                                                                x: [0, 20, 0, -20, 0],
+                                                                                                y: [0, -25, 0, -25, 0],
+                                                                                                rotate: [0, 5, 0, -5, 0]
                                                                                             }}
                                                                                             transition={{
-                                                                                                duration: 0.5,
-                                                                                                ease: "easeInOut"
+                                                                                                duration: 2,
+                                                                                                ease: "easeInOut",
+                                                                                                repeat: Infinity
                                                                                             }}
+                                                                                            className='z-1'
                                                                                         >
-                                                                                            <img src={NL.src} alt="Icon" className='w-32' />
+                                                                                            <img src={PTH.src} alt="Maskot" className='w-42 pb-8 md:pb-10' />
                                                                                         </motion.div>
-                                                                                        <p className='font-semibold'>{t('scan.pgctqrl')}</p>
+                                                                                        <AnimatePresence mode="wait">
+                                                                                            <motion.div
+                                                                                                key={succState}
+                                                                                                initial={{ opacity: 0 }}
+                                                                                                animate={{ opacity: 1 }}
+                                                                                                exit={{ opacity: 0 }}
+                                                                                                className={`absolute top-20 right-12 md:right-25 z-0`}
+                                                                                            >
+                                                                                                {
+                                                                                                    succState == 1 && <img src={LC.src} alt="Location Correct Icon" className='w-16 translate-x-3' />
+                                                                                                }
+                                                                                                {
+                                                                                                    succState == 3 && <img src={STK.src} alt="Location Correct Icon" className='w-16 translate-x-3' />
+                                                                                                }
+                                                                                            </motion.div>
+                                                                                        </AnimatePresence>
+                                                                                        <div className='border-primary border-3 p-2 px-4 rounded-2xl w-full flex flex-col items-start'>
+                                                                                            <h1 className='text-lg font-semibold mb-1'>{t('scan.mkname')}</h1>
+                                                                                            <AnimatePresence mode="wait">
+                                                                                                <motion.div
+                                                                                                    key={succState}
+                                                                                                    initial={{ x: 10, opacity: 0 }}
+                                                                                                    animate={{ x: 0, opacity: 1 }}
+                                                                                                    exit={{ x: -10, opacity: 0 }}
+                                                                                                    transition={{
+                                                                                                        type: "spring",
+                                                                                                        stiffness: 300,
+                                                                                                        damping: 30,
+                                                                                                    }}
+                                                                                                    className='flex items-center flex-col justify-center gap-4 w-full'
+                                                                                                >
+                                                                                                    {
+                                                                                                        succState == 1 && <>
+                                                                                                            <SplitText
+                                                                                                                text={`${sameSpot ? `**${t('scan.state1.1')}` : `**${t('scan.state1.2')}`} ${codeData.name} ${t('scan.state1.3')} ${codeData.points} ${t('scan.state1.4')}** ${sameSpot ? t('scan.state1.5') : ''}`}
+                                                                                                                splitType="words"
+                                                                                                                from={{ opacity: 0, y: 40 }}
+                                                                                                                to={{ opacity: 1, y: 0 }}
+                                                                                                                threshold={0.1}
+                                                                                                                textAlign="left"
+                                                                                                            />
+                                                                                                        </>
+                                                                                                    }
+                                                                                                    {
+                                                                                                        codeData.reciveNewBadge == true && succState == 2 && <>
+                                                                                                            <div className='grid  grid-col-1 md:grid-cols-4 gap-2 md:gap-8'>
+                                                                                                                <div className='flex items-center justify-center py-5 md:py-3'>
+                                                                                                                    <img src={BadgeRev.src} alt="Bg" className='w-42 md:w-28 absolute -mr-4 rotate-center opacity-70' />
+                                                                                                                    <motion.div
+                                                                                                                        initial={{ opacity: 0, scale: 0 }}
+                                                                                                                        animate={{ opacity: 1, scale: 1 }}
+                                                                                                                        transition={{
+                                                                                                                            duration: 0.6,
+                                                                                                                            scale: { type: "spring", visualDuration: 0.6, bounce: 0.7 },
+                                                                                                                        }}
+                                                                                                                    >
+                                                                                                                        <img src={codeData.badge.imageUrl} alt="Badge Icon" className='w-30 md:w-20 translate-x-3' />
+                                                                                                                    </motion.div>
+                                                                                                                </div>
+                                                                                                                <SplitText
+                                                                                                                    text={`**${t('scan.state2.1')} ${codeData.badge.province.charAt(0).toUpperCase() + codeData.badge.province.slice(1)}** ${t('scan.state2.2')}`}
+                                                                                                                    splitType="words"
+                                                                                                                    className='md:col-span-3'
+                                                                                                                    from={{ opacity: 0, y: 40 }}
+                                                                                                                    to={{ opacity: 1, y: 0 }}
+                                                                                                                    threshold={0.1}
+                                                                                                                    textAlign="left"
+                                                                                                                />
+                                                                                                            </div>
+                                                                                                        </>
+                                                                                                    }
+                                                                                                    {
+                                                                                                        succState == 3 && <>
+                                                                                                            <>
+                                                                                                                <SplitText
+                                                                                                                    text={`**${t('scan.state3.1')} ${codeData.streak} ${t('scan.state3.2')} ${codeData.streakYRS} ${t('scan.state3.3')}** ${t('scan.state3.4')}`}
+                                                                                                                    splitType="words"
+                                                                                                                    from={{ opacity: 0, y: 40 }}
+                                                                                                                    to={{ opacity: 1, y: 0 }}
+                                                                                                                    threshold={0.1}
+                                                                                                                    textAlign="left"
+                                                                                                                />
+                                                                                                            </>
+                                                                                                        </>
+                                                                                                    }
+                                                                                                </motion.div>
+                                                                                            </AnimatePresence>
+                                                                                        </div>
+                                                                                        <Button onClick={() => {
+                                                                                            if (succState == 3) {
+                                                                                                setOpen(false);
+                                                                                            }
+                                                                                            if (succState == 1) {
+                                                                                                if (codeData.reciveNewBadge) {
+                                                                                                    setSuccState(succState + 1);
+                                                                                                    const NEWBGD = new Audio('/audio/BadgeRev.mp3');
+                                                                                                    NEWBGD.volume = 0.5; NEWBGD.play();
+                                                                                                } else {
+                                                                                                    setSuccState(3)
+                                                                                                }
+                                                                                            } else {
+                                                                                                setSuccState(succState + 1);
+                                                                                            }
+                                                                                        }
+                                                                                        } className='bg-primary text-white hover:bg-primary w-full mt-4 cursor-pointer'>{succState == 3 ? t('scan.gotit') : t('scan.next')}</Button>
                                                                                     </div>
-                                                                                </>
-                                                                        }
-                                                                    </>
-                                                            }
-                                                        </>
-                                                    }
-                                                </>
-                                        }
-                                    </>
-                            }
-                        </DialogHeader>
-                    </DialogContent>
-                </Dialog>}
+                                                                                </> :
+                                                                                    <>
+                                                                                        <div className='flex items-center flex-col justify-center gap-4'>
+                                                                                            <motion.div
+                                                                                                animate={{
+                                                                                                    x: [0, -10, 10, -10, 10, -5, 5, 0],
+                                                                                                }}
+                                                                                                transition={{
+                                                                                                    duration: 0.5,
+                                                                                                    ease: "easeInOut"
+                                                                                                }}
+                                                                                            >
+                                                                                                <img src={NL.src} alt="Icon" className='w-32' />
+                                                                                            </motion.div>
+                                                                                            <p className='font-semibold'>{t('scan.pgctqrl')}</p>
+                                                                                        </div>
+                                                                                    </>
+                                                                            }
+                                                                        </>
+                                                                }
+                                                            </>
+                                                        }
+                                                    </>
+                                            }
+                                        </>
+                                }
+                            </DialogHeader>
+                        </DialogContent>
+                    </Dialog></>}
             </div>
         </>
     )

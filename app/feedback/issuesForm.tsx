@@ -27,7 +27,22 @@ import { CircleCheckBig, LoaderCircle, Send } from 'lucide-react';
 import axios from 'axios';
 import { useTranslations } from 'next-intl';
 import { toast } from "sonner";
-import { server } from "@/app/config.json"
+import { server } from "@/app/config.json";
+
+// Image
+import R0 from "@/assets/media/maskot/photo/Huhhhhh.webp";
+import R1 from "@/assets/media/maskot/photo/BackFedUp.webp";
+import R2 from "@/assets/media/maskot/photo/BackIdle.webp";
+import R3 from "@/assets/media/maskot/photo/BackTalking.webp";
+import R4 from "@/assets/media/maskot/photo/BackEncourage.webp";
+
+const FBPoint = [
+    R0.src,
+    R1.src,
+    R2.src,
+    R3.src,
+    R4.src,
+]
 
 function IssuesForm() {
     const t = useTranslations('Feedback');
@@ -109,7 +124,7 @@ function IssuesForm() {
         <>
             <div className='mt-4'>
                 <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                         <FormField
                             control={form.control}
                             name="type"
@@ -190,48 +205,23 @@ function IssuesForm() {
                                         <RadioGroup
                                             onValueChange={field.onChange}
                                             defaultValue={field.value}
-                                            className="grid grid-cols-2 md:flex gap-6 items-center"
+                                            className="grid grid-cols-2 md:flex gap-4 md:gap-6 items-center"
                                         >
-                                            <FormItem className="flex items-center gap-3">
-                                                <FormControl>
-                                                    <RadioGroupItem value="1" />
-                                                </FormControl>
-                                                <FormLabel className="font-normal">
-                                                    {t('form.exp.1')}
-                                                </FormLabel>
-                                            </FormItem>
-                                            <FormItem className="flex items-center gap-3">
-                                                <FormControl>
-                                                    <RadioGroupItem value="2" />
-                                                </FormControl>
-                                                <FormLabel className="font-normal">
-                                                    {t('form.exp.2')}
-                                                </FormLabel>
-                                            </FormItem>
-                                            <FormItem className="flex items-center gap-3">
-                                                <FormControl>
-                                                    <RadioGroupItem value="3" />
-                                                </FormControl>
-                                                <FormLabel className="font-normal">
-                                                    {t('form.exp.3')}
-                                                </FormLabel>
-                                            </FormItem>
-                                            <FormItem className="flex items-center gap-3">
-                                                <FormControl>
-                                                    <RadioGroupItem value="4" />
-                                                </FormControl>
-                                                <FormLabel className="font-normal">
-                                                    {t('form.exp.4')}
-                                                </FormLabel>
-                                            </FormItem>
-                                            <FormItem className="flex items-center gap-3">
-                                                <FormControl>
-                                                    <RadioGroupItem value="5" />
-                                                </FormControl>
-                                                <FormLabel className="font-normal">
-                                                    {t('form.exp.5')}
-                                                </FormLabel>
-                                            </FormItem>
+                                            {
+                                                FBPoint.map((item, index) => (
+                                                    <>
+                                                        <FormItem key={index} className={`flex flex-col items-center gap-3 border-2 p-2 px-3 rounded-xl  ${field.value == String(index + 1) && 'border-primary'} transition-all duration-100`}>
+                                                            <FormControl className='hidden'>
+                                                                <RadioGroupItem value={String(index + 1)} />
+                                                            </FormControl>
+                                                            <FormLabel className="font-normal flex flex-col gap-2 cursor-pointer">
+                                                                <img src={item} alt="Photo" className='w-28' />
+                                                                {t(`form.exp.${index + 1}`)}
+                                                            </FormLabel>
+                                                        </FormItem>
+                                                    </>
+                                                ))
+                                            }
                                         </RadioGroup>
                                     </FormControl>
                                     <FormMessage />
