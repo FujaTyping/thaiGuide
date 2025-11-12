@@ -105,6 +105,7 @@ function TInput() {
     const [duration, setDuration] = useState("");
     const [groupType, setGroupType] = useState("");
     const [showAlert, setShowAlert] = useState(false);
+    const [isVoicePlay, setIsVoicePlay] = useState(false);
 
     const displayedTags = showAllTags ? Tags : Tags.slice(0, 8);
 
@@ -130,6 +131,12 @@ function TInput() {
                 type: groupType
             });
             setData(Res.data);
+            if (!isVoicePlay) {
+                const NEWBGD = new Audio('/audio/maskot/genDonePhoto.wav');
+                NEWBGD.volume = 0.8; NEWBGD.play();
+                setIsVoicePlay(true);
+            }
+
         } catch (error) {
             console.error("Error fetching trip recommendations:", error);
         }
