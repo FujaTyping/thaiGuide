@@ -978,6 +978,8 @@
           "action": "Action",
           "otptool": "This QR code can only be scanned once"
         },
+        "doc": "QR Code Info",
+        "doctool":"Check the details of QR code",
         "newqr": "Create new code",
         "delqr": "Delete this code",
         "deleteTitle": "Delete QR Code?",
