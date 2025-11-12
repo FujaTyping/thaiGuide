@@ -62,6 +62,8 @@ function Card() {
                 })
                 setUData(checkUser.data);
                 if (checkUser.data.new) {
+                    const NEWBGD = new Audio('/audio/maskot/welcomeTan.wav');
+                    NEWBGD.volume = 0.8; NEWBGD.play();
                     setWelState(1);
                     setIsOpen(true);
                 }
