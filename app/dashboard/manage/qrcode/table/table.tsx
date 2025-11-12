@@ -20,7 +20,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { Plus, Trash2 } from "lucide-react"
+import { FileScan, Plus, Trash2 } from "lucide-react"
 import { motion } from "motion/react"
 import NF from "@/assets/media/card/icon/notfound.svg";
 import DeleteModal from "./deleteModal"
@@ -31,6 +31,15 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import axios from "axios"
+import { server } from "@/app/config.json";
+import Loader from "@/app/components/loader"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -47,6 +56,8 @@ export function DataTable<TData, TValue>({
   const [open, setOpen] = React.useState(false);
   const [targetId, setTargetId] = React.useState('');
   const t = useTranslations('Dashboard.item.qrcode');
+  const [viewDoc, setViewDoc] = React.useState(false);;
+  const [qrData, setQrData] = React.useState<string | undefined>();
 
   const table = useReactTable({
     data,
@@ -59,6 +70,23 @@ export function DataTable<TData, TValue>({
       columnFilters,
     },
   })
+
+  async function getDocfromID({ id, name, otpp }: { id: String, name: String, otpp: Boolean }) {
+    setQrData(undefined);
+    setViewDoc(true);
+    const response = await axios.post(`${server}/code/gen`, {
+      id: id,
+      name: name,
+      ot: otpp
+    }, {
+      responseType: 'arraybuffer'
+    });
+
+    const base64 = btoa(
+      new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), '')
+    );
+    setQrData(`data:image/png;base64,${base64}`);
+  }
 
   return (
     <>
@@ -118,7 +146,7 @@ export function DataTable<TData, TValue>({
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </TableCell>
                   ))}
-                  <TableCell key={'action'}>
+                  <TableCell key={'action'} className="flex items-center gap-2">
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <Trash2 size={18} onClick={() => {
@@ -129,7 +157,23 @@ export function DataTable<TData, TValue>({
                       <TooltipContent>
                         <p>{t('delqr')}</p>
                       </TooltipContent>
-                    </Tooltip>
+                    </Tooltip >
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <FileScan
+                          onClick={() => {
+                            getDocfromID({
+                              id: row.getValue('id'),
+                              name: row.getValue('name'),
+                              otpp: row.getValue('otpp') || false
+                            });
+                          }}
+                          size={18} className="text-primary cursor-pointer" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>{t('doctool')}</p>
+                      </TooltipContent>
+                    </Tooltip >
                   </TableCell>
                 </TableRow>
               ))
@@ -177,6 +221,18 @@ export function DataTable<TData, TValue>({
         </Button>
       </div>
       <DeleteModal open={open} setOpen={setOpen} id={targetId} />
+      <Dialog onOpenChange={setViewDoc} open={viewDoc}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle className='text-2xl'>{t('doc')}</DialogTitle>
+            {
+              qrData === undefined ? <div className='w-full flex items-center justify-center my-8'><Loader /></div> : <>
+                <img src={qrData} alt="Doc" className="rounded-2xl mt-3" />
+              </>
+            }
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
     </>
   )
 }
