@@ -116,8 +116,11 @@ function Quiz({ data: provinceName }: QuizProps) {
             setStatus('finished');
             if (user) {
                 axios.put(`${server}/quiz/check`, {
-                    userId: user.uid,
                     quizName: provinceName
+                }, {
+                    headers: {
+                        aetheruid: user.uid
+                    }
                 })
             }
         }
