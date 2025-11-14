@@ -261,11 +261,11 @@
             "samemssg": "Anda pernah melawat tempat ini sebelum ini",
             "limit": "mempunyai had untuk mengimbas kod QR untuk menerima mata",
             "state1": {
-                "1": "Oh, anda kembali di",
-                "2": "Yay! Imbasan berjaya! Anda baru sahaja mendaftar masuk di",
+                "1": "Oh, **anda kembali di",
+                "2": "Yay! Imbasan berjaya! **Anda baru sahaja mendaftar masuk di",
                 "3": "Anda memperoleh",
                 "4": "mata untuk lawatan ini!",
-                "5": "Nampaknya anda pernah mendaftar masuk di sini sebelum ini. Mari cari tempat baru untuk diterokai dan dapatkan lebih banyak mata!"
+                "5": "Nampaknya anda sudah mendaftar masuk di sini sebelum ini. Mari cari tempat baru untuk diterokai dan dapatkan lebih banyak mata!"
             },
             "state2": {
                 "1": "Anda baru sahaja membuka kunci lencana baru yang berkilat",

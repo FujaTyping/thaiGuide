@@ -263,8 +263,8 @@
       "samemssg": "You've visited this spot before",
       "limit": "has a limit for scanning the QR code to receive points",
       "state1": {
-        "1": "Oh, you’re back at",
-        "2": "Yay! Scan successful! You’ve just checked in at",
+        "1": "Oh, **you’re back at",
+        "2": "Yay! Scan successful! **You’ve just checked in at",
         "3": "You earned",
         "4": "points for this visit!",
         "5": "Looks like you’ve already checked in here before. Let’s find a new spot to explore and earn more points!"

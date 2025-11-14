@@ -261,7 +261,7 @@ function Qr() {
                                                                                                     {
                                                                                                         succState == 1 && <>
                                                                                                             <SplitText
-                                                                                                                text={`${sameSpot ? `**${t('scan.state1.1')}` : `**${t('scan.state1.2')}`} ${codeData.name} ${t('scan.state1.3')} ${codeData.points} ${t('scan.state1.4')}** ${sameSpot ? t('scan.state1.5') : ''}`}
+                                                                                                                text={`${sameSpot ? `${t('scan.state1.1')}` : `${t('scan.state1.2')}`} ${codeData.name} ${t('scan.state1.3')} ${codeData.points} ${t('scan.state1.4')}** ${sameSpot ? t('scan.state1.5') : ''}`}
                                                                                                                 splitType="words"
                                                                                                                 from={{ opacity: 0, y: 40 }}
                                                                                                                 to={{ opacity: 1, y: 0 }}
@@ -283,7 +283,7 @@ function Qr() {
                                                                                                                             scale: { type: "spring", visualDuration: 0.6, bounce: 0.7 },
                                                                                                                         }}
                                                                                                                     >
-                                                                                                                        <img src={codeData.badge.imageUrl} alt="Badge Icon" className='w-30 md:w-20 translate-x-3' />
+                                                                                                                        <img src={codeData.badge.imageUrl} alt="Badge Icon" className='w-30 md:w-20 translate-x-2' />
                                                                                                                     </motion.div>
                                                                                                                 </div>
                                                                                                                 <SplitText
