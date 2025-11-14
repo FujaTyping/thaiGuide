@@ -51,6 +51,9 @@ const createUser = async ({ body, headers, set }: { body: typeof userSchema.body
             point: 0,
             checkin: 0,
             streak: 0,
+            lv: 1,
+            exp: 0,
+            nextexp: 50,
             joinAt: serverTimestamp(),
             bg: "https://ik.imagekit.io/61sqw5prw/thaiGuide/profilebn/5.jpg?updatedAt=1760156459397"
         }
