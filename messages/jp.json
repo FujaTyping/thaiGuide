@@ -290,15 +290,15 @@
       "decs": "私たちと一緒に旅を始めましょう。いくつかの簡単なステップでThaiGuideを知りましょう。",
       "1": {
         "title": "私たちの使命",
-        "decs": "こんにちは！私はあなたの旅行仲間、ThaiGuideのタンです！私たちの使命は、タイの隠れた名所にあなたを案内し、地元のコミュニティを支援しながら、旅行を楽しく有意義なものにすることです！"
+        "decs": "こんにちは！私はあなたの旅行仲間、ThaiGuideのタンです！**私たちの使命は、タイの隠れた名所にあなたを案内し、地元のコミュニティを支援しながら、旅行を楽しく有意義なものにすることです！**"
       },
       "2": {
         "title": "簡単にポイントを獲得",
-        "decs": "旅行中は、訪れる各スポットでQRコードをスキャンするだけです！探検すればするほど、より多くのポイントを獲得できます。とても簡単です！"
+        "decs": "旅行中は、**訪れる各スポットでQRコードをスキャンするだけです！**探検すればするほど、**より多くのポイントを獲得できます。とても簡単です！**"
       },
       "3": {
         "title": "報酬を引き換える",
-        "decs": "ポイントを使ってエキサイティングな報酬を引き換え、すべての旅行を忘れられないものにしましょう。旅行し、集め、楽しむ、それがThaiGuideのやり方です！"
+        "decs": "**ポイントを使ってエキサイティングな報酬を引き換え、すべての旅行を忘れられないものにしましょう。**旅行し、集め、楽しむ、それがThaiGuideのやり方です！"
       }
     },
     "redeem": {
@@ -365,8 +365,6 @@
     "ai": {
       "title": "あなたの旅行について教えてください",
       "decs": "あなたに最適なアクティビティをおすすめするお手伝いをします",
-      "donettitle": "冒険の準備は万端！",
-      "donetdecs": "Photoがあなたにぴったりの旅行を計画しました",
       "input": {
         "placeholder": "例：文化的な体験とリラックスできるビーチの組み合わせを探しています。寺院、地元の市場、シュノーケリングに興味があります。",
         "duration": "期間",
@@ -1021,5 +1019,19 @@
   "NotFound": {
     "title": "このコンテンツは利用できません",
     "decs": "コンテンツは削除されたか、現在利用できません"
+  },
+  "Search": {
+    "title": "Search",
+    "decs": "Find attractions, restaurants, events, and more across Thailand.",
+    "beta": "Beta",
+    "require": "Search must be at least 2 characters long",
+    "type": {
+      "all": "All",
+      "act": "Activities",
+      "res": "Restaurants"
+    },
+    "mtt": "Discover What You Need",
+    "mtd": "Search for activities, restaurants, and more across Thailand.",
+    "placeholders": "Search for anything"
   }
 }

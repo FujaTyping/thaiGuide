@@ -17,7 +17,6 @@ export default function Home() {
       <Roadtrip />
       <Activities />
       <Faq />
-      
     </>
   );
 }

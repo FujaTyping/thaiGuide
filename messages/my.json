@@ -289,15 +289,15 @@
             "decs": "Mulakan perjalanan anda bersama kami. Mari kenali ThaiGuide dalam beberapa langkah pantas",
             "1": {
                 "title": "Misi Kami",
-                "decs": "Hai! Saya Tan, rakan pengembaraan anda dari ThaiGuide! Misi kami adalah untuk membimbing anda ke permata tersembunyi Thailand, membantu komuniti tempatan sambil menjadikan perjalanan menyeronokkan dan bermakna!"
+                "decs": "Hai! Saya Tan, rakan pengembaraan anda dari ThaiGuide! **Misi kami adalah untuk membimbing anda ke permata tersembunyi Thailand, membantu komuniti tempatan sambil memastikan perjalanan sentiasa seronok dan bermakna!**"
             },
             "2": {
-                "title": "Dapatkan Mata dengan Mudah",
-                "decs": "Semasa anda mengembara, hanya imbas kod QR di setiap tempat yang anda lawati! Semakin banyak anda meneroka, semakin banyak mata yang anda peroleh—semudah itu!"
+                "title": "Dapatkan Mata Dengan Mudah",
+                "decs": "Semasa anda mengembara, hanya **imbas kod QR di setiap tempat yang anda lawati!** Semakin banyak anda meneroka, **semakin banyak mata yang anda peroleh—semudah itu!**"
             },
             "3": {
                 "title": "Tebus Ganjaran Anda",
-                "decs": "Gunakan mata anda untuk menebus ganjaran menarik dan menjadikan setiap perjalanan tidak dapat dilupakan. Kembara, kumpul, dan nikmati—itulah cara ThaiGuide!"
+                "decs": "**Gunakan mata anda untuk menebus ganjaran menarik dan jadikan setiap perjalanan tidak dapat dilupakan.** Mengembara, kumpul, dan nikmati—itulah cara ThaiGuide!"
             }
         },
         "redeem": {
@@ -364,8 +364,6 @@
         "ai": {
             "title": "Beritahu kami tentang perjalanan anda",
             "decs": "Bantu kami mengesyorkan aktiviti terbaik untuk anda",
-            "donettitle": "Semua bersedia untuk pengembaraan!",
-            "donetdecs": "Photo telah merancang perjalanan yang sempurna untuk anda",
             "input": {
                 "placeholder": "cth., Saya sedang mencari gabungan pengalaman budaya dan pantai yang menenangkan. Saya berminat dengan kuil, pasar tempatan dan snorkeling.",
                 "duration": "Tempoh",
@@ -1020,5 +1018,19 @@
     "NotFound": {
         "title": "Kandungan ini tidak tersedia",
         "decs": "Kandungan mungkin telah dialih keluar atau tidak tersedia pada masa ini"
+    },
+    "Search": {
+        "title": "Cari",
+        "decs": "Cari tarikan, restoran, acara dan banyak lagi di seluruh Thailand.",
+        "beta": "Beta",
+        "require": "Carian mestilah sekurang-kurangnya 2 aksara panjang",
+        "type": {
+            "all": "Semua",
+            "act": "Aktiviti",
+            "res": "Restoran"
+        },
+        "mtt": "Temui Apa yang Anda Perlukan",
+        "mtd": "Cari aktiviti, restoran dan banyak lagi di seluruh Thailand.",
+        "placeholders": "Cari apa sahaja"
     }
 }
