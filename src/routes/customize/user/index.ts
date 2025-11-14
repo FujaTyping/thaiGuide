@@ -3,18 +3,28 @@ import type { ElysiaApp } from "../../../index";
 import db from "../../../lib/firebase";
 import { doc, updateDoc } from "firebase/firestore";
 
-const newNameBodySchema = t.Object({
-    uid: t.String(),
-    name: t.String(),
-});
+const newNameBodySchema = {
+    body: t.Object({
+        name: t.String()
+    }),
+    headers: t.Object({
+        aetheruid: t.String()
+    })
+};
 
-const newBioBodySchema = t.Object({
-    uid: t.String(),
-    bio: t.String(),
-});
+const newBioBodySchema = {
+    body: t.Object({
+        bio: t.String()
+    }),
+    headers: t.Object({
+        aetheruid: t.String()
+    })
+};
 
-const newName = async ({ body, set }: { body: typeof newNameBodySchema.static, set: { status: number | string } }) => {
-    const { uid, name } = body;
+const newName = async ({ body, headers, set }: { body: typeof newNameBodySchema.body.static, headers: typeof newNameBodySchema.headers.static, set: { status: number | string } }) => {
+    const { name } = body;
+    const uid = headers.aetheruid;
+
     try {
         const userRef = doc(db, "Users", uid);
 
@@ -22,15 +32,17 @@ const newName = async ({ body, set }: { body: typeof newNameBodySchema.static, s
             name
         });
         return "Done !";
-    } catch (error) {
-        console.error("Failed to rename:", error);
+    } catch (errorname) {
+        console.error("Failed to rename:", errorname);
         set.status = 500;
         return { error: "Failed to rename" };
     }
 };
 
-const bioName = async ({ body, set }: { body: typeof newBioBodySchema.static, set: { status: number | string } }) => {
-    const { uid, bio } = body;
+const bioName = async ({ body, headers, set }: { headers: typeof newBioBodySchema.headers.static, body: typeof newBioBodySchema.body.static, set: { status: number | string } }) => {
+    const { bio } = body;
+    const uid = headers.aetheruid;
+
     try {
         const userRef = doc(db, "Users", uid);
 
@@ -46,9 +58,5 @@ const bioName = async ({ body, set }: { body: typeof newBioBodySchema.static, se
 };
 
 export default (app: ElysiaApp) => app
-    .post("/name", newName, {
-        body: newNameBodySchema
-    })
-    .post("/bio", bioName, {
-        body: newBioBodySchema
-    });
+    .post("/name", newName, newNameBodySchema)
+    .post("/bio", bioName, newBioBodySchema);

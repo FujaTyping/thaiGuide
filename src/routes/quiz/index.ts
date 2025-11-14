@@ -14,14 +14,20 @@ const QuizRequestSchema = t.Object({
     province: t.String()
 });
 
-const QuizCheckSchema = t.Object({
-    userId: t.String(),
-    quizName: t.String()
-});
+const QuizCheckSchema = {
+    body: t.Object({
+        quizName: t.String()
+    }),
+    headers: t.Object({
+        aetheruid: t.String()
+    })
+}
 
-const QuizUserSchema = t.Object({
-    userId: t.String()
-});
+const QuizUserSchema = {
+    headers: t.Object({
+        aetheruid: t.String()
+    })
+};
 
 const generateQuizHandler = async ({ body, set }: { body: typeof QuizRequestSchema.static, set: { status: number | string } }) => {
     const { province } = body;
@@ -94,8 +100,9 @@ const generateQuizHandler = async ({ body, set }: { body: typeof QuizRequestSche
     }
 };
 
-const checkQuizCompletionHandler = async ({ body, set }: { body: typeof QuizCheckSchema.static, set: { status: number | string } }) => {
-    const { userId, quizName } = body;
+const checkQuizCompletionHandler = async ({ body, headers, set }: { body: typeof QuizCheckSchema.body.static, headers: typeof QuizCheckSchema.headers.static, set: { status: number | string } }) => {
+    const { quizName } = body;
+    const userId = headers.aetheruid;
 
     if (!userId || !quizName) {
         set.status = 400;
@@ -125,8 +132,8 @@ const checkQuizCompletionHandler = async ({ body, set }: { body: typeof QuizChec
     }
 };
 
-const getQuizHandler = async ({ body, set }: { body: typeof QuizUserSchema.static, set: { status: number | string } }) => {
-    const { userId } = body;
+const getQuizHandler = async ({ headers, set }: { headers: typeof QuizUserSchema.headers.static, set: { status: number | string } }) => {
+    const userId = headers.aetheruid;
 
     if (!userId) {
         set.status = 400;
@@ -165,9 +172,5 @@ export default (app: ElysiaApp) => app
     .post("/gen", generateQuizHandler, {
         body: QuizRequestSchema
     })
-    .put("/check", checkQuizCompletionHandler, {
-        body: QuizCheckSchema
-    })
-    .put("/getbyuser", getQuizHandler, {
-        body: QuizUserSchema
-    });
+    .put("/check", checkQuizCompletionHandler, QuizCheckSchema)
+    .put("/getbyuser", getQuizHandler, QuizUserSchema);

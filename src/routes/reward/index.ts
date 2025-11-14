@@ -3,9 +3,11 @@ import { collection, query, getDocs, DocumentData, doc, getDoc, updateDoc, serve
 import db from "../../lib/firebase";
 import { t } from "elysia";
 
-const GetByIdBodySchema = t.Object({
-    id: t.String()
-});
+const GetByIdBodySchema = {
+    body: t.Object({
+        id: t.String()
+    })
+};
 
 const RedeemByIdBodySchema = t.Object({
     raw: t.String()
@@ -25,7 +27,7 @@ const getInfoHandler = async () => {
     return Data;
 };
 
-const getIdInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.static, set: { status: number | string } }) => {
+const getIdInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.body.static, set: { status: number | string } }) => {
     const docId = body.id;
     const docRef = doc(db, "redeem", docId);
 
@@ -57,6 +59,10 @@ const redeemIdInfoHandler = async ({ body, set }: { body: typeof RedeemByIdBodyS
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
+            if (docSnap.data().idRedeem) {
+                set.status = 400;
+                return { message: "Already redeemed" };
+            }
             await updateDoc(docRef, {
                 idRedeem: true,
                 redeemAt: serverTimestamp(),
@@ -76,9 +82,7 @@ const redeemIdInfoHandler = async ({ body, set }: { body: typeof RedeemByIdBodyS
 
 export default (app: ElysiaApp) => app
     .get("/", getInfoHandler)
-    .put("/getbyid", getIdInfoHandler, {
-        body: GetByIdBodySchema
-    })
+    .put("/getbyid", getIdInfoHandler, GetByIdBodySchema)
     .post("/redeem", redeemIdInfoHandler, {
         body: RedeemByIdBodySchema
     });
