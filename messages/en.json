@@ -257,14 +257,15 @@
       "pgctqrl": "Please get closer to the QR-Code location",
       "next": "Next step",
       "stk": "Streak",
+      "badgeC": "Tap the badge to collect it",
       "stk1": "Your first year in Thailand",
       "stk2": "You're keeping your streak alive",
       "sametip": "Points are reduced for repeat visits. The reward is divided by your number of check-ins",
       "samemssg": "You've visited this spot before",
       "limit": "has a limit for scanning the QR code to receive points",
       "state1": {
-        "1": "Oh, you’re back at",
-        "2": "Yay! Scan successful! You’ve just checked in at",
+        "1": "Oh, **you’re back at",
+        "2": "Yay! Scan successful! **You’ve just checked in at",
         "3": "You earned",
         "4": "points for this visit!",
         "5": "Looks like you’ve already checked in here before. Let’s find a new spot to explore and earn more points!"
@@ -291,15 +292,15 @@
       "decs": "Start your journey with us. Let's get to know ThaiGuide in a few quick steps",
       "1": {
         "title": "Our Mission",
-        "decs": "Hi there! I’m Tan your travel buddy from ThaiGuide! Our mission is to guide you to Thailand’s hidden gems, helping local communities while keeping travel fun and meaningful!"
+        "decs": "Hi there! I’m Tan your travel buddy from ThaiGuide! **Our mission is to guide you to Thailand’s hidden gems, helping local communities while keeping travel fun and meaningful!**"
       },
       "2": {
         "title": "Earn Points Easily",
-        "decs": "As you travel, just scan QR codes at each spot you visit! The more you explore, the more points you earn it’s that easy!"
+        "decs": "As you travel, just **scan QR codes at each spot you visit!** The more you explore, **the more points you earn it’s that easy!**"
       },
       "3": {
         "title": "Redeem Your Rewards",
-        "decs": "Use your points to redeem exciting rewards and make every trip unforgettable. Travel, collect, and enjoy that’s the ThaiGuide way!"
+        "decs": "**Use your points to redeem exciting rewards and make every trip unforgettable.** Travel, collect, and enjoy that’s the ThaiGuide way!"
       }
     },
     "redeem": {
@@ -364,10 +365,8 @@
     "beta": "Beta",
     "decs": "Plan your perfect trip to Thailand with our intelligent AI Trip Planner. Get personalized itineraries, recommendations, and tips to make your journey unforgettable. Let our AI assist you in discovering the best of Thailand, tailored to your preferences and interests.",
     "ai": {
-      "title": "Photo wants to know your trip",
-      "decs": "Tell Photo so he can find the best spots for you",
-      "donettitle": "All set for adventure!",
-      "donetdecs": "Photo’s planned the perfect trip for you",
+      "title": "Tell us about your trip",
+      "decs": "Help us recommend the best activities for you",
       "input": {
         "placeholder": "e.g., I'm looking for a mix of cultural experiences and relaxing beaches. I'm interested in temples, local markets, and snorkeling.",
         "duration": "Duration",
@@ -979,7 +978,7 @@
           "otptool": "This QR code can only be scanned once"
         },
         "doc": "QR Code Info",
-        "doctool":"Check the details of QR code",
+        "doctool": "Check the details of QR code",
         "newqr": "Create new code",
         "delqr": "Delete this code",
         "deleteTitle": "Delete QR Code?",
@@ -1111,5 +1110,19 @@
   "NotFound": {
     "title": "This content isn’t available",
     "decs": "The content may have been removed or is currently unavailable"
+  },
+  "Search": {
+    "title": "Search",
+    "decs": "Find attractions, restaurants, events, and more across Thailand.",
+    "beta": "Beta",
+    "require": "Search must be at least 2 characters long",
+    "type": {
+      "all": "All",
+      "act": "Activities",
+      "res": "Restaurants"
+    },
+    "mtt": "Discover What You Need",
+    "mtd": "Search for activities, restaurants, and more across Thailand.",
+    "placeholders": "Search for anything"
   }
 }

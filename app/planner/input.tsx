@@ -13,17 +13,12 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Brush, Info, MapPin, RefreshCcw, TriangleAlert } from 'lucide-react';
 import axios from 'axios';
-// import Triploader from './triploader';
+import Triploader from './triploader';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "motion/react";
 import { useTranslations } from 'next-intl';
 import RotatingText from '@/components/bits/RotatingText/RotatingText';
 import { server } from "@/app/config.json"
-
-// Photo
-import IDLEPH from "@/assets/media/maskot/photo/Idle.webp";
-import THINKPH from "@/assets/media/maskot/photo/Thinking.gif";
-import TALKPH from "@/assets/media/maskot/photo/Talking.svg";
 
 const TEXTS = [
     '0',
@@ -105,7 +100,6 @@ function TInput() {
     const [duration, setDuration] = useState("");
     const [groupType, setGroupType] = useState("");
     const [showAlert, setShowAlert] = useState(false);
-    const [isVoicePlay, setIsVoicePlay] = useState(false);
 
     const displayedTags = showAllTags ? Tags : Tags.slice(0, 8);
 
@@ -131,12 +125,6 @@ function TInput() {
                 type: groupType
             });
             setData(Res.data);
-            if (!isVoicePlay) {
-                const NEWBGD = new Audio('/audio/maskot/genDonePhoto.wav');
-                NEWBGD.volume = 0.8; NEWBGD.play();
-                setIsVoicePlay(true);
-            }
-
         } catch (error) {
             console.error("Error fetching trip recommendations:", error);
         }
@@ -163,22 +151,11 @@ function TInput() {
                 >
                     {
                         Data == "" ? <>
-                            <div className='mt-4 sm:-mt-3 md:mt-1'>
-                                <div className='flex flex-row-reverse md:place-content-start place-content-between md:flex-row items-end md:items-center gap-4 mb-4 md:mb-0'>
-                                    <motion.div
-                                        animate={{
-                                            y: [0, 5, 0, 4, 0],
-                                            transition: { duration: 3, repeat: Infinity },
-                                        }}
-                                    >
-                                        <img src={IDLEPH.src} alt="Photo" className='w-18 md:w-24 -rotate-8' />
-                                    </motion.div>
-                                    <div>
-                                        <h1 className='font-semibold text-lg md:text-xl'>{t('ai.title')}</h1>
-                                        <p className='mt-1 hidden md:block'>{t('ai.decs')}</p>
-                                    </div>
+                            <div className='mt-6'>
+                                <div>
+                                    <h1 className='font-semibold text-xl'>{t('ai.title')}</h1>
+                                    <p className='mt-1'>{t('ai.decs')}</p>
                                 </div>
-                                <p className='-mt-3 block md:hidden'>{t('ai.decs')}</p>
                                 <Textarea
                                     placeholder={`${t('ai.input.placeholder')}`}
                                     className='mt-2'
@@ -229,7 +206,7 @@ function TInput() {
                                     {Tags.length > 8 && (
                                         <button
                                             onClick={() => setShowAllTags(!showAllTags)}
-                                            className="mt-4 text-primary cursor-pointer font-semibold"
+                                            className="mt-4 text-[#f7740a] cursor-pointer font-semibold"
                                         >
                                             {showAllTags ? `${t('ai.input.tagless')}` : `${t('ai.input.tagtoggle')} (${Tags.length - 8} ${t('ai.input.tagmore')})`}
                                         </button>
@@ -246,7 +223,7 @@ function TInput() {
                                                 ease: "easeInOut"
                                             }}
                                         >
-                                            <p className='mt-3 flex items-center gap-2 font-semibold text-primary'>
+                                            <p className='mt-3 flex items-center gap-2 font-semibold text-[#f7740a]'>
                                                 <TriangleAlert />
                                                 {t('ai.input.require')}
                                             </p>
@@ -256,7 +233,7 @@ function TInput() {
                                 <div className='flex items-center justify-center'>
                                     <button
                                         onClick={GenAI}
-                                        className='bg-primary w-full md:w-fit py-2 px-6 text-white rounded-xl mt-6 flex items-center justify-center gap-2 cursor-pointer hover:bg-[#e06809] transition-colors'
+                                        className='bg-[#f7740a] w-full md:w-fit py-2 px-6 text-white rounded-xl mt-6 flex items-center justify-center gap-2 cursor-pointer hover:bg-[#e06809] transition-colors'
                                     >
                                         <p className='font-semibold'>{t('ai.input.submit')}</p>
                                         <Brush />
@@ -267,8 +244,7 @@ function TInput() {
                             {
                                 Data == "loading" ? <>
                                     <div className='flex items-center justify-center py-12 flex-col gap-4'>
-                                        <img src={THINKPH.src} alt="Photo" className='w-48 md:w-52 -mb-6 -mt-6' />
-                                        {/* {<Triploader />} */}
+                                        <Triploader />
                                         <RotatingText
                                             texts={loadingTexts}
                                             mainClassName="w-fit font-semibold text-black overflow-hidden justify-center rounded-lg"
@@ -285,27 +261,8 @@ function TInput() {
                                 </> : <>
                                     {typeof Data === 'object' && Data !== null && (
                                         <div className='mt-6'>
-                                            <div className='flex flex-col md:flex-row items-start gap-4'>
-                                                <div className='flex items-center gap-4 -mt-4 -mb-3 md:-mb-0 py-3 md:py-0'>
-                                                    <motion.div
-                                                        animate={{
-                                                            x: [0, 4, 0, 5, 0],
-                                                            y: [0, 3, -4, 6, 2, 0],
-                                                            transition: { duration: 4, repeat: Infinity }
-                                                        }}
-                                                    >
-                                                        <img src={TALKPH.src} alt="Photo" className='w-18 md:w-24 rotate-2' />
-                                                    </motion.div>
-                                                    <div className='block md:hidden'>
-                                                        <p className='font-semibold text-lg'>{t('ai.donettitle')}</p>
-                                                        <p>{t('ai.donetdecs')}</p>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <h1 className='font-semibold text-xl mb-1'>{Data.tripTitle}</h1>
-                                                    <p>{Data.description}</p>
-                                                </div>
-                                            </div>
+                                            <h1 className='font-semibold text-xl mb-1'>{Data.tripTitle}</h1>
+                                            <p>{Data.description}</p>
                                             <Tabs defaultValue="activities" className='mt-2'>
                                                 <TabsList className='w-full'>
                                                     <TabsTrigger value="activities" className='cursor-pointer'>{t('ai.tabs.act')}</TabsTrigger>
@@ -315,8 +272,8 @@ function TInput() {
                                                     <div className='flex flex-col gap-8 mt-4'>
                                                         {
                                                             Data.days.map((day, index) => (
-                                                                <div key={index} className='border-l-2 border-primary rounded-l-xl pl-4 p-2'>
-                                                                    <h1 className='font-semibold flex items-center gap-2'><MapPin className='text-primary' /> {t('ai.tabs.day')} {day.day}: {day.location}</h1>
+                                                                <div key={index} className='border-l-2 border-[#f7740a] rounded-l-xl pl-4 p-2'>
+                                                                    <h1 className='font-semibold flex items-center gap-2'><MapPin className='text-[#f7740a]' /> {t('ai.tabs.day')} {day.day}: {day.location}</h1>
                                                                     <p className='mt-1'>{day.travelNotes}</p>
                                                                     <div className='flex flex-col gap-3 mt-2'>
                                                                         {
@@ -328,7 +285,7 @@ function TInput() {
                                                                             ))
                                                                         }
                                                                     </div>
-                                                                    <p className='flex flex-col md:flex-row md:items-center gap-2 mt-2'><b className='flex items-center gap-2'><Info className='text-primary' /> {t('ai.tabs.tips')} :</b> {day.tips}</p>
+                                                                    <p className='flex flex-col md:flex-row md:items-center gap-2 mt-2'><b className='flex items-center gap-2'><Info className='text-[#f7740a]' /> {t('ai.tabs.tips')} :</b> {day.tips}</p>
                                                                 </div>
                                                             ))
                                                         }
@@ -338,8 +295,8 @@ function TInput() {
                                                     <div className='flex flex-col gap-8 mt-4'>
                                                         {
                                                             Data.days.map((day, index) => (
-                                                                <div key={index} className='border-l-2 border-primary rounded-l-xl pl-4 p-2'>
-                                                                    <h1 className='font-semibold flex items-center gap-2'><MapPin className='text-primary' /> {t('ai.tabs.day')} {day.day}: {day.location}</h1>
+                                                                <div key={index} className='border-l-2 border-[#f7740a] rounded-l-xl pl-4 p-2'>
+                                                                    <h1 className='font-semibold flex items-center gap-2'><MapPin className='text-[#f7740a]' /> {t('ai.tabs.day')} {day.day}: {day.location}</h1>
                                                                     <p className='mt-1'>{day.travelNotes}</p>
                                                                     <div className='flex flex-col gap-3 mt-2'>
                                                                         {
@@ -357,7 +314,7 @@ function TInput() {
                                             <div className='flex items-center justify-center'>
                                                 <button
                                                     onClick={GenAI}
-                                                    className='bg-primary w-full md:w-fit py-2 px-6 text-white rounded-xl mt-6 flex items-center justify-center gap-2 cursor-pointer hover:bg-[#e06809] transition-colors'
+                                                    className='bg-[#f7740a] w-full md:w-fit py-2 px-6 text-white rounded-xl mt-6 flex items-center justify-center gap-2 cursor-pointer hover:bg-[#e06809] transition-colors'
                                                 >
                                                     <p className='font-semibold'>{t('ai.re')}</p>
                                                     <RefreshCcw />

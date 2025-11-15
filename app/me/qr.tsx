@@ -46,6 +46,7 @@ function Qr() {
     const [succState, setSuccState] = useState(1);
     const [sameSpot, setSameSpot] = useState(false);
     const [open, setOpen] = useState(false);
+    const [showBadge, setShowBadge] = useState(false);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -211,11 +212,39 @@ function Qr() {
                                                                             {
                                                                                 isWithinRadius ? <>
                                                                                     <div className='flex items-center justify-center flex-col w-full relative'>
+                                                                                        <AnimatePresence mode="wait">
+                                                                                            {
+                                                                                                showBadge && <>
+                                                                                                    <motion.div
+                                                                                                        initial={{ opacity: 0 }}
+                                                                                                        animate={{ opacity: 1 }}
+                                                                                                        exit={{ opacity: 0 }}
+                                                                                                        transition={{
+                                                                                                            duration: 0.6,
+                                                                                                        }}
+                                                                                                        className='absolute w-full flex flex-col items-center justify-center z-99 bg-white/20 backdrop-blur-xs h-full'
+                                                                                                    >
+                                                                                                        <img src={BadgeRev.src} alt="Bg" className='w-52 absolute -mr-4 rotate-center opacity-70' />
+                                                                                                        <motion.div
+                                                                                                            initial={{ opacity: 0, scale: 0 }}
+                                                                                                            animate={{ opacity: 1, scale: 1 }}
+                                                                                                            transition={{
+                                                                                                                duration: 0.6,
+                                                                                                                scale: { type: "spring", visualDuration: 0.6, bounce: 0.7 },
+                                                                                                            }}
+                                                                                                        >
+                                                                                                            <img onClick={() => setShowBadge(false)} src={codeData.badge.imageUrl} alt="Badge Icon" className='w-36 translate-x-2 cursor-pointer' />
+                                                                                                        </motion.div>
+                                                                                                        <p className='absolute bottom-2 text-xs md:text-sm'>{t('scan.badgeC')}</p>
+                                                                                                    </motion.div>
+                                                                                                </>
+                                                                                            }
+                                                                                        </AnimatePresence>
                                                                                         <ConfettiExplosion colors={['#ff577f', '#ff884b', '#ffd384', '#fff9b0']} zIndex={99} />
                                                                                         <motion.div
                                                                                             animate={{
-                                                                                                x: [0, 20, 0, -20, 0],
-                                                                                                y: [0, -25, 0, -25, 0],
+                                                                                                x: [0, 15, 0, -15, 0],
+                                                                                                y: [0, -15, 0, -15, 0],
                                                                                                 rotate: [0, 5, 0, -5, 0]
                                                                                             }}
                                                                                             transition={{
@@ -261,7 +290,7 @@ function Qr() {
                                                                                                     {
                                                                                                         succState == 1 && <>
                                                                                                             <SplitText
-                                                                                                                text={`${sameSpot ? `**${t('scan.state1.1')}` : `**${t('scan.state1.2')}`} ${codeData.name} ${t('scan.state1.3')} ${codeData.points} ${t('scan.state1.4')}** ${sameSpot ? t('scan.state1.5') : ''}`}
+                                                                                                                text={`${sameSpot ? `${t('scan.state1.1')}` : `${t('scan.state1.2')}`} ${codeData.name} ${t('scan.state1.3')} ${codeData.points} ${t('scan.state1.4')}** ${sameSpot ? t('scan.state1.5') : ''}`}
                                                                                                                 splitType="words"
                                                                                                                 from={{ opacity: 0, y: 40 }}
                                                                                                                 to={{ opacity: 1, y: 0 }}
@@ -272,30 +301,14 @@ function Qr() {
                                                                                                     }
                                                                                                     {
                                                                                                         codeData.reciveNewBadge == true && succState == 2 && <>
-                                                                                                            <div className='grid  grid-col-1 md:grid-cols-4 gap-2 md:gap-8'>
-                                                                                                                <div className='flex items-center justify-center py-5 md:py-3'>
-                                                                                                                    <img src={BadgeRev.src} alt="Bg" className='w-42 md:w-28 absolute -mr-4 rotate-center opacity-70' />
-                                                                                                                    <motion.div
-                                                                                                                        initial={{ opacity: 0, scale: 0 }}
-                                                                                                                        animate={{ opacity: 1, scale: 1 }}
-                                                                                                                        transition={{
-                                                                                                                            duration: 0.6,
-                                                                                                                            scale: { type: "spring", visualDuration: 0.6, bounce: 0.7 },
-                                                                                                                        }}
-                                                                                                                    >
-                                                                                                                        <img src={codeData.badge.imageUrl} alt="Badge Icon" className='w-30 md:w-20 translate-x-3' />
-                                                                                                                    </motion.div>
-                                                                                                                </div>
-                                                                                                                <SplitText
-                                                                                                                    text={`**${t('scan.state2.1')} ${codeData.badge.province.charAt(0).toUpperCase() + codeData.badge.province.slice(1)}** ${t('scan.state2.2')}`}
-                                                                                                                    splitType="words"
-                                                                                                                    className='md:col-span-3'
-                                                                                                                    from={{ opacity: 0, y: 40 }}
-                                                                                                                    to={{ opacity: 1, y: 0 }}
-                                                                                                                    threshold={0.1}
-                                                                                                                    textAlign="left"
-                                                                                                                />
-                                                                                                            </div>
+                                                                                                            <SplitText
+                                                                                                                text={`**${t('scan.state2.1')} ${codeData.badge.province.charAt(0).toUpperCase() + codeData.badge.province.slice(1)}** ${t('scan.state2.2')}`}
+                                                                                                                splitType="words"
+                                                                                                                from={{ opacity: 0, y: 40 }}
+                                                                                                                to={{ opacity: 1, y: 0 }}
+                                                                                                                threshold={0.1}
+                                                                                                                textAlign="left"
+                                                                                                            />
                                                                                                         </>
                                                                                                     }
                                                                                                     {
@@ -324,6 +337,7 @@ function Qr() {
                                                                                                     setSuccState(succState + 1);
                                                                                                     const NEWBGD = new Audio('/audio/BadgeRev.mp3');
                                                                                                     NEWBGD.volume = 0.5; NEWBGD.play();
+                                                                                                    setShowBadge(true);
                                                                                                 } else {
                                                                                                     setSuccState(3)
                                                                                                 }

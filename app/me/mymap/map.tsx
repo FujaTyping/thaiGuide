@@ -60,18 +60,26 @@ function PMap() {
     }, []);
 
     useEffect(() => {
-        if ('geolocation' in navigator) {
+        let intervalId: NodeJS.Timeout;
+
+        function getLocation() {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
+                    setCenter([position.coords.latitude, position.coords.longitude]);
+                    setZoom(16);
                     setManLo({
                         latitude: position.coords.latitude,
                         longitude: position.coords.longitude,
                     });
-                    setCenter([position.coords.latitude, position.coords.longitude]);
-                    setZoom(16);
                 }
             );
         }
+
+        if ('geolocation' in navigator) {
+            getLocation()
+            intervalId = setInterval(() => getLocation(), 5000);
+        }
+        return () => clearInterval(intervalId);
     }, []);
 
     if (!user || !data) {
