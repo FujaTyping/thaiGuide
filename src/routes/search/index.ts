@@ -21,7 +21,7 @@ async function searhByQuery({ body, set }: { body: typeof searchSchema.body.stat
 
     try {
         if (type == typeofSearch.ALL) {
-            let allSearch: any = {};
+            let allSearch: any = [];
             const searchPromises = (['activities', 'restaurant']).map(async (typess) => {
                 const collectionRef = collection(db, typess);
                 const q = firestoreQuery(collectionRef,
@@ -30,8 +30,8 @@ async function searhByQuery({ body, set }: { body: typeof searchSchema.body.stat
                     endAt(query + "\uf8ff")
                 );
                 const querySnapshot = await getDocs(q);
-                const fillterData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                allSearch[typess] = fillterData;
+                const fillterData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data(), typeref: typess == 'activities' ? 'activity' : 'restaurant' }));
+                allSearch.push(...fillterData);
             });
 
             await Promise.all(searchPromises);
@@ -52,9 +52,9 @@ async function searhByQuery({ body, set }: { body: typeof searchSchema.body.stat
             set.status = 200;
             return results;
         }
-    } catch {
+    } catch (e: any) {
         set.status = 400;
-        return "Error: while search your query";
+        return { message: "Error: while search your query", error: e.message };
     }
 }
 
