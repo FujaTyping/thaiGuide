@@ -303,9 +303,10 @@
         },
         "redeem": {
             "pop": "Tebus di",
-            "title": "Kod QR Ganjaran",
+            "title": "Butiran Ganjaran",
             "decs": "Tunjukkan kod QR ini untuk menuntut ganjaran anda",
-            "did": "ID Transaksi"
+            "did": "ID Transaksi",
+            "tooltip": "Lihat butiran transaksi"
         },
         "badge": {
             "title": "Lencana Perjalanan",

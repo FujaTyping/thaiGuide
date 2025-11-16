@@ -47,8 +47,9 @@ function Details() {
     const [user, setUser] = useState<User | null>(null);
     const [transcaton, setTranscaton] = useState<Transaction[] | null>(null);
     const [numDisplayedItems, setNumDisplayedItems] = useState<number>(INITIAL_ITEMS_TO_SHOW);
-    const [tid, setTID] = useState('');
-    const [uid, setUID] = useState('');
+    const [isR, setIsR] = useState(false);
+    const [open, setOpen] = useState(false);
+    const [detailImage, setDetailImage] = useState('');
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -81,6 +82,29 @@ function Details() {
     const handleLoadMore = () => {
         setNumDisplayedItems(prevCount => Math.min(prevCount + ITEMS_PER_LOAD, transcaton.length));
     };
+
+    async function getTransactionDetails(id: String) {
+        setDetailImage('');
+        setOpen(true);
+        try {
+            const res = await axios.post(`${server}/transactions/gen`, {
+                id,
+                email: user?.email
+            }, {
+                headers: {
+                    aetheruid: user?.uid
+                },
+                responseType: 'arraybuffer'
+            })
+
+            const base64 = btoa(
+                new Uint8Array(res.data).reduce((data, byte) => data + String.fromCharCode(byte), '')
+            );
+            setDetailImage(`data:image/png;base64,${base64}`);
+        } catch {
+
+        }
+    }
 
     return (
         <>
@@ -119,30 +143,20 @@ function Details() {
                                                 {
                                                     item.point.includes("-") && (
                                                         <>
-                                                            {
-                                                                item.idRedeem ? (
-                                                                    <Tooltip>
-                                                                        <TooltipTrigger><TicketCheck className='text-primary cursor-help' /></TooltipTrigger>
-                                                                        <TooltipContent>
-                                                                            {t('redeem.pop')} {new Date(item.redeemAt.seconds * 1000).toLocaleDateString()}
-                                                                        </TooltipContent>
-                                                                    </Tooltip>
-                                                                ) : (
-                                                                    <Dialog>
-                                                                        <DialogTrigger><QrCode onClick={() => { setTID(item.id); setUID(user.uid); }} className='text-primary cursor-pointer' /></DialogTrigger>
-                                                                        <DialogContent>
-                                                                            <DialogHeader>
-                                                                                <DialogTitle className='text-2xl'>{t('redeem.title')}</DialogTitle>
-                                                                                <p className='mb-4'>{t('redeem.decs')}</p>
-                                                                                <div className='flex flex-col gap-4 items-center justify-center mt-2'>
-                                                                                    <QRCode value={`${uid}-${tid}`} fgColor='#f7740a' />
-                                                                                    <p><b>{t('redeem.did')}</b> : {tid}</p>
-                                                                                </div>
-                                                                            </DialogHeader>
-                                                                        </DialogContent>
-                                                                    </Dialog>
-                                                                )
-                                                            }
+                                                            <Tooltip>
+                                                                <TooltipTrigger asChild>
+                                                                    {
+                                                                        item.idRedeem ? (
+                                                                            <TicketCheck onClick={() => { getTransactionDetails(item.id); setIsR(true); }} className='text-primary cursor-pointer' />
+                                                                        ) : (
+                                                                            <QrCode onClick={() => { getTransactionDetails(item.id); setIsR(false); }} className='text-primary cursor-pointer' />
+                                                                        )
+                                                                    }
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    <p>{t('redeem.tooltip')}</p>
+                                                                </TooltipContent>
+                                                            </Tooltip>
                                                         </>
                                                     )
                                                 }
@@ -167,6 +181,20 @@ function Details() {
                     </button>
                 </div>
             )}
+            <Dialog open={open} onOpenChange={setOpen}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle className='text-2xl'>{t('redeem.title')}</DialogTitle>
+                        {!isR && <p className='mb-4'>{t('redeem.decs')}</p>}
+                        {
+                            detailImage == '' ?
+                                <div className='w-full flex items-center justify-center my-8'><Loader /></div>
+                                : <img src={detailImage} alt="Image" className="rounded-2xl mt-3" />
+                        }
+
+                    </DialogHeader>
+                </DialogContent>
+            </Dialog>
         </>
     )
 }
