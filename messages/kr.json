@@ -303,9 +303,10 @@
         },
         "redeem": {
             "pop": "에서 사용",
-            "title": "보상 QR 코드",
+            "title": "보상 상세 정보",
             "decs": "보상을 받으려면 이 QR 코드를 제시하세요",
-            "did": "거래 ID"
+            "did": "거래 ID",
+            "tooltip": "거래 내역 보기"
         },
         "badge": {
             "title": "여행 배지",

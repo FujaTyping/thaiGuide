@@ -305,9 +305,10 @@
     },
     "redeem": {
       "pop": "Redeem at",
-      "title": "Reward QR Code",
+      "title": "Reward Details",
       "decs": "Present this QR code to claim your reward",
-      "did": "Transaction id"
+      "did": "Transaction id",
+      "tooltip": "View transaction details"
     },
     "badge": {
       "title": "Travel Badge",
