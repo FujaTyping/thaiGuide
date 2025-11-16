@@ -16,7 +16,8 @@
       "trips": "Road Trips",
       "redeem": "Redeem",
       "switcher": "Language",
-      "switcherlang": "Choose Language"
+      "switcherlang": "Choose Language",
+      "search": "Search"
     },
     "lang": {
       "title": "Language Switch Information",
@@ -641,8 +642,8 @@
     }
   },
   "Activities": {
-    "title": "Activity and Events",
-    "decs": "Discover a vibrant array of activities and immerse yourself in the exciting events Thailand has to offer. From cultural festivals to adventurous excursions, find your next unforgettable experience here",
+    "title": "Activities & Experiences",
+    "decs": "Discover things to do across Thailand and find experiences that perfectly match your journey from famous sights to local hidden gems",
     "select": {
       "start": "Select Province...",
       "search": "Search Province...",

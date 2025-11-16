@@ -16,6 +16,7 @@
             "trips": "Lawatan Jalan Raya",
             "redeem": "Tebus",
             "switcher": "Bahasa",
+            "search": "Cari",
             "switcherlang": "Pilih Bahasa"
         },
         "lang": {
@@ -639,8 +640,8 @@
         }
     },
     "Activities": {
-        "title": "Aktiviti dan Acara",
-        "decs": "Terokai pelbagai aktiviti yang meriah dan libatkan diri anda dalam acara menarik yang ditawarkan oleh Thailand. Daripada perayaan kebudayaan hingga lawatan pengembaraan, cari pengalaman anda yang tidak dapat dilupakan seterusnya di sini",
+        "title": "Aktiviti & Pengalaman",
+        "decs": "Temui perkara untuk dilakukan di seluruh Thailand dan cari pengalaman yang sangat sesuai dengan perjalanan anda dari pemandangan terkenal hingga permata tersembunyi tempatan.",
         "select": {
             "start": "Pilih Wilayah...",
             "search": "Cari Wilayah...",

@@ -48,6 +48,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { signInWithEmailAndPassword } from "firebase/auth";
+import SearchModal from './searchModal';
 
 // Modal Icon
 import LIC from "@/assets/media/login/left.png";
@@ -67,10 +68,6 @@ import {
 import { Input } from "@/components/ui/input"
 
 const NavItems = [
-    {
-        "name": "weather",
-        "link": "/weather"
-    },
     {
         "name": "planner",
         "link": "/planner"
@@ -94,6 +91,8 @@ function Navbar() {
     const [loginM, setLoginM] = useState(false);
     const [wantAd, setWantAd] = useState(false);
     const [isAd, setIsAd] = useState<boolean>(false);
+    const [searchToogle, setSearchToogle] = useState(false);
+    const [toggleNavbar, setToggleNavbar] = useState(false);
 
     const adminFormSchema = z.object({
         email: z.string().min(11, t('login.admin.require.username')),
@@ -223,6 +222,15 @@ function Navbar() {
                     </Link>
                     <div className='flex items-center gap-2'>
                         <div className='hidden md:flex items-center gap-6 border-1 border-primary p-2 px-6 rounded-full text-primary font-bold hover:bg-primary transition-all duration-300 group'>
+                            <motion.div
+                                whileHover={{ scale: 1.1, rotate: -5 }}
+                                whileTap={{ scale: 0.8 }}
+                                onClick={() => setSearchToogle(true)}
+                            >
+                                <p className='group-hover:text-white cursor-pointer'>
+                                    {t('list.search')}
+                                </p>
+                            </motion.div>
                             {NavItems.map((item, index) => (
                                 <motion.div
                                     whileHover={{ scale: 1.1, rotate: -5 }}
@@ -236,16 +244,17 @@ function Navbar() {
                             ))}
                         </div>
                         <div className='flex md:hidden items-center gap-6 border-1 border-primary p-2 px-6 rounded-full text-primary font-bold hover:bg-primary transition-all duration-300 hover:text-white'>
-                            <Sheet>
+                            <Sheet open={toggleNavbar} onOpenChange={setToggleNavbar}>
                                 <SheetTrigger><p className='flex items-center gap-2'><Menu /> {t('menu')}</p></SheetTrigger>
                                 <SheetContent>
                                     <SheetHeader>
                                         <SheetTitle className='text-2xl font-bold text-primary'>{t('menu')}</SheetTitle>
                                         <div className='flex flex-col gap-2 mt-3 text-lg text-primary font-semibold'>
-                                            <a href={"/activity"}>{tb(`item.activity`)}</a>
-                                            <a href={"/restaurant"}>{tb(`item.restaurant`)}</a>
+                                            <p className='cursor-pointer' onClick={() => { setToggleNavbar(false); setSearchToogle(true) }}>{t('list.search')}</p>
+                                            <Link onClick={() => setToggleNavbar(false)} href={"/activity"}>{tb(`item.activity`)}</Link>
+                                            <Link onClick={() => setToggleNavbar(false)} href={"/restaurant"}>{tb(`item.restaurant`)}</Link>
                                             {NavItems.map((item, index) => (
-                                                <a key={index} href={item.link}>{t(`list.${item.name}`)}</a>
+                                                <Link onClick={() => setToggleNavbar(false)} key={index} href={item.link}>{t(`list.${item.name}`)}</Link>
                                             ))}
                                             <DropdownMenu>
                                                 <DropdownMenuTrigger>
@@ -370,6 +379,7 @@ function Navbar() {
                     </div>
                 </DialogContent>
             </Dialog>
+            <SearchModal open={searchToogle} setOpen={setSearchToogle} />
         </>
     )
 }
