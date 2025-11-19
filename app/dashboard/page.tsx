@@ -1,6 +1,6 @@
 import React from 'react'
 import Didyouknow from '../components/didyouknow'
-import { QrCode, ScanLine, TriangleAlert } from 'lucide-react'
+import { CircleStar, QrCode, ScanLine, TriangleAlert } from 'lucide-react'
 import Link from 'next/link'
 import type { Metadata } from "next";
 import { useTranslations } from 'next-intl';
@@ -20,10 +20,16 @@ function Page() {
             cat: t('manage')
         },
         {
-            label: "Reward",
+            label: t('grid.reward'),
             icon: ScanLine,
             link: "/dashboard/redeem",
-            cat: "Redeem"
+            cat: t('redeem')
+        },
+        {
+            label: t('grid.badge'),
+            icon: CircleStar,
+            link: "/dashboard/manage/badge",
+            cat: t('manage')
         }
     ]
 
@@ -51,7 +57,7 @@ function Page() {
 
                 </div>
             </div>
-            
+
         </>
     )
 }
