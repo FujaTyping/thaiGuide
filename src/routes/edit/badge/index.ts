@@ -16,7 +16,8 @@ const newSchema = {
 
 const deleteSchema = {
     body: t.Object({
-        id: t.String()
+        id: t.String(),
+        fid: t.String()
     })
 }
 
@@ -52,7 +53,8 @@ async function addNew({ body, set }: { body: typeof newSchema.body.static, set: 
         const uploadURL = response.url;
         await setDoc(doc(db, "badge", name), {
             url: uploadURL,
-            slogan
+            slogan,
+            fileid: response.fileId
         });
 
         set.status = 200;
@@ -64,10 +66,12 @@ async function addNew({ body, set }: { body: typeof newSchema.body.static, set: 
 }
 
 async function deleteData({ body, set }: { body: typeof deleteSchema.body.static, set: { status: number } }) {
-    const { id } = body;
+    const { id, fid } = body;
 
     try {
         await deleteDoc(doc(db, "badge", id));
+        await client.files.delete(fid);
+        set.status = 200;
         return "Done !";
     } catch (error) {
         console.error("Failed to detele  badge :", error);
