@@ -20,7 +20,6 @@ import 'react-photo-view/dist/react-photo-view.css';
 import Alertbox from "./components/alertbox";
 import { keywords } from "./seo.json"
 
-import { HighlightInit } from '@highlight-run/next/client';
 import Underdev from "./components/underdev";
 
 const notoSans = Noto_Sans({
@@ -53,16 +52,6 @@ export default async function RootLayout({
 
   return (
     <>
-      <HighlightInit
-        projectId={'3ej76y3e'}
-        serviceName="thaiguide"
-        tracingOrigins
-        networkRecording={{
-          enabled: true,
-          recordHeadersAndBody: true,
-          urlBlocklist: [],
-        }}
-      />
       <html lang={locale}>
         <body
           className={`${notoSans.variable} antialiased`}
