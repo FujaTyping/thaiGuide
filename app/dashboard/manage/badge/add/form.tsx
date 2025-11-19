@@ -28,6 +28,7 @@ import { server } from "@/app/config.json";
 import { toast } from 'sonner';
 
 function FForm() {
+    const t = useTranslations('Dashboard.item.badge.form');
     const p = useTranslations('Province');
     const turnstile = useTurnstile();
     const [open, setOpen] = useState(false);
@@ -38,15 +39,15 @@ function FForm() {
 
     const formSchema = z.object({
         image: z
-            .instanceof(File, { message: "Please select an image" })
+            .instanceof(File, { message: t('zod.file') })
             .refine((file) => file.size <= MAX_FILE_SIZE, `Max image size is 5MB.`)
             .refine(
                 (file) => ACCEPTED_IMAGE_TYPES.includes(file.type),
                 "Only .jpg, .jpeg, .png and .webp formats are supported."
             ),
-        name: z.string().min(3, 'Please select province'),
-        slogan: z.string().min(10, 'Slogan must be at least 10 characters long'),
-        captcha: z.string().min(1, 'Please complete the CAPTCHA verification')
+        name: z.string().min(3, t('zod.name')),
+        slogan: z.string().min(10, t('zod.slogan')),
+        captcha: z.string().min(1, t('zod.cap'))
     })
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -66,14 +67,14 @@ function FForm() {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            toast.success('Badge Created', {
-                description: 'Your new badge has been added successfully'
+            toast.success(t('toast.succ'), {
+                description: t('toast.dsucc')
             });
             turnstile.reset();
             setLoading(false);
         } catch {
-            toast.error('Failed to Add Badge', {
-                description: 'Something went wrong. Please check your inputs and try again'
+            toast.error(t('toast.err'), {
+                description: t('toast.derr')
             })
             turnstile.reset();
             setLoading(false);
@@ -90,7 +91,7 @@ function FForm() {
                         name="name"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Province</FormLabel>
+                                <FormLabel>{t('province')}</FormLabel>
                                 <FormControl className='w-full'>
                                     <Popover open={open} onOpenChange={setOpen}>
                                         <PopoverTrigger asChild>
@@ -102,15 +103,15 @@ function FForm() {
                                             >
                                                 {field.value
                                                     ? Proworks.find((framework) => framework.value === field.value)?.label
-                                                    : 'Select province'}
+                                                    : t('sprovince')}
                                                 <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                                             </Button>
                                         </PopoverTrigger>
                                         <PopoverContent className="w-full p-0">
                                             <Command>
-                                                <CommandInput placeholder={'Search province'} />
+                                                <CommandInput placeholder={t('seprovince')} />
                                                 <CommandList>
-                                                    <CommandEmpty>{'No province that you find'}</CommandEmpty>
+                                                    <CommandEmpty>{t('noprovince')}</CommandEmpty>
                                                     <CommandGroup>
                                                         {Proworks.map((framework) => (
                                                             <CommandItem
@@ -146,7 +147,7 @@ function FForm() {
                         name="image"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Badge Image</FormLabel>
+                                <FormLabel>{t('image')}</FormLabel>
                                 <FormControl>
                                     <Input
                                         accept="image/*"
@@ -156,7 +157,7 @@ function FForm() {
                                     />
                                 </FormControl>
                                 <FormDescription>
-                                    Recommend dimension 512x512 px
+                                    {t('recimage')}
                                 </FormDescription>
                                 <FormMessage />
                             </FormItem>
@@ -167,9 +168,9 @@ function FForm() {
                         name="slogan"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Slogan</FormLabel>
+                                <FormLabel>{t('slogan')}</FormLabel>
                                 <FormControl>
-                                    <Textarea {...field} placeholder='Slogan of province' />
+                                    <Textarea {...field} placeholder={t('phslogan')} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -180,7 +181,7 @@ function FForm() {
                         name="captcha"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Captcha</FormLabel>
+                                <FormLabel>{t('captcha')}</FormLabel>
                                 <FormControl>
                                     <Turnstile
                                         sitekey="0x4AAAAAABiWcS67qCPLgJew"
@@ -190,13 +191,13 @@ function FForm() {
                                         }}
                                     />
                                 </FormControl>
-                                <FormDescription>Please verify you are human to help us prevent spam</FormDescription>
+                                <FormDescription>{t('dcaptcha')}</FormDescription>
                                 <FormMessage />
                             </FormItem>
                         )}
                     />
                     <div className='flex items-center justify-center flex-col-reverse gap-4 mt-8 md:mt-0'>
-                        <Button type="submit" className='bg-primary hover:bg-primary cursor-pointer w-full md:w-fit'>{loading ? <LoaderCircleIcon className='animate-spin' /> : <Send />}Submit</Button>
+                        <Button type="submit" className='bg-primary hover:bg-primary cursor-pointer w-full md:w-fit'>{loading ? <LoaderCircleIcon className='animate-spin' /> : <Send />}{t('submit')}</Button>
                     </div>
                 </form>
             </Form>

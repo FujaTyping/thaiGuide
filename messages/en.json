@@ -1046,6 +1046,51 @@
           "decs": "The QR code is invalid or has already been used. Please try again with a valid code"
         },
         "onlymobile": "You can only access the Redeem Reward feature on mobile devices"
+      },
+      "badge": {
+        "title": "Badge Control Center",
+        "decs": "Oversee badge creation, updates, and availability in the ThaiGuide system",
+        "search": "Filter by name",
+        "new": "Add new badge",
+        "tooldel": "Delete this badge",
+        "nodatt": "No data",
+        "modal": {
+          "title": "Delete Badge?",
+          "d1": "Are you sure you want to delete this badge?",
+          "d2": "Once deleted, Information will be permanently removed and cannot be recovered",
+          "name": "Name",
+          "conBTN": "Confirm",
+          "canBTN": "Cancel",
+          "succ": "Badge deleted successfully",
+          "err": "Something went wrong, Please try again later"
+        },
+        "form": {
+          "title": "Add New Badge",
+          "decs": "Create a new badge to reward travelers for completing missions or exploring new places",
+          "zod": {
+            "file": "Please select an image",
+            "name": "Please select province",
+            "slogan": "Slogan must be at least 10 characters long",
+            "cap": "Please complete the CAPTCHA verification"
+          },
+          "toast": {
+            "succ": "Badge Created",
+            "dsucc": "Your new badge has been added successfully",
+            "err": "Failed to Add Badge",
+            "derr": "Something went wrong. Please check your inputs and try again"
+          },
+          "province": "Province",
+          "sprovince": "Select province",
+          "seprovince": "Search province",
+          "noprovince": "No province that you find",
+          "image": "Badge Image",
+          "recimage": "Recommend dimension 512x512 px",
+          "slogan": "Slogan",
+          "phslogan": "Slogan of province",
+          "captcha": "Captcha",
+          "dcaptcha": "Please verify you are human to help us prevent spam",
+          "submit": "Submit"
+        }
       }
     }
   },

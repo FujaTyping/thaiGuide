@@ -2,16 +2,19 @@ import React from 'react';
 import type { Metadata } from 'next';
 import TGtitle from '@/app/components/tgtitle';
 import Content from './content';
+import { useTranslations } from 'next-intl';
 
 export const metadata: Metadata = {
     title: 'ThaiGuide – Badge Management'
 }
 
 function Page() {
+    const t = useTranslations('Dashboard.item.badge');
+
     return (
         <>
             <main className='tg-container w-full'>
-                <TGtitle title='Badge Control Center' decs='Oversee badge creation, updates, and availability in the ThaiGuide system' />
+                <TGtitle title={t('title')} decs={t('decs')} />
                 <div className='mt-4 w-full'>
                     <Content />
                 </div>

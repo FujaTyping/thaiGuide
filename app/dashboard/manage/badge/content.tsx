@@ -12,6 +12,7 @@ import { Plus, Trash2 } from 'lucide-react';
 import { motion } from 'motion/react';
 import NF from "@/assets/media/card/icon/notfound.svg";
 import DeleteModal from './deleteModal';
+import { useTranslations } from 'next-intl';
 
 interface dataType {
     id: string
@@ -26,6 +27,7 @@ interface deleteMD {
 }
 
 function Content() {
+    const t = useTranslations('Dashboard.item.badge');
     const [data, setData] = useState<dataType[]>([]);
     const [loading, setLoading] = useState(true);
     const [filter, setFilter] = useState('');
@@ -64,7 +66,7 @@ function Content() {
                 <div className='pb-5 pt-2 flex items-center place-content-between gap-3'>
                     <Input
                         type="text"
-                        placeholder='Filter by name'
+                        placeholder={t('search')}
                         className="max-w-sm"
                         value={filter}
                         onChange={(e) => setFilter(e.target.value)} />
@@ -75,7 +77,7 @@ function Content() {
                             </Link>
                         </TooltipTrigger>
                         <TooltipContent>
-                            <p>Add new badge</p>
+                            <p>{t('new')}</p>
                         </TooltipContent>
                     </Tooltip>
                 </div>
@@ -86,7 +88,7 @@ function Content() {
                                 filteredData.map((item, index) => (
                                     <div key={index} className='grid grid-cols-3 gap-6 border-3 border-primary rounded-xl p-3 px-4'>
                                         <div className='flex items-center justify-center gap-1 flex-col'>
-                                            <img src={item.url} alt="Icon" className='w-32' />
+                                            <img src={item.url} alt="Icon" className='w-28' />
                                             <h1 className='font-semibold text-base md:text-lg'>{item.id.charAt(0).toUpperCase() + item.id.slice(1)}</h1>
                                         </div>
                                         <div className='flex flex-col items-center justify-center gap-1 col-span-2'>
@@ -106,7 +108,7 @@ function Content() {
                                                             size={18} className="text-primary cursor-pointer" />
                                                     </TooltipTrigger>
                                                     <TooltipContent>
-                                                        <p>Delete this badge</p>
+                                                        <p>{t('tooldel')}</p>
                                                     </TooltipContent>
                                                 </Tooltip >
                                             </div>
@@ -128,7 +130,7 @@ function Content() {
                             >
                                 <img src={NF.src} alt="Not Found" className='w-32 translate-x-3' />
                             </motion.div>
-                            <p className='font-semibold'>No data</p>
+                            <p className='font-semibold'>{t('nodatt')}</p>
                         </div>
                     </>
                 }
