@@ -2,7 +2,7 @@ import React from 'react';
 import fetchData from './fetch';
 import NF from "@/assets/media/card/icon/notfound.svg";
 import Loader from '@/app/components/loader';
-import { Banknote, Coins, MapPinned, Phone, Star, Map, CircleHelp, MapPin } from 'lucide-react';
+import { Banknote, Coins, MapPinned, Phone, Star, Map, CircleHelp, MapPin, Ticket } from 'lucide-react';
 import Link from 'next/link';
 import type { Metadata } from "next";
 import {
@@ -18,6 +18,12 @@ import ContentNotfound from '@/app/components/contentNotfound';
 
 type Props = {
     params: Promise<{ actid: string }>
+}
+
+interface ticketProp {
+    title: string,
+    price: string,
+    for: string
 }
 
 export async function generateMetadata(
@@ -75,28 +81,34 @@ async function page({ params }: Props) {
                 </Link>
                 <p className='mt-2'>{data.decs}</p>
                 <div className='grid grid-cols-2 md:grid-cols-3 py-8 gap-8'>
-                    <div className='flex flex-col gap-1 items-center justify-center'>
-                        <Banknote className='text-primary size-14' />
-                        <p className='font-semibold text-xl'>{data.pricing}</p>
-                        <p>{t('item.cost')}</p>
-                    </div>
+                    {
+                        data.pricing && <div className='flex flex-col gap-1 items-center justify-center'>
+                            <Banknote className='text-primary size-14' />
+                            <p className='font-semibold text-xl'>{data.pricing}</p>
+                            <p>{t('item.cost')}</p>
+                        </div>
+                    }
                     <div className='flex flex-col gap-1 items-center justify-center'>
                         <Star className='text-primary size-12' />
                         <p className='font-semibold text-xl'>{data.rating}</p>
                         <p>{t('item.rate')}</p>
                     </div>
-                    <div className='flex flex-col gap-1 items-center justify-center'>
-                        <MapPinned className='text-primary size-12' />
-                        <p className='font-semibold text-xl'>{data.popular}</p>
-                        <p>{t('item.visit')}</p>
-                    </div>
+                    {
+                        data.popular && <div className='flex flex-col gap-1 items-center justify-center'>
+                            <MapPinned className='text-primary size-12' />
+                            <p className='font-semibold text-xl'>{data.popular}</p>
+                            <p>{t('item.visit')}</p>
+                        </div>
+                    }
                     {
                         data.details && (<>
-                            <div className='flex flex-col gap-1 items-center justify-center'>
-                                <Phone className='text-primary size-12' />
-                                <p className='font-semibold text-xl'>{data.details.tel}</p>
-                                <p>{t('item.call')}</p>
-                            </div>
+                            {
+                                data.details.tel && <div className='flex flex-col gap-1 items-center justify-center'>
+                                    <Phone className='text-primary size-12' />
+                                    <p className='font-semibold text-xl'>{data.details.tel}</p>
+                                    <p>{t('item.call')}</p>
+                                </div>
+                            }
                             <div className='flex flex-col gap-1 items-center justify-center'>
                                 <Coins className='text-primary size-12' />
                                 <p className='font-semibold text-xl'>{data.details.points}</p>
@@ -111,7 +123,7 @@ async function page({ params }: Props) {
                                 </p>
                             </div>
                             {
-                                data.details.website != "-" && <>
+                                data.details.website && data.details.website != "-" && <>
                                     <Link href={data.details.website} className='flex flex-col gap-1 items-center justify-center'>
                                         <Map className='text-primary size-12' />
                                         <p className='font-semibold text-xl'>{t('item.click')}</p>
@@ -122,6 +134,31 @@ async function page({ params }: Props) {
                         </>)
                     }
                 </div>
+                {
+                    data.haveticket && <>
+                        <h1 className='text-2xl font-bold'>Ticket Price</h1>
+                        <div>
+                            {
+                                data.ticket.map((item: ticketProp, index: number) => (
+                                    <div key={index} className={`flex items-center place-content-between ${index == data.ticket.length - 1 ? '' : 'border-b-1 border-primary'} py-4`}>
+                                        <div className='flex items-center gap-4'>
+                                            <div className='bg-primary p-3 rounded-full text-white'>
+                                                <Ticket />
+                                            </div>
+                                            <div>
+                                                <h2 className='font-semibold text-lg'>{item.title}</h2>
+                                                <p className='text-sm md:text-base'>{`(For ${item.for})`}</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p className='font-semibold text-lg'>฿ {item.price}</p>
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </>
+                }
             </main>
             <main className='max-w-7xl mx-auto px-4 pb-6'>
                 <TGtitle second={true} title={t('item.forecast')} />
