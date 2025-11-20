@@ -1,5 +1,5 @@
 import type { ElysiaApp } from "../../index";
-import { collection, query, getDocs, DocumentData, doc, getDoc, where } from "firebase/firestore";
+import { collection, query, getDocs, DocumentData, doc, getDoc, where, orderBy } from "firebase/firestore";
 import db from "../../lib/firebase";
 import { t } from "elysia";
 
@@ -47,6 +47,23 @@ const getIdInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.
                     acc[doc.id] = doc.data().value;
                     return acc;
                 }, {});
+
+                if (userData.haveticket) {
+                    let ticket: any = [];
+                    const tickRef = collection(db, "activities", docId, "ticket")
+                    const tickSnapshot = await getDocs(query(tickRef , orderBy("price", "asc")))
+
+                    tickSnapshot.forEach((doc) => {
+                        ticket.push(doc.data());
+                    });
+
+                    set.status = 200;
+                    return {
+                        ...userData,
+                        details,
+                        ticket
+                    };
+                }
 
                 set.status = 200;
                 return {

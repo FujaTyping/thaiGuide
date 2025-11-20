@@ -26,7 +26,7 @@ async function createNew({ body, set }: { body: typeof generateCodeDoc.body.stat
     ctx.fillStyle = '#FFF';
 
     ctx.font = '90px Canva Sans Bold';
-    ctx.fillText(name, docImage.width / 2, docImage.height / 2 - 500);
+    ctx.fillText(name, (docImage.width / 2) + 25, docImage.height / 2 - 500);
 
     try {
         const url = await QRCode.toDataURL(id, {
@@ -46,6 +46,9 @@ async function createNew({ body, set }: { body: typeof generateCodeDoc.body.stat
     if (ot) {
         const otImage = await loadImage('./data/QROTU.png');
         ctx.drawImage(otImage, 70, (docImage.height / 2) + 450, otImage.width, otImage.height);
+    } else {
+        const otImage = await loadImage('./data/SCM.png');
+        ctx.drawImage(otImage, (otImage.width / 2) - 10, (docImage.height / 2) + 440, otImage.width, otImage.height);
     }
 
     const pngData = await canvas.toBuffer('image/png');
