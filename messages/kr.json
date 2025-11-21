@@ -654,6 +654,7 @@
         "items": "항목",
         "more": "더 로드",
         "notfound": "이 주에 대한 활동을 찾을 수 없습니다",
+        "weathersource": "출처: 태국 기상청",
         "item": {
             "notfound": "활동 데이터 없음",
             "cost": "평균 비용",

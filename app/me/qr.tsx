@@ -222,9 +222,10 @@ function Qr() {
                                                                                                         transition={{
                                                                                                             duration: 0.6,
                                                                                                         }}
-                                                                                                        className='absolute w-full flex flex-col items-center justify-center z-99 bg-white/20 backdrop-blur-xs h-full'
+                                                                                                        onClick={() => setShowBadge(false)}
+                                                                                                        className='absolute w-full flex flex-col items-center justify-center z-99 bg-white/20 backdrop-blur-xs h-full cursor-pointer'
                                                                                                     >
-                                                                                                        <img src={BadgeRev.src} alt="Bg" className='w-52 absolute -mr-4 rotate-center opacity-70' />
+                                                                                                        <img src={BadgeRev.src} alt="Bg" className='w-58 absolute -mr-4 rotate-center opacity-70' />
                                                                                                         <motion.div
                                                                                                             initial={{ opacity: 0, scale: 0 }}
                                                                                                             animate={{ opacity: 1, scale: 1 }}
@@ -233,7 +234,7 @@ function Qr() {
                                                                                                                 scale: { type: "spring", visualDuration: 0.6, bounce: 0.7 },
                                                                                                             }}
                                                                                                         >
-                                                                                                            <img onClick={() => setShowBadge(false)} src={codeData.badge.imageUrl} alt="Badge Icon" className='w-36 translate-x-2 cursor-pointer' />
+                                                                                                            <img src={codeData.badge.imageUrl} alt="Badge Icon" className='w-40 translate-x-2' />
                                                                                                         </motion.div>
                                                                                                         <p className='absolute bottom-2 text-xs md:text-sm'>{t('scan.badgeC')}</p>
                                                                                                     </motion.div>
