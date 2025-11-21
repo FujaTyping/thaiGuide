@@ -13,6 +13,7 @@ interface RewardItem {
     decs: string;
     require: number;
     id: string;
+    quantity: string;
 }
 
 function Grid() {
@@ -41,15 +42,16 @@ function Grid() {
 
     return (
         <>
+            {/*className={`${item.quantity == "0" && "cursor-not-allowed"}`}*/}
             <div className='grid grid-cols-1I md:grid-cols-3 gap-6 mt-6'>
                 {
                     data.map((item: RewardItem, index) => (
                         <Link href={`/redeem/${item.id}`} key={index}>
-                            <div className='flex items-center flex-col place-content-between gap-6 hover:scale-105 transition-all duration-200'>
+                            <div className={`flex items-center flex-col place-content-between gap-6 hover:scale-105 transition-all duration-200 ${item.quantity == "0" && "opacity-75"}`}>
                                 <img src={item.image} alt="Product" className='rounded-xl h-62 object-cover' />
                                 <div className='bg-primary w-full rounded-xl p-4 text-white'>
                                     <h1 className='font-semibold text-xl'>{item.name}</h1>
-                                    <p className='mt-1 mb-2'>{item.decs}</p>
+                                    <p className='mt-1 mb-2'>{`${item.decs.substring(0, 85)}...`}</p>
                                     <p className='flex justify-end gap-2 font-semibold'><Coins /> {item.require}</p>
                                 </div>
                             </div>
