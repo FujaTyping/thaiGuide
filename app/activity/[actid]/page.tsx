@@ -136,7 +136,7 @@ async function page({ params }: Props) {
                 </div>
                 {
                     data.haveticket && <>
-                        <h1 className='text-2xl font-bold'>Ticket Price</h1>
+                        <h1 className='text-2xl font-bold'>{t('item.hasticket')}</h1>
                         <div>
                             {
                                 data.ticket.map((item: ticketProp, index: number) => (
@@ -161,8 +161,8 @@ async function page({ params }: Props) {
                 }
             </main>
             <main className='max-w-7xl mx-auto px-4 pb-6'>
-                <TGtitle second={true} title={t('item.forecast')} />
-                <iframe src={`https://www.tmd.go.th/en/weatherForecast7DaysWidget?province=${data.province}`} height="400" className='w-full border-0' scrolling="no" title={`Weather forecast`}></iframe>
+                <TGtitle second={true} title={t('item.forecast')} decs={t('item.weathersource')} />
+                <iframe src={`https://www.tmd.go.th/en/weatherForecast7DaysWidget?province=${data.province}`} height="400" className='w-full border-0 mt-4' scrolling="no" title={`Weather forecast`}></iframe>
             </main>
             <main className='max-w-7xl mx-auto px-4 pb-6'>
                 <TGtitle second={true} title={t('item.map')} />

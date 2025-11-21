@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Coins, Info, LoaderCircle, TriangleAlert } from 'lucide-react';
+import { Coins, Info, LoaderCircle, ShoppingBasket, TriangleAlert } from 'lucide-react';
 import axios from 'axios';
 import { User, onAuthStateChanged } from "firebase/auth";
 import auth from "@/lib/firebaseAuth";
@@ -32,6 +32,7 @@ function Details({ data }: { data: any }) {
     const [transcationState, setTranscationState] = useState("");
     const [cusERR, setCusERR] = useState("");
     const [succV, setSuccV] = useState(false);
+    const [confirmOpen, setConfirmOpen] = useState(false);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -106,78 +107,20 @@ function Details({ data }: { data: any }) {
                     <p className='mt-2'>{data.decs}</p>
                     {data.virtual && <p className='flex items-center gap-3 mt-2 text-primary'><Info /> <b>{t('items.isV')}</b></p>}
                     <p className='flex items-center gap-3 mt-2 text-primary'><Coins /> <b>{t('items.require')} :</b> {data.require}</p>
+                    <p className='flex items-center gap-3 mt-2 text-primary'><ShoppingBasket /> <span className='font-bold'>Quantity</span>: {data.quantity}</p>
                     {uData ? <>
                         <div className='mt-8'>
                             <p><b>{t('items.your')} :</b> {uData.point}/{data.require}</p>
                             {parseInt(uData.point) >= parseInt(data.require) ? <>
-                                <Dialog>
-                                    <DialogTrigger onClick={() => setTranscationState("")} className='bg-primary text-white p-2 rounded-xl px-5 mt-2 w-full md:w-fit cursor-pointer'>
+                                {
+                                    data.quantity != "Unlimited" && parseInt(data.quantity) <= 0 ? <>
+                                        <button className={`bg-primary text-white p-2 rounded-xl px-5 mt-2 w-full md:w-fit cursor-not-allowed`}>
+                                            {t('items.oos')}
+                                        </button>
+                                    </> : <button onClick={() => { setTranscationState(""); setConfirmOpen(true); }} className='bg-primary text-white p-2 rounded-xl px-5 mt-2 w-full md:w-fit cursor-pointer'>
                                         {t('items.now')}
-                                    </DialogTrigger>
-                                    <DialogContent>
-                                        <DialogHeader>
-                                            <DialogTitle className='text-2xl'>{t('items.sure')} {data.name} ?</DialogTitle>
-                                        </DialogHeader>
-                                        {
-                                            transcationState == "loading" ? <>
-                                                <div className='w-full flex items-center justify-center my-8'>
-                                                    <Loader />
-                                                </div>
-                                            </> : <>
-                                                {
-                                                    transcationState == "error" ? <>
-                                                        {
-                                                            cusERR == "ITES" ?
-                                                                <div className='flex items-center flex-col justify-center'>
-                                                                    <img src={LMIT.src} alt="Not Found" className='w-32' />
-                                                                    <p className='font-semibold'>{t('items.limit')}</p>
-                                                                </div>
-                                                                :
-                                                                <div className='flex items-center flex-col justify-center gap-4'>
-                                                                    <motion.div
-                                                                        animate={{
-                                                                            x: [0, -10, 10, -10, 10, -5, 5, 0],
-                                                                        }}
-                                                                        transition={{
-                                                                            duration: 0.5,
-                                                                            ease: "easeInOut"
-                                                                        }}
-                                                                    >
-                                                                        <img src={NF.src} alt="Not Found" className='w-32 translate-x-3' />
-                                                                    </motion.div>
-                                                                    <p className='font-semibold'>{t('items.error')}</p>
-                                                                </div>
-                                                        }
-                                                    </> : <>
-                                                        {
-                                                            transcationState == "success" ? <>
-                                                                <div className='flex items-center flex-col justify-center gap-4'>
-                                                                    <img src={RD.src} alt="Not Found" className='w-32 translate-x-3' />
-                                                                    <div className='flex items-center justify-center flex-col'>
-                                                                        <p className='font-semibold'>{t('items.success')}</p>
-                                                                        {succV && <p className='font-semibold text-primary mt-1 flex items-center gap-2'><Info /> {t('items.locateProfile')}</p>}
-                                                                    </div>
-                                                                </div>
-                                                            </> : <>
-                                                                <p>{t('items.modal.0')} <b className='text-primary'>{t('items.modal.1')} {data.require} {t('items.modal.2')}</b> {t('items.modal.3')} {data.name}.</p>
-                                                                <DialogFooter>
-                                                                    <DialogClose asChild>
-                                                                        <button className='p-2 px-5 rounded-xl border-2 cursor-pointer'>
-                                                                            {t('items.cancel')}
-                                                                        </button>
-                                                                    </DialogClose>
-                                                                    <button onClick={CRedeem} className='bg-primary text-white p-2 px-5 rounded-xl cursor-pointer'>
-                                                                        {t('items.confirm')}
-                                                                    </button>
-                                                                </DialogFooter>
-                                                            </>
-                                                        }
-                                                    </>
-                                                }
-                                            </>
-                                        }
-                                    </DialogContent>
-                                </Dialog>
+                                    </button>
+                                }
                             </> : <>
                                 <button className={`bg-primary text-white p-2 rounded-xl px-5 mt-2 w-full md:w-fit cursor-not-allowed`}>
                                     {t('items.needed')}
@@ -201,6 +144,71 @@ function Details({ data }: { data: any }) {
                     </>}
                 </div>
             </div >
+            <Dialog open={confirmOpen} onOpenChange={setConfirmOpen}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle className='text-2xl'>{t('items.sure')} {data.name} ?</DialogTitle>
+                    </DialogHeader>
+                    {
+                        transcationState == "loading" ? <>
+                            <div className='w-full flex items-center justify-center my-8'>
+                                <Loader />
+                            </div>
+                        </> : <>
+                            {
+                                transcationState == "error" ? <>
+                                    {
+                                        cusERR == "ITES" ?
+                                            <div className='flex items-center flex-col justify-center'>
+                                                <img src={LMIT.src} alt="Not Found" className='w-32' />
+                                                <p className='font-semibold'>{t('items.limit')}</p>
+                                            </div>
+                                            :
+                                            <div className='flex items-center flex-col justify-center gap-4'>
+                                                <motion.div
+                                                    animate={{
+                                                        x: [0, -10, 10, -10, 10, -5, 5, 0],
+                                                    }}
+                                                    transition={{
+                                                        duration: 0.5,
+                                                        ease: "easeInOut"
+                                                    }}
+                                                >
+                                                    <img src={NF.src} alt="Not Found" className='w-32 translate-x-3' />
+                                                </motion.div>
+                                                <p className='font-semibold'>{t('items.error')}</p>
+                                            </div>
+                                    }
+                                </> : <>
+                                    {
+                                        transcationState == "success" ? <>
+                                            <div className='flex items-center flex-col justify-center gap-4'>
+                                                <img src={RD.src} alt="Not Found" className='w-32 translate-x-3' />
+                                                <div className='flex items-center justify-center flex-col'>
+                                                    <p className='font-semibold'>{t('items.success')}</p>
+                                                    {succV && <p className='font-semibold text-primary mt-1 flex items-center gap-2'><Info /> {t('items.locateProfile')}</p>}
+                                                </div>
+                                            </div>
+                                        </> : <>
+                                            <p>{t('items.modal.0')} <b className='text-primary'>{t('items.modal.1')} {data.require} {t('items.modal.2')}</b> {t('items.modal.3')} {data.name}.</p>
+                                            <DialogFooter>
+                                                <DialogClose asChild>
+                                                    <button className='p-2 px-5 rounded-xl border-2 cursor-pointer'>
+                                                        {t('items.cancel')}
+                                                    </button>
+                                                </DialogClose>
+                                                <button onClick={CRedeem} className='bg-primary text-white p-2 px-5 rounded-xl cursor-pointer'>
+                                                    {t('items.confirm')}
+                                                </button>
+                                            </DialogFooter>
+                                        </>
+                                    }
+                                </>
+                            }
+                        </>
+                    }
+                </DialogContent>
+            </Dialog>
         </>
     )
 }

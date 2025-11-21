@@ -148,6 +148,7 @@
     "selecttext": "Province",
     "stitle": "Weather Simulation",
     "sdecs": "Experience a visual representation of Thailand's weather. This interactive animation provides a simplified and engaging look at the typical weather patterns you might encounter, bringing the forecast to life",
+    "weathersource": "Source : Thai Meteorological Department",
     "select": {
       "start": "Select Province...",
       "search": "Search Province...",
@@ -346,6 +347,7 @@
       "error": "Error during redeem transaction.",
       "success": "Redeem successfully.",
       "cancel": "Cancel",
+      "oos": "Out of stock",
       "confirm": "Confirm",
       "needed": "You need more points",
       "loading": "Loading user data",
@@ -659,6 +661,8 @@
       "cost": "Average cost",
       "rate": "Rating",
       "visit": "Best to visit",
+      "hasticket": "Ticket Price",
+      "weathersource": "Source : Thai Meteorological Department",
       "province": "Province",
       "call": "Call",
       "point": "Point to recive",
@@ -882,6 +886,7 @@
     "title": "My Map",
     "place": "Places",
     "decs": "Your personal map to undiscovered gems and favorite places across Thailand. Mark spots you want to visit and keep track of the places you've discovered.",
+    "mapLock": "Track My Location on Map",
     "unseen": {
       "title": "Undiscovered Place",
       "decs": "Start exploring to uncover new destinations",
