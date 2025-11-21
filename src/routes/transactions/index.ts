@@ -87,6 +87,13 @@ const transferUserTransaction = async ({ body, set, headers }: { headers: typeof
             timestamp: serverTimestamp(),
         } as any
 
+        const userData = userSnapshot.data();
+
+        if (userData.point < parseInt(point.slice(1))) {
+            set.status = 400;
+            return "NENP!"
+        }
+
         if (isV) {
             if (vType == "background") {
                 const docRefI = doc(db, "customize", "user", "banner", attach);
@@ -118,7 +125,6 @@ const transferUserTransaction = async ({ body, set, headers }: { headers: typeof
 
         await setDoc(transactionRef, payloadData);
 
-        const userData = userSnapshot.data();
         const currentPoints = userData.point || 0;
         const placeVisit = userData.checkin || 0;
         const pointChange = parseInt(point);
