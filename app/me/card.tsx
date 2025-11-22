@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import Atropos from 'atropos/react';
 import { User, onAuthStateChanged } from "firebase/auth";
 import auth from "@/lib/firebaseAuth";
-import { Coins, Flame } from 'lucide-react';
+import { ArrowBigUp, Coins, Flame } from 'lucide-react';
 import Loader from '../components/loader';
 import axios from 'axios';
 import { server } from "@/app/config.json";
@@ -39,6 +39,7 @@ const style = {
 
 import './share.css'
 import Sharebt from '../components/sharebt';
+import { Progress } from '@/components/ui/progress';
 
 function Card() {
     const t = useTranslations('Profile');
@@ -93,7 +94,7 @@ function Card() {
         <>
             <Atropos className='mt-8 cursor-pointer' onClick={() => setShareOpen(true)}>
                 <div
-                    className='relative overflow-hidden rounded-4xl'
+                    className='relative overflow-hidden rounded-t-2xl'
                 >
                     <img src={uData.bg} className='w-full h-[400px] object-cover' alt="Card Background" />
                     <div className='absolute top-0 right-0 p-4 text-white'>
@@ -111,6 +112,10 @@ function Card() {
                         </div>
                         <p className='text-sm'>{displayUid}</p>
                     </div>
+                </div>
+                <div className='bg-muted w-full rounded-b-4xl relative'>
+                    <p className='absolute z-1 top-0 left-4 md:left-8 text-xs font-semibold translate-y-0.5'>{t('lvl')} {uData.lv} : {uData.exp}/{uData.nextexp}</p>
+                    <Progress value={parseInt(uData.exp)} max={parseInt(uData.nextexp)} className='rounded-t-2xl h-6' />
                 </div>
             </Atropos>
             <Dialog open={isOpen} onOpenChange={setIsOpen}>

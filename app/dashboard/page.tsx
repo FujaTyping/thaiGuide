@@ -42,7 +42,7 @@ function Page() {
     return (
         <>
             <main className='tg-container'>
-                <TGtitle title={t('title')} decs={t('decs')} />
+                <TGtitle title={t('title')} decs={t('decs')} badge={t('beta')} />
                 <p className='mt-3 font-bold flex items-center gap-2 text-primary'><TriangleAlert className='hidden md:block' />{t('noticelang')}</p>
             </main>
             <div className='max-w-7xl mx-auto px-4 pb-8'>
