@@ -89,7 +89,10 @@ const publicUser = async ({ headers, set }: { headers: typeof publicUserSchema.h
                 point: userData.point,
                 checkin: userData.checkin,
                 joinAt: userData.joinAt,
-                bg: userData.bg
+                bg: userData.bg,
+                lv: userData.lv,
+                exp: userData.exp,
+                nextexp: userData.nextexp
             } as any
             const badgeCollectionRef = collection(db, "Users", userID, "badge")
             const badgesSnapshot = await getDocs(badgeCollectionRef);
