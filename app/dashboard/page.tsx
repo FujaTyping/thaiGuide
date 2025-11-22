@@ -1,6 +1,6 @@
 import React from 'react'
 import Didyouknow from '../components/didyouknow'
-import { CircleStar, QrCode, ScanLine, TriangleAlert } from 'lucide-react'
+import { CircleStar, Megaphone, QrCode, ScanLine, TriangleAlert } from 'lucide-react'
 import Link from 'next/link'
 import type { Metadata } from "next";
 import { useTranslations } from 'next-intl';
@@ -30,6 +30,12 @@ function Page() {
             icon: CircleStar,
             link: "/dashboard/manage/badge",
             cat: t('manage')
+        },
+        {
+            label: t('grid.alert'),
+            icon: Megaphone,
+            link: "/dashboard/update/alert",
+            cat: t('update')
         }
     ]
 

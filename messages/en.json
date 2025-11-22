@@ -968,10 +968,12 @@
     "grid": {
       "code": "Qr Code",
       "reward": "Reward",
-      "badge": "Badge"
+      "badge": "Badge",
+      "alert": "Alert"
     },
     "manage": "Manage",
     "redeem": "Redeem",
+    "update": "Update",
     "noticelang": "The dashboard currently supports only Thai and English languages",
     "item": {
       "qrcode": {
@@ -1095,6 +1097,42 @@
           "captcha": "Captcha",
           "dcaptcha": "Please verify you are human to help us prevent spam",
           "submit": "Submit"
+        }
+      },
+      "alert": {
+        "title": "Announcement Control",
+        "decs": "Change the message users see when visiting ThaiGuide",
+        "form": {
+          "err": {
+            "msg": "Please enter at least 20 characters",
+            "url": "Please enter a valid URL",
+            "cap": "Please complete the CAPTCHA verification"
+          },
+          "toast": {
+            "succ": "Alert Updated",
+            "succdecs": "The alert has been successfully updated",
+            "fail": "Faild to update alert",
+            "faildecs": "Something went wrong while updating the alert"
+          },
+          "field": {
+            "message": "Message",
+            "pmessage": "Alert message",
+            "reference": "Reference",
+            "preference": "Reference link",
+            "dreference": "Provide a link to the news article or data source",
+            "alert": "Alert Type",
+            "captcha": "Captcha",
+            "dcaptcha": "Please verify you are human to help us prevent spam",
+            "clear": "Clear form",
+            "submit": "Submit"
+          },
+          "type": {
+            "Earthquake": "Earthquake",
+            "Flood": "Flood",
+            "Alert": "Alert",
+            "Extreme": "Extreme",
+            "Other": "Other"
+          }
         }
       }
     }
