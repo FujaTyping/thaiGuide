@@ -60,7 +60,8 @@ function Details({ data }: { data: any }) {
         const payload = {
             type: "Redeem",
             place: data.name,
-            point: `-${data.require}`
+            point: `-${data.require}`,
+            itemid: data.id
         } as any;
         if (data.virtual) {
             payload.isV = true;
@@ -69,7 +70,7 @@ function Details({ data }: { data: any }) {
         }
         setTranscationState("loading");
         try {
-            const res = await axios.post(`${server}/transactions/transfer`, payload, {
+            const res = await axios.post(`${server}/reward/getmine`, payload, {
                 headers: {
                     aetheruid: user?.uid
                 }
