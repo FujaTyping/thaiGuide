@@ -246,6 +246,7 @@
             "noneed": "Tiada kuiz yang telah diselesaikan",
             "comat": "Selesai pada"
         },
+        "lvl": "Tahap",
         "scan": {
             "title": "Imbas untuk menerima mata",
             "decs": "Letakkan kod QR di dalam bingkai untuk mengimbasnya dan menerima mata anda.",
@@ -658,6 +659,8 @@
             "notfound": "Tiada data aktiviti",
             "cost": "Kos purata",
             "hasticket": "Harga Tiket",
+            "free": "Percuma",
+            "for": "Untuk",
             "weathersource": "Sumber: Jabatan Meteorologi Thailand",
             "rate": "Penilaian",
             "visit": "Terbaik untuk dilawati",

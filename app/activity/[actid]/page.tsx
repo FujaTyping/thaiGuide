@@ -15,6 +15,7 @@ import Didyouknow from "@/app/components/didyouknow";
 import Sharebt from '@/app/components/sharebt';
 import TGtitle from '@/app/components/tgtitle';
 import ContentNotfound from '@/app/components/contentNotfound';
+import Markdown from 'react-markdown';
 
 type Props = {
     params: Promise<{ actid: string }>
@@ -79,7 +80,7 @@ async function page({ params }: Props) {
                         <p>{data.province.charAt(0).toUpperCase() + data.province.slice(1)}</p>
                     </div>
                 </Link>
-                <p className='mt-2'>{data.decs}</p>
+                <p className='mt-2'><Markdown>{data.decs}</Markdown></p>
                 <div className='grid grid-cols-2 md:grid-cols-3 py-8 gap-8'>
                     {
                         data.pricing && <div className='flex flex-col gap-1 items-center justify-center'>
@@ -140,18 +141,18 @@ async function page({ params }: Props) {
                         <div>
                             {
                                 data.ticket.map((item: ticketProp, index: number) => (
-                                    <div key={index} className={`flex items-center place-content-between ${index == data.ticket.length - 1 ? '' : 'border-b-1 border-primary'} py-4`}>
-                                        <div className='flex items-center gap-4'>
+                                    <div key={index} className={`flex items-start place-content-between ${index == data.ticket.length - 1 ? '' : 'border-b-1 border-primary'} py-4`}>
+                                        <div className='flex items-start gap-4'>
                                             <div className='bg-primary p-3 rounded-full text-white'>
                                                 <Ticket />
                                             </div>
                                             <div>
                                                 <h2 className='font-semibold text-lg'>{item.title}</h2>
-                                                <p className='text-sm md:text-base'>{`(For ${item.for})`}</p>
+                                                <p className='text-sm md:text-base'>{t('item.for')} {item.for}</p>
                                             </div>
                                         </div>
                                         <div>
-                                            <p className='font-semibold text-lg'>฿ {item.price}</p>
+                                            <p className='font-semibold text-lg'>{parseInt(item.price) <= 0 ? t('item.free') : `฿ ${item.price}`}</p>
                                         </div>
                                     </div>
                                 ))

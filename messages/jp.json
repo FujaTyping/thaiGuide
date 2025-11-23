@@ -247,6 +247,7 @@
       "noneed": "完了したクイズはありません",
       "comat": "完了日"
     },
+    "lvl": "レベル",
     "scan": {
       "title": "スキャンしてポイントを受け取る",
       "decs": "QRコードをフレーム内に配置してスキャンし、ポイントを受け取ります。",
@@ -660,6 +661,8 @@
       "cost": "平均費用",
       "hasticket": "チケット価格",
       "rate": "評価",
+      "free": "無料",
+      "for": "ために",
       "visit": "訪問に最適な時期",
       "weathersource": "出典：タイ気象庁",
       "province": "県",
@@ -1031,7 +1034,7 @@
   "Search": {
     "title": "Search",
     "decs": "Find attractions, restaurants, events, and more across Thailand.",
-    "beta": "Beta",
+    "beta": "ベータ版",
     "require": "Search must be at least 2 characters long",
     "type": {
       "all": "All",

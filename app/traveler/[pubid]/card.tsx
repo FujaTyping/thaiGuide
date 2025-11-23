@@ -8,6 +8,7 @@ import Loader from '../../components/loader';
 import { useTranslations } from 'next-intl';
 import { motion } from "motion/react";
 import NF from "@/assets/media/card/icon/notfound.svg";
+import { Progress } from '@/components/ui/progress';
 
 function Card(user: any) {
     const t = useTranslations('Profile');
@@ -24,7 +25,7 @@ function Card(user: any) {
         <>
             <Atropos className='my-8'>
                 <div
-                    className='relative overflow-hidden rounded-4xl'
+                    className='relative overflow-hidden rounded-t-4xl'
                 >
                     <img src={user.user.bg} className='w-full h-[400px] object-cover' alt="Card Background" />
                     <div className='absolute top-0 right-0 p-4 text-white'>
@@ -41,6 +42,10 @@ function Card(user: any) {
                         </div>
                         <p className='text-sm font-semibold'>{t('jA')} : {new Date(user.user.joinAt.seconds * 1000).toLocaleDateString()}</p>
                     </div>
+                </div>
+                <div className='bg-muted w-full rounded-b-4xl relative'>
+                    <p className='absolute z-1 top-0 left-4 md:left-8 text-xs font-semibold translate-y-0.5'>{t('lvl')} {user.user.lv}</p>
+                    <Progress value={parseInt(user.user.exp)} max={parseInt(user.user.nextexp)} className='rounded-t-2xl h-6' />
                 </div>
             </Atropos>
             <div>

@@ -248,6 +248,7 @@
       "noneed": "There is no completed quiz",
       "comat": "Complete at"
     },
+    "lvl": "Level",
     "scan": {
       "title": "Scan to recive points",
       "decs": "Position the QR code within the frame to scan it and receive your points.",
@@ -664,6 +665,8 @@
       "hasticket": "Ticket Price",
       "weathersource": "Source : Thai Meteorological Department",
       "province": "Province",
+      "free": "Free",
+      "for": "For",
       "call": "Call",
       "point": "Point to recive",
       "infop": {
@@ -965,6 +968,7 @@
   "Dashboard": {
     "title": "Administrator Dashboard",
     "decs": "The Administrator Dashboard is a central hub for managing users, monitoring activities, and maintaining system performance. Easily review data, configure settings, and ensure a smooth experience for all platform users.",
+    "beta": "Beta",
     "grid": {
       "code": "Qr Code",
       "reward": "Reward",
