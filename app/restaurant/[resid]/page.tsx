@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/tooltip";
 import TGtitle from '@/app/components/tgtitle';
 import ContentNotfound from '@/app/components/contentNotfound';
+import Markdown from 'react-markdown';
 
 type Props = {
     params: Promise<{ resid: string }>
@@ -82,7 +83,7 @@ async function page({ params }: Props) {
                         <p>{data.province.charAt(0).toUpperCase() + data.province.slice(1)}</p>
                     </div>
                 </Link>
-                <p className='mt-4'>{data.decs}</p>
+                <p className='mt-4'><Markdown>{data.decs}</Markdown></p>
                 <div className='grid grid-cols-2 md:grid-cols-3 py-8 gap-8'>
                     <div className='flex flex-col gap-1 items-center justify-center'>
                         <Banknote className='text-primary size-14' />

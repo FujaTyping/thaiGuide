@@ -660,6 +660,8 @@
             "cost": "平均花费",
             "hasticket": "票价",
             "rate": "评分",
+            "free": "免费",
+            "for": "为",
             "visit": "最佳参观时间",
             "weathersource": "来源：泰国气象部门",
             "province": "省份",

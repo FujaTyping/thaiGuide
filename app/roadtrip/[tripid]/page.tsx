@@ -12,6 +12,7 @@ import Didyouknow from "@/app/components/didyouknow";
 import Sharebt from '@/app/components/sharebt';
 import TGtitle from '@/app/components/tgtitle';
 import ContentNotfound from '@/app/components/contentNotfound';
+import Markdown from 'react-markdown';
 
 type Props = {
     params: Promise<{ tripid: string }>
@@ -84,7 +85,7 @@ async function page({ params }: Props) {
                         <p>{data.province.charAt(0).toUpperCase() + data.province.slice(1)}</p>
                     </div>
                 </Link>
-                <p className='mt-2'>{data.decs}</p>
+                <p className='mt-2'><Markdown>{data.decs}</Markdown></p>
                 <div className='flex items-center gap-2 mt-2 mb-10'>
                     {
                         data.tags.map((tag: string, index: number) => (
@@ -99,7 +100,7 @@ async function page({ params }: Props) {
                 <iframe src={data.map} className='w-full h-[500px] rounded-2xl' loading="lazy"></iframe>
             </main>
             <Sharebt />
-            
+
         </>
     )
 }

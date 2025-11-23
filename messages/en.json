@@ -665,6 +665,8 @@
       "hasticket": "Ticket Price",
       "weathersource": "Source : Thai Meteorological Department",
       "province": "Province",
+      "free": "Free",
+      "for": "For",
       "call": "Call",
       "point": "Point to recive",
       "infop": {

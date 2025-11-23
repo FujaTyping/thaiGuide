@@ -660,6 +660,8 @@
             "notfound": "활동 데이터 없음",
             "cost": "평균 비용",
             "hasticket": "티켓 가격",
+            "free": "무료",
+            "for": "대상",
             "rate": "평점",
             "visit": "방문하기 가장 좋은 시기",
             "province": "주",
