@@ -16,6 +16,7 @@ import Sharebt from '@/app/components/sharebt';
 import TGtitle from '@/app/components/tgtitle';
 import ContentNotfound from '@/app/components/contentNotfound';
 import Markdown from 'react-markdown';
+import TSTV from './TSTV';
 
 type Props = {
     params: Promise<{ actid: string }>
@@ -64,7 +65,8 @@ async function page({ params }: Props) {
             <div
                 className='relative overflow-hidden rounded-b-4xl'
             >
-                <img src={data.thumnails} className='w-full h-[550px] md:h-[700px] object-cover' alt={data.title} />
+                {data.tstv && <TSTV image={data.thumnails} />}
+                <img src={data.thumnails} className={`${data.tstv && 'hidden sm:block'} w-full h-[550px] md:h-[700px] object-cover`} alt={data.title} />
                 <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-primary/70 to-transparent text-white rounded-b-4xl text-center'>
                     <h1 className='text-3xl md:text-4xl font-bold mb-2'>{data.ndtitle}</h1>
                 </div>

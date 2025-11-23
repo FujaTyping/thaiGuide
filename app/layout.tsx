@@ -19,6 +19,7 @@ import { Toaster } from "@/components/ui/sonner"
 import 'react-photo-view/dist/react-photo-view.css';
 import Alertbox from "./components/alertbox";
 import { keywords } from "./seo.json"
+import "@egjs/react-view360/css/view360.min.css";
 
 import Underdev from "./components/underdev";
 
