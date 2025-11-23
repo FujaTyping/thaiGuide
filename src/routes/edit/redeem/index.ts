@@ -1,7 +1,26 @@
 import { t } from "elysia";
 import type { ElysiaApp } from "../../../index";
 import db from "../../../lib/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+import client from "../../../lib/imagekit";
+
+const newSchema = {
+    body: t.Object({
+        by: t.String(),
+        decs: t.String(),
+        image: t.File({ type: 'image/*' }),
+        name: t.String(),
+        quantity: t.String(),
+        require: t.String()
+    })
+}
+
+const removeSchema = {
+    body: t.Object({
+        id: t.String(),
+        fid: t.String()
+    })
+}
 
 const getProduct = async ({ set }: { set: { status: number | string } }) => {
     try {
@@ -22,5 +41,64 @@ const getProduct = async ({ set }: { set: { status: number | string } }) => {
     }
 };
 
+interface Product {
+    by: string;
+    decs: string;
+    image: string | undefined;
+    name: string;
+    quantity: string;
+    require: string;
+}
+
+async function addNew({ body, set }: { body: typeof newSchema.body.static, set: { status: number } }) {
+    const { by, decs, image, name, quantity, require } = body;
+
+    let payload = {
+        by,
+        decs,
+        name,
+        require
+    } as Product
+
+    payload.quantity = parseInt(quantity) < 0 ? "Unlimited" : quantity;
+
+    try {
+        const response = await client.files.upload({
+            file: image,
+            fileName: `${name}.jpg`,
+            folder: 'thaiGuide/reward'
+        });
+        const uploadURL = response.url;
+        payload.image = uploadURL;
+
+        const docRef = await addDoc(collection(db, "redeem"), {
+            ...payload,
+            fileid: response.fileId
+        });
+
+        set.status = 200;
+        return docRef.id;
+    } catch {
+        set.status = 400;
+        return "Faild to add new reward";
+    }
+}
+
+async function removeItem({ body, set }: { body: typeof removeSchema.body.static, set: { status: number } }) {
+    const { id, fid } = body;
+
+    try {
+        await deleteDoc(doc(db, "redeem", id));
+        await client.files.delete(fid);
+        set.status = 200;
+        return "Done !";
+    } catch {
+        set.status = 400;
+        return "Faild to delete reward";
+    }
+}
+
 export default (app: ElysiaApp) => app
     .get("/getall", getProduct)
+    .post("/newitem", addNew, newSchema)
+    .delete("/delete", removeItem, removeSchema);
