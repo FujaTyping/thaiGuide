@@ -1,6 +1,6 @@
 import React from 'react'
 import Didyouknow from '../components/didyouknow'
-import { CircleStar, Megaphone, QrCode, ScanLine, TriangleAlert } from 'lucide-react'
+import { CircleStar, Megaphone, PartyPopper, QrCode, ScanLine, TriangleAlert } from 'lucide-react'
 import Link from 'next/link'
 import type { Metadata } from "next";
 import { useTranslations } from 'next-intl';
@@ -36,7 +36,13 @@ function Page() {
             icon: Megaphone,
             link: "/dashboard/update/alert",
             cat: t('update')
-        }
+        },
+        {
+            label: t('grid.reward'),
+            icon: PartyPopper,
+            link: "/dashboard/manage/reward",
+            cat: t('manage')
+        },
     ]
 
     return (
