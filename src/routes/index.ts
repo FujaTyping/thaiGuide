@@ -1,7 +1,7 @@
 import type { ElysiaApp } from "../index";
 
 function gett() {
-    return "Please visit /document for the api documentation"
+    return "Exploration, begins!"
 }
 
 export default (app: ElysiaApp) => app

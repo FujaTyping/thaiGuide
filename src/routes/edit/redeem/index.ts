@@ -1,7 +1,7 @@
 import { t } from "elysia";
 import type { ElysiaApp } from "../../../index";
 import db from "../../../lib/firebase";
-import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from "firebase/firestore";
 import client from "../../../lib/imagekit";
 
 const newSchema = {
@@ -11,7 +11,10 @@ const newSchema = {
         image: t.File({ type: 'image/*' }),
         name: t.String(),
         quantity: t.String(),
-        require: t.String()
+        require: t.String(),
+        attach: t.Optional(t.String()),
+        type: t.Optional(t.String()),
+        virtual: t.Optional(t.Boolean())
     })
 }
 
@@ -19,6 +22,13 @@ const removeSchema = {
     body: t.Object({
         id: t.String(),
         fid: t.String()
+    })
+}
+
+const updateQuanSchema = {
+    body: t.Object({
+        id: t.String(),
+        quantity: t.String()
     })
 }
 
@@ -48,10 +58,13 @@ interface Product {
     name: string;
     quantity: string;
     require: string;
+    attact?: string;
+    type?: string;
+    virtual?: boolean;
 }
 
 async function addNew({ body, set }: { body: typeof newSchema.body.static, set: { status: number } }) {
-    const { by, decs, image, name, quantity, require } = body;
+    const { by, decs, image, name, quantity, require, attach, type, virtual } = body;
 
     let payload = {
         by,
@@ -61,6 +74,12 @@ async function addNew({ body, set }: { body: typeof newSchema.body.static, set: 
     } as Product
 
     payload.quantity = parseInt(quantity) < 0 ? "Unlimited" : quantity;
+
+    if (virtual) {
+        payload.virtual = virtual;
+        payload.attact = attach;
+        payload.type = type;
+    }
 
     try {
         const response = await client.files.upload({
@@ -98,7 +117,25 @@ async function removeItem({ body, set }: { body: typeof removeSchema.body.static
     }
 }
 
+async function chagenQUAN({ body, set }: { body: typeof updateQuanSchema.body.static, set: { status: number } }) {
+    const { id, quantity } = body;
+
+    try {
+        const rwRef = doc(db, "redeem", id);
+        await updateDoc(rwRef, {
+            quantity
+        });
+
+        set.status = 200;
+        return "Done";
+    } catch {
+        set.status = 400;
+        return "Faild to update quantity";
+    }
+}
+
 export default (app: ElysiaApp) => app
     .get("/getall", getProduct)
     .post("/newitem", addNew, newSchema)
-    .delete("/delete", removeItem, removeSchema);
+    .delete("/delete", removeItem, removeSchema)
+    .patch("/quantityChange", chagenQUAN, updateQuanSchema);
