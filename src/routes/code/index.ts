@@ -88,6 +88,19 @@ const getInfoHandler = async ({ body, set, headers }: { headers: typeof GetByIdB
                             aetheruid: uid
                         }
                     })
+                    const addExp = (parseInt(SetPoint) / 1.25).toFixed(0)
+                    const expData = await axios.post(`http://${config.server}/exp/add`, {
+                        point: parseInt(addExp)
+                    }, {
+                        headers: {
+                            aetheruid: uid
+                        }
+                    })
+                    const exD = expData.data;
+                    data.lv = exD.lv;
+                    data.exp = exD.exp.toFixed(0);
+                    data.nextexp = exD.nextexp;
+                    data.expearn = addExp;
                     if (data.province) {
                         const badgeRef = doc(db, "badge", data.province);
                         const UsrbadgeRef = doc(db, "Users", uid, "badge", data.province);

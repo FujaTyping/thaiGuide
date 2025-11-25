@@ -89,7 +89,7 @@ const transferUserTransaction = async ({ body, set, headers }: { headers: typeof
 
         const userData = userSnapshot.data();
 
-        if (userData.point < parseInt(point.slice(1))) {
+        if (userData.point < parseInt(point.slice(1)) && point.split("")[0] == "-") {
             set.status = 400;
             return "NENP!"
         }
