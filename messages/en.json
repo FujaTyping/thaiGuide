@@ -1152,6 +1152,7 @@
         "newd": "Create and publish a new reward item",
         "del": "Delete this reward",
         "edit": "Edit reward quantity",
+        "by": "By",
         "editquan": {
           "title": "Edit item quantity",
           "inputno": "Any value below 0 is treated as unlimited availability",
@@ -1166,6 +1167,53 @@
           "canBTN": "Cancel",
           "done": "Reward deleted successfully",
           "err": "Something went wrong, Please try again later"
+        },
+        "form": {
+          "title": "Add New Reward",
+          "decs": "Enter the details for a new reward to make it available for users to redeem",
+          "validate": {
+            "file": "Please select an image",
+            "fileMax": "Max image size is 5MB",
+            "by": "Please enter at least 3 characters",
+            "decs": "Please enter at least 20 characters",
+            "name": "Please enter at least 5 characters",
+            "quantity": "Please enter at least 1 characters",
+            "require": "Please enter at least 1 characters",
+            "attach": "Please enter attachment id",
+            "type": "Please select reward type",
+            "captcha": "Please verify you are human to help us prevent spam"
+          },
+          "toast": {
+            "succ": "Reward Created",
+            "dsucc": "New reward has been added successfully",
+            "err": "Failed to Add new reward",
+            "derr": "Something went wrong. Please check your inputs and try again"
+          },
+          "field": {
+            "name": "Name",
+            "pname": "Name of reward",
+            "by": "By",
+            "pby": "Who provide this reward",
+            "decs": "Decs",
+            "pdecs": "Description of reward",
+            "image": "Image",
+            "dimage": "Recommend dimension 1024x1024 px",
+            "require": "Require",
+            "prequire": "Cost of reward",
+            "quantity": "Quantity",
+            "pquantity": "Quantity of reward",
+            "attach": "Attach",
+            "pattach": "Attachment id for virtual item",
+            "type": "Type",
+            "ptype": "Select type of item",
+            "captcha": "Captcha",
+            "dcaptcha": "Please verify you are human to help us prevent spam",
+            "submitBTN": "Submit",
+            "isVirtual": "Virtual Item",
+            "selectType": {
+              "background": "Background"
+            }
+          }
         }
       }
     }

@@ -79,7 +79,6 @@ function FForm() {
             turnstile.reset();
             setLoading(false);
         }
-        console.log(values)
     }
 
     return (

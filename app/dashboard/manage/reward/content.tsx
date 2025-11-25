@@ -27,6 +27,7 @@ interface itemType {
     quantity: string;
     image: string;
     fileid: string;
+    by: string;
 }
 
 interface deleteMD {
@@ -102,6 +103,7 @@ function Content() {
                         <div className='flex items-center justify-center flex-col'>
                             <h1 className='font-semibold text-xl'>{item.name}</h1>
                             <p className='mt-1'>{item.decs.substring(0, 85)}...</p>
+                            <p className='mt-1 font-semibold'>{t('by')} : {item.by}</p>
                             <div className='flex items-center gap-2 mt-3'>
                                 <Badge><Coins /> {item.require}</Badge>
                                 <Badge><ShoppingBasket /> {item.quantity}</Badge>
