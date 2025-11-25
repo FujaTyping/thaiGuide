@@ -14,7 +14,7 @@ const newSchema = {
         require: t.String(),
         attach: t.Optional(t.String()),
         type: t.Optional(t.String()),
-        virtual: t.Optional(t.Boolean())
+        virtual: t.Optional(t.String())
     })
 }
 
@@ -75,8 +75,8 @@ async function addNew({ body, set }: { body: typeof newSchema.body.static, set: 
 
     payload.quantity = parseInt(quantity) < 0 ? "Unlimited" : quantity;
 
-    if (virtual) {
-        payload.virtual = virtual;
+    if (virtual == "true") {
+        payload.virtual = true;
         payload.attact = attach;
         payload.type = type;
     }
