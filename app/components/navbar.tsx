@@ -106,7 +106,7 @@ function Navbar() {
     })
 
     onAuthStateChanged(auth, (user) => {
-        if (user) {
+        if (user && getCookie('traveler_session')) {
             setUser(user);
             setLoading(false);
             const userperms = getCookie('traveler_session')?.split('--')
@@ -160,7 +160,12 @@ function Navbar() {
             })
             setUser(result.user);
             setLoginM(false);
-            setCookie('traveler_session', `${btoa(result.user.uid)}`, {})
+            setCookie('traveler_session', `${btoa(result.user.uid)}`, {
+                secure: true,
+                sameSite: 'lax',
+                path: '/',
+                maxAge: 60 * 60 * 24 * 365
+            })
             router.push('/@me');
         } catch (error) {
             if (error instanceof FirebaseError) {
@@ -189,7 +194,12 @@ function Navbar() {
         signInWithEmailAndPassword(auth, values.email, values.password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                setCookie('traveler_session', `${btoa(user.uid)}--admin`, {});
+                setCookie('traveler_session', `${btoa(user.uid)}--admin`, {
+                    secure: true,
+                    sameSite: 'lax',
+                    path: '/',
+                    maxAge: 60 * 60 * 24 * 365
+                });
                 toast.success(`${t('login.done')} ${user.email}`, {
                     description: t('login.donedecs'),
                     action: {
