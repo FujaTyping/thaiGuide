@@ -1,7 +1,7 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Map, Overlay } from "pigeon-maps";
 import Loader from '@/app/components/loader';
 import { onAuthStateChanged, User } from 'firebase/auth';
@@ -42,7 +42,7 @@ function PMap() {
     const [zoom, setZoom] = useState(6);
     const [manLO, setManLo] = useState<MyLoca>();
     const [data, setData] = useState<any>();
-    const [lockMap, setLockMap] = useState<boolean>(false);
+    const [lockMap, setLockMap] = useState(false);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -88,7 +88,7 @@ function PMap() {
             intervalId = setInterval(() => getLocation(), 2500);
         }
         return () => clearInterval(intervalId);
-    }, []);
+    }, [lockMap]);
 
     if (!user || !data) {
         return (
