@@ -1,7 +1,7 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 "use client";
 
-import { Coins, Info, LoaderCircle, MapPin, ScanLine } from 'lucide-react';
+import { Coins, Info, LoaderCircle, MapPin, ScanLine, Sparkles } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import {
     Dialog,
@@ -30,6 +30,7 @@ import STK from "@/assets/media/icon/fire.gif";
 import { Button } from '@/components/ui/button';
 import BadgeRev from "@/assets/media/icon/REV.svg";
 import LMT from "@/assets/media/icon/Limit.svg";
+import CountUp from '@/components/bits/CountUp.tsx/CountUp';
 
 function Qr() {
     const t = useTranslations('Profile');
@@ -291,13 +292,48 @@ function Qr() {
                                                                                                     {
                                                                                                         succState == 1 && <>
                                                                                                             <SplitText
-                                                                                                                text={`${sameSpot ? `${t('scan.state1.1')}` : `${t('scan.state1.2')}`} ${codeData.name} ${t('scan.state1.3')} ${codeData.points} ${t('scan.state1.4')}** ${sameSpot ? t('scan.state1.5') : ''}`}
+                                                                                                                text={`${sameSpot ? `${t('scan.state1.1')}` : `${t('scan.state1.2')}`} ${codeData.name}, ${t('scan.state1.3')}...** ${sameSpot ? t('scan.state1.5') : ''}`}
                                                                                                                 splitType="words"
                                                                                                                 from={{ opacity: 0, y: 40 }}
                                                                                                                 to={{ opacity: 1, y: 0 }}
                                                                                                                 threshold={0.1}
                                                                                                                 textAlign="left"
                                                                                                             />
+                                                                                                            <motion.div
+                                                                                                                initial={{ opacity: 0, y: -20 }}
+                                                                                                                animate={{ opacity: 1, y: 0 }}
+                                                                                                                transition={{ delay: 1.25 }}
+                                                                                                            >
+                                                                                                                <div className="flex items-center gap-4 md:gap-6 mb-2">
+                                                                                                                    <div className='flex items-center gap-2 text-primary font-semibold'>
+                                                                                                                        <Coins size={24} />
+                                                                                                                        <p>+
+                                                                                                                            <CountUp
+                                                                                                                                from={0}
+                                                                                                                                to={codeData.points}
+                                                                                                                                separator=","
+                                                                                                                                direction="up"
+                                                                                                                                duration={1}
+                                                                                                                                delay={1.5}
+                                                                                                                                className="count-up-text"
+                                                                                                                            /> {t('scan.point')}</p>
+                                                                                                                    </div>
+                                                                                                                    <div className='w-0.5 h-5 bg-primary'></div>
+                                                                                                                    <div className='flex items-center gap-2 text-primary font-semibold'>
+                                                                                                                        <Sparkles size={24} />
+                                                                                                                        <p>+
+                                                                                                                            <CountUp
+                                                                                                                                from={0}
+                                                                                                                                to={codeData.expearn}
+                                                                                                                                separator=","
+                                                                                                                                direction="up"
+                                                                                                                                duration={1}
+                                                                                                                                delay={1.5}
+                                                                                                                                className="count-up-text"
+                                                                                                                            /> {t('scan.xp')}</p>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </motion.div>
                                                                                                         </>
                                                                                                     }
                                                                                                     {
