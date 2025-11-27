@@ -119,7 +119,15 @@ function Navbar() {
         }
     });
 
+    async function registerServiceWorker() {
+        await navigator.serviceWorker.register('/sw.js', {
+            scope: '/',
+            updateViaCache: 'none',
+        })
+    }
+
     useEffect(() => {
+        registerServiceWorker();
         analyticsPromise.then((analytics) => {
             if (analytics) {
                 logEvent(analytics, "page_view");
