@@ -16,5 +16,29 @@ export default function manifest(): MetadataRoute.Manifest {
                 type: 'image/png',
             }
         ],
+        shortcuts: [
+            {
+                name: "Help Needed!",
+                url: "/sos",
+                icons: [
+                    {
+                        src: '/media/action/sos.png',
+                        sizes: '192x192',
+                        type: 'image/png',
+                    }
+                ]
+            },
+            {
+                name: "Should I Travel?",
+                url: "/weather",
+                icons: [
+                    {
+                        src: '/media/action/weather.png',
+                        sizes: '192x192',
+                        type: 'image/png',
+                    }
+                ]
+            }
+        ]
     }
 }
