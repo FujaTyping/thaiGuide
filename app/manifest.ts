@@ -9,6 +9,9 @@ export default function manifest(): MetadataRoute.Manifest {
         display: 'standalone',
         background_color: '#ffffff',
         theme_color: '#f7740a',
+        orientation: "portrait",
+        categories: ["travel", "navigation"],
+        dir: "ltr",
         icons: [
             {
                 src: '/icon-512x512.png',
@@ -18,7 +21,7 @@ export default function manifest(): MetadataRoute.Manifest {
         ],
         shortcuts: [
             {
-                name: "Help Needed!",
+                name: "SOS",
                 url: "/sos",
                 icons: [
                     {
@@ -29,7 +32,7 @@ export default function manifest(): MetadataRoute.Manifest {
                 ]
             },
             {
-                name: "Should I Travel?",
+                name: "Weather",
                 url: "/weather",
                 icons: [
                     {
@@ -38,6 +41,39 @@ export default function manifest(): MetadataRoute.Manifest {
                         type: 'image/png',
                     }
                 ]
+            },
+            {
+                name: "Trip planner",
+                url: "/planner",
+                icons: [
+                    {
+                        src: '/media/action/planner.png',
+                        sizes: '192x192',
+                        type: 'image/png',
+                    }
+                ]
+            }
+        ],
+        screenshots: [
+            {
+                src: "/media/screenshot/Main.png",
+                sizes: "360x730",
+                type: "image/png",
+            },
+            {
+                src: "/media/screenshot/Profile.png",
+                sizes: "360x730",
+                type: "image/png",
+            },
+            {
+                src: "/media/screenshot/Leaderboard.png",
+                sizes: "360x730",
+                type: "image/png",
+            },
+            {
+                src: "/media/screenshot/Planner.png",
+                sizes: "360x730",
+                type: "image/png",
             }
         ]
     }

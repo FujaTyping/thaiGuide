@@ -307,7 +307,7 @@ function Navbar() {
                         </div>
                         <div className='hidden md:flex items-center gap-6 border-1 border-primary p-2 px-2 rounded-full text-primary font-bold hover:bg-primary transition-all duration-300 hover:text-white cursor-pointer'>
                             <DropdownMenu>
-                                <DropdownMenuTrigger>
+                                <DropdownMenuTrigger title='Change Languages'>
                                     <Languages className='cursor-pointer' />
                                 </DropdownMenuTrigger>
                                 <ChangeCookie isAdmin={isAd} />
