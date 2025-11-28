@@ -28,6 +28,11 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  compiler: {
+    removeConsole: {
+      exclude: ['error'],
+    },
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();

@@ -18,11 +18,12 @@ function Footer() {
             <h2 className="font-semibold text-lg">{t("alli")}</h2>
             <div className="flex gap-3 items-center justify-center w-full">
               <Tooltip>
-                <TooltipTrigger>
+                <TooltipTrigger asChild>
                   <Link href={"https://www.tat.or.th/"}>
                     <img
                       src={ICONTAT.src}
                       alt="Logo"
+                      loading="lazy"
                       className="w-14 h-14 object-cover"
                     />
                   </Link>
