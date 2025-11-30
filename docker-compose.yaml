@@ -6,4 +6,5 @@ services:
     ports:
       - "3033:3033"
     env_file:
-      - .env
+      -path: .env
+      required: false
