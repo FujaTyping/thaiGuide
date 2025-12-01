@@ -4,6 +4,7 @@ import { swagger } from '@elysiajs/swagger';
 import { cors } from '@elysiajs/cors';
 import { rateLimit } from 'elysia-rate-limit';
 import { cacheControl } from "elysiajs-cdn-cache";
+import { bearer } from '@elysiajs/bearer';
 
 const app = new Elysia()
   .use(cors({
@@ -14,6 +15,7 @@ const app = new Elysia()
     max: 10,
     duration: 2000
   }))
+  .use(bearer())
   .use(swagger({
     path: "/document"
   }))
