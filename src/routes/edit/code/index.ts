@@ -2,6 +2,7 @@ import { t } from "elysia";
 import type { ElysiaApp } from "../../../index";
 import db from "../../../lib/firebase";
 import { addDoc, collection, deleteDoc, doc, GeoPoint, getDocs } from "firebase/firestore";
+import validateAdmin from "../../../lifecycle/admin";
 
 const newBodySchema = t.Object({
     name: t.String(),
@@ -73,9 +74,23 @@ const deleteCode = async ({ body, set }: { body: typeof deleteBodySchema.static,
 
 export default (app: ElysiaApp) => app
     .post("/new", newCode, {
-        body: newBodySchema
+        body: newBodySchema,
+        async beforeHandle({ bearer, set }) {
+            const validate = await validateAdmin({ token: bearer });
+            if (!validate) {
+                set.status = 401;
+                return 'Unauthorized';
+            }
+        }
     })
     .get("/getall", getCode)
     .delete("/remove", deleteCode, {
-        body: deleteBodySchema
+        body: deleteBodySchema,
+        async beforeHandle({ bearer, set }) {
+            const validate = await validateAdmin({ token: bearer });
+            if (!validate) {
+                set.status = 401;
+                return 'Unauthorized';
+            }
+        }
     });

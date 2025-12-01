@@ -2,6 +2,7 @@ import { t } from "elysia";
 import type { ElysiaApp } from "../../../index";
 import db from "../../../lib/firebase";
 import { doc, setDoc } from "firebase/firestore";
+import validateAdmin from "../../../lifecycle/admin";
 
 const newSchema = {
     body: t.Object({
@@ -28,4 +29,13 @@ async function updateAL({ body, set }: { body: typeof newSchema.body.static, set
 }
 
 export default (app: ElysiaApp) => app
-    .patch("/update", updateAL, newSchema);
+    .patch("/update", updateAL, {
+        ...newSchema,
+        async beforeHandle({ bearer, set }) {
+            const validate = await validateAdmin({ token: bearer });
+            if (!validate) {
+                set.status = 401;
+                return 'Unauthorized';
+            }
+        }
+    });

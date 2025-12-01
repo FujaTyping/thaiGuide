@@ -9,11 +9,10 @@ interface decodeObject {
     uid: string
 }
 
-function validateAdmin({ token }: { token: string }) {
-    jwt.verify(token, RAND, async (err, decode: decodeObject) => {
-        if (err) {
-            return false;
-        }
+async function validateAdmin({ token }: { token: string }): Promise<boolean> {
+    try {
+        const decode = jwt.verify(token, RAND) as decodeObject;
+
         const docRef = doc(db, "Users", decode.uid);
         const docSnap = await getDoc(docRef);
 
@@ -21,7 +20,9 @@ function validateAdmin({ token }: { token: string }) {
             return true;
         }
         return false;
-    });
+    } catch {
+        return false;
+    }
 }
 
 export default validateAdmin;

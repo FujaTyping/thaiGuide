@@ -4,6 +4,7 @@ import db from "../../lib/firebase";
 import { t } from "elysia";
 import axios from "axios";
 import config from "../../config.json";
+import validateAdmin from "../../lifecycle/admin";
 
 const GetByIdBodySchema = {
     body: t.Object({
@@ -145,6 +146,13 @@ export default (app: ElysiaApp) => app
     .get("/", getInfoHandler)
     .put("/getbyid", getIdInfoHandler, GetByIdBodySchema)
     .post("/redeem", redeemIdInfoHandler, {
-        body: RedeemByIdBodySchema
+        body: RedeemByIdBodySchema,
+        async beforeHandle({ bearer, set }) {
+            const validate = await validateAdmin({ token: bearer });
+            if (!validate) {
+                set.status = 401;
+                return 'Unauthorized';
+            }
+        }
     })
     .post("/getmine", userRedeem, userRSchema);

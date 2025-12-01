@@ -4,6 +4,7 @@ import db from "../../../lib/firebase";
 import { collection, deleteDoc, doc, getDocs, setDoc } from "firebase/firestore";
 import client from "../../../lib/imagekit";
 import 'dotenv/config';
+import validateAdmin from "../../../lifecycle/admin";
 
 // Content type : multipart/form-data
 const newSchema = {
@@ -82,5 +83,23 @@ async function deleteData({ body, set }: { body: typeof deleteSchema.body.static
 
 export default (app: ElysiaApp) => app
     .get("/getall", getCode)
-    .post("/new", addNew, newSchema)
-    .delete('/delete', deleteData, deleteSchema);
+    .post("/new", addNew, {
+        ...newSchema,
+        async beforeHandle({ bearer, set }) {
+            const validate = await validateAdmin({ token: bearer });
+            if (!validate) {
+                set.status = 401;
+                return 'Unauthorized';
+            }
+        }
+    })
+    .delete('/delete', deleteData, {
+        ...deleteSchema,
+        async beforeHandle({ bearer, set }) {
+            const validate = await validateAdmin({ token: bearer });
+            if (!validate) {
+                set.status = 401;
+                return 'Unauthorized';
+            }
+        }
+    });

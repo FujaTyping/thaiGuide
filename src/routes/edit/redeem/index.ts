@@ -3,6 +3,7 @@ import type { ElysiaApp } from "../../../index";
 import db from "../../../lib/firebase";
 import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from "firebase/firestore";
 import client from "../../../lib/imagekit";
+import validateAdmin from "../../../lifecycle/admin";
 
 const newSchema = {
     body: t.Object({
@@ -136,6 +137,33 @@ async function chagenQUAN({ body, set }: { body: typeof updateQuanSchema.body.st
 
 export default (app: ElysiaApp) => app
     .get("/getall", getProduct)
-    .post("/newitem", addNew, newSchema)
-    .delete("/delete", removeItem, removeSchema)
-    .patch("/quantityChange", chagenQUAN, updateQuanSchema);
+    .post("/newitem", addNew, {
+        ...newSchema,
+        async beforeHandle({ bearer, set }) {
+            const validate = await validateAdmin({ token: bearer });
+            if (!validate) {
+                set.status = 401;
+                return 'Unauthorized';
+            }
+        }
+    })
+    .delete("/delete", removeItem, {
+        ...removeSchema,
+        async beforeHandle({ bearer, set }) {
+            const validate = await validateAdmin({ token: bearer });
+            if (!validate) {
+                set.status = 401;
+                return 'Unauthorized';
+            }
+        }
+    })
+    .patch("/quantityChange", chagenQUAN, {
+        ...updateQuanSchema,
+        async beforeHandle({ bearer, set }) {
+            const validate = await validateAdmin({ token: bearer });
+            if (!validate) {
+                set.status = 401;
+                return 'Unauthorized';
+            }
+        }
+    });
