@@ -174,6 +174,19 @@ function Navbar() {
                 path: '/',
                 maxAge: 60 * 60 * 24 * 365
             })
+            const token = await axios.put(`${server}/check/perms`, {
+                email: result.user.email
+            }, {
+                headers: {
+                    aetheruid: result.user.uid
+                }
+            })
+            setCookie('guide_key', token.data.token, {
+                secure: true,
+                sameSite: 'lax',
+                path: '/',
+                maxAge: 60 * 60 * 24 * 365
+            });
             router.push('/@me');
         } catch (error) {
             if (error instanceof FirebaseError) {
@@ -188,6 +201,7 @@ function Navbar() {
             await signOut(auth);
             setUser(null);
             deleteCookie('traveler_session');
+            deleteCookie('guide_key');
             toast.success(t('login.out'));
             router.push('/');
         } catch (error) {
@@ -200,9 +214,22 @@ function Navbar() {
             icon: <LoaderCircle size={18} className='animate-spin' />
         });
         signInWithEmailAndPassword(auth, values.email, values.password)
-            .then((userCredential) => {
+            .then(async (userCredential) => {
                 const user = userCredential.user;
                 setCookie('traveler_session', `${btoa(user.uid)}--admin`, {
+                    secure: true,
+                    sameSite: 'lax',
+                    path: '/',
+                    maxAge: 60 * 60 * 24 * 365
+                });
+                const token = await axios.put(`${server}/check/perms`, {
+                    email: user.email
+                }, {
+                    headers: {
+                        aetheruid: user.uid
+                    }
+                })
+                setCookie('guide_key', token.data.token, {
                     secure: true,
                     sameSite: 'lax',
                     path: '/',

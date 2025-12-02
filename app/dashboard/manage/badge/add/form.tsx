@@ -26,6 +26,7 @@ import Turnstile, { useTurnstile } from 'react-turnstile';
 import axios from 'axios';
 import { server } from "@/app/config.json";
 import { toast } from 'sonner';
+import { getCookie } from 'cookies-next/client';
 
 function FForm() {
     const t = useTranslations('Dashboard.item.badge.form');
@@ -64,7 +65,8 @@ function FForm() {
         try {
             await axios.post(`${server}/edit/badge/new`, values, {
                 headers: {
-                    'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'multipart/form-data',
+                    Authorization: `Bearer ${getCookie('guide_key')}`
                 }
             });
             toast.success(t('toast.succ'), {

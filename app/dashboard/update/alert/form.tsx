@@ -30,6 +30,7 @@ import { Eraser, LoaderCircleIcon, Send } from "lucide-react";
 import Loader from "@/app/components/loader";
 import { toast } from "sonner";
 import { useTranslations } from "next-intl";
+import { getCookie } from "cookies-next/client";
 
 function FFORM() {
     const t = useTranslations('Dashboard.item.alert')
@@ -79,6 +80,10 @@ function FFORM() {
         try {
             await axios.patch(`${server}/edit/alert/update`, {
                 ...values
+            }, {
+                headers: {
+                    Authorization: `Bearer ${getCookie('guide_key')}`
+                }
             })
             toast.success(t('form.toast.succ'), {
                 description: t('form.toast.succdecs')

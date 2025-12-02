@@ -11,6 +11,7 @@ import { server } from "@/app/config.json";
 import CHK from "@/assets/media/icon/dashcheck.svg";
 import { Button } from '@/components/ui/button';
 import { useTranslations } from 'next-intl';
+import { getCookie } from 'cookies-next/client';
 
 function Scanner() {
     const t = useTranslations('Dashboard.item.redeem');
@@ -34,7 +35,11 @@ function Scanner() {
     async function checkCode(raw: string) {
         setLoading(true);
         try {
-            await axios.post(`${server}/reward/redeem`, { raw })
+            await axios.post(`${server}/reward/redeem`, { raw }, {
+                headers: {
+                    Authorization: `Bearer ${getCookie('guide_key')}`
+                }
+            })
             setData('SUCC');
             setLoading(false);
         } catch {

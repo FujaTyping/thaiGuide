@@ -10,6 +10,7 @@ import Loader from '@/app/components/loader';
 import { motion } from 'motion/react';
 import NF from "@/assets/media/card/icon/notfound.svg";
 import { useTranslations } from 'next-intl';
+import { getCookie } from 'cookies-next/client';
 
 interface deleteMD {
     id: string
@@ -28,6 +29,9 @@ function DeleteModal({ open, setOpen, payload, MCC, setMCC }: { open: boolean, s
                 data: {
                     id: payload.id,
                     fid: payload.fileid
+                },
+                headers: {
+                    Authorization: `Bearer ${getCookie('guide_key')}`
                 }
             })
             setMCC('SUCC');

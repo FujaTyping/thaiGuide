@@ -964,6 +964,9 @@
         "dereqsame": "Please enter a different name to make the change effective",
         "dereqshort": "Make sure your new name has 4 or more characters for better readability",
         "dereqipp": "Please remove any offensive or restricted words before saving your new name"
+      },
+      "perms": {
+        "notg": "Grant permission"
       }
     }
   },

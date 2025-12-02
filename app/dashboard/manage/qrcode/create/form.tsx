@@ -39,6 +39,7 @@ import {
 import { cn } from "@/lib/utils";
 import { useTranslations } from 'next-intl';
 import { toast } from 'sonner';
+import { getCookie } from 'cookies-next/client';
 
 function NewForm() {
     const t = useTranslations('Dashboard.item.qrcode.create');
@@ -83,7 +84,11 @@ function NewForm() {
                 province: values.province,
             } as any
             if (values.onetime) payload.onetime = values.onetime
-            const res: { data: { id: string } } = await axios.post(`${server}/edit/code/new`, payload)
+            const res: { data: { id: string } } = await axios.post(`${server}/edit/code/new`, payload, {
+                headers: {
+                    Authorization: `Bearer ${getCookie('guide_key')}`
+                }
+            })
             toast.success(t('toast.succ'), {
                 description: `${t('toast.decss')} ${res.data.id}`
             });
