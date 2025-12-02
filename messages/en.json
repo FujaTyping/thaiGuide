@@ -678,7 +678,11 @@
       "web": "Website",
       "click": "Click to open",
       "forecast": "Local Weather Forecast",
-      "map": "Map Location"
+      "map": "Map Location",
+      "osm": {
+        "direction": "Directions",
+        "directip": "Get direction in Google Maps"
+      }
     }
   },
   "SDG": {
@@ -966,6 +970,7 @@
         "dereqipp": "Please remove any offensive or restricted words before saving your new name"
       },
       "perms": {
+        "location": "Location access",
         "notg": "Grant permission"
       }
     }

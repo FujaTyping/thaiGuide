@@ -677,7 +677,11 @@
       "web": "ウェブサイト",
       "click": "クリックして開く",
       "forecast": "地域の天気予報",
-      "map": "地図の場所"
+      "map": "地図の場所",
+      "osm": {
+        "direction": "道順",
+        "directip": "Googleマップで道順を取得"
+      }
     }
   },
   "SDG": {

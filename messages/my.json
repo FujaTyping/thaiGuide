@@ -676,7 +676,11 @@
             "web": "Laman Web",
             "click": "Klik untuk membuka",
             "forecast": "Ramalan Cuaca Tempatan",
-            "map": "Lokasi Peta"
+            "map": "Lokasi Peta",
+            "osm": {
+                "direction": "Arah",
+                "directip": "Dapatkan arah dalam Peta Google"
+            }
         }
     },
     "SDG": {
