@@ -17,6 +17,7 @@ import { motion } from 'motion/react';
 import NF from "@/assets/media/card/icon/notfound.svg";
 import CHK from "@/assets/media/icon/dashcheck.svg";
 import { useTranslations } from 'next-intl';
+import { getCookie } from 'cookies-next/client';
 
 function DeleteModal({ open, setOpen, id }: { open: boolean, setOpen: React.Dispatch<React.SetStateAction<boolean>>, id: string }) {
     const t = useTranslations('Dashboard.item.qrcode');
@@ -34,6 +35,9 @@ function DeleteModal({ open, setOpen, id }: { open: boolean, setOpen: React.Disp
             await axios.delete(`${server}/edit/code/remove`, {
                 data: {
                     id: id
+                },
+                headers: {
+                    Authorization: `Bearer ${getCookie('guide_key')}`
                 }
             })
             setDelStatus('done');

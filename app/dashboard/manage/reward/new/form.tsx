@@ -24,6 +24,7 @@ import { server } from "@/app/config.json";
 import { toast } from 'sonner';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { getCookie } from 'cookies-next/client';
 
 function FForm() {
     const [loading, setLoading] = useState(false);
@@ -75,7 +76,8 @@ function FForm() {
         try {
             await axios.post(`${server}/edit/redeem/newitem`, values, {
                 headers: {
-                    'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'multipart/form-data',
+                    Authorization: `Bearer ${getCookie('guide_key')}`
                 }
             });
             toast.success(t('toast.succ'), {

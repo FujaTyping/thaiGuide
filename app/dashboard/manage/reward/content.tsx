@@ -18,6 +18,7 @@ import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import { getCookie } from 'cookies-next/client';
 
 interface itemType {
     id: string;
@@ -65,6 +66,10 @@ function Content() {
             await axios.patch(`${server}/edit/redeem/quantityChange`, {
                 id: idQuan,
                 quantity: realQuan
+            }, {
+                headers: {
+                    Authorization: `Bearer ${getCookie('guide_key')}`
+                }
             })
             setQuanLoading(false);
             toast.success(t('toast.succ'), {

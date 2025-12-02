@@ -962,6 +962,10 @@
                 "dereqsame": "Sila masukkan nama yang berbeza untuk perubahan berkuat kuasa",
                 "dereqshort": "Pastikan nama baru anda mempunyai 4 atau lebih aksara untuk kebolehbacaan yang lebih baik",
                 "dereqipp": "Sila alih keluar sebarang perkataan yang menyinggung atau terhad sebelum menyimpan nama baru anda"
+            },
+            "perms": {
+                "location": "Akses lokasi",
+                "notg": "Berikan kebenaran"
             }
         }
     },
