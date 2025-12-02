@@ -2,7 +2,7 @@ import React from 'react';
 import fetchData from './fetch';
 import NF from "@/assets/media/card/icon/notfound.svg";
 import Loader from '@/app/components/loader';
-import { Banknote, Coins, MapPinned, Phone, Star, Map, CircleHelp, MapPin, Ticket } from 'lucide-react';
+import { Banknote, Coins, MapPinned, Phone, Star, Map, CircleHelp, MapPin, Ticket, Smile } from 'lucide-react';
 import Link from 'next/link';
 import type { Metadata } from "next";
 import {
@@ -11,12 +11,12 @@ import {
     TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { getTranslations } from 'next-intl/server';
-import Didyouknow from "@/app/components/didyouknow";
 import Sharebt from '@/app/components/sharebt';
 import TGtitle from '@/app/components/tgtitle';
 import ContentNotfound from '@/app/components/contentNotfound';
 import Markdown from 'react-markdown';
 import TSTV from './TSTV';
+import OSM from './OSM';
 
 type Props = {
     params: Promise<{ actid: string }>
@@ -82,7 +82,7 @@ async function page({ params }: Props) {
                         <p>{data.province.charAt(0).toUpperCase() + data.province.slice(1)}</p>
                     </div>
                 </Link>
-                <p className='mt-2'><Markdown>{data.decs}</Markdown></p>
+                <div className='mt-2'><Markdown>{data.decs}</Markdown></div>
                 <div className='grid grid-cols-2 md:grid-cols-3 py-8 gap-8'>
                     {
                         data.pricing && <div className='flex flex-col gap-1 items-center justify-center'>
@@ -98,7 +98,7 @@ async function page({ params }: Props) {
                     </div>
                     {
                         data.popular && <div className='flex flex-col gap-1 items-center justify-center'>
-                            <MapPinned className='text-primary size-12' />
+                            <Smile className='text-primary size-12' />
                             <p className='font-semibold text-xl'>{data.popular}</p>
                             <p>{t('item.visit')}</p>
                         </div>
@@ -169,7 +169,12 @@ async function page({ params }: Props) {
             </main>
             <main className='max-w-7xl mx-auto px-4 pb-6'>
                 <TGtitle second={true} title={t('item.map')} />
-                <iframe src={data.mapembed} className='w-full h-[500px] rounded-2xl' loading="lazy"></iframe>
+                {
+                    data.mapembed ? <iframe src={data.mapembed} className='w-full h-[500px] rounded-2xl' loading="lazy"></iframe> :
+                        <>
+                            <OSM location={data.maplocation} link={data.direction} address={data.location} name={data.title} />
+                        </>
+                }
             </main>
             <Sharebt />
 

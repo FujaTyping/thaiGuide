@@ -676,7 +676,11 @@
             "web": "웹사이트",
             "click": "클릭하여 열기",
             "forecast": "현지 날씨 예보",
-            "map": "지도 위치"
+            "map": "지도 위치",
+            "osm": {
+                "direction": "길찾기",
+                "directip": "Google 지도에서 길찾기"
+            }
         }
     },
     "SDG": {
