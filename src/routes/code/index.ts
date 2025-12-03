@@ -1,6 +1,6 @@
 import type { ElysiaApp } from "../../index";
 import db from "../../lib/firebase";
-import { collection, doc, GeoPoint, getDoc, getDocs, query, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
+import { addDoc, collection, doc, GeoPoint, getDoc, getDocs, orderBy, query, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
 import { t } from "elysia";
 import { getDistance } from 'geolib';
 import axios from "axios";
@@ -21,6 +21,22 @@ const GetByIdBodySchema = {
 };
 
 const GetMyMaps = {
+    headers: t.Object({
+        aetheruid: t.String()
+    })
+}
+
+const MapLogsSchema = {
+    body: t.Object({
+        name: t.String(),
+        province: t.String()
+    }),
+    headers: t.Object({
+        aetheruid: t.String()
+    })
+}
+
+const getLogsSchema = {
     headers: t.Object({
         aetheruid: t.String()
     })
@@ -144,6 +160,16 @@ const getInfoHandler = async ({ body, set, headers }: { headers: typeof GetByIdB
                 data.streakYRS = year
                 data.streak = STEAK;
                 data.otpp = false;
+                if (!data.samespot) {
+                    await axios.post(`http://${config.server}/code/map/logs`, {
+                        name: data.name,
+                        province: data.province
+                    }, {
+                        headers: {
+                            aetheruid: uid
+                        }
+                    })
+                }
                 set.status = 200;
                 return data;
             } else {
@@ -203,6 +229,47 @@ const getMapInfoHandler = async ({ headers, set }: { headers: typeof GetMyMaps.h
     return Data;
 };
 
+async function postMapLogs({ body, headers, set }: { body: typeof MapLogsSchema.body.static, headers: typeof MapLogsSchema.headers.static, set: { status: number } }) {
+    const { name, province } = body;
+    const uid = headers.aetheruid;
+
+    try {
+        await addDoc(collection(db, "Users", uid, "travelLogs"), {
+            name,
+            province,
+            timestamp: serverTimestamp()
+        });
+
+        set.status = 200;
+        return "Done";
+    } catch {
+        set.status = 400;
+        return "Can't add new travel logs";
+    }
+}
+
+async function getMyLogs({ headers, set }: { headers: typeof getLogsSchema.headers.static, set: { status: number } }) {
+    const uid = headers.aetheruid;
+
+    const logsCollectionRef = query(collection(db, "Users", uid, "travelLogs"), orderBy("timestamp", "desc"))
+    const logsSnapshot = await getDocs(logsCollectionRef);
+
+    if (!logsSnapshot.empty) {
+        const logs = logsSnapshot.docs.map(doc => ({
+            ...doc.data()
+        }));
+        set.status = 200;
+        return { logs };
+    } else {
+        set.status = 200;
+        return {
+            logs: []
+        }
+    }
+}
+
 export default (app: ElysiaApp) => app
     .put("/getbyid", getInfoHandler, GetByIdBodySchema)
-    .put("/mapbyid", getMapInfoHandler, GetMyMaps);
+    .put("/mapbyid", getMapInfoHandler, GetMyMaps)
+    .put("/logsbyid", getMyLogs, getLogsSchema)
+    .post("/map/logs", postMapLogs, MapLogsSchema)
