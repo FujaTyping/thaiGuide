@@ -91,7 +91,7 @@ const TripStopsSwiper: React.FC<TripStopsSwiperProps> = ({ stops, overViewLink }
                             <Tooltip>
                                 <TooltipTrigger asChild>
                                     <Link href={stopLink[activeIndex]}>
-                                        <div className='light:text-primary flex flex-col items-center'>
+                                        <div className='text-primary dark:text-white flex flex-col items-center'>
                                             <Split className='w-8 h-8' />
                                             <h2 className='font-semibold text-sm'>{t('direction')}</h2>
                                         </div>
@@ -164,7 +164,7 @@ const TripStopsSwiper: React.FC<TripStopsSwiperProps> = ({ stops, overViewLink }
                     <Tooltip>
                         <TooltipTrigger asChild>
                             <Link href={overViewLink}>
-                                <div className='light:text-primary flex flex-col items-center'>
+                                <div className='text-primary dark:text-white flex flex-col items-center'>
                                     <MMAP className='w-8 h-8' />
                                     <h2 className='font-semibold text-sm'>{t('mapoverview')}</h2>
                                 </div>

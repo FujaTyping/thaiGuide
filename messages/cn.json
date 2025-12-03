@@ -977,6 +977,11 @@
             "perms": {
                 "location": "位置访问",
                 "notg": "授予权限"
+            },
+            "theme": {
+                "title": "主题",
+                "dark": "黑暗",
+                "light": "明亮"
             }
         }
     },

@@ -288,8 +288,8 @@ function Navbar() {
                                 <SheetTrigger><p className='flex items-center gap-2'><Menu /> {t('menu')}</p></SheetTrigger>
                                 <SheetContent>
                                     <SheetHeader>
-                                        <SheetTitle className='text-2xl font-bold light:text-primary'>{t('menu')}</SheetTitle>
-                                        <div className='flex flex-col gap-2 mt-3 text-lg light:text-primary font-semibold'>
+                                        <SheetTitle className='text-2xl font-bold text-primary dark:text-white'>{t('menu')}</SheetTitle>
+                                        <div className='flex flex-col gap-2 mt-3 text-lg text-primary text-primary dark:text-white font-semibold'>
                                             <p className='cursor-pointer' onClick={() => { setToggleNavbar(false); setSearchToogle(true) }}>{t('list.search')}</p>
                                             <Link onClick={() => setToggleNavbar(false)} href={"/activity"}>{tb(`item.activity`)}</Link>
                                             <Link onClick={() => setToggleNavbar(false)} href={"/restaurant"}>{tb(`item.restaurant`)}</Link>
@@ -298,7 +298,7 @@ function Navbar() {
                                             ))}
                                             <DropdownMenu>
                                                 <DropdownMenuTrigger>
-                                                    <div className='group-hover:text-white dark:text-white cursor-pointer flex items-center gap-3 text-left mt-8'>
+                                                    <div className='group-hover:text-white text-primary dark:text-white cursor-pointer flex items-center gap-3 text-left mt-8'>
                                                         <Languages /> {t(`list.switcher`)}
                                                     </div>
                                                 </DropdownMenuTrigger>

@@ -977,6 +977,11 @@
             "perms": {
                 "location": "Akses lokasi",
                 "notg": "Berikan kebenaran"
+            },
+            "theme": {
+                "title": "Tema",
+                "dark": "Gelap",
+                "light": "Cerah"
             }
         }
     },
