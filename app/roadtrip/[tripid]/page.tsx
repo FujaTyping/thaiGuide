@@ -93,14 +93,9 @@ async function page({ params }: Props) {
                         ))
                     }
                 </div>
-                <TripStopsSwiper stops={data.stops} />
-            </main>
-            <main className='max-w-7xl mx-auto px-4 pb-6'>
-                <TGtitle second={true} title={t('view.overview')} />
-                <iframe src={data.map} className='w-full h-[500px] rounded-2xl' loading="lazy"></iframe>
+                <TripStopsSwiper stops={data.stops} overViewLink={data.mapall}/>
             </main>
             <Sharebt />
-
         </>
     )
 }

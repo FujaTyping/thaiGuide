@@ -459,6 +459,9 @@
     "items": "items",
     "notfound": "No road trips for that tag",
     "nnotfound": "No roadtrip data",
+    "direction": "Direction",
+    "directip": "Get direction in Google Maps",
+    "mapoverview": "Overview Map",
     "tags": {
       "All Tags": "All Tags",
       "Adventure": "Adventure",

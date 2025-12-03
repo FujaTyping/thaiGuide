@@ -455,6 +455,9 @@
         "show": "Tunjukkan",
         "orbs": "Tunjukkan sfera lawatan jalan raya",
         "items": "item",
+        "direction": "Arah",
+        "directip": "Dapatkan arah dalam Peta Google",
+        "mapoverview": "Peta Gambaran Keseluruhan",
         "notfound": "Tiada lawatan jalan raya untuk tag itu",
         "nnotfound": "Tiada data lawatan jalan raya",
         "tags": {

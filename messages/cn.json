@@ -455,6 +455,9 @@
         "show": "显示",
         "orbs": "显示公路旅行图标",
         "items": "个项目",
+        "direction": "路线",
+        "directip": "在谷歌地图中获取路线",
+        "mapoverview": "概览地图",
         "notfound": "没有该标签的公路旅行",
         "nnotfound": "没有公路旅行数据",
         "tags": {

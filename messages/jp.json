@@ -456,6 +456,9 @@
     "show": "表示",
     "orbs": "ロードトリップのオーブを表示",
     "items": "アイテム",
+    "direction": "道順",
+    "directip": "Googleマップで道順を取得",
+    "mapoverview": "概要マップ",
     "notfound": "そのタグのロードトリップはありません",
     "nnotfound": "ロードトリップデータがありません",
     "tags": {
