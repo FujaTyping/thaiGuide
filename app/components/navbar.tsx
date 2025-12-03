@@ -257,7 +257,7 @@ function Navbar() {
                     <Link href={"/"}>
                         <div className='flex items-center gap-1'>
                             <Image src={Logo.src} width={58} height={58} alt='Logo' />
-                            <h1 className='font-bold text-2xl text-primary'>{t('title')}</h1>
+                            <h1 className='font-bold text-2xl dark:text-white text-primary'>{t('title')}</h1>
                         </div>
                     </Link>
                     <div className='flex items-center gap-2'>
@@ -267,7 +267,7 @@ function Navbar() {
                                 whileTap={{ scale: 0.8 }}
                                 onClick={() => setSearchToogle(true)}
                             >
-                                <p className='group-hover:text-white cursor-pointer'>
+                                <p className='group-hover:text-white cursor-pointer dark:text-white'>
                                     {t('list.search')}
                                 </p>
                             </motion.div>
@@ -277,19 +277,19 @@ function Navbar() {
                                     whileTap={{ scale: 0.8 }}
                                     key={index}
                                 >
-                                    <Link href={item.link} className='group-hover:text-white'>
+                                    <Link href={item.link} className='group-hover:text-white dark:text-white'>
                                         {t(`list.${item.name}`)}
                                     </Link>
                                 </motion.div>
                             ))}
                         </div>
-                        <div className='flex md:hidden items-center gap-6 border-1 border-primary p-2 px-6 rounded-full text-primary font-bold hover:bg-primary transition-all duration-300 hover:text-white'>
+                        <div className='flex md:hidden items-center gap-6 border-1 border-primary p-2 px-6 rounded-full text-primary font-bold hover:bg-primary transition-all duration-300 hover:text-white dark:text-white'>
                             <Sheet open={toggleNavbar} onOpenChange={setToggleNavbar}>
                                 <SheetTrigger><p className='flex items-center gap-2'><Menu /> {t('menu')}</p></SheetTrigger>
                                 <SheetContent>
                                     <SheetHeader>
-                                        <SheetTitle className='text-2xl font-bold text-primary'>{t('menu')}</SheetTitle>
-                                        <div className='flex flex-col gap-2 mt-3 text-lg text-primary font-semibold'>
+                                        <SheetTitle className='text-2xl font-bold light:text-primary'>{t('menu')}</SheetTitle>
+                                        <div className='flex flex-col gap-2 mt-3 text-lg light:text-primary font-semibold'>
                                             <p className='cursor-pointer' onClick={() => { setToggleNavbar(false); setSearchToogle(true) }}>{t('list.search')}</p>
                                             <Link onClick={() => setToggleNavbar(false)} href={"/activity"}>{tb(`item.activity`)}</Link>
                                             <Link onClick={() => setToggleNavbar(false)} href={"/restaurant"}>{tb(`item.restaurant`)}</Link>
@@ -298,7 +298,7 @@ function Navbar() {
                                             ))}
                                             <DropdownMenu>
                                                 <DropdownMenuTrigger>
-                                                    <div className='group-hover:text-white cursor-pointer flex items-center gap-3 text-left mt-8'>
+                                                    <div className='group-hover:text-white dark:text-white cursor-pointer flex items-center gap-3 text-left mt-8'>
                                                         <Languages /> {t(`list.switcher`)}
                                                     </div>
                                                 </DropdownMenuTrigger>

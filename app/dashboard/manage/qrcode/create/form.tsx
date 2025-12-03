@@ -40,6 +40,7 @@ import { cn } from "@/lib/utils";
 import { useTranslations } from 'next-intl';
 import { toast } from 'sonner';
 import { getCookie } from 'cookies-next/client';
+import { useTheme } from 'next-themes';
 
 function NewForm() {
     const t = useTranslations('Dashboard.item.qrcode.create');
@@ -70,6 +71,7 @@ function NewForm() {
     const [open, setOpen] = useState(false);
     const p = useTranslations('Province');
     const [loading, setLoading] = useState(false);
+    const { theme } = useTheme() as any;
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         setLoading(true);
@@ -230,7 +232,7 @@ function NewForm() {
                                     <FormControl>
                                         <Turnstile
                                             sitekey="0x4AAAAAABiWcS67qCPLgJew"
-                                            theme='light'
+                                            theme={theme}
                                             onVerify={(token) => {
                                                 field.onChange(token)
                                             }}

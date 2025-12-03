@@ -57,7 +57,7 @@ function Tools() {
     return (
         <>
             <main className='max-w-7xl mx-auto px-3 py-6'>
-                <h1 className='text-2xl md:text-3xl font-bold text-primary mb-5'>{t('title')}</h1>
+                <h1 className='text-2xl md:text-3xl font-bold text-primary mb-5 dark:text-white'>{t('title')}</h1>
                 <Swiper
                     spaceBetween={10}
                     slidesPerView={3}
@@ -96,7 +96,7 @@ function Tools() {
                                                 )
                                             }
                                         </div>
-                                        <h1 className='text-lg font-semibold group-hover:text-primary transition-all duration-150'>{t(`item.${item.title}`)}</h1>
+                                        <h1 className='text-lg font-semibold group-hover:text-primary dark:text-white transition-all duration-150'>{t(`item.${item.title}`)}</h1>
                                     </div>
                                 </Link>
                             </SwiperSlide>

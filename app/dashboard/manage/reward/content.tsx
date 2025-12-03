@@ -154,7 +154,7 @@ function Content() {
                                         <h2 className='font-semibold'>{t('editquan.title')}</h2>
                                         <Input onChange={(e) => setQuantity(e.target.value)} value={parseInt(quantity)} type='number' />
                                         <p className='text-sm'>{t('editquan.inputno')}</p>
-                                        <Button className='cursor-pointer' onClick={updateQuantity}>{quanLoading ? <LoaderCircleIcon className='animate-spin' /> : <Save />}{t('editquan.save')}</Button>
+                                        <Button className='cursor-pointer dark:text-white' onClick={updateQuantity}>{quanLoading ? <LoaderCircleIcon className='animate-spin' /> : <Save />}{t('editquan.save')}</Button>
                                     </div>
                                 </PopoverContent>
                             </Popover>

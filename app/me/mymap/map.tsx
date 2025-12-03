@@ -29,6 +29,7 @@ import {
     TooltipContent,
     TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useTheme } from 'next-themes';
 
 interface MyLoca {
     latitude: number;
@@ -43,6 +44,7 @@ function PMap() {
     const [manLO, setManLo] = useState<MyLoca>();
     const [data, setData] = useState<any>();
     const [lockMap, setLockMap] = useState(false);
+    const { theme } = useTheme();
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -89,6 +91,14 @@ function PMap() {
         }
         return () => clearInterval(intervalId);
     }, [lockMap]);
+
+    const mapProvider = (x: number, y: number, z: number) => {
+        if (theme == "dark") {
+            return `https://a.basemaps.cartocdn.com/dark_all/${z}/${x}/${y}.png`
+        } else {
+            return `https://tile.openstreetmap.org/${z}/${x}/${y}.png`
+        }
+    }
 
     if (!user || !data) {
         return (
@@ -152,7 +162,7 @@ function PMap() {
                             </TooltipContent>
                         </Tooltip>
                     </div>
-                    <Map attribution={false} height={550} center={center} zoom={zoom}>
+                    <Map provider={mapProvider} attribution={false} height={550} center={center} zoom={zoom}>
                         {
                             data.undiscover.map((item: any, index: number) => (
                                 <Overlay className='z-1' key={index} anchor={[item.latitude, item.longitude]} offset={[40, 35]}>

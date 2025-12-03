@@ -32,7 +32,7 @@ function List() {
                             uLinks.map((item, key) => (
                                 <div key={key} className='flex items-center justify-center text-center'>
                                     <Link href={item.link}>
-                                        <h1 className='text-primary font-bold text-lg'>{t(`ulinks.${item.title}`)}</h1>
+                                        <h1 className='light:text-primary font-bold text-lg'>{t(`ulinks.${item.title}`)}</h1>
                                     </Link>
                                 </div>
                             ))

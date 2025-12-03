@@ -20,6 +20,7 @@ import 'react-photo-view/dist/react-photo-view.css';
 import Alertbox from "./components/alertbox";
 import { keywords } from "./seo.json"
 import "@egjs/react-view360/css/view360.min.css";
+import { ThemeProvider } from "./theme-provider";
 
 import Underdev from "./components/underdev";
 
@@ -53,26 +54,31 @@ export default async function RootLayout({
 
   return (
     <>
-      <html lang={locale}>
+      <html lang={locale} suppressHydrationWarning>
         <body
           className={`${notoSans.variable} antialiased`}
         >
-          <NextIntlClientProvider>
-            <NextTopLoader
-              color="#f7740a"
-              height={4}
-              showSpinner={false}
-            />
-            <Toaster position="top-center" />
-            <Navbar />
-            <Ealert />
-            {children}
-            <Didyouknow />
-            <Footer />
-            <Alertbox />
-            {/* <Underdev /> */}
-            {/*<Totop />*/}
-          </NextIntlClientProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+          >
+            <NextIntlClientProvider>
+              <NextTopLoader
+                color="#f7740a"
+                height={4}
+                showSpinner={false}
+              />
+              <Toaster position="top-center" />
+              <Navbar />
+              <Ealert />
+              {children}
+              <Didyouknow />
+              <Footer />
+              <Alertbox />
+              {/* <Underdev /> */}
+              {/*<Totop />*/}
+            </NextIntlClientProvider>
+          </ThemeProvider>
         </body>
       </html>
     </>
