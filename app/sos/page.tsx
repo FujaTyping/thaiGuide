@@ -77,7 +77,7 @@ function Page() {
                                 <img src={item.image.src} alt="Icon" className='w-20' />
                                 <p className='font-semibold text-2xl'>{t(`number.${item.name}`)}</p>
                                 <Link href={`tel:${item.telephone}`}>
-                                    <p className='flex flex-row items-center gap-2 text-xl text-primary'><Phone /> <b>{item.telephone}</b></p>
+                                    <p className='flex flex-row items-center gap-2 text-xl light:text-primary'><Phone /> <b>{item.telephone}</b></p>
                                 </Link>
                             </div>
                         ))
@@ -95,7 +95,7 @@ function Page() {
                                     </div>
                                     <p className='text-sm md:text-base'>{item.location}</p>
                                 </div>
-                                <Link href={`tel:${item.tel}`} className='flex flex-row items-center gap-2 font-semibold text-primary'>
+                                <Link href={`tel:${item.tel}`} className='flex flex-row items-center gap-2 font-semibold light:text-primary'>
                                     <Phone className='w-5 md:w-6' />
                                     <h2>{item.tel}</h2>
                                 </Link>

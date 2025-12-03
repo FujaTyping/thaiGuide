@@ -25,11 +25,13 @@ import { toast } from 'sonner';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { getCookie } from 'cookies-next/client';
+import { useTheme } from 'next-themes';
 
 function FForm() {
     const [loading, setLoading] = useState(false);
     const turnstile = useTurnstile();
     const t = useTranslations('Dashboard.item.reward.form');
+    const { theme } = useTheme() as any;
 
     const MAX_FILE_SIZE = 5 * 1024 * 1024;
     const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
@@ -255,7 +257,7 @@ function FForm() {
                                 <FormControl>
                                     <Turnstile
                                         sitekey="0x4AAAAAABiWcS67qCPLgJew"
-                                        theme='light'
+                                        theme={theme}
                                         onVerify={(token) => {
                                             field.onChange(token)
                                         }}

@@ -35,6 +35,7 @@ import R1 from "@/assets/media/maskot/photo/BackFedUp.webp";
 import R2 from "@/assets/media/maskot/photo/BackIdle.webp";
 import R3 from "@/assets/media/maskot/photo/BackTalking.webp";
 import R4 from "@/assets/media/maskot/photo/BackEncourage.webp";
+import { useTheme } from 'next-themes';
 
 const FBPoint = [
     R0.src,
@@ -49,6 +50,7 @@ function IssuesForm() {
     const [msg, setMSG] = useState(0);
     const [loading, setLoading] = useState(false);
     const el = useTranslations('NavBar');
+    const { theme } = useTheme() as any;
 
     // Define the formSchema inside the component to access the 't' function
     const formSchema = z.object({
@@ -237,7 +239,7 @@ function IssuesForm() {
                                     <FormControl>
                                         <Turnstile
                                             sitekey="0x4AAAAAABiWcS67qCPLgJew"
-                                            theme='light'
+                                            theme={theme}
                                             onVerify={(token) => {
                                                 field.onChange(token)
                                             }}

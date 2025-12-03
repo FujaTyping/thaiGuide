@@ -31,12 +31,14 @@ import Loader from "@/app/components/loader";
 import { toast } from "sonner";
 import { useTranslations } from "next-intl";
 import { getCookie } from "cookies-next/client";
+import { useTheme } from "next-themes";
 
 function FFORM() {
     const t = useTranslations('Dashboard.item.alert')
     const turnstile = useTurnstile();
     const [loading, setLoading] = useState(false);
     const [dataLoading, setDataLoading] = useState(true);
+    const { theme } = useTheme() as any;
 
     enum selectType {
         Earthquake = "Earthquake",
@@ -172,7 +174,7 @@ function FFORM() {
                                 <FormControl>
                                     <Turnstile
                                         sitekey="0x4AAAAAABiWcS67qCPLgJew"
-                                        theme='light'
+                                        theme={theme}
                                         onVerify={(token) => {
                                             field.onChange(token)
                                         }}

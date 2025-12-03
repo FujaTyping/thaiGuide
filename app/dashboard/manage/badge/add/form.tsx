@@ -27,6 +27,7 @@ import axios from 'axios';
 import { server } from "@/app/config.json";
 import { toast } from 'sonner';
 import { getCookie } from 'cookies-next/client';
+import { useTheme } from 'next-themes';
 
 function FForm() {
     const t = useTranslations('Dashboard.item.badge.form');
@@ -34,6 +35,7 @@ function FForm() {
     const turnstile = useTurnstile();
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
+    const { theme } = useTheme() as any;
 
     const MAX_FILE_SIZE = 5 * 1024 * 1024;
     const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
@@ -186,7 +188,7 @@ function FForm() {
                                 <FormControl>
                                     <Turnstile
                                         sitekey="0x4AAAAAABiWcS67qCPLgJew"
-                                        theme='light'
+                                        theme={theme}
                                         onVerify={(token) => {
                                             field.onChange(token)
                                         }}

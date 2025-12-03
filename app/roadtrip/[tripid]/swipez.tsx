@@ -18,6 +18,7 @@ import TGtitle from '@/app/components/tgtitle';
 import { getCenter } from "geolib"
 import Link from 'next/link';
 import { Map as MMAP } from "lucide-react";
+import { useTheme } from 'next-themes';
 
 interface Stop {
     name: string;
@@ -51,6 +52,15 @@ const TripStopsSwiper: React.FC<TripStopsSwiperProps> = ({ stops, overViewLink }
     const stopLink = stopEntries.map(([, stopData]) => stopData.direction);
     const overViewCenter: any = getCenter(stopCord);
 
+    const { theme } = useTheme();
+    const mapProvider = (x: number, y: number, z: number) => {
+        if (theme == "dark") {
+            return `https://a.basemaps.cartocdn.com/dark_all/${z}/${x}/${y}.png`
+        } else {
+            return `https://tile.openstreetmap.org/${z}/${x}/${y}.png`
+        }
+    }
+
     return (
         <>
             <div className='mb-12'>
@@ -77,11 +87,11 @@ const TripStopsSwiper: React.FC<TripStopsSwiperProps> = ({ stops, overViewLink }
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
                     <div className='order-2 md:order-1 relative'>
-                        <div className='absolute top-3 left-3 md:top-4 md:left-4 z-1 bg-white p-3 border-3 border-primary rounded-xl'>
+                        <div className='absolute top-3 left-3 md:top-4 md:left-4 z-1 dark:bg-primary light:bg-white p-3 border-3 light:border-primary rounded-xl'>
                             <Tooltip>
                                 <TooltipTrigger asChild>
                                     <Link href={stopLink[activeIndex]}>
-                                        <div className='text-primary flex flex-col items-center'>
+                                        <div className='light:text-primary flex flex-col items-center'>
                                             <Split className='w-8 h-8' />
                                             <h2 className='font-semibold text-sm'>{t('direction')}</h2>
                                         </div>
@@ -92,7 +102,7 @@ const TripStopsSwiper: React.FC<TripStopsSwiperProps> = ({ stops, overViewLink }
                                 </TooltipContent>
                             </Tooltip>
                         </div>
-                        <Map height={500} defaultCenter={[stopCord[0].latitude, stopCord[0].longitude]} center={[stopCord[activeIndex].latitude, stopCord[activeIndex].longitude]} defaultZoom={15} attribution={false}>
+                        <Map provider={mapProvider} height={500} defaultCenter={[stopCord[0].latitude, stopCord[0].longitude]} center={[stopCord[activeIndex].latitude, stopCord[activeIndex].longitude]} defaultZoom={15} attribution={false}>
                             <Marker width={50} anchor={[stopCord[activeIndex].latitude, stopCord[activeIndex].longitude]} className='relative'>
                                 <p className='absolute top-2.5 left-0 text-primary font-semibold text-sm text-center w-full'>{activeIndex + 1}</p>
                                 <img src={PINS.src} alt="Icon" className='w-11' />
@@ -150,11 +160,11 @@ const TripStopsSwiper: React.FC<TripStopsSwiperProps> = ({ stops, overViewLink }
             </div>
             <TGtitle second={true} title={t('view.overview')} />
             <div className='-mb-4 mt-6 relative'>
-                <div className='absolute top-3 left-3 md:top-4 md:left-4 z-1 bg-white p-3 border-3 border-primary rounded-xl'>
+                <div className='absolute top-3 left-3 md:top-4 md:left-4 z-1 dark:bg-primary light:bg-white p-3 border-3 light:border-primary rounded-xl'>
                     <Tooltip>
                         <TooltipTrigger asChild>
                             <Link href={overViewLink}>
-                                <div className='text-primary flex flex-col items-center'>
+                                <div className='light:text-primary flex flex-col items-center'>
                                     <MMAP className='w-8 h-8' />
                                     <h2 className='font-semibold text-sm'>{t('mapoverview')}</h2>
                                 </div>
@@ -165,7 +175,7 @@ const TripStopsSwiper: React.FC<TripStopsSwiperProps> = ({ stops, overViewLink }
                         </TooltipContent>
                     </Tooltip>
                 </div>
-                <Map height={500} defaultCenter={[overViewCenter.latitude, overViewCenter.longitude]} defaultZoom={11} attribution={false}>
+                <Map provider={mapProvider} height={500} defaultCenter={[overViewCenter.latitude, overViewCenter.longitude]} defaultZoom={11} attribution={false}>
                     {stopCord.map((data, index) => (
                         <Marker width={50} anchor={[data.latitude, data.longitude]} className='relative' key={index}>
                             <p className='absolute top-2.5 left-0 text-primary font-semibold text-sm text-center w-full'>{index + 1}</p>

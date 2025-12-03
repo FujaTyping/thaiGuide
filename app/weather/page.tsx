@@ -21,7 +21,7 @@ function Page() {
                 <div className='mt-8'>
                     <Embed />
                 </div>
-                <TGtitle title={t('stitle')} decs={t('sdecs')} />
+                <TGtitle title={t('stitle')} decs={t('sdecs')} second={true} />
                 <div className='mt-2'>
                     <p className='flex items-center gap-2 text-primary'><TriangleAlert /> <b>{t('simu.ntitle')}</b><br /></p>
                     <p className='mt-1'>{t('simu.notice')}</p>

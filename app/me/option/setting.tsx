@@ -7,7 +7,7 @@ import { onAuthStateChanged, User } from 'firebase/auth';
 import auth from "@/lib/firebaseAuth";
 import { server } from "@/app/config.json";
 import Loader from '@/app/components/loader';
-import { Check, LoaderCircle, LocateFixed, Pencil, Trash2, X } from 'lucide-react';
+import { Check, LoaderCircle, LocateFixed, Moon, Palette, Pencil, Sun, Trash2, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Input } from '@/components/ui/input';
 import {
@@ -19,6 +19,14 @@ import { Filter } from 'bad-words'
 import { toast } from 'sonner';
 import DeleteUserModal from './deleteUserModal';
 import { Button } from '@/components/ui/button';
+import { useTheme } from 'next-themes';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
 
 const filter = new Filter();
 
@@ -31,6 +39,7 @@ function Setting() {
     const [vName, setVName] = useState("");
     const [nameLoading, setNameLoading] = useState(false);
     const [deleteOpen, setDeleteOpen] = useState(false);
+    const { theme, setTheme } = useTheme()
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -146,6 +155,20 @@ function Setting() {
                     </div>
                 </div>
                 <div className='pt-5 flex flex-col gap-3 w-full'>
+                    <div className='flex items-center place-content-between'>
+                        <h2 className='flex items-center gap-2 font-semibold'><Palette className='text-primary font-bold' /> Theme</h2>
+                        <div className='bg-primary rounded-md' >
+                            <Select onValueChange={(e) => setTheme(e)} value={theme} >
+                                <SelectTrigger className="w-[150px] text-white" >
+                                    <SelectValue placeholder="Theme" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="light" className='flex items-center gap-2'><Sun />Light</SelectItem>
+                                    <SelectItem value="dark" className='flex items-center gap-2'><Moon />Dark</SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </div>
+                    </div>
                     <div className='flex items-center place-content-between'>
                         <h2 className='flex items-center gap-2 font-semibold'><LocateFixed className='text-primary font-bold' /> {t('option.perms.location')}</h2>
                         <Button disabled className='cursor-not-allowed'>

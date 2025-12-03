@@ -51,7 +51,7 @@ function Page() {
                         <div key={item.id} className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-6">
                             <Image src={item.image.src} alt={t(`goal.${item.id}.title`)} width={120} height={120} className="object-contain mb-4" />
                             <div>
-                                <h2 className="text-2xl font-semibold text-primary mb-1">{t(`goal.${item.id}.title`)}</h2>
+                                <h2 className="text-2xl font-semibold light:text-primary mb-1">{t(`goal.${item.id}.title`)}</h2>
                                 <p>{t(`goal.${item.id}.decs`)}</p>
                             </div>
                         </div>

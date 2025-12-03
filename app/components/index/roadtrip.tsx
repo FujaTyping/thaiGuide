@@ -53,7 +53,7 @@ function Roadtrip() {
         <>
             <main className='max-w-7xl mx-auto px-3 py-6'>
                 <div className='flex items-center place-content-between mb-6'>
-                    <h1 className='text-2xl md:text-3xl font-bold text-primary'>{t('headder')}</h1>
+                    <h1 className='text-2xl md:text-3xl font-bold text-primary dark:text-white'>{t('headder')}</h1>
                 </div>
                 {
                     loading ? <>
