@@ -894,6 +894,10 @@
   "Mymap": {
     "title": "My Map",
     "place": "Places",
+    "logs": "Travel Logs",
+    "logdecs": "View all the places you’ve checked in during your journey. Track your adventures, revisit your favorite spots, and see your progress across Thailand",
+    "more": "Load More",
+    "noenough": "No enough data to display",
     "decs": "Your personal map to undiscovered gems and favorite places across Thailand. Mark spots you want to visit and keep track of the places you've discovered.",
     "mapLock": "Track My Location on Map",
     "unseen": {

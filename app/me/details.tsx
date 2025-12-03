@@ -27,6 +27,7 @@ import NF from "@/assets/media/card/icon/notfound.svg";
 
 import PA from "@/assets/media/icon/PA.svg";
 import PR from "@/assets/media/icon/PR.svg";
+import { Button } from '@/components/ui/button';
 
 interface Transaction {
     point: string;
@@ -172,13 +173,12 @@ function Details() {
             </div>
             {numDisplayedItems < transcaton.length && (
                 <div className="mt-8 flex items-center justify-center">
-                    <button
+                    <Button
                         onClick={handleLoadMore}
-                        className="flex items-center gap-3 w-full md:w-fit justify-center bg-primary text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-[#f7640a] cursor-pointer"
                     >
                         <ChevronDown />
                         {t('more')}
-                    </button>
+                    </Button>
                 </div>
             )}
             <Dialog open={open} onOpenChange={setOpen}>

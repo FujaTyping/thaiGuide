@@ -892,6 +892,10 @@
     "Mymap": {
         "title": "Peta Saya",
         "place": "Tempat",
+        "logs": "Log Perjalanan",
+        "logdecs": "Lihat semua tempat yang telah anda daftar masuk semasa perjalanan anda. Jejaki pengembaraan anda, lawati semula tempat kegemaran anda, dan lihat kemajuan anda di seluruh Thailand",
+        "more": "Muat Lagi",
+        "noenough": "Data tidak cukup untuk dipaparkan",
         "decs": "Peta peribadi anda untuk permata yang belum ditemui dan tempat kegemaran di seluruh Thailand. Tandai tempat yang anda ingin lawati dan jejaki tempat yang telah anda temui.",
         "mapLock": "Jejaki Lokasi Saya di Peta",
         "unseen": {
