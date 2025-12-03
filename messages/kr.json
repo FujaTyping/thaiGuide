@@ -977,6 +977,11 @@
             "perms": {
                 "location": "위치 액세스",
                 "notg": "권한 부여"
+            },
+            "theme": {
+                "title": "테마",
+                "dark": "다크",
+                "light": "라이트"
             }
         }
     },

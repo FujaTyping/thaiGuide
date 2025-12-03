@@ -156,15 +156,15 @@ function Setting() {
                 </div>
                 <div className='pt-5 flex flex-col gap-3 w-full'>
                     <div className='flex items-center place-content-between'>
-                        <h2 className='flex items-center gap-2 font-semibold'><Palette className='text-primary font-bold' /> Theme</h2>
+                        <h2 className='flex items-center gap-2 font-semibold'><Palette className='text-primary font-bold' /> {t('option.theme.title')}</h2>
                         <div className='bg-primary rounded-md' >
                             <Select onValueChange={(e) => setTheme(e)} value={theme} >
                                 <SelectTrigger className="w-[150px] text-white" >
                                     <SelectValue placeholder="Theme" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="light" className='flex items-center gap-2'><Sun />Light</SelectItem>
-                                    <SelectItem value="dark" className='flex items-center gap-2'><Moon />Dark</SelectItem>
+                                    <SelectItem value="light" className='flex items-center gap-2'><Sun />{t('option.theme.light')}</SelectItem>
+                                    <SelectItem value="dark" className='flex items-center gap-2'><Moon />{t('option.theme.dark')}</SelectItem>
                                 </SelectContent>
                             </Select>
                         </div>

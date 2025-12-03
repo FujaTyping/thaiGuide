@@ -31,7 +31,7 @@ function OSM({ location, link, address, name }: { location: { latitude: number, 
                     <Tooltip>
                         <TooltipTrigger asChild>
                             <Link href={link}>
-                                <div className='light:text-primary flex flex-col items-center'>
+                                <div className='text-primary dark:text-white flex flex-col items-center'>
                                     <Split className='w-8 h-8' />
                                     <h2 className='font-semibold text-sm'>{t('item.osm.direction')}</h2>
                                 </div>

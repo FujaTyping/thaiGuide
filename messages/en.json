@@ -979,6 +979,11 @@
       "perms": {
         "location": "Location access",
         "notg": "Grant permission"
+      },
+      "theme": {
+        "title": "Theme",
+        "dark": "Dark",
+        "light": "Light"
       }
     }
   },
