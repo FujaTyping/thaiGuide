@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import PMap from './map';
 import { useTranslations } from 'next-intl';
 import TGtitle from '@/app/components/tgtitle';
+import Logs from './logs';
 
 export const metadata: Metadata = {
   title: "ThaiGuide – My Map"
@@ -19,7 +20,10 @@ function Page() {
         <TGtitle title={t('title')} decs={t('decs')} />
       </main>
       <PMap />
-      
+      <main className='tg-container'>
+        <TGtitle title={t('logs')} decs={t('logdecs')} />
+        <Logs />
+      </main>
     </>
   )
 }

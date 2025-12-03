@@ -100,7 +100,7 @@ function PMap() {
 
     return (
         <>
-            <div className='max-w-7xl mx-auto px-4 py-7'>
+            <div className='max-w-7xl mx-auto px-4 py-2 -mb-2'>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mb-5'>
                     <div className='border-3 border-primary rounded-2xl p-4 px-5 flex items-start gap-6'>
                         <div>
@@ -152,7 +152,7 @@ function PMap() {
                             </TooltipContent>
                         </Tooltip>
                     </div>
-                    <Map attribution={false} height={600} center={center} zoom={zoom}>
+                    <Map attribution={false} height={550} center={center} zoom={zoom}>
                         {
                             data.undiscover.map((item: any, index: number) => (
                                 <Overlay className='z-1' key={index} anchor={[item.latitude, item.longitude]} offset={[40, 35]}>
