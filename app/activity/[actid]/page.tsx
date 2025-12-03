@@ -112,19 +112,21 @@ async function page({ params }: Props) {
                                     <p>{t('item.call')}</p>
                                 </div>
                             }
-                            <div className='flex flex-col gap-1 items-center justify-center'>
-                                <Coins className='text-primary size-12' />
-                                <p className='font-semibold text-xl'>{data.details.points}</p>
-                                <p className='flex items-center gap-2'>{t('item.point')}
-                                    <Tooltip>
-                                        <TooltipTrigger><CircleHelp className='size-5 cursor-help' /></TooltipTrigger>
-                                        <TooltipContent>
-                                            <p>{t('item.infop.0')}</p>
-                                            <p>{t('item.infop.1')}</p>
-                                        </TooltipContent>
-                                    </Tooltip>
-                                </p>
-                            </div>
+                            {
+                                data.details.points && <div className='flex flex-col gap-1 items-center justify-center'>
+                                    <Coins className='text-primary size-12' />
+                                    <p className='font-semibold text-xl'>{data.details.points}</p>
+                                    <p className='flex items-center gap-2'>{t('item.point')}
+                                        <Tooltip>
+                                            <TooltipTrigger><CircleHelp className='size-5 cursor-help' /></TooltipTrigger>
+                                            <TooltipContent>
+                                                <p>{t('item.infop.0')}</p>
+                                                <p>{t('item.infop.1')}</p>
+                                            </TooltipContent>
+                                        </Tooltip>
+                                    </p>
+                                </div>
+                            }
                             {
                                 data.details.website && data.details.website != "-" && <>
                                     <Link href={data.details.website} className='flex flex-col gap-1 items-center justify-center'>
