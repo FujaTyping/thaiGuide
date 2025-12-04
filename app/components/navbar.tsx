@@ -361,7 +361,7 @@ function Navbar() {
                                                     </div>
                                                 </TooltipTrigger>
                                                 <TooltipContent>
-                                                    <p>{play ? "Pause" : "Play"}</p>
+                                                    <p>{play ? t('player.play') : t('player.pause')}</p>
                                                 </TooltipContent>
                                             </Tooltip>
                                         </DropdownMenuLabel>

@@ -58,6 +58,10 @@
       "terms": "Terms of Service",
       "ac2": "and",
       "privacy": "Privacy Policy"
+    },
+    "player": {
+      "play": "Play",
+      "pause": "Pause"
     }
   },
   "Crisis": {
