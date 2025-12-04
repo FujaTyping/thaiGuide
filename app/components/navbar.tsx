@@ -49,11 +49,14 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { signInWithEmailAndPassword } from "firebase/auth";
 import SearchModal from './searchModal';
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 // Modal Icon
-import LIC from "@/assets/media/login/left.png";
-import CIC from "@/assets/media/login/center.png";
-import RIC from "@/assets/media/login/right.png";
+import TOC from "@/assets/media/login/Top.svg";
 
 import {
     Form,
@@ -93,6 +96,7 @@ function Navbar() {
     const [searchToogle, setSearchToogle] = useState(false);
     const [toggleNavbar, setToggleNavbar] = useState(false);
     const playerRef = useRef<AudioPlayerRef>(null);
+    const [play, setPlay] = useState(false);
 
     const adminFormSchema = z.object({
         email: z.string().min(11, t('login.admin.require.username')),
@@ -254,7 +258,7 @@ function Navbar() {
     }
     return (
         <>
-            <AudioPlayer ref={playerRef} src="/audio/bgm/Jai-Yen Lounge.wav" style={{ display: "none" }} volume={20} loop />
+            <AudioPlayer ref={playerRef} src="/audio/bgm/Jai-Yen Lounge.wav" style={{ display: "none" }} volume={30} loop />
             <main className='border-b-10 border-primary'>
                 <nav className='max-w-7xl flex items-center mx-auto p-3 w-full place-content-between'>
                     <Link href={"/"}>
@@ -334,12 +338,32 @@ function Navbar() {
                                         <DropdownMenuSeparator />
                                         <DropdownMenuLabel className='flex items-center place-content-between gap-4'>
                                             <div className='flex items-center gap-2'>
-                                                <Music size={16} className='text-primary'/> <p className='text-sm font-normal'>Jai-Yen Lounge</p>
+                                                <Music size={16} className='text-primary' /> <p className='text-sm font-normal'>Jai-Yen Lounge</p>
                                             </div>
-                                            <div className='flex items-center gap-1 text-primary'>
-                                                <Play size={17} onClick={() => playerRef.current?.play()} className='cursor-pointer' />
-                                                <Pause size={17} onClick={() => playerRef.current?.pause()} className='cursor-pointer'  />
-                                            </div>
+                                            <Tooltip>
+                                                <TooltipTrigger>
+                                                    <div className='flex items-center gap-1 text-primary' onClick={() => setPlay(!play)}>
+                                                        <AnimatePresence mode='wait'>
+                                                            <motion.div
+                                                                key={play ? 'show' : 'hide'}
+                                                                initial={{ rotate: 30 }}
+                                                                animate={{ rotate: 0 }}
+                                                                exit={{ rotate: -30 }}
+                                                            >
+                                                                {
+                                                                    play ?
+                                                                        <Pause size={17} onClick={() => playerRef.current?.pause()} className='cursor-pointer' /> :
+                                                                        <Play size={17} onClick={() => playerRef.current?.play()} className='cursor-pointer' />
+
+                                                                }
+                                                            </motion.div>
+                                                        </AnimatePresence>
+                                                    </div>
+                                                </TooltipTrigger>
+                                                <TooltipContent>
+                                                    <p>{play ? "Pause" : "Play"}</p>
+                                                </TooltipContent>
+                                            </Tooltip>
                                         </DropdownMenuLabel>
                                     </DropdownMenuContent>
                                 </DropdownMenu> : <KeyRound onClick={() => setLoginM(true)} />}
@@ -408,12 +432,8 @@ function Navbar() {
                                 </> : <>
                                     <DialogHeader>
                                         <DialogTitle className='text-2xl'>{t('login.modal.title')}</DialogTitle>
-                                        <div className='flex items-center justify-center py-2'>
-                                            <div className='flex items-end gap-2'>
-                                                <img src={LIC.src} alt="Icon" className='w-16 md:w-18' />
-                                                <img src={CIC.src} alt="Icon" className='w-22 md:w-24' />
-                                                <img src={RIC.src} alt="Icon" className='w-16 md:w-18' />
-                                            </div>
+                                        <div className='flex items-center justify-center py-4'>
+                                            <img src={TOC.src} alt="Icon" className='w-52 md:w-62' />
                                         </div>
                                         <p>{t('login.modal.decs')}</p>
                                     </DialogHeader>
