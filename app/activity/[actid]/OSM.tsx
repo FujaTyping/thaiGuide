@@ -23,7 +23,7 @@ function OSM({ location, link, address, name }: { location: { latitude: number, 
     return (
         <>
             <div className='relative flex flex-col-reverse gap-4'>
-                <div className='md:absolute z-1 top-4 left-4 dark:bg-primary light:bg-white p-3 px-4 rounded-xl border-3 light:border-primary flex items-start place-content-between gap-6'>
+                <div className='md:absolute z-1 top-4 left-4 dark:bg-primary bg-white p-3 px-4 rounded-xl border-3 border-primary flex items-start place-content-between gap-6'>
                     <div>
                         <h1 className='font-bold text-lg max-w-sm'>{name}</h1>
                         <p className='max-w-xs text-sm mt-1'>{address}</p>

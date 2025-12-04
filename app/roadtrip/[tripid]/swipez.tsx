@@ -87,7 +87,7 @@ const TripStopsSwiper: React.FC<TripStopsSwiperProps> = ({ stops, overViewLink }
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
                     <div className='order-2 md:order-1 relative'>
-                        <div className='absolute top-3 left-3 md:top-4 md:left-4 z-1 dark:bg-primary light:bg-white p-3 border-3 light:border-primary rounded-xl'>
+                        <div className='absolute top-3 left-3 md:top-4 md:left-4 z-1 dark:bg-primary bg-white p-3 border-3 border-primary rounded-xl'>
                             <Tooltip>
                                 <TooltipTrigger asChild>
                                     <Link href={stopLink[activeIndex]}>
@@ -160,7 +160,7 @@ const TripStopsSwiper: React.FC<TripStopsSwiperProps> = ({ stops, overViewLink }
             </div>
             <TGtitle second={true} title={t('view.overview')} />
             <div className='-mb-4 mt-6 relative'>
-                <div className='absolute top-3 left-3 md:top-4 md:left-4 z-1 dark:bg-primary light:bg-white p-3 border-3 light:border-primary rounded-xl'>
+                <div className='absolute top-3 left-3 md:top-4 md:left-4 z-1 dark:bg-primary bg-white p-3 border-3 border-primary rounded-xl'>
                     <Tooltip>
                         <TooltipTrigger asChild>
                             <Link href={overViewLink}>
