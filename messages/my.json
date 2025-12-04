@@ -60,6 +60,10 @@
             "privacy": "Dasar Privasi"
         }
     },
+    "player": {
+        "play": "Main",
+        "pause": "Jeda"
+    },
     "Crisis": {
         "alert": "Amaran Krisis"
     },

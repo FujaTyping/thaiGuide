@@ -60,6 +60,10 @@
       "privacy": "プライバシーポリシー"
     }
   },
+  "player": {
+    "play": "再生",
+    "pause": "一時停止"
+  },
   "Crisis": {
     "alert": "危機警報"
   },

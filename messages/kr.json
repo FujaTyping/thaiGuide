@@ -60,6 +60,10 @@
             "privacy": "개인정보 처리방침"
         }
     },
+    "player": {
+        "play": "재생",
+        "pause": "일시정지"
+    },
     "Crisis": {
         "alert": "위기 경보"
     },
