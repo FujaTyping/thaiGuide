@@ -2,7 +2,7 @@
 "use client";
 
 import { Coins, Info, LoaderCircle, MapPin, ScanLine, Sparkles } from 'lucide-react';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
     Dialog,
     DialogContent,
@@ -31,6 +31,7 @@ import { Button } from '@/components/ui/button';
 import BadgeRev from "@/assets/media/icon/REV.svg";
 import LMT from "@/assets/media/icon/Limit.svg";
 import CountUp from '@/components/bits/CountUp.tsx/CountUp';
+import { AudioPlayer, AudioPlayerRef } from 'react-audio-play';
 
 function Qr() {
     const t = useTranslations('Profile');
@@ -48,6 +49,9 @@ function Qr() {
     const [sameSpot, setSameSpot] = useState(false);
     const [open, setOpen] = useState(false);
     const [showBadge, setShowBadge] = useState(false);
+    const playerRef = useRef<AudioPlayerRef>(null);
+    const playerBadgeRef = useRef<AudioPlayerRef>(null);
+    const [bgV, setBgV] = useState(30);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -95,9 +99,12 @@ function Qr() {
                 });
 
                 const resD = response.data;
-                setIsWithinRadius(resD != "NNL");
+                console.log(resD);
+                const inRad = resD != "NNL";
+                setIsWithinRadius(inRad);
                 setSameSpot(resD.samespot);
                 setCodeData(resD);
+                if (inRad && !resD.samespot && !resD.otpp) playerRef.current?.play();
             }
         } catch (error) {
             console.error("Error checking code:", error);
@@ -107,6 +114,8 @@ function Qr() {
 
     return (
         <>
+            <AudioPlayer ref={playerRef} src="/audio/bgm/Hidden Soi.wav" style={{ display: "none" }} volume={bgV} loop />
+            <AudioPlayer ref={playerBadgeRef} src="/audio/BadgeRev.mp3" style={{ display: "none" }} volume={50} />
             <div className='fixed bottom-0 right-0 p-4'>
                 {locationLoading ? <div className='bg-primary text-white p-3 rounded-full hover:bg-white hover:text-primary border-2 border-primary transition-all duration-250'>
                     <LoaderCircle className='animate-spin size-8' />
@@ -114,7 +123,7 @@ function Qr() {
                     <div onClick={() => { setData(""); setCodeData(""); setSuccState(1); setOpen(true); }} className='bg-primary cursor-pointer text-white p-3 rounded-full hover:bg-white hover:text-primary border-2 border-primary transition-all duration-250'>
                         <ScanLine className='size-8' />
                     </div>
-                    <Dialog open={open} onOpenChange={setOpen}>
+                    <Dialog open={open} onOpenChange={(e) => { setOpen(e); playerRef.current?.stop(); }}>
                         <DialogContent>
                             <DialogHeader>
                                 <DialogTitle className='text-2xl'>{t('scan.title')}</DialogTitle>
@@ -223,7 +232,11 @@ function Qr() {
                                                                                                         transition={{
                                                                                                             duration: 0.6,
                                                                                                         }}
-                                                                                                        onClick={() => setShowBadge(false)}
+                                                                                                        onClick={() => {
+                                                                                                            setShowBadge(false);
+                                                                                                            setBgV(30);
+                                                                                                            playerBadgeRef.current?.stop();
+                                                                                                        }}
                                                                                                         className='absolute w-full flex flex-col items-center justify-center z-99 bg-white/20 backdrop-blur-xs h-full cursor-pointer'
                                                                                                     >
                                                                                                         <img src={BadgeRev.src} alt="Bg" className='w-58 absolute -mr-4 rotate-center opacity-70' />
@@ -368,15 +381,16 @@ function Qr() {
                                                                                         <Button onClick={() => {
                                                                                             if (succState == 3) {
                                                                                                 setOpen(false);
+                                                                                                playerRef.current?.stop();
                                                                                             }
                                                                                             if (succState == 1) {
                                                                                                 if (codeData.reciveNewBadge) {
                                                                                                     setSuccState(succState + 1);
-                                                                                                    const NEWBGD = new Audio('/audio/BadgeRev.mp3');
-                                                                                                    NEWBGD.volume = 0.5; NEWBGD.play();
+                                                                                                    setBgV(10);
+                                                                                                    playerBadgeRef.current?.play();
                                                                                                     setShowBadge(true);
                                                                                                 } else {
-                                                                                                    setSuccState(3)
+                                                                                                    setSuccState(3);
                                                                                                 }
                                                                                             } else {
                                                                                                 setSuccState(succState + 1);

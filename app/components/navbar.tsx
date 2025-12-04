@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Logo from "@/assets/icon.png";
 import Image from 'next/image';
-import { Columns3Cog, KeyRound, Languages, LoaderCircle, LogOut, MapPinned, Menu, Settings2, Smile, Trophy, UserRound } from 'lucide-react';
+import { Columns3Cog, KeyRound, Languages, LoaderCircle, LogOut, MapPinned, Menu, Music, Pause, Play, Settings2, Smile, Trophy, UserRound } from 'lucide-react';
 import {
     Sheet,
     SheetContent,
@@ -64,6 +64,7 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { AudioPlayer, AudioPlayerRef } from 'react-audio-play';
 
 const NavItems = [
     {
@@ -91,6 +92,7 @@ function Navbar() {
     const [isAd, setIsAd] = useState<boolean>(false);
     const [searchToogle, setSearchToogle] = useState(false);
     const [toggleNavbar, setToggleNavbar] = useState(false);
+    const playerRef = useRef<AudioPlayerRef>(null);
 
     const adminFormSchema = z.object({
         email: z.string().min(11, t('login.admin.require.username')),
@@ -252,6 +254,7 @@ function Navbar() {
     }
     return (
         <>
+            <AudioPlayer ref={playerRef} src="/audio/bgm/Jai-Yen Lounge.wav" style={{ display: "none" }} volume={20} loop />
             <main className='border-b-10 border-primary'>
                 <nav className='max-w-7xl flex items-center mx-auto p-3 w-full place-content-between'>
                     <Link href={"/"}>
@@ -328,6 +331,16 @@ function Navbar() {
                                             </>
                                         }
                                         <DropdownMenuItem className='flex items-center gap-2 cursor-pointer' onClick={handleLogout}><LogOut className='text-primary' /> {t('logout')}</DropdownMenuItem>
+                                        <DropdownMenuSeparator />
+                                        <DropdownMenuLabel className='flex items-center place-content-between gap-4'>
+                                            <div className='flex items-center gap-2'>
+                                                <Music size={16} className='text-primary'/> <p className='text-sm font-normal'>Jai-Yen Lounge</p>
+                                            </div>
+                                            <div className='flex items-center gap-1 text-primary'>
+                                                <Play size={17} onClick={() => playerRef.current?.play()} className='cursor-pointer' />
+                                                <Pause size={17} onClick={() => playerRef.current?.pause()} className='cursor-pointer'  />
+                                            </div>
+                                        </DropdownMenuLabel>
                                     </DropdownMenuContent>
                                 </DropdownMenu> : <KeyRound onClick={() => setLoginM(true)} />}
                             </>}
