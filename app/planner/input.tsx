@@ -206,12 +206,11 @@ function TInput() {
                                         }
                                     </div>
                                     {Tags.length > 8 && (
-                                        <button
+                                        <Button
                                             onClick={() => setShowAllTags(!showAllTags)}
-                                            className="mt-4 text-primary cursor-pointer font-semibold"
                                         >
                                             {showAllTags ? `${t('ai.input.tagless')}` : `${t('ai.input.tagtoggle')} (${Tags.length - 8} ${t('ai.input.tagmore')})`}
-                                        </button>
+                                        </Button>
                                     )}
                                 </div>
                                 {
