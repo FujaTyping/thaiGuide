@@ -5,6 +5,8 @@ import { cors } from '@elysiajs/cors';
 import { rateLimit } from 'elysia-rate-limit';
 import { cacheControl } from "elysiajs-cdn-cache";
 import { bearer } from '@elysiajs/bearer';
+import { CronJob } from 'cron';
+import eventCycle from "./cron/event";
 
 const app = new Elysia()
   .use(cors({
@@ -24,6 +26,14 @@ const app = new Elysia()
 
 console.log(
   `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
+);
+
+const job = new CronJob(
+  '* */10 * * *',
+  eventCycle,
+  null,
+  true,
+  'Asia/Bangkok'
 );
 
 export type ElysiaApp = typeof app;
