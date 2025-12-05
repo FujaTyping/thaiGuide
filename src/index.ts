@@ -29,7 +29,7 @@ console.log(
 );
 
 const job = new CronJob(
-  '* */10 * * *',
+  '0 12 * * *',
   eventCycle,
   null,
   true,
