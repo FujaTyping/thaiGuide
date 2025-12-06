@@ -206,11 +206,12 @@ function TInput() {
                                         }
                                     </div>
                                     {Tags.length > 8 && (
-                                        <Button
+                                        <p
                                             onClick={() => setShowAllTags(!showAllTags)}
+                                            className='font-semibold text-primary cursor-pointer dark:text-white mt-4'
                                         >
                                             {showAllTags ? `${t('ai.input.tagless')}` : `${t('ai.input.tagtoggle')} (${Tags.length - 8} ${t('ai.input.tagmore')})`}
-                                        </Button>
+                                        </p>
                                     )}
                                 </div>
                                 {
@@ -234,7 +235,7 @@ function TInput() {
                                 <div className='flex items-center justify-center'>
                                     <Button
                                         onClick={GenAI}
-                                        className='bg-primary w-full md:w-fit py-2 px-6 text-white rounded-xl mt-6 flex items-center justify-center gap-2 cursor-pointer transition-colors'
+                                        className='mt-6'
                                     >
                                         <p className='font-semibold'>{t('ai.input.submit')}</p>
                                         <Brush />
@@ -248,7 +249,7 @@ function TInput() {
                                         <Triploader />
                                         <RotatingText
                                             texts={loadingTexts}
-                                            mainClassName="w-fit font-semibold text-black overflow-hidden justify-center rounded-lg text-primary dark:text-white"
+                                            mainClassName="w-fit font-semibold text-black overflow-hidden justify-center rounded-lg dark:text-white"
                                             staggerFrom={"first"}
                                             initial={{ y: "100%" }}
                                             animate={{ y: 0 }}

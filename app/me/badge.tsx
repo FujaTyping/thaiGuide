@@ -61,7 +61,11 @@ function BBadge() {
 
     return (
         <>
-            <div className='grid grid-cols-1 gap-4 mt-4'>
+            <div className='flex flex-col md:flex-row md:items-center md:place-content-between gap-1 md:gap-6 mt-1'>
+                <h1 className='font-bold text-2xl'>{t('badge.title')}</h1>
+                <p className='text-sm md:text-base md:font-semibold md:mt-0.5'>{`${badgee.length} ${t('badge.badgediscoverall')}`}</p>
+            </div>
+            <div className='grid grid-cols-1 gap-5 mt-4 mb-2'>
                 {
                     badgee.length == 0 ? <>
                         <div className='flex items-center flex-col justify-center py-8 gap-4'>
@@ -89,7 +93,7 @@ function BBadge() {
                                         >
                                             <Popover>
                                                 <PopoverTrigger>
-                                                    <img src={item.imageUrl} alt='Badge' className='w-32 md:w-40 cursor-pointer' />
+                                                    <img loading={index + 1 > 10 ? 'lazy' : 'eager'} src={item.imageUrl} alt='Badge' className='w-32 md:w-40 cursor-pointer' />
                                                 </PopoverTrigger>
                                                 <PopoverContent>
                                                     <h1 className='flex items-center gap-2'><b className='flex items-center gap-1'><Footprints className='text-primary' /> {t('badge.visit')} :</b> {item.province.charAt(0).toUpperCase() + item.province.slice(1)}</h1>
@@ -99,6 +103,15 @@ function BBadge() {
                                         </motion.div>
                                         <h2 className='font-semibold text-md md:text-lg mt-0.5'>{item.province.charAt(0).toUpperCase() + item.province.slice(1)}</h2>
                                         <p className='text-sm md:text-base'>{new Date(item.recivedAt.seconds * 1000).toLocaleDateString()}</p>
+                                    </div>
+                                ))
+                            }
+                            {
+                                Array.from({ length: 77 - badgee.length }).map((_, index) => (
+                                    <div className='flex flex-col items-center justify-center opacity-80' key={index}>
+                                        <div className='w-28 md:w-38 border-2 border-primary aspect-square rounded-full border-dashed'></div>
+                                        <h2 className='font-semibold text-md md:text-lg mt-3 text-primary'>???</h2>
+                                        <p className='text-sm md:text-base text-primary'>???</p>
                                     </div>
                                 ))
                             }

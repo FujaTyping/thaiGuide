@@ -325,7 +325,8 @@
       "no": "No badges earned yet",
       "visit": "You’ve visited",
       "slogan": "Slogan",
-      "new": "You just unlocked a shiny new badge"
+      "new": "You just unlocked a shiny new badge",
+      "badgediscoverall": "of 77 Badges Found"
     }
   },
   "PublicProfile": {

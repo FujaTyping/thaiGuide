@@ -206,6 +206,7 @@ function Quiz({ data: provinceName }: QuizProps) {
                             )}
                             <Button
                                 onClick={handleRestartQuiz}
+                                className='bg-white text-primary hover:bg-white'
                             >
                                 {t('restartbtn')}
                             </Button>
@@ -236,23 +237,23 @@ function Quiz({ data: provinceName }: QuizProps) {
 
                                     if (isThisChoiceSelected) {
                                         if (isThisChoiceCorrect) {
-                                            buttonClass += "bg-white text-black";
+                                            buttonClass += "bg-white hover:bg-white text-black";
                                             icon = <CheckCircle className="h-5 w-5 text-primary" />;
                                         } else {
-                                            buttonClass += "bg-gray-200 text-black";
+                                            buttonClass += "bg-gray-200 hover:bg-gray-200 text-black";
                                             icon = <XCircle className="h-5 w-5 text-primary" />;
                                         }
                                     } else if (isThisChoiceCorrect) {
-                                        buttonClass += "text-black bg-white cursor-not-allowed";
+                                        buttonClass += "text-black bg-white hover:bg-white cursor-not-allowed";
                                         icon = <CheckCircle className="h-5 w-5 text-primary" />;
                                     } else {
-                                        buttonClass += "bg-gray-200 text-black cursor-not-allowed";
+                                        buttonClass += "bg-gray-200 hover:bg-gray-200 text-black cursor-not-allowed";
                                     }
                                 } else {
-                                    buttonClass += "bg-white text-black";
+                                    buttonClass += "bg-white hover:bg-white text-black";
                                 }
                                 return (
-                                    <Button key={index} onClick={() => handleAnswerSelect(choice)} disabled={!!selectedAnswerText} className={`${buttonClass.trim()} cursor-pointer`}>
+                                    <Button key={index} onClick={() => handleAnswerSelect(choice)} className={`${buttonClass.trim()} cursor-pointer`}>
                                         <span>{choice.text}</span>
                                         {icon}
                                     </Button>
@@ -262,7 +263,9 @@ function Quiz({ data: provinceName }: QuizProps) {
                     </div>
                     {selectedAnswerText && (
                         <div className="text-center mt-6">
-                            <Button onClick={handleNextQuestion}>
+                            <Button onClick={handleNextQuestion}
+                                className='bg-white text-primary hover:bg-white'
+                            >
                                 {currentQuestionIndex < quizData.questions.length - 1 ? t('next') : t('fquiz')}
                             </Button>
                         </div>
@@ -278,6 +281,7 @@ function Quiz({ data: provinceName }: QuizProps) {
                 </p>
                 <Button
                     onClick={handleStartQuiz}
+                    className='bg-white text-primary mt-4 hover:bg-white'
                 >
                     {t('sbtn')}
                 </Button>
