@@ -16,7 +16,7 @@ import TGtitle from '@/app/components/tgtitle';
 import ContentNotfound from '@/app/components/contentNotfound';
 import Markdown from 'react-markdown';
 import TSTV from './TSTV';
-import OSM from './OSM';
+import OSM from '../../components/OSM';
 
 type Props = {
     params: Promise<{ actid: string }>

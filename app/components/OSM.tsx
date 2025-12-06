@@ -42,7 +42,7 @@ function OSM({ location, link, address, name }: { location: { latitude: number, 
                         </TooltipContent>
                     </Tooltip>
                 </div>
-                <Map provider={mapProvider} height={500} defaultCenter={[location.latitude, location.longitude]} defaultZoom={14} attribution={false}>
+                <Map provider={mapProvider} height={500} defaultCenter={[location.latitude, location.longitude]} defaultZoom={15} attribution={false}>
                     <Marker width={50} anchor={[location.latitude, location.longitude]}>
                         <img src={PINS.src} alt="Icon" className='w-11' />
                     </Marker>

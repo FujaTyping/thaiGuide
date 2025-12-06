@@ -12,6 +12,7 @@ import Sharebt from '@/app/components/sharebt';
 import TGtitle from '@/app/components/tgtitle';
 import ContentNotfound from '@/app/components/contentNotfound';
 import Markdown from 'react-markdown';
+import OSM from '@/app/components/OSM';
 
 type Props = {
     params: Promise<{ resid: string }>
@@ -120,19 +121,16 @@ async function page({ params }: Props) {
                         <div className='w-32 h-1.5 bg-primary mt-2'></div>
                     </div>
                     {
-                        data.mapEmbed != "" ? <>
+                        data.mapEmbed ? <>
                             <iframe src={data.mapEmbed} className='w-full h-[500px] rounded-2xl' loading="lazy"></iframe>
                         </> : <>
-                            <div className='flex items-center flex-col justify-center gap-4 py-8'>
-                                <img src={NF.src} alt="Icon" className='w-28 translate-x-3' />
-                                <p className='font-semibold text-2xl'>{t('item.noview')}</p>
-                            </div>
+                            <OSM location={data.location} link={data.direction} name={data.title} address={data.addr} />
                         </>
                     }
                 </div>
             </main>
             <Sharebt />
-            
+
         </>
     )
 }

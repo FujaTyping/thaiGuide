@@ -19,6 +19,7 @@ import {
 import NF from "@/assets/media/card/icon/notfound.svg";
 import Customization from "@/assets/media/icon/Customization.svg";
 import { Coins } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface BannerR {
     bg: string;
@@ -147,13 +148,13 @@ function CustomizeBG() {
                                 <p className='mb-4'>{t('confirm.to')} <span className='font-bold text-primary'>{wantCbg?.title}</span></p>
                                 <DialogFooter>
                                     <DialogClose asChild>
-                                        <button className='p-2 px-5 rounded-xl border-2 cursor-pointer'>
+                                        <Button variant={'outline'}>
                                             {t('confirm.canBTN')}
-                                        </button>
+                                        </Button>
                                     </DialogClose>
-                                    <button onClick={updateBG} className='bg-primary text-white p-2 px-5 rounded-xl cursor-pointer'>
+                                    <Button onClick={updateBG} >
                                         {t('confirm.conBTN')}
-                                    </button>
+                                    </Button>
                                 </DialogFooter>
                             </>
                     }

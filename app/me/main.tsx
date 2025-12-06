@@ -52,9 +52,6 @@ function Main() {
                             <Details />
                         </TabsContent>
                         <TabsContent value="bdg">
-                            <div>
-                                <h1 className='font-bold text-2xl mt-1'>{t('badge.title')}</h1>
-                            </div>
                             <BBadge />
                         </TabsContent>
                         <TabsContent value="qz">

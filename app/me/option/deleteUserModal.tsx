@@ -20,6 +20,7 @@ import { server } from "@/app/config.json";
 import { useRouter } from 'next/navigation';
 import { signOut, User } from 'firebase/auth';
 import auth from "@/lib/firebaseAuth";
+import { Button } from '@/components/ui/button';
 
 function DeleteUserModal({ reqState, setReqState, user, open, setOpen }: { reqState: string, setReqState: (state: string) => void, user: User, open: boolean, setOpen: (state: boolean) => void }) {
     const t = useTranslations('Account');
@@ -89,13 +90,13 @@ function DeleteUserModal({ reqState, setReqState, user, open, setOpen }: { reqSt
                                                 </p>
                                             </div>
                                             <DialogFooter className='mt-2'>
-                                                <button onClick={deleteMyAccountNow} className='bg-primary text-white p-2 px-5 rounded-xl cursor-pointer'>
+                                                <Button onClick={deleteMyAccountNow}>
                                                     {t('option.delete.conBTN')}
-                                                </button>
+                                                </Button>
                                                 <DialogClose asChild>
-                                                    <button className='p-2 px-5 rounded-xl border-2 cursor-pointer'>
+                                                    <Button variant={'outline'}>
                                                         {t('option.delete.canBTN')}
-                                                    </button>
+                                                    </Button>
                                                 </DialogClose>
                                             </DialogFooter>
                                         </>

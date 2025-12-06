@@ -185,13 +185,12 @@ function Grid() {
                     </div>
                     {numDisplayedItems < filteredData.length && (
                         <div className="mt-8 flex items-center justify-center">
-                            <button
+                            <Button
                                 onClick={handleLoadMore}
-                                className="flex items-center gap-3 w-full md:w-fit justify-center bg-primary text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-[#f7640a] cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
                             >
                                 <ChevronDown />
                                 {t('more')}
-                            </button>
+                            </Button>
                         </div>
                     )}
                 </>

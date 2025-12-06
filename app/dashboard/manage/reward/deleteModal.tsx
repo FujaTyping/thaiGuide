@@ -11,6 +11,7 @@ import { motion } from 'motion/react';
 import NF from "@/assets/media/card/icon/notfound.svg";
 import { useTranslations } from 'next-intl';
 import { getCookie } from 'cookies-next/client';
+import { Button } from '@/components/ui/button';
 
 interface deleteMD {
     id: string
@@ -63,13 +64,13 @@ function DeleteModal({ open, setOpen, payload, MCC, setMCC }: { open: boolean, s
                                         <div className='flex items-center gap-2 mt-3'><h1 className='flex items-center text-primary font-semibold gap-2'><Table2 /> {t('delmodal.id')} : </h1>{payload.id}</div>
                                     </div>
                                     <DialogFooter className='mt-2'>
-                                        <button onClick={deleteBadge} className='bg-primary text-white p-2 px-5 rounded-xl cursor-pointer'>
+                                        <Button onClick={deleteBadge}>
                                             {t('delmodal.conBTN')}
-                                        </button>
+                                        </Button>
                                         <DialogClose asChild>
-                                            <button className='p-2 px-5 rounded-xl border-2 cursor-pointer'>
+                                            <Button variant={'outline'}>
                                                 {t('delmodal.canBTN')}
-                                            </button>
+                                            </Button>
                                         </DialogClose>
                                     </DialogFooter>
                                 </>

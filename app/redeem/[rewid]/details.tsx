@@ -23,6 +23,7 @@ import NF from "@/assets/media/card/icon/notfound.svg";
 import { useTranslations } from 'next-intl';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import LMIT from "@/assets/media/icon/Limit.svg";
+import { Button } from '@/components/ui/button';
 
 function Details({ data }: { data: any }) {
     const t = useTranslations('Redeem');
@@ -115,17 +116,17 @@ function Details({ data }: { data: any }) {
                             {parseInt(uData.point) >= parseInt(data.require) ? <>
                                 {
                                     data.quantity != "Unlimited" && parseInt(data.quantity) <= 0 ? <>
-                                        <button className={`bg-primary text-white p-2 rounded-xl px-5 mt-2 w-full md:w-fit cursor-not-allowed`}>
+                                        <Button className={`cursor-not-allowed`}>
                                             {t('items.oos')}
-                                        </button>
-                                    </> : <button onClick={() => { setTranscationState(""); setConfirmOpen(true); }} className='bg-primary text-white p-2 rounded-xl px-5 mt-2 w-full md:w-fit cursor-pointer'>
+                                        </Button>
+                                    </> : <Button onClick={() => { setTranscationState(""); setConfirmOpen(true); }} className='cursor-pointer'>
                                         {t('items.now')}
-                                    </button>
+                                    </Button>
                                 }
                             </> : <>
-                                <button className={`bg-primary text-white p-2 rounded-xl px-5 mt-2 w-full md:w-fit cursor-not-allowed`}>
+                                <Button className={`cursor-not-allowed`}>
                                     {t('items.needed')}
-                                </button>
+                                </Button>
                             </>}
                         </div>
                     </> : <>
@@ -194,13 +195,13 @@ function Details({ data }: { data: any }) {
                                             <p>{t('items.modal.0')} <b className='text-primary'>{t('items.modal.1')} {data.require} {t('items.modal.2')}</b> {t('items.modal.3')} {data.name}.</p>
                                             <DialogFooter>
                                                 <DialogClose asChild>
-                                                    <button className='p-2 px-5 rounded-xl border-2 cursor-pointer'>
+                                                    <Button className='cursor-pointer'>
                                                         {t('items.cancel')}
-                                                    </button>
+                                                    </Button>
                                                 </DialogClose>
-                                                <button onClick={CRedeem} className='bg-primary text-white p-2 px-5 rounded-xl cursor-pointer'>
+                                                <Button onClick={CRedeem} className='cursor-pointer' variant={'outline'}>
                                                     {t('items.confirm')}
-                                                </button>
+                                                </Button>
                                             </DialogFooter>
                                         </>
                                     }

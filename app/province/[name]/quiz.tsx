@@ -11,6 +11,7 @@ import auth from "@/lib/firebaseAuth";
 import { server } from "@/app/config.json";
 import ConfettiExplosion from 'react-confetti-explosion';
 import axios from 'axios';
+import { Button } from '@/components/ui/button';
 
 interface QuizProps {
     data: string;
@@ -178,12 +179,11 @@ function Quiz({ data: provinceName }: QuizProps) {
                         <img src={NF.src} alt="Icon" className='w-32 translate-x-3' />
                     </motion.div>
                     <p className='font-semibold text-2xl mb-2'>{t('error')}</p>
-                    <button
+                    <Button
                         onClick={handleStartQuiz}
-                        className="text-black bg-white px-6 py-2 rounded-lg md:w-fit w-full cursor-pointer"
                     >
                         {t('errorbtn')}
-                    </button>
+                    </Button>
                 </motion.div>
             );
         }
@@ -204,12 +204,12 @@ function Quiz({ data: provinceName }: QuizProps) {
                                     <p className='font-semibold'>{t('nolog')}</p>
                                 </div>
                             )}
-                            <button
+                            <Button
                                 onClick={handleRestartQuiz}
-                                className="text-black bg-white px-4 py-2 rounded-lg md:w-fit w-full cursor-pointer"
+                                className='bg-white text-primary hover:bg-white'
                             >
                                 {t('restartbtn')}
-                            </button>
+                            </Button>
                         </motion.div>
                     </div>
                 </>
@@ -237,35 +237,37 @@ function Quiz({ data: provinceName }: QuizProps) {
 
                                     if (isThisChoiceSelected) {
                                         if (isThisChoiceCorrect) {
-                                            buttonClass += "bg-white text-black";
+                                            buttonClass += "bg-white hover:bg-white text-black";
                                             icon = <CheckCircle className="h-5 w-5 text-primary" />;
                                         } else {
-                                            buttonClass += "bg-gray-200 text-black";
+                                            buttonClass += "bg-gray-200 hover:bg-gray-200 text-black";
                                             icon = <XCircle className="h-5 w-5 text-primary" />;
                                         }
                                     } else if (isThisChoiceCorrect) {
-                                        buttonClass += "text-black bg-white cursor-not-allowed";
+                                        buttonClass += "text-black bg-white hover:bg-white cursor-not-allowed";
                                         icon = <CheckCircle className="h-5 w-5 text-primary" />;
                                     } else {
-                                        buttonClass += "bg-gray-200 text-black cursor-not-allowed";
+                                        buttonClass += "bg-gray-200 hover:bg-gray-200 text-black cursor-not-allowed";
                                     }
                                 } else {
-                                    buttonClass += "bg-white text-black";
+                                    buttonClass += "bg-white hover:bg-white text-black";
                                 }
                                 return (
-                                    <button key={index} onClick={() => handleAnswerSelect(choice)} disabled={!!selectedAnswerText} className={`${buttonClass.trim()} cursor-pointer`}>
+                                    <Button key={index} onClick={() => handleAnswerSelect(choice)} className={`${buttonClass.trim()} cursor-pointer`}>
                                         <span>{choice.text}</span>
                                         {icon}
-                                    </button>
+                                    </Button>
                                 );
                             })}
                         </div>
                     </div>
                     {selectedAnswerText && (
                         <div className="text-center mt-6">
-                            <button onClick={handleNextQuestion} className="text-black bg-white rounded-lg px-4 py-2 md:w-fit w-full">
+                            <Button onClick={handleNextQuestion}
+                                className='bg-white text-primary hover:bg-white'
+                            >
                                 {currentQuestionIndex < quizData.questions.length - 1 ? t('next') : t('fquiz')}
-                            </button>
+                            </Button>
                         </div>
                     )}
                 </motion.div>
@@ -277,12 +279,12 @@ function Quiz({ data: provinceName }: QuizProps) {
                 <p>
                     {t('decs')} {provinceName.charAt(0).toUpperCase() + provinceName.slice(1)}?
                 </p>
-                <button
+                <Button
                     onClick={handleStartQuiz}
-                    className="bg-white text-black px-4 py-2 rounded-lg mt-4 md:w-fit w-full"
+                    className='bg-white text-primary mt-4 hover:bg-white'
                 >
                     {t('sbtn')}
-                </button>
+                </Button>
             </motion.div>
         );
     };

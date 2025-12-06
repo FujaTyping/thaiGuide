@@ -18,6 +18,7 @@ import NF from "@/assets/media/card/icon/notfound.svg";
 import CHK from "@/assets/media/icon/dashcheck.svg";
 import { useTranslations } from 'next-intl';
 import { getCookie } from 'cookies-next/client';
+import { Button } from '@/components/ui/button';
 
 function DeleteModal({ open, setOpen, id }: { open: boolean, setOpen: React.Dispatch<React.SetStateAction<boolean>>, id: string }) {
     const t = useTranslations('Dashboard.item.qrcode');
@@ -91,13 +92,13 @@ function DeleteModal({ open, setOpen, id }: { open: boolean, setOpen: React.Disp
                                                 <p className='flex items-center gap-1 mt-2'><span className='font-semibold text-primary flex items-center gap-2'><FileScan size={20} /> {t('qrid')} :</span> {id}</p>
                                             </div>
                                             <DialogFooter className='mt-2'>
-                                                <button onClick={deleteNow} className='bg-primary text-white p-2 px-5 rounded-xl cursor-pointer'>
+                                                <Button onClick={deleteNow}>
                                                     {t('conBTN')}
-                                                </button>
+                                                </Button>
                                                 <DialogClose asChild>
-                                                    <button className='p-2 px-5 rounded-xl border-2 cursor-pointer'>
+                                                    <Button variant={'outline'}>
                                                         {t('canBTN')}
-                                                    </button>
+                                                    </Button>
                                                 </DialogClose>
                                             </DialogFooter>
                                         </>
