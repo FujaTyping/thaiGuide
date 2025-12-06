@@ -4,6 +4,7 @@ import { createCanvas, loadImage, GlobalFonts } from "@napi-rs/canvas";
 import QRCode from 'qrcode'
 import db from "../../../lib/firebase";
 import { doc, getDoc } from "firebase/firestore";
+import { wrapText } from "../../../lib/canvas";
 
 GlobalFonts.registerFromPath('./data/firaCode.ttf', 'Firacode')
 GlobalFonts.registerFromPath('./data/firacode-bold.ttf', 'Firacode Bold')
@@ -43,7 +44,10 @@ async function createNew({ body, set, headers }: { headers: typeof transactionDe
         ctx.fillStyle = '#000';
 
         ctx.font = '50px Firacode Bold';
-        ctx.fillText(data?.place, 240, (docImage.height / 2) - 230);
+        const placeMaxWidth = (docImage.width / 2) - 50;
+        const placeLineHeight = 60;
+        await wrapText(ctx, data?.place || '', 240, (docImage.height / 2) - 230, placeMaxWidth, placeLineHeight);
+
         ctx.fillText(data?.point.slice(1), (docImage.width / 2) + 200, (docImage.height / 2) - 230);
 
         ctx.font = '50px Firacode';
@@ -71,7 +75,7 @@ async function createNew({ body, set, headers }: { headers: typeof transactionDe
                 type: 'image/png',
             });
             const qrImage = await loadImage(url);
-            ctx.drawImage(qrImage,180, (docImage.height/2) + 245, qrImage.width, qrImage.height);
+            ctx.drawImage(qrImage, 180, (docImage.height / 2) + 245, qrImage.width, qrImage.height);
         }
 
         set.headers['Content-Type'] = 'image/png';

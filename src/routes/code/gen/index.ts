@@ -2,6 +2,7 @@ import type { ElysiaApp } from "../../../index";
 import { t } from "elysia"
 import { createCanvas, loadImage, GlobalFonts } from "@napi-rs/canvas";
 import QRCode from 'qrcode'
+import { wrapText } from "../../../lib/canvas";
 
 GlobalFonts.registerFromPath('./data/canva-sans-bold.otf', 'Canva Sans Bold')
 
@@ -26,7 +27,10 @@ async function createNew({ body, set }: { body: typeof generateCodeDoc.body.stat
     ctx.fillStyle = '#FFF';
 
     ctx.font = '90px Canva Sans Bold';
-    ctx.fillText(name, (docImage.width / 2) + 25, docImage.height / 2 - 500);
+    const maxWidth = docImage.width - 300;
+    const lineHeight = 90;
+    const x = (docImage.width / 2) + 25;
+    await wrapText(ctx, name, x, docImage.height / 2 - 530, maxWidth, lineHeight, true);
 
     try {
         const url = await QRCode.toDataURL(id, {
