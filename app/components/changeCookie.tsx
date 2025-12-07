@@ -69,10 +69,10 @@ function ChangeCookie({ isAdmin }: { isAdmin: boolean }) {
                         </p>
                     </DialogHeader>
                     <DialogFooter>
-                        <DialogClose asChild className='p-2 px-5 rounded-xl border-2 cursor-pointer'>
+                        <DialogClose asChild>
                             <Button variant="outline">{t('lang.cancel')}</Button>
                         </DialogClose>
-                        <Button className='bg-primary hover:bg-white hover:text-primary hover:border-primary border-2 border-white text-white p-2 px-5 rounded-xl cursor-pointer' type="submit" onClick={() => { setCookie('NEXT_LOCALE', wlang, {}); setModalO(false); window.location.reload(); }}>{t('lang.change')}</Button>
+                        <Button  type="submit" onClick={() => { setCookie('NEXT_LOCALE', wlang, {}); setModalO(false); window.location.reload(); }}>{t('lang.change')}</Button>
                     </DialogFooter>
                 </DialogContent>
             </Dialog>

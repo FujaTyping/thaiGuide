@@ -248,7 +248,9 @@
             "title": "Kuiz",
             "realtitle": "Selesaikan Kuiz",
             "noneed": "Tiada kuiz yang telah diselesaikan",
-            "comat": "Selesai pada"
+            "comat": "Selesai pada",
+            "tip1": "Lawati halaman wilayah untuk menguji pengetahuan anda",
+            "tip2": "dan dapatkan mata tambahan"
         },
         "lvl": "Tahap",
         "scan": {

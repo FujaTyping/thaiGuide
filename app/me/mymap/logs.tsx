@@ -12,6 +12,11 @@ import { motion } from 'motion/react';
 import NF from "@/assets/media/card/icon/notfound.svg";
 import { Button } from '@/components/ui/button';
 import { useTranslations } from 'next-intl';
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface itemList {
     name: string;
@@ -78,7 +83,14 @@ function Logs() {
                                 </div>
                                 <div className='h-full'
                                 >
-                                    <p className='bg-primary p-1 px-3 text-sm text-white rounded-full'>{moment.unix(item.timestamp.seconds).fromNow()}</p>
+                                    <Tooltip>
+                                        <TooltipTrigger><p className='bg-primary p-1 px-3 text-sm text-white rounded-full cursor-help'>{moment.unix(item.timestamp.seconds).fromNow()}</p></TooltipTrigger>
+                                        <TooltipContent>
+                                            <p>
+                                                {moment.unix(item.timestamp.seconds).format('LL')}
+                                            </p>
+                                        </TooltipContent>
+                                    </Tooltip>
                                 </div>
                             </motion.div>
                         ))}
