@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Logo from "@/assets/icon.png";
 import Image from 'next/image';
 import { Columns3Cog, KeyRound, Languages, LoaderCircle, LogOut, MapPinned, Menu, Music, Pause, Play, Settings2, Smile, Trophy, UserRound } from 'lucide-react';
@@ -67,7 +67,6 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { AudioPlayer, AudioPlayerRef } from 'react-audio-play';
 
 const NavItems = [
     {
@@ -95,8 +94,6 @@ function Navbar() {
     const [isAd, setIsAd] = useState<boolean>(false);
     const [searchToogle, setSearchToogle] = useState(false);
     const [toggleNavbar, setToggleNavbar] = useState(false);
-    const playerRef = useRef<AudioPlayerRef>(null);
-    const [play, setPlay] = useState(false);
 
     const adminFormSchema = z.object({
         email: z.string().min(11, t('login.admin.require.username')),
@@ -258,7 +255,6 @@ function Navbar() {
     }
     return (
         <>
-            <AudioPlayer ref={playerRef} src="/audio/bgm/Jai-Yen Lounge.wav" style={{ display: "none" }} volume={30} loop />
             <main className='border-b-10 border-primary'>
                 <nav className='max-w-7xl flex items-center mx-auto p-3 w-full place-content-between'>
                     <Link href={"/"}>
@@ -335,36 +331,6 @@ function Navbar() {
                                             </>
                                         }
                                         <DropdownMenuItem className='flex items-center gap-2 cursor-pointer' onClick={handleLogout}><LogOut className='text-primary' /> {t('logout')}</DropdownMenuItem>
-                                        <DropdownMenuSeparator />
-                                        <DropdownMenuLabel className='flex items-center place-content-between gap-4'>
-                                            <div className='flex items-center gap-2'>
-                                                <Music size={16} className='text-primary' /> <p className='text-sm font-normal'>Jai-Yen Lounge</p>
-                                            </div>
-                                            <Tooltip>
-                                                <TooltipTrigger>
-                                                    <div className='flex items-center gap-1 text-primary' onClick={() => setPlay(!play)}>
-                                                        <AnimatePresence mode='wait'>
-                                                            <motion.div
-                                                                key={play ? 'show' : 'hide'}
-                                                                initial={{ rotate: 30 }}
-                                                                animate={{ rotate: 0 }}
-                                                                exit={{ rotate: -30 }}
-                                                            >
-                                                                {
-                                                                    play ?
-                                                                        <Pause size={17} onClick={() => playerRef.current?.pause()} className='cursor-pointer' /> :
-                                                                        <Play size={17} onClick={() => playerRef.current?.play()} className='cursor-pointer' />
-
-                                                                }
-                                                            </motion.div>
-                                                        </AnimatePresence>
-                                                    </div>
-                                                </TooltipTrigger>
-                                                <TooltipContent>
-                                                    <p>{play ? t('player.pause') : t('player.play')}</p>
-                                                </TooltipContent>
-                                            </Tooltip>
-                                        </DropdownMenuLabel>
                                     </DropdownMenuContent>
                                 </DropdownMenu> : <KeyRound onClick={() => setLoginM(true)} />}
                             </>}

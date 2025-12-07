@@ -7,6 +7,7 @@ import { Autoplay } from 'swiper/modules';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import SDG from "@/assets/media/sdg/SDGs.svg";
+import Image from 'next/image';
 
 const ToolsItems = [
     {
@@ -90,7 +91,7 @@ function Tools() {
                                         <div className='bg-primary w-fit p-4 rounded-full'>
                                             {
                                                 item.image ? (
-                                                    <img className='group-hover:scale-120 transition-all duration-150 w-6.5' src={item.image.src} alt="Icon" />
+                                                    <Image width={24} height={24} className='group-hover:scale-120 transition-all duration-150' src={item.image.src} alt="Icon" />
                                                 ) : item.icon && (
                                                     <item.icon className='text-white group-hover:scale-120 transition-all duration-150' />
                                                 )

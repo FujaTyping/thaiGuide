@@ -107,13 +107,12 @@ function Activities() {
                                         className='relative md:col-span-2'
                                     >
                                         <Link href={`/activity/${currentActivity.id}`}>
-                                            <div>
+                                            <div className='h-[300px] md:h-[460px] w-full'>
                                                 <Image
                                                     src={currentActivity.thumnails}
                                                     alt={currentActivity.title}
-                                                    className='rounded-4xl h-[300px] md:h-[460px] w-full object-cover'
-                                                    height={1000}
-                                                    width={1280}
+                                                    className='rounded-4xl object-cover'
+                                                    fill
                                                 />
                                                 <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-primary/70 to-transparent text-white rounded-b-4xl'>
                                                     <h1 className='text-2xl md:text-3xl lg:text-4xl font-bold mb-2'>{currentActivity.title}</h1>
