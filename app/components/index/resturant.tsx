@@ -120,7 +120,7 @@ function Resturant() {
                           <div
                             className="w-full h-[350px] md:h-[500px] rounded-4xl overflow-hidden relative"
                           >
-                            <Image width={1080} height={1280} className='w-full h-full object-cover' src={item.thumnails} alt={item.name} />
+                            <Image fill className='w-full h-full object-cover' src={item.thumnails} alt={item.name} />
                             <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"></div>
                           </div>
                           <motion.div

@@ -7,6 +7,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import Image from "next/image";
 
 function Footer() {
   const t = useTranslations("FooterBar");
@@ -19,12 +20,14 @@ function Footer() {
             <div className="flex gap-3 items-center justify-center w-full">
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Link href={"https://www.tat.or.th/"}>
-                    <img
+                  <Link href={"https://www.tat.or.th/"} className="relative">
+                    <Image
                       src={ICONTAT.src}
                       alt="Logo"
                       loading="lazy"
-                      className="w-14 h-14 object-cover"
+                      width={60}
+                      height={60}
+                      className="object-cover"
                     />
                   </Link>
                 </TooltipTrigger>
