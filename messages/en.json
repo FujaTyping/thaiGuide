@@ -250,7 +250,9 @@
       "title": "Quiz",
       "realtitle": "Complete Quiz",
       "noneed": "There is no completed quiz",
-      "comat": "Complete at"
+      "comat": "Complete at",
+      "tip1": "Visit the province page to test your knowledge",
+      "tip2": "and score extra points"
     },
     "lvl": "Level",
     "scan": {

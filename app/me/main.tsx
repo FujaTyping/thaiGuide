@@ -8,6 +8,12 @@ import Details from './details';
 import { useTranslations } from 'next-intl';
 import CustomizeBG from './customize/backgroud';
 import { getCookie, setCookie } from 'cookies-next/client';
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { CircleQuestionMark } from 'lucide-react';
 
 function Main() {
     const t = useTranslations('Profile');
@@ -55,8 +61,15 @@ function Main() {
                             <BBadge />
                         </TabsContent>
                         <TabsContent value="qz">
-                            <div>
-                                <h1 className='font-bold text-2xl mt-1'>{t('quiz.realtitle')}</h1>
+                            <div className='flex items-center gap-3 mt-1'>
+                                <h1 className='font-bold text-2xl'>{t('quiz.realtitle')}</h1>
+                                <Tooltip>
+                                    <TooltipTrigger className='mt-0.5 cursor-help'><CircleQuestionMark /></TooltipTrigger>
+                                    <TooltipContent>
+                                        <p>{t('quiz.tip1')}</p>
+                                        <p>{t('quiz.tip2')}</p>
+                                    </TooltipContent>
+                                </Tooltip>
                             </div>
                             <Quiz />
                         </TabsContent>
