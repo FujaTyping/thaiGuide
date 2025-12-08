@@ -32,15 +32,13 @@ function Activities() {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const response = await axios.get(`${server}/activities`);
+                const response = await axios.get(`${server}/activities`, {
+                    params: {
+                        limit: 5
+                    }
+                });
                 const fetchedActivities: Activity[] = response.data || [];
-
-                if (fetchedActivities.length > 5) {
-                    const shuffled = [...fetchedActivities].sort(() => 0.5 - Math.random());
-                    setData(shuffled.slice(0, 5));
-                } else {
-                    setData(fetchedActivities);
-                }
+                setData(fetchedActivities);
             } catch (err) {
                 console.error("Error fetching activities:", err);
                 setData([]);

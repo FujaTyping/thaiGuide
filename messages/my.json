@@ -802,7 +802,9 @@
                     "0": "Pengumpul mata terunggul",
                     "1": "Hampir sampai! Teruskan usaha",
                     "2": "Tempat ketiga, tetapi gergasi mata"
-                }
+                },
+                "f1": "Teratas",
+                "f2": "Pemain di Papan"
             },
             "mcn": {
                 "header": "Daftar Masuk Terbanyak",
@@ -813,7 +815,9 @@
                     "0": "Tinggal di sini atau hanya melancong 24/7?",
                     "1": "Tempat kedua, tetapi pertama dalam perbatuan",
                     "2": "Tempat ketiga, kaki anda layak mendapat spa"
-                }
+                },
+                "f1": "Berada di Kedudukan Teratas",
+                "f2": "daripada semua penjelajah"
             }
         }
     },
