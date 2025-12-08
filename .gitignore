@@ -43,3 +43,4 @@ bun.lock
 **/*.log
 package-lock.json
 **/*.bun
+*.report.html

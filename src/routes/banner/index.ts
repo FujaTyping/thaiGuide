@@ -11,6 +11,10 @@ const getInfoHandler = async () => {
         Data.push(doc.data());
     });
 
+    Data.sort((a, b) => {
+        return (b.priority === true ? 1 : 0) - (a.priority === true ? 1 : 0);
+    });
+
     return Data;
 };
 

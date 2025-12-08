@@ -1,5 +1,5 @@
 import type { ElysiaApp } from "../../index";
-import { collection, query, getDocs, DocumentData, setDoc, doc } from "firebase/firestore";
+import { collection, query, getDocs, DocumentData, setDoc, doc, limit } from "firebase/firestore";
 import db from "../../lib/firebase";
 import { generateRandomId } from '../../lib/randomid';
 import { t } from "elysia";
@@ -12,7 +12,7 @@ const newResBodySchema = t.Object({
 
 const getInfoHandler = async () => {
     let Data: DocumentData[] = [];
-    const q = query(collection(db, "feedback"));
+    const q = query(collection(db, "feedback"), limit(10));
 
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {

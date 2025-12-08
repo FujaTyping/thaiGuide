@@ -51,22 +51,6 @@ async function eventCycle() {
             ],
             "attachments": []
         }
-    } else {
-        payload = {
-            "content": "**🔶 Notice**",
-            "embeds": [
-                {
-                    "author": {
-                        "name": "ThaiGuide Backend",
-                        "icon_url": "https://www.thaiguide.in.th/icon-512x512.png"
-                    },
-                    "color": 16217098,
-                    "title": "🗃️ EventCycle | Cron job report!",
-                    "description": `Job has successfully done at ${moment().format('MMMM Do YYYY, h:mm:ss a')}, But no items was removed :D`
-                }
-            ],
-            "attachments": []
-        }
     }
     await sendHooks({ data: payload });
 }

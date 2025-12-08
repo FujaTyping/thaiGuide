@@ -1,5 +1,5 @@
 import type { ElysiaApp } from "../../index";
-import { collection, query, getDocs, DocumentData, doc, getDoc, where, orderBy } from "firebase/firestore";
+import { collection, query as fbquery, getDocs, DocumentData, doc, getDoc, where, orderBy, limit, Query } from "firebase/firestore";
 import db from "../../lib/firebase";
 import { t } from "elysia";
 
@@ -15,9 +15,21 @@ const GetRandomActivitiesProvinceBodySchema = t.Object({
     province: t.String()
 });
 
-const getInfoHandler = async () => {
+const GetSchema = {
+    query: t.Object({
+        limit: t.Optional(t.Number())
+    })
+}
+
+const getInfoHandler = async ({ query, set }: { query: typeof GetSchema.query.static, set: { status: number } }) => {
     let Data: DocumentData[] = [];
-    const q = query(collection(db, "activities"));
+    let q: Query;
+
+    if (query.limit) {
+        q = fbquery(collection(db, "activities"), limit(query.limit));
+    } else {
+        q = fbquery(collection(db, "activities"));
+    }
 
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
@@ -51,7 +63,7 @@ const getIdInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.
                 if (userData.haveticket) {
                     let ticket: any = [];
                     const tickRef = collection(db, "activities", docId, "ticket")
-                    const tickSnapshot = await getDocs(query(tickRef , orderBy("price", "asc")))
+                    const tickSnapshot = await getDocs(query(tickRef, orderBy("price", "asc")))
 
                     tickSnapshot.forEach((doc) => {
                         ticket.push(doc.data());
@@ -158,7 +170,7 @@ const getRandomActProvinceInfoHandler = async ({ body, set }: { body: typeof Get
 };
 
 export default (app: ElysiaApp) => app
-    .get("/", getInfoHandler)
+    .get("/", getInfoHandler, GetSchema)
     .put("/getbyid", getIdInfoHandler, {
         body: GetByIdBodySchema
     })

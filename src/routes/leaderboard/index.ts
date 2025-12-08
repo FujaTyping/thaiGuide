@@ -1,10 +1,10 @@
 import type { ElysiaApp } from "../../index";
-import { collection, query, getDocs, DocumentData, orderBy } from "firebase/firestore";
+import { collection, query, getDocs, DocumentData, orderBy, limit } from "firebase/firestore";
 import db from "../../lib/firebase";
 
 const getInfoHandler = async () => {
     let Data: DocumentData[] = [];
-    const q = query(collection(db, "Users"), orderBy("point", "desc"));
+    const q = query(collection(db, "Users"), orderBy("point", "desc"), limit(20));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
         let qd = doc.data();
@@ -25,7 +25,7 @@ const getInfoHandler = async () => {
 
 const getCheckInfoHandler = async () => {
     let Data: DocumentData[] = [];
-    const q = query(collection(db, "Users"), orderBy("checkin", "desc"));
+    const q = query(collection(db, "Users"), orderBy("checkin", "desc"), limit(20));
 
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {

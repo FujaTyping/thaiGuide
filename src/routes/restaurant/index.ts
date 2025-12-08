@@ -1,5 +1,5 @@
 import type { ElysiaApp } from "../../index";
-import { collection, query, getDocs, DocumentData, doc, getDoc } from "firebase/firestore";
+import { collection, query as fbquery, getDocs, DocumentData, doc, getDoc, limit, orderBy, Query } from "firebase/firestore";
 import db from "../../lib/firebase";
 import { t } from "elysia";
 
@@ -7,9 +7,21 @@ const GetByIdBodySchema = t.Object({
     id: t.String()
 });
 
-const getInfoHandler = async () => {
+const GetSchema = {
+    query: t.Object({
+        limit: t.Optional(t.Number())
+    })
+}
+
+const getInfoHandler = async ({ query, set }: { query: typeof GetSchema.query.static, set: { status: number } }) => {
     let Data: DocumentData[] = [];
-    const q = query(collection(db, "restaurant"));
+    let q: Query;
+
+    if (query.limit) {
+        q = fbquery(collection(db, "restaurant"), limit(query.limit));
+    } else {
+        q = fbquery(collection(db, "restaurant"));
+    }
 
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
@@ -66,7 +78,7 @@ const getIdInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.
 };
 
 export default (app: ElysiaApp) => app
-    .get("/", getInfoHandler)
+    .get("/", getInfoHandler, GetSchema)
     .put("/getbyid", getIdInfoHandler, {
         body: GetByIdBodySchema
     });
