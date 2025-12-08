@@ -49,7 +49,7 @@ function Banner() {
                             <div
                                 className='relative overflow-hidden rounded-b-4xl w-full h-[550px] md:h-[700px] '
                             >
-                                <Image fetchPriority={'high'} src={PHD.src} className='object-cover' fill alt={'Placeholder'} />
+                                <Image loading='eager' fetchPriority={'high'} src={PHD.src} className='object-cover' fill alt={'Placeholder'} />
                                 <LoaderCircle className="absolute top-[70%] left-1/2 z-99 -translate-x-1/2 -translate-y-1/2 animate-spin text-primary w-10 h-10" />
                                 <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-primary/70 to-transparent text-white rounded-b-4xl text-center'></div>
                             </div>

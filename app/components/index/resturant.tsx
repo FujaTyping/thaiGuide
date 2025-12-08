@@ -48,15 +48,13 @@ function Resturant() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`${server}/restaurant`);
+        const response = await axios.get(`${server}/restaurant`, {
+          params: {
+            limit: 7
+          }
+        });
         const fetchedRestaurants: RoadtripItem[] = response.data || [];
-
-        if (fetchedRestaurants.length > 7) {
-          const shuffled = [...fetchedRestaurants].sort(() => 0.5 - Math.random());
-          setData(shuffled.slice(0, 7));
-        } else {
-          setData(fetchedRestaurants);
-        }
+        setData(fetchedRestaurants);
       } catch (err) {
         console.error("Error fetching restaurant:", err);
         setData([]);

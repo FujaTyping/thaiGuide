@@ -804,7 +804,9 @@
           "0": "The ultimate point collector",
           "1": "So close! Keep up the grind",
           "2": "Third place, but a point giant"
-        }
+        },
+        "f1": "Top",
+        "f2": "Players on the Board"
       },
       "mcn": {
         "header": "Most Check-In",
@@ -815,7 +817,9 @@
           "0": "Living here or just traveling 24/7?",
           "1": "Second place, but first in mileage",
           "2": "Third place, your feet deserve a spa"
-        }
+        },
+        "f1": "Ranked in the Top",
+        "f2": "of all explorers"
       }
     }
   },

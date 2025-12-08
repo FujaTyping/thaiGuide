@@ -29,15 +29,13 @@ function Roadtrip() {
         const fetchData = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get(`${server}/roadtrip`);
+                const response = await axios.get(`${server}/roadtrip`, {
+                    params: {
+                        limit: 7
+                    }
+                });
                 const fetchedRoadtrips: RoadtripItem[] = response.data || [];
-
-                if (fetchedRoadtrips.length > 3) {
-                    const shuffled = [...fetchedRoadtrips].sort(() => 0.5 - Math.random());
-                    setData(shuffled.slice(0, 3));
-                } else {
-                    setData(fetchedRoadtrips);
-                }
+                setData(fetchedRoadtrips);
             } catch (err) {
                 console.error("Error fetching roadtrip:", err);
                 setData([]);
