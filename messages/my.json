@@ -37,7 +37,8 @@
             "modal": {
                 "title": "Sedia untuk meneroka?",
                 "decs": "Log masuk untuk memulakan perjalanan anda, kumpul lencana, jejaki perjalanan anda, dan dapatkan tip perjalanan yang dibuat khas untuk anda",
-                "withgoogle": "Log masuk dengan Google"
+                "withgoogle": "Log masuk dengan Google",
+                "withfacebook": "Log masuk dengan Facebook"
             },
             "admin": {
                 "title": "Log Masuk Pentadbir",
@@ -895,7 +896,7 @@
             },
             "4": {
                 "title": "Hak Anda",
-                "decs": "Anda boleh mengakses, menukar, atau memadam data peribadi anda pada bila-bila masa dan memilih untuk tidak menerima komunikasi."
+                "decs": "Anda boleh mengakses, mengemas kini, atau memadam data peribadi anda pada bila-bila masa. Anda juga boleh memilih untuk tidak menerima komunikasi pada bila-bila masa yang anda mahu. Selain itu, anda boleh memadam keseluruhan akaun anda dan semua data yang berkaitan melalui **Pilihan Akaun** dalam tetapan profil anda."
             },
             "5": {
                 "title": "Perubahan pada Dasar Ini",
