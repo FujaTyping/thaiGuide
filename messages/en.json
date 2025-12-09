@@ -37,7 +37,8 @@
       "modal": {
         "title": "Ready to explore?",
         "decs": "Log in to unlock your journey collect badges, track your trips, and get travel tips made just for you",
-        "withgoogle": "Login with Google"
+        "withgoogle": "Login with Google",
+        "withfacebook": "Login with Facebook"
       },
       "admin": {
         "title": "Administrator Login",
@@ -897,7 +898,7 @@
       },
       "4": {
         "title": "Your Rights",
-        "decs": "You can access, change, or delete your personal data at any time and opt out of communications."
+        "decs": "You can access, update, or delete your personal data at any time. You can also opt out of communications whenever you wish. Additionally, you can delete your entire account and all associated data through the **Account Options** in your profile settings."
       },
       "5": {
         "title": "Changes to This Policy",
