@@ -1332,5 +1332,9 @@
     "mtt": "Discover What You Need",
     "mtd": "Search for activities, restaurants, and more across Thailand.",
     "placeholders": "Search for anything"
+  },
+  "Credit": {
+    "title": "Credit",
+    "decs": "This page provides proper attribution for all assets, icons, images, and resources used in ThaiGuide. We acknowledge and credit the creators whose work helps make this project possible"
   }
 }

@@ -46,6 +46,7 @@ function Footer() {
               <h2 className="font-semibold text-lg">{t("DOCTitle")}</h2>
               <Link href={"/terms"}>{t("terms")}</Link>
               <Link href={"/privacy"}>{t("pp")}</Link>
+              <Link href={"/credit"}>Credit</Link>
             </div>
             <div className="flex flex-col items-center md:items-end gap-1 w-full md:w-fit">
               <h2 className="font-semibold text-lg">{t("CUSTitle")}</h2>
