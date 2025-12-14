@@ -4,13 +4,15 @@ export default function manifest(): MetadataRoute.Manifest {
     return {
         name: 'ThaiGuide',
         short_name: 'ThaiGuide',
-        description: 'Explore, Earn, and Enjoy',
+        id: "thaiguide",
+        description: 'Experience Thailand like never before through fun travel quests, point systems, and rewards. Powered by AI and emotional design, our platform turns every trip into an adventure full of memories',
         start_url: '/@me',
         display: 'standalone',
         background_color: '#ffffff',
         theme_color: '#f7740a',
         orientation: "portrait",
         categories: ["travel", "navigation"],
+        lang: "en",
         dir: "ltr",
         icons: [
             {
