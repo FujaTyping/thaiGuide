@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 3033/tcp
 
-CMD [ "bun","run","src/index.ts" ]
+CMD [ "bun","run","start" ]

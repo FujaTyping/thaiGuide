@@ -1,5 +1,5 @@
 import type { ElysiaApp } from "../../index";
-import { collection, query as fbquery, getDocs, DocumentData, doc, getDoc, where, orderBy, limit, Query } from "firebase/firestore";
+import { collection, query as fbquery, getDocs, DocumentData, doc, getDoc, where, orderBy, limit, Query, query } from "firebase/firestore";
 import db from "../../lib/firebase";
 import { t } from "elysia";
 
@@ -92,7 +92,7 @@ const getIdInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.
         }
     } catch (error) {
         set.status = 500;
-        return { error: "An error occurred while fetching the document." };
+        return { error: "An error occurred while fetching the document.", message: error.message };
     }
 };
 
