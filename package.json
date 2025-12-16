@@ -20,6 +20,7 @@
     "elysia-autoload": "^1.5.2",
     "elysia-rate-limit": "^4.4.0",
     "elysiajs-cdn-cache": "^0.0.13",
+    "figlet": "^1.9.4",
     "firebase": "11.8.0",
     "genkit": "^1.12.0",
     "geolib": "^3.3.4",
