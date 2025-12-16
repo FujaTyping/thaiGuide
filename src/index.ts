@@ -26,7 +26,7 @@ const app = new Elysia()
   .listen(3033);
 
 console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
+  `[LOG] Elysia is running at ${app.server?.hostname}:${app.server?.port}`
 );
 
 const jobEvent = new CronJob(
@@ -36,6 +36,7 @@ const jobEvent = new CronJob(
   true,
   'Asia/Bangkok'
 );
+console.log(`[CRON] Event cleanner is running`)
 
 const jobBanner = new CronJob(
   '0 8 * * *',
@@ -44,5 +45,6 @@ const jobBanner = new CronJob(
   true,
   'Asia/Bangkok'
 );
+console.log(`[CRON] Banner cleanner is running`)
 
 export type ElysiaApp = typeof app;
