@@ -16,7 +16,6 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog";
-import QRCode from "react-qr-code";
 import {
     Tooltip,
     TooltipContent,
