@@ -19,8 +19,9 @@ import CountUp from '@/components/bits/CountUp.tsx/CountUp';
 import MIS from "@/assets/media/map/mystery.svg";
 import FP from "@/assets/media/map/found.svg";
 import MPIN from "@/assets/media/map/pinman.svg";
+import { AudioPlayer, AudioPlayerRef } from 'react-audio-play';
 
-import { CalendarCheck2, EyeClosed, LockOpen, MapPinHouse, Milestone, Telescope, Lock } from 'lucide-react';
+import { CalendarCheck2, EyeClosed, LockOpen, MapPinHouse, Milestone, Telescope, Lock, HeadphoneOff, Headphones } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
@@ -45,6 +46,8 @@ function PMap() {
     const [data, setData] = useState<any>();
     const [lockMap, setLockMap] = useState(false);
     const { theme } = useTheme();
+    const [toggleMusic, setToggleMusic] = useState(false);
+    const playerRef = useRef<AudioPlayerRef>(null);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -110,6 +113,7 @@ function PMap() {
 
     return (
         <>
+            <AudioPlayer ref={playerRef} src={`${server}/sfx/bangkokTwilight`} style={{ display: "none" }} volume={40} loop />
             <div className='max-w-7xl mx-auto px-4 py-2 -mb-2'>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mb-5'>
                     <div className='border-3 border-primary rounded-2xl p-4 px-5 flex items-start gap-6'>
@@ -154,11 +158,19 @@ function PMap() {
                 <div className='relative'>
                     <div className='absolute bottom-4 right-4 z-1 flex items-center gap-3'>
                         <Tooltip>
-                            <TooltipTrigger>
-                                <Button className='cursor-pointer' onClick={() => setLockMap(!lockMap)}>{lockMap ? <LockOpen /> : <Lock />}</Button>
+                            <TooltipTrigger asChild>
+                                <div className='cursor-pointer bg-primary p-2 text-white rounded-sm' onClick={() => setLockMap(!lockMap)}>{lockMap ? <LockOpen size={18} /> : <Lock size={18} />}</div>
                             </TooltipTrigger>
                             <TooltipContent>
                                 <p>{t('mapLock')}</p>
+                            </TooltipContent>
+                        </Tooltip>
+                        <Tooltip>
+                            <TooltipTrigger asChild>
+                                <div className='cursor-pointer bg-primary p-2 text-white rounded-sm'>{toggleMusic ? <Headphones size={18} onClick={() => { playerRef.current?.pause(); setToggleMusic(false) }} /> : <HeadphoneOff size={18} onClick={() => { playerRef.current?.play(); setToggleMusic(true) }} />}</div>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                <p>{t('musicLock')}</p>
                             </TooltipContent>
                         </Tooltip>
                     </div>

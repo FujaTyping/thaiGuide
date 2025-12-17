@@ -915,6 +915,7 @@
     "noenough": "No enough data to display",
     "decs": "Your personal map to undiscovered gems and favorite places across Thailand. Mark spots you want to visit and keep track of the places you've discovered.",
     "mapLock": "Track My Location on Map",
+    "musicLock": "Toggle background music on or off while exploring the map",
     "unseen": {
       "title": "Undiscovered Place",
       "decs": "Start exploring to uncover new destinations",

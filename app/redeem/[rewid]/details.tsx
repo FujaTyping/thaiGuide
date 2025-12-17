@@ -116,15 +116,15 @@ function Details({ data }: { data: any }) {
                             {parseInt(uData.point) >= parseInt(data.require) ? <>
                                 {
                                     data.quantity != "Unlimited" && parseInt(data.quantity) <= 0 ? <>
-                                        <Button className={`cursor-not-allowed`}>
+                                        <Button className={`cursor-not-allowed mt-2`}>
                                             {t('items.oos')}
                                         </Button>
-                                    </> : <Button onClick={() => { setTranscationState(""); setConfirmOpen(true); }} className='cursor-pointer'>
+                                    </> : <Button onClick={() => { setTranscationState(""); setConfirmOpen(true); }} className='cursor-pointer mt-2'>
                                         {t('items.now')}
                                     </Button>
                                 }
                             </> : <>
-                                <Button className={`cursor-not-allowed`}>
+                                <Button className={`cursor-not-allowed mt-2`}>
                                     {t('items.needed')}
                                 </Button>
                             </>}
