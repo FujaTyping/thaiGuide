@@ -85,7 +85,7 @@ async function page({ params }: Props) {
                         <p>{data.province.charAt(0).toUpperCase() + data.province.slice(1)}</p>
                     </div>
                 </Link>
-                <p className='mt-2'><Markdown>{data.decs}</Markdown></p>
+                <div className='mt-2'><Markdown>{data.decs}</Markdown></div>
                 <div className='flex items-center gap-2 mt-2 mb-10'>
                     {
                         data.tags.map((tag: string, index: number) => (

@@ -3,6 +3,7 @@ import createNextIntlPlugin from 'next-intl/plugin';
 
 const nextConfig: NextConfig = {
   /* config options here */
+  poweredByHeader: false,
   images: {
     remotePatterns: [
       {
@@ -34,6 +35,31 @@ const nextConfig: NextConfig = {
         destination: '/me/option',
       },
     ];
+  },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: 'https://www.thaiguide.in.th',
+          },
+          {
+            key: 'Content-Security-Policy',
+            value: "img-src 'self' ik.imagekit.io"
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN'
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=86400'
+          }
+        ],
+      },
+    ]
   },
   compiler: {
     removeConsole: {
