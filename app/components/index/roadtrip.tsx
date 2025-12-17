@@ -31,7 +31,7 @@ function Roadtrip() {
                 setLoading(true);
                 const response = await axios.get(`${server}/roadtrip`, {
                     params: {
-                        limit: 7
+                        limit: 3
                     }
                 });
                 const fetchedRoadtrips: RoadtripItem[] = response.data || [];

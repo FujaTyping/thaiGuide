@@ -47,7 +47,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "img-src 'self' ik.imagekit.io"
+            value: "img-src 'self' ik.imagekit.io tile.openstreetmap.org lh3.googleusercontent.com a.basemaps.cartocdn.com"
           },
           {
             key: 'X-Frame-Options',

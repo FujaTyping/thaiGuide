@@ -9,6 +9,7 @@ import 'swiper/css/effect-fade';
 import 'swiper/css/grid';
 import 'atropos/css';
 import 'swiper/css/navigation';
+import 'swiper/css/effect-coverflow';
 import Didyouknow from "./components/didyouknow";
 import NextTopLoader from 'nextjs-toploader';
 import Footer from "./components/footer";

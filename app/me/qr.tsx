@@ -114,7 +114,7 @@ function Qr() {
 
     return (
         <>
-            <AudioPlayer ref={playerRef} src="https://api.thaiguide.in.th/sfx/hiddenSoi" style={{ display: "none" }} volume={bgV} loop />
+            <AudioPlayer ref={playerRef} src={`${server}/sfx/hiddenSoi`} style={{ display: "none" }} volume={bgV} loop />
             <AudioPlayer ref={playerBadgeRef} src="/audio/BadgeRev.mp3" style={{ display: "none" }} volume={50} />
             <div className='fixed bottom-0 right-0 p-4'>
                 {locationLoading ? <div className='bg-primary text-white p-3 rounded-full hover:bg-white hover:text-primary border-2 border-primary transition-all duration-250'>
