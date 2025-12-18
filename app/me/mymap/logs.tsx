@@ -40,7 +40,7 @@ function Logs() {
             if (user) {
                 try {
                     setLoading(true);
-                    const res = await axios.put(`${server}/code/logsbyid`, {}, {
+                    const res = await axios.get(`${server}/code/logsbyid`, {
                         headers: {
                             aetheruid: user.uid
                         }

@@ -54,7 +54,7 @@ function PMap() {
             if (user) {
                 setUser(user);
                 try {
-                    const res = await axios.put(`${server}/code/mapbyid`, {}, {
+                    const res = await axios.get(`${server}/code/mapbyid`, {
                         headers: {
                             aetheruid: user.uid
                         }
