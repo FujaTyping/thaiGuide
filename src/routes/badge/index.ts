@@ -39,4 +39,4 @@ const getBadgesByUserId = async ({ headers, set }: { headers: typeof userSchema.
 };
 
 export default (app: ElysiaApp) => app
-    .put("/getbyuser", getBadgesByUserId, userSchema);
+    .get("/getbyuser", getBadgesByUserId, userSchema);

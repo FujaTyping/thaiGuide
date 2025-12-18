@@ -142,5 +142,5 @@ const deleteUser = async ({ headers, set }: { headers: typeof deleteUserSchema.h
 
 export default (app: ElysiaApp) => app
     .post("/", createUser, userSchema)
-    .put("/public", publicUser, publicUserSchema)
+    .get("/public", publicUser, publicUserSchema)
     .delete('/delete', deleteUser, deleteUserSchema);

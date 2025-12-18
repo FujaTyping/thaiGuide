@@ -145,5 +145,5 @@ const transferUserTransaction = async ({ body, set, headers }: { headers: typeof
 };
 
 export default (app: ElysiaApp) => app
-    .put("/getbyuser", getTransactionsByUserId, userSchema)
+    .get("/getbyuser", getTransactionsByUserId, userSchema)
     .post("/transfer", transferUserTransaction, transactionSchema);

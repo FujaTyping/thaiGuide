@@ -3,10 +3,6 @@ import { collection, query, getDocs, DocumentData, doc, getDoc } from "firebase/
 import db from "../../lib/firebase";
 import { t } from "elysia";
 
-const GetByIdBodySchema = t.Object({
-    id: t.String()
-});
-
 const getInfoHandler = async () => {
     let Data: DocumentData[] = [];
     const q = query(collection(db, "event"));
@@ -21,8 +17,8 @@ const getInfoHandler = async () => {
     return Data;
 };
 
-const getIdInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.static, set: { status: number | string } }) => {
-    const docId = body.id;
+const getIdInfoHandler = async ({ params: { id }, set }: { params: { id: string }, set: { status: number | string } }) => {
+    const docId = id;
     const docRef = doc(db, "event", docId);
 
     try {
@@ -59,6 +55,4 @@ const getIdInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.
 
 export default (app: ElysiaApp) => app
     .get("/", getInfoHandler)
-    .put("/getbyid", getIdInfoHandler, {
-        body: GetByIdBodySchema
-    });
+    .get("/getbyid/:id", getIdInfoHandler);

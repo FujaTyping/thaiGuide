@@ -6,12 +6,6 @@ import axios from "axios";
 import config from "../../config.json";
 import validateAdmin from "../../lifecycle/admin";
 
-const GetByIdBodySchema = {
-    body: t.Object({
-        id: t.String()
-    })
-};
-
 const RedeemByIdBodySchema = t.Object({
     raw: t.String()
 });
@@ -45,8 +39,8 @@ const getInfoHandler = async () => {
     return Data;
 };
 
-const getIdInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.body.static, set: { status: number | string } }) => {
-    const docId = body.id;
+const getIdInfoHandler = async ({ params: { id }, set }: { params: { id: string }, set: { status: number | string } }) => {
+    const docId = id;
     const docRef = doc(db, "redeem", docId);
 
     try {
@@ -144,7 +138,7 @@ async function userRedeem({ body, headers, set }: {
 
 export default (app: ElysiaApp) => app
     .get("/", getInfoHandler)
-    .put("/getbyid", getIdInfoHandler, GetByIdBodySchema)
+    .get("/getbyid/:id", getIdInfoHandler)
     .post("/redeem", redeemIdInfoHandler, {
         body: RedeemByIdBodySchema,
         async beforeHandle({ bearer, set }) {

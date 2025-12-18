@@ -3,12 +3,8 @@ import { collection, getDocs, DocumentData, doc, getDoc, QueryDocumentSnapshot }
 import db from "../../lib/firebase";
 import { t } from "elysia";
 
-const GetByIdBodySchema = t.Object({
-    name: t.String()
-});
-
-const getIdInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.static, set: { status: number | string } }) => {
-    const docId = body.name;
+const getIdInfoHandler = async ({ params: { name }, set }: { params: { name: string }, set: { status: number | string } }) => {
+    const docId = name;
     const docRef = doc(db, "provinces", docId);
 
     try {
@@ -54,6 +50,4 @@ const getIdInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.
 };
 
 export default (app: ElysiaApp) => app
-    .put("/getbyname", getIdInfoHandler, {
-        body: GetByIdBodySchema
-    });
+    .get("/getbyname/:name", getIdInfoHandler);

@@ -15,9 +15,6 @@ const QuizRequestSchema = t.Object({
 });
 
 const QuizCheckSchema = {
-    body: t.Object({
-        quizName: t.String()
-    }),
     headers: t.Object({
         aetheruid: t.String()
     })
@@ -100,8 +97,8 @@ const generateQuizHandler = async ({ body, set }: { body: typeof QuizRequestSche
     }
 };
 
-const checkQuizCompletionHandler = async ({ body, headers, set }: { body: typeof QuizCheckSchema.body.static, headers: typeof QuizCheckSchema.headers.static, set: { status: number | string } }) => {
-    const { quizName } = body;
+const checkQuizCompletionHandler = async ({ params: { name }, headers, set }: { params: { name: string }, headers: typeof QuizCheckSchema.headers.static, set: { status: number | string } }) => {
+    const quizName = name;
     const userId = headers.aetheruid;
 
     if (!userId || !quizName) {
@@ -172,5 +169,5 @@ export default (app: ElysiaApp) => app
     .post("/gen", generateQuizHandler, {
         body: QuizRequestSchema
     })
-    .put("/check", checkQuizCompletionHandler, QuizCheckSchema)
-    .put("/getbyuser", getQuizHandler, QuizUserSchema);
+    .get("/check/:name", checkQuizCompletionHandler, QuizCheckSchema)
+    .get("/getbyuser", getQuizHandler, QuizUserSchema);

@@ -270,6 +270,6 @@ async function getMyLogs({ headers, set }: { headers: typeof getLogsSchema.heade
 
 export default (app: ElysiaApp) => app
     .put("/getbyid", getInfoHandler, GetByIdBodySchema)
-    .put("/mapbyid", getMapInfoHandler, GetMyMaps)
-    .put("/logsbyid", getMyLogs, getLogsSchema)
+    .get("/mapbyid", getMapInfoHandler, GetMyMaps)
+    .get("/logsbyid", getMyLogs, getLogsSchema)
     .post("/map/logs", postMapLogs, MapLogsSchema)

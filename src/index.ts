@@ -20,7 +20,7 @@ const app = new Elysia()
   }))
   .use(bearer())
   .use(swagger({
-    path: "/document"
+    path: "/guidebook101"
   }))
   .use(await autoload())
   .listen(3033);

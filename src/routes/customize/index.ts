@@ -45,4 +45,4 @@ const getBanner = async ({ headers, set }: { headers: typeof GetByIdBodySchema.h
 };
 
 export default (app: ElysiaApp) => app
-    .put("/banner", getBanner, GetByIdBodySchema)
+    .get("/banner", getBanner, GetByIdBodySchema)
