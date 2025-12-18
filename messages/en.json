@@ -396,6 +396,7 @@
           "3": "Family",
           "4": "Friends"
         },
+        "error": "Can't generate trip right now",
         "tagtoggle": "Show Tags More",
         "tagmore": "more",
         "tagless": "Show Less",

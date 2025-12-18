@@ -20,6 +20,7 @@ import { useTranslations } from 'next-intl';
 import RotatingText from '@/components/bits/RotatingText/RotatingText';
 import { server } from "@/app/config.json"
 import { Button } from '@/components/ui/button';
+import NF from "@/assets/media/card/icon/notfound.svg";
 
 const TEXTS = [
     '0',
@@ -90,7 +91,7 @@ interface TripData {
     days: DayPlan[];
 }
 
-type DataStateType = "" | "loading" | TripData;
+type DataStateType = "" | "loading" | "error" | TripData;
 
 function TInput() {
     const t = useTranslations('Planner');
@@ -127,6 +128,7 @@ function TInput() {
             });
             setData(Res.data);
         } catch (error) {
+            setData("error");
             console.error("Error fetching trip recommendations:", error);
         }
     }
@@ -261,69 +263,88 @@ function TInput() {
                                         />
                                     </div>
                                 </> : <>
-                                    {typeof Data === 'object' && Data !== null && (
-                                        <div className='mt-6'>
-                                            <h1 className='font-semibold text-xl mb-1'>{Data.tripTitle}</h1>
-                                            <p>{Data.description}</p>
-                                            <Tabs defaultValue="activities" className='mt-2'>
-                                                <TabsList className='w-full'>
-                                                    <TabsTrigger value="activities" className='cursor-pointer'>{t('ai.tabs.act')}</TabsTrigger>
-                                                    <TabsTrigger value="foods" className='cursor-pointer'>{t('ai.tabs.food')}</TabsTrigger>
-                                                </TabsList>
-                                                <TabsContent value="activities" className='-mt-2'>
-                                                    <div className='flex flex-col gap-8 mt-4'>
-                                                        {
-                                                            Data.days.map((day, index) => (
-                                                                <div key={index} className='border-l-2 border-primary rounded-l-xl pl-4 p-2'>
-                                                                    <h1 className='font-semibold flex items-center gap-2'><MapPin className='text-primary' /> {t('ai.tabs.day')} {day.day}: {day.location}</h1>
-                                                                    <p className='mt-1'>{day.travelNotes}</p>
-                                                                    <div className='flex flex-col gap-3 mt-2'>
-                                                                        {
-                                                                            day.activities.map((activity, actIndex) => (
-                                                                                <div key={actIndex}>
-                                                                                    <h1 className='font-semibold'>{actIndex + 1}. {activity.title} {`(${activity.time})`}</h1>
-                                                                                    <p>{activity.description}</p>
-                                                                                </div>
-                                                                            ))
-                                                                        }
-                                                                    </div>
-                                                                    <p className='flex flex-col md:flex-row md:items-center gap-2 mt-2'><b className='flex items-center gap-2'><Info className='text-primary' /> {t('ai.tabs.tips')} :</b> {day.tips}</p>
-                                                                </div>
-                                                            ))
-                                                        }
-                                                    </div>
-                                                </TabsContent>
-                                                <TabsContent value="foods" className='-mt-2'>
-                                                    <div className='flex flex-col gap-8 mt-4'>
-                                                        {
-                                                            Data.days.map((day, index) => (
-                                                                <div key={index} className='border-l-2 border-primary rounded-l-xl pl-4 p-2'>
-                                                                    <h1 className='font-semibold flex items-center gap-2'><MapPin className='text-primary' /> {t('ai.tabs.day')} {day.day}: {day.location}</h1>
-                                                                    <p className='mt-1'>{day.travelNotes}</p>
-                                                                    <div className='flex flex-col gap-3 mt-2'>
-                                                                        {
-                                                                            day.foodRecommendations.map((item, foodIndex) => (
-                                                                                <p key={foodIndex} className='font-semibold'>{foodIndex + 1}. {item}</p>
-                                                                            ))
-                                                                        }
-                                                                    </div>
-                                                                </div>
-                                                            ))
-                                                        }
-                                                    </div>
-                                                </TabsContent>
-                                            </Tabs>
-                                            <div className='flex items-center justify-center'>
-                                                <Button
-                                                    onClick={GenAI}
-                                                    className='bg-primary w-full md:w-fit py-2 px-6 text-white rounded-xl mt-6 flex items-center justify-center gap-2 cursor-pointer transition-colors'
+                                    {
+                                        Data == "error" ? <>
+                                            <div className='flex items-center flex-col justify-center py-8 gap-4'>
+                                                <motion.div
+                                                    animate={{
+                                                        x: [0, -10, 10, -10, 10, -5, 5, 0],
+                                                    }}
+                                                    transition={{
+                                                        duration: 0.5,
+                                                        ease: "easeInOut"
+                                                    }}
                                                 >
-                                                    <p className='font-semibold'>{t('ai.re')}</p>
-                                                    <RefreshCcw />
-                                                </Button>
+                                                    <img src={NF.src} alt="Icon" className='w-28 translate-x-3' />
+                                                </motion.div>
+                                                <p className='font-semibold'>{t('ai.input.error')}</p>
                                             </div>
-                                        </div>
-                                    )}
+                                        </> : <>
+                                            {typeof Data === 'object' && Data !== null && (
+                                                <div className='mt-6'>
+                                                    <h1 className='font-semibold text-xl mb-1'>{Data.tripTitle}</h1>
+                                                    <p>{Data.description}</p>
+                                                    <Tabs defaultValue="activities" className='mt-2'>
+                                                        <TabsList className='w-full'>
+                                                            <TabsTrigger value="activities" className='cursor-pointer'>{t('ai.tabs.act')}</TabsTrigger>
+                                                            <TabsTrigger value="foods" className='cursor-pointer'>{t('ai.tabs.food')}</TabsTrigger>
+                                                        </TabsList>
+                                                        <TabsContent value="activities" className='-mt-2'>
+                                                            <div className='flex flex-col gap-8 mt-4'>
+                                                                {
+                                                                    Data.days.map((day, index) => (
+                                                                        <div key={index} className='border-l-2 border-primary rounded-l-xl pl-4 p-2'>
+                                                                            <h1 className='font-semibold flex items-center gap-2'><MapPin className='text-primary' /> {t('ai.tabs.day')} {day.day}: {day.location}</h1>
+                                                                            <p className='mt-1'>{day.travelNotes}</p>
+                                                                            <div className='flex flex-col gap-3 mt-2'>
+                                                                                {
+                                                                                    day.activities.map((activity, actIndex) => (
+                                                                                        <div key={actIndex}>
+                                                                                            <h1 className='font-semibold'>{actIndex + 1}. {activity.title} {`(${activity.time})`}</h1>
+                                                                                            <p>{activity.description}</p>
+                                                                                        </div>
+                                                                                    ))
+                                                                                }
+                                                                            </div>
+                                                                            <p className='flex flex-col md:flex-row md:items-center gap-2 mt-2'><b className='flex items-center gap-2'><Info className='text-primary' /> {t('ai.tabs.tips')} :</b> {day.tips}</p>
+                                                                        </div>
+                                                                    ))
+                                                                }
+                                                            </div>
+                                                        </TabsContent>
+                                                        <TabsContent value="foods" className='-mt-2'>
+                                                            <div className='flex flex-col gap-8 mt-4'>
+                                                                {
+                                                                    Data.days.map((day, index) => (
+                                                                        <div key={index} className='border-l-2 border-primary rounded-l-xl pl-4 p-2'>
+                                                                            <h1 className='font-semibold flex items-center gap-2'><MapPin className='text-primary' /> {t('ai.tabs.day')} {day.day}: {day.location}</h1>
+                                                                            <p className='mt-1'>{day.travelNotes}</p>
+                                                                            <div className='flex flex-col gap-3 mt-2'>
+                                                                                {
+                                                                                    day.foodRecommendations.map((item, foodIndex) => (
+                                                                                        <p key={foodIndex} className='font-semibold'>{foodIndex + 1}. {item}</p>
+                                                                                    ))
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                    ))
+                                                                }
+                                                            </div>
+                                                        </TabsContent>
+                                                    </Tabs>
+                                                    <div className='flex items-center justify-center'>
+                                                        <Button
+                                                            onClick={GenAI}
+                                                            className='bg-primary w-full md:w-fit py-2 px-6 text-white rounded-xl mt-6 flex items-center justify-center gap-2 cursor-pointer transition-colors'
+                                                        >
+                                                            <p className='font-semibold'>{t('ai.re')}</p>
+                                                            <RefreshCcw />
+                                                        </Button>
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </>
+                                    }
                                 </>
                             }
                         </>
