@@ -3,18 +3,6 @@ import { collection, query as fbquery, getDocs, DocumentData, doc, getDoc, where
 import db from "../../lib/firebase";
 import { t } from "elysia";
 
-const GetByIdBodySchema = t.Object({
-    id: t.String()
-});
-
-const GetByProvinceBodySchema = t.Object({
-    province: t.String()
-});
-
-const GetRandomActivitiesProvinceBodySchema = t.Object({
-    province: t.String()
-});
-
 const GetSchema = {
     query: t.Object({
         limit: t.Optional(t.Number())
@@ -41,8 +29,8 @@ const getInfoHandler = async ({ query, set }: { query: typeof GetSchema.query.st
     return Data;
 };
 
-const getIdInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.static, set: { status: number | string } }) => {
-    const docId = body.id;
+const getIdInfoHandler = async ({ params: { id }, set }: { params: { id: string }, set: { status: number | string } }) => {
+    const docId = id;
     const docRef = doc(db, "activities", docId);
 
     try {
@@ -96,8 +84,8 @@ const getIdInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.
     }
 };
 
-const getProvinceInfoHandler = async ({ body, set }: { body: typeof GetByProvinceBodySchema.static, set: { status: number | string } }) => {
-    const targetProvince = body.province;
+const getProvinceInfoHandler = async ({ params: { province }, set }: { params: { province: string }, set: { status: number | string } }) => {
+    const targetProvince = province;
 
     try {
         const activitiesCollectionRef = collection(db, "activities");
@@ -143,9 +131,7 @@ const getProvinceInfoHandler = async ({ body, set }: { body: typeof GetByProvinc
     }
 };
 
-const getRandomActProvinceInfoHandler = async ({ body, set }: { body: typeof GetRandomActivitiesProvinceBodySchema.static, set: { status: number | string } }) => {
-    const { province } = body;
-
+const getRandomActProvinceInfoHandler = async ({ params: { province }, set }: { params: { province: string }, set: { status: number | string } }) => {
     try {
         const activitiesCollectionRef = collection(db, "activities");
         const q = query(activitiesCollectionRef, where("province", "==", province));
@@ -171,12 +157,6 @@ const getRandomActProvinceInfoHandler = async ({ body, set }: { body: typeof Get
 
 export default (app: ElysiaApp) => app
     .get("/", getInfoHandler, GetSchema)
-    .put("/getbyid", getIdInfoHandler, {
-        body: GetByIdBodySchema
-    })
-    .put("/getbyprovince", getProvinceInfoHandler, {
-        body: GetByProvinceBodySchema
-    })
-    .put("/randombyprovince", getRandomActProvinceInfoHandler, {
-        body: GetRandomActivitiesProvinceBodySchema
-    });
+    .get("/getbyid/:id", getIdInfoHandler)
+    .get("/getbyprovince/:province", getProvinceInfoHandler)
+    .get("/randombyprovince/:province", getRandomActProvinceInfoHandler);
