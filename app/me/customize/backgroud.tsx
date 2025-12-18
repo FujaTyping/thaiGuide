@@ -40,7 +40,7 @@ function CustomizeBG() {
             if (user) {
                 setUser(user);
                 try {
-                    const banRES = await axios.put(`${server}/customize/banner`, {}, {
+                    const banRES = await axios.get(`${server}/customize/banner`, {
                         headers: {
                             aetheruid: user.uid
                         }
