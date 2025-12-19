@@ -1009,7 +1009,8 @@
       "code": "Qr Code",
       "reward": "Reward",
       "badge": "Badge",
-      "alert": "Alert"
+      "alert": "Alert",
+      "activities": "Activities"
     },
     "manage": "Manage",
     "redeem": "Redeem",
@@ -1251,6 +1252,33 @@
             }
           }
         }
+      },
+      "activities": {
+        "title": "Activities Management",
+        "decs": "Control and maintain all activities and experiences available on the platform",
+        "id": "Id",
+        "ttitle": "Title",
+        "province": "Province",
+        "delete": {
+          "title": "Delete Activity?",
+          "d0": "Are you sure you want to delete this Activity?",
+          "d1": "Once deleted, all related data will be permanently removed and cannot be recovered",
+          "actid": "Activity Id",
+          "conBTN": "Confirm",
+          "canBTN": "Cancel",
+          "done": "Activity deleted successfully",
+          "err": "Something went wrong, Please try again later"
+        },
+        "table": {
+          "add": "Add new activity",
+          "action": "Action",
+          "tooldel": "Delete this activity",
+          "toolview": "Go to activity page",
+          "prev": "Previous",
+          "next": "Next",
+          "mty": "No results",
+          "search": "Filter by Title"
+        }
       }
     }
   },
@@ -1338,5 +1366,11 @@
   "Credit": {
     "title": "Credit",
     "decs": "This page provides proper attribution for all assets, icons, images, and resources used in ThaiGuide. We acknowledge and credit the creators whose work helps make this project possible"
+  },
+  "Notfound": {
+    "title": "It looks like the tuk-tuk took the scenic route - and ended up here instead!",
+    "decs": "But don’t worry, every great journey has a few surprises. Why not get back on track and discover something amazing in Thailand?",
+    "back": "Click the tuk-tuk to get to home",
+    "tooltip": "Back to home"
   }
 }

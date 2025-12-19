@@ -326,8 +326,8 @@
             "no": "Belum ada lencana yang diperoleh",
             "visit": "Anda telah melawat",
             "slogan": "Slogan",
-      "new": "Anda baru sahaja membuka lencana baru yang berkilat",
-      "badgediscoverall": "daripada 77 Lencana Ditemui"
+            "new": "Anda baru sahaja membuka lencana baru yang berkilat",
+            "badgediscoverall": "daripada 77 Lencana Ditemui"
         }
     },
     "PublicProfile": {
@@ -1083,5 +1083,11 @@
     "Credit": {
         "title": "Kredit",
         "decs": "Halaman ini memberikan atribusi yang sewajarnya untuk semua aset, ikon, imej, dan sumber yang digunakan dalam ThaiGuide. Kami menghargai dan memberi kredit kepada pencipta yang hasil kerja mereka membantu menjayakan projek ini."
+    },
+    "Notfound": {
+        "title": "Nampaknya tuk-tuk mengambil laluan yang indah - dan berakhir di sini!",
+        "decs": "Tetapi jangan risau, setiap perjalanan hebat mempunyai beberapa kejutan. Mengapa tidak kembali ke landasan dan temui sesuatu yang menakjubkan di Thailand?",
+        "back": "Klik tuk-tuk untuk pulang ke rumah",
+        "tooltip": "Kembali ke rumah"
     }
 }

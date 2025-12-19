@@ -1,6 +1,6 @@
 import React from 'react'
 import Didyouknow from '../components/didyouknow'
-import { CircleStar, Megaphone, PartyPopper, QrCode, ScanLine, TriangleAlert } from 'lucide-react'
+import { CircleStar, Megaphone, PartyPopper, QrCode, ScanLine, TentTree, TriangleAlert } from 'lucide-react'
 import Link from 'next/link'
 import type { Metadata } from "next";
 import { useTranslations } from 'next-intl';
@@ -43,6 +43,12 @@ function Page() {
             link: "/dashboard/manage/reward",
             cat: t('manage')
         },
+        {
+            label: t('grid.activities'),
+            icon: TentTree,
+            link: "/dashboard/manage/activities",
+            cat: t('manage')
+        }
     ]
 
     return (
