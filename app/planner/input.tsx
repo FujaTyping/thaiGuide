@@ -234,15 +234,18 @@ function TInput() {
                                         </motion.div>
                                     </>
                                 }
-                                <div className='flex items-center justify-center'>
+                                <div className='flex items-center justify-center flex-col gap-2'>
                                     <Button
                                         onClick={GenAI}
                                         className='mt-6'
+                                        disabled
                                     >
                                         <p className='font-semibold'>{t('ai.input.submit')}</p>
                                         <Brush />
                                     </Button>
+                                    <p className='font-bold text-primary dark:text-white flex text-base items-center gap-2'><span><Info /></span> {t('ai.unava')}</p>
                                 </div>
+
                             </div>
                         </> : <>
                             {

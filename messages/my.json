@@ -379,6 +379,7 @@
         "decs": "Rancang perjalanan sempurna anda ke Thailand dengan Perancang Perjalanan AI pintar kami. Dapatkan jadual perjalanan, cadangan dan petua yang diperibadikan untuk menjadikan perjalanan anda tidak dapat dilupakan. Biarkan AI kami membantu anda menemui yang terbaik di Thailand, disesuaikan dengan pilihan dan minat anda.",
         "ai": {
             "title": "Beritahu kami tentang perjalanan anda",
+            "unava": "Perancang Perjalanan tidak tersedia kerana beban pelayan yang tinggi",
             "decs": "Bantu kami mengesyorkan aktiviti terbaik untuk anda",
             "input": {
                 "placeholder": "cth., Saya sedang mencari gabungan pengalaman budaya dan pantai yang menenangkan. Saya berminat dengan kuil, pasar tempatan dan snorkeling.",

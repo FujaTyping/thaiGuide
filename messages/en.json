@@ -381,6 +381,7 @@
     "decs": "Plan your perfect trip to Thailand with our intelligent AI Trip Planner. Get personalized itineraries, recommendations, and tips to make your journey unforgettable. Let our AI assist you in discovering the best of Thailand, tailored to your preferences and interests.",
     "ai": {
       "title": "Tell us about your trip",
+      "unava": "Trip Planner is unavailable due to high server load",
       "decs": "Help us recommend the best activities for you",
       "input": {
         "placeholder": "e.g., I'm looking for a mix of cultural experiences and relaxing beaches. I'm interested in temples, local markets, and snorkeling.",
