@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import { DataTable } from './table/table';
 import { columns, DataSchema } from './table/column';
-import axios from 'axios';
+import tgFetch from '@/lib/fetch';
 import { server } from '@/app/config.json';
 import Loader from '@/app/components/loader';
 
@@ -14,7 +14,7 @@ function Content() {
     useEffect(() => {
         async function getData() {
             setLoading(true);
-            const datt = await axios.get(`${server}/edit/code/getall`)
+            const datt = await tgFetch({ url: `${server}/edit/code/getall` })
             setData(datt.data);
             setLoading(false);
         }

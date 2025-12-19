@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react'
-import axios from 'axios';
+import tgFetch from '@/lib/fetch';
 import { server } from "@/app/config.json";
 import { onAuthStateChanged } from 'firebase/auth';
 import auth from '@/lib/firebaseAuth';
@@ -40,11 +40,13 @@ function Logs() {
             if (user) {
                 try {
                     setLoading(true);
-                    const res = await axios.get(`${server}/code/logsbyid`, {
-                        headers: {
-                            aetheruid: user.uid
+                    const res = await tgFetch({
+                        url: `${server}/code/logsbyid`, data: {
+                            headers: {
+                                aetheruid: user.uid
+                            }
                         }
-                    });
+                    })
                     const datt = res.data.logs;
                     setData(datt);
                     setLoading(false);

@@ -11,6 +11,7 @@ import { motion } from "motion/react";
 import { Badge } from "@/components/ui/badge";
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import tgFetch from '@/lib/fetch';
 
 interface RoadtripItem {
     id: string;
@@ -29,11 +30,13 @@ function Roadtrip() {
         const fetchData = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get(`${server}/roadtrip`, {
-                    params: {
-                        limit: 3
+                const response = await tgFetch({
+                    url: `${server}/roadtrip`, data: {
+                        params: {
+                            limit: 3
+                        }
                     }
-                });
+                })
                 const fetchedRoadtrips: RoadtripItem[] = response.data || [];
                 setData(fetchedRoadtrips);
             } catch (err) {

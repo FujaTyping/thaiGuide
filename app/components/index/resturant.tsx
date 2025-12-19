@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 
-import axios from "axios";
 import Loader from '@/app/components/loader';
 import { server } from "@/app/config.json";
 import Link from 'next/link';
@@ -12,6 +11,7 @@ import { ChefHat, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import tgFetch from '@/lib/fetch';
 
 const textVariants = {
   hovered: { y: -15 }
@@ -48,11 +48,13 @@ function Resturant() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`${server}/restaurant`, {
-          params: {
-            limit: 7
+        const response = await tgFetch({
+          url: `${server}/restaurant`, data: {
+            params: {
+              limit: 7
+            }
           }
-        });
+        })
         const fetchedRestaurants: RoadtripItem[] = response.data || [];
         setData(fetchedRestaurants);
       } catch (err) {

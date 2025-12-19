@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import auth from "@/lib/firebaseAuth";
 import axios from 'axios';
+import tgFetch from '@/lib/fetch';
 import { server } from "@/app/config.json";
 import Loader from '@/app/components/loader';
 import { motion } from "motion/react";
@@ -40,9 +41,11 @@ function CustomizeBG() {
             if (user) {
                 setUser(user);
                 try {
-                    const banRES = await axios.get(`${server}/customize/banner`, {
-                        headers: {
-                            aetheruid: user.uid
+                    const banRES = await tgFetch({
+                        url: `${server}/customize/banner`, data: {
+                            headers: {
+                                aetheruid: user.uid
+                            }
                         }
                     })
                     setBannerRES(banRES.data.banners);

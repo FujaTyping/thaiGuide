@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Leaf } from 'lucide-react';
 import Link from 'next/link';
-import axios from 'axios';
+import tgFetch from '@/lib/fetch';
 import Loader from '@/app/components/loader';
 import { server } from "@/app/config.json";
 import { useTranslations } from 'next-intl';
@@ -45,9 +45,7 @@ function Activities({ data: provinceName }: ActivitiesProps) {
             }
             setLoading(true);
             try {
-                const response = await axios.get(
-                    `${server}/activities/getbyprovince/${provinceName}`
-                );
+                const response = await tgFetch({ url: `${server}/activities/getbyprovince/${provinceName}` })
                 const fetchedActivities: Activity[] = response.data || [];
 
                 if (fetchedActivities.length > 5) {

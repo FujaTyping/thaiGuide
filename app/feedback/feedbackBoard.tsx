@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import tgFetch from '@/lib/fetch';
 import { server } from "@/app/config.json";
 import Loader from '../components/loader';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -21,7 +21,7 @@ function FeedbackBoard() {
 
     useEffect(() => {
         async function fetchData() {
-            const res = await axios.get(`${server}/feedback`);
+            const res = await tgFetch({ url: `${server}/feedback` });
             setData(res.data);
         }
         fetchData();

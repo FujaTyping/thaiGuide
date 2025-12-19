@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import tgFetch from '@/lib/fetch';
 import { server } from "@/app/config.json";
 import Loader from '../components/loader';
 import Link from 'next/link';
@@ -59,7 +59,7 @@ function Grid() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${server}/activities`);
+                const response = await tgFetch({ url: `${server}/activities` })
                 setData(response.data);
                 setLoading(false);
             } catch (err) {

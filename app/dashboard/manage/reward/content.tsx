@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import axios from 'axios';
+import tgFetch from '@/lib/fetch';
 import { server } from "@/app/config.json"
 import Loader from '@/app/components/loader';
 import { Badge } from '@/components/ui/badge';
@@ -52,7 +53,7 @@ function Content() {
 
     useEffect(() => {
         async function getDatt() {
-            const res = await axios.get(`${server}/edit/redeem/getall`);
+            const res = await tgFetch({ url: `${server}/edit/redeem/getall` })
             setData(res.data);
             setLoading(false);
         }

@@ -6,7 +6,7 @@ import { Map, Overlay } from "pigeon-maps";
 import Loader from '@/app/components/loader';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import auth from '@/lib/firebaseAuth';
-import axios from 'axios';
+import tgFetch from '@/lib/fetch';
 import { server } from "@/app/config.json";
 import {
     Popover,
@@ -54,11 +54,13 @@ function PMap() {
             if (user) {
                 setUser(user);
                 try {
-                    const res = await axios.get(`${server}/code/mapbyid`, {
-                        headers: {
-                            aetheruid: user.uid
+                    const res = await tgFetch({
+                        url: `${server}/code/mapbyid`, data: {
+                            headers: {
+                                aetheruid: user.uid
+                            }
                         }
-                    });
+                    })
                     const datt = res.data;
                     setData(datt);
                 } catch {

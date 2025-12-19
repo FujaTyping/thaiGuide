@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react'
-import axios from 'axios';
+import tgFetch from '@/lib/fetch';
 import { server } from "@/app/config.json";
 import Loader from '../components/loader';
 import { Coins } from 'lucide-react';
@@ -22,7 +22,7 @@ function Grid() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${server}/reward`);
+                const response = await tgFetch({ url: `${server}/reward` });
                 setData(response.data);
             } catch (err) {
                 console.error("Error fetching redeem:", err);

@@ -42,7 +42,7 @@ function Sharebt({ link, onlyContent }: { link?: string, onlyContent?: boolean }
         <>
             <Dialog>
                 <DialogTrigger>
-                    <div className='fixed bottom-0 right-0 p-4'>
+                    <div className='fixed bottom-0 right-0 p-4 z-5'>
                         <div className='bg-primary text-white p-3 rounded-full hover:bg-white hover:text-primary border-2 border-primary transition-all duration-250 cursor-pointer'>
                             <Share2 className='size-8' />
                         </div>
