@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { Viewport } from 'next'
-import { Noto_Sans } from "next/font/google";
+import { Anuphan } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
 import Ealert from "./components/ealert";
@@ -25,8 +25,8 @@ import { ThemeProvider } from "./theme-provider";
 
 import Underdev from "./components/underdev";
 
-const notoSans = Noto_Sans({
-  variable: "--font-noto-sans",
+const anuphan = Anuphan({
+  variable: "--font-anuphan",
   subsets: ["latin"],
 });
 
@@ -57,7 +57,7 @@ export default async function RootLayout({
     <>
       <html lang={locale} suppressHydrationWarning>
         <body
-          className={`${notoSans.variable} antialiased`}
+          className={`${anuphan.className} antialiased`}
         >
           <ThemeProvider
             attribute="class"
