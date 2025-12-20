@@ -2,7 +2,7 @@
 
 import Loader from '@/app/components/loader';
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import tgFetch from '@/lib/fetch';
 import { server } from "@/app/config.json";
 import { Input } from '@/components/ui/input';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
@@ -41,7 +41,7 @@ function Content() {
     useEffect(() => {
         async function getData() {
             setLoading(true);
-            const datt = await axios.get(`${server}/edit/badge/getall`)
+            const datt = await tgFetch({ url: `${server}/edit/badge/getall` })
             setData(datt.data);
             setLoading(false);
         }

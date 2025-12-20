@@ -29,6 +29,7 @@ import { logEvent } from "firebase/analytics";
 import { useTranslations } from 'next-intl';
 import { toast } from "sonner"
 import axios from 'axios';
+import tgFetch from '@/lib/fetch';
 import { useRouter } from 'next/navigation';
 import ChangeCookie from './changeCookie';
 import { server } from "@/app/config.json";
@@ -137,7 +138,7 @@ function Navbar() {
     useEffect(() => {
         async function checkStats() {
             try {
-                await axios.get(`${server}/db/info`)
+                await tgFetch({ url: `${server}/db/info` })
             } catch (error) {
                 toast.error(t('servererror'), {
                     description: `${error}`,

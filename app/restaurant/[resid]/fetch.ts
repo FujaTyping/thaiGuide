@@ -1,9 +1,9 @@
-import axios from "axios";
+import tgFetch from "@/lib/fetch";
 import { server } from "@/app/config.json"
 
 export default async function fetchData(id: string) {
     try {
-        const response = await axios.get(`${server}/restaurant/getbyid/${id}`);
+        const response = await tgFetch({ url: `${server}/restaurant/getbyid/${id}` });
         return response.data;
     } catch {
         return "error";

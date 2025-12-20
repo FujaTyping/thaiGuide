@@ -4,11 +4,11 @@ import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Autoplay } from 'swiper/modules';
 import PHD from "@/assets/media/Placeholder.png";
-import axios from 'axios';
 import Link from 'next/link';
 import { LoaderCircle } from 'lucide-react';
 import { server } from "@/app/config.json"
 import Image from 'next/image';
+import tgFetch from '@/lib/fetch';
 
 interface BITEMS {
     title: string;
@@ -23,7 +23,7 @@ function Banner() {
 
     useEffect(() => {
         async function getdata() {
-            const res = await axios.get(`${server}/banner`);
+            const res = await tgFetch({ url: `${server}/banner` });
             setBannerItems(res.data);
             setShowPlace(false);
         }
@@ -63,7 +63,7 @@ function Banner() {
                                 <Image fill loading={index === 0 ? 'eager' : 'lazy'} fetchPriority={index === 0 ? 'high' : 'auto'} src={item.image} className='object-cover' alt={item.title} />
                                 <div className='absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-primary/70 to-transparent text-white rounded-b-4xl text-center'>
                                     <h1 className='text-3xl md:text-4xl font-bold mb-2'>{item.title}</h1>
-                                    <p className='text-sm md:text-base'>{item.decs}</p>
+                                    <p className='text-sm md:text-base max-w-7xl mx-auto'>{item.decs}</p>
                                 </div>
                             </div>
                         );

@@ -4,12 +4,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from "motion/react";
 import { ChevronLeft, ChevronRight, Star, Wallet } from 'lucide-react';
 import Link from 'next/link';
-import axios from 'axios';
 import Loader from '@/app/components/loader';
 import { server } from "@/app/config.json";
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from "swiper/react";
+import tgFetch from '@/lib/fetch';
 
 interface Activity {
     id: string;
@@ -33,11 +33,13 @@ function Activities() {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const response = await axios.get(`${server}/activities`, {
-                    params: {
-                        limit: 7
+                const response = await tgFetch({
+                    url: `${server}/activities`, data: {
+                        params: {
+                            limit: 7
+                        }
                     }
-                });
+                })
                 const fetchedActivities: Activity[] = response.data || [];
                 setData(fetchedActivities);
             } catch (err) {

@@ -10,7 +10,7 @@ import { User, onAuthStateChanged } from "firebase/auth";
 import auth from "@/lib/firebaseAuth";
 import { server } from "@/app/config.json";
 import ConfettiExplosion from 'react-confetti-explosion';
-import axios from 'axios';
+import tgFetch from '@/lib/fetch';
 import { Button } from '@/components/ui/button';
 
 interface QuizProps {
@@ -109,16 +109,18 @@ function Quiz({ data: provinceName }: QuizProps) {
         }
     };
 
-    const handleNextQuestion = () => {
+    const handleNextQuestion = async () => {
         setSelectedAnswerText(null);
         if (quizData && currentQuestionIndex < quizData.questions.length - 1) {
             setCurrentQuestionIndex(prevIndex => prevIndex + 1);
         } else {
             setStatus('finished');
             if (user) {
-                axios.get(`${server}/quiz/check/${provinceName}`, {
-                    headers: {
-                        aetheruid: user.uid
+                await tgFetch({
+                    url: `${server}/quiz/check/${provinceName}`, data: {
+                        headers: {
+                            aetheruid: user.uid
+                        }
                     }
                 })
             }
@@ -179,6 +181,7 @@ function Quiz({ data: provinceName }: QuizProps) {
                     <p className='font-semibold text-2xl mb-2'>{t('error')}</p>
                     <Button
                         onClick={handleStartQuiz}
+                        className='bg-white text-primary hover:bg-white'
                     >
                         {t('errorbtn')}
                     </Button>

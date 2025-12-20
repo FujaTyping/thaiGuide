@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/select"
 import { Input } from "@/components/ui/input";
 import axios from "axios";
+import tgFetch from "@/lib/fetch";
 import { server } from "@/app/config.json";
 import { Textarea } from "@/components/ui/textarea";
 import Turnstile, { useTurnstile } from "react-turnstile";
@@ -67,7 +68,7 @@ function FFORM() {
 
     useEffect(() => {
         async function getPrevAnnounce() {
-            const res = await axios.get(`${server}/aleart`);
+            const res = await tgFetch({ url: `${server}/aleart` })
             const data = res.data;
             form.setValue("message", data.message);
             form.setValue("reference", data.reference);

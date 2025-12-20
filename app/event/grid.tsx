@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from "motion/react";
-import axios from 'axios';
+import tgFetch from '@/lib/fetch';
 import { server } from "@/app/config.json";
 import Loader from '../components/loader';
 import Link from 'next/link';
@@ -66,7 +66,7 @@ function Grid() {
         const fetchData = async () => {
             setIsLoading(true);
             try {
-                const response = await axios.get(`${server}/event`);
+                const response = await tgFetch({ url: `${server}/event` });
                 setData(response.data);
             } catch (err) {
                 console.error("Error fetching event:", err);

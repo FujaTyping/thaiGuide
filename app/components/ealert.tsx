@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import Marquee from "react-fast-marquee";
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import axios from 'axios';
+import tgFetch from '@/lib/fetch';
 import { server } from "@/app/config.json"
 
 interface CData {
@@ -24,7 +24,7 @@ function Ealert() {
     useEffect(() => {
         async function fetchdata() {
             try {
-                const res = await axios.get(`${server}/aleart`)
+                const res = await tgFetch({ url: `${server}/aleart` })
                 setData(res.data)
             } catch {
                 setData({

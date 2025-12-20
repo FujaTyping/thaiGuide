@@ -198,9 +198,9 @@ const SplitText: React.FC<SplitTextProps> = ({
         );
       default:
         return (
-          <p ref={ref} style={style} className={classes}>
+          <div ref={ref} style={style} className={classes}>
             <Markdown>{text}</Markdown>
-          </p>
+          </div>
         );
     }
   };

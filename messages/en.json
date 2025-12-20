@@ -228,6 +228,7 @@
     "publicDecs": "This is a public profile card for a ThaiGuide traveler. You can view their progress and achievements here.",
     "decs": "This is your personalized profile card. It displays your information, progress, and achievements within ThaiGuide.",
     "cip": "Check-In point",
+    "join": "Joinded",
     "notrans": "There is no transaction",
     "more": "Show more",
     "shareTitleM": "Tap the card to share your profile",
@@ -381,6 +382,7 @@
     "decs": "Plan your perfect trip to Thailand with our intelligent AI Trip Planner. Get personalized itineraries, recommendations, and tips to make your journey unforgettable. Let our AI assist you in discovering the best of Thailand, tailored to your preferences and interests.",
     "ai": {
       "title": "Tell us about your trip",
+      "unava": "Trip Planner is unavailable due to high server load",
       "decs": "Help us recommend the best activities for you",
       "input": {
         "placeholder": "e.g., I'm looking for a mix of cultural experiences and relaxing beaches. I'm interested in temples, local markets, and snorkeling.",
@@ -1009,7 +1011,8 @@
       "code": "Qr Code",
       "reward": "Reward",
       "badge": "Badge",
-      "alert": "Alert"
+      "alert": "Alert",
+      "activities": "Activities"
     },
     "manage": "Manage",
     "redeem": "Redeem",
@@ -1251,6 +1254,88 @@
             }
           }
         }
+      },
+      "activities": {
+        "title": "Activities Management",
+        "decs": "Control and maintain all activities and experiences available on the platform",
+        "id": "Id",
+        "ttitle": "Title",
+        "province": "Province",
+        "delete": {
+          "title": "Delete Activity?",
+          "d0": "Are you sure you want to delete this Activity?",
+          "d1": "Once deleted, all related data will be permanently removed and cannot be recovered",
+          "actid": "Activity Id",
+          "conBTN": "Confirm",
+          "canBTN": "Cancel",
+          "done": "Activity deleted successfully",
+          "err": "Something went wrong, Please try again later"
+        },
+        "table": {
+          "add": "Add new activity",
+          "action": "Action",
+          "tooldel": "Delete this activity",
+          "toolview": "Go to activity page",
+          "prev": "Previous",
+          "next": "Next",
+          "mty": "No results",
+          "search": "Filter by Title"
+        },
+        "add": {
+          "title": "Add New Activity & Experience",
+          "decs": "Create and manage new activities or experiences that users can discover and enjoy across Thailand",
+          "form": {
+            "zod": {
+              "title": "Title must be at least 5 characters long",
+              "lat": "Please enter a valid latitude",
+              "lon": "Please enter a valid longitude",
+              "decs": "Description must be at least 20 characters long",
+              "province": "Please select a province",
+              "direction": "Please enter valid url",
+              "location": "Address must be at least 8 characters long",
+              "ndtitle": "Headding must be at least 3 characters long",
+              "rating": "Please enter a valid rating",
+              "captcha": "Please complete the CAPTCHA verification",
+              "file": {
+                "msg": "Please input a file",
+                "max": "Max image size is 5MB",
+                "type": "Only .jpg, .jpeg, .png and .webp formats are supported"
+              }
+            },
+            "toast": {
+              "succ": "Activity add successfully",
+              "dsucc": "Activity add with ID",
+              "err": "Something went wrong",
+              "derr": "Please try again later"
+            },
+            "title": "Title",
+            "head": "Headding",
+            "decs": "Description",
+            "thumb": "Thumbnail Image",
+            "dthumb": "Recommend dimension lanscape",
+            "province": "Province",
+            "slpro": "Select province",
+            "nopro": "No province that you find",
+            "lat": "Latitude",
+            "lon": "Longitude",
+            "location": "Location address",
+            "direction": "Direction link",
+            "rating": "Rating",
+            "captcha": "Captcha",
+            "dcaptcha": "Please verify you are human to help us prevent spam",
+            "submit": "Submit",
+            "placeholder" : {
+              "title": "Enter title of activity",
+              "head":"Enter headding",
+              "decs":"Write a description",
+              "lat": "Enter latitude point",
+              "lon": "Enter longitude point",
+              "location": "Enter location address",
+              "direction": "Enter direction link",
+              "rating": "Rating of activity 0/5"
+            }
+          }
+        }
       }
     }
   },
@@ -1338,5 +1423,11 @@
   "Credit": {
     "title": "Credit",
     "decs": "This page provides proper attribution for all assets, icons, images, and resources used in ThaiGuide. We acknowledge and credit the creators whose work helps make this project possible"
+  },
+  "Notfound": {
+    "title": "It looks like the tuk-tuk took the scenic route - and ended up here instead!",
+    "decs": "But don’t worry, every great journey has a few surprises. Why not get back on track and discover something amazing in Thailand?",
+    "back": "Click the tuk-tuk to get to home",
+    "tooltip": "Back to home"
   }
 }

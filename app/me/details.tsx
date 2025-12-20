@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { User, onAuthStateChanged } from "firebase/auth";
 import auth from "@/lib/firebaseAuth";
 import Loader from '../components/loader';
+import tgFetch from '@/lib/fetch';
 import axios from 'axios';
 import { server } from "@/app/config.json";
 import { useTranslations } from 'next-intl';
@@ -55,9 +56,11 @@ function Details() {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
                 setUser(user);
-                const checkUser = await axios.get(`${server}/transactions/getbyuser`, {
-                    headers: {
-                        aetheruid: user.uid
+                const checkUser = await tgFetch({
+                    url: `${server}/transactions/getbyuser`, data: {
+                        headers: {
+                            aetheruid: user.uid
+                        }
                     }
                 })
                 setTranscaton(checkUser.data.transactions);

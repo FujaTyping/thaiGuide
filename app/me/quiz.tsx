@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { User, onAuthStateChanged } from "firebase/auth";
 import auth from "@/lib/firebaseAuth";
 import Loader from '../components/loader';
-import axios from 'axios';
+import tgFetch from '@/lib/fetch';
 import { server } from "@/app/config.json";
 import check from "@/assets/media/icon/quiz.png";
 import { useTranslations } from 'next-intl';
@@ -29,9 +29,11 @@ function Quiz() {
             if (user) {
                 setUser(user);
                 try {
-                    const checkUser = await axios.get(`${server}/quiz/getbyuser`, {
-                        headers: {
-                            aetheruid: user.uid
+                    const checkUser = await tgFetch({
+                        url: `${server}/quiz/getbyuser`, data: {
+                            headers: {
+                                aetheruid: user.uid
+                            }
                         }
                     })
                     setQuizz(checkUser.data.completedQuizzes);

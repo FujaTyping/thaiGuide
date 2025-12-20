@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { User, onAuthStateChanged } from "firebase/auth";
 import auth from "@/lib/firebaseAuth";
 import Loader from '../components/loader';
-import axios from 'axios';
+import tgFetch from '@/lib/fetch';
 import { server } from "@/app/config.json";
 import { useTranslations } from 'next-intl';
 import { motion } from "motion/react";
@@ -45,9 +45,11 @@ function BBadge() {
             if (user) {
                 setUser(user);
                 try {
-                    const checkUser = await axios.get(`${server}/badge/getbyuser`, {
-                        headers: { aetheruid: user.uid }
-                    });
+                    const checkUser = await tgFetch({
+                        url: `${server}/badge/getbyuser`, data: {
+                            headers: { aetheruid: user.uid }
+                        }
+                    })
                     setBadgee(checkUser.data.badges);
                 } catch {
                     setBadgee([]);
