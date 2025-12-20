@@ -125,7 +125,7 @@ export function DataTable<TData, TValue>({
                         <Trash2 size={18} onClick={() => {
                           setOpen(true)
                           setTargetId(row.getValue('id'))
-                          setTargetFileId(row.getValue('fid'))
+                          setTargetFileId(row.getValue('fileid'))
                         }} className="text-primary cursor-pointer" />
                       </TooltipTrigger>
                       <TooltipContent>
@@ -188,7 +188,7 @@ export function DataTable<TData, TValue>({
           {t('table.next')}
         </Button>
       </div>
-      <DeleteModal open={open} setOpen={setOpen} id={targetId} fid={targetFileId} />
+      <DeleteModal open={open} setOpen={setOpen} id={targetId} fileid={targetFileId} />
     </>
   )
 }

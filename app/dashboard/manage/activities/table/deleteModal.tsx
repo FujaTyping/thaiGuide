@@ -20,7 +20,7 @@ import { useTranslations } from 'next-intl';
 import { getCookie } from 'cookies-next/client';
 import { Button } from '@/components/ui/button';
 
-function DeleteModal({ open, setOpen, id, fid }: { open: boolean, setOpen: React.Dispatch<React.SetStateAction<boolean>>, id: string, fid: string }) {
+function DeleteModal({ open, setOpen, id, fileid }: { open: boolean, setOpen: React.Dispatch<React.SetStateAction<boolean>>, id: string, fileid: string }) {
     const t = useTranslations('Dashboard.item.activities');
     const [delStatus, setDelStatus] = useState('');
 
@@ -33,10 +33,10 @@ function DeleteModal({ open, setOpen, id, fid }: { open: boolean, setOpen: React
     async function deleteNow() {
         setDelStatus('loading');
         try {
-            await axios.delete(`${server}/edit/activities/remove​`, {
+            await axios.delete(`${server}/edit/activities/remove`, {
                 data: {
                     id: id,
-                    fid: fid
+                    fid: fileid
                 },
                 headers: {
                     Authorization: `Bearer ${getCookie('guide_key')}`

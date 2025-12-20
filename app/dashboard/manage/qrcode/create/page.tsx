@@ -1,6 +1,5 @@
 import React from 'react';
 import type { Metadata } from "next";
-import Didyouknow from '@/app/components/didyouknow';
 import NewForm from './form';
 import { useTranslations } from 'next-intl';
 import TGtitle from '@/app/components/tgtitle';
@@ -18,7 +17,6 @@ function Page() {
                 <TGtitle title={t('title')} decs={t('decs')} />
             </main>
             <NewForm />
-            
         </>
     )
 }

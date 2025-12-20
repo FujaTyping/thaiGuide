@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "ThaiGuide – Activities Management"
 };
 
-function page() {
+function Page() {
   const t = useTranslations('Dashboard.item.activities');
 
   return (
@@ -23,4 +23,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

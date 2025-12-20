@@ -1279,6 +1279,61 @@
           "next": "Next",
           "mty": "No results",
           "search": "Filter by Title"
+        },
+        "add": {
+          "title": "Add New Activity & Experience",
+          "decs": "Create and manage new activities or experiences that users can discover and enjoy across Thailand",
+          "form": {
+            "zod": {
+              "title": "Title must be at least 5 characters long",
+              "lat": "Please enter a valid latitude",
+              "lon": "Please enter a valid longitude",
+              "decs": "Description must be at least 20 characters long",
+              "province": "Please select a province",
+              "direction": "Please enter valid url",
+              "location": "Address must be at least 8 characters long",
+              "ndtitle": "Headding must be at least 3 characters long",
+              "rating": "Please enter a valid rating",
+              "captcha": "Please complete the CAPTCHA verification",
+              "file": {
+                "msg": "Please input a file",
+                "max": "Max image size is 5MB",
+                "type": "Only .jpg, .jpeg, .png and .webp formats are supported"
+              }
+            },
+            "toast": {
+              "succ": "Activity add successfully",
+              "dsucc": "Activity add with ID",
+              "err": "Something went wrong",
+              "derr": "Please try again later"
+            },
+            "title": "Title",
+            "head": "Headding",
+            "decs": "Description",
+            "thumb": "Thumbnail Image",
+            "dthumb": "Recommend dimension lanscape",
+            "province": "Province",
+            "slpro": "Select province",
+            "nopro": "No province that you find",
+            "lat": "Latitude",
+            "lon": "Longitude",
+            "location": "Location address",
+            "direction": "Direction link",
+            "rating": "Rating",
+            "captcha": "Captcha",
+            "dcaptcha": "Please verify you are human to help us prevent spam",
+            "submit": "Submit",
+            "placeholder" : {
+              "title": "Enter title of activity",
+              "head":"Enter headding",
+              "decs":"Write a description",
+              "lat": "Enter latitude point",
+              "lon": "Enter longitude point",
+              "location": "Enter location address",
+              "direction": "Enter direction link",
+              "rating": "Rating of activity 0/5"
+            }
+          }
         }
       }
     }

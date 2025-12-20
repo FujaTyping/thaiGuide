@@ -21,8 +21,8 @@ function TGtitle({ title, decs, badge, second }: { title: string, decs?: string,
             <main className={`${second && 'mt-6'}`}>
                 <div>
                     <div className='flex items-center gap-4'>
-                        <h1 className={`hidden md:flex items-center font-bold text-4xl md:text-5xl ${MomoTrustDisplay.className}`}>
-                            <span style={{ transform: `rotate(${rotation}rad)` }} className='text-white bg-primary p-1 px-1.5 z-0 rounded-sm'>{title.charAt(0).toUpperCase()}</span>
+                        <h1 className={`hidden md:flex items-start font-bold text-4xl md:text-5xl ${MomoTrustDisplay.className}`}>
+                            <span style={{ transform: `rotate(${rotation}rad)` }} className='text-white bg-primary p-1 px-1.5 z-0 rounded-sm -mt-1'>{title.charAt(0).toUpperCase()}</span>
                             <span className='z-1'>{title.slice(1)}</span>
                         </h1>
                         <h1 className={`md:hidden font-bold text-4xl md:text-5xl flex items-center gap-4 ${MomoTrustDisplay.className}`}>{title}</h1>

@@ -26,7 +26,7 @@ export const columns: ColumnDef<DataSchema>[] = (() => {
             header: () => T()("title"),
         },
         {
-            accessorKey: "fid",
+            accessorKey: "fileid",
             header: () => {
                 return;
             },
