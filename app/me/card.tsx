@@ -35,7 +35,7 @@ function Card() {
     const t = useTranslations('Profile');
     const [user, setUser] = useState<User | null>(null);
     const [uData, setUData] = useState<any | null>(null);
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
     const [shareOpen, setShareOpen] = useState(false);
     const [welState, setWelState] = useState(1);
     const [showJoin, setShowJoin] = useState(false);
