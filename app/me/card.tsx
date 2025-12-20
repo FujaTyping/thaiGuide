@@ -1,11 +1,11 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Atropos from 'atropos/react';
 import { User, onAuthStateChanged } from "firebase/auth";
 import auth from "@/lib/firebaseAuth";
-import { ArrowBigUp, Coins, Flame } from 'lucide-react';
+import { Coins, Flame } from 'lucide-react';
 import Loader from '../components/loader';
 import axios from 'axios';
 import { server } from "@/app/config.json";
@@ -23,31 +23,31 @@ import IRM from "@/assets/media/icon/gift.svg";
 import ITG from "@/assets/media/icon/target.svg";
 import TANDIA from "@/assets/media/maskot/tan/TanUpper.webp";
 import SplitText from '@/components/bits/SplitText/SplitText';
-
-const style = {
-    root: {
-        borderRadius: 3,
-        border: 0,
-        padding: 0,
-        color: 'white',
-    },
-    copyContainer: {
-        background: '#f7740a',
-        border: 0
-    }
-};
+import moment from 'moment';
+import STAMPS from "@/assets/media/card/icon/stamp.svg"
 
 import './share.css'
 import Sharebt from '../components/sharebt';
 import { Progress } from '@/components/ui/progress';
+import { AudioPlayer, AudioPlayerRef } from 'react-audio-play';
 
 function Card() {
     const t = useTranslations('Profile');
     const [user, setUser] = useState<User | null>(null);
     const [uData, setUData] = useState<any | null>(null);
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
     const [shareOpen, setShareOpen] = useState(false);
     const [welState, setWelState] = useState(1);
+    const [showJoin, setShowJoin] = useState(false);
+    const playerBadgeRef = useRef<AudioPlayerRef>(null);
+
+    function showJoinded() {
+        setShowJoin(true);
+        playerBadgeRef.current?.play();
+        setTimeout(() => {
+            setShowJoin(false);
+        }, 8000);
+    }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -92,6 +92,7 @@ function Card() {
 
     return (
         <>
+            <AudioPlayer ref={playerBadgeRef} src="/audio/JoinSound.mp3" style={{ display: "none" }} volume={60} />
             <Atropos className='mt-8 cursor-pointer' onClick={() => setShareOpen(true)}>
                 <div
                     className='relative overflow-hidden rounded-t-2xl'
@@ -117,8 +118,24 @@ function Card() {
                     <p className='absolute z-1 top-0 left-4 md:left-8 text-xs font-semibold translate-y-0.5'>{t('lvl')} {uData.lv} : {uData.exp}/{uData.nextexp}</p>
                     <Progress value={parseInt(uData.exp)} max={parseInt(uData.nextexp)} className='rounded-t-2xl h-6' />
                 </div>
+                <AnimatePresence initial={false}>
+                    {
+                        showJoin && <motion.div
+                            initial={{ opacity: 0, scale: 3 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0 }}
+                            transition={{ duration: 0.6 }}
+                            className='absolute bottom-10 right-4 md:bottom-12 md:right-8 font-bold text-white text-xl'>
+                            <img src={STAMPS.src} alt="Icon" className='w-19 md:w-26' />
+                            <div className='absolute top-5 md:top-7 text-center -rotate-44'>
+                                <p className='text-xs -mb-2'>{t('join')}</p>
+                                <h1 className='text-sm md:text-xl'>{moment().format('L')}</h1>
+                            </div>
+                        </motion.div>
+                    }
+                </AnimatePresence>
             </Atropos>
-            <Dialog open={isOpen} onOpenChange={setIsOpen}>
+            <Dialog open={isOpen} onOpenChange={(e) => { setIsOpen(e); if (!e) showJoinded(); }}>
                 <DialogContent>
                     <DialogHeader>
                         <DialogTitle className='text-2xl'>{t('welcome.title')}</DialogTitle>
@@ -181,7 +198,7 @@ function Card() {
                             </AnimatePresence>
 
                         </div>
-                        <Button className='bg-primary hover:bg-primary text-white mt-2 cursor-pointer w-full' onClick={() => { if (welState < 3) { setWelState(welState + 1) } else { setIsOpen(false) } }}>
+                        <Button className='bg-primary hover:bg-primary text-white mt-2 cursor-pointer w-full' onClick={() => { if (welState < 3) { setWelState(welState + 1) } else { setIsOpen(false); showJoinded(); } }}>
                             {welState < 3 ? t('welcome.next') : t('welcome.start')}
                         </Button>
                     </div>
