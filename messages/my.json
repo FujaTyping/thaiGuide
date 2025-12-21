@@ -77,7 +77,8 @@
             "weather": "Cuaca",
             "vat": "Bayaran Balik VAT",
             "SDGs": "SDG",
-            "event": "Acara"
+            "event": "Acara",
+            "Camera": "Kamera"
         }
     },
     "IndexRus": {
@@ -937,6 +938,7 @@
         "decs": "Terokai acara akan datang dan perayaan meriah di seluruh Thailand. Sertai perayaan tempatan, alami tradisi unik, dan jadikan setiap perjalanan tidak dapat dilupakan.",
         "fillter": "Tapis mengikut Wilayah",
         "show": "Tunjukkan",
+    "showall": "Tunjukkan semua acara",
         "items": "item",
         "grid": {
             "more": "Muat Lagi",
@@ -1091,5 +1093,10 @@
         "decs": "Tetapi jangan risau, setiap perjalanan hebat mempunyai beberapa kejutan. Mengapa tidak kembali ke landasan dan temui sesuatu yang menakjubkan di Thailand?",
         "back": "Klik tuk-tuk untuk pulang ke rumah",
         "tooltip": "Kembali ke rumah"
+    },
+    "Assets": {
+        "copybutton": {
+            "click": "Klik untuk menyalin"
+        }
     }
 }

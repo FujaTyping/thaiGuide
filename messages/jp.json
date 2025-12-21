@@ -938,6 +938,7 @@
     "decs": "タイ全土で開催される今後のイベントや活気ある祭りを発見してください。地元の祝祭に参加し、ユニークな伝統を体験し、すべての旅を忘れられないものにしましょう。",
     "fillter": "県で絞り込む",
     "show": "表示",
+    "showall": "すべてのイベントを表示",
     "items": "アイテム",
     "grid": {
       "more": "もっと読み込む",
@@ -1070,18 +1071,18 @@
     "decs": "コンテンツは削除されたか、現在利用できません"
   },
   "Search": {
-    "title": "Search",
-    "decs": "Find attractions, restaurants, events, and more across Thailand.",
+    "title": "検索",
+    "decs": "タイ全土の観光スポット、レストラン、イベントなどを検索します。",
     "beta": "ベータ版",
-    "require": "Search must be at least 2 characters long",
+    "require": "検索は2文字以上である必要があります",
     "type": {
-      "all": "All",
-      "act": "Activities",
-      "res": "Restaurants"
+      "all": "すべて",
+      "act": "アクティビティ",
+      "res": "レストラン"
     },
-    "mtt": "Discover What You Need",
-    "mtd": "Search for activities, restaurants, and more across Thailand.",
-    "placeholders": "Search for anything"
+    "mtt": "必要なものを見つける",
+    "mtd": "タイ全土のアクティビティ、レストランなどを検索します。",
+    "placeholders": "何でも検索"
   },
   "Credit": {
     "title": "クレジット",
@@ -1092,5 +1093,10 @@
     "decs": "でも心配しないでください、どんな素晴らしい旅にもいくつかの驚きがあります。軌道に戻って、タイで何か素晴らしいものを発見してみませんか？",
     "back": "トゥクトゥクをクリックしてホームに戻る",
     "tooltip": "ホームに戻る"
+  },
+  "Assets": {
+    "copybutton": {
+      "click": "クリックしてコピー"
+    }
   }
 }

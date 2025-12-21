@@ -22,6 +22,7 @@ import {
     DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const supportLang = [
     { code: 'cn', text: '中文' },
@@ -36,13 +37,14 @@ function ChangeCookie({ isAdmin }: { isAdmin: boolean }) {
     const t = useTranslations('NavBar');
     const [modalO, setModalO] = useState(false);
     const [wlang, setWlang] = useState('us');
+    const router = useRouter();
 
     return (
         <>
             <DropdownMenuContent>
                 <DropdownMenuLabel>{t(`list.switcherlang`)}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem className='cursor-pointer' onClick={() => { setCookie('NEXT_LOCALE', 'en', {}); window.location.reload(); }}><Flag code={'us'} className="w-5 h-5 object-cover rounded-full" /> English</DropdownMenuItem>
+                <DropdownMenuItem className='cursor-pointer' onClick={() => { setCookie('NEXT_LOCALE', 'en', {}); router.refresh(); }}><Flag code={'us'} className="w-5 h-5 object-cover rounded-full" /> English</DropdownMenuItem>
                 {
                     isAdmin ? <>
                         <DropdownMenuItem className='cursor-pointer' onClick={() => { setWlang('th'); setModalO(true); }}><Flag code={'th'} className="w-5 h-5 object-cover rounded-full" /> ภาษาไทย</DropdownMenuItem>
@@ -72,7 +74,7 @@ function ChangeCookie({ isAdmin }: { isAdmin: boolean }) {
                         <DialogClose asChild>
                             <Button variant="outline">{t('lang.cancel')}</Button>
                         </DialogClose>
-                        <Button  type="submit" onClick={() => { setCookie('NEXT_LOCALE', wlang, {}); setModalO(false); window.location.reload(); }}>{t('lang.change')}</Button>
+                        <Button  type="submit" onClick={() => { setCookie('NEXT_LOCALE', wlang, {}); setModalO(false); router.refresh(); }}>{t('lang.change')}</Button>
                     </DialogFooter>
                 </DialogContent>
             </Dialog>

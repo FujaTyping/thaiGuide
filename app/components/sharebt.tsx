@@ -11,6 +11,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog";
+import { CopyButton } from "@/components/ui/shadcn-io/copy-button";
 import { SocialIcon } from 'react-social-icons';
 
 function Sharebt({ link, onlyContent }: { link?: string, onlyContent?: boolean }) {
@@ -59,7 +60,10 @@ function Sharebt({ link, onlyContent }: { link?: string, onlyContent?: boolean }
                                 ))
                             }
                         </div>
-                        <p className='text-sm text-primary font-semibold text-center mt-1 break-all'>{fullPath}</p>
+                        <div className='flex items-center justify-center flex-col gap-2'>
+                            <p className='text-sm text-primary font-semibold text-center mt-1 break-all'>{fullPath}</p>
+                            <CopyButton content={fullPath} />
+                        </div>
                     </DialogHeader>
                 </DialogContent>
             </Dialog>
