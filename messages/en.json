@@ -939,6 +939,7 @@
     "decs": "Discover upcoming events and vibrant festivals across Thailand. Join local celebrations, experience unique traditions, and make every journey unforgettable.",
     "fillter": "Filter by Province",
     "show": "Show",
+    "showall": "Show all event",
     "items": "items",
     "grid": {
       "more": "Load More",
@@ -1324,10 +1325,10 @@
             "captcha": "Captcha",
             "dcaptcha": "Please verify you are human to help us prevent spam",
             "submit": "Submit",
-            "placeholder" : {
+            "placeholder": {
               "title": "Enter title of activity",
-              "head":"Enter headding",
-              "decs":"Write a description",
+              "head": "Enter headding",
+              "decs": "Write a description",
               "lat": "Enter latitude point",
               "lon": "Enter longitude point",
               "location": "Enter location address",
@@ -1429,5 +1430,10 @@
     "decs": "But don’t worry, every great journey has a few surprises. Why not get back on track and discover something amazing in Thailand?",
     "back": "Click the tuk-tuk to get to home",
     "tooltip": "Back to home"
+  },
+  "Assets": {
+    "copybutton": {
+      "click": "Click to copy"
+    }
   }
 }

@@ -26,6 +26,8 @@ import { useTranslations } from 'next-intl';
 import NF from "@/assets/media/card/icon/notfound.svg";
 import { CalendarArrowUp, CheckIcon, ChevronDown, ChevronsUpDownIcon } from 'lucide-react';
 import Proworks from '@/data/province';
+import { Checkbox } from "@/components/ui/checkbox"
+import { Label } from '@/components/ui/label';
 
 const ALL_PROVINCES_VALUE = "All";
 
@@ -59,6 +61,7 @@ function Grid() {
     const [numDisplayedItems, setNumDisplayedItems] = useState<number>(INITIAL_ITEMS_TO_SHOW);
     const [open, setOpen] = useState(false)
     const [value, setValue] = useState("songkhla");
+    const [showAll, setShowAll] = useState(false);
     const t = useTranslations('Event');
     const p = useTranslations('Province');
 
@@ -88,7 +91,7 @@ function Grid() {
     }
 
     const filteredData = data.filter(item => {
-        if (selectedProvince === ALL_PROVINCES_VALUE) return true;
+        if (showAll || selectedProvince === ALL_PROVINCES_VALUE) return true;
         return item.province.toLowerCase() === selectedProvince.toLowerCase();
     });
 
@@ -100,64 +103,75 @@ function Grid() {
 
     return (
         <>
-            <div className='mt-6 flex flex-col md:flex-row md:items-center place-content-between'>
-                <div className='flex items-center gap-2'>
-                    <p className='font-semibold'>{t('fillter')} : </p>
-                    <Popover open={open} onOpenChange={setOpen}>
-                        <PopoverTrigger asChild>
-                            <Button
-                                variant="outline"
-                                role="combobox"
-                                aria-expanded={open}
-                                className="w-[200px] justify-between"
-                            >
-                                {value
-                                    ? Proworks.find((framework) => framework.value === value)?.label
-                                    : `${t('select.start')}`}
-                                <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                            </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-[200px] p-0">
-                            <Command>
-                                <CommandInput placeholder={t('select.search')} />
-                                <CommandList>
-                                    <CommandEmpty>{t('select.notfound')}</CommandEmpty>
-                                    <CommandGroup>
-                                        {Proworks.map((framework) => (
-                                            <CommandItem
-                                                key={framework.value}
-                                                value={framework.value}
-                                                onSelect={(currentValue) => {
-                                                    const newPickerValue = currentValue === value ? "" : currentValue;
-                                                    setValue(newPickerValue);
+            <div className='mt-6 flex gap-3 flex-col md:flex-row md:items-center place-content-between'>
+                <div>
+                    <div className='flex items-center gap-2'>
+                        <p className='font-semibold'>{t('fillter')} : </p>
+                        <Popover open={open} onOpenChange={setOpen}>
+                            <PopoverTrigger asChild>
+                                <Button
+                                    variant="outline"
+                                    role="combobox"
+                                    aria-expanded={open}
+                                    className="w-[200px] justify-between"
+                                >
+                                    {value
+                                        ? Proworks.find((framework) => framework.value === value)?.label
+                                        : `${t('select.start')}`}
+                                    <ChevronsUpDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                </Button>
+                            </PopoverTrigger>
+                            <PopoverContent className="w-[200px] p-0">
+                                <Command>
+                                    <CommandInput placeholder={t('select.search')} />
+                                    <CommandList>
+                                        <CommandEmpty>{t('select.notfound')}</CommandEmpty>
+                                        <CommandGroup>
+                                            {Proworks.map((framework) => (
+                                                <CommandItem
+                                                    key={framework.value}
+                                                    value={framework.value}
+                                                    onSelect={(currentValue) => {
+                                                        const newPickerValue = currentValue === value ? "" : currentValue;
+                                                        setValue(newPickerValue);
 
-                                                    if (newPickerValue === "") {
-                                                        setSelectedProvince(ALL_PROVINCES_VALUE);
-                                                    } else {
-                                                        const selectedFramework = Proworks.find(fw => fw.value === newPickerValue);
-                                                        if (selectedFramework) {
-                                                            setSelectedProvince(selectedFramework.label);
-                                                        } else {
+                                                        if (newPickerValue === "") {
                                                             setSelectedProvince(ALL_PROVINCES_VALUE);
+                                                        } else {
+                                                            const selectedFramework = Proworks.find(fw => fw.value === newPickerValue);
+                                                            if (selectedFramework) {
+                                                                setSelectedProvince(selectedFramework.label);
+                                                            } else {
+                                                                setSelectedProvince(ALL_PROVINCES_VALUE);
+                                                            }
                                                         }
-                                                    }
-                                                    setOpen(false);
-                                                }}
-                                            >
-                                                <CheckIcon
-                                                    className={cn(
-                                                        "mr-2 h-4 w-4",
-                                                        value === framework.value ? "opacity-100" : "opacity-0"
-                                                    )}
-                                                />
-                                                {p(`${framework.value}`)}
-                                            </CommandItem>
-                                        ))}
-                                    </CommandGroup>
-                                </CommandList>
-                            </Command>
-                        </PopoverContent>
-                    </Popover>
+                                                        setOpen(false);
+                                                    }}
+                                                >
+                                                    <CheckIcon
+                                                        className={cn(
+                                                            "mr-2 h-4 w-4",
+                                                            value === framework.value ? "opacity-100" : "opacity-0"
+                                                        )}
+                                                    />
+                                                    {p(`${framework.value}`)}
+                                                </CommandItem>
+                                            ))}
+                                        </CommandGroup>
+                                    </CommandList>
+                                </Command>
+                            </PopoverContent>
+                        </Popover>
+                    </div>
+                    <div className='flex items-center gap-3'>
+                        <Label htmlFor={"terms"} className='font-semibold text-base'>{t('showall')}</Label>
+                        <Checkbox
+                            id="terms"
+                            className='cursor-pointer'
+                            checked={showAll}
+                            onCheckedChange={(checked) => setShowAll(checked as boolean)}
+                        />
+                    </div>
                 </div>
                 <div>
                     <b>{t('show')} {filteredData.length} {t('items')}</b>
