@@ -53,7 +53,8 @@ function Resturant() {
             params: {
               limit: 7
             }
-          }
+          },
+          cache: true
         })
         const fetchedRestaurants: RoadtripItem[] = response.data || [];
         setData(fetchedRestaurants);

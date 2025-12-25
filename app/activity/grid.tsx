@@ -59,7 +59,7 @@ function Grid() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await tgFetch({ url: `${server}/activities` })
+                const response = await tgFetch({ url: `${server}/activities`, cache: true })
                 setData(response.data);
                 setLoading(false);
             } catch (err) {

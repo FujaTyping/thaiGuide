@@ -84,27 +84,27 @@ async function page({ params }: Props) {
                 </Link>
                 <div className='mt-2'><Markdown>{data.decs}</Markdown></div>
                 <div className='grid grid-cols-2 md:grid-cols-3 py-8 gap-8'>
-                    {
-                        data.pricing && <div className='flex flex-col gap-1 items-center justify-center'>
-                            <Banknote className='text-primary size-14' />
-                            <p className='font-semibold text-xl'>{data.pricing}</p>
-                            <p>{t('item.cost')}</p>
-                        </div>
-                    }
                     <div className='flex flex-col gap-1 items-center justify-center'>
                         <Star className='text-primary size-12' />
                         <p className='font-semibold text-xl'>{data.rating}</p>
                         <p>{t('item.rate')}</p>
                     </div>
                     {
-                        data.popular && <div className='flex flex-col gap-1 items-center justify-center'>
-                            <Smile className='text-primary size-12' />
-                            <p className='font-semibold text-xl'>{data.popular}</p>
-                            <p>{t('item.visit')}</p>
-                        </div>
-                    }
-                    {
                         data.details && (<>
+                            {
+                                data.details.pricing && <div className='flex flex-col gap-1 items-center justify-center'>
+                                    <Banknote className='text-primary size-14' />
+                                    <p className='font-semibold text-xl'>{data.details.pricing}</p>
+                                    <p>{t('item.cost')}</p>
+                                </div>
+                            }
+                            {
+                                data.details.popular && <div className='flex flex-col gap-1 items-center justify-center'>
+                                    <Smile className='text-primary size-12' />
+                                    <p className='font-semibold text-xl'>{data.details.popular}</p>
+                                    <p>{t('item.visit')}</p>
+                                </div>
+                            }
                             {
                                 data.details.tel && <div className='flex flex-col gap-1 items-center justify-center'>
                                     <Phone className='text-primary size-12' />

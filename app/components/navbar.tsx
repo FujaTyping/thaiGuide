@@ -51,9 +51,11 @@ import { useForm } from "react-hook-form"
 import { signInWithEmailAndPassword } from "firebase/auth";
 import SearchModal from './searchModal';
 import FBICO from "@/assets/media/login/facebook.svg";
+import moment from 'moment';
 
 // Modal Icon
 import TOC from "@/assets/media/login/Top.svg";
+import SANTA from "@/assets/media/event/santa-hat.webp";
 
 import {
     Form,
@@ -263,7 +265,10 @@ function Navbar() {
                 <nav className='max-w-7xl flex items-center mx-auto p-3 w-full place-content-between'>
                     <Link href={"/"}>
                         <div className='flex items-center gap-1'>
-                            <Image src={Logo.src} width={58} height={58} alt='Logo' />
+                            <div className='relative'>
+                                <Image src={Logo.src} width={58} height={58} alt='Logo' />
+                                {moment().month() == 11 && <img src={SANTA.src} alt="Icon" className='absolute -top-2 -right-2 w-8' />}
+                            </div>
                             <h1 className='font-bold text-2xl dark:text-white text-primary'>{t('title')}</h1>
                         </div>
                     </Link>

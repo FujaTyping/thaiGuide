@@ -35,7 +35,8 @@ function Roadtrip() {
                         params: {
                             limit: 3
                         }
-                    }
+                    },
+                    cache: true
                 })
                 const fetchedRoadtrips: RoadtripItem[] = response.data || [];
                 setData(fetchedRoadtrips);
