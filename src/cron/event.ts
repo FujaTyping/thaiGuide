@@ -17,9 +17,8 @@ async function eventCycle() {
         }
     });
     broad.remain = broad.all - broad.delete;
-    let payload;
     if (broad.delete != 0) {
-        payload = {
+        const payload = {
             "content": "**📌 Important Notice** ||@here ||",
             "embeds": [
                 {
@@ -50,9 +49,10 @@ async function eventCycle() {
                 }
             ],
             "attachments": []
-        }
+        };
+        await sendHooks({ data: payload });
     }
-    await sendHooks({ data: payload });
+
 }
 
 export default eventCycle;

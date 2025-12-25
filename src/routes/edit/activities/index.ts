@@ -1,7 +1,7 @@
 import { t } from "elysia";
 import type { ElysiaApp } from "../../../index";
 import db from "../../../lib/firebase";
-import { collection, addDoc, getDocs, doc, query, GeoPoint, deleteDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs, doc, query, GeoPoint, deleteDoc, updateDoc, getDoc, setDoc } from "firebase/firestore";
 import client from "../../../lib/imagekit";
 import 'dotenv/config';
 import validateAdmin from "../../../lifecycle/admin";
@@ -22,14 +22,19 @@ const newSchema = {
     })
 }
 
-// const additionalDataSchema = {
-//     body: t.Object({
-//         popular: t.Optional(t.String()),
-//         pricing: t.Optional(t.String()),
-//         tel: t.Optional(t.String()),
-//         website: t.Optional(t.String())
-//     })
-// }
+const dataDetails = {
+    query: t.Object({
+        id: t.String()
+    })
+}
+
+const updateDetailsSchema = {
+    body: t.Object({
+        id: t.String(),
+        key: t.String(),
+        value: t.String()
+    })
+}
 
 const deleteSchema = {
     body: t.Object({
@@ -87,10 +92,49 @@ async function addNewActivities({ body, set }: { body: typeof newSchema.body.sta
     }
 }
 
-// WAITING FOR PART 1 TESTING
-// function updateDetails({ body, set }: { body: typeof additionalDataSchema.body.static, set: { status: number } }) {
-//     const { popular, pricing, tel, website } = body
-// }
+async function getDetailsId({ query, set }: { query: typeof dataDetails.query.static, set: { status: number } }) {
+    const { id } = query;
+
+    try {
+        let data: any = {};
+        const querySnapshot = await getDocs(collection(db, "activities", id, "details"));
+        querySnapshot.forEach((doc) => {
+            data[doc.id] = doc.data().value;
+        });
+
+        set.status = 200;
+        return data;
+    } catch {
+        set.status = 400;
+        return "No such document!";
+    }
+}
+
+async function updateDetails({ body, set }: { body: typeof updateDetailsSchema.body.static, set: { status: number } }) {
+    const { value, id, key } = body
+
+    const docRef = doc(db, "activities", id, "details", key);
+    const docSnap = await getDoc(docRef);
+    try {
+        if (docSnap.exists()) {
+            const detailsRef = doc(db, "activities", id, "details", key);
+
+            await updateDoc(detailsRef, {
+                value
+            });
+        } else {
+            await setDoc(doc(db, "activities", id, "details", key), {
+                value
+            });
+        }
+
+        set.status = 200;
+        return "Done !";
+    } catch (e) {
+        set.status = 400;
+        return "Can't update the activities details";
+    }
+}
 
 async function deleteData({ body, set }: { body: typeof deleteSchema.body.static, set: { status: number } }) {
     const { id, fid } = body;
@@ -118,16 +162,17 @@ export default (app: ElysiaApp) => app
             }
         }
     })
-    // .patch('/updateDetails', updateDetails, {
-    //     ...additionalDataSchema,
-    //     async beforeHandle({ bearer, set }) {
-    //         const validate = await validateAdmin({ token: bearer });
-    //         if (!validate) {
-    //             set.status = 401;
-    //             return 'Unauthorized';
-    //         }
-    //     }
-    // })
+    .get('/getdetailsfromid', getDetailsId, dataDetails)
+    .patch('/updateDetails', updateDetails, {
+        ...updateDetailsSchema,
+        async beforeHandle({ bearer, set }) {
+            const validate = await validateAdmin({ token: bearer });
+            if (!validate) {
+                set.status = 401;
+                return 'Unauthorized';
+            }
+        }
+    })
     .delete('/remove', deleteData, {
         ...deleteSchema,
         async beforeHandle({ bearer, set }) {
