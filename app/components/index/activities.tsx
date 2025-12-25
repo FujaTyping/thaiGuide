@@ -38,7 +38,8 @@ function Activities() {
                         params: {
                             limit: 7
                         }
-                    }
+                    },
+                    cache: true
                 })
                 const fetchedActivities: Activity[] = response.data || [];
                 setData(fetchedActivities);

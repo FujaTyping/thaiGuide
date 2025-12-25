@@ -54,7 +54,7 @@ function Grid() {
         const fetchData = async () => {
             setIsLoading(true);
             try {
-                const response = await tgFetch({ url: `${server}/restaurant` });
+                const response = await tgFetch({ url: `${server}/restaurant`, cache: true });
                 setData(response.data);
             } catch (err) {
                 console.error("Error fetching restaurant:", err);

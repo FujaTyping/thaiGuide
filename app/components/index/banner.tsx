@@ -23,7 +23,7 @@ function Banner() {
 
     useEffect(() => {
         async function getdata() {
-            const res = await tgFetch({ url: `${server}/banner` });
+            const res = await tgFetch({ url: `${server}/banner`, cache: true });
             setBannerItems(res.data);
             setShowPlace(false);
         }
