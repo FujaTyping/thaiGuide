@@ -7,7 +7,7 @@ interface objectSchema {
 }
 
 async function tgFetch({ url, data = {}, cache = false }: objectSchema) {
-    const option = cache ? { cache: "force-cache", next: { revalidate: 600 } } : { cache: "no-store" }
+    const option = cache ? { next: { revalidate: 600 } } : { cache: "no-store" }
     const response = await axios.get(url, {
         ...data,
         adapter: "fetch",

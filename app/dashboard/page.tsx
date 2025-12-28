@@ -5,6 +5,7 @@ import Link from 'next/link'
 import type { Metadata } from "next";
 import { useTranslations } from 'next-intl';
 import TGtitle from '../components/tgtitle';
+import Overview from './overview';
 
 export const metadata: Metadata = {
     title: "ThaiGuide – Dashboard"
@@ -55,27 +56,29 @@ function Page() {
         <>
             <main className='tg-container'>
                 <TGtitle title={t('title')} decs={t('decs')} badge={t('beta')} />
-                <p className='mt-3 font-bold flex items-center gap-2 text-primary'><TriangleAlert className='hidden md:block' />{t('noticelang')}</p>
-            </main>
-            <div className='max-w-7xl mx-auto px-4 pb-8'>
-                <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
-                    {
-                        menulist.map((items, index) => (
-                            <Link href={items.link} key={index}>
-                                <div className='cursor-pointer border-3 rounded-2xl border-primary p-4 px-5 flex flex-col items-center justify-center gap-2'>
-                                    <items.icon className='w-10 h-10 text-primary' />
-                                    <div className='text-center'>
-                                        <h2 className='text-xl font-semibold'>{items.label}</h2>
-                                        <p>{items.cat}</p>
-                                    </div>
-                                </div>
-                            </Link>
-                        ))
-                    }
-
+                <div className='py-6'>
+                    <h1 className='text-2xl font-bold text-primary pb-3'>{t('statics')}</h1>
+                    <Overview />
                 </div>
-            </div>
-
+                <div>
+                    <h1 className='text-2xl font-bold text-primary pb-3'>{t('menu')}</h1>
+                    <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
+                        {
+                            menulist.map((items, index) => (
+                                <Link href={items.link} key={index}>
+                                    <div className='cursor-pointer border-3 rounded-2xl border-primary p-4 px-5 flex flex-col items-center justify-center gap-2'>
+                                        <items.icon className='w-10 h-10 text-primary' />
+                                        <div className='text-center'>
+                                            <h2 className='text-xl font-semibold'>{items.label}</h2>
+                                            <p>{items.cat}</p>
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))
+                        }
+                    </div>
+                </div>
+            </main>
         </>
     )
 }
