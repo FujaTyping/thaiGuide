@@ -458,7 +458,8 @@
         "day": "Day",
         "tips": "Tips"
       },
-      "re": "Re-Generate"
+      "re": "Re-Generate",
+      "notice": "The data from the AI may not be accurate. Please verify the information from other data sources"
     }
   },
   "RoadTrip": {

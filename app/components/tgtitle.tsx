@@ -4,7 +4,7 @@ import { Badge } from '@/components/ui/badge'
 import React, { useEffect, useState } from 'react'
 
 function TGtitle({ title, decs, badge, second }: { title: string, decs?: string, badge?: string, second?: boolean }) {
-    const [rotation, setRotation] = useState(-0.3);
+    const [rotation, setRotation] = useState(0);
 
     useEffect(() => {
         setRotation(Math.random() * 0.6 - 0.3);

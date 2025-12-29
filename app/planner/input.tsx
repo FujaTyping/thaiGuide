@@ -238,14 +238,12 @@ function TInput() {
                                     <Button
                                         onClick={GenAI}
                                         className='mt-6'
-                                        disabled
                                     >
                                         <p className='font-semibold'>{t('ai.input.submit')}</p>
                                         <Brush />
                                     </Button>
-                                    <p className='font-bold text-primary dark:text-white flex text-base items-center gap-2'><span><Info /></span> {t('ai.unava')}</p>
+                                    {/* <p className='font-bold text-primary dark:text-white flex text-base items-center gap-2'><span><Info /></span> {t('ai.unava')}</p> */}
                                 </div>
-
                             </div>
                         </> : <>
                             {
@@ -335,10 +333,14 @@ function TInput() {
                                                             </div>
                                                         </TabsContent>
                                                     </Tabs>
-                                                    <div className='flex items-center justify-center'>
+                                                    <div className='flex flex-col gap-3 items-center justify-center mt-6'>
+                                                        <div className='flex items-center justify-center gap-2'>
+                                                            <TriangleAlert size={18} className='hidden md:block' />
+                                                            <p className='text-sm font-semibold'>{t('ai.notice')}</p>
+                                                        </div>
                                                         <Button
                                                             onClick={GenAI}
-                                                            className='bg-primary w-full md:w-fit py-2 px-6 text-white rounded-xl mt-6 flex items-center justify-center gap-2 cursor-pointer transition-colors'
+                                                            className='bg-primary w-full md:w-fit py-2 px-6 text-white rounded-xl flex items-center justify-center gap-2 cursor-pointer transition-colors'
                                                         >
                                                             <p className='font-semibold'>{t('ai.re')}</p>
                                                             <RefreshCcw />
