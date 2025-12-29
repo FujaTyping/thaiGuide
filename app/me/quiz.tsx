@@ -82,7 +82,7 @@ function Quiz() {
                                     <div key={index} className='w-full border-3 border-primary  px-8 md:px-4 p-4 gap-3 rounded-xl flex items-center justify-between md:justify-center'>
                                         <img src={check.src} alt="Icon" className='w-14 mb-1' />
                                         <div className='text-center'>
-                                            <h1 className='text-lg font-semibold'>{item.quizName.charAt(0).toUpperCase() + item.quizName.slice(1)}</h1>
+                                            <h1 className='text-lg font-semibold capitalize'>{item.quizName}</h1>
                                             <p>{t('quiz.comat')} {new Date(item.completedAt.seconds * 1000).toLocaleDateString()}</p>
                                         </div>
                                     </div>

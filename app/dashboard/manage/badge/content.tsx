@@ -89,7 +89,7 @@ function Content() {
                                     <div key={index} className='grid grid-cols-3 gap-6 border-3 border-primary rounded-xl p-3 px-4'>
                                         <div className='flex items-center justify-center gap-1 flex-col'>
                                             <img src={item.url} alt="Icon" className='w-28' />
-                                            <h1 className='font-semibold text-base md:text-lg'>{item.id.charAt(0).toUpperCase() + item.id.slice(1)}</h1>
+                                            <h1 className='font-semibold text-base md:text-lg capitalize'>{item.id}</h1>
                                         </div>
                                         <div className='flex flex-col items-center justify-center gap-1 col-span-2'>
                                             <p className='text-base'>{item.slogan}</p>

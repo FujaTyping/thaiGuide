@@ -110,12 +110,12 @@ function BBadge() {
                                                                 <img loading={index + 1 > 10 ? 'lazy' : 'eager'} src={badgee[index].imageUrl} alt='Badge' className='w-32 md:w-40 cursor-pointer' />
                                                             </PopoverTrigger>
                                                             <PopoverContent>
-                                                                <h1 className='flex items-center gap-2'><b className='flex items-center gap-1'><Footprints className='text-primary' /> {t('badge.visit')} :</b> {badgee[index].province.charAt(0).toUpperCase() + badgee[index].province.slice(1)}</h1>
+                                                                <h1 className='flex items-center gap-2'><b className='flex items-center gap-1'><Footprints className='text-primary' /> {t('badge.visit')} :</b> <span className='capitalize'>{badgee[index].province}</span></h1>
                                                                 <h2 className='mt-1'><b className='flex items-center gap-1'><Quote className='text-primary' /> {t('badge.slogan')} : </b> {badgee[index].slogan}</h2>
                                                             </PopoverContent>
                                                         </Popover>
                                                     </motion.div>
-                                                    <h2 className='font-semibold text-md md:text-lg mt-0.5'>{badgee[index].province.charAt(0).toUpperCase() + badgee[index].province.slice(1)}</h2>
+                                                    <h2 className='font-semibold text-md md:text-lg mt-0.5 capitalize'>{badgee[index].province}</h2>
                                                     <p className='text-sm md:text-base'>{new Date(badgee[index].recivedAt.seconds * 1000).toLocaleDateString()}</p>
                                                 </div>
                                             </> : <>

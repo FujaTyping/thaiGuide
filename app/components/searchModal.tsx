@@ -86,7 +86,7 @@ function SearchModal({ open, setOpen }: { open: boolean, setOpen: (value: boolea
                                                     {
                                                         searchContent.map((item: any, index) => (
                                                             <Link onClick={() => setOpen(false)} key={index} href={`/${prevType == 'activities' ? 'activity' : prevType}/${item.id}`} className={`flex flex-col gap-1 py-4 border-b-primary ${index < searchContent.length - 1 && 'border-b-1'}`}>
-                                                                <Badge variant="default">{prevType == 'activities' ? <TentTree /> : <Utensils />} {prevType.charAt(0).toUpperCase() + prevType.slice(1)}</Badge>
+                                                                <Badge variant="default" className='capitalize'>{prevType == 'activities' ? <TentTree /> : <Utensils />} {prevType}</Badge>
                                                                 <p>{item.title || item.name}</p>
                                                             </Link>
                                                         ))
