@@ -82,7 +82,7 @@ async function page({ params }: Props) {
                             <MapPin className='font-semibold text-primary' />
                             <h1 className='font-semibold'>{t('province')} : </h1>
                         </div>
-                        <p>{data.province.charAt(0).toUpperCase() + data.province.slice(1)}</p>
+                        <p className='capitalize'>{data.province}</p>
                     </div>
                 </Link>
                 <div className='mt-2'><Markdown>{data.decs}</Markdown></div>

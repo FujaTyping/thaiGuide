@@ -81,7 +81,7 @@ function Logs() {
                             <motion.div initial={{ y: 30 }} animate={{ y: 0 }} key={index} className={`flex items-center flex-row place-content-between gap-2 md:gap-3 w-full h-full ${index + 1 != itemsToDisplay.length && "border-b border-primary pb-4"}`}>
                                 <div className='h-full'>
                                     <h1 className='font-semibold text-lg md:text-xl break-all'>{item.name}</h1>
-                                    <p className='text-sm md:text-base mt-0.5 flex items-center gap-1'><MapPin className='text-primary' size={20} /> {item.province.charAt(0).toUpperCase() + item.province.slice(1)}</p>
+                                    <p className='text-sm md:text-base mt-0.5 flex items-center gap-1 capitalize'><MapPin className='text-primary' size={20} /> {item.province}</p>
                                 </div>
                                 <div className='h-full'
                                 >

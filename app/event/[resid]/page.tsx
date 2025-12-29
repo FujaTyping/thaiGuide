@@ -70,10 +70,10 @@ async function page({ params }: Props) {
                                     <MapPin className='font-semibold text-primary' />
                                     <h1 className='font-semibold'>{t('item.province')} : </h1>
                                 </div>
-                                <p>{data.province.charAt(0).toUpperCase() + data.province.slice(1)}</p>
+                                <p className='capitalize'>{data.province}</p>
                             </div>
                         </Link>
-                        <p className='flex items-center gap-2 mt-2'><Ticket className='font-semibold text-primary' /> <span className='font-semibold'>{t('item.EvT')} :</span> {data.category.charAt(0).toUpperCase() + data.category.slice(1)}</p>
+                        <p className='flex items-center gap-2 mt-2'><Ticket className='font-semibold text-primary' /> <span className='font-semibold'>{t('item.EvT')} :</span> <span className='capitalize'>{data.category}</span></p>
                         <p className='flex items-center gap-2 mt-2'><CalendarArrowUp className='font-semibold text-primary' /> <span className='font-semibold'>{t('item.date')} :</span> {formatDate(data.time.seconds)} - {formatDate(data.due.seconds)}</p>
                         <div className='mt-4'><Markdown>{data.decs}</Markdown></div>
                         {

@@ -22,7 +22,9 @@ function Page() {
         <>
             <main className='tg-container'>
                 <TGtitle title={t('title')} decs={t('decs')} />
-                <Grid />
+                <div className='mb-13'>
+                    <Grid />
+                </div>
                 <TGtitle title={t('ptitle')} decs={t('pdecs')} second={true} />
                 <div className='mt-3 flex flex-col gap-4'>
                     {
@@ -37,7 +39,7 @@ function Page() {
                     }
                 </div>
             </main>
-            
+
         </>
     )
 }

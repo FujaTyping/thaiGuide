@@ -458,7 +458,8 @@
         "day": "Day",
         "tips": "Tips"
       },
-      "re": "Re-Generate"
+      "re": "Re-Generate",
+      "notice": "The data from the AI may not be accurate. Please verify the information from other data sources"
     }
   },
   "RoadTrip": {
@@ -1018,6 +1019,15 @@
     "manage": "Manage",
     "redeem": "Redeem",
     "update": "Update",
+    "statics": "Statics",
+    "menu": "Menu",
+    "overview": {
+      "item": "(items)",
+      "act": "Activities",
+      "res": "Restarants",
+      "rt": "Roadtrip",
+      "usr": "Users"
+    },
     "noticelang": "The dashboard currently supports only Thai and English languages",
     "item": {
       "qrcode": {
@@ -1276,6 +1286,7 @@
           "add": "Add new activity",
           "action": "Action",
           "tooldel": "Delete this activity",
+          "editD": "Edit details",
           "toolview": "Go to activity page",
           "prev": "Previous",
           "next": "Next",
@@ -1335,6 +1346,26 @@
               "direction": "Enter direction link",
               "rating": "Rating of activity 0/5"
             }
+          }
+        },
+        "edit": {
+          "title": "Edit details",
+          "d1": "This is where the form to edit details with ID",
+          "d2": "will be",
+          "splace": "Select type",
+          "inplace": "Add/Update value",
+          "cat": {
+            "points": "Points",
+            "popular": "Popular",
+            "pricing": "Pricing",
+            "tel": "Phone Number",
+            "website": "Website"
+          },
+          "toast": {
+            "succ": "Successfully Updated",
+            "succd": "The details have been updated successfully",
+            "err": "Failed to Update",
+            "errd": "There was an error while updating the details, please try again later"
           }
         }
       }

@@ -39,7 +39,7 @@ export const columns: ColumnDef<DataSchema>[] = (() => {
             header: () => T()("province"),
             cell: ({ row }) => {
                 const province: string = row.getValue("province")
-                return <div>{province.charAt(0).toUpperCase() + province.slice(1)}</div>
+                return <div className="capitalize">{province}</div>
             },
         }
     ]

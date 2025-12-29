@@ -278,7 +278,7 @@ function Quiz({ data: provinceName }: QuizProps) {
             <motion.div key={key} {...motionAnimProps}>
                 <h1 className="md:text-3xl text-2xl font-bold mb-2">{t('title')}</h1>
                 <p>
-                    {t('decs')} {provinceName.charAt(0).toUpperCase() + provinceName.slice(1)}?
+                    {t('decs')} <span className='capitalize'>{provinceName}</span>?
                 </p>
                 <Button
                     onClick={handleStartQuiz}

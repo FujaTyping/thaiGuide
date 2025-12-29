@@ -457,7 +457,8 @@
                 "day": "Hari",
                 "tips": "Petua"
             },
-            "re": "Jana Semula"
+            "re": "Jana Semula",
+            "notice": "Data daripada AI mungkin tidak tepat. Sila sahkan maklumat daripada sumber data lain."
         }
     },
     "RoadTrip": {

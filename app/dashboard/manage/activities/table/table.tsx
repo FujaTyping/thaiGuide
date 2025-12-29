@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import React, { useState } from "react"
 import {
   ColumnDef,
   flexRender,
@@ -20,7 +20,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { Plus, ScanEye, Trash2 } from "lucide-react"
+import { Pencil, Plus, ScanEye, Trash2 } from "lucide-react"
 import { motion } from "motion/react"
 import NF from "@/assets/media/card/icon/notfound.svg";
 import DeleteModal from "./deleteModal"
@@ -31,6 +31,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import EditModal from "./editModal"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -48,6 +49,8 @@ export function DataTable<TData, TValue>({
   const [targetId, setTargetId] = React.useState('');
   const [targetFileId, setTargetFileId] = React.useState('');
   const t = useTranslations('Dashboard.item.activities');
+  const [editOpen, setEditOpen] = useState(false);
+  const [editId, setEditId] = useState('');
 
   const table = useReactTable({
     data,
@@ -122,6 +125,19 @@ export function DataTable<TData, TValue>({
                   <TableCell key={'action'} className="flex items-center gap-2">
                     <Tooltip>
                       <TooltipTrigger asChild>
+                        <Pencil size={18} className="text-primary cursor-pointer"
+                          onClick={() => {
+                            setEditOpen(true);
+                            setEditId(row.getValue('id'));
+                          }}
+                        />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>{t('table.editD')}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
                         <Trash2 size={18} onClick={() => {
                           setOpen(true)
                           setTargetId(row.getValue('id'))
@@ -131,7 +147,7 @@ export function DataTable<TData, TValue>({
                       <TooltipContent>
                         <p>{t('table.tooldel')}</p>
                       </TooltipContent>
-                    </Tooltip >
+                    </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <Link href={`/activity/${row.getValue('id')}`}>
@@ -189,6 +205,7 @@ export function DataTable<TData, TValue>({
         </Button>
       </div>
       <DeleteModal open={open} setOpen={setOpen} id={targetId} fileid={targetFileId} />
+      <EditModal open={editOpen} setOpen={setEditOpen} id={editId} />
     </>
   )
 }

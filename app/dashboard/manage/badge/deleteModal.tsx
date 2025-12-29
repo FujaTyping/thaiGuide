@@ -61,7 +61,7 @@ function DeleteModal({ open, setOpen, payload, MCC, setMCC }: { open: boolean, s
                                 MCC == '' && <>
                                     <div>
                                         <p>{t('d1')} <span className='text-primary font-semibold'>{t('d2')}</span></p>
-                                        <div className='flex items-center gap-2 mt-3'><h1 className='flex items-center text-primary font-semibold'><Award /> {t('name')} : </h1>{payload.id.charAt(0).toUpperCase() + payload.id.slice(1)}</div>
+                                        <div className='flex items-center gap-2 mt-3'><h1 className='flex items-center text-primary font-semibold'><Award /> {t('name')} : </h1><span className='capitalize'>{payload.id}</span></div>
                                     </div>
                                     <DialogFooter className='mt-2'>
                                         <Button onClick={deleteBadge}>
