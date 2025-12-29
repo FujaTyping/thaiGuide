@@ -1,12 +1,9 @@
 import type { ElysiaApp } from "../../index";
 import { t } from "elysia";
-import { gemini20Flash, googleAI } from '@genkit-ai/googleai';
-import { genkit } from 'genkit';
-
-const ai = genkit({
-    plugins: [googleAI()],
-    model: gemini20Flash,
-});
+import ai from "../../lib/geminiModel";
+import { googleAI } from '@genkit-ai/google-genai';
+import { z } from 'genkit';
+import { gmn_model } from "../../config.json";
 
 const GetByIdBodySchema = t.Object({
     message: t.String(),
@@ -15,12 +12,30 @@ const GetByIdBodySchema = t.Object({
     tag: t.String()
 });
 
+const TripSchema = z.object({
+    tripTitle: z.string().describe('The title of the trip'),
+    description: z.string().describe('A brief description of the trip'),
+    days: z.array(z.object({
+        day: z.number().describe('The day number'),
+        location: z.string().describe('The location for this day'),
+        activities: z.array(z.object({
+            time: z.string().describe('Time of day (Morning | Afternoon | Evening)'),
+            title: z.string().describe('Title of the activity'),
+            description: z.string().describe('Description of the activity'),
+        })),
+        foodRecommendations: z.array(z.string()).describe('List of food recommendations'),
+        tips: z.string().describe('Tips for the day'),
+        travelNotes: z.string().optional().describe('Travel notes'),
+    })),
+});
+
 const getInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.static, set: { status: number | string } }) => {
     const { message, duration, type, tag } = body;
 
     try {
-        const genTrip = ai.defineFlow('tripFlow', async ({ message, duration, type, tag }) => {
-            const promptContent = `
+        const { output } = await ai.generate({
+            model: googleAI.model(gmn_model),
+            prompt: `
                 You are a smart and friendly travel assistant for a tourism app called "ThaiGuide".
 
                 Please generate a detailed travel itinerary in Thailand based on the following inputs:
@@ -30,68 +45,19 @@ const getInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.st
                 - Trip type: ${type} (e.g., family, adventure, romantic, cultural, food tour)
                 - Interests/tags: ${tag} (e.g., temples, street food, beaches, mountains, hidden gems)
 
-                Return the response in this exact JSON format:
-
-                {
-                "tripTitle": "string",
-                "description": "string",
-                "days": [
-                    {
-                    "day": 1,
-                    "location": "string",
-                    "activities": [
-                        {
-                        "time": "Morning | Afternoon | Evening",
-                        "title": "string",
-                        "description": "string",
-                        "image": "string", // Image URL for the activity
-                        "googleMapsLink": "string" // Google Maps link for the activity
-                        },
-                        {
-                        "time": "Afternoon",
-                        "title": "string",
-                        "description": "string",
-                        "image": "string", // Image URL for the activity
-                        "googleMapsLink": "string" // Google Maps link for the activity
-                        }
-                    ],
-                    "foodRecommendations": [
-                        "string", // optional local dishes or restaurants
-                        "string"
-                    ],
-                    "tips": "string", // travel tips for this day
-                    "travelNotes": "string" // optional notes like expected time between locations or what to bring
-                    }
-                ]
-                }
-
                 Guidelines:
-                - Return valid JSON only, no markdown or extra text.
+                - Detect the language of the user's input ("User want") and generate the response in that same language. If the user types in Thai, respond in Thai. If the user types in Japanese, respond in Japanese.
                 - Make the itinerary vivid, culturally rich, and tailored to the trip type and interests.
                 - For food tours, include more street food.
                 - For family, highlight safe and fun places for kids.
                 - For romantic, focus on views and quiet activities.
                 - Suggest lesser-known places if "hidden gems" is a tag.
-                - Provide real, publicly accessible image URLs for activities (e.g., from Unsplash, Pexels, Wikimedia Commons, or official tourism sites). Avoid placeholder URLs or images requiring logins.
-                - Provide direct, functional Google Maps links for specific activity locations. These links should open directly to the location on Google Maps.
                 - Use natural-sounding names and diverse locations across Thailand.
-            `;
-
-            const response = await ai.generate({
-                prompt: promptContent,
-                output: { format: 'json' }
-            });
-
-            const jsonString = response.message?.content[0].text;
-
-            if (!jsonString) {
-                console.error("AI response was empty or did not contain text.");
-                throw new Error("Failed to generate trip itinerary: AI returned no content.");
-            }
-            return jsonString;
+            `,
+            output: { schema: TripSchema }
         });
 
-        return genTrip({ message, duration, type, tag });
+        return { ...output, model: gmn_model };
 
     } catch (error) {
         set.status = 500;

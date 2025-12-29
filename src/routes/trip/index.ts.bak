@@ -1,0 +1,98 @@
+import type { ElysiaApp } from "../../index";
+import { t } from "elysia";
+import OpenTyphoon from "../../lib/typhoonModel";
+
+const GetByIdBodySchema = t.Object({
+    message: t.String(),
+    duration: t.String(),
+    type: t.String(),
+    tag: t.String()
+});
+
+const modelTYP = "typhoon-v2.1-12b-instruct"
+
+const getInfoHandler = async ({ body, set }: { body: typeof GetByIdBodySchema.static, set: { status: number | string } }) => {
+    const { message, duration, type, tag } = body;
+
+    try {
+        const stream = await OpenTyphoon.chat.completions.create({
+            model: modelTYP,
+            messages: [
+                {
+                    role: 'system', content: `
+                You are a smart and friendly travel assistant for a tourism app called "ThaiGuide".
+
+                Please generate a detailed travel itinerary in Thailand based on the following inputs:
+
+                - User want : ${message || "user dosn't provide any message"} (the response follow the language of the user want)
+                - Trip duration: ${duration}
+                - Trip type: ${type} (e.g., family, adventure, romantic, cultural, food tour)
+                - Interests/tags: ${tag} (e.g., temples, street food, beaches, mountains, hidden gems)
+
+                Return the response in this exact JSON format and DO NOT provide any markdown text or code blocks:
+
+                {
+                "tripTitle": "string",
+                "description": "string",
+                "days": [
+                    {
+                    "day": 1,
+                    "location": "string",
+                    "activities": [
+                        {
+                        "time": "Morning | Afternoon | Evening",
+                        "title": "string",
+                        "description": "string",
+                        },
+                        {
+                        "time": "Afternoon",
+                        "title": "string",
+                        "description": "string",
+                        }
+                    ],
+                    "foodRecommendations": [
+                        "string", // optional local dishes or restaurants
+                        "string"
+                    ],
+                    "tips": "string", // travel tips for this day
+                    "travelNotes": "string" // optional notes like expected time between locations or what to bring
+                    }
+                ]
+                }
+
+                Guidelines:
+                - Return valid JSON only, no markdown or extra text.
+                - Make the itinerary vivid, culturally rich, and tailored to the trip type and interests.
+                - Keep descriptions extremely short.
+                - For food tours, include more street food.
+                - For family, highlight safe and fun places for kids.
+                - For romantic, focus on views and quiet activities.
+                - Suggest lesser-known places if "hidden gems" is a tag.
+                - Use natural-sounding names and diverse locations across Thailand.
+                ` },
+                { role: 'user', content: message }
+            ],
+            temperature: 0.6,
+            max_completion_tokens: 1024,
+            top_p: 0.6,
+            frequency_penalty: 0,
+            stream: true,
+            response_format: { type: "json_object" }
+        });
+
+        let Message = "";
+        for await (const chunk of stream) {
+            Message += (chunk.choices[0]?.delta?.content || '');
+        }
+
+        return { response: JSON.parse(Message), model: modelTYP };
+
+    } catch (error: any) {
+        set.status = 500;
+        return { error: "An error occurred while generating the itinerary", message: error.message };
+    }
+};
+
+export default (app: ElysiaApp) => app.post("/gen", getInfoHandler, {
+    body: GetByIdBodySchema
+});

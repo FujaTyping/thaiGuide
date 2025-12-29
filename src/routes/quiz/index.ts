@@ -1,13 +1,22 @@
 import type { ElysiaApp } from "../../index";
 import { t } from "elysia";
-import { gemini20Flash, googleAI } from '@genkit-ai/googleai';
-import { genkit } from 'genkit';
+import ai from "../../lib/geminiModel";
+import { googleAI } from '@genkit-ai/google-genai';
+import { z } from 'genkit';
 import db from "../../lib/firebase";
 import { collection, doc, getDoc, getDocs, setDoc, serverTimestamp } from "firebase/firestore";
+import {gmn_model} from "../../config.json";
 
-const ai = genkit({
-    plugins: [googleAI()],
-    model: gemini20Flash,
+const QuizGenSchema = z.object({
+    quizTitle: z.string().describe('The title of the quiz'),
+    province: z.string().describe('The province the quiz is about'),
+    questions: z.array(z.object({
+        questionText: z.string().describe('The text of the question'),
+        choices: z.array(z.object({
+            text: z.string().describe('The text of the choice'),
+            isCorrect: z.boolean().describe('Whether this choice is correct')
+        })).describe('List of choices for the question')
+    })).describe('List of questions for the quiz')
 });
 
 const QuizRequestSchema = t.Object({
@@ -30,30 +39,14 @@ const generateQuizHandler = async ({ body, set }: { body: typeof QuizRequestSche
     const { province } = body;
 
     try {
-        const quizGenerationFlow = ai.defineFlow('quizGenerationFlow', async ({ province }: { province: string }) => {
-            const promptContent = `
+        const { output } = await ai.generate({
+            model: googleAI.model(gmn_model),
+            prompt: `
                 You are an intelligent quiz generator.
 
                 Please generate a quiz about the province of ${province} in Thailand.
                 The quiz should have a random number of questions, between 2 and 5 (inclusive).
                 Each question must have exactly two choices, with one choice being correct and the other incorrect.
-
-                Return the response in this exact JSON format:
-
-                {
-                  "quizTitle": "string", // e.g., "Fun Quiz about ${province}"
-                  "province": "${province}", // The province the quiz is about
-                  "questions": [
-                    {
-                      "questionText": "string", // The text of the question
-                      "choices": [
-                        { "text": "string", "isCorrect": boolean }, // First choice
-                        { "text": "string", "isCorrect": boolean }  // Second choice
-                      ]
-                    }
-                    // ... (repeat for a total of 2 to 5 questions)
-                  ]
-                }
 
                 Guidelines:
                 - No same choices like (Golden mermaid and The Golden Mermaid)
@@ -64,31 +57,11 @@ const generateQuizHandler = async ({ body, set }: { body: typeof QuizRequestSche
                 - The "quizTitle" should be engaging and mention the province.
                 - Questions should be relevant to the specified province (e.g., landmarks, culture, history, geography).
                 - Make the quiz challenging
-                - Return valid JSON only, no markdown or extra text.
-            `;
-
-            const response = await ai.generate({
-                prompt: promptContent,
-                output: { format: 'json' }
-            });
-
-            const jsonString = response.message?.content[0].text;
-
-            if (!jsonString) {
-                console.error("AI response was empty or did not contain text.");
-                throw new Error("Failed to generate quiz: AI returned no content.");
-            }
-
-            try {
-                return JSON.parse(jsonString);
-            } catch (parseError) {
-                console.error("Failed to parse AI response as JSON:", parseError, "Response:", jsonString);
-                throw new Error("Failed to generate quiz: AI returned invalid JSON.");
-            }
+            `,
+            output: { schema: QuizGenSchema }
         });
 
-        const quizData = await quizGenerationFlow({ province });
-        return quizData;
+        return {...output,model: gmn_model};
 
     } catch (error) {
         console.error("Error in generateQuizHandler:", error);

@@ -1,11 +1,6 @@
 import type { ElysiaApp } from "../../index";
 import { t } from "elysia";
-import OpenAI from 'openai';
-
-const openai = new OpenAI({
-    apiKey: process.env.TYPHOON_APIKEY,
-    baseURL: 'https://api.opentyphoon.ai/v1',
-});
+import OpenTyphoon from "../../lib/typhoonModel";
 
 const ChatBodySchema = t.Object({
     message: t.String(),
@@ -15,7 +10,7 @@ const getInfoHandler = async ({ body, set }: { body: typeof ChatBodySchema.stati
     const { message } = body;
 
     try {
-        const stream = await openai.chat.completions.create({
+        const stream = await OpenTyphoon.chat.completions.create({
             model: 'typhoon-v2.1-12b-instruct',
             messages: [
                 { role: "system", content: "You are a friendly and knowledgeable AI companion specializing in travel and tourism in Thailand. Your goal is to assist users in planning their dream trips to Thailand by providing insightful advice, recommendations, and information. You should be able to answer questions about popular destinations, hidden gems, cultural etiquette, transportation, accommodation, local cuisine, activities, safety tips, and visa requirements. Strive to offer personalized suggestions based on user preferences, such as budget, travel style (e.g., adventure, relaxation, cultural immersion), and interests (e.g., history, nature, nightlife). Be enthusiastic and encouraging, making users excited about their upcoming journey to the Land of Smiles." },
