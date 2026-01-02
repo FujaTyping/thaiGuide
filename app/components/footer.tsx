@@ -8,6 +8,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import Image from "next/image";
+import moment from "moment";
 
 function Footer() {
   const t = useTranslations("FooterBar");
@@ -46,7 +47,7 @@ function Footer() {
               <h2 className="font-semibold text-lg">{t("DOCTitle")}</h2>
               <Link href={"/terms"}>{t("terms")}</Link>
               <Link href={"/privacy"}>{t("pp")}</Link>
-              <Link href={"/credit"}>Credit</Link>
+              <Link href={"/credit"}>{t("cd")}</Link>
             </div>
             <div className="flex flex-col items-center md:items-end gap-1 w-full md:w-fit">
               <h2 className="font-semibold text-lg">{t("CUSTitle")}</h2>
@@ -57,7 +58,7 @@ function Footer() {
         </div>
         <div className="max-w-7xl mx-auto px-3 mt-4">
           <div className="bg-white w-full h-0.5 rounded-xl"></div>
-          <p className="text-center mt-3">{t("title")}</p>
+          <p className="text-center mt-3">{t("cp")} © 2025-{moment().format("YYYY")} {t("title")}</p>
         </div>
       </main>
     </>

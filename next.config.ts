@@ -62,9 +62,7 @@ const nextConfig: NextConfig = {
     ]
   },
   compiler: {
-    removeConsole: {
-      exclude: ['error'],
-    },
+    removeConsole: true
   },
 };
 
