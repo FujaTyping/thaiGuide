@@ -47,11 +47,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "img-src 'self' data: ik.imagekit.io tile.openstreetmap.org lh3.googleusercontent.com a.basemaps.cartocdn.com api.thaiguide.in.th"
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'SAMEORIGIN'
+            value: "img-src 'self' data: ik.imagekit.io tile.openstreetmap.org lh3.googleusercontent.com a.basemaps.cartocdn.com api.thaiguide.in.th ไทยไกด์.ไทย xn--12c2bh8b2kc2d.xn--o3cw4h"
           },
           {
             key: 'Strict-Transport-Security',
@@ -65,6 +61,15 @@ const nextConfig: NextConfig = {
     removeConsole: true
   },
 };
+
+/*
+  After I New Gen , Move this into header
+
+  {
+    key: 'X-Frame-Options',
+    value: 'SAMEORIGIN'
+  },
+*/
 
 const withNextIntl = createNextIntlPlugin();
 export default withNextIntl(nextConfig);
