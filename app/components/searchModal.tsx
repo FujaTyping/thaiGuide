@@ -20,6 +20,8 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { motion } from 'motion/react';
+import NF from "@/assets/media/card/icon/notfound.svg"
 
 function SearchModal({ open, setOpen }: { open: boolean, setOpen: (value: boolean) => void }) {
     const t = useTranslations('Search');
@@ -28,6 +30,7 @@ function SearchModal({ open, setOpen }: { open: boolean, setOpen: (value: boolea
     const [searchContent, setSeachContent] = useState([]);
     const [searchType, setSearchType] = useState('activities');
     const [prevType, setPrevType] = useState('');
+    const [noResult, setNoResult] = useState(false);
 
     async function searchQuery() {
         if (Texts) {
@@ -38,6 +41,7 @@ function SearchModal({ open, setOpen }: { open: boolean, setOpen: (value: boolea
                     type: searchType
                 });
                 setSeachContent(res.data);
+                setNoResult(res.data.length == 0);
                 setPrevType(searchType);
                 setLoading(false);
             } catch {
@@ -93,15 +97,36 @@ function SearchModal({ open, setOpen }: { open: boolean, setOpen: (value: boolea
                                                     }
                                                 </ScrollArea>
                                             </div>
-                                        </> : <div className='mt-3'>
-                                            <div className='flex items-center justify-center flex-col gap-3 py-12 md:py-8'>
-                                                <img src={SICO.src} alt="Photo" className='w-22 mb-2' />
-                                                <div className='text-center space-y-1'>
-                                                    <h1 className='font-semibold text-xl'>{t('mtt')}</h1>
-                                                    <p className='text-sm md:text-base'>{t('mtd')}</p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </> :
+                                            <>
+                                                {
+                                                    noResult ?
+                                                        <div className='flex items-center mt-6 py-4 flex-col justify-center gap-4'>
+                                                            <motion.div
+                                                                animate={{
+                                                                    x: [0, -10, 10, -10, 10, -5, 5, 0],
+                                                                }}
+                                                                transition={{
+                                                                    duration: 0.5,
+                                                                    ease: "easeInOut"
+                                                                }}
+                                                            >
+                                                                <img src={NF.src} alt="Not Found" className='w-26 translate-x-3' />
+                                                            </motion.div>
+                                                            <p className='font-semibold'>{t("noRes")}</p>
+                                                        </div>
+                                                        :
+                                                        <div className='mt-3'>
+                                                            <div className='flex items-center justify-center flex-col gap-3 py-12 md:py-8'>
+                                                                <img src={SICO.src} alt="Photo" className='w-22 mb-2' />
+                                                                <div className='text-center space-y-1'>
+                                                                    <h1 className='font-semibold text-xl'>{t('mtt')}</h1>
+                                                                    <p className='text-sm md:text-base'>{t('mtd')}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                }
+                                            </>
                                     }
                                 </>
                         }

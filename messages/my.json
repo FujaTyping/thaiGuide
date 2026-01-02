@@ -131,7 +131,8 @@
         }
     },
     "FooterBar": {
-        "title": "Hak Cipta © 2025 ThaiGuide semua hak terpelihara",
+        "cp": "Hak Cipta",
+        "title": "ThaiGuide semua hak terpelihara",
         "sdg": "Komitmen Kami terhadap Matlamat Pembangunan Mampan",
         "feedback": "Maklum Balas",
         "uptime": "Monitor Waktu Operasi ThaiGuide",
@@ -143,6 +144,7 @@
         "alli": "Rakan Kongsi",
         "usefull": "Pautan Berguna",
         "sitemap": "Peta Laman",
+        "cd": "Kredit",
         "parther": {
             "tat": "Lembaga Pelancongan Thailand"
         }
@@ -1083,7 +1085,8 @@
         },
         "mtt": "Temui Apa yang Anda Perlukan",
         "mtd": "Cari aktiviti, restoran dan banyak lagi di seluruh Thailand.",
-        "placeholders": "Cari apa sahaja"
+        "placeholders": "Cari apa sahaja",
+        "noRes": "Tiada hasil carian"
     },
     "Credit": {
         "title": "Kredit",

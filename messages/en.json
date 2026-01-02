@@ -131,7 +131,8 @@
     }
   },
   "FooterBar": {
-    "title": "Copyright © 2025 ThaiGuide all rights reserved",
+    "cp": "Copyright",
+    "title": "ThaiGuide all rights reserved",
     "sdg": "Our Commitment to Sustainable Development Goals",
     "feedback": "Feedback",
     "uptime": "ThaiGuide Uptime Monitor",
@@ -143,6 +144,7 @@
     "alli": "Partners",
     "usefull": "Useful link",
     "sitemap": "Sitemap",
+    "cd": "Credit",
     "parther": {
       "tat": "Tourism Authority of Thailand"
     }
@@ -1450,7 +1452,8 @@
     },
     "mtt": "Discover What You Need",
     "mtd": "Search for activities, restaurants, and more across Thailand.",
-    "placeholders": "Search for anything"
+    "placeholders": "Search for anything",
+    "noRes": "No search result"
   },
   "Credit": {
     "title": "Credit",

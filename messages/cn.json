@@ -131,7 +131,8 @@
         }
     },
     "FooterBar": {
-        "title": "版权所有 © 2025 ThaiGuide 保留所有权利",
+        "cp": "版权所有",
+        "title": "ThaiGuide 保留所有权利",
         "sdg": "我们对可持续发展目标的承诺",
         "feedback": "反馈",
         "uptime": "ThaiGuide 运行时间监控",
@@ -143,6 +144,7 @@
         "sitemap": "网站地图",
         "pp": "隐私政策",
         "alli": "合作伙伴",
+        "cd": "致谢",
         "parther": {
             "tat": "泰国旅游局"
         }
@@ -1083,7 +1085,8 @@
         },
         "mtt": "发现您所需要的",
         "mtd": "在泰国各地搜索活动、餐厅等。",
-        "placeholders": "搜索任何东西"
+        "placeholders": "搜索任何东西",
+        "noRes": "未找到搜索结果"
     },
     "Credit": {
         "title": "致谢",

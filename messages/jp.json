@@ -131,7 +131,8 @@
     }
   },
   "FooterBar": {
-    "title": "Copyright © 2025 ThaiGuide all rights reserved",
+    "cp": "著作権",
+    "title": "ThaiGuide 全著作権所有",
     "sdg": "持続可能な開発目標へのコミットメント",
     "feedback": "フィードバック",
     "uptime": "ThaiGuide稼働時間モニター",
@@ -143,6 +144,7 @@
     "usefull": "役立つリンク",
     "sitemap": "サイトマップ",
     "alli": "パートナー",
+    "cd": "クレジット",
     "parther": {
       "tat": "タイ国政府観光庁"
     }
@@ -1083,7 +1085,8 @@
     },
     "mtt": "必要なものを見つける",
     "mtd": "タイ全土のアクティビティ、レストランなどを検索します。",
-    "placeholders": "何でも検索"
+        "placeholders": "何でも検索",
+        "noRes": "検索結果がありません"
   },
   "Credit": {
     "title": "クレジット",

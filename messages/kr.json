@@ -131,7 +131,8 @@
         }
     },
     "FooterBar": {
-        "title": "Copyright © 2025 ThaiGuide all rights reserved",
+        "cp": "저작권",
+        "title": "ThaiGuide 모든 권리 보유",
         "sdg": "지속가능발전목표에 대한 우리의 약속",
         "feedback": "피드백",
         "uptime": "ThaiGuide 가동 시간 모니터",
@@ -143,6 +144,7 @@
         "alli": "파트너",
         "usefull": "유용한 링크",
         "sitemap": "사이트맵",
+        "cd": "크레딧",
         "parther": {
             "tat": "태국 관광청"
         }
@@ -1083,7 +1085,8 @@
         },
         "mtt": "필요한 것을 발견하세요",
         "mtd": "태국 전역의 활동, 레스토랑 등을 검색하세요.",
-        "placeholders": "무엇이든 검색"
+        "placeholders": "무엇이든 검색",
+        "noRes": "검색 결과가 없습니다"
     },
     "Credit": {
         "title": "크레딧",
