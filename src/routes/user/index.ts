@@ -121,7 +121,7 @@ const deleteUser = async ({ headers, set }: { headers: typeof deleteUserSchema.h
         const uid = headers.aetheruid;
         const userDocRef = doc(db, "Users", uid);
 
-        const subcollections = ['inventory', 'badge', 'quiz', 'scanqr', 'transactions'];
+        const subcollections = ['inventory', 'badge', 'quiz', 'scanqr', 'transactions', 'travelLogs'];
 
         for (const subcollectionName of subcollections) {
             const subcollectionRef = collection(userDocRef, subcollectionName);
