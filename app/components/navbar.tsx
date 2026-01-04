@@ -308,6 +308,7 @@ function Navbar() {
                                             {NavItems.map((item, index) => (
                                                 <Link onClick={() => setToggleNavbar(false)} key={index} href={item.link}>{t(`list.${item.name}`)}</Link>
                                             ))}
+                                            <Link onClick={() => setToggleNavbar(false)} href={"/sos"}>{tb('item.sos')}</Link>
                                             <DropdownMenu>
                                                 <DropdownMenuTrigger>
                                                     <div className='group-hover:text-white text-primary dark:text-white cursor-pointer flex items-center gap-3 text-left mt-8'>
