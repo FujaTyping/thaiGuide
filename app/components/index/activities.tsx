@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from "motion/react";
-import { ChevronLeft, ChevronRight, Star, Wallet } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Leaf, Star, Wallet } from 'lucide-react';
 import Link from 'next/link';
 import Loader from '@/app/components/loader';
 import { server } from "@/app/config.json";
@@ -85,7 +85,6 @@ function Activities() {
                     ) : Data.length > 0 && (
                         <>
                             <Swiper
-                                loop={true}
                                 onSwiper={(swiper) => mainSwiper.current = swiper}
                                 spaceBetween={80}
                             >
@@ -137,6 +136,20 @@ function Activities() {
                                         </div></SwiperSlide>
                                     ))
                                 }
+                                <SwiperSlide>
+                                    <Link href={'/activity'}>
+                                        <motion.div
+                                            whileTap={{ scale: 0.95 }}
+                                            className='w-full text-primary border-3 border-primary px-8 py-26 rounded-xl flex items-center justify-center flex-col gap-3'
+                                        >
+                                            <Leaf className='w-10 h-10 mx-auto' />
+                                            <div className='flex flex-col items-center justify-center px-2 text-center'>
+                                                <h1 className='font-semibold text-2xl mb-1'>{t('more.title')}</h1>
+                                                <p className='max-w-[90%] text-center'>{t('more.decs')}</p>
+                                            </div>
+                                        </motion.div>
+                                    </Link>
+                                </SwiperSlide>
                             </Swiper>
                         </>
                     )

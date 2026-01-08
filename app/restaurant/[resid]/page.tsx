@@ -95,55 +95,67 @@ async function page({ params }: Props) {
                         <p className='font-semibold text-xl'>{data.rating}</p>
                         <p>{t('item.rate')}</p>
                     </div>
-                    <div className='flex flex-col gap-1 items-center justify-center'>
-                        <MapPinned className='text-primary size-12' />
-                        <p className='font-semibold text-xl'>{data.details.openhour}</p>
-                        <p>{t('item.open')}</p>
-                    </div>
                     {
-                        data.details.points &&
-                        <>
-                            <div className='flex flex-col gap-1 items-center justify-center'>
-                                <Coins className='text-primary size-12' />
-                                <p className='font-semibold text-xl'>{data.details.points}</p>
-                                <p className='flex items-center gap-2'>{at('item.point')}
-                                    <Tooltip>
-                                        <TooltipTrigger><CircleHelp className='size-5 cursor-help' /></TooltipTrigger>
-                                        <TooltipContent>
-                                            <p>{at('item.infop.0')}</p>
-                                            <p>{at('item.infop.1')}</p>
-                                        </TooltipContent>
-                                    </Tooltip>
-                                </p>
-                            </div>
-                            <div className='flex flex-col gap-1 items-center justify-center'>
-                                <Store className='text-primary size-12' />
-                                <p className='font-semibold text-xl'>{t('sme')}</p>
-                                <p className='flex items-center gap-2'>{t('smeinfo')}</p>
-                            </div>
+                        data.details && <>
+                            {
+                                data.details.openhour && <>
+                                    <div className='flex flex-col gap-1 items-center justify-center'>
+                                        <MapPinned className='text-primary size-12' />
+                                        <p className='font-semibold text-xl'>{data.details.openhour}</p>
+                                        <p>{t('item.open')}</p>
+                                    </div>
+                                </>
+                            }
+                            {
+                                data.details.points &&
+                                <>
+                                    <div className='flex flex-col gap-1 items-center justify-center'>
+                                        <Coins className='text-primary size-12' />
+                                        <p className='font-semibold text-xl'>{data.details.points}</p>
+                                        <p className='flex items-center gap-2'>{at('item.point')}
+                                            <Tooltip>
+                                                <TooltipTrigger><CircleHelp className='size-5 cursor-help' /></TooltipTrigger>
+                                                <TooltipContent>
+                                                    <p>{at('item.infop.0')}</p>
+                                                    <p>{at('item.infop.1')}</p>
+                                                </TooltipContent>
+                                            </Tooltip>
+                                        </p>
+                                    </div>
+                                    <div className='flex flex-col gap-1 items-center justify-center'>
+                                        <Store className='text-primary size-12' />
+                                        <p className='font-semibold text-xl'>{t('sme')}</p>
+                                        <p className='flex items-center gap-2'>{t('smeinfo')}</p>
+                                    </div>
+                                </>
+                            }
                         </>
                     }
                 </div>
-                <h1 className='text-2xl font-bold'>{t('item.highlight')}</h1>
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6 mt-4'>
-                    <div>
-                        <Thumnails image={data.thumnails} />
-                    </div>
-                    <div className='flex flex-col gap-1 mt-3'>
-                        {
-                            data.dish.map((item: string, index: number) => (
-                                <div key={index} className='flex items-center gap-2'>
-                                    <Sparkle className='text-primary' />
-                                    <p className='text-lg'>{item}</p>
-                                </div>
-                            ))
-                        }
-                        <Link href={data.link} className='bg-primary group w-full md:w-fit p-2 px-4 rounded-xl text-white mt-4 flex justify-center items-center gap-2'>
-                            {t('item.map')}
-                            <ArrowRight className='group-hover:translate-x-1 transition-all duration-200' />
-                        </Link>
-                    </div>
-                </div>
+                {
+                    data.dish && <>
+                        <h1 className='text-2xl font-bold'>{t('item.highlight')}</h1>
+                        <div className='grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6 mt-4'>
+                            <div>
+                                <Thumnails image={data.thumnails} />
+                            </div>
+                            <div className='flex flex-col gap-1 mt-3'>
+                                {
+                                    data.dish.map((item: string, index: number) => (
+                                        <div key={index} className='flex items-center gap-2'>
+                                            <Sparkle className='text-primary' />
+                                            <p className='text-lg'>{item}</p>
+                                        </div>
+                                    ))
+                                }
+                                <Link href={data.link} className='bg-primary group w-full md:w-fit p-2 px-4 rounded-xl text-white mt-4 flex justify-center items-center gap-2'>
+                                    {t('item.map')}
+                                    <ArrowRight className='group-hover:translate-x-1 transition-all duration-200' />
+                                </Link>
+                            </div>
+                        </div>
+                    </>
+                }
             </main>
             <main className='max-w-7xl mx-auto px-4 pb-6'>
                 <TGtitle title={t('item.view')} second={true} />
