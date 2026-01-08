@@ -66,8 +66,8 @@ const getInfoHandler = async ({ body, set, headers }: { headers: typeof GetByIdB
                     { latitude: data.location.latitude, longitude: data.location.longitude }
                 );
                 let SetPoint = data.points;
-                const distanceInKm = distanceInMeters / 1000;
-                if (distanceInKm <= 3) {
+                //const distanceInKm = distanceInMeters / 1000;
+                if (distanceInMeters <= 600) {
                     if (scanSnap.exists() && data.otpp) {
                         set.status = 200;
                         return {
