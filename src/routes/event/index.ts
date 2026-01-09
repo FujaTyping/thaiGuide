@@ -1,20 +1,20 @@
 import type { ElysiaApp } from "../../index";
-import { collection, query, getDocs, DocumentData, doc, getDoc } from "firebase/firestore";
+import { collection, getDocs, DocumentData, doc, getDoc } from "firebase/firestore";
 import db from "../../lib/firebase";
 import { t } from "elysia";
+import getWithRedis from "../../lib/getWithRedis";
 
-const getInfoHandler = async () => {
-    let Data: DocumentData[] = [];
-    const q = query(collection(db, "event"));
+const GetSchema = {
+    query: t.Object({
+        limit: t.Optional(t.Number())
+    })
+}
 
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-        let qd = doc.data();
-        qd.id = doc.id;
-        Data.push(qd);
-    });
+const getInfoHandler = async ({ query, set }: { query: typeof GetSchema.query.static, set: { status: number } }) => {
+    const data = getWithRedis({ name: "event", limits: query.limit });
+    set.status = 200;
 
-    return Data;
+    return data;
 };
 
 const getIdInfoHandler = async ({ params: { id }, set }: { params: { id: string }, set: { status: number | string } }) => {
@@ -54,5 +54,5 @@ const getIdInfoHandler = async ({ params: { id }, set }: { params: { id: string 
 };
 
 export default (app: ElysiaApp) => app
-    .get("/", getInfoHandler)
+    .get("/", getInfoHandler, GetSchema)
     .get("/getbyid/:id", getIdInfoHandler);

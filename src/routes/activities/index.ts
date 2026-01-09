@@ -1,7 +1,8 @@
 import type { ElysiaApp } from "../../index";
-import { collection, query as fbquery, getDocs, DocumentData, doc, getDoc, where, orderBy, limit, Query, query } from "firebase/firestore";
+import { collection, getDocs, DocumentData, doc, getDoc, where, orderBy, query } from "firebase/firestore";
 import db from "../../lib/firebase";
 import { t } from "elysia";
+import getWithRedis from "../../lib/getWithRedis";
 
 const GetSchema = {
     query: t.Object({
@@ -10,23 +11,10 @@ const GetSchema = {
 }
 
 const getInfoHandler = async ({ query, set }: { query: typeof GetSchema.query.static, set: { status: number } }) => {
-    let Data: DocumentData[] = [];
-    let q: Query;
+    const data = getWithRedis({ name: "activities", limits: query.limit });
+    set.status = 200;
 
-    if (query.limit) {
-        q = fbquery(collection(db, "activities"), limit(query.limit));
-    } else {
-        q = fbquery(collection(db, "activities"));
-    }
-
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-        let qd = doc.data();
-        qd.id = doc.id;
-        Data.push(qd);
-    });
-
-    return Data;
+    return data;
 };
 
 const getIdInfoHandler = async ({ params: { id }, set }: { params: { id: string }, set: { status: number | string } }) => {

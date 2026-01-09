@@ -5,10 +5,17 @@ import { t } from "elysia";
 import axios from "axios";
 import config from "../../config.json";
 import validateAdmin from "../../lifecycle/admin";
+import getWithRedis from "../../lib/getWithRedis";
 
 const RedeemByIdBodySchema = t.Object({
     raw: t.String()
 });
+
+const GetSchema = {
+    query: t.Object({
+        limit: t.Optional(t.Number())
+    })
+}
 
 const userRSchema = {
     body: t.Object({
@@ -25,18 +32,11 @@ const userRSchema = {
     })
 }
 
-const getInfoHandler = async () => {
-    let Data: DocumentData[] = [];
-    const q = query(collection(db, "redeem"));
+const getInfoHandler = async ({ query, set }: { query: typeof GetSchema.query.static, set: { status: number } }) => {
+    const data = getWithRedis({ name: "redeem", limits: query.limit });
+    set.status = 200;
 
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-        let qd = doc.data();
-        qd.id = doc.id;
-        Data.push(qd);
-    });
-
-    return Data;
+    return data;
 };
 
 const getIdInfoHandler = async ({ params: { id }, set }: { params: { id: string }, set: { status: number | string } }) => {
@@ -137,7 +137,7 @@ async function userRedeem({ body, headers, set }: {
 }
 
 export default (app: ElysiaApp) => app
-    .get("/", getInfoHandler)
+    .get("/", getInfoHandler, GetSchema)
     .get("/getbyid/:id", getIdInfoHandler)
     .post("/redeem", redeemIdInfoHandler, {
         body: RedeemByIdBodySchema,
