@@ -5,6 +5,21 @@ services:
     build: .
     ports:
       - "3033:3033"
+    environment:
+      - REDIS_URL=redis://redis:6379
     env_file:
-      -path: .env
-      required: false
+      - path: .env
+        required: false
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
+    container_name: thaiguide-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:
