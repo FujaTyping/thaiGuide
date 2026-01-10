@@ -1,6 +1,6 @@
 import { collection, query as fbquery, getDocs, DocumentData, limit, Query, query } from "firebase/firestore";
 import db from "./firebase";
-import clientRD from "./redis";
+//import clientRD from "./redis";
 
 interface getParams {
     name: string;
@@ -12,9 +12,9 @@ async function getWithRedis({
 }: getParams) {
     let Data: DocumentData[] = [];
 
-    if (await clientRD.get(`${limits ? `${name}-${limits}` : name}`)) {
-        return JSON.parse(await clientRD.get(`${limits ? `${name}-${limits}` : name}`) as string);
-    }
+    // if (await clientRD.get(`${limits ? `${name}-${limits}` : name}`)) {
+    //     return JSON.parse(await clientRD.get(`${limits ? `${name}-${limits}` : name}`) as string);
+    // }
 
     let q: Query;
 
@@ -31,8 +31,8 @@ async function getWithRedis({
         Data.push(qd);
     });
 
-    clientRD.set(`${limits ? `${name}-${limits}` : name}`, JSON.stringify(Data));
-    clientRD.expire(`${limits ? `${name}-${limits}` : name}`, 600);
+    // clientRD.set(`${limits ? `${name}-${limits}` : name}`, JSON.stringify(Data));
+    // clientRD.expire(`${limits ? `${name}-${limits}` : name}`, 600);
 
     return Data;
 }
