@@ -52,6 +52,10 @@ const nextConfig: NextConfig = {
           {
             key: 'Strict-Transport-Security',
             value: 'max-age=86400'
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN'
           }
         ],
       },
@@ -61,15 +65,6 @@ const nextConfig: NextConfig = {
     removeConsole: true
   },
 };
-
-/*
-  After I New Gen , Move this into header
-
-  {
-    key: 'X-Frame-Options',
-    value: 'SAMEORIGIN'
-  },
-*/
 
 const withNextIntl = createNextIntlPlugin();
 export default withNextIntl(nextConfig);
