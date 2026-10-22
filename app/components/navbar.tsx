@@ -146,7 +146,7 @@ function Navbar() {
                     description: `${error}`,
                     action: {
                         label: `${t('statsbtn')}`,
-                        onClick: () => { router.push('https://kuma.siraphop.me/status/thaiguide') },
+                        onClick: () => { router.push('https://status.siraphop.me/status/thaiguide') },
                     },
                 });
             }
